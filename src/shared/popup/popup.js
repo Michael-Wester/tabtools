@@ -291,7 +291,7 @@
       icon.alt = "";
       icon.loading = "lazy";
       icon.decoding = "async";
-      icon.src = "../icons/icon16-inactive.png";
+      icon.src = "../icons/black/icon-16.png";
       icon.addEventListener("error", () => {
         icon.hidden = true;
       });

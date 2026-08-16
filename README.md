@@ -1,8 +1,11 @@
-# TabEater
+# TabTools
 
-Browser extension to close noisy tabs fast and keep your tab list tidy.
+Browser extension with practical tools to close noisy tabs fast and keep your tab list tidy.
 
-<img width="796" height="424" alt="image" src="https://github.com/user-attachments/assets/c359b8f8-7ead-4d71-ac15-dcc61c5f95f9" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="tabtools-icon-kit/svg/tabtools-icon-white.svg">
+  <img width="112" height="112" alt="TabTools icon" src="tabtools-icon-kit/svg/tabtools-icon-black.svg">
+</picture>
 
 
 ## Highlights

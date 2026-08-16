@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>TabEater</title>
+    <title>TabTools</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       :root {
@@ -178,6 +178,15 @@
       .icon {
         width: 20px;
         height: 20px;
+      }
+      .brand-icon-dark {
+        display: none;
+      }
+      html[data-theme="dark"] .brand-icon-light {
+        display: none;
+      }
+      html[data-theme="dark"] .brand-icon-dark {
+        display: block;
       }
       .pill {
         font-size: 12px;
@@ -532,8 +541,17 @@
     <section class="card stack">
       <div class="header-row">
         <div class="header-main">
-          <img src="../icons/icon16.png" class="icon" alt="" />
-          <strong>TabEater</strong>
+          <img
+            src="../icons/black/icon-32.png"
+            class="icon brand-icon-light"
+            alt=""
+          />
+          <img
+            src="../icons/white/icon-32.png"
+            class="icon brand-icon-dark"
+            alt=""
+          />
+          <strong>TabTools</strong>
         </div>
         <div class="header-actions">
           <span id="pc-open-count" class="pill"></span>

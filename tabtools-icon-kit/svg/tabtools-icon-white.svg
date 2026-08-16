@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">TabTools icon — white</title>
+  <desc id="desc">A white T flowing into a circular stroke around a close symbol.</desc>
+  <g fill="none" stroke="#ffffff" stroke-width="92" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 794 190
+             C 916 306 944 493 875 657
+             C 802 829 617 920 434 882
+             C 244 842 105 686 92 497
+             C 82 346 153 217 278 132
+             C 307 112 334 100 366 100"/>
+    <path d="M 92 100 H 506"/>
+    <path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"/>
+  </g>
+</svg>
