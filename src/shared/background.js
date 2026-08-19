@@ -18,15 +18,16 @@ function normalizeSettings(raw) {
 
 const ACTION_ICON_PATHS = {
   active: {
-    16: "icons/icon16.png",
-    48: "icons/icon48.png",
-    128: "icons/icon128.png",
+    16: "icons/black/icon-16.png",
+    32: "icons/black/icon-32.png",
+    48: "icons/black/icon-48.png",
+    128: "icons/black/icon-128.png",
   },
 };
 
 const CONTEXT_MENU_TITLE = "Close site tabs";
 const CONTEXT_MENU_SORT_TITLE = "Sort tabs (most opened first)";
-const CLOSE_MENU_ID_PAGE = "tabEater-close-site-tabs-page";
+const CLOSE_MENU_ID_PAGE = "tabTools-close-site-tabs-page";
 
 // In MV3 service workers we must pull in helper script manually.
 if (
@@ -36,7 +37,7 @@ if (
   try {
     importScripts("background.suggestions.js");
   } catch (err) {
-    console.error("TabEater: unable to import suggestions helpers", err);
+    console.error("TabTools: unable to import suggestions helpers", err);
   }
 }
 
@@ -101,6 +102,8 @@ let contextMenuClickBound = false;
 async function setActionIcon() {
   const api = getActionApi();
   if (!api || typeof api.setIcon !== "function") return;
+  // Firefox's manifest theme_icons adapts the icon to the toolbar theme.
+  if (typeof browser !== "undefined" && browser?.browserAction) return;
   if (lastIconKind === "active") return;
   const path = ACTION_ICON_PATHS.active;
   try {
@@ -110,7 +113,7 @@ async function setActionIcon() {
     }
     lastIconKind = "active";
   } catch (err) {
-    console.warn("TabEater: unable to set action icon", err);
+    console.warn("TabTools: unable to set action icon", err);
   }
 }
 
@@ -120,7 +123,7 @@ async function refreshActionIcon() {
   try {
     await setActionIcon();
   } catch (err) {
-    console.warn("TabEater: icon refresh failed", err);
+    console.warn("TabTools: icon refresh failed", err);
   }
 }
 
@@ -176,7 +179,7 @@ async function handleContextMenuClick(info, tab) {
       url = activeTabs[0]?.url || "";
     } catch (err) {
       console.warn(
-        "TabEater: unable to resolve active tab for context menu",
+        "TabTools: unable to resolve active tab for context menu",
         err
       );
     }
@@ -189,7 +192,7 @@ async function handleContextMenuClick(info, tab) {
   try {
     await closeByKeyword(domain);
   } catch (err) {
-    console.error("TabEater: context menu action failed", err);
+    console.error("TabTools: context menu action failed", err);
   }
 }
 
@@ -211,7 +214,7 @@ function installContextMenu() {
           const err = getRuntimeLastError();
           if (err && err.message) {
             console.warn(
-              `TabEater: context menu create failed (contexts: ${contexts.join(
+              `TabTools: context menu create failed (contexts: ${contexts.join(
                 ","
               )})`,
               err
@@ -223,7 +226,7 @@ function installContextMenu() {
         return maybePromise.catch((err) => {
           if (err) {
             console.warn(
-              `TabEater: context menu create promise failed (contexts: ${contexts.join(
+              `TabTools: context menu create promise failed (contexts: ${contexts.join(
                 ","
               )})`,
               err
@@ -236,7 +239,7 @@ function installContextMenu() {
       return maybePromise;
     } catch (err) {
       console.warn(
-        `TabEater: context menu create threw (contexts: ${contexts.join(",")})`,
+        `TabTools: context menu create threw (contexts: ${contexts.join(",")})`,
         err
       );
     }
@@ -298,20 +301,20 @@ function installContextMenu() {
         maybePromise
           .catch((err) => {
             if (err)
-              console.warn("TabEater: context menu removeAll failed", err);
+              console.warn("TabTools: context menu removeAll failed", err);
           })
           .finally(runCreate);
       } else {
         menus.removeAll(() => {
           const err = getRuntimeLastError();
           if (err && err.message) {
-            console.warn("TabEater: context menu removeAll failed", err);
+            console.warn("TabTools: context menu removeAll failed", err);
           }
           runCreate();
         });
       }
     } catch (err) {
-      console.warn("TabEater: context menu removeAll threw", err);
+      console.warn("TabTools: context menu removeAll threw", err);
       runCreate();
     }
   } else {
@@ -330,7 +333,7 @@ function installContextMenu() {
       }
       if (info?.menuItemId === CONTEXT_MENU_SORT_TITLE) {
         sortTabsByOpenCount().catch((err) => {
-          console.error("TabEater: context sort failed", err);
+          console.error("TabTools: context sort failed", err);
         });
       }
     });
@@ -571,10 +574,10 @@ async function restoreTabs(tabs) {
           restored += 1;
           continue;
         } catch (fallbackErr) {
-          console.warn("TabEater: fallback restore failed", fallbackErr);
+          console.warn("TabTools: fallback restore failed", fallbackErr);
         }
       } else {
-        console.warn("TabEater: restore failed", err);
+        console.warn("TabTools: restore failed", err);
       }
     }
   }
@@ -628,7 +631,7 @@ async function sortTabsByOpenCount() {
       await tabsMove(tabId, targetIndex);
       moved += 1;
     } catch (err) {
-      console.warn("TabEater: sort move failed", err);
+      console.warn("TabTools: sort move failed", err);
     }
   }
 
@@ -651,7 +654,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         const result = await sortTabsByOpenCount();
         sendResponse({ ok: true, ...result });
       } catch (err) {
-        console.error("TabEater: sortTabsByOpenCount failed", err);
+        console.error("TabTools: sortTabsByOpenCount failed", err);
         sendResponse({ ok: false });
       }
     })();
@@ -671,7 +674,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         const result = await restoreTabs(msg.tabs);
         sendResponse({ ok: true, ...result });
       } catch (err) {
-        console.error("TabEater: restoreTabs failed", err);
+        console.error("TabTools: restoreTabs failed", err);
         sendResponse({ ok: false });
       }
     })();
@@ -684,7 +687,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         const result = await closeDuplicateTabs();
         sendResponse({ ok: true, ...result });
       } catch (err) {
-        console.error("TabEater: closeDuplicateTabs failed", err);
+        console.error("TabTools: closeDuplicateTabs failed", err);
         sendResponse({ ok: false });
       }
     })();

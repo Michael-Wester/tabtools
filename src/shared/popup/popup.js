@@ -286,15 +286,9 @@
 
     if (item.kind === "inactive") {
       chip.dataset.kind = "inactive";
-      const icon = document.createElement("img");
-      icon.className = "favicon";
-      icon.alt = "";
-      icon.loading = "lazy";
-      icon.decoding = "async";
-      icon.src = "../icons/icon16-inactive.png";
-      icon.addEventListener("error", () => {
-        icon.hidden = true;
-      });
+      const icon = document.createElement("span");
+      icon.className = "favicon inactive-icon";
+      icon.setAttribute("aria-hidden", "true");
       main.appendChild(icon);
       label.textContent = "Inactive";
       main.appendChild(label);
