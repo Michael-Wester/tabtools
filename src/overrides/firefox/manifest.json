@@ -28,8 +28,10 @@
     ]
   },
   "icons": {
-    "48": "icons/black/icon-48.png",
-    "96": "icons/black/icon-96.png"
+    "16": "icons/tabtools-icon-auto.svg",
+    "32": "icons/tabtools-icon-auto.svg",
+    "48": "icons/tabtools-icon-auto.svg",
+    "96": "icons/tabtools-icon-auto.svg"
   },
   "browser_specific_settings": {
     "gecko": {
