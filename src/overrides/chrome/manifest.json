@@ -6,7 +6,6 @@
   "author": "Michael Wester",
   "homepage_url": "https://github.com/Michael-Wester/tabtools",
   "permissions": ["tabs", "storage", "contextMenus"],
-  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
