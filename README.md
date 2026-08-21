@@ -1,11 +1,6 @@
-# TabTools
+<h1><img src="src/shared/icons/tabtools-icon-auto.svg" width="40" height="40" alt="" align="center"> TabTools</h1>
 
 Browser extension with practical tools to close noisy tabs fast and keep your tab list tidy.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="tabtools-icon-kit/svg/tabtools-icon-white.svg">
-  <img width="112" height="112" alt="TabTools icon" src="tabtools-icon-kit/svg/tabtools-icon-black.svg">
-</picture>
 
 
 ## Highlights

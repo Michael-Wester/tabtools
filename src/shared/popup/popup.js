@@ -11,8 +11,8 @@
   const STORAGE_KEY = "pc.settings";
   const DEFAULTS = {
     enableInactiveSuggestion: true,
-    inactiveThresholdMinutes: 30,
-    suggestMinOpenTabsPerDomain: 3,
+    inactiveThresholdMinutes: 120,
+    suggestMinOpenTabsPerDomain: 1,
     decayDays: 14,
     maxHistory: 200,
     theme: "light",
