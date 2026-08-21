@@ -8,7 +8,7 @@
 
   const DEFAULTS = {
     enableInactiveSuggestion: true,
-    inactiveThresholdMinutes: 60,
+    inactiveThresholdMinutes: 120,
     suggestMinOpenTabsPerDomain: 1,
     decayDays: 14,
     maxHistory: 200,
