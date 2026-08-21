@@ -1,12 +1,11 @@
 {
   "manifest_version": 3,
   "name": "TabTools",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Clear your tab list quickly and keep your browser tidy.",
   "author": "Michael Wester",
   "homepage_url": "https://github.com/Michael-Wester/tabtools",
   "permissions": ["tabs", "storage", "contextMenus"],
-  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },

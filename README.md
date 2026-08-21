@@ -2,6 +2,8 @@
 
 Browser extension with practical tools to close noisy tabs fast and keep your tab list tidy.
 
+[Privacy policy](PRIVACY.md)
+
 
 ## Highlights
 
