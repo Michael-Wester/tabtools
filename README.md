@@ -1,6 +1,6 @@
 <h1><img src="src/shared/icons/tabtools-icon-auto.svg" width="60" height="60" alt="" align="absmiddle"> TabTools</h1>
 
-Clear your tab list quickly with site suggestions, inactive tab cleanup, duplicate removal and, sorting.
+Clear your tab list quickly with site suggestions, inactive tab cleanup, duplicate removal, and sorting.
 
 [<img width="640" height="400" alt="TabTools-Too-Many-Tabs-1280x800" src="https://github.com/user-attachments/assets/5013720b-eca8-42a1-bbe7-3032f754adf1" />](https://tabtools.michaelwester.com)
 
