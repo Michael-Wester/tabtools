@@ -1,9 +1,12 @@
 <h1><img src="src/shared/icons/tabtools-icon-auto.svg" width="60" height="60" alt="" align="absmiddle"> TabTools</h1>
 
-Browser extension with practical tools to close noisy tabs fast and keep your tab list tidy.
+Clear your tab list quickly with site suggestions, inactive tab cleanup, duplicate removal and, sorting.
 
-[Privacy policy](PRIVACY.md)
+[<img width="640" height="400" alt="TabTools-Too-Many-Tabs-1280x800" src="https://github.com/user-attachments/assets/5013720b-eca8-42a1-bbe7-3032f754adf1" />](https://tabtools.michaelwester.com)
 
+[Chrome](https://tabtools.michaelwester.com/chrome) |
+[Firefox](https://tabtools.michaelwester.com/firefox) |
+[Microsoft Edge](https://tabtools.michaelwester.com/edge) 
 
 ## Highlights
 
