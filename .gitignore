@@ -8,6 +8,8 @@ Thumbs.db
 # Ignore IDE metadata
 .vscode/
 .idea/
+.codex-tmp/
+bin/
 
 # Ignore logs and temp files
 *.log
