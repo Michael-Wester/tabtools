@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 const root = typeof globalThis !== "undefined" ? globalThis : this;
 const SETTINGS_KEY = "pc.settings";
 const DEFAULTS = {

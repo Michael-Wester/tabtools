@@ -96,3 +96,8 @@ Small feature suggestions are welcome.
 
 For larger changes, please open an issue before implementing them so the
 approach can be discussed first.
+
+## License
+
+Contributions submitted to TabTools are distributed under the terms of the
+[Mozilla Public License 2.0](LICENSE).

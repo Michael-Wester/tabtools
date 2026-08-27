@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 // Popup: Suggestions, stats, and settings live side-by-side with quick actions.
 
 (function () {
