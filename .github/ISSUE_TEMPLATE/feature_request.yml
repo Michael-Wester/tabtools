@@ -1,0 +1,61 @@
+name: Feature request
+description: Suggest an improvement or new capability for TabTools
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. Small, focused ideas are especially welcome. Please open an issue before implementing a larger change.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and did not find a similar request.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or need
+      description: What problem would this feature solve?
+      placeholder: Describe the situation and who it affects.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the behaviour you would like TabTools to provide.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any workarounds or alternative approaches you considered.
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Relevant browsers
+      multiple: true
+      options:
+        - Chrome
+        - Edge
+        - Firefox
+        - All supported browsers
+        - Not browser-specific
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add mockups, screenshots, examples, or other useful details.

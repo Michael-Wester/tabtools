@@ -53,3 +53,12 @@ src/
   shared/      # common scripts, UI, assets
   overrides/   # browser-specific manifest/files (chrome, edge, firefox)
 ```
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup,
+testing, and pull request guidance.
+
+## License
+
+TabTools is licensed under the [Mozilla Public License 2.0](LICENSE).
