@@ -1,6 +1,11 @@
 # Ignore built extension outputs
 dist/
 
+# Keep the promotional site build in source control
+!website/
+!website/dist/
+!website/dist/**
+
 # Ignore temporary/editor files
 .DS_Store
 Thumbs.db

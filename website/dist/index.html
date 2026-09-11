@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6fa" />
+    <meta name="description" content="TabTools is a free browser tab manager that lets you close tabs from the same website, remove duplicates, sort tabs by site, and clean up inactive tabs." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — close tabs from the same website" />
+    <meta property="og:description" content="Clear tab clutter in seconds with site cleanup, duplicate removal, sorting, and inactive-tab cleanup." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta name="twitter:card" content="summary" />
+    <title>TabTools — close tabs from the same website</title>
+    <link rel="icon" href="assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="TabTools home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">☼</span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+            <span class="sr-only" data-theme-label>Dark mode</span>
+          </button>
+          <a class="button button-small button-primary" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk" target="_blank" rel="noopener">Add to Chrome</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A calmer way to browse</p>
+            <h1>Too many tabs?<br /><span>Close a whole site at once.</span></h1>
+            <p class="hero-lede">Clear tabs from the same website with <strong>Close site tabs</strong>. Remove duplicates, sort by site, and tidy the rest with TabTools.</p>
+            <div class="hero-actions">
+              <a class="button button-primary button-large" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk" target="_blank" rel="noopener"><span data-primary-install>Add to Chrome — free</span><span class="button-arrow" aria-hidden="true">↗</span></a>
+              <a class="button button-quiet button-large" href="#demo">Try the demo <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="browser-links" aria-label="Other browser downloads">
+              <span>Also available for</span>
+              <a data-store="firefox" href="https://tabtools.michaelwester.com/firefox" target="_blank" rel="noopener">Firefox</a>
+              <span aria-hidden="true">·</span>
+              <a data-store="edge" href="https://tabtools.michaelwester.com/edge" target="_blank" rel="noopener">Microsoft Edge</a>
+            </div>
+            <div class="privacy-note"><span class="lock-icon" aria-hidden="true">⌁</span> Your tabs stay on your device.</div>
+          </div>
+
+          <div class="hero-demo-wrap" id="demo">
+            <div class="demo-kicker"><span class="live-dot" aria-hidden="true"></span> Interactive demo <span class="demo-kicker-hint">click a tab</span></div>
+            <div class="browser-window" data-demo-window>
+              <div class="browser-toolbar">
+                <div class="window-controls" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div class="address-bar"><span class="address-lock" aria-hidden="true">⌁</span> tabtools.example / tidy-tabs</div>
+                <div class="toolbar-icon" aria-hidden="true">⋮</div>
+              </div>
+              <div class="tab-strip" data-tab-strip aria-label="Example browser tabs"></div>
+              <div class="browser-body">
+                <div class="browser-body-top"><span class="browser-crumb">TabTools / demo</span><span class="browser-body-status">6 open tabs</span></div>
+                <div class="demo-message">
+                  <div class="demo-message-icon" aria-hidden="true">✦</div>
+                  <div><strong>Pick a tab to clean up</strong><span>Then choose “Close site tabs”.</span></div>
+                </div>
+                <div class="demo-stat-row"><div><span class="stat-label">Open tabs</span><strong data-open-count>6</strong></div><div><span class="stat-label">Same-site tabs</span><strong data-site-count>3</strong></div><button class="reset-button" type="button" data-reset-demo>Reset demo</button></div>
+              </div>
+              <div class="context-menu" data-context-menu hidden>
+                <div class="context-site" data-context-site>example.com</div>
+                <button type="button" data-close-site><span class="menu-icon" aria-hidden="true">×</span> Close site tabs <kbd>↵</kbd></button>
+                <button type="button" data-menu-action><span class="menu-icon" aria-hidden="true">⌘</span> Close other tabs</button>
+                <div class="menu-divider"></div>
+                <button type="button" data-menu-action><span class="menu-icon" aria-hidden="true">↗</span> Open in new window</button>
+              </div>
+            </div>
+            <p class="demo-caption"><span class="caption-key" aria-hidden="true">↖</span> Select any example tab to open its context menu.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="TabTools product promise">
+        <div class="shell proof-grid">
+          <span><strong>One click</strong> to close a whole site</span>
+          <span><strong>Local by design</strong> — no account required</span>
+          <span><strong>Free</strong> on Chrome, Firefox, and Edge</span>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading split-heading"><div><p class="eyebrow">Less tab juggling</p><h2>Clean up the clutter<br /><em>you actually have.</em></h2></div><p>TabTools gives you focused actions for the moments when your browser gets away from you.</p></div>
+          <div class="feature-lead">
+            <div class="feature-lead-visual" aria-hidden="true"><div class="mini-browser"><div class="mini-browser-bar"><span></span><span></span><span></span></div><div class="mini-tabs"><i class="mini-tab active">docs.example</i><i class="mini-tab">docs.example</i><i class="mini-tab">docs.example</i><i class="mini-tab muted">mail.app</i></div><div class="mini-menu"><b>docs.example</b><strong>× Close site tabs</strong><span>Close other tabs</span><span>Open in new window</span></div></div><div class="visual-note">The shortcut you wish browsers had.</div></div>
+            <div class="feature-lead-copy"><span class="feature-number">01</span><h3>Close every tab from a site</h3><p>Right-click any tab and choose <strong>Close site tabs</strong>. TabTools finds the other tabs from that website and clears them in one action.</p><a href="#how-it-works" class="text-link">See how it works <span aria-hidden="true">→</span></a></div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card"><div class="feature-icon icon-purple" aria-hidden="true">⌕</div><span class="feature-number">02</span><h3>Search by keyword or domain</h3><p>Target the tabs you want to close without hunting through every window.</p></article>
+            <article class="feature-card"><div class="feature-icon icon-cyan" aria-hidden="true">◈</div><span class="feature-number">03</span><h3>Remove duplicate tabs</h3><p>Clear repeated pages in a single click and keep the copy you need.</p></article>
+            <article class="feature-card"><div class="feature-icon icon-orange" aria-hidden="true">⌁</div><span class="feature-number">04</span><h3>Sort tabs by site</h3><p>Group your open tabs by website and see where the clutter is concentrated.</p></article>
+            <article class="feature-card"><div class="feature-icon icon-pink" aria-hidden="true">◷</div><span class="feature-number">05</span><h3>Clear inactive tabs</h3><p>Choose how long a tab can be inactive before it qualifies for cleanup.</p></article>
+          </div>
+          <div class="supporting-features"><span><i aria-hidden="true">✦</i> Site suggestions for busy windows</span><span><i aria-hidden="true">◐</i> Light and dark themes</span><span><i aria-hidden="true">▣</i> Local cleanup statistics</span><span><i aria-hidden="true">↶</i> Undo your latest close</span></div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid"><div class="workflow-heading"><p class="eyebrow">A three-second routine</p><h2>Install once.<br /><span>Clear with intent.</span></h2><p>TabTools keeps the useful actions close to the tabs you already have open.</p><a class="button button-primary" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk" target="_blank" rel="noopener">Get TabTools <span aria-hidden="true">↗</span></a></div><ol class="steps"><li><span class="step-index">01</span><div><h3>Install for your browser</h3><p>Add TabTools from the Chrome, Firefox, or Edge store.</p></div></li><li><span class="step-index">02</span><div><h3>Open the popup or a tab menu</h3><p>Use the popup for quick actions, or right-click a tab for the site shortcut.</p></div></li><li><span class="step-index">03</span><div><h3>Choose what to clear</h3><p>Close a site, remove duplicates, sort, or tidy inactive tabs.</p></div></li></ol></div>
+      </section>
+
+      <section class="section privacy-section" id="privacy"><div class="shell privacy-card"><div class="privacy-seal" aria-hidden="true">⌁</div><div><p class="eyebrow">Private by design</p><h2>Your tab list stays yours.</h2><p>TabTools processes open-tab information locally in your browser. Settings and cleanup statistics stay in local extension storage. There is no account, analytics, advertising, or external database.</p><a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Read the privacy policy <span aria-hidden="true">↗</span></a></div></div></section>
+
+      <section class="section faq-section" id="faq"><div class="shell faq-grid"><div class="faq-heading"><p class="eyebrow">Questions, answered</p><h2>Good to know.</h2><p>Still deciding? Here are the details that matter.</p></div><div class="faq-list"><details open><summary>Is TabTools free?<span aria-hidden="true"></span></summary><p>Yes. TabTools is free to install and use.</p></details><details><summary>Which browsers can I install it in?<span aria-hidden="true"></span></summary><p>TabTools is available for Chrome, Firefox, and Microsoft Edge. Choose your browser from the download links on this page.</p></details><details><summary>How do I close tabs from the same website?<span aria-hidden="true"></span></summary><p>Right-click one of the tabs, choose “Close site tabs”, and TabTools closes the other open tabs from that site. You can also use the popup to search by a keyword or exact domain.</p></details><details><summary>Can I remove duplicates or clear inactive tabs?<span aria-hidden="true"></span></summary><p>Yes. The popup includes actions for duplicate tabs and inactive tabs, with a threshold you can choose for inactivity.</p></details><details><summary>What information does the extension store?<span aria-hidden="true"></span></summary><p>Preferences such as your theme and suggestion threshold, plus local statistics such as the number of tabs closed with TabTools. Tab information is processed on your device and is not sent to the developer.</p></details></div></div></section>
+
+      <section class="final-cta"><div class="shell final-cta-inner"><div><p class="eyebrow">Ready for fewer tabs?</p><h2>Start with the tabs<br /><span>you no longer need.</span></h2></div><div class="final-cta-actions"><a class="button button-primary button-large" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk" target="_blank" rel="noopener"><span data-primary-install>Add to Chrome — free</span><span aria-hidden="true">↗</span></a><div class="final-alternatives"><a data-store="firefox" href="https://tabtools.michaelwester.com/firefox" target="_blank" rel="noopener">Firefox</a><a data-store="edge" href="https://tabtools.michaelwester.com/edge" target="_blank" rel="noopener">Edge</a></div></div></div></section>
+    </main>
+
+    <footer class="site-footer"><div class="shell footer-grid"><div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><img src="assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a><p>A calmer way to manage the tabs you already have open.</p></div><div class="footer-links"><div><span class="footer-label">Product</span><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a></div><div><span class="footer-label">Install</span><a data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk" target="_blank" rel="noopener">Chrome</a><a data-store="firefox" href="https://tabtools.michaelwester.com/firefox" target="_blank" rel="noopener">Firefox</a><a data-store="edge" href="https://tabtools.michaelwester.com/edge" target="_blank" rel="noopener">Edge</a></div><div><span class="footer-label">More</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div></div></div><div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Made for fewer tabs.</span></div></footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>
