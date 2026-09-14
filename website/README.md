@@ -22,8 +22,8 @@ store's analytics support; tags alone do not provide a website analytics dashboa
 
 ## Search and content
 
-The preferred URL is `https://www.tabtools.fyi/`, matching the active custom
-domain. Keep the canonical link, Open Graph URL, software metadata, sitemap,
+The intended preferred URL after migration is `https://tabtools.fyi/`.
+Keep the canonical link, Open Graph URL, software metadata, sitemap,
 and robots.txt sitemap URL aligned if the preferred domain changes. Redirects
 and domain certificates are managed by the host, not these static files.
 
@@ -34,3 +34,6 @@ Product instructions are grounded in the extension source: closing by site
 affects matching tabs in regular windows; sorting affects the current window;
 popup Undo is available while that popup remains open. Privacy copy refers to
 the extension and distinguishes the website's third-party YouTube player.
+
+See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
+hosting settings, verification requirements, and future deployment instructions.
