@@ -22,7 +22,7 @@ store's analytics support; tags alone do not provide a website analytics dashboa
 
 ## Search and content
 
-The intended preferred URL after migration is `https://tabtools.fyi/`.
+The preferred URL is `https://tabtools.fyi/`.
 Keep the canonical link, Open Graph URL, software metadata, sitemap,
 and robots.txt sitemap URL aligned if the preferred domain changes. Redirects
 and domain certificates are managed by the host, not these static files.

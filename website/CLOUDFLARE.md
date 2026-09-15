@@ -1,168 +1,191 @@
-# Cloudflare migration and rollback
+# TabTools Cloudflare deployment
 
-## Status at preparation (15 September 2026, New Zealand)
+## Status
 
-Prepared, not deployed. Cloudflare plugin installation succeeded, but its API
-tools were not exposed in the active session. No Cloudflare account settings,
-DNS records, domains, redirects, or deployment resources were changed. Browser
-discovery returned no available browsers. Hosted preview and visual checks are
-still required. Reconnect the Cloudflare plugin and finish OAuth if prompted,
-then resume with its authenticated API tools. No source export is needed.
+Cloudflare Pages production project `tabtools-website` is live at
+https://tabtools.fyi/. DNS cutover and the HTTP checks below passed on
+15 September 2026 at approximately 03:44 UTC. Interactive browser checks and
+GitHub Actions credential setup remain outstanding.
 
-Verified during preparation:
+- Live URL: https://tabtools.fyi/
+- Production Pages URL: https://tabtools-website.pages.dev/
+- Production deployment: `ba8978d7-0271-4ad1-9759-0fdf3f9a73a4`
+- Preview: https://fb53d98e.tabtools-migration-preview.pages.dev/
+- Preserved Sites rollback: https://tabtools-website.michaeljrwester.chatgpt.site/
+- Migration branch: `hosting/cloudflare-migration`; PR #13.
 
-- Sites version 6 deployment reports `succeeded`.
-- `https://www.tabtools.fyi/` returned 200 with valid TLS.
-- `https://tabtools-website.michaeljrwester.chatgpt.site/` returned 200 with valid
-  TLS and remains the independent rollback URL.
-- HTTPS apex returned 522; HTTP apex timed out after 12 seconds. HTTP www returned
-  302 to HTTPS www (not the requested final permanent apex redirect).
-- Existing `/privacy` and `/chrome` requests returned HTML with status 200.
-  Inspect their bodies and other legacy paths before changing fallback routing.
-- All imported static files match the recovered source, allowing only the
-  intended apex substitutions in index.html, robots.txt and sitemap.xml.
-- All 13 HTML store links retain their exact placement-specific UTM values;
-  hash navigation targets and local asset references resolve, the exact YouTube
-  embed remains, and HTML contains no noindex directive.
-- JavaScript syntax validation and Git whitespace checks passed.
+## Source and hosting
 
-This is static/source validation, not a browser interaction or Cloudflare
-deployment verification. No Cloudflare preview URL exists yet.
+The website is plain HTML, CSS and JavaScript. All authored assets live in
+`website/dist`. There is no compilation, package installation, server runtime,
+database, or website environment variable. Do not use the extension's root
+`build.js` or `build.ps1` for website deployment.
 
-## Source of truth
+Imported source: ChatGPT Sites `tabtools-website` version 6, commit
+`c14898052e9e81d29d06c073694e5b87a4103740`. GitHub main had no website, and both
+older website branches differed from this source. Commit `87d8b7b` preserves
+version 6 verbatim, including its original www SEO URLs. The deployed asset tree
+is from `d488e0b952dda5dd0b4240b0be1ea659fd579e85`, changing only canonical,
+Open Graph, JSON-LD, robots and sitemap URLs to the requested apex domain.
+CSS, JavaScript, all media, copy, privacy behavior, YouTube embed, browser-specific
+store destinations and placement-specific UTM parameters remain unchanged.
 
-This directory imports ChatGPT Sites `tabtools-website` version 6, source commit
-`c14898052e9e81d29d06c073694e5b87a4103740`. The source repository HEAD matched that
-version. GitHub main had no website; `feat/tabtools-website` and
-`website/clear-practical-redesign` contained different, older website content.
-Do not use those branches for deployment.
+Pages was selected because the site is entirely static. The Cloudflare plugin
+supports Pages creation, asset deployment, custom domains, DNS and redirects.
+Native Git integration repeatedly failed with Cloudflare error `8000011`, an
+internal issue with the Pages Git installation. The working fallback is Pages
+Direct Upload plus a GitHub Actions workflow. This does not require a Worker.
 
-Commit `87d8b7b` on this migration branch preserves the original version 6 files,
-including its www SEO URLs. The migration changes only those SEO URLs to apex;
-JavaScript, CSS, wording, store links and UTM parameters, privacy interactions,
-YouTube embed and media remain preserved. Live www HTML differed from source
-only in Cloudflare's injected email protection and challenge code.
+Pages Direct Upload projects cannot later be switched to native Git integration;
+if that is desired after repairing the Cloudflare GitHub app installation, create
+a new Git-integrated project, verify it, then move the domain. There is no need to
+do that for the GitHub Actions deployment path below.
 
-The original Sites project and deployment must remain available. Its identifier
-is retained in `.openai/hosting.json` for reference; Cloudflare Pages serves only
-`dist`, so this file is not public. Do not publish the changed apex metadata back
-to Sites as part of this migration.
+## Future updates from GitHub
 
-## Hosting choice and Git deployment
+Workflow: `.github/workflows/website-deploy.yml`.
 
-Prefer Pages: this is dependency-free HTML/CSS/JavaScript with no compilation,
-functions, package installation, or environment variables. Sites runtime
-environment inspection returned no entries. There is no extension build step.
-The Cloudflare integration's actual capabilities must still be checked; if Pages
-is unavailable through it, use Workers static assets with `website/dist` and
-equivalent scoped redirects, then document the actual configuration here.
+The connected MCP cannot create API tokens (account token administration returned
+error 9109 Unauthorized). Create the CI credential manually:
 
-For Pages, connect GitHub `Michael-Wester/tabtools` in Workers & Pages. Authorize
-the Cloudflare GitHub app for this repository if it has no existing installation.
+One-time remaining setup:
 
-| Setting | Value |
+1. Create a Cloudflare API token with **Account > Cloudflare Pages > Edit**,
+   scoped to the account `fee7bb9066b59347e43a2b35fcb827c3`. CI does not need DNS,
+   redirect, SSL, billing or database permissions.
+2. Save it as the repository Actions secret **CLOUDFLARE_API_TOKEN** at
+   https://github.com/Michael-Wester/tabtools/settings/secrets/actions.
+   Do not commit it or put it in a chat message. The non-secret account ID is
+   already in the workflow.
+3. Merge PR #13 into main. The workflow then deploys `website/dist` to
+   `tabtools-website`, branch `main` (production). Until this setup is complete,
+   automatic deployment is not operational.
+
+Subsequent changes to `website/dist/**` deploy after merging to main. Changes to
+the deployment workflow also trigger it. Extension-only and documentation-only
+changes do not trigger deployments. Same-repository PRs deploy to `pr-N` preview
+branches; fork PRs skip deployment because they do not receive the secret.
+Manual workflow runs on main target production; manual runs on other branches
+use `manual-preview`. The workflow validates JavaScript syntax and uploads the
+authored static directory. There is no site build command.
+
+For a manual deployment from a reviewed checkout, authenticate Wrangler and run:
+
+```sh
+npx wrangler pages deploy website/dist --project-name=tabtools-website --branch=main
+```
+
+Use a different branch name for a preview. Confirm the resulting deployment's
+status and check its actual URL. Do not infer success from upload acceptance.
+
+## DNS and redirects
+
+Zone: `3b4c1a95116de83c733568a441bb404d` (`tabtools.fyi`). The complete pre-migration
+snapshot is saved locally in `.codex-tmp/cloudflare-before-migration.json` outside
+version control. It contains all five original DNS records, existing rule lists,
+and the original SSL/HTTPS settings. Keep a secure copy for rollback.
+
+Original website records:
+
+| Record ID | Name | Type | Target | Proxy | TTL |
+| --- | --- | --- | --- | --- | --- |
+| `874887aa87b6dad4d885e4654c3f1856` | `tabtools.fyi` | A | `192.0.2.1` | Enabled | Auto |
+| `5ccde86929d227221f09461fd2583db7` | `www.tabtools.fyi` | CNAME | `custom-domains.chatgpt.site` | Enabled | Auto |
+
+The old apex record was a placeholder and returned 522. There were no MX
+records, no Page Rules, and no user redirect rulesets. The three TXT records
+(Google verification and two Sites hostname verification records) are preserved.
+
+The old Sites custom-domain associations for www (active) and apex (pending)
+were detached during cutover. The www association kept routing traffic to Sites
+even after the DNS update, bypassing this zone's redirect. The Sites project,
+version history and independent ChatGPT URL remain published for rollback.
+
+Active configuration:
+
+- Apex: proxied CNAME to `tabtools-website.pages.dev`, attached in Pages Custom domains.
+- www: proxied CNAME to `tabtools.fyi`.
+- One scoped Single Redirect sends both www schemes and HTTP apex directly to
+  HTTPS apex with status **301**, preserving request path and query string.
+- Rule expression: `(http.host eq "www.tabtools.fyi") or (http.host eq "tabtools.fyi" and not ssl)`.
+- Target expression: `concat("https://tabtools.fyi", http.request.uri.path)`.
+- Ruleset ID: `6e25739c3d2644c09425dd234cb85adc`.
+- Rule ID: `04d9660becd94a52a9e71a2dfd5b787e`; reference `tabtools_canonical_https`.
+
+The zone's existing Full SSL setting is preserved. Universal SSL was active for
+apex and wildcard before migration. No zone-wide Always Use HTTPS change is
+needed because the redirect is limited to the two website hosts.
+
+## Verification
+
+Completed before cutover:
+
+- Sites version 6 deployment status succeeded, and its independent rollback URL
+  returned 200 with normal certificate validation.
+- Existing source files match the Sites source, except intended apex metadata.
+- All eight files fetched from the Pages preview match local files byte-for-byte.
+- All 13 HTML store links retain their original placement-specific UTM values.
+- Local asset references, hash navigation targets, YouTube embed URL and
+  JavaScript syntax checked. HTML contains no noindex directive or insecure
+  external asset references.
+- Existing Sites `/privacy`, `/chrome`, `/firefox`, `/edge` and an unknown path
+  all serve the homepage. Preserve this fallback behavior on Pages.
+- GitHub workflow passes actionlint. Its actual deployment run awaits the secret.
+
+Browser discovery returned no available browser. Desktop/mobile visual checks,
+theme switching and persistence, adaptive CTAs in Chrome/Firefox/Edge, privacy
+focus/scroll behavior, FAQ interactions, and YouTube playback remain unverified
+in a browser. Their source is preserved exactly; this is not a claim that those
+interactive checks passed. Preview deployment URLs may intentionally return
+`X-Robots-Tag: noindex`; production apex must not.
+
+Final production verification passed:
+
+| Request | Result |
 | --- | --- |
-| Framework preset | None |
-| Root directory | `website` |
-| Build command | Leave empty (no build required) |
-| Output directory | `dist` |
-| Environment variables | None |
-| Initial production branch | `hosting/cloudflare-migration` (do not attach domains yet) |
-| Preview branches | Include website feature branches |
-| Build watch include paths | `website/*` |
-| Build watch exclude paths | `website/README.md`, `website/CLOUDFLARE.md` |
+| `https://tabtools.fyi/` | 200, no redirect |
+| `http://tabtools.fyi/` | One 301 to HTTPS apex, then 200 |
+| `https://www.tabtools.fyi/` | One 301 to HTTPS apex, then 200 |
+| `http://www.tabtools.fyi/` | One 301 to HTTPS apex, then 200 |
 
-Use the initial pages.dev deployment as staging and verify it before attaching
-domains. For a distinct branch preview, enable preview builds and push a website
-verification branch with this same source. Record the actual project name, URL,
-deployment ID and commit here. None has been created yet.
-
-After the PR is merged into main, change the Pages production branch to `main`.
-Future website changes go through PR previews and deploy after merge. Watch paths
-are repository-relative; `website/*` also matches nested files. Extension-only
-changes ordinarily skip deployment; Cloudflare documents exceptions for unusually
-large or empty pushes. Do not run root `build.js` or `build.ps1` for this website.
-
-## DNS and HTTPS cutover (pending)
-
-1. Inspect the authenticated account, zone, Pages/Workers projects, DNS records,
-   custom hostnames, certificates, redirects, and SSL configuration first. Export
-   the zone and save current record IDs, targets, proxy flags, TTLs, rule IDs and
-   settings privately for rollback. Public DNS only shows Cloudflare proxy IPs
-   and cannot reveal the original origin records. Do not use those IPs as origins.
-2. Verify the existing generated ChatGPT Sites URL from Sites settings, and test
-   it independently of the custom domain before cutover. Record it privately.
-   If a SaaS custom-hostname association prevents attaching the domain, resolve
-   that association without deleting or unpublishing the Sites project.
-3. Add `tabtools.fyi` to Pages Custom domains and use the exact DNS target Pages
-   returns. Replace only conflicting apex website A/AAAA/CNAME records. Preserve
-   MX, TXT, CAA and unrelated subdomain records; inspect certificate errors before
-   changing any CAA setting. Wait for hostname and certificate activation.
-4. Keep `www` proxied. Replace only its website record as needed with a proxied
-   CNAME to `tabtools.fyi`. Ensure its edge certificate is active. Add a scoped
-   Single Redirect rule after checking existing rules for conflicts:
-
-   Expression:
-   `(http.host eq "www.tabtools.fyi") or (http.host eq "tabtools.fyi" and not ssl)`
-
-   Dynamic destination: `concat("https://tabtools.fyi", http.request.uri.path)`
-
-   Status: `301`. Preserve query string: **enabled**.
-
-   This targets both www schemes and HTTP apex while excluding HTTPS apex, so
-   it cannot redirect apex HTTPS back into itself. Resolve any existing apex-to-www
-   rule without replacing the whole zone ruleset. Do not introduce a zone-wide
-   redirect affecting unrelated subdomains. Domain redirects belong in zone
-   rules, not the Pages `_redirects` file.
-5. Confirm a strict encrypted origin connection appropriate to Pages; do not use
-   Flexible SSL. Preserve unrelated zone settings. Verify the matrix below before
-   considering the migration complete.
-
-## Required verification
-
-There is no build to run. `dist` is authored deployment output. Locally serve it
-with `python -m http.server 4173 --directory website/dist` from repository root.
-
-- Compare preview with the existing site at desktop and mobile widths, in both
-  themes. Check theme toggle, reload persistence, and no horizontal overflow.
-- Follow Features, How it works, Privacy and FAQ. Privacy must focus the section
-  and center its card below the sticky header; test a fresh `/#privacy` load.
-  Check FAQ expand/collapse and keyboard navigation.
-- Test Chrome, Firefox and Edge adaptive CTAs and alternate browser links. Verify
-  every placement's original UTM values, direct store destination, and mobile note.
-- Verify the exact YouTube privacy-enhanced embed and playback, local images,
-  CSS/JS, poster and retained MP4. Check console/network errors and mixed content.
-- Verify canonical, Open Graph URL, JSON-LD, sitemap and robots all use apex.
-  Production must have no `noindex` meta or `X-Robots-Tag: noindex` header.
-  Preview environments may deliberately include a platform noindex header.
-- `/`, `/index.html`, `/robots.txt`, `/sitemap.xml`, and every actual asset must
-  work. Navigation uses hash sections, not separate SPA pages. Inspect existing
-  host routing before introducing any new route or fallback behavior.
-- Check HTTPS apex returns 200. HTTPS www, HTTP www and HTTP apex must permanently
-  redirect to HTTPS apex with path and query intact, without loops. Check both `/`
-  and `/robots.txt?utm_source=migration-check` using a redirect-following client.
-  Verify certificates without disabling TLS validation.
+The same matrix passed for `/robots.txt?utm_source=migration-check&keep=a%20b`,
+preserving path and query without loops. Normal TLS certificate validation was
+enabled for every request. Production headers contain no noindex directive.
+All eight deployed files matched the source (accounting only for Cloudflare's
+existing email-protection transformation in HTML); all five tested legacy/fallback
+routes still serve the homepage. Canonical, Open Graph, JSON-LD, sitemap and
+robots use `https://tabtools.fyi/`. All three store destinations and the YouTube
+embed endpoint returned 200; this confirms endpoint access, not video playback.
 
 ## Rollback
 
-Before cutover: nothing to roll back in hosting/DNS. Existing ChatGPT Sites is
-untouched. Do not merge or deploy the older website branches over this snapshot.
+Do not delete or unpublish the original ChatGPT Sites project. Its project ID
+remains in `website/.openai/hosting.json`, which is outside the uploaded `dist`
+directory and is not publicly served as configuration.
 
-After cutover: disable only the new scoped redirect rule; restore the captured
-website DNS records and prior rule settings, and restore any custom-hostname
-association that was changed. Leave email and unrelated records alone. Verify
-the original Sites URL and www domain again. Restoring the original apex setup
-would also restore its pre-existing failure unless repaired separately.
+To restore Sites after DNS cutover:
 
-For later Cloudflare releases, roll back to the previous successful Pages
-production deployment and revert the corresponding GitHub change so a later
-push cannot immediately redeploy the regression. For an original source recovery,
-use the website tree from `87d8b7b`; do not push an extension-wide reset.
+1. Disable the new `tabtools_canonical_https` redirect rule by its ID above.
+2. Re-add `www.tabtools.fyi` as a custom domain on the preserved Sites project.
+   Restore its CNAME target to the value Sites returns (previously
+   `custom-domains.chatgpt.site`), proxy enabled, TTL Auto. Apply any new hostname
+   verification TXT values returned by Sites, and wait for activation.
+3. Verify https://www.tabtools.fyi/ and the independent ChatGPT Sites URL.
+4. To restore the apex record exactly, restore A `192.0.2.1`, proxy enabled,
+   TTL Auto. That also restores its pre-existing failure; restoring this broken
+   placeholder is not needed to make www work again.
+5. Preserve all TXT records and unrelated configuration. Disable the GitHub
+   website deployment workflow if production changes need to be frozen.
+
+For later Pages releases, select a known-good production deployment in Pages
+and use Rollback, then revert the offending website change in GitHub so a later
+push does not redeploy it. The initial successful deployment is identified above.
+Restore original source from `87d8b7b` if needed; never reset extension code as
+part of a website rollback.
 
 ## References
 
-- [Pages Git integration](https://developers.cloudflare.com/pages/configuration/git-integration/)
-- [Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/)
-- [Build watch paths](https://developers.cloudflare.com/pages/configuration/build-watch-paths/)
-- [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/)
-- [Redirect support](https://developers.cloudflare.com/pages/configuration/redirects/)
+- https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/
+- https://developers.cloudflare.com/pages/get-started/direct-upload/
+- https://developers.cloudflare.com/pages/configuration/custom-domains/
+- https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/
