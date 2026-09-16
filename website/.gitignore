@@ -1,0 +1,3 @@
+# Authored static website files; these are not generated extension builds.
+!dist/
+!dist/**

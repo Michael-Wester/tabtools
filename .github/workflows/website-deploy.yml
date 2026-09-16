@@ -1,0 +1,62 @@
+name: Deploy TabTools website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/dist/**'
+      - '.github/workflows/website-deploy.yml'
+  pull_request:
+    paths:
+      - 'website/dist/**'
+      - '.github/workflows/website-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Fork PRs do not receive the deployment secret.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Check deployment credential
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo 'Set the CLOUDFLARE_API_TOKEN repository secret with Account > Cloudflare Pages > Edit access.'
+            exit 1
+          fi
+      - name: Validate JavaScript
+        run: node --check website/dist/script.js
+      - name: Select deployment target
+        id: target
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [ "$EVENT_NAME" = 'pull_request' ]; then
+            echo "branch=pr-$PR_NUMBER" >> "$GITHUB_OUTPUT"
+          elif [ "$REF_NAME" = 'main' ]; then
+            echo 'branch=main' >> "$GITHUB_OUTPUT"
+          else
+            echo 'branch=manual-preview' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy authored static files
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: fee7bb9066b59347e43a2b35fcb827c3
+          command: pages deploy website/dist --project-name=tabtools-website --branch=${{ steps.target.outputs.branch }}
