@@ -35,6 +35,8 @@
         link.dataset.store = key;
         const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
         link.setAttribute('aria-label', visibleLabel + ' — opens the ' + browserLabel(key) + ' in a new tab');
+        const browserIcon = link.querySelector('[data-browser-icon] use');
+        if (browserIcon) browserIcon.setAttribute('href', '#browser-icon-' + key);
       }
     });
 
