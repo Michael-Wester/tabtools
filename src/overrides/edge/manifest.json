@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "TabTools",
-  "version": "4.0.0",
-  "description": "Clear your tab list quickly and keep your browser tidy.",
+  "name": "TabTools – Close & Sort Tabs by Site",
+  "version": "4.0.2",
+  "description": "Close tabs from the same website, sort tabs by site and remove duplicates to keep your browser organised.",
   "author": "Michael Wester",
   "homepage_url": "https://github.com/Michael-Wester/tabtools",
   "permissions": ["tabs", "storage", "contextMenus"],
