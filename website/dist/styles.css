@@ -199,9 +199,25 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
 .store-note { margin: 15px 0 0; color: var(--ink-faint); font-size: 14px; }
 .mobile-note { margin: 12px 0 0; color: var(--ink-soft); font-size: 14px; }
-.browser-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 17px; margin-top: 20px; color: var(--ink-faint); font-size: 14px; }
-.browser-links a { color: var(--ink-soft); font-weight: 700; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
-.browser-links a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.browser-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; color: var(--ink-faint); font-size: 14px; }
+.browser-links > span:first-child { margin-right: 2px; }
+.browser-link {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.45) inset;
+  font-weight: 720;
+  text-decoration: none;
+  transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.browser-link:hover { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); transform: translateY(-1px); }
+.browser-link-icon { width: 15px; height: 15px; flex: 0 0 auto; color: currentColor; fill: currentColor; }
 
 .hero-visual { min-width: 0; }
 .recording-label { display: flex; align-items: center; gap: 9px; margin: 0 0 11px; color: var(--ink-soft); font-size: 12px; font-weight: 780; letter-spacing: .1em; text-transform: uppercase; }
@@ -369,8 +385,8 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
   .nav-actions .button-icon { display: none; }
   .nav-actions { gap: 7px; }
   .recording-label { font-size: 12px; }
-  .browser-links { align-items: flex-start; flex-direction: column; gap: 7px; }
-  .browser-links span { margin-bottom: 2px; }
+  .browser-links { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .browser-links > span:first-child { margin-bottom: 2px; }
   .supporting-row { flex-direction: column; gap: 8px; }
   .supporting-row span + span::before { display: none; }
   .footer-links { gap: 13px; }
