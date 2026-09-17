@@ -7,6 +7,18 @@ static host.
 The page is intentionally dependency-free. Edit the files in `dist/`, then
 serve that directory with any static web server for local review.
 
+## Browser buttons
+
+The header, hero, how-it-works section, and final call to action adapt their
+"Add to" label, full-colour logo, and store URL to Chrome, Firefox, or Edge.
+The hero and final section also show buttons for the other two browsers.
+Without JavaScript, Chrome is the primary button and Firefox and Edge remain
+available. The footer always lists all three stores.
+
+Button surfaces use the site's purple and neutral theme colours. The original
+browser artwork is served locally, with provenance and ownership documented in
+[`dist/assets/browsers/README.md`](dist/assets/browsers/README.md).
+
 ## Store link attribution
 
 Every store link includes `utm_source=tabtools.fyi`, `utm_medium=referral`,
