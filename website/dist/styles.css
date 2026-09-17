@@ -199,25 +199,96 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
 .store-note { margin: 15px 0 0; color: var(--ink-faint); font-size: 14px; }
 .mobile-note { margin: 12px 0 0; color: var(--ink-soft); font-size: 14px; }
-.browser-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; color: var(--ink-faint); font-size: 14px; }
-.browser-links > span:first-child { margin-right: 2px; }
+.browser-links {
+  margin-top: 24px;
+  color: var(--ink-faint);
+  font-size: 14px;
+}
+.browser-links-label {
+  display: block;
+  margin-bottom: 11px;
+  color: var(--ink-faint);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.browser-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
 .browser-link {
-  display: inline-flex;
-  min-height: 32px;
+  --browser-link-accent: var(--accent);
+  --browser-link-soft: var(--accent-soft);
+  display: grid;
+  min-width: 0;
+  min-height: 82px;
+  grid-template-columns: 36px minmax(0, 1fr) 1px 17px;
   align-items: center;
-  gap: 7px;
-  padding: 5px 10px;
-  color: var(--ink-soft);
+  gap: 12px;
+  padding: 12px 14px;
+  color: var(--ink);
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 14px;
   box-shadow: 0 1px 0 rgba(255,255,255,.45) inset;
   font-weight: 720;
   text-decoration: none;
-  transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+  transition: color .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
-.browser-link:hover { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); transform: translateY(-1px); }
-.browser-link-icon { width: 15px; height: 15px; flex: 0 0 auto; color: currentColor; fill: currentColor; }
+.browser-link[data-store="chrome"] { --browser-link-accent: #4285f4; --browser-link-soft: #edf4ff; }
+.browser-link[data-store="firefox"] { --browser-link-accent: #d85b3f; --browser-link-soft: #fff0ec; }
+.browser-link[data-store="edge"] { --browser-link-accent: #1677c8; --browser-link-soft: #eaf5ff; }
+html[data-theme="dark"] .browser-link[data-store="chrome"] { --browser-link-soft: #1d2c46; }
+html[data-theme="dark"] .browser-link[data-store="firefox"] { --browser-link-soft: #3f2927; }
+html[data-theme="dark"] .browser-link[data-store="edge"] { --browser-link-soft: #19364b; }
+.browser-link:hover {
+  background: var(--browser-link-soft);
+  border-color: var(--browser-link-accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+.browser-link-icon-wrap {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: var(--browser-link-accent);
+  background: var(--browser-link-soft);
+  border-radius: 11px;
+}
+.browser-link-icon { width: 21px; height: 21px; flex: 0 0 auto; fill: currentColor; }
+.browser-link-copy { display: flex; min-width: 0; flex-direction: column; line-height: 1.1; }
+.browser-link-overline {
+  color: var(--ink-faint);
+  font-size: 11px;
+  font-weight: 760;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.browser-link-name {
+  margin-top: 4px;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -.035em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.browser-link-divider { width: 1px; height: 38px; background: var(--line); }
+.browser-link-arrow {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: var(--browser-link-accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .hero-visual { min-width: 0; }
 .recording-label { display: flex; align-items: center; gap: 9px; margin: 0 0 11px; color: var(--ink-soft); font-size: 12px; font-weight: 780; letter-spacing: .1em; text-transform: uppercase; }
@@ -385,8 +456,8 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
   .nav-actions .button-icon { display: none; }
   .nav-actions { gap: 7px; }
   .recording-label { font-size: 12px; }
-  .browser-links { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .browser-links > span:first-child { margin-bottom: 2px; }
+  .browser-link-grid { grid-template-columns: 1fr; }
+  .browser-link { min-height: 72px; }
   .supporting-row { flex-direction: column; gap: 8px; }
   .supporting-row span + span::before { display: none; }
   .footer-links { gap: 13px; }
