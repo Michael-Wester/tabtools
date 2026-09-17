@@ -305,7 +305,6 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .steps h3 { margin: 0; font-size: 19px; font-weight: 770; letter-spacing: -.035em; line-height: 1.2; }
 .steps p { max-width: 470px; margin: 7px 0 0; color: var(--ink-soft); font-size: 16px; }
 
-.privacy-section { padding-top: 0; }
 .privacy-card { display: grid; grid-template-columns: 57px 1fr; gap: 28px; align-items: start; padding: 54px 60px; color: var(--on-dark); background: var(--dark); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
 .privacy-icon { display: grid; width: 54px; height: 54px; place-items: center; color: #69d4cb; border: 1px solid #356e6a; border-radius: 15px; }
 .privacy-icon svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
