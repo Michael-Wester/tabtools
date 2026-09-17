@@ -165,9 +165,46 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .button-secondary:hover { background: var(--surface); border-color: var(--ink-faint); }
 .button-light { color: var(--button-light-ink); background: #fff; box-shadow: 0 10px 22px rgba(37, 23, 103, .22); }
 .button-light:hover { background: #f3f0ff; }
-.browser-icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
-.browser-icon { width: 19px; height: 19px; flex: 0 0 auto; }
 .button-icon { width: 17px; height: 17px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Full-colour browser artwork stays separate from the site's button palette. */
+.browser-button {
+  --browser-divider: rgba(255, 255, 255, .28);
+  justify-content: flex-start;
+  gap: 16px;
+  min-width: 236px;
+  min-height: 80px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+.browser-button-mark { display: flex; flex: 0 0 auto; align-items: center; padding-right: 16px; border-right: 1px solid var(--browser-divider); }
+.browser-icon { display: block; width: 40px; height: 40px; object-fit: contain; }
+.browser-button-copy { display: flex; flex-direction: column; gap: 3px; line-height: 1.2; }
+.browser-button-prefix { font-size: 14px; font-weight: 500; letter-spacing: 0; }
+.browser-button-name { font-size: 22px; font-weight: 750; letter-spacing: -.025em; }
+.browser-button > .button-icon { margin-left: auto; }
+.browser-button.button-light { --browser-divider: #ddd5f4; }
+.browser-button-secondary {
+  --browser-divider: var(--line);
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--line-strong);
+  box-shadow: 0 2px 4px rgba(27, 28, 35, .03);
+}
+.browser-button-secondary:hover { background: var(--surface); border-color: var(--accent); box-shadow: var(--shadow-sm); }
+.browser-button-secondary .browser-button-prefix { color: var(--ink-soft); }
+.browser-button-secondary > .button-icon { color: var(--ink-faint); }
+.browser-button-alternative { min-width: 0; min-height: 68px; gap: 12px; padding: 12px; border-radius: 12px; }
+.browser-button-alternative .browser-button-mark { padding-right: 12px; }
+.browser-button-alternative .browser-icon { width: 28px; height: 28px; }
+.browser-button-alternative .browser-button-name { font-size: 16px; }
+.browser-button-alternative > .button-icon { width: 14px; height: 14px; }
+.browser-button-compact { min-width: 0; min-height: 44px; gap: 10px; padding: 10px 13px; border-radius: var(--radius-sm); }
+.browser-button-compact .browser-button-mark { padding: 0; border: 0; }
+.browser-button-compact .browser-icon { width: 22px; height: 22px; }
+.browser-button-compact .browser-button-copy { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+.browser-button-compact .browser-button-prefix, .browser-button-compact .browser-button-name { font-size: 14px; font-weight: 750; }
 
 .hero { padding: clamp(60px, 6vw, 88px) 0 72px; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); gap: clamp(40px, 5vw, 68px); align-items: center; }
@@ -198,9 +235,9 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
 .store-note { margin: 15px 0 0; color: var(--ink-faint); font-size: 14px; }
 .mobile-note { margin: 12px 0 0; color: var(--ink-soft); font-size: 14px; }
-.browser-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 17px; margin-top: 20px; color: var(--ink-faint); font-size: 14px; }
-.browser-links a { color: var(--ink-soft); font-weight: 700; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
-.browser-links a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.browser-links, .final-alternatives { display: grid; width: 100%; max-width: 400px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 172px), 1fr)); gap: 12px; }
+.browser-links { margin-top: 22px; color: var(--ink-faint); font-size: 14px; }
+.browser-links > span, .final-alternatives > span { grid-column: 1 / -1; }
 
 .hero-visual { min-width: 0; }
 .recording-label { display: flex; align-items: center; gap: 9px; margin: 0 0 11px; color: var(--ink-soft); font-size: 12px; font-weight: 780; letter-spacing: .1em; text-transform: uppercase; }
@@ -295,10 +332,11 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .final-cta .eyebrow { color: #fff; }
 .final-cta h2 { font-size: clamp(40px, 5vw, 61px); }
 .final-cta h2 span { color: #d9d1ff; }
-.final-cta-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-.final-alternatives { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 15px; color: #fff; font-size: 14px; }
-.final-alternatives a { color: #fff; font-weight: 760; text-decoration: underline; text-decoration-color: rgba(255,255,255,.45); text-underline-offset: 3px; }
-.final-alternatives a:hover { text-decoration-color: #fff; }
+.final-cta-actions { display: flex; width: 400px; max-width: 100%; flex: 0 1 400px; flex-direction: column; align-items: stretch; gap: 20px; }
+.final-alternatives { color: #fff; font-size: 14px; }
+.final-alternatives .browser-button-secondary { --browser-divider: rgba(255, 255, 255, .28); color: #fff; background: rgba(0, 0, 0, .12); border-color: rgba(255, 255, 255, .4); box-shadow: none; }
+.final-alternatives .browser-button-secondary:hover { background: rgba(0, 0, 0, .22); border-color: #fff; }
+.final-alternatives .browser-button-prefix, .final-alternatives .button-icon { color: #fff; }
 
 .site-footer { padding: 58px 0 26px; color: #fff; background: var(--dark); }
 .footer-grid { display: flex; justify-content: space-between; gap: 65px; }
@@ -368,8 +406,6 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
   .nav-actions .button-icon { display: none; }
   .nav-actions { gap: 7px; }
   .recording-label { font-size: 12px; }
-  .browser-links { align-items: flex-start; flex-direction: column; gap: 7px; }
-  .browser-links span { margin-bottom: 2px; }
   .supporting-row { flex-direction: column; gap: 8px; }
   .supporting-row span + span::before { display: none; }
   .footer-links { gap: 13px; }

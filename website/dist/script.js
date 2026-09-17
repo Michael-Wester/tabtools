@@ -4,6 +4,7 @@
     firefox: 'https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/',
     edge: 'https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh'
   };
+  const browserNames = { chrome: 'Chrome', firefox: 'Firefox', edge: 'Edge' };
 
   const $ = selector => document.querySelector(selector);
   const $$ = selector => Array.from(document.querySelectorAll(selector));
@@ -33,10 +34,12 @@
         url.searchParams.set('utm_content', link.dataset.utmPlacement + '_' + key);
         link.href = url.href;
         link.dataset.store = key;
+        const browserName = link.querySelector('[data-browser-name]');
+        if (browserName) browserName.textContent = browserNames[key];
+        const browserIcon = link.querySelector('[data-browser-icon]');
+        if (browserIcon) browserIcon.src = 'assets/browsers/' + key + '.svg';
         const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
         link.setAttribute('aria-label', visibleLabel + ' — opens the ' + browserLabel(key) + ' in a new tab');
-        const browserIcon = link.querySelector('[data-browser-icon] use');
-        if (browserIcon) browserIcon.setAttribute('href', '#browser-icon-' + key);
       }
     });
 
