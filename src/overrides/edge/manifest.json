@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "TabTools – Close & Sort Tabs by Site",
+  "name": "TabTools - Close & Sort Tabs by Site",
   "version": "4.0.2",
   "description": "Close tabs from the same website, sort tabs by site and remove duplicates to keep your browser organised.",
   "author": "Michael Wester",
