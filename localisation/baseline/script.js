@@ -1,6 +1,4 @@
 (() => {
-  const page = JSON.parse(document.getElementById('locale-data').textContent);
-  const t = (key, values = {}) => page.messages[key].replace(/\{([a-zA-Z]+)\}/g, (_, name) => String(values[name] ?? ''));
   const stores = {
     chrome: 'https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk',
     firefox: 'https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/',
@@ -36,19 +34,12 @@
         url.searchParams.set('utm_content', link.dataset.utmPlacement + '_' + key);
         link.href = url.href;
         link.dataset.store = key;
-        const copy = link.querySelector('[data-browser-copy]');
-        if (copy) {
-          const parts = page.messages.web_addTo.split('{browser}');
-          const name = document.createElement('span');
-          name.className = 'browser-button-name';
-          name.dataset.browserName = '';
-          name.textContent = browserNames[key];
-          copy.replaceChildren(document.createTextNode(parts[0]), name, document.createTextNode(parts[1] || ''));
-        }
+        const browserName = link.querySelector('[data-browser-name]');
+        if (browserName) browserName.textContent = browserNames[key];
         const browserIcon = link.querySelector('[data-browser-icon]');
-        if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
+        if (browserIcon) browserIcon.src = 'assets/browsers/' + key + '.svg';
         const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
-        link.setAttribute('aria-label', t('web_storeAria', {label: visibleLabel, store: browserLabel(key)}));
+        link.setAttribute('aria-label', visibleLabel + ' — opens the ' + browserLabel(key) + ' in a new tab');
       }
     });
 
@@ -57,7 +48,7 @@
     });
 
     const note = $('[data-store-note]');
-    if (note) note.textContent = t('web_storeNote', {store: browserLabel(detected)});
+    if (note) note.textContent = 'Opens the ' + browserLabel(detected) + '.';
 
     const mobileNote = $('[data-mobile-note]');
     if (mobileNote) {
@@ -74,12 +65,12 @@
     const dark = theme === 'dark';
     const toggle = $('[data-theme-toggle]');
     if (toggle) {
-      toggle.setAttribute('aria-label', dark ? t('web_switchLight') : t('web_switch_to_dark_mode'));
-      toggle.title = dark ? t('web_switchLight') : t('web_switch_to_dark_mode');
+      toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      toggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
     }
 
     const label = $('[data-theme-label]');
-    if (label) label.textContent = dark ? t('web_lightMode') : t('web_dark_mode');
+    if (label) label.textContent = dark ? 'Light mode' : 'Dark mode';
 
     const metaTheme = $('meta[name="theme-color"]');
     if (metaTheme) metaTheme.content = dark ? '#111216' : '#f6f6f4';
@@ -137,47 +128,7 @@
     }, { once: true });
   }
 
-  function initLanguage() {
-    const select = $('[data-language-select]');
-    select.addEventListener('change', () => {
-      const target = page.registry.find(item => item.path === select.value);
-      if (!target) return;
-      try { localStorage.setItem('tabtools-site-language', target.locale); } catch (_) {}
-      // An explicit locale URL always owns the displayed content.
-      window.location.assign(target.path + window.location.search + window.location.hash);
-    });
-    let saved;
-    try { saved = localStorage.getItem('tabtools-site-language'); } catch (_) {}
-    const match = preferences => {
-      for (let pref of preferences) {
-        pref = String(pref).replace(/_/g, '-').toLowerCase();
-        if (pref === 'no' || pref.startsWith('no-') || pref.startsWith('nb-')) pref = 'nb';
-        if (/^zh-(hant|tw|hk|mo)(-|$)/.test(pref)) pref = 'zh-tw';
-        else if (/^zh-(hans|cn|sg)(-|$)/.test(pref)) pref = 'zh-cn';
-        const exact = page.registry.find(item => item.locale.toLowerCase() === pref);
-        if (exact) return exact;
-        // Only generic target locales may match a region. Never guess which
-        // Portuguese or Chinese variant a generic preference means.
-        const generic = page.registry.find(item => item.locale.toLowerCase() === pref.split('-')[0]);
-        if (generic) return generic;
-      }
-      return page.registry.find(item => item.locale === 'en');
-    };
-    const suggested = match(saved ? [saved] : (navigator.languages || [navigator.language]));
-    if (suggested.locale !== page.locale) {
-      const note = $('[data-language-suggestion]');
-      const link = document.createElement('a');
-      link.href = suggested.path + window.location.search + window.location.hash;
-      link.hreflang = suggested.locale;
-      link.textContent = t('web_languageSuggestion', {language:suggested.nativeName});
-      link.addEventListener('click', () => { try { localStorage.setItem('tabtools-site-language', suggested.locale); } catch (_) {} });
-      note.append(link);
-      note.hidden = false;
-    }
-  }
-
   function init() {
-    initLanguage();
     setStoreLinks();
     initTheme();
     initPrivacyNavigation();

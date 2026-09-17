@@ -419,7 +419,7 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 
 /* Locale controls and text expansion share the existing theme tokens. */
 .language-picker { display: inline-flex; max-width: 150px; min-width: 0; }
-.language-picker select { width: 100%; min-height: 40px; padding: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font: inherit; font-size: 13px; }
+.language-picker select { width: 100%; min-height: 40px; padding: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; font-size: 13px; }
 .language-suggestion { padding-block: 14px; font-size: 14px; }
 .language-suggestion a { color: var(--accent); }
 .nav-shell, .nav-actions, .main-nav { flex-wrap: wrap; }

@@ -1,0 +1,29 @@
+name: Validate localisation and extension packages
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-localisation.js
+      - run: node --test tests/*.test.js
+      - run: node build.js
+      - run: node scripts/check-packages.js
+  powershell:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: ./build.ps1
+        shell: pwsh
+      - run: node scripts/check-packages.js

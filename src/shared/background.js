@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
+if (typeof importScripts === "function") importScripts("i18n-fallback.js", "i18n.js");
+
 const root = typeof globalThis !== "undefined" ? globalThis : this;
 const SETTINGS_KEY = "pc.settings";
 const DEFAULTS = {
@@ -27,8 +29,8 @@ const ACTION_ICON_PATHS = {
   },
 };
 
-const CONTEXT_MENU_TITLE = "Close site tabs";
-const CONTEXT_MENU_SORT_TITLE = "Sort tabs (most opened first)";
+const CONTEXT_MENU_TITLE = globalThis.TabToolsI18n.t("contextClose");
+const CONTEXT_MENU_SORT_TITLE = globalThis.TabToolsI18n.t("contextSort");
 const CLOSE_MENU_ID_PAGE = "tabTools-close-site-tabs-page";
 
 // In MV3 service workers we must pull in helper script manually.

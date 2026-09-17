@@ -1,20 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "__MSG_extensionName__",
+  "name": "TabTools - Close & Sort Tabs by Site",
   "version": "4.0.2",
-  "description": "__MSG_extensionDescription__",
+  "description": "Close tabs from the same website, sort tabs by site and remove duplicates to keep your browser organised.",
   "author": "Michael Wester",
   "homepage_url": "https://github.com/Michael-Wester/tabtools",
-  "permissions": [
-    "tabs",
-    "storage",
-    "contextMenus"
-  ],
+  "permissions": ["tabs", "storage", "contextMenus"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "__MSG_openTabTools__",
+    "default_title": "Open TabTools",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/black/icon-16.png",
@@ -26,6 +22,5 @@
     "32": "icons/black/icon-32.png",
     "48": "icons/black/icon-48.png",
     "128": "icons/black/icon-128.png"
-  },
-  "default_locale": "en"
+  }
 }

@@ -547,17 +547,6 @@
         align-items: center;
         gap: 6px;
       }
-      /* Translations wrap without shrinking the text. */
-      .header-row, .header-actions, .setting-row, .theme-toggle { flex-wrap: wrap; }
-      .header-actions { margin-left: 0; margin-inline-start: auto; }
-      .header-row > *, .setting-row > * { min-width: 0; }
-      .btn, .pill { white-space: normal; overflow-wrap: anywhere; }
-      .row { min-width: 0; }
-      .setting-label { flex: 1 1 170px; }
-      .counter-group { flex-shrink: 0; }
-      .chip .label[dir="ltr"] { unicode-bidi: isolate; text-align: start; }
-      #pc-query { direction: auto; }
-      [dir="rtl"] .undo-icon { transform: scaleX(-1); }
     </style>
   </head>
   <body class="stack">
@@ -586,7 +575,7 @@
             aria-pressed="false"
             aria-controls="pc-tab-settings"
             type="button"
-           data-i18n="settings">
+          >
             Settings
           </button>
         </div>
@@ -602,7 +591,7 @@
       <!-- Suggestion chips -->
       <section id="pc-suggest-card" class="card stack">
         <div class="row">
-          <strong data-i18n="suggestions">Suggestions</strong>
+          <strong>Suggestions</strong>
           <div class="spacer"></div>
           <span id="pc-suggest-caption" class="small muted"></span>
         </div>
@@ -619,15 +608,15 @@
               id="pc-query"
               class="input"
               type="text"
-              placeholder="Close by keyword (press Enter)" data-i18n-placeholder="queryPlaceholder" aria-label="Close by keyword (press Enter)" data-i18n-aria-label="queryPlaceholder"
+              placeholder="Close by keyword (press Enter)"
             />
-            <button id="pc-close" class="btn primary" data-i18n="close">Close</button>
+            <button id="pc-close" class="btn primary">Close</button>
           </div>
           <div class="row wrap small no-top">
-            <button id="pc-sort-tabs-quick" class="btn ghost bordered" data-i18n="sortTabs">
+            <button id="pc-sort-tabs-quick" class="btn ghost bordered">
               Sort tabs
             </button>
-            <button id="pc-close-duplicates" class="btn ghost bordered" data-i18n="closeDuplicates">
+            <button id="pc-close-duplicates" class="btn ghost bordered">
               Close duplicates
             </button>
             <div class="spacer"></div>
@@ -635,9 +624,9 @@
               id="pc-undo-close"
               class="btn ghost bordered undo-btn"
               disabled
-              title="Undo last close" data-i18n-title="undoTitle"
+              title="Undo last close"
             >
-              <span class="undo-label" data-i18n="undo">Undo</span>
+              <span class="undo-label">Undo</span>
               <svg
                 class="undo-icon"
                 viewBox="0 0 24 24"
@@ -664,11 +653,11 @@
       aria-hidden="true"
     >
       <section class="card stack">
-        <h2 data-i18n="settings">Settings</h2>
+        <h2>Settings</h2>
         <div class="grid settings-grid">
           <div class="row gap setting-row">
-            <span class="setting-label" data-i18n="theme">Theme</span>
-            <div class="theme-toggle" role="group" aria-label="Theme" data-i18n-aria-label="theme">
+            <span class="setting-label">Theme</span>
+            <div class="theme-toggle" role="group" aria-label="Theme">
               <button
                 type="button"
                 class="btn small theme-option"
@@ -683,7 +672,7 @@
                     ></path>
                   </svg>
                 </span>
-                <span class="theme-label" data-i18n="light">Light</span>
+                <span class="theme-label">Light</span>
               </button>
               <button
                 type="button"
@@ -696,13 +685,13 @@
                     <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
                   </svg>
                 </span>
-                <span class="theme-label" data-i18n="dark">Dark</span>
+                <span class="theme-label">Dark</span>
               </button>
             </div>
           </div>
 
           <label class="row gap setting-row">
-            <span class="setting-label" data-i18n="minTabs">Suggestions min tab count by site</span>
+            <span class="setting-label">Suggestions min tab count by site</span>
             <div class="counter-group">
               <input
                 id="min-open"
@@ -715,7 +704,7 @@
           </label>
 
           <label class="row gap setting-row">
-            <span class="setting-label" data-i18n="inactiveAfter">Tabs inactive after</span>
+            <span class="setting-label">Tabs inactive after</span>
             <div class="counter-group">
               <input
                 id="inactive-threshold"
@@ -724,15 +713,13 @@
                 value="120"
                 class="number counter-input"
               />
-              <span class="counter-suffix" data-i18n="minutes">minutes</span>
+              <span class="counter-suffix">minutes</span>
             </div>
           </label>
         </div>
       </section>
     </div>
 
-    <script src="../i18n-fallback.js"></script>
-    <script src="../i18n.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>
