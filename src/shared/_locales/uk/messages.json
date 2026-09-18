@@ -68,26 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ відкритої вкладки",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ відкрита вкладка",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ відкритої вкладки",
     "placeholders": {
       "count": {
         "content": "$1",
