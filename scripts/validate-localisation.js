@@ -152,7 +152,7 @@ for (const locale of L.registry) {
     ' | 3/3 fields × 3 stores | ' + freshness + ' | structural checks | ' + linguistic + ' |');
 }
 coverage.push('', 'No images, screenshots, banners, or videos are translated by this task.');
-fs.writeFileSync(path.join(L.root, 'localisation', 'coverage.md'), coverage.join('\n') + '\n');
+fs.writeFileSync(path.join(L.root, 'localisation', 'COVERAGE.md'), coverage.join('\n') + '\n');
 
 if (warnings.length) console.warn(warnings.join('\n'));
 if (errors.length) {
