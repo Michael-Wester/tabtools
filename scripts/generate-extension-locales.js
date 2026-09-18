@@ -6,6 +6,9 @@ const path = require('path');
 const L = require('./localisation');
 
 function main() {
+  fs.writeFileSync(path.join(L.root, 'src/shared/i18n-fallback.js'),
+    '// Generated from localisation/locales/en.json.\n' +
+    'globalThis.TabToolsEnglish = ' + JSON.stringify(L.extensionSource(L.catalogue('en'))) + ';\n');
   const root = path.join(L.root, 'src', 'shared', '_locales');
   fs.mkdirSync(root, { recursive: true });
   const expected = new Set(L.registry.map(locale => locale.extension));
