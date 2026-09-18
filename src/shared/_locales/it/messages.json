@@ -68,35 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ schede aperte",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ scheda aperta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ schede aperte",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "$count$ schede aperte",
     "placeholders": {
       "count": {
         "content": "$1",
