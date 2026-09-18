@@ -72,11 +72,18 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
   for(const locale of L.registry) {
     const file=L.path.join(L.root,'website/dist',locale.website,'index.html');
     const html=L.fs.readFileSync(file,'utf8');
-    assert.ok(html.includes(`<html lang="${locale.locale}" dir="${locale.direction}">`));
+    assert.ok(html.includes(`<html lang="${locale.canonical}" dir="${locale.direction}">`));
     assert.ok(html.includes(`<link rel="canonical" href="${L.urlFor(locale)}" />`));
     for(const alt of L.registry)assert.ok(html.includes(`hreflang="${alt.hreflang}" href="${L.urlFor(alt)}"`));
     assert.ok(html.includes('hreflang="x-default" href="https://tabtools.fyi/"'));
     assert.ok(html.includes(`<title>${L.escape(L.catalogue(locale.locale).web_tabtools_close_tabs_by_site)}</title>`));
+    assert.ok(html.includes(`<h3>${L.catalogue(locale.locale).openTabTools}</h3>`), `${locale.locale}: instructional labels are translated`);
+    const addToParts = L.catalogue(locale.locale).web_addTo.split('{browser}');
+    assert.equal(addToParts.length, 2);
+    const chromeButton = `<span class="browser-button-copy" data-browser-copy="Chrome">${L.escape(addToParts[0])}<span class="browser-button-name" data-browser-name>Chrome</span>${L.escape(addToParts[1])}</span>`;
+    assert.ok(html.includes(chromeButton), `${locale.locale}: browser label placeholder is positioned correctly`);
+    assert.ok(html.includes(`<p>${L.catalogue(locale.locale).web_close_tabs_by_site_sort_2}</p>`), `${locale.locale}: footer tagline is translated as a complete message`);
+    assert.ok(html.includes(`<span class="footer-label">${L.catalogue(locale.locale).web_product}</span>`), `${locale.locale}: footer labels are not partially replaced`);
     assert.doesNotMatch(html,/{{\w+}}|__MSG_/);
     const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
     for(const m of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(m[1]),`${locale.locale}: ${m[1]}`);
