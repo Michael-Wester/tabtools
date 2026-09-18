@@ -68,51 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "已開啟 $count$ 個分頁",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_one": {
-    "message": "已開啟 $count$ 個分頁",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "已開啟 $count$ 個分頁",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "已開啟 $count$ 個分頁",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "已開啟 $count$ 個分頁",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_other": {
     "message": "已開啟 $count$ 個分頁",
     "placeholders": {
