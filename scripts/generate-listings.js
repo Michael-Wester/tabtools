@@ -97,6 +97,15 @@ function main() {
       fs.writeFileSync(path.join(directory, locale.locale + '.md'), listing(locale, { ...config, key }));
     }
   }
+  const expected = new Set(L.registry.map(locale => locale.locale + '.md'));
+  for (const key of Object.keys(stores)) {
+    const directory = path.join(root, key);
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (entry.isFile() && entry.name.endsWith('.md') && !expected.has(entry.name)) {
+        fs.rmSync(path.join(directory, entry.name), { force: true });
+      }
+    }
+  }
 }
 
 if (require.main === module) main();
