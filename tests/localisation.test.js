@@ -7,7 +7,8 @@ const vm = require('node:vm');
 const L = require('../scripts/localisation');
 
 test('registry uses distinct locale, extension, website, and hreflang identifiers', () => {
-  assert.equal(L.registry.length, 30);
+  assert.equal(L.registry.length, 29);
+  assert.equal(L.registry.some(item => item.locale === 'en-GB'), false);
   for (const field of ['locale', 'extension', 'website', 'hreflang']) {
     assert.equal(new Set(L.registry.map(item => item[field])).size, L.registry.length, field);
   }
