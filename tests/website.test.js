@@ -13,25 +13,26 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
     setAttribute(k,v){this[k]=v;},addEventListener(k,v){this.events[k]=v;},
     append(v){this.children.push(v);},replaceChildren(...v){this.children=v;},
     focus(){this.focused=true;},
+    scrollIntoView(){this.scrolled=true;},
     hasAttribute(k){return k==='data-adaptive-store';},
     querySelector(k){return this.parts?.[k] || null;}});
   const picker=element(), trigger=element(), menu=element(), flag=element(), name=element();
   const note=element(), toggle=element(), label=element(), storeNote=element();
   picker.parts={'[data-language-trigger]':trigger,'[data-language-menu]':menu};
-  trigger.parts={'[data-language-flag]':flag,'[data-language-name]':name};
+  trigger.parts={'[data-language-flag-image]':flag,'[data-language-name]':name};
   const copy=element(), icon=element(), store=element();
   store.dataset={store:'chrome',utmPlacement:'hero'};
   store.parts={'[data-browser-copy]':copy,'[data-browser-icon]':icon};
   store.textContent='Add to Chrome';
-  const options=L.registry.map(l=>{
+  const options=L.presentationRegistry.map(l=>{
     const option=element();
     option.dataset={locale:l.locale};
     option.href='/'+(l.website?l.website+'/':'');
-    option.textContent=l.nativeName;
+    option.textContent=l.languageName;
     return option;
   });
   menu.hidden=true;
-  const data={locale,registry:L.registry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),nativeName:l.nativeName,flag:l.flag})),messages:L.catalogue(locale)};
+  const data={locale,registry:L.presentationRegistry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),languageName:l.languageName,flagAsset:l.flagAsset})),messages:L.catalogue(locale)};
   const document={documentElement:{dataset:{},lang:locale},
     getElementById:()=>({textContent:JSON.stringify(data)}),
     querySelector:s=>({'[data-language-picker]':picker,'[data-language-trigger]':trigger,'[data-language-menu]':menu,'[data-language-suggestion]':note,'[data-theme-toggle]':toggle,'[data-theme-label]':label,'[data-store-note]':storeNote}[s]||null),
@@ -42,7 +43,7 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
     localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},
     window:{location:{search:'?campaign=test',hash:'#faq',assign:url=>navigation.push(url)}}};
   vm.runInNewContext(script,context);
-  return {document,picker,trigger,menu,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation};
+  return {document,picker,trigger,menu,flag,name,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation};
 }
 
 test('explicit language URLs are never replaced by saved or browser preferences',()=>{
@@ -50,10 +51,12 @@ test('explicit language URLs are never replaced by saved or browser preferences'
   assert.equal(p.document.documentElement.lang,'ja');
   assert.deepEqual(p.navigation,[]);
   assert.equal(p.note.children[0].href,'/de/?campaign=test#faq');
-  assert.match(p.note.children[0].textContent,/Deutsch/);
+  assert.match(p.note.children[0].textContent,/German/);
 });
 test('flag language picker remembers the choice and preserves queries and anchors',()=>{
   const p=pageRuntime('en');
+  assert.equal(p.trigger['aria-label'],`${L.catalogue('en').web_language}: English`);
+  assert.equal(p.flag.src,'/assets/flags/en.svg');
   p.trigger.events.click();
   assert.equal(p.menu.hidden,false);
   const option=p.options.find(item=>item.dataset.locale==='he');
@@ -90,7 +93,14 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
     const html=L.fs.readFileSync(file,'utf8');
     assert.ok(html.includes(`<html lang="${locale.canonical}" dir="${locale.direction}">`));
     assert.equal((html.match(/data-language-option/g) || []).length, L.registry.length, `${locale.locale}: language options`);
-    assert.ok(html.includes('<span class="language-option-name">English</span>'));
+    assert.ok(html.includes('<span class="language-option-name" lang="en" dir="ltr">English</span>'));
+    const order=[...html.matchAll(/data-language-option data-locale="([^"]+)"/g)].map(match=>match[1]);
+    assert.deepEqual(order,L.presentationRegistry.map(item=>item.locale),`${locale.locale}: language order`);
+    assert.match(html,new RegExp('class="language-trigger"[^>]+aria-label="[^"]+: ' +
+      L.escape(locale.languageName).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"'));
+    assert.match(html,/class="language-flag language-flag-current"/);
+    assert.ok(html.includes('src="/assets/flags/en.svg"'));
+    assert.doesNotMatch(html,/class="language-option-name"[^>]*>[^<]*(Čeština|Deutsch|Ελληνικά|עברית|日本語|한국어|Русский|Українська|中文)/);
     assert.doesNotMatch(html,/English \(British\)|en-GB|en-gb/);
     assert.ok(html.includes(`<link rel="canonical" href="${L.urlFor(locale)}" />`));
     for(const alt of L.registry)assert.ok(html.includes(`hreflang="${alt.hreflang}" href="${L.urlFor(alt)}"`));
