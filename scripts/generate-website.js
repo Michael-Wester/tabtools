@@ -54,33 +54,46 @@ function replaceAttribute(input, name, value) {
 function localeData(locale) {
   return {
     locale: locale.locale,
-    registry: L.registry.map(item => ({
+    registry: L.presentationRegistry.map(item => ({
       locale: item.locale,
       canonical: item.canonical,
       path: item.path,
-      nativeName: item.nativeName,
-      flag: item.flag,
+      languageName: item.languageName,
+      flagAsset: item.flagAsset,
     })),
     messages: L.catalogue(locale.locale),
   };
 }
 
+function flagMarkup(item, className) {
+  const asset = item.flagAsset;
+  if (!asset) {
+    return '<span class="language-flag ' + className + '" aria-hidden="true"></span>';
+  }
+  return '<span class="language-flag ' + className + '" aria-hidden="true">' +
+    '<img class="language-flag-image" src="/assets/flags/' + L.escape(asset) +
+    '" width="32" height="32" alt="" loading="lazy" />' +
+    '</span>';
+}
+
 function languagePickerMarkup(current, label) {
-  const options = L.registry.map(item => {
+  const options = L.presentationRegistry.map(item => {
     const selected = item.locale === current.locale;
     return '<a class="language-option" data-language-option data-locale="' +
       L.escape(item.locale) + '" role="option" aria-selected="' + selected +
-      '" href="' + L.escape(item.path) + '">' +
-      '<span class="language-flag" aria-hidden="true">' + L.escape(item.flag || '🌐') + '</span>' +
-      '<span class="language-option-name">' + L.escape(item.nativeName) + '</span>' +
+      '" tabindex="-1" href="' + L.escape(item.path) + '">' +
+      flagMarkup(item, 'language-flag-option') +
+      '<span class="language-option-name" lang="en" dir="ltr">' + L.escape(item.languageName) + '</span>' +
+      '<span class="language-option-check" aria-hidden="true">✓</span>' +
       '</a>';
   }).join('');
-  const selectedFlag = current.flag || '🌐';
+  const currentName = current.languageName || current.locale;
+  const accessibleLabel = String(label) + ': ' + currentName;
   return '<div class="language-picker" data-language-picker>' +
-    '<button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">' +
-      '<span class="language-flag" data-language-flag aria-hidden="true">' + L.escape(selectedFlag) + '</span>' +
-      '<span class="language-name" data-language-name>' + L.escape(current.nativeName) + '</span>' +
-      '<svg class="language-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>' +
+    '<button class="language-trigger" type="button" data-language-trigger aria-label="' + L.escape(accessibleLabel) +
+      '" title="' + L.escape(accessibleLabel) + '" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">' +
+      flagMarkup(current, 'language-flag-current') +
+      '<span class="language-name sr-only" data-language-name lang="en" dir="ltr">' + L.escape(currentName) + '</span>' +
     '</button>' +
     '<div class="language-menu" data-language-menu role="listbox" aria-label="' + L.escape(label) + '" hidden>' +
       options +
@@ -204,6 +217,14 @@ function writePage(locale) {
   fs.writeFileSync(path.join(directory, 'index.html'), output);
 }
 
+function copyFlagAssets() {
+  const sourceFlags = path.join(sourceDir, 'assets', 'flags');
+  const outputFlags = path.join(outputDir, 'assets', 'flags');
+  fs.rmSync(outputFlags, { recursive: true, force: true });
+  fs.mkdirSync(path.dirname(outputFlags), { recursive: true });
+  fs.cpSync(sourceFlags, outputFlags, { recursive: true });
+}
+
 function main() {
   fs.mkdirSync(outputDir, { recursive: true });
   const expectedDirectories = new Set(L.registry.map(locale => locale.website).filter(Boolean));
@@ -214,6 +235,7 @@ function main() {
   }
   fs.copyFileSync(path.join(sourceDir, 'styles.css'), path.join(outputDir, 'styles.css'));
   fs.copyFileSync(path.join(sourceDir, 'script.js'), path.join(outputDir, 'script.js'));
+  copyFlagAssets();
   for (const locale of L.registry) writePage(locale);
 
   const urls = L.registry.map(L.urlFor).map(url => '  <url>\n    <loc>' + url + '</loc>\n  </url>');
