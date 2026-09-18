@@ -4,19 +4,21 @@ on:
   push:
     branches: [main]
     paths:
-      - 'website/**'
+      - 'website/dist/**'
+      - 'website/src/**'
       - 'localisation/**'
       - 'scripts/**'
-      - 'tests/**'
-      - 'src/shared/_locales/**'
+      - 'marketing/**'
+      - 'package.json'
       - '.github/workflows/website-deploy.yml'
   pull_request:
     paths:
-      - 'website/**'
+      - 'website/dist/**'
+      - 'website/src/**'
       - 'localisation/**'
       - 'scripts/**'
-      - 'tests/**'
-      - 'src/shared/_locales/**'
+      - 'marketing/**'
+      - 'package.json'
       - '.github/workflows/website-deploy.yml'
   workflow_dispatch:
 
@@ -38,14 +40,6 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Validate localisation and committed generated output
-        run: |
-          node scripts/validate-localisation.js
-          node --test tests/*.test.js
-          node website/build.js
       - name: Check deployment credential
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -56,6 +50,14 @@ jobs:
           fi
       - name: Validate JavaScript
         run: node --check website/dist/script.js
+      - name: Generate and validate localisation
+        run: |
+          node scripts/generate-extension-locales.js
+          node scripts/generate-website.js
+          node scripts/generate-listings.js
+          node scripts/validate-localisation.js
+          node --test tests/website.test.js tests/localisation.test.js
+          git diff --exit-code
       - name: Select deployment target
         id: target
         env:
@@ -70,7 +72,7 @@ jobs:
           else
             echo 'branch=manual-preview' >> "$GITHUB_OUTPUT"
           fi
-      - name: Deploy generated static files
+      - name: Deploy authored static files
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
