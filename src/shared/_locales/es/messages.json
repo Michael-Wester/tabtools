@@ -68,35 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ pestañas abiertas",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ pestaña abierta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ pestañas abiertas",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "$count$ pestañas abiertas",
     "placeholders": {
       "count": {
         "content": "$1",
