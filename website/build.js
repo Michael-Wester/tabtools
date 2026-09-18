@@ -17,8 +17,8 @@ for (const locale of targets) {
   const alternates = [...L.registry.map(item => `<link rel="alternate" hreflang="${item.hreflang}" href="${L.urlFor(item)}" />`),'<link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />'].join('\n    ');
   const pageData = `<script type="application/json" id="locale-data">${JSON.stringify({locale:locale.locale,registry:L.registry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),nativeName:l.nativeName})),messages:Object.fromEntries(Object.entries(data).filter(([key])=>key.startsWith('web_')))}).replaceAll('<','\\u003c')}</script>`;
   const structuredData = `<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:'TabTools',url:canonical,description:data.web_structuredDescription,inLanguage:locale.locale,applicationCategory:'BrowserApplication',isAccessibleForFree:true}).replaceAll('<','\\u003c')}</script>`;
-  const options=L.registry.map(l=>`<option lang="${l.locale}" value="/${l.website?l.website+'/':''}"${l.locale===locale.locale?' selected':''}>${L.escape(l.nativeName)}</option>`).join('');
-  const languageSelector=`<label class="language-picker"><span class="sr-only">${L.escape(data.web_language)}</span><select data-language-select aria-label="${L.escape(data.web_language)}">${options}</select></label>`;
+  const options=L.registry.map(l=>`<option lang="${l.locale}" value="/${l.website?l.website+'/':''}"${l.locale===locale.locale?' selected':''}>${l.locale==='en'?'🇬🇧 ':''}${L.escape(l.nativeName)}</option>`).join('');
+  const languageSelector=`<label class="language-picker"><span class="sr-only">${L.escape(data.web_language)}</span><select data-language-select aria-label="${L.escape(data.web_language)}" style="font-weight:700">${options}</select></label>`;
   const special={locale:locale.locale,direction:locale.direction,canonical,alternates,pageData,structuredData,languageSelector};
   const html=template.replace(/{{(\w+)(?::([^}]+))?}}/g,(_,key,arg)=>{
     if (key in special)return special[key];
