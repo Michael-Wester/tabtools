@@ -68,51 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "열린 탭 $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_one": {
-    "message": "열린 탭 $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "열린 탭 $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "열린 탭 $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "열린 탭 $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_other": {
     "message": "열린 탭 $count$개",
     "placeholders": {
