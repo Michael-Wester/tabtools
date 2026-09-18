@@ -1,0 +1,15 @@
+{
+  "name": "tabtools",
+  "private": true,
+  "version": "4.0.2",
+  "description": "TabTools browser extension and website",
+  "scripts": {
+    "locales:extension": "node scripts/generate-extension-locales.js",
+    "locales:website": "node scripts/generate-website.js",
+    "locales:listings": "node scripts/generate-listings.js",
+    "locales:generate": "npm run locales:extension && npm run locales:website && npm run locales:listings",
+    "locales:validate": "node scripts/validate-localisation.js",
+    "test": "npm run locales:generate && npm run locales:validate && node --test tests/website.test.js tests/localisation.test.js",
+    "build": "node build.js"
+  }
+}
