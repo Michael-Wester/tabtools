@@ -176,14 +176,14 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
   min-height: 80px;
   padding: 14px 18px;
   border-radius: var(--radius-md);
-  text-align: left;
+  text-align: start;
 }
-.browser-button-mark { display: flex; flex: 0 0 auto; align-items: center; padding-right: 16px; border-right: 1px solid var(--browser-divider); }
+.browser-button-mark { display: flex; flex: 0 0 auto; align-items: center; padding-inline-end: 16px; border-inline-end: 1px solid var(--browser-divider); }
 .browser-icon { display: block; width: 40px; height: 40px; object-fit: contain; }
 .browser-button-copy { display: flex; flex-direction: column; gap: 3px; line-height: 1.2; }
 .browser-button-prefix { font-size: 14px; font-weight: 500; letter-spacing: 0; }
 .browser-button-name { font-size: 22px; font-weight: 750; letter-spacing: -.025em; }
-.browser-button > .button-icon { margin-left: auto; }
+.browser-button > .button-icon { margin-inline-start: auto; }
 .browser-button.button-light { --browser-divider: #ddd5f4; }
 .browser-button-secondary {
   --browser-divider: var(--line);
@@ -196,7 +196,7 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .browser-button-secondary .browser-button-prefix { color: var(--ink-soft); }
 .browser-button-secondary > .button-icon { color: var(--ink-faint); }
 .browser-button-alternative { min-width: 0; min-height: 68px; gap: 12px; padding: 12px; border-radius: 12px; }
-.browser-button-alternative .browser-button-mark { padding-right: 12px; }
+.browser-button-alternative .browser-button-mark { padding-inline-end: 12px; }
 .browser-button-alternative .browser-icon { width: 28px; height: 28px; }
 .browser-button-alternative .browser-button-name { font-size: 16px; }
 .browser-button-alternative > .button-icon { width: 14px; height: 14px; }
@@ -442,3 +442,12 @@ html[dir="rtl"] .proof-item { text-align: start; }
   .nav-actions { gap: 8px; }
   .nav-actions .browser-button { flex-basis: 100%; }
 }
+/* CJK headings retain the visual hierarchy without isolated final glyphs. */
+.hero h1:lang(ja), .hero h1:lang(ko), .hero h1:lang(zh) {
+  font-size: clamp(44px, 5.3vw, 70px);
+  line-height: 1.14;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+html[dir="rtl"] .faq-list p { margin-inline-start: 2px; margin-inline-end: 35px; }

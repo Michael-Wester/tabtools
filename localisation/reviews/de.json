@@ -295,15 +295,17 @@
   },
   "web_storeNote": {
     "source": "05f8513eb91c12c010cc472e32a25c998bb09ca198d694cb8e8b7ee79db03c79",
-    "translation": "2f64ec9b3b9a35678d566cf30e6fe480e50a8acdefdd797faf03a59bbefe0e1d",
+    "translation": "58ca430093ddf8276c0c74932b593034453059925410259e6d5a8d1b2dbdfcbe",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "date": "2026-09-18",
+    "note": "Removed fixed-gender article so full message works with all three unchanged store brand names."
   },
   "web_storeAria": {
     "source": "0992bda4cf3b781ac31c88556cea98dc0098aae3f26132ed430cc4141c7e4cd0",
-    "translation": "0b34d73bc4cac80f2491229954f086ddbdf432501209a65f5f8050a9fc6c1e00",
+    "translation": "d8e60e6eda277ffceabae904454ca04f3e5b6a6052309b5bb69c62edf63ba2a9",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "date": "2026-09-18",
+    "note": "Removed fixed-gender article so full message works with all three unchanged store brand names."
   },
   "web_language": {
     "source": "1fa24b4905737a8d50bea61de9ec162133f53321a179217978509e68fea74309",

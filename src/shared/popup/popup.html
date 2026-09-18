@@ -556,7 +556,6 @@
       .setting-label { flex: 1 1 170px; }
       .counter-group { flex-shrink: 0; }
       .chip .label[dir="ltr"] { unicode-bidi: isolate; text-align: start; }
-      #pc-query { direction: auto; }
       [dir="rtl"] .undo-icon { transform: scaleX(-1); }
     </style>
   </head>
@@ -617,6 +616,7 @@
           <div class="row wrap tight-bottom">
             <input
               id="pc-query"
+              dir="auto"
               class="input"
               type="text"
               placeholder="Close by keyword (press Enter)" data-i18n-placeholder="queryPlaceholder" aria-label="Close by keyword (press Enter)" data-i18n-aria-label="queryPlaceholder"

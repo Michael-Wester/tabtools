@@ -1,6 +1,6 @@
 # Validation record
 
-17 September 2026. The source baseline is commit
+17–18 September 2026. The source baseline is commit
 `519007f3dd06c0b2ab52d57519ed7a0d145b9c79`; all three extension versions remain 4.0.2.
 
 ## Completed local checks
@@ -21,8 +21,8 @@
   aliases, selector persistence/navigation, theme/Edge CTA behaviour, and all-page
   metadata, reciprocal hreflang, assets, anchors, store-link count and sitemap.
 - Node builds passed for Chrome, Firefox and Edge. Each contains 48 runtime files
-  and 30 locale directories. Uncompressed sizes: Chrome/Edge **219,480 bytes** each;
-  Firefox **220,097 bytes**. No marketing files, reviews or reports are packaged.
+  and 30 locale directories. Uncompressed sizes: Chrome/Edge **219,468 bytes** each;
+  Firefox **220,085 bytes**. No marketing files, reviews or reports are packaged.
   Versions, permissions, MV2/MV3 architecture and Firefox minimum version preserved.
 - Modified JavaScript syntax and `git diff --check` passed. No images/videos changed.
 
@@ -30,14 +30,49 @@
 
 No local Chrome, Firefox, Edge or PowerShell executable was available. Browser
 installation download timed out. The available cloud browser cannot access the
-scratch localhost server or load these local extension packages. Node API/DOM
-adapters are not native extension smoke tests. Windows PowerShell CI and the PR
-website preview will be checked after opening the PR; results will be added here.
+scratch localhost server; its URL security policy also blocks `chrome://extensions/`.
+No workaround for that restriction was attempted. Node API/DOM adapters are not
+native extension smoke tests. Windows PowerShell CI passed, as recorded below.
 
 Native Chrome/Firefox/Edge popup and context-menu smoke tests, popup visual checks,
-mobile layouts and full glyph review are pending. The PR stays draft while these
+mobile layouts and exhaustive glyph review are pending. The PR stays draft while these
 material verification gaps and the store-support evidence gaps remain. No native
 speaker review has occurred; see COVERAGE.md and GLOSSARY.md.
+
+## GitHub CI and PR preview — 18 September 2026
+
+- [Initial validation run](https://github.com/Michael-Wester/tabtools/actions/runs/35313430132):
+  Linux source/generated-output checks, 12 tests, Node packaging and package checks
+  passed. The Windows PowerShell build and all package checks also passed.
+- [Initial preview deployment](https://github.com/Michael-Wester/tabtools/actions/runs/35313430064)
+  succeeded for PR #17, targeting `pr-17`, not production. Review URL:
+  https://pr-17.tabtools-website.pages.dev/ .
+- In the real cloud Chrome browser, all 30 locale URLs loaded with their expected
+  document language, direction, nonempty localised title/heading and production
+  canonical. None had document-level horizontal overflow at a 1348 CSS-pixel
+  viewport. This is a desktop check, not a mobile-device claim.
+- Inspected actual viewport captures for English (light), German, Japanese and
+  Hebrew (light/dark). No missing glyphs were observed in those viewports.
+  The review identified an isolated Japanese heading ending and an RTL browser
+  button divider on the outer edge. The follow-up adjusts only CJK heading
+  wrapping/size and logical button spacing; all media remains unchanged.
+- Language selection navigated to German, Japanese and Hebrew. Theme choice
+  survived language changes and refresh. Opening explicit `/ja/` with Hebrew
+  saved kept Japanese content and offered a Hebrew link instead of redirecting.
+  FAQ expansion worked. Query strings survived language selection; privacy
+  navigation focused the privacy section and updated the fragment correctly.
+  Rendered store destinations and their UTM values matched the existing links.
+- The cloud browser exposes no viewport-resize capability; a zoom shortcut did
+  not change its CSS viewport. Mobile layout and mobile browser detection remain
+  manual checks. The Edge listing still could not be retrieved by the available
+  public lookup; no dashboard or live listing was changed.
+- A follow-up source review corrected the free-use FAQ answer in eight locales
+  to retain “no account needed”, removed a fixed-gender German store-name article,
+  and used the HTML `dir="auto"` attribute for the keyword input. Each changed
+  translation was re-reviewed and its fingerprint recorded individually.
+
+These observations apply to website UI, not to an installed extension. The
+follow-up code/copy changes are checked by the same CI gates and preview workflow.
 
 ## Reproduce locally
 

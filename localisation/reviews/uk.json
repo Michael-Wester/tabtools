@@ -716,9 +716,10 @@
   },
   "web_yes_tabtools_is_free_to": {
     "source": "84385a9904f9cff841a288b2a335d1568389d08ccd5140f025d051ac238205c3",
-    "translation": "24d474252922c04572fd0bae0624caa7441a9d5b82036ee478cf3386aacb3a31",
+    "translation": "8ed6dcf57fafcb1c07bd63c327c5374dad1bfe31c2c73d06c3531bfcc907ba94",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "date": "2026-09-18",
+    "note": "Corrected FAQ answer to preserve the English no-account statement; rechecked meaning and omission."
   },
   "web_which_browsers_can_i_use": {
     "source": "8452483931bdf3093d0d57f6455d29c3b8da2165aba537fcbeeaea961a95ffd6",
