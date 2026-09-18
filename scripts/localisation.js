@@ -1,102 +1,127 @@
 // SPDX-License-Identifier: MPL-2.0
-// Shared build-time helpers. No network, dependencies, or runtime translation.
-const fs = require('node:fs');
-const path = require('node:path');
-const crypto = require('node:crypto');
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+
 const root = path.resolve(__dirname, '..');
-const read = file => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
-const registry = read('localisation/registry.json');
-const english = read('localisation/locales/en.json');
-const hash = value => crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
-const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const tokens = value => [...String(value).matchAll(/\{([a-zA-Z]+)\}/g)].map(m => m[1]).sort();
-const catalogue = locale => read(`localisation/locales/${locale}.json`);
-const urlFor = locale => `https://tabtools.fyi/${locale.website ? locale.website + '/' : ''}`;
-function write(file, content, check = false) {
-  const target = path.join(root, file);
-  if (check) {
-    if (!fs.existsSync(target) || fs.readFileSync(target, 'utf8') !== content) throw new Error(`Stale generated file: ${file}`);
-  } else {
-    fs.mkdirSync(path.dirname(target), {recursive:true});
-    fs.writeFileSync(target, content);
+const registrySource = JSON.parse(fs.readFileSync(path.join(root, 'localisation', 'registry.json'), 'utf8'));
+const registry = registrySource.locales.map(locale => ({
+  ...locale,
+  path: locale.website ? '/' + locale.website + '/' : '/',
+}));
+const catalogueCache = new Map();
+
+function catalogue(locale = 'en') {
+  if (!catalogueCache.has(locale)) {
+    const file = path.join(root, 'localisation', 'locales', locale + '.json');
+    catalogueCache.set(locale, JSON.parse(fs.readFileSync(file, 'utf8')));
   }
+  return catalogueCache.get(locale);
 }
-const json = value => JSON.stringify(value, null, 2) + '\n';
-const listingKeys = [
-  'extensionDescription','web_siteBody','web_bring_tabs_from_the_same',
-  'web_close_extra_copies_of_the','web_type_a_word_to_match',
-  'web_choose_an_inactivity_threshold_in','web_use_undo_immediately_after_closing',
-  'web_light_and_dark_themes','web_local_cleanup_statistics',
-  'web_the_tabtools_extension_processes_tab'
-];
-const plain = value => value.replace(/<\/?(?:em|strong)>|<br>/g, '');
-function listing(data) {
-  return {name:data.extensionName, summary:data.extensionDescription,
-    description:listingKeys.map(key => plain(data[key])).join('\n\n')};
+
+function localeInfo(locale) {
+  return registry.find(item => item.locale === locale) || registry[0];
 }
-function messages(data, locale) {
-  const out = {translationLocale:{message:locale.locale}, translationDirection:{message:locale.direction}};
-  function entry(key, value) {
-    const names = [...new Set(tokens(value))];
-    const placeholders = Object.fromEntries(names.map((name, i) => [name, {content:'$'+(i+1), example:name === 'count' ? '3' : 'example.com'}]));
-    out[key] = {message:value.replace(/\{([a-zA-Z]+)\}/g, (_, name) => '$'+name+'$')};
-    if (names.length) out[key].placeholders = placeholders;
-  }
-  for (const [key, value] of Object.entries(data)) {
-    if (key.startsWith('web_')) continue;
-    if (typeof value === 'object') {
-      // Define every category: native getMessage fallback must never select an
-      // English plural form just because the target language has fewer forms.
-      for (const category of ['zero','one','two','few','many','other']) entry(`${key}_${category}`, value[category] || value.other);
-    } else entry(key,value);
-  }
-  return out;
+
+function urlFor(localeOrEntry) {
+  const item = typeof localeOrEntry === 'string' ? localeInfo(localeOrEntry) : localeOrEntry;
+  return 'https://tabtools.fyi' + (item.website ? '/' + item.website + '/' : '/');
 }
-function issuesFor(locale, data) {
-  const errors = [], identical = [];
-  let reviews = {};
-  try { reviews = read(`localisation/reviews/${locale.locale}.json`); } catch (_) {}
-  for (const [key, original] of Object.entries(english)) {
-    const value = data[key];
-    if (!value || typeof value !== typeof original) {errors.push(`missing/type: ${key}`); continue;}
-    const values = typeof value === 'object' ? Object.values(value) : [value];
-    const sourceValue = typeof original === 'object' ? original.other : original;
-    for (const v of values) {
-      if (typeof v !== 'string' || !v.trim()) {errors.push(`empty: ${key}`);continue;}
-      if (/\uFFFD|[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(v)) errors.push(`invalid Unicode/control: ${key}`);
-      for (const brand of ['TabTools','Chrome','Firefox','Edge','GitHub','YouTube','youtube.com']) {
-        if (sourceValue.includes(brand) && !v.includes(brand)) errors.push(`changed brand/domain ${brand}: ${key}`);
+
+function escape(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function fingerprint(value) {
+  return crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
+}
+
+function sourceFingerprint(key) {
+  return fingerprint(catalogue('en')[key]);
+}
+
+function review(locale, key) {
+  const file = path.join(root, 'localisation', 'reviews', locale + '.json');
+  if (!fs.existsSync(file)) return null;
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+  return data[key] || null;
+}
+
+function isStale(locale, key) {
+  if (locale === 'en') return false;
+  const entry = review(locale, key);
+  return !entry || entry.source !== sourceFingerprint(key);
+}
+
+function extensionSource(catalogueValue) {
+  return Object.fromEntries(
+    Object.entries(catalogueValue).filter(([key]) => !key.startsWith('web_'))
+  );
+}
+
+function webExtensionLocale(locale) {
+  return localeInfo(locale).extension;
+}
+
+function toWebExtensionMessages(locale) {
+  const source = extensionSource(catalogue(locale));
+  const output = {
+    translationLocale: { message: locale },
+    translationDirection: { message: localeInfo(locale).direction },
+  };
+
+  for (const [key, value] of Object.entries(source)) {
+    if (key === 'openCount' && value && typeof value === 'object') {
+      for (const [category, text] of Object.entries(value)) {
+        output['openCount_' + category] = messageEntry(text);
       }
-      if (JSON.stringify(tokens(v)) !== JSON.stringify(tokens(sourceValue))) errors.push(`placeholders: ${key}`);
-      const tags = s => (s.match(/<\/?(?:em|strong)>|<br>/g)||[]).sort().join();
-      if (tags(v) !== tags(sourceValue)) errors.push(`markup: ${key}`);
-      if (/<(?!\/?(?:em|strong)>|br>)/.test(v)) errors.push(`unsupported markup: ${key}`);
-      const stack=[];
-      for(const tag of v.matchAll(/<(\/?)(em|strong)>/g)) {
-        if(!tag[1]) stack.push(tag[2]);
-        else if(stack.pop()!==tag[2]) errors.push(`unbalanced markup: ${key}`);
-      }
-      if(stack.length) errors.push(`unbalanced markup: ${key}`);
+      continue;
     }
-    if (typeof value === 'object') for (const category of new Intl.PluralRules(locale.locale).resolvedOptions().pluralCategories) {
-      if (!value[category]) errors.push(`plural ${category}: ${key}`);
-    }
-    if (locale.locale !== 'en') {
-      const review = reviews[key];
-      if (!review || review.source !== hash(original) || review.translation !== hash(value)) errors.push(`stale/unreviewed: ${key}`);
-      if (JSON.stringify(value) === JSON.stringify(original) && !review?.identicalReason) identical.push(key);
-    }
+    output[key] = messageEntry(value);
   }
-  for (const key of Object.keys(data)) if (!(key in english)) errors.push(`unknown key: ${key}`);
-  if (data.extensionName && data.extensionDescription) {
-    const fields=listing(data);
-    // UTF-16 length is conservative for supplementary characters on platforms
-    // that count Unicode code points. All copy is plain text.
-    if (fields.name.length > 50) errors.push('name exceeds AMO 50-character limit');
-    if (fields.summary.length > 132) errors.push('summary exceeds Chromium 132-character limit');
-    if (fields.description.length < 250 || fields.description.length > 10000) errors.push('description outside Edge 250–10000 characters');
-    if (/\{[a-z]+\}/.test(fields.description)) errors.push('unresolved listing placeholders');
-  }
-  return {errors, identical};
+  return output;
 }
-module.exports = {fs,path,root,read,registry,english,catalogue,hash,escape,tokens,urlFor,write,json,listing,listingKeys,messages,issuesFor};
+
+function messageEntry(value) {
+  if (typeof value !== 'string') {
+    throw new TypeError('Extension messages must be strings');
+  }
+  const placeholders = {};
+  const message = value.replace(/\{(\w+)\}/g, (_, name) => {
+    placeholders[name] = {
+      content: '$' + (Object.keys(placeholders).length + 1),
+      example: name === 'site' ? 'example.com' : '3',
+    };
+    return '$' + name + '$';
+  });
+  const entry = { message };
+  if (Object.keys(placeholders).length) entry.placeholders = placeholders;
+  return entry;
+}
+
+module.exports = {
+  fs,
+  path,
+  crypto,
+  root,
+  registrySource,
+  registry,
+  catalogue,
+  localeInfo,
+  urlFor,
+  escape,
+  fingerprint,
+  sourceFingerprint,
+  review,
+  isStale,
+  extensionSource,
+  webExtensionLocale,
+  toWebExtensionMessages,
+};
