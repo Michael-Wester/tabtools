@@ -7,7 +7,7 @@
   "author": "Michael Wester",
   "homepage_url": "https://github.com/Michael-Wester/tabtools",
   "permissions": ["tabs", "storage", "contextMenus"],
-  "background": { "scripts": ["i18n.js", "background.js", "background.suggestions.js"] },
+  "background": { "scripts": ["i18n-fallback.js", "i18n.js", "background.js", "background.suggestions.js"] },
   "browser_action": {
     "default_title": "__MSG_openTabTools__",
     "default_popup": "popup/popup.html",
