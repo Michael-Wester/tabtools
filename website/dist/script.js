@@ -175,6 +175,14 @@
     return (window.location.search || '') + (window.location.hash || '');
   }
 
+  function languageDisplayName(item) {
+    return item?.languageName || item?.nativeName || item?.locale || '';
+  }
+
+  function languageFlagSrc(item) {
+    return item?.flagAsset ? '/assets/flags/' + item.flagAsset : '';
+  }
+
   function initLanguage() {
     const picker = $('[data-language-picker]');
     const trigger = $('[data-language-trigger]');
@@ -183,12 +191,25 @@
 
     if (picker && trigger && menu) {
       const selected = registry.find(item => item.locale === currentLocale) || registry[0];
-      const flag = trigger.querySelector?.('[data-language-flag]');
+      const flag = trigger.querySelector?.('[data-language-flag-image]');
       const name = trigger.querySelector?.('[data-language-name]');
-      if (selected) {
-        if (flag) flag.textContent = selected.flag || '🌐';
-        if (name) name.textContent = selected.nativeName;
-      }
+
+      const setTriggerSelection = item => {
+        if (!item) return;
+        const displayName = languageDisplayName(item);
+        const src = languageFlagSrc(item);
+        if (flag && src) flag.src = src;
+        if (name) name.textContent = displayName;
+        const accessibleLabel = message('web_language') + ': ' + displayName;
+        trigger.setAttribute('aria-label', accessibleLabel);
+        trigger.title = accessibleLabel;
+      };
+      setTriggerSelection(selected);
+
+      const focusOption = option => {
+        option?.focus?.();
+        option?.scrollIntoView?.({ block: 'nearest' });
+      };
 
       const setOpen = (open, focusSelected = false) => {
         picker.dataset.open = open ? 'true' : 'false';
@@ -196,7 +217,7 @@
         menu.hidden = !open;
         if (open && focusSelected) {
           const current = options().find(option => option.dataset.locale === currentLocale);
-          current?.focus?.();
+          focusOption(current);
         }
       };
 
@@ -212,6 +233,8 @@
 
       options().forEach(option => {
         option.setAttribute('aria-selected', String(option.dataset.locale === currentLocale));
+        option.setAttribute('lang', 'en');
+        option.setAttribute('dir', 'ltr');
         option.addEventListener('click', event => choose(option, event));
         option.addEventListener('keydown', event => {
           const items = options();
@@ -221,10 +244,10 @@
             const next = event.key === 'ArrowDown'
               ? (index + 1) % items.length
               : (index - 1 + items.length) % items.length;
-            items[next]?.focus?.();
+            focusOption(items[next]);
           } else if (event.key === 'Home' || event.key === 'End') {
             event.preventDefault();
-            items[event.key === 'Home' ? 0 : items.length - 1]?.focus?.();
+            focusOption(items[event.key === 'Home' ? 0 : items.length - 1]);
           } else if (event.key === 'Escape') {
             event.preventDefault();
             setOpen(false);
@@ -275,7 +298,7 @@
 
     const link = document.createElement('a');
     link.href = pathFor(target.locale) + currentLocationSuffix();
-    link.textContent = message('web_languageSuggestion', { language: target.nativeName });
+    link.textContent = message('web_languageSuggestion', { language: languageDisplayName(target) });
     suggestion.replaceChildren(link);
     suggestion.hidden = false;
   }
