@@ -54,24 +54,17 @@ async function buildTarget(root, browser) {
     console.warn(`No overrides found for "${browser}".`);
   }
 
-  // Firefox uses nb for Bokmål; Chromium's native directory is no.
-  if (browser === "firefox") {
-    await fs.rename(path.join(distDir, "_locales", "no"), path.join(distDir, "_locales", "nb"));
-  }
   console.log(`Built ${browser} -> ${path.relative(root, distDir)}`);
 }
 
 async function main() {
   const root = path.resolve(__dirname);
-  const locales = JSON.parse(await fs.readFile(path.join(root, "localisation", "registry.json"), "utf8"));
-  for (const locale of locales) await fs.access(path.join(root, "src", "shared", "_locales", locale.extension, "messages.json"));
   await fs.mkdir(path.join(root, "dist"), { recursive: true });
 
   const requested = process.argv.slice(2);
   const targets = requested.length ? requested : BROWSERS;
 
   for (const browser of targets) {
-    if (!BROWSERS.includes(browser)) throw new Error(`Unknown browser: ${browser}`);
     await buildTarget(root, browser);
   }
 }
