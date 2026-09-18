@@ -252,7 +252,7 @@
           } else if (event.key === 'Home' || event.key === 'End') {
             event.preventDefault();
             focusOption(items[event.key === 'Home' ? 0 : items.length - 1]);
-          } else if (event.key === 'Escape') {
+          } else if (event.key === 'Escape' || (event.key === 'Tab' && event.shiftKey)) {
             event.preventDefault();
             setOpen(false);
             trigger.focus?.();
