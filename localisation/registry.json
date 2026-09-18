@@ -15,7 +15,7 @@
     {"store":"edge-live","url":"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh","verifiedAt":"2026-09-18","note":"Public listing was unavailable to the read-only retrieval tool; title, copy, version, and language list require publisher-dashboard verification."}
   ],
   "locales": [
-    {"locale":"en","languageName":"English","nativeName":"English","canonical":"en","extension":"en","website":"","hreflang":"en","direction":"ltr","stores":{"chrome":"en","firefox":"en-US","edge":"en-US"},"flag":"🇺🇸"},
+    {"locale":"en","languageName":"English","nativeName":"English","canonical":"en","extension":"en","website":"","hreflang":"en","direction":"ltr","stores":{"chrome":"en","firefox":"en-US","edge":"en-US"},"flag":"🇬🇧"},
     {"locale":"cs","languageName":"Czech","nativeName":"Čeština","canonical":"cs","extension":"cs","website":"cs","hreflang":"cs","direction":"ltr","stores":{"chrome":"cs","firefox":"cs","edge":"cs"},"flag":"🇨🇿"},
     {"locale":"de","languageName":"German","nativeName":"Deutsch","canonical":"de","extension":"de","website":"de","hreflang":"de","direction":"ltr","stores":{"chrome":"de","firefox":"de","edge":"de"},"flag":"🇩🇪"},
     {"locale":"el","languageName":"Greek","nativeName":"Ελληνικά","canonical":"el","extension":"el","website":"el","hreflang":"el","direction":"ltr","stores":{"chrome":"el","firefox":"el","edge":"el"},"flag":"🇬🇷"},
