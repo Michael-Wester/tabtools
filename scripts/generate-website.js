@@ -59,18 +59,33 @@ function localeData(locale) {
       canonical: item.canonical,
       path: item.path,
       nativeName: item.nativeName,
+      flag: item.flag,
     })),
     messages: L.catalogue(locale.locale),
   };
 }
 
-function selectOptions(current) {
-  return L.registry.map(item => {
-    const selected = item.locale === current.locale ? ' selected' : '';
-    return '<option lang="' + L.escape(item.canonical) + '" value="' +
-      L.escape(item.path) + '"' + selected + '>' +
-      L.escape(item.nativeName) + '</option>';
+function languagePickerMarkup(current, label) {
+  const options = L.registry.map(item => {
+    const selected = item.locale === current.locale;
+    return '<a class="language-option" data-language-option data-locale="' +
+      L.escape(item.locale) + '" role="option" aria-selected="' + selected +
+      '" href="' + L.escape(item.path) + '">' +
+      '<span class="language-flag" aria-hidden="true">' + L.escape(item.flag || '🌐') + '</span>' +
+      '<span class="language-option-name">' + L.escape(item.nativeName) + '</span>' +
+      '</a>';
   }).join('');
+  const selectedFlag = current.flag || '🌐';
+  return '<div class="language-picker" data-language-picker>' +
+    '<button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">' +
+      '<span class="language-flag" data-language-flag aria-hidden="true">' + L.escape(selectedFlag) + '</span>' +
+      '<span class="language-name" data-language-name>' + L.escape(current.nativeName) + '</span>' +
+      '<svg class="language-chevron" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>' +
+    '</button>' +
+    '<div class="language-menu" data-language-menu role="listbox" aria-label="' + L.escape(label) + '" hidden>' +
+      options +
+    '</div>' +
+  '</div>';
 }
 
 function seoLinks() {
@@ -171,9 +186,8 @@ function applyTranslations(html, locale) {
       safeJson(localeData(locale)) + '</script>'
   );
   output = output.replace(
-    /<select data-language-select[^>]*>[\s\S]*?<\/select>/,
-    '<select data-language-select aria-label="' + L.escape(target.web_language) + '">' +
-      selectOptions(locale) + '</select>'
+    /<!-- TABTOOLS_LANGUAGE_PICKER -->/,
+    languagePickerMarkup(locale, target.web_language)
   );
   output = output.replace(
     /(<span data-store-note>)[\s\S]*?(<\/span>)/,
@@ -192,6 +206,12 @@ function writePage(locale) {
 
 function main() {
   fs.mkdirSync(outputDir, { recursive: true });
+  const expectedDirectories = new Set(L.registry.map(locale => locale.website).filter(Boolean));
+  for (const entry of fs.readdirSync(outputDir, { withFileTypes: true })) {
+    if (entry.isDirectory() && entry.name !== 'assets' && !expectedDirectories.has(entry.name)) {
+      fs.rmSync(path.join(outputDir, entry.name), { recursive: true, force: true });
+    }
+  }
   fs.copyFileSync(path.join(sourceDir, 'styles.css'), path.join(outputDir, 'styles.css'));
   fs.copyFileSync(path.join(sourceDir, 'script.js'), path.join(outputDir, 'script.js'));
   for (const locale of L.registry) writePage(locale);
@@ -207,4 +227,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { applyTranslations, localeData, selectOptions, seoLinks };
+module.exports = { applyTranslations, localeData, languagePickerMarkup, seoLinks };
