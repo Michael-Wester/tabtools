@@ -5,10 +5,12 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('node:assert/strict');
 const L = require('./localisation');
-const { fullDescription } = require('./generate-listings');
+const { fullDescription, listing, stores } = require('./generate-listings');
+const { validateCatalogue } = require('./catalogue-validation');
 
 const errors = [];
 const warnings = [];
+const localeErrors = new Map();
 const source = L.catalogue('en');
 const sourceKeys = Object.keys(source).sort();
 
@@ -23,7 +25,9 @@ assert.equal(new Set(L.registry.map(item => item.extension)).size, L.registry.le
 assert.equal(new Set(L.registry.map(item => item.website)).size, L.registry.length);
 
 for (const locale of L.registry) {
+  const startErrors = errors.length;
   const catalogue = L.catalogue(locale.locale);
+  for (const error of validateCatalogue(source, catalogue, locale.locale)) fail(locale.locale + ': ' + error);
   const missing = sourceKeys.filter(key => !(key in catalogue));
   const extra = Object.keys(catalogue).filter(key => !(key in source));
   if (missing.length) fail(locale.locale + ': missing source keys: ' + missing.join(', '));
@@ -97,6 +101,7 @@ for (const locale of L.registry) {
       continue;
     }
     const text = fs.readFileSync(file, 'utf8');
+    if (text !== listing(locale, { ...stores[store], key: store })) fail(locale.locale + ': stale ' + store + ' listing content');
     const expectedFingerprints = [
       '- Title source fingerprint: ' + L.fingerprint(source.extensionName),
       '- Summary source fingerprint: ' + L.fingerprint(source.extensionDescription),
@@ -107,10 +112,11 @@ for (const locale of L.registry) {
     }
     const fields = [...text.matchAll(/Character count: (\d+)/g)].map(match => Number(match[1]));
     if (fields.length < 3) fail(locale.locale + ': incomplete ' + store + ' character counts');
-    if (fields[0] > 75) fail(locale.locale + ': ' + store + ' title exceeds conservative 75-character limit');
+    if (fields[0] > 50) fail(locale.locale + ': ' + store + ' title exceeds conservative 50-character limit');
     if (fields[1] > 132) fail(locale.locale + ': ' + store + ' summary exceeds conservative 132-character limit');
     if (fields[2] < 250 || fields[2] > 10000) fail(locale.locale + ': ' + store + ' full description is outside 250-10,000 characters');
   }
+  localeErrors.set(locale.locale, errors.length - startErrors);
 }
 
 for (const manifestName of ['chrome', 'firefox', 'edge']) {
@@ -149,7 +155,7 @@ for (const locale of L.registry) {
     : 'AI self-review only; no native-speaker review';
   coverage.push('| ' + locale.locale + ' | ' + extensionCount + '/' + Object.keys(L.extensionSource(source)).length +
     ' | ' + webCount + '/' + Object.keys(source).filter(key => key.startsWith('web_')).length +
-    ' | 3/3 fields × 3 stores | ' + freshness + ' | structural checks | ' + linguistic + ' |');
+    ' | 3/3 fields × 3 stores | ' + freshness + ' | ' + (localeErrors.get(locale.locale) ? 'FAIL (' + localeErrors.get(locale.locale) + ')' : 'PASS') + ' | ' + linguistic + ' |');
 }
 coverage.push('', 'No images, screenshots, banners, or videos are translated by this task.');
 fs.writeFileSync(path.join(L.root, 'localisation', 'COVERAGE.md'), coverage.join('\n') + '\n');
