@@ -1,30 +1,90 @@
 // SPDX-License-Identifier: MPL-2.0
-(() => {
-  const api = typeof browser !== 'undefined' ? browser : chrome;
-  const locale = api.i18n.getMessage('translationLocale') || 'en';
-  const direction = api.i18n.getMessage('translationDirection') || 'ltr';
-  const number = value => new Intl.NumberFormat(locale).format(value);
-  function t(key, values = {}) {
-    const names = Object.keys(values).sort();
-    const result = api.i18n.getMessage(key, names.map(name => String(values[name])));
-    if (result) return result;
-    const fallback = globalThis.TabToolsEnglish[key];
-    return typeof fallback === 'string' ? fallback.replace(/\{([a-zA-Z]+)\}/g, (_,name) => String(values[name] ?? '')) : key;
+(function (root) {
+  "use strict";
+
+  const api =
+    (typeof chrome !== "undefined" && chrome.i18n) ||
+    (typeof browser !== "undefined" && browser.i18n) ||
+    null;
+
+  function uiLocale() {
+    try {
+      if (api && typeof api.getUILanguage === "function") {
+        return api.getUILanguage();
+      }
+    } catch (_) {}
+    return "en";
   }
-  function plural(key, count) {
-    const category = new Intl.PluralRules(locale).select(count);
-    const result = api.i18n.getMessage(`${key}_${category}`, number(count));
-    if (result) return result;
-    const english = globalThis.TabToolsEnglish[key];
-    return (english[new Intl.PluralRules('en').select(count)] || english.other).replace('{count}', new Intl.NumberFormat('en').format(count));
-  }
-  function localise(root = document) {
-    document.documentElement.lang=locale;
-    document.documentElement.dir=direction;
-    root.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n);});
-    for(const attr of ['title','placeholder','aria-label']) {
-      root.querySelectorAll(`[data-i18n-${attr}]`).forEach(el=>{el.setAttribute(attr,t(el.getAttribute(`data-i18n-${attr}`)));});
+
+  function pluralCategory(count) {
+    try {
+      return new Intl.PluralRules(uiLocale()).select(Number(count));
+    } catch (_) {
+      return Number(count) === 1 ? "one" : "other";
     }
   }
-  globalThis.TabToolsI18n={t,plural,number,localise,locale,direction};
-})();
+
+  function substitutions(values) {
+    if (values === undefined || values === null) return [];
+    if (Array.isArray(values)) return values.map(String);
+    return Object.values(values).map(String);
+  }
+
+  function getMessage(key, values) {
+    let messageKey = key;
+    const replacementValues = values && typeof values === "object" && !Array.isArray(values)
+      ? values
+      : {};
+
+    if (key === "openCount") {
+      const category = pluralCategory(replacementValues.count);
+      messageKey = "openCount_" + category;
+    }
+
+    const args = substitutions(values);
+    let value = "";
+    try {
+      if (api && typeof api.getMessage === "function") {
+        value = api.getMessage(messageKey, args) || "";
+        if (!value && messageKey.startsWith("openCount_")) {
+          value = api.getMessage("openCount_other", args) || "";
+        }
+      }
+    } catch (_) {}
+
+    if (!value) {
+      const fallback = {
+        extensionName: "TabTools - Close & Sort Tabs by Site",
+        extensionDescription: "Close tabs from the same website, sort tabs by site and remove duplicates to keep your browser organised.",
+      };
+      value = fallback[key] || key;
+      value = value.replace(/\{(\w+)\}/g, function (_, name) {
+        return replacementValues[name] === undefined ? "" : String(replacementValues[name]);
+      });
+    }
+    return value;
+  }
+
+  function localizeDocument(documentRoot) {
+    const scope = documentRoot || document;
+    scope.querySelectorAll("[data-i18n]").forEach(function (element) {
+      element.textContent = getMessage(element.dataset.i18n);
+    });
+    scope.querySelectorAll("[data-i18n-html]").forEach(function (element) {
+      element.innerHTML = getMessage(element.dataset.i18nHtml);
+    });
+    scope.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
+      element.placeholder = getMessage(element.dataset.i18nPlaceholder);
+    });
+    scope.querySelectorAll("[data-i18n-title]").forEach(function (element) {
+      element.title = getMessage(element.dataset.i18nTitle);
+    });
+    scope.querySelectorAll("[data-i18n-aria]").forEach(function (element) {
+      element.setAttribute("aria-label", getMessage(element.dataset.i18nAria));
+    });
+  }
+
+  root.ttMessage = getMessage;
+  root.ttLocalizeDocument = localizeDocument;
+  root.ttPluralCategory = pluralCategory;
+})(typeof globalThis !== "undefined" ? globalThis : this);
