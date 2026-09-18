@@ -12,25 +12,37 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
   const element = () => ({dataset:{},children:[],events:{},hidden:true,textContent:'',
     setAttribute(k,v){this[k]=v;},addEventListener(k,v){this.events[k]=v;},
     append(v){this.children.push(v);},replaceChildren(...v){this.children=v;},
+    focus(){this.focused=true;},
     hasAttribute(k){return k==='data-adaptive-store';},
     querySelector(k){return this.parts?.[k] || null;}});
-  const select=element(), note=element(), toggle=element(), label=element(), storeNote=element();
+  const picker=element(), trigger=element(), menu=element(), flag=element(), name=element();
+  const note=element(), toggle=element(), label=element(), storeNote=element();
+  picker.parts={'[data-language-trigger]':trigger,'[data-language-menu]':menu};
+  trigger.parts={'[data-language-flag]':flag,'[data-language-name]':name};
   const copy=element(), icon=element(), store=element();
   store.dataset={store:'chrome',utmPlacement:'hero'};
   store.parts={'[data-browser-copy]':copy,'[data-browser-icon]':icon};
   store.textContent='Add to Chrome';
-  const data={locale,registry:L.registry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),nativeName:l.nativeName})),messages:L.catalogue(locale)};
+  const options=L.registry.map(l=>{
+    const option=element();
+    option.dataset={locale:l.locale};
+    option.href='/'+(l.website?l.website+'/':'');
+    option.textContent=l.nativeName;
+    return option;
+  });
+  menu.hidden=true;
+  const data={locale,registry:L.registry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),nativeName:l.nativeName,flag:l.flag})),messages:L.catalogue(locale)};
   const document={documentElement:{dataset:{},lang:locale},
     getElementById:()=>({textContent:JSON.stringify(data)}),
-    querySelector:s=>({'[data-language-select]':select,'[data-language-suggestion]':note,'[data-theme-toggle]':toggle,'[data-theme-label]':label,'[data-store-note]':storeNote}[s]||null),
-    querySelectorAll:s=>s==='[data-store]'?[store]:[],
+    querySelector:s=>({'[data-language-picker]':picker,'[data-language-trigger]':trigger,'[data-language-menu]':menu,'[data-language-suggestion]':note,'[data-theme-toggle]':toggle,'[data-theme-label]':label,'[data-store-note]':storeNote}[s]||null),
+    querySelectorAll:s=>s==='[data-store]'?[store]:(s==='[data-language-option]'?options:[]),
     createElement:element,createTextNode:text=>({textContent:text})};
   const navigation=[];
   const context={document,URL,navigator:{languages:preferences,userAgent:ua},
     localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},
     window:{location:{search:'?campaign=test',hash:'#faq',assign:url=>navigation.push(url)}}};
   vm.runInNewContext(script,context);
-  return {document,select,note,toggle,label,store,copy,icon,storeNote,storage,navigation};
+  return {document,picker,trigger,menu,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation};
 }
 
 test('explicit language URLs are never replaced by saved or browser preferences',()=>{
@@ -40,13 +52,17 @@ test('explicit language URLs are never replaced by saved or browser preferences'
   assert.equal(p.note.children[0].href,'/de/?campaign=test#faq');
   assert.match(p.note.children[0].textContent,/Deutsch/);
 });
-test('selector remembers the choice and preserves queries and anchors',()=>{
-  const p=pageRuntime('en');p.select.value='/he/';p.select.events.change();
+test('flag language picker remembers the choice and preserves queries and anchors',()=>{
+  const p=pageRuntime('en');
+  p.trigger.events.click();
+  assert.equal(p.menu.hidden,false);
+  const option=p.options.find(item=>item.dataset.locale==='he');
+  option.events.click({preventDefault(){}});
   assert.equal(p.storage.get('tabtools-site-language'),'he');
   assert.deepEqual(p.navigation,['/he/?campaign=test#faq']);
 });
 test('language suggestions resolve aliases and retain meaningful variants',()=>{
-  for(const [pref,wanted] of [['de-AT','/de/'],['no-NO','/nb/'],['zh-Hant-HK','/zh-tw/'],['zh-Hans-SG','/zh-cn/'],['pt-BR','/pt-br/'],['pt-PT','/pt-pt/'],['en-GB','/en-gb/'],['pt','/'],['zh','/'],['xx','/']]) {
+  for(const [pref,wanted] of [['de-AT','/de/'],['no-NO','/nb/'],['zh-Hant-HK','/zh-tw/'],['zh-Hans-SG','/zh-cn/'],['pt-BR','/pt-br/'],['pt-PT','/pt-pt/'],['pt','/'],['zh','/'],['xx','/']]) {
     const p=pageRuntime('ja',[pref]);assert.equal(p.note.children[0].href,wanted+'?campaign=test#faq',pref);
     assert.deepEqual(p.navigation,[]);
   }
@@ -73,6 +89,9 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
     const file=L.path.join(L.root,'website/dist',locale.website,'index.html');
     const html=L.fs.readFileSync(file,'utf8');
     assert.ok(html.includes(`<html lang="${locale.canonical}" dir="${locale.direction}">`));
+    assert.equal((html.match(/data-language-option/g) || []).length, L.registry.length, `${locale.locale}: language options`);
+    assert.ok(html.includes('<span class="language-option-name">English</span>'));
+    assert.doesNotMatch(html,/English \(British\)|en-GB|en-gb/);
     assert.ok(html.includes(`<link rel="canonical" href="${L.urlFor(locale)}" />`));
     for(const alt of L.registry)assert.ok(html.includes(`hreflang="${alt.hreflang}" href="${L.urlFor(alt)}"`));
     assert.ok(html.includes('hreflang="x-default" href="https://tabtools.fyi/"'));
