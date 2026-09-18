@@ -52,18 +52,15 @@ test('i18n helper selects a browser message and plural fallback', () => {
   assert.deepEqual(calls.map(call => call[0]), ['openCount_one', 'openCount_other']);
 });
 
-test('all browser packages contain every registry locale', () => {
-  for (const browser of ['chrome', 'firefox', 'edge']) {
-    const manifest = JSON.parse(fs.readFileSync(
-      path.join(L.root, 'src/overrides', browser, 'manifest.json'),
-      'utf8'
-    ));
-    assert.equal(manifest.default_locale, 'en');
-    assert.equal(manifest.name, '__MSG_extensionName__');
-    for (const locale of L.registry) {
-      assert.ok(fs.existsSync(path.join(
-        L.root, 'src/shared/_locales', locale.extension, 'messages.json'
-      )));
-    }
+test('built packages preserve metadata and contain each browser locale', () => {
+  const { spawnSync } = require('node:child_process');
+  for (const args of [['build.js'], ['scripts/check-packages.js']]) {
+    const result = spawnSync(process.execPath, args, { cwd: L.root, encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stdout + result.stderr);
   }
+  assert.ok(fs.existsSync(path.join(L.root, 'dist/firefox/_locales/nb/messages.json')));
+  assert.ok(!fs.existsSync(path.join(L.root, 'dist/firefox/_locales/no')));
+  const invalid = spawnSync(process.execPath, ['build.js', '../outside'], { cwd: L.root, encoding: 'utf8' });
+  assert.notEqual(invalid.status, 0);
+  assert.match(invalid.stderr, /Unknown browser/);
 });
