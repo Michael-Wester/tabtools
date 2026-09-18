@@ -68,15 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ otvorenih kartica",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ otvorena kartica",
     "placeholders": {
@@ -86,26 +77,8 @@
       }
     }
   },
-  "openCount_two": {
-    "message": "$count$ otvorenih kartica",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_few": {
     "message": "$count$ otvorene kartice",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "$count$ otvorenih kartica",
     "placeholders": {
       "count": {
         "content": "$1",
