@@ -29,7 +29,11 @@ Review baseline: `b492c9256eef9a1393eb3bbe2cff2afa7be27b5a` (18 September 2026).
 - All 29 catalogues pass strengthened validation; all three Node packages build and pass integrity checks.
 - First checkpoint CI: Linux and Windows passed, including the real PowerShell build and package checks (run 35356589950).
 - The live browser reproduced the original missing listbox ID and menu staying open after Tab.
-- Final live-browser verification and CI results will be appended after the updated preview is available.
+- Runtime/interface checkpoint `fa818f9b4b2afab145103c179ff87eee2c5794b9` passed Linux/Windows CI (run 35357687979) and the preview workflow (35357687954). The local and remote trees matched exactly.
+- Live Chrome: inspected English and Hebrew screenshots, Hebrew light/dark layout and the open RTL menu. All 29 flag images loaded; the menu stayed in the viewport and the inspected pages had no document overflow at a 1363 CSS-pixel viewport.
+- Exercised ArrowDown, End, Enter, Escape and Tab on the actual website. Fixed the additional Shift+Tab dismissal issue found by that review and covered it in the regression test.
+- German navigation retained the test query and FAQ fragment; dark theme persisted across locale changes. The direct Hebrew URL remained Hebrew without an automatic redirect.
+- Browser zoom did not change the cloud viewport; no mobile or installed-extension visual pass is claimed.
 
 ## Remaining release checks
 
