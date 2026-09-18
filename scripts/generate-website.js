@@ -249,4 +249,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { applyTranslations, localeData, languagePickerMarkup, seoLinks };
+module.exports = { main, applyTranslations, localeData, languagePickerMarkup, seoLinks };
