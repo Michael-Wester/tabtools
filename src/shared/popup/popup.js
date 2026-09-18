@@ -3,14 +3,14 @@
 // Popup: Suggestions, stats, and settings live side-by-side with quick actions.
 
 (function () {
-  const {t, plural, number, localise} = globalThis.TabToolsI18n;
-  const countText = (key, count) => t(key, {count: number(count)});
   const $ = (selector) => document.querySelector(selector);
   const byId = (id) => document.getElementById(id);
   const msg = (type, payload) =>
     new Promise((res) =>
       chrome.runtime.sendMessage({ type, ...(payload || {}) }, res)
     );
+  const t = (key, values) =>
+    typeof globalThis.ttMessage === "function" ? globalThis.ttMessage(key, values) : key;
 
   const STORAGE_KEY = "pc.settings";
   const DEFAULTS = {
@@ -137,7 +137,6 @@
   });
 
   async function initUI() {
-    localise();
     const settings = await readSettings();
     applyTheme(settings.theme);
     syncSettingsForm(settings);
@@ -149,7 +148,7 @@
     const r = await msg("pc:getStats");
     const total = r?.stats?.totalTabsEaten || 0;
     if (total === lastStatsTotal) return;
-    $("#pc-count-pill").textContent = countText("closedCount", total);
+    $("#pc-count-pill").textContent = t("closedCount", { count: total });
     lastStatsTotal = total;
   }
 
@@ -162,7 +161,7 @@
         ? tabs.filter((t) => !t.incognito).length
         : 0;
       if (total !== lastOpenTabCount) {
-        el.textContent = plural("openCount", total);
+        el.textContent = t("openCount", { count: total });
         lastOpenTabCount = total;
       }
     } catch (err) {
@@ -182,7 +181,7 @@
     try {
       const out = await msg("pc:closeByKeyword", { query });
       if (out?.ok) {
-        setStatus(countText("closedCount", out.closedCount));
+        setStatus(t("closedCount", { count: out.closedCount }));
         const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
         if (closed.length) {
           lastClosedTabs = closed;
@@ -204,7 +203,7 @@
   async function runCloseInactive() {
     const out = await msg("pc:closeInactive");
     if (out?.ok && out.closedCount) {
-      setStatus(countText("closedInactive", out.closedCount));
+      setStatus(t("closedInactive", { count: out.closedCount }));
       const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
       lastClosedTabs = closed.length ? closed : [];
       updateUndoButton();
@@ -225,7 +224,7 @@
       const out = await msg("pc:closeDuplicates");
       if (out?.ok) {
         const count = out.closedCount || 0;
-        setStatus(count ? countText("closedDuplicates", count) : t("noDuplicates"), 1400);
+        setStatus(count ? t("closedDuplicates", { count }) : t("noDuplicates"), 1400);
         const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
         lastClosedTabs = closed.length ? closed : count ? [] : lastClosedTabs;
         updateUndoButton();
@@ -257,13 +256,13 @@
       }
       restored = out.restoredCount || 0;
       if (restored) {
-        setStatus(countText("restoredCount", restored));
+        setStatus(t("restoredCount", { count: restored }));
         lastClosedTabs = [];
       } else {
         setStatus(t("nothingToRestore"), 1200);
       }
     } catch (err) {
-      console.error(t("undoFailed"), err);
+      console.error("Undo failed", err);
       setStatus(t("undoFailed"));
       return;
     } finally {
@@ -297,7 +296,7 @@
       main.appendChild(icon);
       label.textContent = t("inactive");
       main.appendChild(label);
-      count.textContent = number(item.inactiveCount ?? 0);
+      count.textContent = String(item.inactiveCount ?? 0);
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
@@ -310,8 +309,6 @@
       const domain = String(item.domain || "");
       chip.dataset.domain = domain;
       label.textContent = domain;
-      label.dir = "ltr";
-      chip.setAttribute("aria-label", t("closeSiteLabel", {site: domain}));
       const iconUrl =
         typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
       if (iconUrl) {
@@ -328,7 +325,7 @@
       }
       main.appendChild(label);
       const openCount = item.openCount ?? 0;
-      count.textContent = plural("openCount", openCount);
+      count.textContent = t("openCount", { count: openCount });
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
@@ -391,7 +388,7 @@
       chipsWrap.appendChild(renderSuggestionChip(item))
     );
     if (suggestions.length > MAX_SUGGESTIONS) {
-      more.textContent = countText("moreCount", suggestions.length - MAX_SUGGESTIONS);
+      more.textContent = t("moreCount", { count: suggestions.length - MAX_SUGGESTIONS });
     }
   }
 
@@ -405,7 +402,7 @@
         return;
       }
       const moved = out.sortedCount || 0;
-      setStatus(moved ? countText("sortedCount", moved) : t("nothingToSort"), 1200);
+      setStatus(moved ? t("sortedCount", { count: moved }) : t("nothingToSort"), 1200);
     } catch (err) {
       console.error("Sort tabs failed", err);
       setStatus(t("sortFailed"), 1200);
@@ -490,7 +487,7 @@
       quickToggle.addEventListener("click", () => {
         const hidden = quickBody.hidden === true;
         quickBody.hidden = !hidden;
-        quickToggle.textContent = hidden ? t("hide") : t("show");
+        quickToggle.textContent = t(hidden ? "hide" : "show");
         quickToggle.setAttribute("aria-pressed", hidden ? "true" : "false");
       });
     }
@@ -499,6 +496,9 @@
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
+    if (typeof globalThis.ttLocalizeDocument === "function") {
+      globalThis.ttLocalizeDocument(document);
+    }
     await initUI();
     wireUI();
     setupSettingsBindings();
