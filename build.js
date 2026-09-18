@@ -4,6 +4,7 @@
 
 const fs = require("fs/promises");
 const path = require("path");
+const L = require("./scripts/localisation");
 
 const BROWSERS = ["firefox", "chrome", "edge"];
 
@@ -54,15 +55,25 @@ async function buildTarget(root, browser) {
     console.warn(`No overrides found for "${browser}".`);
   }
 
+  for (const locale of L.registry) {
+    const target = browser === "firefox" ? (locale.firefoxExtension || locale.extension) : locale.extension;
+    if (target !== locale.extension) {
+      await fs.rename(path.join(distDir, "_locales", locale.extension), path.join(distDir, "_locales", target));
+    }
+  }
   console.log(`Built ${browser} -> ${path.relative(root, distDir)}`);
 }
 
 async function main() {
   const root = path.resolve(__dirname);
-  await fs.mkdir(path.join(root, "dist"), { recursive: true });
 
   const requested = process.argv.slice(2);
   const targets = requested.length ? requested : BROWSERS;
+  for (const browser of targets) {
+    if (!BROWSERS.includes(browser)) throw new Error(`Unknown browser: ${browser}`);
+  }
+  require("./scripts/generate-extension-locales").main();
+  await fs.mkdir(path.join(root, "dist"), { recursive: true });
 
   for (const browser of targets) {
     await buildTarget(root, browser);
