@@ -11,16 +11,31 @@ Review baseline: `b492c9256eef9a1393eb3bbe2cff2afa7be27b5a` (18 September 2026).
 - Consolidated case-colliding coverage/glossary documents for Windows checkouts.
 - Added Linux/Windows CI packaging gates and a regression test that builds and checks the actual packages.
 
-## Validation so far
+## Runtime and interface fixes
 
-- Original baseline: nine tests passed; standalone package checker failed with `L.read is not a function`.
-- Fixed generators, validator, all three Node builds and package checks pass for 29 locales.
-- Windows/PowerShell execution will be checked by CI; PowerShell is not installed locally.
+- Set the popup language/direction from the selected translation catalogue; support Hebrew RTL, readable domain labels and wrapping for translated controls.
+- Restore the bundled English fallback, select plural rules from the actual fallback language, and format displayed counts without changing stored numbers.
+- Keep substitution positions stable when translations reorder or repeat placeholders.
+- Connect the language button to its actual listbox ID, dismiss on focus exit, preserve modified-click navigation and keep focused options visible.
+- Respect the first supported saved/browser language; stop suggesting a different language when the current one already matches. Suggestions record explicit choices and mark their English names as LTR.
+- Group the two 44 px controls so they cannot split or shrink; remove flag inset padding, allow regional names to wrap, and use logical button dividers for RTL.
+- Replace phrase matching with explicit template bindings and escape translated HTML. English wording changes now propagate without editing a second copy.
+- Validate placeholder preservation, plural completeness, markup, brand/domain names and exact generated store text; coverage reports actual errors.
 
-## Remaining review
+## Validation
 
-- Extension language/direction, interpolation, fallback and popup layout.
-- Website selector focus, preference handling, responsive grouping and rendered appearance.
-- Stronger catalogue validation, final regeneration, browser checks and CI results.
+- Baseline: nine tests passed, but the standalone package checker failed with `L.read is not a function`.
+- Nineteen regression tests cover the failures above, actual browser packages, navigation, all 29 generated pages, safe output and review-command isolation.
+- All 29 catalogues pass strengthened validation; all three Node packages build and pass integrity checks.
+- First checkpoint CI: Linux and Windows passed, including the real PowerShell build and package checks (run 35356589950).
+- The live browser reproduced the original missing listbox ID and menu staying open after Tab.
+- Final live-browser verification and CI results will be appended after the updated preview is available.
 
-The PR remains draft. Native-speaker review, installed-browser smoke tests and publisher-dashboard locale verification are still outstanding. No merge or manual deployment is part of this review.
+## Remaining release checks
+
+- Installed Chrome, Firefox and Edge extension smoke tests, including native menus and real tab cleanup/undo.
+- Real 320/390 px website and popup layout checks: the available cloud browser has no viewport resize API, and the local Chromium download failed with HTTP 502.
+- Fluent-reader review of all translations, particularly Hebrew, Norwegian Bokmål, Serbian and compact titles.
+- Publisher-dashboard confirmation of the exact three-store locale intersection and release copy/version agreement.
+
+The PR remains draft. Earlier unfinished checkouts were preserved. Updates use sequential file commits through the existing GitHub connection; no merge, force-push or manual deployment was performed.
