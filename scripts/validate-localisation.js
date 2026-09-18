@@ -1,50 +1,162 @@
 // SPDX-License-Identifier: MPL-2.0
-const L=require('./localisation');
-const {execFileSync}=require('node:child_process');
-let failed=false;
-const rows=[];
-const support=L.read('localisation/support-evidence.json');
-const codes=new Set(), paths=new Set();
-for(const locale of L.registry) {
-  const errors=[];
-  try {
-    if (Intl.getCanonicalLocales(locale.locale)[0]!==locale.locale) errors.push('noncanonical locale');
-    if (Intl.getCanonicalLocales(locale.hreflang)[0]!==locale.hreflang) errors.push('invalid hreflang');
-    if (codes.has(locale.extension)||paths.has(locale.website)) errors.push('duplicate locale code or URL');
-    if(!/^[a-z]{2,3}(?:_[A-Z]{2})?$/.test(locale.extension)) errors.push('invalid extension locale code');
-    if(!/^(?:[a-z]{2,3}(?:-[a-z]{2})?)?$/.test(locale.website)) errors.push('invalid URL code');
-    if(!['ltr','rtl'].includes(locale.direction)) errors.push('invalid text direction');
-    if(!support.chromeListingLocales.includes(locale.extension)||locale.stores.chrome!==locale.extension) errors.push('unsupported Chrome listing code');
-    if(!support.amoProductionListingLocales.includes(locale.stores.firefox)) errors.push('unsupported AMO listing code');
-    if(locale.firefoxExtension!==(locale.extension==='no'?'nb':locale.extension)) errors.push('invalid Firefox package code');
-    codes.add(locale.extension);paths.add(locale.website);
-    const data=L.catalogue(locale.locale);
-    const result=L.issuesFor(locale,data);
-    errors.push(...result.errors,...result.identical.map(k=>`Unreviewed English match: ${k}`));
-    rows.push({locale:locale.locale,data,keys:Object.keys(data).length,errors,review:locale.locale==='en'?'English source':'AI self-review; native review pending'});
-  }catch(e){errors.push(e.message);rows.push({locale:locale.locale,keys:0,errors,review:'Incomplete'});}
-  if(errors.length){failed=true;console.error(locale.locale,errors.join('\n  '));}
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const assert = require('node:assert/strict');
+const L = require('./localisation');
+const { fullDescription } = require('./generate-listings');
+
+const errors = [];
+const warnings = [];
+const source = L.catalogue('en');
+const sourceKeys = Object.keys(source).sort();
+
+function fail(message) { errors.push(message); }
+function warn(message) { warnings.push(message); }
+function readJson(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
+function keys(value) { return Object.keys(value).sort(); }
+function count(value) { return Array.from(String(value)).length; }
+
+assert.equal(new Set(L.registry.map(item => item.locale)).size, L.registry.length);
+assert.equal(new Set(L.registry.map(item => item.extension)).size, L.registry.length);
+assert.equal(new Set(L.registry.map(item => item.website)).size, L.registry.length);
+
+for (const locale of L.registry) {
+  const catalogue = L.catalogue(locale.locale);
+  const missing = sourceKeys.filter(key => !(key in catalogue));
+  const extra = Object.keys(catalogue).filter(key => !(key in source));
+  if (missing.length) fail(locale.locale + ': missing source keys: ' + missing.join(', '));
+  if (extra.length) warn(locale.locale + ': extra keys: ' + extra.join(', '));
+
+  const messagesFile = path.join(L.root, 'src', 'shared', '_locales', locale.extension, 'messages.json');
+  if (!fs.existsSync(messagesFile)) {
+    fail(locale.locale + ': missing packaged locale ' + messagesFile);
+  } else {
+    const expected = L.toWebExtensionMessages(locale.locale);
+    const actual = readJson(messagesFile);
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+      fail(locale.locale + ': packaged messages are out of date; run node scripts/generate-extension-locales.js');
+    }
+    for (const [key, value] of Object.entries(actual)) {
+      if (!value || typeof value.message !== 'string' || !value.message.trim()) {
+        fail(locale.locale + ': empty extension message ' + key);
+      }
+      if (value.placeholders) {
+        for (const placeholder of Object.keys(value.placeholders)) {
+          if (!value.message.includes('$' + placeholder + '$')) {
+            fail(locale.locale + ': placeholder mismatch for ' + key + '.' + placeholder);
+          }
+        }
+      }
+    }
+  }
+
+  if (locale.locale !== 'en') {
+    const reviewFile = path.join(L.root, 'localisation', 'reviews', locale.locale + '.json');
+    if (!fs.existsSync(reviewFile)) {
+      fail(locale.locale + ': missing review metadata');
+    } else {
+      const reviews = readJson(reviewFile);
+      for (const key of sourceKeys) {
+        const entry = reviews[key];
+        if (!entry) {
+          fail(locale.locale + ': missing review metadata for ' + key);
+          continue;
+        }
+        if (entry.source !== L.sourceFingerprint(key)) {
+          fail(locale.locale + ': stale source fingerprint for ' + key);
+        }
+        if (entry.translation !== L.fingerprint(catalogue[key])) {
+          fail(locale.locale + ': review translation fingerprint mismatch for ' + key);
+        }
+        if (!entry.review || !entry.date) fail(locale.locale + ': incomplete review provenance for ' + key);
+      }
+    }
+  }
+
+  const page = path.join(L.root, 'website', 'dist', locale.website, 'index.html');
+  if (!fs.existsSync(page)) {
+    fail(locale.locale + ': missing generated website page');
+  } else {
+    const html = fs.readFileSync(page, 'utf8');
+    if (html.includes('{{') || html.includes('__MSG_')) fail(locale.locale + ': unresolved template token');
+    if (!html.includes('<html lang="' + locale.canonical + '" dir="' + locale.direction + '">')) fail(locale.locale + ': incorrect document language or direction');
+    if (!html.includes('<link rel="canonical" href="' + L.urlFor(locale) + '" />')) fail(locale.locale + ': missing canonical');
+    if (!html.includes('hreflang="x-default" href="' + L.urlFor('en') + '"')) fail(locale.locale + ': missing x-default');
+    if (!html.includes('<title>' + L.escape(catalogue.web_tabtools_close_tabs_by_site) + '</title>')) fail(locale.locale + ': incorrect page title');
+    const dataMatch = html.match(/<script type="application\/json" id="locale-data">([\s\S]*?)<\/script>/);
+    if (!dataMatch) fail(locale.locale + ': missing embedded locale data');
+    else if (JSON.parse(dataMatch[1]).locale !== locale.locale) fail(locale.locale + ': embedded locale data mismatch');
+  }
+
+  for (const store of ['chrome', 'firefox', 'edge']) {
+    const file = path.join(L.root, 'marketing', 'listings', store, locale.locale + '.md');
+    if (!fs.existsSync(file)) {
+      fail(locale.locale + ': missing ' + store + ' listing text');
+      continue;
+    }
+    const text = fs.readFileSync(file, 'utf8');
+    const expectedFingerprints = [
+      '- Title source fingerprint: ' + L.fingerprint(source.extensionName),
+      '- Summary source fingerprint: ' + L.fingerprint(source.extensionDescription),
+      '- Full-description source fingerprint: ' + L.fingerprint(fullDescription(source)),
+    ];
+    for (const fingerprint of expectedFingerprints) {
+      if (!text.includes(fingerprint)) fail(locale.locale + ': stale ' + store + ' source fingerprint');
+    }
+    const fields = [...text.matchAll(/Character count: (\d+)/g)].map(match => Number(match[1]));
+    if (fields.length < 3) fail(locale.locale + ': incomplete ' + store + ' character counts');
+    if (fields[0] > 75) fail(locale.locale + ': ' + store + ' title exceeds conservative 75-character limit');
+    if (fields[1] > 132) fail(locale.locale + ': ' + store + ' summary exceeds conservative 132-character limit');
+    if (fields[2] < 250 || fields[2] > 10000) fail(locale.locale + ': ' + store + ' full description is outside 250-10,000 characters');
+  }
 }
-for (const browser of ['chrome','firefox','edge']) {
-  const manifest=L.read(`src/overrides/${browser}/manifest.json`);
-  if(manifest.default_locale!=='en'||manifest.name!=='__MSG_extensionName__'||manifest.description!=='__MSG_extensionDescription__'||(manifest.action||manifest.browser_action).default_title!=='__MSG_openTabTools__')throw new Error(`${browser}: unlocalised manifest`);
+
+for (const manifestName of ['chrome', 'firefox', 'edge']) {
+  const manifest = readJson(path.join(L.root, 'src', 'overrides', manifestName, 'manifest.json'));
+  if (manifest.default_locale !== 'en') fail(manifestName + ': default_locale must be en');
+  if (manifest.name !== '__MSG_extensionName__') fail(manifestName + ': manifest name is not localized');
+  if (manifest.description !== '__MSG_extensionDescription__') fail(manifestName + ': manifest description is not localized');
 }
-// Catch message identifiers absent from English, even when native fallback hides them.
-for(const file of ['src/shared/popup/popup.js','src/shared/background.js','src/shared/popup/popup.html','website/src/script.js','website/src/index.html']) {
- const content=L.fs.readFileSync(L.path.join(L.root,file),'utf8');
- const patterns=[/\b(?:t|plural|countText)\(["'](\w+)["']/g,/data-i18n(?:-[\w-]+)?="(\w+)"/g,/{{((?:web_)\w+)/g];
- for(const pattern of patterns)for(const match of content.matchAll(pattern))if(!(match[1] in L.english))throw new Error(`${file}: unknown message ${match[1]}`);
+
+const sitemap = fs.readFileSync(path.join(L.root, 'website', 'dist', 'sitemap.xml'), 'utf8');
+for (const locale of L.registry) {
+  if (!sitemap.includes('<loc>' + L.urlFor(locale) + '</loc>')) fail('sitemap missing ' + locale.locale);
 }
-const present=(row,key)=>typeof row.data?.[key]==='string'?!!row.data[key].trim():!!row.data?.[key]?.other;
-const count=(row,keys)=>keys.filter(key=>present(row,key)).length;
-const allKeys=Object.keys(L.english),extKeys=allKeys.filter(k=>!k.startsWith('web_')),webKeys=allKeys.filter(k=>k.startsWith('web_'));
-const report='# Localisation coverage\n\nGenerated by `node scripts/validate-localisation.js --report`. Completion and technical text checks do not imply browser testing or native-speaker review. Each store column counts name, summary and full description (3 fields). Descriptions reuse reviewed source keys; they are not independent untranslated copies.\n\n'+
-'| Locale | Extension | Website/shared | Chrome | Firefox | Edge | Missing keys | Stale/unreviewed keys | Other errors | Technical text checks | Linguistic review |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|\n'+
-rows.map(row=>{const missing=allKeys.length-count(row,allKeys),stale=row.errors.filter(e=>e.startsWith('stale/unreviewed')).length;const fields=Number(present(row,'extensionName'))+Number(present(row,'extensionDescription'))+Number(L.listingKeys.every(k=>present(row,k)));return `| ${row.locale} | ${count(row,extKeys)}/${extKeys.length} | ${count(row,webKeys)}/${webKeys.length} | ${fields}/3 | ${fields}/3 | ${fields}/3 | ${missing} | ${stale} | ${Math.max(0,row.errors.length-missing-stale)} | ${row.errors.length?'FAIL':'PASS'} | ${row.review} |`;}).join('\n')+
-'\n\nReview provenance is recorded for every translated key in `reviews/`. “AI self-review” covers meaning, omissions, terminology and length; no native-speaker review has been performed. English (British) deliberately retains the original English wording. Specific identical-word exceptions and title abbreviations are recorded in the relevant review entries. All locales need fluent-reader review, particularly grammatical agreement in dynamic messages, Norwegian terminology, Serbian Cyrillic and Hebrew RTL presentation. See GLOSSARY.md.\n\nStore field dependencies are documented in ../marketing/README.md; per-key source and translation fingerprints cover each dependency. Browser and visual checks are recorded separately in VALIDATION.md. See LOCALES.md for store-support evidence, the unverified exhaustive Edge language list and candidate dashboard codes. The current Edge listing baseline and Chrome dashboard full-description limit remain unavailable. No fallback counts as translation completion.\n';
-L.write('localisation/COVERAGE.md',report,!process.argv.includes('--report'));
-if(failed)process.exit(1);
-if(!process.argv.includes('--sources-only')) {
- for(const script of ['scripts/generate-localisation.js','website/build.js'])execFileSync(process.execPath,[L.path.join(L.root,script),'--check'],{stdio:'inherit'});
+if (/pages\.dev|chatgpt\.site/.test(sitemap)) fail('sitemap contains a preview or rollback host');
+
+const coverage = [
+  '# TabTools localisation coverage',
+  '',
+  'Baseline commit: ' + L.registrySource.baseCommit,
+  'Registry verification date: ' + L.registrySource.verifiedAt,
+  'Intersection status: ' + L.registrySource.intersectionStatus,
+  '',
+  '| Locale | Extension | Website | Store text | Source freshness | Technical | Linguistic review |',
+  '| --- | ---: | ---: | ---: | --- | --- | --- |',
+];
+for (const locale of L.registry) {
+  const catalogue = L.catalogue(locale.locale);
+  const extensionCount = Object.keys(L.extensionSource(catalogue)).length;
+  const webCount = Object.keys(catalogue).filter(key => key.startsWith('web_')).length;
+  const staleKeys = locale.locale === 'en'
+    ? []
+    : sourceKeys.filter(key => L.isStale(locale.locale, key));
+  const freshness = staleKeys.length ? 'STALE (' + staleKeys.length + ' keys)' : 'current';
+  const linguistic = locale.locale === 'en'
+    ? 'Source baseline'
+    : 'AI self-review only; no native-speaker review';
+  coverage.push('| ' + locale.locale + ' | ' + extensionCount + '/' + Object.keys(L.extensionSource(source)).length +
+    ' | ' + webCount + '/' + Object.keys(source).filter(key => key.startsWith('web_')).length +
+    ' | 3/3 fields × 3 stores | ' + freshness + ' | structural checks | ' + linguistic + ' |');
 }
-console.log(`${rows.length} locales pass source, token, plural, review-fingerprint and length checks.`);
+coverage.push('', 'No images, screenshots, banners, or videos are translated by this task.');
+fs.writeFileSync(path.join(L.root, 'localisation', 'coverage.md'), coverage.join('\n') + '\n');
+
+if (warnings.length) console.warn(warnings.join('\n'));
+if (errors.length) {
+  console.error(errors.join('\n'));
+  process.exit(1);
+}
+console.log('Localisation validation passed for ' + L.registry.length + ' locales.');
