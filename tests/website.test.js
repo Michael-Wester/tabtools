@@ -9,10 +9,12 @@ const script = L.fs.readFileSync(L.path.join(L.root, 'website/src/script.js'), '
 // behaviour, not rendering; actual browser verification is recorded separately.
 function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
   const storage = new Map(saved ? [['tabtools-site-language', saved]] : []);
-  const element = () => ({dataset:{},children:[],events:{},hidden:true,textContent:'',
+  const element = () => ({dataset:{},children:[],events:{},hidden:true,_text:'',
+    get textContent(){return this.children.length ? this.children.map(x=>x.textContent).join('') : this._text;},
+    set textContent(value){this._text=value;this.children=[];},
     setAttribute(k,v){this[k]=v;},addEventListener(k,v){this.events[k]=v;},
     append(v){this.children.push(v);},replaceChildren(...v){this.children=v;},
-    focus(){this.focused=true;},
+    focus(){this.focused=true;document.activeElement=this;},
     scrollIntoView(){this.scrolled=true;},
     hasAttribute(k){return k==='data-adaptive-store';},
     querySelector(k){return this.parts?.[k] || null;}});
@@ -31,6 +33,7 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
     option.textContent=l.languageName;
     return option;
   });
+  picker.contains=node=>node===trigger || node===menu || options.includes(node);
   menu.hidden=true;
   const data={locale,registry:L.presentationRegistry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),languageName:l.languageName,flagAsset:l.flagAsset})),messages:L.catalogue(locale)};
   const document={documentElement:{dataset:{},lang:locale},
@@ -65,8 +68,10 @@ test('flag language picker remembers the choice and preserves queries and anchor
   assert.deepEqual(p.navigation,['/he/?campaign=test#faq']);
 });
 test('language suggestions resolve aliases and retain meaningful variants',()=>{
-  for(const [pref,wanted] of [['de-AT','/de/'],['no-NO','/nb/'],['zh-Hant-HK','/zh-tw/'],['zh-Hans-SG','/zh-cn/'],['pt-BR','/pt-br/'],['pt-PT','/pt-pt/'],['pt','/'],['zh','/'],['xx','/']]) {
-    const p=pageRuntime('ja',[pref]);assert.equal(p.note.children[0].href,wanted+'?campaign=test#faq',pref);
+  for(const [pref,wanted] of [['de-AT','/de/'],['no-NO','/nb/'],['zh-Hant-HK','/zh-tw/'],['zh-Hans-SG','/zh-cn/'],['pt-BR','/pt-br/'],['pt-PT','/pt-pt/'],['pt',null],['zh',null],['xx',null]]) {
+    const p=pageRuntime('ja',[pref]);
+    if(wanted)assert.equal(p.note.children[0].href,wanted+'?campaign=test#faq',pref);
+    else assert.equal(p.note.hidden,true,pref);
     assert.deepEqual(p.navigation,[]);
   }
 });
@@ -106,14 +111,16 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
     for(const alt of L.registry)assert.ok(html.includes(`hreflang="${alt.hreflang}" href="${L.urlFor(alt)}"`));
     assert.ok(html.includes('hreflang="x-default" href="https://tabtools.fyi/"'));
     assert.ok(html.includes(`<title>${L.escape(L.catalogue(locale.locale).web_tabtools_close_tabs_by_site)}</title>`));
-    assert.ok(html.includes(`<h3>${L.catalogue(locale.locale).openTabTools}</h3>`), `${locale.locale}: instructional labels are translated`);
+    assert.ok(html.includes(`<h3>${L.escape(L.catalogue(locale.locale).openTabTools)}</h3>`), `${locale.locale}: instructional labels are translated`);
     const addToParts = L.catalogue(locale.locale).web_addTo.split('{browser}');
     assert.equal(addToParts.length, 2);
     const chromeButton = `<span class="browser-button-copy" data-browser-copy="Chrome">${L.escape(addToParts[0])}<span class="browser-button-name" data-browser-name>Chrome</span>${L.escape(addToParts[1])}</span>`;
     assert.ok(html.includes(chromeButton), `${locale.locale}: browser label placeholder is positioned correctly`);
-    assert.ok(html.includes(`<p>${L.catalogue(locale.locale).web_close_tabs_by_site_sort_2}</p>`), `${locale.locale}: footer tagline is translated as a complete message`);
-    assert.ok(html.includes(`<span class="footer-label">${L.catalogue(locale.locale).web_product}</span>`), `${locale.locale}: footer labels are not partially replaced`);
+    assert.ok(html.includes(`<p>${L.escape(L.catalogue(locale.locale).web_close_tabs_by_site_sort_2)}</p>`), `${locale.locale}: footer tagline is translated as a complete message`);
+    assert.ok(html.includes(`<span class="footer-label">${L.escape(L.catalogue(locale.locale).web_product)}</span>`), `${locale.locale}: footer labels are not partially replaced`);
     assert.doesNotMatch(html,/{{\w+}}|__MSG_/);
+    assert.match(html, /id="language-menu"[^>]*role="listbox"/);
+    assert.match(html, /<img[^>]*data-language-flag-image[^>]*alt=""/);
     const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
     for(const m of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.has(m[1]),`${locale.locale}: ${m[1]}`);
     for(const m of html.matchAll(/(?:src|href)="(\/[^"?]+)"/g))assert.ok(L.fs.existsSync(L.path.join(L.root,'website/dist',m[1])),m[1]);
@@ -123,4 +130,75 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
     assert.equal(structured.inLanguage,locale.locale);assert.equal(structured.url,L.urlFor(locale));
     assert.equal([...html.matchAll(/data-store="/g)].length,13);
   }
+});
+
+test('selector follows keyboard focus and dismisses on Tab/outside focus without trapping it', () => {
+  const p=pageRuntime('en');
+  const key=key=>({key,preventDefault(){}});
+  p.trigger.events.keydown(key('ArrowDown'));
+  assert.equal(p.menu.hidden,false);
+  assert.equal(p.document.activeElement,p.options[0]);
+  p.options[0].events.keydown(key('End'));
+  assert.equal(p.document.activeElement,p.options.at(-1));
+  assert.equal(p.options.at(-1).tabIndex,0);
+  p.options.at(-1).events.keydown(key('ArrowDown'));
+  assert.equal(p.document.activeElement,p.options[0]);
+  p.options[0].events.keydown(key('Escape'));
+  assert.equal(p.menu.hidden,true);
+  assert.equal(p.document.activeElement,p.trigger);
+  p.trigger.events.click();
+  p.picker.events.focusout({relatedTarget:p.options[1]});
+  assert.equal(p.menu.hidden,false);
+  p.picker.events.focusout({relatedTarget:p.toggle});
+  assert.equal(p.menu.hidden,true);
+  assert.equal(p.trigger['aria-expanded'],'false');
+});
+
+test('matching saved or first browser preference suppresses contradictory suggestions', () => {
+  assert.equal(pageRuntime('de',['en','fr'],'de').note.hidden,true);
+  assert.equal(pageRuntime('de',['de','en']).note.hidden,true);
+  const p=pageRuntime('ja',['xx','fr']);
+  assert.equal(p.note.children[0].href,'/fr/?campaign=test#faq');
+  const label=p.note.children[0].children[1];
+  assert.equal(label.lang,'en');
+  assert.equal(label.dir,'ltr');
+  assert.equal(label.textContent,'French');
+  p.note.children[0].events.click();
+  assert.equal(p.storage.get('tabtools-site-language'),'fr');
+});
+
+test('modified language links keep normal browser navigation and the URL suffix', () => {
+  const p=pageRuntime('en');
+  const option=p.options.find(item=>item.dataset.locale==='de');
+  option.events.click({ctrlKey:true,preventDefault(){assert.fail('new-tab click intercepted');}});
+  assert.equal(option.href,'/de/?campaign=test#faq');
+  assert.deepEqual(p.navigation,[]);
+  assert.equal(p.storage.get('tabtools-site-language'),undefined);
+});
+
+test('website translation output escapes text and permits only supported rich markup', () => {
+  const {applyTranslations}=require('../scripts/generate-website');
+  const template=L.fs.readFileSync(L.path.join(L.root,'website/src/template.html'),'utf8');
+  const catalogue=L.catalogue('fr');
+  const original=catalogue.web_heroTitle;
+  try {
+    catalogue.web_heroTitle='<em>Safe</em><img src=x onerror="bad()"> & text';
+    const html=applyTranslations(template,L.localeInfo('fr'));
+    assert.ok(html.includes('<span>Safe</span>&lt;img src=x onerror=&quot;bad()&quot;&gt; &amp; text'));
+    assert.ok(!html.includes('<img src=x'));
+  } finally { catalogue.web_heroTitle=original; }
+});
+
+test('English wording changes bind by key without changing the template', () => {
+  const {applyTranslations}=require('../scripts/generate-website');
+  const template=L.fs.readFileSync(L.path.join(L.root,'website/src/template.html'),'utf8');
+  const catalogue=L.catalogue('en');
+  const original=catalogue.web_free_browser_tab_manager;
+  try {
+    catalogue.web_free_browser_tab_manager='A revised English description';
+    const html=applyTranslations(template,L.localeInfo('en'));
+    assert.ok(html.includes('A revised English description</p>'));
+    delete catalogue.web_free_browser_tab_manager;
+    assert.throws(()=>applyTranslations(template,L.localeInfo('en')),/Missing website message/);
+  } finally {catalogue.web_free_browser_tab_manager=original;}
 });
