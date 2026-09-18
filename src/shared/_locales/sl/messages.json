@@ -68,15 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ odprtih zavihkov",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ odprt zavihek",
     "placeholders": {
@@ -97,15 +88,6 @@
   },
   "openCount_few": {
     "message": "$count$ odprti zavihki",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "$count$ odprtih zavihkov",
     "placeholders": {
       "count": {
         "content": "$1",
