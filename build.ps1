@@ -20,7 +20,7 @@ if (-not $Targets -or $Targets.Count -eq 0) {
   $Targets = @("firefox", "chrome", "edge")
 }
 
-$locales = Get-Content (Join-Path $root 'localisation/registry.json') -Raw | ConvertFrom-Json
+$locales = (Get-Content (Join-Path $root 'localisation/registry.json') -Raw | ConvertFrom-Json).locales
 foreach ($locale in $locales) {
   $messages = Join-Path $sharedDir ("_locales/" + $locale.extension + "/messages.json")
   if (-not (Test-Path $messages)) { throw "Missing locale file: $messages. Run node scripts/generate-localisation.js after translation edits." }
@@ -47,7 +47,11 @@ foreach ($browser in $Targets) {
   }
 
   if ($browser -eq "firefox") {
-    Move-Item (Join-Path $distDir '_locales/no') (Join-Path $distDir '_locales/nb')
+    foreach ($locale in $locales) {
+      if ($locale.firefoxExtension -and $locale.firefoxExtension -ne $locale.extension) {
+        Move-Item (Join-Path $distDir ("_locales/" + $locale.extension)) (Join-Path $distDir ("_locales/" + $locale.firefoxExtension))
+      }
+    }
   }
   $resolvedDist = (Resolve-Path $distDir).Path
   Write-Host "Built $browser -> $resolvedDist"
