@@ -10,45 +10,9 @@ const outputDir = path.join(L.root, 'website', 'dist');
 const template = fs.readFileSync(path.join(sourceDir, 'template.html'), 'utf8');
 
 function htmlMessage(value) {
-  return String(value)
-    .replaceAll('<em>', '<span>')
-    .replaceAll('</em>', '</span>')
-    .replaceAll('<br>', '<br />');
-}
-
-function replaceLiterals(input, replacements) {
-  const aliases = new Map();
-  const tokenValues = [];
-
-  replacements.forEach(({ source, replacement }, index) => {
-    if (!source || typeof source !== 'string') return;
-    const token = '__TABTOOLS_LOCALE_' + index + '__';
-    tokenValues.push([token, replacement]);
-    for (const literal of new Set([source, L.escape(source)])) {
-      if (!literal) continue;
-      const existing = aliases.get(literal);
-      if (existing && existing.replacement !== replacement) {
-        throw new Error('Ambiguous website localisation source: ' + literal);
-      }
-      aliases.set(literal, { token, replacement });
-    }
-  });
-
-  let output = input;
-  [...aliases.entries()]
-    .sort((left, right) => right[0].length - left[0].length)
-    .forEach(([literal, value]) => {
-      output = output.split(literal).join(value.token);
-    });
-  for (const [token, replacement] of tokenValues) {
-    output = output.split(token).join(replacement);
-  }
-  return output;
-}
-
-function replaceAttribute(input, name, value) {
-  const expression = new RegExp('(<[^>]+(?:name|property)="' + name + '"[^>]*content=")[^"]*(")', 'i');
-  return input.replace(expression, '$1' + L.escape(value) + '$2');
+  return L.escape(value)
+    .replace(/&lt;(\/?)(em|strong)&gt;/g, (_, end, tag) => '<' + end + (tag === 'em' ? 'span' : tag) + '>')
+    .replaceAll('&lt;br&gt;', '<br />');
 }
 
 function localeData(locale) {
@@ -71,8 +35,8 @@ function flagMarkup(item, className) {
     return '<span class="language-flag ' + className + '" aria-hidden="true"></span>';
   }
   return '<span class="language-flag ' + className + '" aria-hidden="true">' +
-    '<img class="language-flag-image" src="/assets/flags/' + L.escape(asset) +
-    '" width="32" height="32" alt="" loading="lazy" />' +
+    '<img class="language-flag-image"' + (className === 'language-flag-current' ? ' data-language-flag-image' : '') + ' src="/assets/flags/' + L.escape(asset) +
+    '" width="32" height="32" alt="" />' +
     '</span>';
 }
 
@@ -95,7 +59,7 @@ function languagePickerMarkup(current, label) {
       flagMarkup(current, 'language-flag-current') +
       '<span class="language-name sr-only" data-language-name lang="en" dir="ltr">' + L.escape(currentName) + '</span>' +
     '</button>' +
-    '<div class="language-menu" data-language-menu role="listbox" aria-label="' + L.escape(label) + '" hidden>' +
+    '<div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="' + L.escape(label) + '" hidden>' +
       options +
     '</div>' +
   '</div>';
@@ -116,98 +80,31 @@ function safeJson(value) {
 }
 
 function applyTranslations(html, locale) {
-  const source = L.catalogue('en');
   const target = L.catalogue(locale.locale);
-
-  const headlineBindings = [
-    ['web_heroTitle', 'Close tabs from the <span>same site.</span>'],
-    ['web_featuresTitle', 'Close by site.<br /><span>Sort what stays.</span>'],
-    ['web_workflowTitle', 'Add TabTools.<br /><span>Choose what to clear.</span>'],
-    ['web_privacyTitle', 'Your tab data stays<br />in your browser.'],
-    ['web_finalTitle', 'Close finished tabs.<br /><span>Sort what’s left.</span>'],
-  ];
-  const replacements = headlineBindings.map(([key, existing]) => ({
-    source: existing,
-    replacement: htmlMessage(target[key]),
-  }));
-
-  for (const [key, value] of Object.entries(source)) {
-    if (!key.startsWith('web_') || typeof value !== 'string') continue;
-    replacements.push({
-      source: value,
-      replacement: htmlMessage(target[key]),
-    });
-  }
-
-  // A few instructional labels are shared with the extension UI rather than
-  // the website catalogue. Replace those source literals too so generated
-  // pages do not leave English UI labels behind (for example, “Open TabTools”).
-  for (const [key, value] of Object.entries(source)) {
-    if (key.startsWith('web_') || typeof value !== 'string') continue;
-    replacements.push({
-      source: value,
-      replacement: htmlMessage(target[key]),
-    });
-  }
-
-  let output = replaceLiterals(html, replacements);
-
-  const addToParts = String(target.web_addTo).split('{browser}');
-  if (addToParts.length === 2) {
-    output = output.replace(
-      /(<span class="browser-button-copy" data-browser-copy="[^"]*">)[\s\S]*?(<span class="browser-button-name" data-browser-name>[^<]*<\/span>)(<\/span>)/g,
-      '$1' + L.escape(addToParts[0]) + '$2' + L.escape(addToParts[1]) + '$3'
-    );
-  }
-
-  output = output.replace(/<html lang="[^"]+" dir="[^"]+">/, '<html lang="' +
-    L.escape(locale.canonical) + '" dir="' + L.escape(locale.direction) + '">');
-
-  const title = target.web_tabtools_close_tabs_by_site;
-  const description = target.web_close_tabs_from_the_same;
-  const ogDescription = target.web_close_tabs_by_site_sort;
-  output = output.replace(/<title>[^<]*<\/title>/, '<title>' + L.escape(title) + '</title>');
-  output = replaceAttribute(output, 'description', description);
-  output = replaceAttribute(output, 'og:title', title);
-  output = replaceAttribute(output, 'og:description', ogDescription);
-  output = replaceAttribute(output, 'twitter:title', title);
-  output = replaceAttribute(output, 'twitter:description', ogDescription);
-  output = output.replace(/(<meta property="og:url" content=")[^"]*(")/, '$1' + L.urlFor(locale) + '$2');
-  output = output.replace(/(<link rel="canonical" href=")[^"]*(")/, '$1' + L.urlFor(locale) + '$2');
-
+  const { richKeys } = require('./catalogue-validation');
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'TabTools',
-    url: L.urlFor(locale),
-    description: target.web_structuredDescription,
-    inLanguage: locale.locale,
-    applicationCategory: 'BrowserApplication',
-    isAccessibleForFree: true,
+    '@context': 'https://schema.org', '@type': 'SoftwareApplication',
+    name: 'TabTools', url: L.urlFor(locale), description: target.web_structuredDescription,
+    inLanguage: locale.locale, applicationCategory: 'BrowserApplication', isAccessibleForFree: true,
   };
-  output = output.replace(
-    /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
-    '<script type="application/ld+json">' + safeJson(structuredData) + '</script>'
-  );
-  output = output.replace(
-    /\s*<link rel="alternate" hreflang="en"[^>]*>[\s\S]*?<link rel="alternate" hreflang="x-default"[^>]*>\s*/,
-    '\n' + seoLinks() + '\n'
-  );
-  output = output.replace(
-    /<script type="application\/json" id="locale-data">[\s\S]*?<\/script>/,
-    '<script type="application/json" id="locale-data">' +
-      safeJson(localeData(locale)) + '</script>'
-  );
-  output = output.replace(
-    /<!-- TABTOOLS_LANGUAGE_PICKER -->/,
-    languagePickerMarkup(locale, target.web_language)
-  );
-  output = output.replace(
-    /(<span data-store-note>)[\s\S]*?(<\/span>)/,
-    '$1' + L.escape(String(target.web_storeNote).replace('{store}', 'Chrome Web Store')) + '$2'
-  );
-
-  return output;
+  const special = {
+    locale: L.escape(locale.canonical), direction: L.escape(locale.direction),
+    canonical: L.urlFor(locale), alternates: seoLinks(),
+    structuredData: '<script type="application/ld+json">' + safeJson(structuredData) + '</script>',
+    pageData: '<script type="application/json" id="locale-data">' + safeJson(localeData(locale)) + '</script>',
+    languageSelector: languagePickerMarkup(locale, target.web_language),
+  };
+  return html.replace(/{{(\w+)(?::([^}]+))?}}/g, (_, key, argument) => {
+    if (Object.hasOwn(special, key)) return special[key];
+    const value = target[key];
+    if (typeof value !== 'string') throw new Error('Missing website message ' + locale.locale + ':' + key);
+    if (key === 'web_addTo') {
+      return L.escape(value).replace('{browser}',
+        '<span class="browser-button-name" data-browser-name>' + L.escape(argument) + '</span>');
+    }
+    if (key === 'web_storeNote') return L.escape(value.replace('{store}', argument));
+    return richKeys.has(key) ? htmlMessage(value) : L.escape(value);
+  });
 }
 
 function writePage(locale) {
