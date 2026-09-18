@@ -7,6 +7,7 @@ const L = require('./localisation');
 
 function main() {
   const root = path.join(L.root, 'src', 'shared', '_locales');
+  fs.mkdirSync(root, { recursive: true });
   const expected = new Set(L.registry.map(locale => locale.extension));
   for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
     if (entry.isDirectory() && !expected.has(entry.name)) {
@@ -24,3 +25,4 @@ function main() {
 }
 
 if (require.main === module) main();
+module.exports = { main };
