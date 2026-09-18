@@ -541,3 +541,12 @@ html[dir="rtl"] .proof-item { text-align: start; }
   .nav-actions .browser-button { flex: 1 1 0; min-width: 0; }
   .nav-utilities { margin-inline-start: auto; }
 }
+
+/* CJK headings need a little more leading and balanced lines at every width. */
+.hero h1:lang(ja), .hero h1:lang(zh) {
+  font-size: clamp(38px, 4.5vw, 64px);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+  word-break: normal;
+}
