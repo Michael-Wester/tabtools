@@ -69,7 +69,7 @@ function review(locale, key) {
 function isStale(locale, key) {
   if (locale === 'en') return false;
   const entry = review(locale, key);
-  return !entry || entry.source !== sourceFingerprint(key);
+  return !entry || entry.source !== sourceFingerprint(key) || entry.translation !== fingerprint(catalogue(locale)[key]);
 }
 
 function extensionSource(catalogueValue) {
@@ -92,30 +92,26 @@ function toWebExtensionMessages(locale) {
   for (const [key, value] of Object.entries(source)) {
     if (key === 'openCount' && value && typeof value === 'object') {
       for (const [category, text] of Object.entries(value)) {
-        output['openCount_' + category] = messageEntry(text);
+        output['openCount_' + category] = messageEntry(text, catalogue('en').openCount.other);
       }
       continue;
     }
-    output[key] = messageEntry(value);
+    output[key] = messageEntry(value, catalogue('en')[key]);
   }
   return output;
 }
 
-function messageEntry(value) {
-  if (typeof value !== 'string') {
-    throw new TypeError('Extension messages must be strings');
-  }
+function messageEntry(value, source = value) {
+  if (typeof value !== 'string') throw new TypeError('Extension messages must be strings');
+  const names = [...new Set((String(source).match(/\{\w+\}/g) || []).map(token => token.slice(1, -1)))];
   const placeholders = {};
   const message = value.replace(/\{(\w+)\}/g, (_, name) => {
-    placeholders[name] = {
-      content: '$' + (Object.keys(placeholders).length + 1),
-      example: name === 'site' ? 'example.com' : '3',
-    };
+    const index = names.indexOf(name);
+    if (index < 0) throw new Error('Unknown placeholder: ' + name);
+    placeholders[name] = { content: '$' + (index + 1), example: name === 'site' ? 'example.com' : '3' };
     return '$' + name + '$';
   });
-  const entry = { message };
-  if (Object.keys(placeholders).length) entry.placeholders = placeholders;
-  return entry;
+  return Object.keys(placeholders).length ? { message, placeholders } : { message };
 }
 
 module.exports = {
@@ -137,4 +133,5 @@ module.exports = {
   extensionSource,
   webExtensionLocale,
   toWebExtensionMessages,
+  messageEntry,
 };
