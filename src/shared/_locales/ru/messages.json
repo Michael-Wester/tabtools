@@ -68,26 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ открытой вкладки",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ открытая вкладка",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ открытой вкладки",
     "placeholders": {
       "count": {
         "content": "$1",
