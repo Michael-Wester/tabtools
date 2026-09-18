@@ -1,8 +1,8 @@
 # TabTools localisation sources
 
 This directory is the source of truth for user-facing translation text.
-English is represented by `locales/en.json`; `en-GB.json` is the explicit
-British-English store and website variant. The locale registry in
+English is represented by `locales/en.json`; the website uses it as the single
+English fallback. The locale registry in
 `registry.json` maps canonical language tags to the WebExtensions directory,
 website URL, hreflang value, and each store's listing code.
 
