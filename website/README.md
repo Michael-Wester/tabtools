@@ -69,3 +69,11 @@ the extension and distinguishes the website's third-party YouTube player.
 
 See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
 hosting settings, verification requirements, and future deployment instructions.
+
+## Language selector flags
+
+The website language selector serves square SVG flags locally and clips them to
+circular controls. The flags are vendored from [`flag-icons`](https://github.com/lipis/flag-icons)
+under its MIT License; the attribution and permission notice are kept with the
+authored assets in [`src/assets/flags/`](src/assets/flags/) and copied to
+`dist/assets/flags/` during website generation.
