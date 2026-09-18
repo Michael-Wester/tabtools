@@ -68,26 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ otevřených panelů",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ otevřený panel",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ otevřených panelů",
     "placeholders": {
       "count": {
         "content": "$1",
