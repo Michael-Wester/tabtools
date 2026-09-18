@@ -68,26 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ otvorených kariet",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ otvorená karta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ otvorených kariet",
     "placeholders": {
       "count": {
         "content": "$1",
