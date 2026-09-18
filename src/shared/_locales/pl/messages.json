@@ -68,26 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ otwartej karty",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ otwarta karta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ otwartej karty",
     "placeholders": {
       "count": {
         "content": "$1",
