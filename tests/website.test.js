@@ -147,6 +147,10 @@ test('selector follows keyboard focus and dismisses on Tab/outside focus without
   assert.equal(p.menu.hidden,true);
   assert.equal(p.document.activeElement,p.trigger);
   p.trigger.events.click();
+  p.options[0].events.keydown({key:'Tab',shiftKey:true,preventDefault(){}});
+  assert.equal(p.menu.hidden,true);
+  assert.equal(p.document.activeElement,p.trigger);
+  p.trigger.events.click();
   p.picker.events.focusout({relatedTarget:p.options[1]});
   assert.equal(p.menu.hidden,false);
   p.picker.events.focusout({relatedTarget:p.toggle});
