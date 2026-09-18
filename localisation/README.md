@@ -22,11 +22,13 @@ the publisher dashboards before release.
 Run:
 
 ```sh
+node scripts/generate-extension-locales.js
 node scripts/generate-website.js
 node scripts/generate-listings.js
 node scripts/validate-localisation.js
 node --test tests/website.test.js tests/localisation.test.js
 node build.js
+node scripts/check-packages.js
 ```
 
 `website/src/template.html`, `website/src/styles.css`, and
@@ -44,3 +46,20 @@ native-speaker review is claimed. The official public documentation confirms
 the localisation mechanisms, while AMO and Edge expose the complete listing
 language choices in publisher dashboards. Recheck those dashboards before
 applying a store release.
+
+The website template uses explicit `{{messageKey}}` bindings. English copy edits
+belong in `locales/en.json`; no duplicated English phrases need to be updated in
+the template. Plain text is HTML-escaped and only the six rich-text keys permit
+`em`, `strong` and `br` tags.
+
+After actually reviewing a changed translation, record its specific review:
+
+```sh
+node scripts/review-translation.js de settings "Reviewer name" "Terminology checked"
+```
+
+Validation rejects changed placeholders, missing plural forms, unsafe/unbalanced
+markup, missing brand/domain names, stale review fingerprints and stale listing
+content. These are technical checks, not proof of translation fluency.
+`COVERAGE.md` and `GLOSSARY.md` are the canonical documents; avoid case-only
+filename duplicates because they cannot coexist reliably on Windows.
