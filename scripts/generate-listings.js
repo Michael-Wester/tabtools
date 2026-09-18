@@ -110,4 +110,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { fullDescription, listing, stores };
+module.exports = { main, fullDescription, listing, stores };
