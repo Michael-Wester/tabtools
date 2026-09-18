@@ -11,6 +11,18 @@ const registry = registrySource.locales.map(locale => ({
   ...locale,
   path: locale.website ? '/' + locale.website + '/' : '/',
 }));
+
+// Keep the source registry stable for URL, SEO and store mappings. The website
+// picker gets a separate deterministic presentation order: English first, then
+// the English display names in fixed English collation.
+const presentationRegistry = [...registry].sort((left, right) => {
+  if (left.locale === 'en') return -1;
+  if (right.locale === 'en') return 1;
+  return left.languageName.localeCompare(right.languageName, 'en', {
+    sensitivity: 'base',
+    numeric: false,
+  }) || left.locale.localeCompare(right.locale, 'en');
+});
 const catalogueCache = new Map();
 
 function catalogue(locale = 'en') {
@@ -113,6 +125,7 @@ module.exports = {
   root,
   registrySource,
   registry,
+  presentationRegistry,
   catalogue,
   localeInfo,
   urlFor,
