@@ -3,13 +3,10 @@
   "name": "__MSG_extensionName__",
   "version": "4.0.2",
   "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "author": "Michael Wester",
   "homepage_url": "https://github.com/Michael-Wester/tabtools",
-  "permissions": [
-    "tabs",
-    "storage",
-    "contextMenus"
-  ],
+  "permissions": ["tabs", "storage", "contextMenus"],
   "background": {
     "service_worker": "background.js"
   },
@@ -26,6 +23,5 @@
     "32": "icons/black/icon-32.png",
     "48": "icons/black/icon-48.png",
     "128": "icons/black/icon-128.png"
-  },
-  "default_locale": "en"
+  }
 }
