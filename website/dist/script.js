@@ -176,16 +176,81 @@
   }
 
   function initLanguage() {
-    const select = $('[data-language-select]');
-    const currentPath = pathFor(currentLocale);
-    if (select) {
-      select.value = currentPath;
-      select.addEventListener('change', () => {
-        const target = select.value || '/';
-        const chosen = registry.find(item => item.path === target);
-        try { localStorage.setItem('tabtools-site-language', chosen ? chosen.locale : target); } catch (_) {}
-        window.location.assign(target + currentLocationSuffix());
+    const picker = $('[data-language-picker]');
+    const trigger = $('[data-language-trigger]');
+    const menu = $('[data-language-menu]');
+    const options = () => $$('[data-language-option]');
+
+    if (picker && trigger && menu) {
+      const selected = registry.find(item => item.locale === currentLocale) || registry[0];
+      const flag = trigger.querySelector?.('[data-language-flag]');
+      const name = trigger.querySelector?.('[data-language-name]');
+      if (selected) {
+        if (flag) flag.textContent = selected.flag || '🌐';
+        if (name) name.textContent = selected.nativeName;
+      }
+
+      const setOpen = (open, focusSelected = false) => {
+        picker.dataset.open = open ? 'true' : 'false';
+        trigger.setAttribute('aria-expanded', String(open));
+        menu.hidden = !open;
+        if (open && focusSelected) {
+          const current = options().find(option => option.dataset.locale === currentLocale);
+          current?.focus?.();
+        }
+      };
+
+      const choose = (option, event) => {
+        event?.preventDefault?.();
+        event?.stopPropagation?.();
+        const chosen = registry.find(item => item.locale === option.dataset.locale);
+        if (!chosen) return;
+        try { localStorage.setItem('tabtools-site-language', chosen.locale); } catch (_) {}
+        setOpen(false);
+        window.location.assign(pathFor(chosen.locale) + currentLocationSuffix());
+      };
+
+      options().forEach(option => {
+        option.setAttribute('aria-selected', String(option.dataset.locale === currentLocale));
+        option.addEventListener('click', event => choose(option, event));
+        option.addEventListener('keydown', event => {
+          const items = options();
+          const index = items.indexOf(option);
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            const next = event.key === 'ArrowDown'
+              ? (index + 1) % items.length
+              : (index - 1 + items.length) % items.length;
+            items[next]?.focus?.();
+          } else if (event.key === 'Home' || event.key === 'End') {
+            event.preventDefault();
+            items[event.key === 'Home' ? 0 : items.length - 1]?.focus?.();
+          } else if (event.key === 'Escape') {
+            event.preventDefault();
+            setOpen(false);
+            trigger.focus?.();
+          } else if (event.key === 'Enter' || event.key === ' ') {
+            choose(option, event);
+          }
+        });
       });
+
+      trigger.addEventListener('click', () => {
+        setOpen(menu.hidden, menu.hidden);
+      });
+      trigger.addEventListener('keydown', event => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setOpen(true, true);
+        } else if (event.key === 'Escape') {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener?.('click', event => {
+        if (!picker.contains?.(event.target)) setOpen(false);
+      });
+      setOpen(false);
     }
 
     const suggestion = $('[data-language-suggestion]');
