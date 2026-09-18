@@ -68,15 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ de file deschise",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ filă deschisă",
     "placeholders": {
@@ -86,26 +77,8 @@
       }
     }
   },
-  "openCount_two": {
-    "message": "$count$ de file deschise",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_few": {
     "message": "$count$ file deschise",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "$count$ de file deschise",
     "placeholders": {
       "count": {
         "content": "$1",
