@@ -58,6 +58,14 @@ Open `edge://extensions`, enable **Developer mode**, select
 Open `about:debugging#/runtime/this-firefox`, select
 **Load Temporary Add-on**, and choose `dist/firefox/manifest.json`.
 
+## Localisation changes
+
+See [localisation maintenance](localisation/README.md) for authored sources,
+per-key review fingerprints and generation commands. Use Node 22 for this
+toolchain. Committed generated messages remain available to PowerShell builds
+without Node. See [website development](website/README.md) for the separate
+static-page generation command.
+
 ## Making changes
 
 Create a branch for your change:

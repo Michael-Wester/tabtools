@@ -63,10 +63,20 @@ function issuesFor(locale, data) {
     const sourceValue = typeof original === 'object' ? original.other : original;
     for (const v of values) {
       if (typeof v !== 'string' || !v.trim()) {errors.push(`empty: ${key}`);continue;}
+      if (/\uFFFD|[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(v)) errors.push(`invalid Unicode/control: ${key}`);
+      for (const brand of ['TabTools','Chrome','Firefox','Edge','GitHub','YouTube','youtube.com']) {
+        if (sourceValue.includes(brand) && !v.includes(brand)) errors.push(`changed brand/domain ${brand}: ${key}`);
+      }
       if (JSON.stringify(tokens(v)) !== JSON.stringify(tokens(sourceValue))) errors.push(`placeholders: ${key}`);
       const tags = s => (s.match(/<\/?(?:em|strong)>|<br>/g)||[]).sort().join();
       if (tags(v) !== tags(sourceValue)) errors.push(`markup: ${key}`);
       if (/<(?!\/?(?:em|strong)>|br>)/.test(v)) errors.push(`unsupported markup: ${key}`);
+      const stack=[];
+      for(const tag of v.matchAll(/<(\/?)(em|strong)>/g)) {
+        if(!tag[1]) stack.push(tag[2]);
+        else if(stack.pop()!==tag[2]) errors.push(`unbalanced markup: ${key}`);
+      }
+      if(stack.length) errors.push(`unbalanced markup: ${key}`);
     }
     if (typeof value === 'object') for (const category of new Intl.PluralRules(locale.locale).resolvedOptions().pluralCategories) {
       if (!value[category]) errors.push(`plural ${category}: ${key}`);

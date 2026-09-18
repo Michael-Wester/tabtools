@@ -13,7 +13,7 @@ for (const locale of targets) {
     const origin = store === 'firefox' ? 'Name and summary are separately managed in AMO; values are deliberately validated against the package.' : 'Name and short description come from the localised extension manifest.';
     L.write(`marketing/listings/${store}/${locale.locale}.md`,
       `<!-- Generated. Edit localisation/locales/${locale.locale}.json, then run node scripts/generate-localisation.js. -->\n`+
-      `# ${locale.name} — ${store}\n\nStore locale: \`${locale.stores[store]}\`. ${origin}\n\n`+
+      `# ${locale.name} — ${store}\n\nStore locale${store==='edge'?' (candidate; confirm dashboard code)':''}: \`${locale.stores[store]}\`. ${origin}\n\n`+
       `## Name (${fields.name.length} characters)\n\n${fields.name}\n\n`+
       `## Summary / short description (${fields.summary.length} characters)\n\n${fields.summary}\n\n`+
       `## Description (${fields.description.length} characters)\n\n${fields.description}\n`,check);
