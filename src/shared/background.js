@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: MPL-2.0
 
-if (typeof importScripts === "function") importScripts("i18n-fallback.js", "i18n.js");
-
 const root = typeof globalThis !== "undefined" ? globalThis : this;
+if (typeof root.ttMessage !== "function" && typeof importScripts === "function") {
+  try {
+    importScripts("i18n.js");
+  } catch (err) {
+    console.error("TabTools: unable to import localization helpers", err);
+  }
+}
 const SETTINGS_KEY = "pc.settings";
 const DEFAULTS = {
   enableInactiveSuggestion: true,
@@ -29,8 +34,9 @@ const ACTION_ICON_PATHS = {
   },
 };
 
-const CONTEXT_MENU_TITLE = globalThis.TabToolsI18n.t("contextClose");
-const CONTEXT_MENU_SORT_TITLE = globalThis.TabToolsI18n.t("contextSort");
+const CONTEXT_MENU_TITLE_KEY = "contextClose";
+const CONTEXT_MENU_SORT_TITLE_KEY = "contextSort";
+const CONTEXT_MENU_SORT_ID = "tabTools-sort-tabs";
 const CLOSE_MENU_ID_PAGE = "tabTools-close-site-tabs-page";
 
 // In MV3 service workers we must pull in helper script manually.
@@ -277,7 +283,7 @@ function installContextMenu() {
 
   const runCreate = () => {
     contextsToAdd.forEach((entry) => {
-      createEntry(CONTEXT_MENU_TITLE, entry.contexts, entry.id);
+      createEntry(root.ttMessage(CONTEXT_MENU_TITLE_KEY), entry.contexts, entry.id);
     });
     const seenSort = new Set();
     sortContexts.forEach((ctx) => {
@@ -294,7 +300,7 @@ function installContextMenu() {
         return;
       }
       seenSort.add(key);
-      createEntry(CONTEXT_MENU_SORT_TITLE, ctx, CONTEXT_MENU_SORT_TITLE);
+      createEntry(root.ttMessage(CONTEXT_MENU_SORT_TITLE_KEY), ctx, CONTEXT_MENU_SORT_ID);
     });
   };
 
@@ -335,7 +341,7 @@ function installContextMenu() {
         handleContextMenuClick(info, tab);
         return;
       }
-      if (info?.menuItemId === CONTEXT_MENU_SORT_TITLE) {
+      if (info?.menuItemId === CONTEXT_MENU_SORT_ID) {
         sortTabsByOpenCount().catch((err) => {
           console.error("TabTools: context sort failed", err);
         });
