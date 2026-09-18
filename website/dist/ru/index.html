@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="description" content="Закрывайте вкладки одного сайта, сортируйте вкладки по сайтам и удаляйте дубликаты. TabTools — бесплатный менеджер вкладок для Chrome, Firefox и Edge." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — Закрытие и сортировка вкладок по сайтам" />
+    <meta property="og:description" content="Закрывайте вкладки по сайтам, сортируйте панель вкладок и удаляйте дубликаты с бесплатным расширением с открытым исходным кодом для Chrome, Firefox и Edge." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:url" content="https://tabtools.fyi/ru/" />
+    <link rel="canonical" href="https://tabtools.fyi/ru/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TabTools — Закрытие и сортировка вкладок по сайтам" />
+    <meta name="twitter:description" content="Закрывайте вкладки по сайтам, сортируйте панель вкладок и удаляйте дубликаты с бесплатным расширением с открытым исходным кодом для Chrome, Firefox и Edge." />
+    <title>TabTools — Закрытие и сортировка вкладок по сайтам</title>
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TabTools","url":"https://tabtools.fyi/ru/","description":"Бесплатное расширение для закрытия вкладок по сайтам, сортировки вкладок, удаления дубликатов и закрытия неактивных вкладок.","inLanguage":"ru","applicationCategory":"BrowserApplication","isAccessibleForFree":true}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+      <link rel="alternate" hreflang="en" href="https://tabtools.fyi/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/" />
+    <link rel="alternate" hreflang="en-GB" href="https://tabtools.fyi/en-gb/" />
+    <link rel="alternate" hreflang="es" href="https://tabtools.fyi/es/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />
+    <script type="application/json" id="locale-data">{"locale":"ru","registry":[{"locale":"en","path":"/","nativeName":"English"},{"locale":"cs","path":"/cs/","nativeName":"Čeština"},{"locale":"de","path":"/de/","nativeName":"Deutsch"},{"locale":"el","path":"/el/","nativeName":"Ελληνικά"},{"locale":"en-GB","path":"/en-gb/","nativeName":"English (British)"},{"locale":"es","path":"/es/","nativeName":"Español (de España)"},{"locale":"fi","path":"/fi/","nativeName":"suomi"},{"locale":"fr","path":"/fr/","nativeName":"Français"},{"locale":"he","path":"/he/","nativeName":"עברית"},{"locale":"hr","path":"/hr/","nativeName":"Hrvatski"},{"locale":"hu","path":"/hu/","nativeName":"magyar"},{"locale":"it","path":"/it/","nativeName":"Italiano"},{"locale":"ja","path":"/ja/","nativeName":"日本語"},{"locale":"ko","path":"/ko/","nativeName":"한국어"},{"locale":"nb","path":"/nb/","nativeName":"Norsk bokmål"},{"locale":"nl","path":"/nl/","nativeName":"Nederlands"},{"locale":"pl","path":"/pl/","nativeName":"Polski"},{"locale":"pt-BR","path":"/pt-br/","nativeName":"Português (do Brasil)"},{"locale":"pt-PT","path":"/pt-pt/","nativeName":"Português (Europeu)"},{"locale":"ro","path":"/ro/","nativeName":"Română"},{"locale":"ru","path":"/ru/","nativeName":"Русский"},{"locale":"sk","path":"/sk/","nativeName":"slovenčina"},{"locale":"sl","path":"/sl/","nativeName":"Slovenščina"},{"locale":"sr","path":"/sr/","nativeName":"Српски"},{"locale":"sv","path":"/sv/","nativeName":"Svenska"},{"locale":"tr","path":"/tr/","nativeName":"Türkçe"},{"locale":"uk","path":"/uk/","nativeName":"Українська"},{"locale":"vi","path":"/vi/","nativeName":"Tiếng Việt"},{"locale":"zh-CN","path":"/zh-cn/","nativeName":"中文 (简体)"},{"locale":"zh-TW","path":"/zh-tw/","nativeName":"正體中文 (繁體)"}],"messages":{"web_heroTitle":"Закройте вкладки \u003cem>одного сайта.\u003c/em>","web_featuresTitle":"Закройте по сайтам.\u003cbr>\u003cem>Отсортируйте оставшиеся.\u003c/em>","web_workflowTitle":"Добавьте TabTools.\u003cbr>\u003cem>Выберите, что закрыть.\u003c/em>","web_privacyTitle":"Данные о вкладках остаются\u003cbr>в вашем браузере.","web_finalTitle":"Закройте ненужные вкладки.\u003cbr>\u003cem>Отсортируйте остальные.\u003c/em>","web_siteBody":"Откройте TabTools и нажмите на сайт в разделе \u003cstrong>Предложения\u003c/strong> или щёлкните правой кнопкой мыши на веб-странице и выберите \u003cstrong>Закрыть вкладки сайта\u003c/strong>. Это закроет вкладки этого сайта во всех обычных окнах, включая текущую вкладку.","web_addTo":"Добавить в {browser}","web_storeNote":"Откроется {store}.","web_storeAria":"{label} — открыть {store} в новой вкладке","web_language":"Язык","web_languageSuggestion":"Читать эту страницу на языке «{language}»","web_switchLight":"Включить светлую тему","web_lightMode":"Светлая тема","web_structuredDescription":"Бесплатное расширение для закрытия вкладок по сайтам, сортировки вкладок, удаления дубликатов и закрытия неактивных вкладок.","web_close_tabs_from_the_same":"Закрывайте вкладки одного сайта, сортируйте вкладки по сайтам и удаляйте дубликаты. TabTools — бесплатный менеджер вкладок для Chrome, Firefox и Edge.","web_tabtools_close_tabs_by_site":"TabTools — Закрытие и сортировка вкладок по сайтам","web_close_tabs_by_site_sort":"Закрывайте вкладки по сайтам, сортируйте панель вкладок и удаляйте дубликаты с бесплатным расширением с открытым исходным кодом для Chrome, Firefox и Edge.","web_skip_to_content":"Перейти к содержимому","web_tabtools_home":"Главная страница TabTools","web_main_navigation":"Основная навигация","web_features":"Возможности","web_how_it_works":"Как пользоваться","web_privacy":"Конфиденциальность","web_faq":"Вопросы и ответы","web_switch_to_dark_mode":"Включить тёмную тему","web_dark_mode":"Тёмная тема","web_free_browser_tab_manager":"Бесплатный менеджер вкладок браузера","web_clear_a_website_s_tabs":"Закройте все вкладки сайта одним действием или отсортируйте панель вкладок по сайтам. TabTools также удаляет дубликаты и закрывает неактивные вкладки в Chrome, Firefox и Edge.","web_free_to_use_no_account":"Бесплатно. Без учётной записи.","web_viewing_on_a_phone_or":"Открыли страницу на телефоне или планшете? Откройте её на компьютере, чтобы добавить TabTools.","web_tabtools_browser_stores":"TabTools в магазинах расширений","web_choose_another_browser":"Выбрать другой браузер","web_tabtools_in_action":"TabTools в действии","web_full_demo":"Полная демонстрация","web_tabtools_full_demo":"Полная демонстрация TabTools","web_see_tabtools_close_tabs_by":"Посмотрите, как TabTools закрывает вкладки по сайтам, удаляет дубликаты, сортирует вкладки и закрывает неактивные.","web_tabtools_product_details":"Информация о TabTools","web_close_tabs_by_site":"Закрытие вкладок по сайтам","web_from_the_popup_or_right":"из всплывающего окна или контекстного меню","web_local_by_design":"Локальная обработка данных","web_your_tab_list_stays_in":"список вкладок остаётся в вашем браузере","web_open_source":"Открытый исходный код","web_inspect_the_code_on_github":"Посмотрите код на GitHub","web_close_and_organise":"Закрывайте и наводите порядок","web_clear_a_finished_task_bring":"Закройте вкладки завершённой задачи, расположите вкладки одного сайта рядом или уберите повторяющиеся и неактивные страницы.","web_01_site_cleanup":"01 / Закрытие по сайтам","web_close_a_site_s_tabs":"Закройте все вкладки сайта сразу","web_see_how_to_get_started":"Узнайте, с чего начать","web_02_organise":"02 / Порядок","web_sort_tabs_by_site":"Сортируйте вкладки по сайтам","web_bring_tabs_from_the_same":"Расположите вкладки одного сайта рядом в текущем окне. Сайты с наибольшим числом открытых вкладок окажутся первыми.","web_03_simplify":"03 / Без повторов","web_remove_duplicate_tabs":"Удаляйте дубликаты вкладок","web_close_extra_copies_of_the":"Закройте лишние копии одной страницы одним нажатием. Закреплённые вкладки останутся на месте.","web_04_find":"04 / Поиск","web_search_by_keyword_or_domain":"Поиск по ключевому слову или домену","web_type_a_word_to_match":"Введите слово для поиска в заголовках и URL вкладок или укажите точный домен, например youtube.com. Затем выберите «Закрыть».","web_05_reset":"05 / Очистка","web_clear_inactive_tabs":"Закрывайте неактивные вкладки","web_choose_an_inactivity_threshold_in":"Задайте порог времени бездействия в Настройках, затем нажмите «Неактивные», чтобы закрыть подходящие вкладки. Активные, закреплённые и воспроизводящие звук вкладки останутся открытыми.","web_more_tabtools_details":"Другие возможности TabTools","web_undo_cleanup_from_the_popup":"Отмена закрытия из всплывающего окна","web_light_and_dark_themes":"Светлая и тёмная темы","web_local_cleanup_statistics":"Локальная статистика закрытия вкладок","web_start_with_one_busy_site":"Начните с сайта, у которого открыто много вкладок. Во всплывающем окне доступны предложения и сортировка, а в контекстном меню — быстрое закрытие.","web_add_it_to_your_browser":"Добавьте в браузер","web_open_the_chrome_firefox_or":"Откройте страницу магазина Chrome, Firefox или Edge и добавьте бесплатное расширение.","web_click_the_tabtools_icon_in":"Нажмите значок TabTools в меню расширений браузера, чтобы увидеть предложения сайтов и быстрые действия.","web_close_a_site_or_sort":"Закройте вкладки сайта или отсортируйте их","web_click_a_site_under_suggestions":"Нажмите на сайт в разделе «Предложения», чтобы закрыть его вкладки, или выберите «Сортировать вкладки», чтобы расположить вкладки одного сайта рядом.","web_private_by_design":"Конфиденциальность по замыслу","web_the_tabtools_extension_processes_tab":"Расширение TabTools обрабатывает информацию о вкладках на вашем устройстве. Настройки и статистика закрытия вкладок остаются в локальном хранилище браузера. В расширении нет учётных записей, аналитики, рекламы или внешней базы данных.","web_read_the_privacy_policy":"Прочитать политику конфиденциальности","web_before_you_add_tabtools":"Перед установкой TabTools","web_common_questions":"Частые вопросы","web_browsers_cleanup_and_privacy":"Браузеры, закрытие вкладок и конфиденциальность","web_is_tabtools_free":"TabTools бесплатный?","web_yes_tabtools_is_free_to":"Да. TabTools — бесплатное расширение с открытым исходным кодом.","web_which_browsers_can_i_use":"Какие браузеры поддерживаются?","web_tabtools_is_available_for_chrome":"TabTools доступен для Chrome, Firefox и Microsoft Edge. Чтобы добавить его на компьютере, перейдите в нужный магазин по ссылкам на этой странице.","web_how_do_i_close_tabs":"Как закрыть вкладки одного сайта?","web_right_click_within_a_web":"Щёлкните правой кнопкой мыши на веб-странице и выберите «Закрыть вкладки сайта» или откройте TabTools и нажмите на сайт в разделе «Предложения». Это закроет вкладки сайта во всех обычных окнах, включая текущую вкладку. Во всплывающем окне также можно ввести ключевое слово или точный домен.","web_can_i_remove_duplicates_or":"Можно ли убрать дубликаты или неактивные вкладки?","web_yes_choose_close_duplicates_to":"Да. Выберите «Закрыть дубликаты», чтобы убрать повторяющиеся страницы, или нажмите «Неактивные», чтобы закрыть подходящие вкладки. Порог времени бездействия можно изменить в Настройках; вкладки закрываются только при выборе действия.","web_does_tabtools_collect_or_share":"Собирает ли TabTools информацию о вкладках и делится ли ею?","web_the_extension_processes_tab_information":"Расширение обрабатывает информацию о вкладках локально и не отправляет её разработчику или третьим лицам. Настройки и статистика закрытия вкладок остаются на вашем устройстве. Демонстрация на этом сайте размещена на YouTube; у встроенного проигрывателя и магазинов расширений свои политики конфиденциальности.","web_can_i_undo_a_cleanup":"Можно ли отменить закрытие вкладок?","web_use_undo_immediately_after_closing":"Нажмите «Отменить» сразу после закрытия вкладок из всплывающего окна TabTools, пока оно ещё открыто. Также можно открыть страницы через список недавно закрытых вкладок браузера.","web_free_for_chrome_firefox_and":"Бесплатно для Chrome, Firefox и Edge","web_other_browser_stores":"Другие магазины расширений","web_close_tabs_by_site_sort_2":"Закрывайте вкладки по сайтам, сортируйте панель вкладок и удаляйте дубликаты.","web_product":"Продукт","web_try_it":"Попробовать","web_more":"Ещё","web_contact":"Связаться","web_free_and_open_source":"Бесплатно и с открытым кодом"}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="Главная страница TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a href="#features">Возможности</a>
+          <a href="#how-it-works">Как пользоваться</a>
+          <a href="#privacy">Конфиденциальность</a>
+          <a href="#faq">Вопросы и ответы</a>
+        </nav>
+        <div class="nav-actions">
+          <label class="language-picker"><span class="sr-only">Язык</span><select data-language-select aria-label="Язык"><option lang="en" value="/">English</option><option lang="cs" value="/cs/">Čeština</option><option lang="de" value="/de/">Deutsch</option><option lang="el" value="/el/">Ελληνικά</option><option lang="en-GB" value="/en-gb/">English (British)</option><option lang="es" value="/es/">Español (de España)</option><option lang="fi" value="/fi/">suomi</option><option lang="fr" value="/fr/">Français</option><option lang="he" value="/he/">עברית</option><option lang="hr" value="/hr/">Hrvatski</option><option lang="hu" value="/hu/">magyar</option><option lang="it" value="/it/">Italiano</option><option lang="ja" value="/ja/">日本語</option><option lang="ko" value="/ko/">한국어</option><option lang="nb" value="/nb/">Norsk bokmål</option><option lang="nl" value="/nl/">Nederlands</option><option lang="pl" value="/pl/">Polski</option><option lang="pt-BR" value="/pt-br/">Português (do Brasil)</option><option lang="pt-PT" value="/pt-pt/">Português (Europeu)</option><option lang="ro" value="/ro/">Română</option><option lang="ru" value="/ru/" selected>Русский</option><option lang="sk" value="/sk/">slovenčina</option><option lang="sl" value="/sl/">Slovenščina</option><option lang="sr" value="/sr/">Српски</option><option lang="sv" value="/sv/">Svenska</option><option lang="tr" value="/tr/">Türkçe</option><option lang="uk" value="/uk/">Українська</option><option lang="vi" value="/vi/">Tiếng Việt</option><option lang="zh-CN" value="/zh-cn/">中文 (简体)</option><option lang="zh-TW" value="/zh-tw/">正體中文 (繁體)</option></select></label>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему" title="Включить тёмную тему">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Тёмная тема</span>
+          </button>
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Добавить в <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shell language-suggestion" hidden data-language-suggestion></p>
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Бесплатный менеджер вкладок браузера</p>
+            <h1>Закройте вкладки <span>одного сайта.</span></h1>
+            <p class="hero-lede">Закройте все вкладки сайта одним действием или отсортируйте панель вкладок по сайтам. TabTools также удаляет дубликаты и закрывает неактивные вкладки в Chrome, Firefox и Edge.</p>
+            <div class="hero-actions">
+              <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="hero" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_chrome" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Добавить в <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p class="store-note"><span data-store-note>Откроется Chrome Web Store.</span> Бесплатно. Без учётной записи.</p>
+            <p class="mobile-note" data-mobile-note hidden>Открыли страницу на телефоне или планшете? Откройте её на компьютере, чтобы добавить TabTools.</p>
+            <div class="browser-links" aria-label="TabTools в магазинах расширений">
+              <span>Выбрать другой браузер</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Добавить в <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Добавить в <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Добавить в <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" id="demo">
+            <div class="recording-label"><span class="recording-dot" aria-hidden="true"></span><span>TabTools в действии</span><span class="recording-duration">Полная демонстрация</span></div>
+            <div class="video-shell">
+              <iframe class="product-video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZUh6FSsB6A?rel=0" title="Полная демонстрация TabTools" aria-describedby="demo-caption" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-footer">
+              <p id="demo-caption">Посмотрите, как TabTools закрывает вкладки по сайтам, удаляет дубликаты, сортирует вкладки и закрывает неактивные.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Информация о TabTools">
+        <div class="shell proof-grid">
+          <div class="proof-item"><strong>Закрытие вкладок по сайтам</strong><span>из всплывающего окна или контекстного меню</span></div>
+          <div class="proof-item"><strong>Локальная обработка данных</strong><span>список вкладок остаётся в вашем браузере</span></div>
+          <div class="proof-item"><strong>Открытый исходный код</strong><span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">Посмотрите код на GitHub</a></span></div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Закрывайте и наводите порядок</p>
+              <h2>Закройте по сайтам.<br /><span>Отсортируйте оставшиеся.</span></h2>
+            </div>
+            <p>Закройте вкладки завершённой задачи, расположите вкладки одного сайта рядом или уберите повторяющиеся и неактивные страницы.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-primary">
+              <div class="feature-icon icon-purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 19.5h8M12 16.5v3"></path><path d="M8 9h8M8 12h5"></path></svg>
+              </div>
+              <p class="card-kicker">01 / Закрытие по сайтам</p>
+              <h3>Закройте все вкладки сайта сразу</h3>
+              <p>Откройте TabTools и нажмите на сайт в разделе <strong>Предложения</strong> или щёлкните правой кнопкой мыши на веб-странице и выберите <strong>Закрыть вкладки сайта</strong>. Это закроет вкладки этого сайта во всех обычных окнах, включая текущую вкладку.</p>
+              <a class="text-link" href="#how-it-works">Узнайте, с чего начать <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h6"></path><path d="M17 11v7M14 15l3 3 3-3"></path></svg>
+              </div>
+              <p class="card-kicker">02 / Порядок</p>
+              <h3>Сортируйте вкладки по сайтам</h3>
+              <p>Расположите вкладки одного сайта рядом в текущем окне. Сайты с наибольшим числом открытых вкладок окажутся первыми.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="4" width="11" height="14" rx="2"></rect><path d="M8 7h5M8 10h5"></path><path d="M9 20h8a2 2 0 0 0 2-2V8"></path></svg>
+              </div>
+              <p class="card-kicker">03 / Без повторов</p>
+              <h3>Удаляйте дубликаты вкладок</h3>
+              <p>Закройте лишние копии одной страницы одним нажатием. Закреплённые вкладки останутся на месте.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"></circle><path d="m16 16 4.2 4.2M8.3 10.8h5"></path></svg>
+              </div>
+              <p class="card-kicker">04 / Поиск</p>
+              <h3>Поиск по ключевому слову или домену</h3>
+              <p>Введите слово для поиска в заголовках и URL вкладок или укажите точный домен, например youtube.com. Затем выберите «Закрыть».</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-ink" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M12 7.5v5l3.2 2"></path></svg>
+              </div>
+              <p class="card-kicker">05 / Очистка</p>
+              <h3>Закрывайте неактивные вкладки</h3>
+              <p>Задайте порог времени бездействия в Настройках, затем нажмите «Неактивные», чтобы закрыть подходящие вкладки. Активные, закреплённые и воспроизводящие звук вкладки останутся открытыми.</p>
+            </article>
+          </div>
+
+          <div class="supporting-row" aria-label="Другие возможности TabTools">
+            <span>Отмена закрытия из всплывающего окна</span>
+            <span>Светлая и тёмная темы</span>
+            <span>Локальная статистика закрытия вкладок</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid">
+          <div class="workflow-copy">
+            <p class="eyebrow">Как пользоваться</p>
+            <h2>Добавьте TabTools.<br /><span>Выберите, что закрыть.</span></h2>
+            <p>Начните с сайта, у которого открыто много вкладок. Во всплывающем окне доступны предложения и сортировка, а в контекстном меню — быстрое закрытие.</p>
+            <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="how_it_works" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=how_it_works_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Добавить в <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <ol class="steps">
+            <li><span class="step-index">01</span><div><h3>Добавьте в браузер</h3><p>Откройте страницу магазина Chrome, Firefox или Edge и добавьте бесплатное расширение.</p></div></li>
+            <li><span class="step-index">02</span><div><h3>Открыть TabTools</h3><p>Нажмите значок TabTools в меню расширений браузера, чтобы увидеть предложения сайтов и быстрые действия.</p></div></li>
+            <li><span class="step-index">03</span><div><h3>Закройте вкладки сайта или отсортируйте их</h3><p>Нажмите на сайт в разделе «Предложения», чтобы закрыть его вкладки, или выберите «Сортировать вкладки», чтобы расположить вкладки одного сайта рядом.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy" tabindex="-1" aria-labelledby="privacy-heading">
+        <div class="shell privacy-card">
+          <div class="privacy-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.3-2.8 7.7-7 9.1-4.2-1.4-7-4.8-7-9.1V6l7-2.5Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Конфиденциальность по замыслу</p>
+            <h2 id="privacy-heading">Данные о вкладках остаются<br />в вашем браузере.</h2>
+            <p>Расширение TabTools обрабатывает информацию о вкладках на вашем устройстве. Настройки и статистика закрытия вкладок остаются в локальном хранилище браузера. В расширении нет учётных записей, аналитики, рекламы или внешней базы данных.</p>
+            <a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Прочитать политику конфиденциальности <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Перед установкой TabTools</p>
+            <h2>Частые вопросы</h2>
+            <p>Браузеры, закрытие вкладок и конфиденциальность</p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>TabTools бесплатный?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Да. TabTools — бесплатное расширение с открытым исходным кодом.</p>
+            </details>
+            <details>
+              <summary>Какие браузеры поддерживаются?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>TabTools доступен для Chrome, Firefox и Microsoft Edge. Чтобы добавить его на компьютере, перейдите в нужный магазин по ссылкам на этой странице.</p>
+            </details>
+            <details>
+              <summary>Как закрыть вкладки одного сайта?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Щёлкните правой кнопкой мыши на веб-странице и выберите «Закрыть вкладки сайта» или откройте TabTools и нажмите на сайт в разделе «Предложения». Это закроет вкладки сайта во всех обычных окнах, включая текущую вкладку. Во всплывающем окне также можно ввести ключевое слово или точный домен.</p>
+            </details>
+            <details>
+              <summary>Можно ли убрать дубликаты или неактивные вкладки?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Да. Выберите «Закрыть дубликаты», чтобы убрать повторяющиеся страницы, или нажмите «Неактивные», чтобы закрыть подходящие вкладки. Порог времени бездействия можно изменить в Настройках; вкладки закрываются только при выборе действия.</p>
+            </details>
+            <details>
+              <summary>Собирает ли TabTools информацию о вкладках и делится ли ею?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Расширение обрабатывает информацию о вкладках локально и не отправляет её разработчику или третьим лицам. Настройки и статистика закрытия вкладок остаются на вашем устройстве. Демонстрация на этом сайте размещена на YouTube; у встроенного проигрывателя и магазинов расширений свои политики конфиденциальности.</p>
+            </details>
+            <details>
+              <summary>Можно ли отменить закрытие вкладок?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Нажмите «Отменить» сразу после закрытия вкладок из всплывающего окна TabTools, пока оно ещё открыто. Также можно открыть страницы через список недавно закрытых вкладок браузера.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner">
+          <div>
+            <p class="eyebrow">Бесплатно для Chrome, Firefox и Edge</p>
+            <h2>Закройте ненужные вкладки.<br /><span>Отсортируйте остальные.</span></h2>
+          </div>
+          <div class="final-cta-actions">
+            <a class="button browser-button button-light" data-adaptive-store data-utm-placement="final_cta" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_cta_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Добавить в <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+            <div class="final-alternatives" aria-label="Другие магазины расширений">
+              <span>Выбрать другой браузер</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Добавить в <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Добавить в <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Добавить в <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Главная страница TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Закрывайте вкладки по сайтам, сортируйте панель вкладок и удаляйте дубликаты.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Продукт</span><a href="#features">Возможности</a><a href="#how-it-works">Как пользоваться</a><a href="#faq">Вопросы и ответы</a></div>
+          <div><span class="footer-label">Попробовать</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Ещё</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Конфиденциальность</a><a href="mailto:tabtools@michaelwester.com">Связаться</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Бесплатно и с открытым кодом</span></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

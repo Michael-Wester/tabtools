@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "nb"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Lukk og sorter faner etter nettsted"
+  },
+  "extensionDescription": {
+    "message": "Lukk faner fra samme nettsted, sorter etter nettsted og fjern duplikater for å holde nettleseren ryddig."
+  },
+  "openTabTools": {
+    "message": "Åpne TabTools"
+  },
+  "settings": {
+    "message": "Innstillinger"
+  },
+  "suggestions": {
+    "message": "Forslag"
+  },
+  "suggestCaption": {
+    "message": "Trykk for å lukke fanene fra nettstedet"
+  },
+  "queryPlaceholder": {
+    "message": "Lukk etter søkeord (trykk Enter)"
+  },
+  "close": {
+    "message": "Lukk"
+  },
+  "sortTabs": {
+    "message": "Sorter faner"
+  },
+  "closeDuplicates": {
+    "message": "Lukk duplikater"
+  },
+  "undo": {
+    "message": "Angre"
+  },
+  "undoTitle": {
+    "message": "Angre siste lukking"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Lyst"
+  },
+  "dark": {
+    "message": "Mørkt"
+  },
+  "minTabs": {
+    "message": "Minste antall faner per nettsted for forslag"
+  },
+  "inactiveAfter": {
+    "message": "Faner inaktive etter"
+  },
+  "minutes": {
+    "message": "minutter"
+  },
+  "closedCount": {
+    "message": "Lukket: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ åpne faner",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ åpen fane",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ åpne faner",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ åpne faner",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ åpne faner",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ åpne faner",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Mislyktes"
+  },
+  "closedInactive": {
+    "message": "Inaktive faner lukket: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Ingen inaktive faner"
+  },
+  "closedDuplicates": {
+    "message": "Duplikatfaner lukket: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Ingen duplikater"
+  },
+  "nothingToUndo": {
+    "message": "Ingenting å angre"
+  },
+  "undoFailed": {
+    "message": "Kunne ikke angre"
+  },
+  "restoredCount": {
+    "message": "Gjenopprettet: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Ingenting å gjenopprette"
+  },
+  "inactive": {
+    "message": "Inaktive"
+  },
+  "loadingSuggestions": {
+    "message": "Laster forslag…"
+  },
+  "suggestionsFailed": {
+    "message": "Kunne ikke laste forslag"
+  },
+  "noSuggestions": {
+    "message": "Ingen forslag akkurat nå"
+  },
+  "moreCount": {
+    "message": "Flere forslag som ikke vises: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sortering mislyktes"
+  },
+  "sortedCount": {
+    "message": "Faner omorganisert: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Ingenting å sortere"
+  },
+  "hide": {
+    "message": "Skjul"
+  },
+  "show": {
+    "message": "Vis"
+  },
+  "contextClose": {
+    "message": "Lukk nettstedets faner"
+  },
+  "contextSort": {
+    "message": "Sorter faner (nettsteder med flest faner først)"
+  },
+  "closeSiteLabel": {
+    "message": "Lukk faner fra $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

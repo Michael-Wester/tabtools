@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "tr"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Sekmeleri siteye göre kapat ve sırala"
+  },
+  "extensionDescription": {
+    "message": "Aynı sitenin sekmelerini kapatın, sekmeleri siteye göre sıralayın ve yinelenenleri kaldırarak tarayıcınızı düzenleyin."
+  },
+  "openTabTools": {
+    "message": "TabTools'u aç"
+  },
+  "settings": {
+    "message": "Ayarlar"
+  },
+  "suggestions": {
+    "message": "Öneriler"
+  },
+  "suggestCaption": {
+    "message": "Sitenin sekmelerini kapatmak için dokunun"
+  },
+  "queryPlaceholder": {
+    "message": "Anahtar sözcükle kapat (Enter)"
+  },
+  "close": {
+    "message": "Kapat"
+  },
+  "sortTabs": {
+    "message": "Sekmeleri sırala"
+  },
+  "closeDuplicates": {
+    "message": "Yinelenenleri kapat"
+  },
+  "undo": {
+    "message": "Geri al"
+  },
+  "undoTitle": {
+    "message": "Son kapatma işlemini geri al"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Açık"
+  },
+  "dark": {
+    "message": "Koyu"
+  },
+  "minTabs": {
+    "message": "Öneriler için site başına en az sekme sayısı"
+  },
+  "inactiveAfter": {
+    "message": "Sekmelerin etkin sayılmadığı süre"
+  },
+  "minutes": {
+    "message": "dakika"
+  },
+  "closedCount": {
+    "message": "Kapatılan: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ açık sekme",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ açık sekme",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ açık sekme",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ açık sekme",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ açık sekme",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ açık sekme",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "İşlem başarısız"
+  },
+  "closedInactive": {
+    "message": "Kapatılan etkin olmayan sekmeler: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Etkin olmayan sekme yok"
+  },
+  "closedDuplicates": {
+    "message": "Kapatılan yinelenen sekmeler: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Yinelenen sekme yok"
+  },
+  "nothingToUndo": {
+    "message": "Geri alınacak işlem yok"
+  },
+  "undoFailed": {
+    "message": "İşlem geri alınamadı"
+  },
+  "restoredCount": {
+    "message": "Geri yüklenen: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Geri yüklenecek sekme yok"
+  },
+  "inactive": {
+    "message": "Etkin olmayanlar"
+  },
+  "loadingSuggestions": {
+    "message": "Öneriler yükleniyor…"
+  },
+  "suggestionsFailed": {
+    "message": "Öneriler yüklenemedi"
+  },
+  "noSuggestions": {
+    "message": "Öneri yok"
+  },
+  "moreCount": {
+    "message": "Gösterilmeyen diğer öneriler: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sıralama başarısız"
+  },
+  "sortedCount": {
+    "message": "Yeri değiştirilen sekmeler: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Sıralanacak sekme yok"
+  },
+  "hide": {
+    "message": "Gizle"
+  },
+  "show": {
+    "message": "Göster"
+  },
+  "contextClose": {
+    "message": "Sitenin sekmelerini kapat"
+  },
+  "contextSort": {
+    "message": "Sekmeleri sırala (en çok açılanlar önce)"
+  },
+  "closeSiteLabel": {
+    "message": "$site$ sitesinin sekmelerini kapat",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

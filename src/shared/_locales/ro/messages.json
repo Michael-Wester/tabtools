@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "ro"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Închide și sortează filele după site"
+  },
+  "extensionDescription": {
+    "message": "Închide filele aceluiași site, sortează-le după site și elimină duplicatele pentru a păstra browserul ordonat."
+  },
+  "openTabTools": {
+    "message": "Deschide TabTools"
+  },
+  "settings": {
+    "message": "Setări"
+  },
+  "suggestions": {
+    "message": "Sugestii"
+  },
+  "suggestCaption": {
+    "message": "Apasă pentru a închide filele site-ului"
+  },
+  "queryPlaceholder": {
+    "message": "Închide după cuvânt-cheie (apasă Enter)"
+  },
+  "close": {
+    "message": "Închide"
+  },
+  "sortTabs": {
+    "message": "Sortează filele"
+  },
+  "closeDuplicates": {
+    "message": "Închide duplicatele"
+  },
+  "undo": {
+    "message": "Anulează"
+  },
+  "undoTitle": {
+    "message": "Anulează ultima închidere"
+  },
+  "theme": {
+    "message": "Temă"
+  },
+  "light": {
+    "message": "Luminoasă"
+  },
+  "dark": {
+    "message": "Întunecată"
+  },
+  "minTabs": {
+    "message": "Număr minim de file pe site pentru sugestii"
+  },
+  "inactiveAfter": {
+    "message": "File inactive după"
+  },
+  "minutes": {
+    "message": "minute"
+  },
+  "closedCount": {
+    "message": "Închise: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ de file deschise",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ filă deschisă",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ de file deschise",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ file deschise",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ de file deschise",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ de file deschise",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Acțiunea a eșuat"
+  },
+  "closedInactive": {
+    "message": "File inactive închise: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Nicio filă inactivă"
+  },
+  "closedDuplicates": {
+    "message": "File duplicate închise: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Niciun duplicat"
+  },
+  "nothingToUndo": {
+    "message": "Nimic de anulat"
+  },
+  "undoFailed": {
+    "message": "Anularea a eșuat"
+  },
+  "restoredCount": {
+    "message": "Restaurate: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nimic de restaurat"
+  },
+  "inactive": {
+    "message": "Inactive"
+  },
+  "loadingSuggestions": {
+    "message": "Se încarcă sugestiile…"
+  },
+  "suggestionsFailed": {
+    "message": "Sugestiile nu au putut fi încărcate"
+  },
+  "noSuggestions": {
+    "message": "Nu există sugestii momentan"
+  },
+  "moreCount": {
+    "message": "Alte sugestii neafișate: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sortarea a eșuat"
+  },
+  "sortedCount": {
+    "message": "File reordonate: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nimic de sortat"
+  },
+  "hide": {
+    "message": "Ascunde"
+  },
+  "show": {
+    "message": "Afișează"
+  },
+  "contextClose": {
+    "message": "Închide filele site-ului"
+  },
+  "contextSort": {
+    "message": "Sortează filele (site-urile cu cele mai multe file primele)"
+  },
+  "closeSiteLabel": {
+    "message": "Închide filele de pe $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

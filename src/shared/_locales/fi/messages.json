@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "fi"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools: Sulje ja lajittele välilehdet sivuittain"
+  },
+  "extensionDescription": {
+    "message": "Sulje saman sivuston välilehdet, lajittele ne sivustoittain ja poista kaksoiskappaleet pitääksesi selaimen järjestyksessä."
+  },
+  "openTabTools": {
+    "message": "Avaa TabTools"
+  },
+  "settings": {
+    "message": "Asetukset"
+  },
+  "suggestions": {
+    "message": "Ehdotukset"
+  },
+  "suggestCaption": {
+    "message": "Sulje sivuston välilehdet napauttamalla"
+  },
+  "queryPlaceholder": {
+    "message": "Sulje hakusanalla (paina Enter)"
+  },
+  "close": {
+    "message": "Sulje"
+  },
+  "sortTabs": {
+    "message": "Lajittele välilehdet"
+  },
+  "closeDuplicates": {
+    "message": "Sulje kaksoiskappaleet"
+  },
+  "undo": {
+    "message": "Kumoa"
+  },
+  "undoTitle": {
+    "message": "Kumoa viimeisin sulkeminen"
+  },
+  "theme": {
+    "message": "Teema"
+  },
+  "light": {
+    "message": "Vaalea"
+  },
+  "dark": {
+    "message": "Tumma"
+  },
+  "minTabs": {
+    "message": "Välilehtien vähimmäismäärä sivustoehdotuksissa"
+  },
+  "inactiveAfter": {
+    "message": "Välilehti on käyttämätön, kun aikaa on kulunut"
+  },
+  "minutes": {
+    "message": "minuuttia"
+  },
+  "closedCount": {
+    "message": "Suljettu: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ avointa välilehteä",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ avoin välilehti",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ avointa välilehteä",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ avointa välilehteä",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ avointa välilehteä",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ avointa välilehteä",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Toiminto epäonnistui"
+  },
+  "closedInactive": {
+    "message": "Suljettuja käyttämättömiä välilehtiä: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Ei käyttämättömiä välilehtiä"
+  },
+  "closedDuplicates": {
+    "message": "Suljettuja kaksoiskappaleita: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Ei kaksoiskappaleita"
+  },
+  "nothingToUndo": {
+    "message": "Ei kumottavaa"
+  },
+  "undoFailed": {
+    "message": "Kumoaminen epäonnistui"
+  },
+  "restoredCount": {
+    "message": "Palautettu: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Ei palautettavaa"
+  },
+  "inactive": {
+    "message": "Käyttämättömät"
+  },
+  "loadingSuggestions": {
+    "message": "Ladataan ehdotuksia…"
+  },
+  "suggestionsFailed": {
+    "message": "Ehdotuksia ei voitu ladata"
+  },
+  "noSuggestions": {
+    "message": "Ei ehdotuksia juuri nyt"
+  },
+  "moreCount": {
+    "message": "Muita ehdotuksia, joita ei näytetä: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Lajittelu epäonnistui"
+  },
+  "sortedCount": {
+    "message": "Uudelleen järjestettyjä välilehtiä: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Ei lajiteltavaa"
+  },
+  "hide": {
+    "message": "Piilota"
+  },
+  "show": {
+    "message": "Näytä"
+  },
+  "contextClose": {
+    "message": "Sulje sivuston välilehdet"
+  },
+  "contextSort": {
+    "message": "Lajittele välilehdet (eniten välilehtiä ensin)"
+  },
+  "closeSiteLabel": {
+    "message": "Sulje sivuston $site$ välilehdet",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

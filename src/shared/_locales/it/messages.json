@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "it"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Chiudi e ordina le schede per sito"
+  },
+  "extensionDescription": {
+    "message": "Chiudi le schede dello stesso sito, ordinale per sito ed elimina i duplicati per tenere in ordine il browser."
+  },
+  "openTabTools": {
+    "message": "Apri TabTools"
+  },
+  "settings": {
+    "message": "Impostazioni"
+  },
+  "suggestions": {
+    "message": "Suggerimenti"
+  },
+  "suggestCaption": {
+    "message": "Tocca per chiudere le schede del sito"
+  },
+  "queryPlaceholder": {
+    "message": "Chiudi per parola chiave (premi Invio)"
+  },
+  "close": {
+    "message": "Chiudi"
+  },
+  "sortTabs": {
+    "message": "Ordina schede"
+  },
+  "closeDuplicates": {
+    "message": "Chiudi duplicati"
+  },
+  "undo": {
+    "message": "Annulla"
+  },
+  "undoTitle": {
+    "message": "Annulla l’ultima chiusura"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Chiaro"
+  },
+  "dark": {
+    "message": "Scuro"
+  },
+  "minTabs": {
+    "message": "Numero minimo di schede per sito nei suggerimenti"
+  },
+  "inactiveAfter": {
+    "message": "Schede inattive dopo"
+  },
+  "minutes": {
+    "message": "minuti"
+  },
+  "closedCount": {
+    "message": "Chiuse: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ scheda aperta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ schede aperte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Operazione non riuscita"
+  },
+  "closedInactive": {
+    "message": "Schede inattive chiuse: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Nessuna scheda inattiva"
+  },
+  "closedDuplicates": {
+    "message": "Schede duplicate chiuse: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Nessun duplicato"
+  },
+  "nothingToUndo": {
+    "message": "Niente da annullare"
+  },
+  "undoFailed": {
+    "message": "Impossibile annullare"
+  },
+  "restoredCount": {
+    "message": "Ripristinate: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Niente da ripristinare"
+  },
+  "inactive": {
+    "message": "Inattive"
+  },
+  "loadingSuggestions": {
+    "message": "Caricamento dei suggerimenti…"
+  },
+  "suggestionsFailed": {
+    "message": "Impossibile caricare i suggerimenti"
+  },
+  "noSuggestions": {
+    "message": "Nessun suggerimento al momento"
+  },
+  "moreCount": {
+    "message": "Altri suggerimenti non mostrati: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Ordinamento non riuscito"
+  },
+  "sortedCount": {
+    "message": "Schede riordinate: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Niente da ordinare"
+  },
+  "hide": {
+    "message": "Nascondi"
+  },
+  "show": {
+    "message": "Mostra"
+  },
+  "contextClose": {
+    "message": "Chiudi le schede del sito"
+  },
+  "contextSort": {
+    "message": "Ordina schede (prima i siti con più schede)"
+  },
+  "closeSiteLabel": {
+    "message": "Chiudi le schede di $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

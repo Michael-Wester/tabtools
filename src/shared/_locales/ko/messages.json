@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "ko"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - 사이트별 탭 닫기 및 정렬"
+  },
+  "extensionDescription": {
+    "message": "같은 웹사이트의 탭을 닫고, 사이트별로 정렬하고, 중복 탭을 제거해 브라우저를 깔끔하게 정리하세요."
+  },
+  "openTabTools": {
+    "message": "TabTools 열기"
+  },
+  "settings": {
+    "message": "설정"
+  },
+  "suggestions": {
+    "message": "추천 사이트"
+  },
+  "suggestCaption": {
+    "message": "탭을 닫으려면 사이트를 누르세요"
+  },
+  "queryPlaceholder": {
+    "message": "키워드로 닫기 (Enter 키)"
+  },
+  "close": {
+    "message": "닫기"
+  },
+  "sortTabs": {
+    "message": "탭 정렬"
+  },
+  "closeDuplicates": {
+    "message": "중복 탭 닫기"
+  },
+  "undo": {
+    "message": "실행 취소"
+  },
+  "undoTitle": {
+    "message": "마지막으로 닫은 탭 복원"
+  },
+  "theme": {
+    "message": "테마"
+  },
+  "light": {
+    "message": "밝게"
+  },
+  "dark": {
+    "message": "어둡게"
+  },
+  "minTabs": {
+    "message": "추천 사이트의 최소 탭 수"
+  },
+  "inactiveAfter": {
+    "message": "비활성 탭으로 간주할 시간"
+  },
+  "minutes": {
+    "message": "분"
+  },
+  "closedCount": {
+    "message": "닫은 탭: $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "열린 탭 $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "열린 탭 $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "열린 탭 $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "열린 탭 $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "열린 탭 $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "열린 탭 $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "실패했습니다"
+  },
+  "closedInactive": {
+    "message": "닫은 비활성 탭: $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "비활성 탭이 없습니다"
+  },
+  "closedDuplicates": {
+    "message": "닫은 중복 탭: $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "중복 탭이 없습니다"
+  },
+  "nothingToUndo": {
+    "message": "취소할 작업이 없습니다"
+  },
+  "undoFailed": {
+    "message": "실행 취소에 실패했습니다"
+  },
+  "restoredCount": {
+    "message": "복원한 탭: $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "복원할 탭이 없습니다"
+  },
+  "inactive": {
+    "message": "비활성 탭"
+  },
+  "loadingSuggestions": {
+    "message": "추천 사이트를 불러오는 중…"
+  },
+  "suggestionsFailed": {
+    "message": "추천 사이트를 불러오지 못했습니다"
+  },
+  "noSuggestions": {
+    "message": "추천 사이트가 없습니다"
+  },
+  "moreCount": {
+    "message": "표시되지 않은 추천 사이트: $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "정렬에 실패했습니다"
+  },
+  "sortedCount": {
+    "message": "순서를 바꾼 탭: $count$개",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "정렬할 탭이 없습니다"
+  },
+  "hide": {
+    "message": "숨기기"
+  },
+  "show": {
+    "message": "표시"
+  },
+  "contextClose": {
+    "message": "이 사이트의 탭 닫기"
+  },
+  "contextSort": {
+    "message": "탭 정렬 (많이 열린 사이트부터)"
+  },
+  "closeSiteLabel": {
+    "message": "$site$의 탭 닫기",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

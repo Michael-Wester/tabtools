@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "sl"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Zapri in razvrsti zavihke po spletišču"
+  },
+  "extensionDescription": {
+    "message": "Zaprite zavihke istega spletišča, jih razvrstite po spletišču in odstranite dvojnike za urejen brskalnik."
+  },
+  "openTabTools": {
+    "message": "Odpri TabTools"
+  },
+  "settings": {
+    "message": "Nastavitve"
+  },
+  "suggestions": {
+    "message": "Predlogi"
+  },
+  "suggestCaption": {
+    "message": "Tapnite za zapiranje zavihkov spletišča"
+  },
+  "queryPlaceholder": {
+    "message": "Zapri po ključni besedi (Enter)"
+  },
+  "close": {
+    "message": "Zapri"
+  },
+  "sortTabs": {
+    "message": "Razvrsti zavihke"
+  },
+  "closeDuplicates": {
+    "message": "Zapri dvojnike"
+  },
+  "undo": {
+    "message": "Razveljavi"
+  },
+  "undoTitle": {
+    "message": "Razveljavi zadnje zapiranje"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Svetla"
+  },
+  "dark": {
+    "message": "Temna"
+  },
+  "minTabs": {
+    "message": "Najmanjše število zavihkov spletišča za predloge"
+  },
+  "inactiveAfter": {
+    "message": "Zavihki nedejavni po"
+  },
+  "minutes": {
+    "message": "minutah"
+  },
+  "closedCount": {
+    "message": "Zaprto: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ odprtih zavihkov",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ odprt zavihek",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ odprta zavihka",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ odprti zavihki",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ odprtih zavihkov",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ odprtih zavihkov",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Dejanje ni uspelo"
+  },
+  "closedInactive": {
+    "message": "Zaprti nedejavni zavihki: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Ni nedejavnih zavihkov"
+  },
+  "closedDuplicates": {
+    "message": "Zaprti podvojeni zavihki: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Ni dvojnikov"
+  },
+  "nothingToUndo": {
+    "message": "Ničesar ni mogoče razveljaviti"
+  },
+  "undoFailed": {
+    "message": "Razveljavitev ni uspela"
+  },
+  "restoredCount": {
+    "message": "Obnovljeno: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Ničesar ni mogoče obnoviti"
+  },
+  "inactive": {
+    "message": "Nedejavni"
+  },
+  "loadingSuggestions": {
+    "message": "Nalaganje predlogov …"
+  },
+  "suggestionsFailed": {
+    "message": "Predlogov ni bilo mogoče naložiti"
+  },
+  "noSuggestions": {
+    "message": "Trenutno ni predlogov"
+  },
+  "moreCount": {
+    "message": "Drugi neprikazani predlogi: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Razvrščanje ni uspelo"
+  },
+  "sortedCount": {
+    "message": "Prerazporejeni zavihki: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Ni zavihkov za razvrščanje"
+  },
+  "hide": {
+    "message": "Skrij"
+  },
+  "show": {
+    "message": "Pokaži"
+  },
+  "contextClose": {
+    "message": "Zapri zavihke spletišča"
+  },
+  "contextSort": {
+    "message": "Razvrsti zavihke (spletišča z največ zavihki najprej)"
+  },
+  "closeSiteLabel": {
+    "message": "Zapri zavihke spletišča $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

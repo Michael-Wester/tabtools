@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "en-GB"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Close & Sort Tabs by Site"
+  },
+  "extensionDescription": {
+    "message": "Close tabs from the same website, sort tabs by site and remove duplicates to keep your browser organised."
+  },
+  "openTabTools": {
+    "message": "Open TabTools"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "suggestions": {
+    "message": "Suggestions"
+  },
+  "suggestCaption": {
+    "message": "Tap to close tabs from site"
+  },
+  "queryPlaceholder": {
+    "message": "Close by keyword (press Enter)"
+  },
+  "close": {
+    "message": "Close"
+  },
+  "sortTabs": {
+    "message": "Sort tabs"
+  },
+  "closeDuplicates": {
+    "message": "Close duplicates"
+  },
+  "undo": {
+    "message": "Undo"
+  },
+  "undoTitle": {
+    "message": "Undo last close"
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "light": {
+    "message": "Light"
+  },
+  "dark": {
+    "message": "Dark"
+  },
+  "minTabs": {
+    "message": "Suggestions min tab count by site"
+  },
+  "inactiveAfter": {
+    "message": "Tabs inactive after"
+  },
+  "minutes": {
+    "message": "minutes"
+  },
+  "closedCount": {
+    "message": "Closed: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ open tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Failed"
+  },
+  "closedInactive": {
+    "message": "Inactive tabs closed: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "No inactive tabs"
+  },
+  "closedDuplicates": {
+    "message": "Duplicate tabs closed: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "No duplicates"
+  },
+  "nothingToUndo": {
+    "message": "Nothing to undo"
+  },
+  "undoFailed": {
+    "message": "Undo failed"
+  },
+  "restoredCount": {
+    "message": "Restored: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nothing to restore"
+  },
+  "inactive": {
+    "message": "Inactive"
+  },
+  "loadingSuggestions": {
+    "message": "Loading suggestion chips..."
+  },
+  "suggestionsFailed": {
+    "message": "Couldn't load suggestions"
+  },
+  "noSuggestions": {
+    "message": "No suggestions right now"
+  },
+  "moreCount": {
+    "message": "More suggestions not shown: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sort failed"
+  },
+  "sortedCount": {
+    "message": "Tabs reordered: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nothing to sort"
+  },
+  "hide": {
+    "message": "Hide"
+  },
+  "show": {
+    "message": "Show"
+  },
+  "contextClose": {
+    "message": "Close site tabs"
+  },
+  "contextSort": {
+    "message": "Sort tabs (most opened first)"
+  },
+  "closeSiteLabel": {
+    "message": "Close tabs from $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

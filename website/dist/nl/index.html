@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="nl" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="description" content="Sluit tabs van dezelfde website, sorteer ze per site en verwijder duplicaten. TabTools is een gratis tabbeheerder voor Chrome, Firefox en Edge." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — Tabs sluiten en sorteren per site" />
+    <meta property="og:description" content="Sluit tabs per site, sorteer je tabbladbalk en verwijder duplicaten met een gratis opensource-extensie voor Chrome, Firefox en Edge." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:url" content="https://tabtools.fyi/nl/" />
+    <link rel="canonical" href="https://tabtools.fyi/nl/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TabTools — Tabs sluiten en sorteren per site" />
+    <meta name="twitter:description" content="Sluit tabs per site, sorteer je tabbladbalk en verwijder duplicaten met een gratis opensource-extensie voor Chrome, Firefox en Edge." />
+    <title>TabTools — Tabs sluiten en sorteren per site</title>
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TabTools","url":"https://tabtools.fyi/nl/","description":"Een gratis browserextensie om tabs per site te sluiten, tabs te sorteren en dubbele en inactieve tabs te verwijderen.","inLanguage":"nl","applicationCategory":"BrowserApplication","isAccessibleForFree":true}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+      <link rel="alternate" hreflang="en" href="https://tabtools.fyi/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/" />
+    <link rel="alternate" hreflang="en-GB" href="https://tabtools.fyi/en-gb/" />
+    <link rel="alternate" hreflang="es" href="https://tabtools.fyi/es/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />
+    <script type="application/json" id="locale-data">{"locale":"nl","registry":[{"locale":"en","path":"/","nativeName":"English"},{"locale":"cs","path":"/cs/","nativeName":"Čeština"},{"locale":"de","path":"/de/","nativeName":"Deutsch"},{"locale":"el","path":"/el/","nativeName":"Ελληνικά"},{"locale":"en-GB","path":"/en-gb/","nativeName":"English (British)"},{"locale":"es","path":"/es/","nativeName":"Español (de España)"},{"locale":"fi","path":"/fi/","nativeName":"suomi"},{"locale":"fr","path":"/fr/","nativeName":"Français"},{"locale":"he","path":"/he/","nativeName":"עברית"},{"locale":"hr","path":"/hr/","nativeName":"Hrvatski"},{"locale":"hu","path":"/hu/","nativeName":"magyar"},{"locale":"it","path":"/it/","nativeName":"Italiano"},{"locale":"ja","path":"/ja/","nativeName":"日本語"},{"locale":"ko","path":"/ko/","nativeName":"한국어"},{"locale":"nb","path":"/nb/","nativeName":"Norsk bokmål"},{"locale":"nl","path":"/nl/","nativeName":"Nederlands"},{"locale":"pl","path":"/pl/","nativeName":"Polski"},{"locale":"pt-BR","path":"/pt-br/","nativeName":"Português (do Brasil)"},{"locale":"pt-PT","path":"/pt-pt/","nativeName":"Português (Europeu)"},{"locale":"ro","path":"/ro/","nativeName":"Română"},{"locale":"ru","path":"/ru/","nativeName":"Русский"},{"locale":"sk","path":"/sk/","nativeName":"slovenčina"},{"locale":"sl","path":"/sl/","nativeName":"Slovenščina"},{"locale":"sr","path":"/sr/","nativeName":"Српски"},{"locale":"sv","path":"/sv/","nativeName":"Svenska"},{"locale":"tr","path":"/tr/","nativeName":"Türkçe"},{"locale":"uk","path":"/uk/","nativeName":"Українська"},{"locale":"vi","path":"/vi/","nativeName":"Tiếng Việt"},{"locale":"zh-CN","path":"/zh-cn/","nativeName":"中文 (简体)"},{"locale":"zh-TW","path":"/zh-tw/","nativeName":"正體中文 (繁體)"}],"messages":{"web_heroTitle":"Sluit tabs van \u003cem>dezelfde site.\u003c/em>","web_featuresTitle":"Sluit per site.\u003cbr>\u003cem>Sorteer wat blijft.\u003c/em>","web_workflowTitle":"Voeg TabTools toe.\u003cbr>\u003cem>Kies wat je sluit.\u003c/em>","web_privacyTitle":"Je tabgegevens blijven\u003cbr>in je browser.","web_finalTitle":"Sluit tabs die je niet meer nodig hebt.\u003cbr>\u003cem>Sorteer de rest.\u003c/em>","web_siteBody":"Open TabTools en klik op een site onder \u003cstrong>Suggesties\u003c/strong>, of klik met rechts in een webpagina en kies \u003cstrong>Tabs van deze site sluiten\u003c/strong>. Dit sluit de bijbehorende tabs in al je normale vensters, inclusief de huidige tab.","web_addTo":"Toevoegen aan {browser}","web_storeNote":"Opent de {store}.","web_storeAria":"{label} — opent de {store} in een nieuwe tab","web_language":"Taal","web_languageSuggestion":"Lees deze pagina in het {language}","web_switchLight":"Overschakelen naar lichte modus","web_lightMode":"Lichte modus","web_structuredDescription":"Een gratis browserextensie om tabs per site te sluiten, tabs te sorteren en dubbele en inactieve tabs te verwijderen.","web_close_tabs_from_the_same":"Sluit tabs van dezelfde website, sorteer ze per site en verwijder duplicaten. TabTools is een gratis tabbeheerder voor Chrome, Firefox en Edge.","web_tabtools_close_tabs_by_site":"TabTools — Tabs sluiten en sorteren per site","web_close_tabs_by_site_sort":"Sluit tabs per site, sorteer je tabbladbalk en verwijder duplicaten met een gratis opensource-extensie voor Chrome, Firefox en Edge.","web_skip_to_content":"Naar de inhoud","web_tabtools_home":"TabTools-startpagina","web_main_navigation":"Hoofdnavigatie","web_features":"Functies","web_how_it_works":"Zo werkt het","web_privacy":"Privacy","web_faq":"Veelgestelde vragen","web_switch_to_dark_mode":"Overschakelen naar donkere modus","web_dark_mode":"Donkere modus","web_free_browser_tab_manager":"Gratis tabbeheerder voor je browser","web_clear_a_website_s_tabs":"Sluit de tabs van een website in één actie of sorteer je tabbladbalk per site. TabTools verwijdert ook duplicaten en sluit inactieve tabs in Chrome, Firefox en Edge.","web_free_to_use_no_account":"Gratis te gebruiken. Geen account nodig.","web_viewing_on_a_phone_or":"Bekijk je dit op een telefoon of tablet? Open deze pagina op je computer om TabTools toe te voegen.","web_tabtools_browser_stores":"TabTools in browserwinkels","web_choose_another_browser":"Kies een andere browser:","web_tabtools_in_action":"TabTools in actie","web_full_demo":"Volledige demo","web_tabtools_full_demo":"Volledige TabTools-demo","web_see_tabtools_close_tabs_by":"Bekijk hoe TabTools tabs per site sluit, duplicaten verwijdert, tabs sorteert en inactieve tabs sluit.","web_tabtools_product_details":"Productinformatie over TabTools","web_close_tabs_by_site":"Sluit tabs per site","web_from_the_popup_or_right":"via de pop-up of het rechtermuisknopmenu","web_local_by_design":"Werkt lokaal","web_your_tab_list_stays_in":"je tablijst blijft in je browser","web_open_source":"Open broncode","web_inspect_the_code_on_github":"Bekijk de code op GitHub","web_close_and_organise":"Sluiten en ordenen","web_clear_a_finished_task_bring":"Sluit tabs van een afgeronde taak, zet tabs van dezelfde website naast elkaar of ruim dubbele en inactieve pagina’s op.","web_01_site_cleanup":"01 / Opruimen per site","web_close_a_site_s_tabs":"Sluit de tabs van een site tegelijk","web_see_how_to_get_started":"Bekijk hoe je begint","web_02_organise":"02 / Ordenen","web_sort_tabs_by_site":"Sorteer tabs per site","web_bring_tabs_from_the_same":"Zet tabs van dezelfde site naast elkaar in je huidige venster. Sites met de meeste open tabs komen vooraan.","web_03_simplify":"03 / Vereenvoudigen","web_remove_duplicate_tabs":"Verwijder dubbele tabs","web_close_extra_copies_of_the":"Sluit extra exemplaren van dezelfde pagina met één klik. Vastgezette tabs blijven staan.","web_04_find":"04 / Zoeken","web_search_by_keyword_or_domain":"Zoek op trefwoord of domein","web_type_a_word_to_match":"Typ een woord om in tabtitels en URL’s te zoeken, of voer een exact domein in, zoals youtube.com. Kies vervolgens Sluiten.","web_05_reset":"05 / Opruimen","web_clear_inactive_tabs":"Sluit inactieve tabs","web_choose_an_inactivity_threshold_in":"Kies een inactiviteitsduur in Instellingen en klik daarna op Inactief om de betreffende tabs te sluiten. Actieve en vastgezette tabs en tabs die geluid afspelen blijven open.","web_more_tabtools_details":"Meer informatie over TabTools","web_undo_cleanup_from_the_popup":"Opruimen ongedaan maken via de pop-up","web_light_and_dark_themes":"Lichte en donkere thema’s","web_local_cleanup_statistics":"Lokale opruimstatistieken","web_start_with_one_busy_site":"Begin met een site met veel tabs. Gebruik de pop-up voor sitesuggesties en sorteren, of het rechtermuisknopmenu om snel tabs te sluiten.","web_add_it_to_your_browser":"Voeg het toe aan je browser","web_open_the_chrome_firefox_or":"Open de winkelpagina voor Chrome, Firefox of Edge en voeg de gratis extensie toe.","web_click_the_tabtools_icon_in":"Klik op het TabTools-pictogram in het extensiemenu van je browser om sitesuggesties en snelle acties te zien.","web_close_a_site_or_sort":"Sluit de tabs van een site of sorteer je tabs","web_click_a_site_under_suggestions":"Klik op een site onder Suggesties om de tabs ervan te sluiten, of kies Tabs sorteren om tabs van dezelfde site naast elkaar te zetten.","web_private_by_design":"Ontworpen met oog voor privacy","web_the_tabtools_extension_processes_tab":"De TabTools-extensie verwerkt tabinformatie op je apparaat. Instellingen en opruimstatistieken blijven in de lokale opslag van je browser. De extensie gebruikt geen accounts, analyses, advertenties of externe database.","web_read_the_privacy_policy":"Lees het privacybeleid","web_before_you_add_tabtools":"Voordat je TabTools toevoegt","web_common_questions":"Veelgestelde vragen.","web_browsers_cleanup_and_privacy":"Browsers, opruimen en privacy.","web_is_tabtools_free":"Is TabTools gratis?","web_yes_tabtools_is_free_to":"Ja. TabTools is gratis te gebruiken. Je hebt geen account nodig.","web_which_browsers_can_i_use":"Met welke browsers werkt het?","web_tabtools_is_available_for_chrome":"TabTools is beschikbaar voor Chrome, Firefox en Microsoft Edge. Gebruik de browserlinks op deze pagina om de juiste winkel te openen en de extensie aan je computer toe te voegen.","web_how_do_i_close_tabs":"Hoe sluit ik tabs van dezelfde website?","web_right_click_within_a_web":"Klik met rechts in een webpagina en kies ‘Tabs van deze site sluiten’, of open TabTools en klik op de site onder Suggesties. Dit sluit de tabs van die site in al je normale vensters, inclusief de huidige tab. Je kunt ook een trefwoord of exact domein in de pop-up invoeren.","web_can_i_remove_duplicates_or":"Kan ik duplicaten verwijderen of inactieve tabs sluiten?","web_yes_choose_close_duplicates_to":"Ja. Kies Duplicaten sluiten om herhaalde pagina’s te verwijderen, of klik op Inactief om de betreffende tabs te sluiten. Je kunt de inactiviteitsduur wijzigen in Instellingen. Opruimen gebeurt wanneer je de actie kiest.","web_does_tabtools_collect_or_share":"Verzamelt of deelt TabTools mijn gegevens?","web_the_extension_processes_tab_information":"De extensie verwerkt tabinformatie lokaal en stuurt die niet naar de ontwikkelaar of derden. Instellingen en statistieken blijven op je apparaat. De demo op deze website wordt gehost door YouTube; de ingebedde speler en browserwinkels hebben hun eigen privacybeleid.","web_can_i_undo_a_cleanup":"Kan ik opruimen ongedaan maken?","web_use_undo_immediately_after_closing":"Gebruik Ongedaan maken direct nadat je tabs vanuit de TabTools-pop-up hebt gesloten, zolang de pop-up nog open is. Je kunt pagina’s ook opnieuw openen via de onlangs gesloten tabs van je browser.","web_free_for_chrome_firefox_and":"Gratis voor Chrome, Firefox en Edge","web_other_browser_stores":"Andere browserwinkels","web_close_tabs_by_site_sort_2":"Sluit tabs per site, sorteer je tabbladbalk en verwijder duplicaten.","web_product":"Product","web_try_it":"Proberen","web_more":"Meer","web_contact":"Contact","web_free_and_open_source":"Gratis en met open broncode."}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Naar de inhoud</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="TabTools-startpagina">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Hoofdnavigatie">
+          <a href="#features">Functies</a>
+          <a href="#how-it-works">Zo werkt het</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#faq">Veelgestelde vragen</a>
+        </nav>
+        <div class="nav-actions">
+          <label class="language-picker"><span class="sr-only">Taal</span><select data-language-select aria-label="Taal"><option lang="en" value="/">English</option><option lang="cs" value="/cs/">Čeština</option><option lang="de" value="/de/">Deutsch</option><option lang="el" value="/el/">Ελληνικά</option><option lang="en-GB" value="/en-gb/">English (British)</option><option lang="es" value="/es/">Español (de España)</option><option lang="fi" value="/fi/">suomi</option><option lang="fr" value="/fr/">Français</option><option lang="he" value="/he/">עברית</option><option lang="hr" value="/hr/">Hrvatski</option><option lang="hu" value="/hu/">magyar</option><option lang="it" value="/it/">Italiano</option><option lang="ja" value="/ja/">日本語</option><option lang="ko" value="/ko/">한국어</option><option lang="nb" value="/nb/">Norsk bokmål</option><option lang="nl" value="/nl/" selected>Nederlands</option><option lang="pl" value="/pl/">Polski</option><option lang="pt-BR" value="/pt-br/">Português (do Brasil)</option><option lang="pt-PT" value="/pt-pt/">Português (Europeu)</option><option lang="ro" value="/ro/">Română</option><option lang="ru" value="/ru/">Русский</option><option lang="sk" value="/sk/">slovenčina</option><option lang="sl" value="/sl/">Slovenščina</option><option lang="sr" value="/sr/">Српски</option><option lang="sv" value="/sv/">Svenska</option><option lang="tr" value="/tr/">Türkçe</option><option lang="uk" value="/uk/">Українська</option><option lang="vi" value="/vi/">Tiếng Việt</option><option lang="zh-CN" value="/zh-cn/">中文 (简体)</option><option lang="zh-TW" value="/zh-tw/">正體中文 (繁體)</option></select></label>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Overschakelen naar donkere modus" title="Overschakelen naar donkere modus">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Donkere modus</span>
+          </button>
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Toevoegen aan <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shell language-suggestion" hidden data-language-suggestion></p>
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Gratis tabbeheerder voor je browser</p>
+            <h1>Sluit tabs van <span>dezelfde site.</span></h1>
+            <p class="hero-lede">Sluit de tabs van een website in één actie of sorteer je tabbladbalk per site. TabTools verwijdert ook duplicaten en sluit inactieve tabs in Chrome, Firefox en Edge.</p>
+            <div class="hero-actions">
+              <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="hero" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_chrome" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Toevoegen aan <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p class="store-note"><span data-store-note>Opent de Chrome Web Store.</span> Gratis te gebruiken. Geen account nodig.</p>
+            <p class="mobile-note" data-mobile-note hidden>Bekijk je dit op een telefoon of tablet? Open deze pagina op je computer om TabTools toe te voegen.</p>
+            <div class="browser-links" aria-label="TabTools in browserwinkels">
+              <span>Kies een andere browser:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Toevoegen aan <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Toevoegen aan <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Toevoegen aan <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" id="demo">
+            <div class="recording-label"><span class="recording-dot" aria-hidden="true"></span><span>TabTools in actie</span><span class="recording-duration">Volledige demo</span></div>
+            <div class="video-shell">
+              <iframe class="product-video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZUh6FSsB6A?rel=0" title="Volledige TabTools-demo" aria-describedby="demo-caption" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-footer">
+              <p id="demo-caption">Bekijk hoe TabTools tabs per site sluit, duplicaten verwijdert, tabs sorteert en inactieve tabs sluit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Productinformatie over TabTools">
+        <div class="shell proof-grid">
+          <div class="proof-item"><strong>Sluit tabs per site</strong><span>via de pop-up of het rechtermuisknopmenu</span></div>
+          <div class="proof-item"><strong>Werkt lokaal</strong><span>je tablijst blijft in je browser</span></div>
+          <div class="proof-item"><strong>Open broncode</strong><span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">Bekijk de code op GitHub</a></span></div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Sluiten en ordenen</p>
+              <h2>Sluit per site.<br /><span>Sorteer wat blijft.</span></h2>
+            </div>
+            <p>Sluit tabs van een afgeronde taak, zet tabs van dezelfde website naast elkaar of ruim dubbele en inactieve pagina’s op.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-primary">
+              <div class="feature-icon icon-purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 19.5h8M12 16.5v3"></path><path d="M8 9h8M8 12h5"></path></svg>
+              </div>
+              <p class="card-kicker">01 / Opruimen per site</p>
+              <h3>Sluit de tabs van een site tegelijk</h3>
+              <p>Open TabTools en klik op een site onder <strong>Suggesties</strong>, of klik met rechts in een webpagina en kies <strong>Tabs van deze site sluiten</strong>. Dit sluit de bijbehorende tabs in al je normale vensters, inclusief de huidige tab.</p>
+              <a class="text-link" href="#how-it-works">Bekijk hoe je begint <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h6"></path><path d="M17 11v7M14 15l3 3 3-3"></path></svg>
+              </div>
+              <p class="card-kicker">02 / Ordenen</p>
+              <h3>Sorteer tabs per site</h3>
+              <p>Zet tabs van dezelfde site naast elkaar in je huidige venster. Sites met de meeste open tabs komen vooraan.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="4" width="11" height="14" rx="2"></rect><path d="M8 7h5M8 10h5"></path><path d="M9 20h8a2 2 0 0 0 2-2V8"></path></svg>
+              </div>
+              <p class="card-kicker">03 / Vereenvoudigen</p>
+              <h3>Verwijder dubbele tabs</h3>
+              <p>Sluit extra exemplaren van dezelfde pagina met één klik. Vastgezette tabs blijven staan.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"></circle><path d="m16 16 4.2 4.2M8.3 10.8h5"></path></svg>
+              </div>
+              <p class="card-kicker">04 / Zoeken</p>
+              <h3>Zoek op trefwoord of domein</h3>
+              <p>Typ een woord om in tabtitels en URL’s te zoeken, of voer een exact domein in, zoals youtube.com. Kies vervolgens Sluiten.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-ink" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M12 7.5v5l3.2 2"></path></svg>
+              </div>
+              <p class="card-kicker">05 / Opruimen</p>
+              <h3>Sluit inactieve tabs</h3>
+              <p>Kies een inactiviteitsduur in Instellingen en klik daarna op Inactief om de betreffende tabs te sluiten. Actieve en vastgezette tabs en tabs die geluid afspelen blijven open.</p>
+            </article>
+          </div>
+
+          <div class="supporting-row" aria-label="Meer informatie over TabTools">
+            <span>Opruimen ongedaan maken via de pop-up</span>
+            <span>Lichte en donkere thema’s</span>
+            <span>Lokale opruimstatistieken</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid">
+          <div class="workflow-copy">
+            <p class="eyebrow">Zo werkt het</p>
+            <h2>Voeg TabTools toe.<br /><span>Kies wat je sluit.</span></h2>
+            <p>Begin met een site met veel tabs. Gebruik de pop-up voor sitesuggesties en sorteren, of het rechtermuisknopmenu om snel tabs te sluiten.</p>
+            <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="how_it_works" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=how_it_works_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Toevoegen aan <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <ol class="steps">
+            <li><span class="step-index">01</span><div><h3>Voeg het toe aan je browser</h3><p>Open de winkelpagina voor Chrome, Firefox of Edge en voeg de gratis extensie toe.</p></div></li>
+            <li><span class="step-index">02</span><div><h3>TabTools openen</h3><p>Klik op het TabTools-pictogram in het extensiemenu van je browser om sitesuggesties en snelle acties te zien.</p></div></li>
+            <li><span class="step-index">03</span><div><h3>Sluit de tabs van een site of sorteer je tabs</h3><p>Klik op een site onder Suggesties om de tabs ervan te sluiten, of kies Tabs sorteren om tabs van dezelfde site naast elkaar te zetten.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy" tabindex="-1" aria-labelledby="privacy-heading">
+        <div class="shell privacy-card">
+          <div class="privacy-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.3-2.8 7.7-7 9.1-4.2-1.4-7-4.8-7-9.1V6l7-2.5Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Ontworpen met oog voor privacy</p>
+            <h2 id="privacy-heading">Je tabgegevens blijven<br />in je browser.</h2>
+            <p>De TabTools-extensie verwerkt tabinformatie op je apparaat. Instellingen en opruimstatistieken blijven in de lokale opslag van je browser. De extensie gebruikt geen accounts, analyses, advertenties of externe database.</p>
+            <a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Lees het privacybeleid <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Voordat je TabTools toevoegt</p>
+            <h2>Veelgestelde vragen.</h2>
+            <p>Browsers, opruimen en privacy.</p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Is TabTools gratis?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Ja. TabTools is gratis te gebruiken. Je hebt geen account nodig.</p>
+            </details>
+            <details>
+              <summary>Met welke browsers werkt het?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>TabTools is beschikbaar voor Chrome, Firefox en Microsoft Edge. Gebruik de browserlinks op deze pagina om de juiste winkel te openen en de extensie aan je computer toe te voegen.</p>
+            </details>
+            <details>
+              <summary>Hoe sluit ik tabs van dezelfde website?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Klik met rechts in een webpagina en kies ‘Tabs van deze site sluiten’, of open TabTools en klik op de site onder Suggesties. Dit sluit de tabs van die site in al je normale vensters, inclusief de huidige tab. Je kunt ook een trefwoord of exact domein in de pop-up invoeren.</p>
+            </details>
+            <details>
+              <summary>Kan ik duplicaten verwijderen of inactieve tabs sluiten?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Ja. Kies Duplicaten sluiten om herhaalde pagina’s te verwijderen, of klik op Inactief om de betreffende tabs te sluiten. Je kunt de inactiviteitsduur wijzigen in Instellingen. Opruimen gebeurt wanneer je de actie kiest.</p>
+            </details>
+            <details>
+              <summary>Verzamelt of deelt TabTools mijn gegevens?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>De extensie verwerkt tabinformatie lokaal en stuurt die niet naar de ontwikkelaar of derden. Instellingen en statistieken blijven op je apparaat. De demo op deze website wordt gehost door YouTube; de ingebedde speler en browserwinkels hebben hun eigen privacybeleid.</p>
+            </details>
+            <details>
+              <summary>Kan ik opruimen ongedaan maken?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Gebruik Ongedaan maken direct nadat je tabs vanuit de TabTools-pop-up hebt gesloten, zolang de pop-up nog open is. Je kunt pagina’s ook opnieuw openen via de onlangs gesloten tabs van je browser.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner">
+          <div>
+            <p class="eyebrow">Gratis voor Chrome, Firefox en Edge</p>
+            <h2>Sluit tabs die je niet meer nodig hebt.<br /><span>Sorteer de rest.</span></h2>
+          </div>
+          <div class="final-cta-actions">
+            <a class="button browser-button button-light" data-adaptive-store data-utm-placement="final_cta" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_cta_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Toevoegen aan <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+            <div class="final-alternatives" aria-label="Andere browserwinkels">
+              <span>Kies een andere browser:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Toevoegen aan <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Toevoegen aan <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Toevoegen aan <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="TabTools-startpagina"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Sluit tabs per site, sorteer je tabbladbalk en verwijder duplicaten.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Product</span><a href="#features">Functies</a><a href="#how-it-works">Zo werkt het</a><a href="#faq">Veelgestelde vragen</a></div>
+          <div><span class="footer-label">Proberen</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Meer</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Gratis en met open broncode.</span></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

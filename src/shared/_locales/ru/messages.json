@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "ru"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Закрытие и сортировка вкладок по сайтам"
+  },
+  "extensionDescription": {
+    "message": "Закрывайте вкладки одного сайта, сортируйте вкладки по сайтам и удаляйте дубликаты, чтобы поддерживать порядок в браузере."
+  },
+  "openTabTools": {
+    "message": "Открыть TabTools"
+  },
+  "settings": {
+    "message": "Настройки"
+  },
+  "suggestions": {
+    "message": "Предложения"
+  },
+  "suggestCaption": {
+    "message": "Нажмите, чтобы закрыть вкладки сайта"
+  },
+  "queryPlaceholder": {
+    "message": "Закрыть по ключевому слову (Enter)"
+  },
+  "close": {
+    "message": "Закрыть"
+  },
+  "sortTabs": {
+    "message": "Сортировать вкладки"
+  },
+  "closeDuplicates": {
+    "message": "Закрыть дубликаты"
+  },
+  "undo": {
+    "message": "Отменить"
+  },
+  "undoTitle": {
+    "message": "Отменить последнее закрытие"
+  },
+  "theme": {
+    "message": "Тема"
+  },
+  "light": {
+    "message": "Светлая"
+  },
+  "dark": {
+    "message": "Тёмная"
+  },
+  "minTabs": {
+    "message": "Минимум вкладок сайта для предложений"
+  },
+  "inactiveAfter": {
+    "message": "Считать вкладки неактивными через"
+  },
+  "minutes": {
+    "message": "мин."
+  },
+  "closedCount": {
+    "message": "Закрыто: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ открытой вкладки",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ открытая вкладка",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ открытой вкладки",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ открытые вкладки",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ открытых вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ открытой вкладки",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Не удалось выполнить действие"
+  },
+  "closedInactive": {
+    "message": "Закрыто неактивных вкладок: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Нет неактивных вкладок"
+  },
+  "closedDuplicates": {
+    "message": "Закрыто дубликатов: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Нет дубликатов"
+  },
+  "nothingToUndo": {
+    "message": "Нечего отменять"
+  },
+  "undoFailed": {
+    "message": "Не удалось отменить действие"
+  },
+  "restoredCount": {
+    "message": "Восстановлено: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Нечего восстанавливать"
+  },
+  "inactive": {
+    "message": "Неактивные"
+  },
+  "loadingSuggestions": {
+    "message": "Загрузка предложений…"
+  },
+  "suggestionsFailed": {
+    "message": "Не удалось загрузить предложения"
+  },
+  "noSuggestions": {
+    "message": "Нет предложений"
+  },
+  "moreCount": {
+    "message": "Не показано предложений: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Не удалось отсортировать вкладки"
+  },
+  "sortedCount": {
+    "message": "Перемещено вкладок: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Нечего сортировать"
+  },
+  "hide": {
+    "message": "Скрыть"
+  },
+  "show": {
+    "message": "Показать"
+  },
+  "contextClose": {
+    "message": "Закрыть вкладки сайта"
+  },
+  "contextSort": {
+    "message": "Сортировать вкладки (частые сайты первыми)"
+  },
+  "closeSiteLabel": {
+    "message": "Закрыть вкладки сайта $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

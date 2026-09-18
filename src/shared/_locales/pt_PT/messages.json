@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "pt-PT"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Fechar e ordenar separadores por site"
+  },
+  "extensionDescription": {
+    "message": "Feche separadores do mesmo site, ordene-os por site e remova duplicados para manter o navegador organizado."
+  },
+  "openTabTools": {
+    "message": "Abrir TabTools"
+  },
+  "settings": {
+    "message": "Definições"
+  },
+  "suggestions": {
+    "message": "Sugestões"
+  },
+  "suggestCaption": {
+    "message": "Toque para fechar os separadores do site"
+  },
+  "queryPlaceholder": {
+    "message": "Fechar por palavra-chave (prima Enter)"
+  },
+  "close": {
+    "message": "Fechar"
+  },
+  "sortTabs": {
+    "message": "Ordenar separadores"
+  },
+  "closeDuplicates": {
+    "message": "Fechar duplicados"
+  },
+  "undo": {
+    "message": "Anular"
+  },
+  "undoTitle": {
+    "message": "Anular o último fecho"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Claro"
+  },
+  "dark": {
+    "message": "Escuro"
+  },
+  "minTabs": {
+    "message": "Mínimo de separadores por site nas sugestões"
+  },
+  "inactiveAfter": {
+    "message": "Separadores inativos após"
+  },
+  "minutes": {
+    "message": "minutos"
+  },
+  "closedCount": {
+    "message": "Fechados: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ separadores abertos",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ separador aberto",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ separadores abertos",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ separadores abertos",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ separadores abertos",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ separadores abertos",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Falha"
+  },
+  "closedInactive": {
+    "message": "Separadores inativos fechados: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Sem separadores inativos"
+  },
+  "closedDuplicates": {
+    "message": "Separadores duplicados fechados: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Sem duplicados"
+  },
+  "nothingToUndo": {
+    "message": "Nada a anular"
+  },
+  "undoFailed": {
+    "message": "Não foi possível anular"
+  },
+  "restoredCount": {
+    "message": "Restaurados: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nada a restaurar"
+  },
+  "inactive": {
+    "message": "Inativos"
+  },
+  "loadingSuggestions": {
+    "message": "A carregar sugestões…"
+  },
+  "suggestionsFailed": {
+    "message": "Não foi possível carregar as sugestões"
+  },
+  "noSuggestions": {
+    "message": "Sem sugestões de momento"
+  },
+  "moreCount": {
+    "message": "Outras sugestões não apresentadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Falha ao ordenar"
+  },
+  "sortedCount": {
+    "message": "Separadores reordenados: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nada a ordenar"
+  },
+  "hide": {
+    "message": "Ocultar"
+  },
+  "show": {
+    "message": "Mostrar"
+  },
+  "contextClose": {
+    "message": "Fechar separadores do site"
+  },
+  "contextSort": {
+    "message": "Ordenar separadores (sites com mais separadores primeiro)"
+  },
+  "closeSiteLabel": {
+    "message": "Fechar separadores de $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

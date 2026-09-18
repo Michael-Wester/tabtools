@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "nl"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Tabs sluiten en sorteren per site"
+  },
+  "extensionDescription": {
+    "message": "Sluit tabs van dezelfde website, sorteer ze per site en verwijder duplicaten om je browser overzichtelijk te houden."
+  },
+  "openTabTools": {
+    "message": "TabTools openen"
+  },
+  "settings": {
+    "message": "Instellingen"
+  },
+  "suggestions": {
+    "message": "Suggesties"
+  },
+  "suggestCaption": {
+    "message": "Tik om tabs van deze site te sluiten"
+  },
+  "queryPlaceholder": {
+    "message": "Sluiten op trefwoord (druk op Enter)"
+  },
+  "close": {
+    "message": "Sluiten"
+  },
+  "sortTabs": {
+    "message": "Tabs sorteren"
+  },
+  "closeDuplicates": {
+    "message": "Duplicaten sluiten"
+  },
+  "undo": {
+    "message": "Ongedaan maken"
+  },
+  "undoTitle": {
+    "message": "Laatste sluitactie ongedaan maken"
+  },
+  "theme": {
+    "message": "Thema"
+  },
+  "light": {
+    "message": "Licht"
+  },
+  "dark": {
+    "message": "Donker"
+  },
+  "minTabs": {
+    "message": "Minimumaantal tabs per site voor suggesties"
+  },
+  "inactiveAfter": {
+    "message": "Tabs inactief na"
+  },
+  "minutes": {
+    "message": "minuten"
+  },
+  "closedCount": {
+    "message": "Gesloten: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ open tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ open tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Mislukt"
+  },
+  "closedInactive": {
+    "message": "Gesloten inactieve tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Geen inactieve tabs"
+  },
+  "closedDuplicates": {
+    "message": "Gesloten dubbele tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Geen duplicaten"
+  },
+  "nothingToUndo": {
+    "message": "Niets om ongedaan te maken"
+  },
+  "undoFailed": {
+    "message": "Ongedaan maken mislukt"
+  },
+  "restoredCount": {
+    "message": "Hersteld: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Niets om te herstellen"
+  },
+  "inactive": {
+    "message": "Inactief"
+  },
+  "loadingSuggestions": {
+    "message": "Suggesties laden…"
+  },
+  "suggestionsFailed": {
+    "message": "Suggesties konden niet worden geladen"
+  },
+  "noSuggestions": {
+    "message": "Momenteel geen suggesties"
+  },
+  "moreCount": {
+    "message": "Meer suggesties niet weergegeven: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sorteren mislukt"
+  },
+  "sortedCount": {
+    "message": "Opnieuw gerangschikte tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Niets om te sorteren"
+  },
+  "hide": {
+    "message": "Verbergen"
+  },
+  "show": {
+    "message": "Tonen"
+  },
+  "contextClose": {
+    "message": "Tabs van deze site sluiten"
+  },
+  "contextSort": {
+    "message": "Tabs sorteren (sites met de meeste tabs eerst)"
+  },
+  "closeSiteLabel": {
+    "message": "Tabs van $site$ sluiten",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

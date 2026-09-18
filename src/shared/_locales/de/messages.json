@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "de"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Tabs nach Website schließen & sortieren"
+  },
+  "extensionDescription": {
+    "message": "Tabs einer Website schließen, nach Website sortieren und Duplikate entfernen – für einen aufgeräumten Browser."
+  },
+  "openTabTools": {
+    "message": "TabTools öffnen"
+  },
+  "settings": {
+    "message": "Einstellungen"
+  },
+  "suggestions": {
+    "message": "Vorschläge"
+  },
+  "suggestCaption": {
+    "message": "Antippen, um die Tabs einer Website zu schließen"
+  },
+  "queryPlaceholder": {
+    "message": "Nach Stichwort schließen (Eingabetaste)"
+  },
+  "close": {
+    "message": "Schließen"
+  },
+  "sortTabs": {
+    "message": "Tabs sortieren"
+  },
+  "closeDuplicates": {
+    "message": "Duplikate schließen"
+  },
+  "undo": {
+    "message": "Rückgängig"
+  },
+  "undoTitle": {
+    "message": "Letztes Schließen rückgängig machen"
+  },
+  "theme": {
+    "message": "Design"
+  },
+  "light": {
+    "message": "Hell"
+  },
+  "dark": {
+    "message": "Dunkel"
+  },
+  "minTabs": {
+    "message": "Mindestzahl an Tabs je Website für Vorschläge"
+  },
+  "inactiveAfter": {
+    "message": "Tabs gelten als inaktiv nach"
+  },
+  "minutes": {
+    "message": "Minuten"
+  },
+  "closedCount": {
+    "message": "Geschlossen: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "$count$ offene Tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ offener Tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ offene Tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ offene Tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ offene Tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ offene Tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Fehlgeschlagen"
+  },
+  "closedInactive": {
+    "message": "Geschlossene inaktive Tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Keine inaktiven Tabs"
+  },
+  "closedDuplicates": {
+    "message": "Geschlossene doppelte Tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Keine Duplikate"
+  },
+  "nothingToUndo": {
+    "message": "Nichts rückgängig zu machen"
+  },
+  "undoFailed": {
+    "message": "Rückgängig machen fehlgeschlagen"
+  },
+  "restoredCount": {
+    "message": "Wiederhergestellt: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nichts wiederherzustellen"
+  },
+  "inactive": {
+    "message": "Inaktiv"
+  },
+  "loadingSuggestions": {
+    "message": "Vorschläge werden geladen …"
+  },
+  "suggestionsFailed": {
+    "message": "Vorschläge konnten nicht geladen werden"
+  },
+  "noSuggestions": {
+    "message": "Zurzeit keine Vorschläge"
+  },
+  "moreCount": {
+    "message": "Weitere, nicht angezeigte Vorschläge: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sortieren fehlgeschlagen"
+  },
+  "sortedCount": {
+    "message": "Neu angeordnete Tabs: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nichts zu sortieren"
+  },
+  "hide": {
+    "message": "Ausblenden"
+  },
+  "show": {
+    "message": "Anzeigen"
+  },
+  "contextClose": {
+    "message": "Tabs dieser Website schließen"
+  },
+  "contextSort": {
+    "message": "Tabs sortieren (häufigste Websites zuerst)"
+  },
+  "closeSiteLabel": {
+    "message": "Tabs von $site$ schließen",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

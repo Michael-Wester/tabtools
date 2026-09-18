@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "zh-CN"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - 按网站关闭和排序标签页"
+  },
+  "extensionDescription": {
+    "message": "关闭同一网站的标签页，按网站排序并移除重复标签页，让浏览器保持整洁。"
+  },
+  "openTabTools": {
+    "message": "打开 TabTools"
+  },
+  "settings": {
+    "message": "设置"
+  },
+  "suggestions": {
+    "message": "建议"
+  },
+  "suggestCaption": {
+    "message": "点击以关闭该网站的标签页"
+  },
+  "queryPlaceholder": {
+    "message": "按关键词关闭（按 Enter 键）"
+  },
+  "close": {
+    "message": "关闭"
+  },
+  "sortTabs": {
+    "message": "排序标签页"
+  },
+  "closeDuplicates": {
+    "message": "关闭重复项"
+  },
+  "undo": {
+    "message": "撤销"
+  },
+  "undoTitle": {
+    "message": "撤销上次关闭"
+  },
+  "theme": {
+    "message": "主题"
+  },
+  "light": {
+    "message": "浅色"
+  },
+  "dark": {
+    "message": "深色"
+  },
+  "minTabs": {
+    "message": "显示网站建议所需的最少标签页数"
+  },
+  "inactiveAfter": {
+    "message": "标签页被视为不活跃前的时间"
+  },
+  "minutes": {
+    "message": "分钟"
+  },
+  "closedCount": {
+    "message": "已关闭：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_zero": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "已打开 $count$ 个标签页",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "操作失败"
+  },
+  "closedInactive": {
+    "message": "已关闭的不活跃标签页：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "没有不活跃的标签页"
+  },
+  "closedDuplicates": {
+    "message": "已关闭的重复标签页：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "没有重复项"
+  },
+  "nothingToUndo": {
+    "message": "没有可撤销的操作"
+  },
+  "undoFailed": {
+    "message": "撤销失败"
+  },
+  "restoredCount": {
+    "message": "已恢复：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "没有可恢复的标签页"
+  },
+  "inactive": {
+    "message": "不活跃"
+  },
+  "loadingSuggestions": {
+    "message": "正在加载建议…"
+  },
+  "suggestionsFailed": {
+    "message": "无法加载建议"
+  },
+  "noSuggestions": {
+    "message": "暂无建议"
+  },
+  "moreCount": {
+    "message": "未显示的其他建议：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "排序失败"
+  },
+  "sortedCount": {
+    "message": "已重新排序的标签页：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "没有需要排序的标签页"
+  },
+  "hide": {
+    "message": "隐藏"
+  },
+  "show": {
+    "message": "显示"
+  },
+  "contextClose": {
+    "message": "关闭此网站的标签页"
+  },
+  "contextSort": {
+    "message": "排序标签页（标签页最多的网站优先）"
+  },
+  "closeSiteLabel": {
+    "message": "关闭 $site$ 的标签页",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}
