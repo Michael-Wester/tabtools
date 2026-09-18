@@ -3,7 +3,7 @@
 const root = typeof globalThis !== "undefined" ? globalThis : this;
 if (typeof root.ttMessage !== "function" && typeof importScripts === "function") {
   try {
-    importScripts("i18n.js");
+    importScripts("i18n-fallback.js", "i18n.js");
   } catch (err) {
     console.error("TabTools: unable to import localization helpers", err);
   }
