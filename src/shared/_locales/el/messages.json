@@ -68,44 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ ανοιχτές καρτέλες",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ ανοιχτή καρτέλα",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ ανοιχτές καρτέλες",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "$count$ ανοιχτές καρτέλες",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "$count$ ανοιχτές καρτέλες",
     "placeholders": {
       "count": {
         "content": "$1",
