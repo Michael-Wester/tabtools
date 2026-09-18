@@ -168,7 +168,7 @@
     const matches = registry.filter(item => item.locale.toLowerCase().split('-')[0] === language);
     if (matches.length === 1) return matches[0];
     if (language === 'no') return registry.find(item => item.locale === 'nb');
-    return registry.find(item => item.locale === 'en') || null;
+    return null;
   }
 
   function currentLocationSuffix() {
@@ -207,6 +207,7 @@
       setTriggerSelection(selected);
 
       const focusOption = option => {
+        options().forEach(item => { item.tabIndex = item === option ? 0 : -1; });
         option?.focus?.();
         option?.scrollIntoView?.({ block: 'nearest' });
       };
@@ -222,6 +223,8 @@
       };
 
       const choose = (option, event) => {
+        option.href = pathFor(option.dataset.locale) + currentLocationSuffix();
+        if (event?.ctrlKey || event?.metaKey || event?.shiftKey || event?.altKey || event?.button > 0) return;
         event?.preventDefault?.();
         event?.stopPropagation?.();
         const chosen = registry.find(item => item.locale === option.dataset.locale);
@@ -232,6 +235,7 @@
       };
 
       options().forEach(option => {
+        option.href = pathFor(option.dataset.locale) + currentLocationSuffix();
         option.setAttribute('aria-selected', String(option.dataset.locale === currentLocale));
         option.setAttribute('lang', 'en');
         option.setAttribute('dir', 'ltr');
@@ -270,6 +274,9 @@
         }
       });
 
+      picker.addEventListener('focusout', event => {
+        if (!picker.contains(event.relatedTarget)) setOpen(false);
+      });
       document.addEventListener?.('click', event => {
         if (!picker.contains?.(event.target)) setOpen(false);
       });
@@ -283,22 +290,25 @@
     const preferences = saved
       ? [saved].concat(Array.isArray(navigator.languages) ? navigator.languages : [])
       : (Array.isArray(navigator.languages) ? navigator.languages : []);
-    let target = null;
-    for (const preference of preferences) {
-      const candidate = localeForPreference(preference);
-      if (candidate && candidate.locale !== currentLocale) {
-        target = candidate;
-        break;
-      }
-    }
-    if (!target) {
+    // Honour the first supported preference, including the current language.
+    // Do not suggest a second-choice browser language after a saved choice.
+    const target = preferences.map(localeForPreference).find(Boolean);
+    if (!target || target.locale === currentLocale) {
       suggestion.hidden = true;
       return;
     }
 
     const link = document.createElement('a');
     link.href = pathFor(target.locale) + currentLocationSuffix();
-    link.textContent = message('web_languageSuggestion', { language: languageDisplayName(target) });
+    const label = document.createElement('bdi');
+    label.lang = 'en';
+    label.dir = 'ltr';
+    label.textContent = languageDisplayName(target);
+    const parts = message('web_languageSuggestion', { language: '{language}' }).split('{language}');
+    link.replaceChildren(document.createTextNode(parts[0]), label, document.createTextNode(parts[1] || ''));
+    link.addEventListener('click', () => {
+      try { localStorage.setItem('tabtools-site-language', target.locale); } catch (_) {}
+    });
     suggestion.replaceChildren(link);
     suggestion.hidden = false;
   }
