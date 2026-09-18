@@ -10,7 +10,8 @@ output as described below.
 
 ## Localisation source and generation
 
-The authored website template and runtime live in `src/`; `dist/` is generated
+The authored website template is `src/template.html`, with explicit translation
+keys rather than duplicated English copy. The runtime and CSS live in `src/`; `dist/` is generated
 output and should not be edited by hand. The shared locale registry and source
 catalogues live in [`../localisation/`](../localisation/). From the repository
 root, run:
