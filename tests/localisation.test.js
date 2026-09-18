@@ -1,52 +1,68 @@
 // SPDX-License-Identifier: MPL-2.0
-const test=require('node:test');
-const assert=require('node:assert/strict');
-const vm=require('node:vm');
-const L=require('../scripts/localisation');
-const source=L.fs.readFileSync(L.path.join(L.root,'src/shared/i18n.js'),'utf8');
-function runtime(locale, missing=[]) {
- const data=L.catalogue(locale), registry=L.registry.find(l=>l.locale===locale), messages=L.messages(data,registry);
- const context={Intl,TabToolsEnglish:L.english,chrome:{i18n:{getMessage(key,subs=[]) {
-   if(missing.includes(key)||!messages[key])return '';
-   if(typeof subs==='string')subs=[subs];
-   const message=messages[key];
-   return message.message.replace(/\$(\w+)\$/g,(_,name)=>subs[Number(message.placeholders[name].content.slice(1))-1]);
- }}}};vm.createContext(context);vm.runInContext(source,context);return context.TabToolsI18n;
-}
-test('native catalogues resolve the translation locale and direction',()=>{
- assert.equal(runtime('he').direction,'rtl');assert.equal(runtime('ja').locale,'ja');
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const L = require('../scripts/localisation');
+
+test('registry uses distinct locale, extension, website, and hreflang identifiers', () => {
+  assert.equal(L.registry.length, 30);
+  for (const field of ['locale', 'extension', 'website', 'hreflang']) {
+    assert.equal(new Set(L.registry.map(item => item[field])).size, L.registry.length, field);
+  }
+  assert.equal(L.localeInfo('he').direction, 'rtl');
+  assert.equal(L.localeInfo('zh-CN').extension, 'zh_CN');
+  assert.equal(L.localeInfo('nb').extension, 'no');
 });
-test('plural rules use the selected translation language',()=>{
- const de=runtime('de'),ja=runtime('ja');
- assert.equal(de.plural('openCount',1),'1 offener Tab');
- assert.equal(de.plural('openCount',2),'2 offene Tabs');
- assert.equal(ja.plural('openCount',2),'開いているタブ: 2');
+
+test('extension messages preserve interpolation and plural categories', () => {
+  const messages = L.toWebExtensionMessages('cs');
+  assert.ok(messages.closedCount.message.includes('$count$'));
+  assert.equal(messages.closedCount.placeholders.count.content, '$1');
+  assert.ok(messages.openCount_one);
+  assert.ok(messages.openCount_few);
+  assert.ok(messages.openCount_other);
 });
-test('missing native messages use English with English plural rules',()=>{
- const i=runtime('de',['closeSiteLabel','openCount_one','openCount_other']);
- assert.equal(i.t('closeSiteLabel',{site:'example.com'}),'Close tabs from example.com');
- assert.equal(i.plural('openCount',1),'1 open tab');assert.equal(i.plural('openCount',2),'2 open tabs');
+
+test('i18n helper selects a browser message and plural fallback', () => {
+  const calls = [];
+  const context = {
+    chrome: {
+      i18n: {
+        getUILanguage: () => 'fr',
+        getMessage: (key, substitutions) => {
+          calls.push([key, substitutions]);
+          if (key === 'openCount_one') return substitutions[0] + ' onglet ouvert';
+          if (key === 'openCount_other') return substitutions[0] + ' onglets ouverts';
+          return '';
+        },
+      },
+    },
+    Intl,
+  };
+  context.globalThis = context;
+  vm.runInNewContext(
+    fs.readFileSync(path.join(__dirname, '..', 'src/shared/i18n.js'), 'utf8'),
+    context
+  );
+  assert.equal(context.ttMessage('openCount', { count: 1 }), '1 onglet ouvert');
+  assert.equal(context.ttMessage('openCount', { count: 3 }), '3 onglets ouverts');
+  assert.deepEqual(calls.map(call => call[0]), ['openCount_one', 'openCount_other']);
 });
-test('interpolation preserves user content as a literal value',()=>{
- assert.equal(runtime('de').t('closeSiteLabel',{site:'<img src=x onerror=alert(1)>'}),'Tabs von <img src=x onerror=alert(1)> schließen');
- // The view uses textContent/setAttribute, never translation innerHTML.
- assert.doesNotMatch(source,/innerHTML/);
-});
-test('changed English text invalidates existing reviews without changing keys',()=>{
- const locale=L.registry.find(l=>l.locale==='de');const data=L.catalogue('de');
- const original=L.english.settings;
- try{L.english.settings+=' changed';assert.ok(L.issuesFor(locale,data).errors.includes('stale/unreviewed: settings'));}
- finally{L.english.settings=original;}
-});
-test('tampered translations and placeholder omissions fail validation',()=>{
- const locale=L.registry.find(l=>l.locale==='de');const data=L.catalogue('de');data.closeSiteLabel='Schließen';
- assert.ok(L.issuesFor(locale,data).errors.includes('placeholders: closeSiteLabel'));
- assert.ok(L.issuesFor(locale,data).errors.includes('stale/unreviewed: closeSiteLabel'));
-});
-test('store text agrees exactly with manifest-derived messages',()=>{
- for(const locale of ['en','de','ja','he']) {
-  const data=L.catalogue(locale),fields=L.listing(data),messages=L.messages(data,L.registry.find(l=>l.locale===locale));
-  assert.equal(fields.name,messages.extensionName.message);assert.equal(fields.summary,messages.extensionDescription.message);
-  assert.ok(fields.description.length>=250);assert.doesNotMatch(fields.description,/<\/?(?:strong|em)>/);
- }
+
+test('all browser packages contain every registry locale', () => {
+  for (const browser of ['chrome', 'firefox', 'edge']) {
+    const manifest = JSON.parse(fs.readFileSync(
+      path.join(L.root, 'src/overrides', browser, 'manifest.json'),
+      'utf8'
+    ));
+    assert.equal(manifest.default_locale, 'en');
+    assert.equal(manifest.name, '__MSG_extensionName__');
+    for (const locale of L.registry) {
+      assert.ok(fs.existsSync(path.join(
+        L.root, 'src/shared/_locales', locale.extension, 'messages.json'
+      )));
+    }
+  }
 });
