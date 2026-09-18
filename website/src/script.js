@@ -1,15 +1,38 @@
 (() => {
-  const page = JSON.parse(document.getElementById('locale-data').textContent);
-  const t = (key, values = {}) => page.messages[key].replace(/\{([a-zA-Z]+)\}/g, (_, name) => String(values[name] ?? ''));
   const stores = {
     chrome: 'https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk',
     firefox: 'https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/',
     edge: 'https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh'
   };
   const browserNames = { chrome: 'Chrome', firefox: 'Firefox', edge: 'Edge' };
+  const storeNames = {
+    chrome: 'Chrome Web Store',
+    firefox: 'Firefox Add-ons',
+    edge: 'Microsoft Edge Add-ons'
+  };
 
   const $ = selector => document.querySelector(selector);
   const $$ = selector => Array.from(document.querySelectorAll(selector));
+
+  function pageData() {
+    try {
+      const node = document.getElementById('locale-data');
+      return node ? JSON.parse(node.textContent || '{}') : {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  const data = pageData();
+  const messages = data.messages || {};
+  const registry = Array.isArray(data.registry) ? data.registry : [];
+  const currentLocale = data.locale || document.documentElement.lang || 'en';
+
+  function message(key, values = {}) {
+    let value = messages[key] ?? '';
+    if (typeof value !== 'string') return value;
+    return value.replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ('{' + name + '}')));
+  }
 
   function browserKey() {
     const ua = navigator.userAgent || '';
@@ -19,37 +42,61 @@
   }
 
   function browserLabel(key) {
-    if (key === 'firefox') return 'Firefox Add-ons';
-    if (key === 'edge') return 'Microsoft Edge Add-ons';
-    return 'Chrome Web Store';
+    return storeNames[key] || storeNames.chrome;
+  }
+
+  function localisedAddLabel(key) {
+    const value = message('web_addTo', { browser: browserNames[key] });
+    return value.includes('{browser}')
+      ? value.replace('{browser}', browserNames[key])
+      : value;
+  }
+
+  function setCopyLabel(link, key) {
+    const copy = link.querySelector('[data-browser-copy]');
+    if (!copy) return;
+    const name = link.querySelector('[data-browser-name]');
+    const fullLabel = localisedAddLabel(key);
+    if (name) {
+      const template = message('web_addTo', { browser: '{browser}' });
+      const parts = template.split('{browser}');
+      name.textContent = browserNames[key];
+      if (parts.length === 2) {
+        copy.replaceChildren(
+          document.createTextNode(parts[0]),
+          name,
+          document.createTextNode(parts[1])
+        );
+      } else {
+        copy.replaceChildren(document.createTextNode(fullLabel));
+      }
+    } else {
+      copy.replaceChildren(document.createTextNode(fullLabel));
+    }
   }
 
   function setStoreLinks() {
     const detected = browserKey();
     $$('[data-store]').forEach(link => {
       const key = link.hasAttribute('data-adaptive-store') ? detected : link.dataset.store;
-      if (stores[key]) {
-        const url = new URL(stores[key]);
-        url.searchParams.set('utm_source', 'tabtools.fyi');
-        url.searchParams.set('utm_medium', 'referral');
-        url.searchParams.set('utm_campaign', 'website');
-        url.searchParams.set('utm_content', link.dataset.utmPlacement + '_' + key);
-        link.href = url.href;
-        link.dataset.store = key;
-        const copy = link.querySelector('[data-browser-copy]');
-        if (copy) {
-          const parts = page.messages.web_addTo.split('{browser}');
-          const name = document.createElement('span');
-          name.className = 'browser-button-name';
-          name.dataset.browserName = '';
-          name.textContent = browserNames[key];
-          copy.replaceChildren(document.createTextNode(parts[0]), name, document.createTextNode(parts[1] || ''));
-        }
-        const browserIcon = link.querySelector('[data-browser-icon]');
-        if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
-        const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
-        link.setAttribute('aria-label', t('web_storeAria', {label: visibleLabel, store: browserLabel(key)}));
-      }
+      if (!stores[key]) return;
+
+      const url = new URL(stores[key]);
+      url.searchParams.set('utm_source', 'tabtools.fyi');
+      url.searchParams.set('utm_medium', 'referral');
+      url.searchParams.set('utm_campaign', 'website');
+      url.searchParams.set('utm_content', (link.dataset.utmPlacement || 'store') + '_' + key);
+      link.href = url.href;
+      link.dataset.store = key;
+      setCopyLabel(link, key);
+
+      const browserIcon = link.querySelector('[data-browser-icon]');
+      if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
+      const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
+      link.setAttribute('aria-label', message('web_storeAria', {
+        label: visibleLabel,
+        store: browserLabel(key)
+      }));
     });
 
     $$('[data-alternative-store]').forEach(link => {
@@ -57,7 +104,7 @@
     });
 
     const note = $('[data-store-note]');
-    if (note) note.textContent = t('web_storeNote', {store: browserLabel(detected)});
+    if (note) note.textContent = message('web_storeNote', { store: browserLabel(detected) });
 
     const mobileNote = $('[data-mobile-note]');
     if (mobileNote) {
@@ -74,12 +121,13 @@
     const dark = theme === 'dark';
     const toggle = $('[data-theme-toggle]');
     if (toggle) {
-      toggle.setAttribute('aria-label', dark ? t('web_switchLight') : t('web_switch_to_dark_mode'));
-      toggle.title = dark ? t('web_switchLight') : t('web_switch_to_dark_mode');
+      const label = dark ? message('web_switchLight') : message('web_switch_to_dark_mode');
+      toggle.setAttribute('aria-label', label);
+      toggle.title = label;
     }
 
     const label = $('[data-theme-label]');
-    if (label) label.textContent = dark ? t('web_lightMode') : t('web_dark_mode');
+    if (label) label.textContent = dark ? message('web_lightMode') : message('web_dark_mode');
 
     const metaTheme = $('meta[name="theme-color"]');
     if (metaTheme) metaTheme.content = dark ? '#111216' : '#f6f6f4';
@@ -90,9 +138,7 @@
     if (!current) {
       try { current = localStorage.getItem('tabtools-site-theme'); } catch (_) {}
     }
-    if (current !== 'dark' && current !== 'light') {
-      current = 'light';
-    }
+    if (current !== 'dark' && current !== 'light') current = 'light';
     setTheme(current);
 
     const toggle = $('[data-theme-toggle]');
@@ -102,6 +148,71 @@
         setTheme(next);
       });
     }
+  }
+
+  function pathFor(locale) {
+    const found = registry.find(item => item.locale === locale);
+    if (!found || !found.path || found.path === '/') return '/';
+    return found.path.endsWith('/') ? found.path : found.path + '/';
+  }
+
+  function localeForPreference(preference) {
+    const raw = String(preference || '').replace('_', '-');
+    const pathMatch = registry.find(item => item.path === raw || item.path === raw + '/');
+    if (pathMatch) return pathMatch;
+    const exact = registry.find(item => item.locale.toLowerCase() === raw.toLowerCase());
+    if (exact) return exact;
+    const language = raw.split('-')[0].toLowerCase();
+    if (language === 'zh' && /hant/i.test(raw)) return registry.find(item => item.locale === 'zh-TW');
+    if (language === 'zh' && /hans/i.test(raw)) return registry.find(item => item.locale === 'zh-CN');
+    const matches = registry.filter(item => item.locale.toLowerCase().split('-')[0] === language);
+    if (matches.length === 1) return matches[0];
+    if (language === 'no') return registry.find(item => item.locale === 'nb');
+    return registry.find(item => item.locale === 'en') || null;
+  }
+
+  function currentLocationSuffix() {
+    return (window.location.search || '') + (window.location.hash || '');
+  }
+
+  function initLanguage() {
+    const select = $('[data-language-select]');
+    const currentPath = pathFor(currentLocale);
+    if (select) {
+      select.value = currentPath;
+      select.addEventListener('change', () => {
+        const target = select.value || '/';
+        const chosen = registry.find(item => item.path === target);
+        try { localStorage.setItem('tabtools-site-language', chosen ? chosen.locale : target); } catch (_) {}
+        window.location.assign(target + currentLocationSuffix());
+      });
+    }
+
+    const suggestion = $('[data-language-suggestion]');
+    if (!suggestion) return;
+    let saved = null;
+    try { saved = localStorage.getItem('tabtools-site-language'); } catch (_) {}
+    const preferences = saved
+      ? [saved].concat(Array.isArray(navigator.languages) ? navigator.languages : [])
+      : (Array.isArray(navigator.languages) ? navigator.languages : []);
+    let target = null;
+    for (const preference of preferences) {
+      const candidate = localeForPreference(preference);
+      if (candidate && candidate.locale !== currentLocale) {
+        target = candidate;
+        break;
+      }
+    }
+    if (!target) {
+      suggestion.hidden = true;
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = pathFor(target.locale) + currentLocationSuffix();
+    link.textContent = message('web_languageSuggestion', { language: target.nativeName });
+    suggestion.replaceChildren(link);
+    suggestion.hidden = false;
   }
 
   function initPrivacyNavigation() {
@@ -128,7 +239,6 @@
         centerPrivacy();
       });
     });
-
     window.addEventListener('hashchange', () => {
       if (window.location.hash === '#privacy') centerPrivacy();
     });
@@ -137,49 +247,10 @@
     }, { once: true });
   }
 
-  function initLanguage() {
-    const select = $('[data-language-select]');
-    select.addEventListener('change', () => {
-      const target = page.registry.find(item => item.path === select.value);
-      if (!target) return;
-      try { localStorage.setItem('tabtools-site-language', target.locale); } catch (_) {}
-      // An explicit locale URL always owns the displayed content.
-      window.location.assign(target.path + window.location.search + window.location.hash);
-    });
-    let saved;
-    try { saved = localStorage.getItem('tabtools-site-language'); } catch (_) {}
-    const match = preferences => {
-      for (let pref of preferences) {
-        pref = String(pref).replace(/_/g, '-').toLowerCase();
-        if (pref === 'no' || pref.startsWith('no-') || pref.startsWith('nb-')) pref = 'nb';
-        if (/^zh-(hant|tw|hk|mo)(-|$)/.test(pref)) pref = 'zh-tw';
-        else if (/^zh-(hans|cn|sg)(-|$)/.test(pref)) pref = 'zh-cn';
-        const exact = page.registry.find(item => item.locale.toLowerCase() === pref);
-        if (exact) return exact;
-        // Only generic target locales may match a region. Never guess which
-        // Portuguese or Chinese variant a generic preference means.
-        const generic = page.registry.find(item => item.locale.toLowerCase() === pref.split('-')[0]);
-        if (generic) return generic;
-      }
-      return page.registry.find(item => item.locale === 'en');
-    };
-    const suggested = match(saved ? [saved] : (navigator.languages || [navigator.language]));
-    if (suggested.locale !== page.locale) {
-      const note = $('[data-language-suggestion]');
-      const link = document.createElement('a');
-      link.href = suggested.path + window.location.search + window.location.hash;
-      link.hreflang = suggested.locale;
-      link.textContent = t('web_languageSuggestion', {language:suggested.nativeName});
-      link.addEventListener('click', () => { try { localStorage.setItem('tabtools-site-language', suggested.locale); } catch (_) {} });
-      note.append(link);
-      note.hidden = false;
-    }
-  }
-
   function init() {
-    initLanguage();
     setStoreLinks();
     initTheme();
+    initLanguage();
     initPrivacyNavigation();
   }
 
