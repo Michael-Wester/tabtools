@@ -34,10 +34,16 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Generate committed localisation outputs
         run: |
           node scripts/generate-extension-locales.js
@@ -49,5 +55,14 @@ jobs:
         run: node --test tests/website.test.js tests/localisation.test.js
       - name: Build all browser packages
         run: node build.js
+      - name: Validate Node packages
+        run: node scripts/check-packages.js
+      - name: Build with PowerShell
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./build.ps1
+      - name: Validate PowerShell packages
+        if: runner.os == 'Windows'
+        run: node scripts/check-packages.js
       - name: Reject stale generated files
         run: git diff --exit-code
