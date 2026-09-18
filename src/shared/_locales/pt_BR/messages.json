@@ -68,35 +68,8 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ abas abertas",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ aba aberta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ abas abertas",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "$count$ abas abertas",
     "placeholders": {
       "count": {
         "content": "$1",
