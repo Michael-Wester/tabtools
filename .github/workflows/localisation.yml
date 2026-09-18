@@ -1,29 +1,53 @@
-name: Validate localisation and extension packages
+name: Validate TabTools localisation
+
 on:
-  pull_request:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
+      - 'build.js'
+      - 'build.ps1'
+      - 'website/src/**'
+      - 'website/dist/**'
+      - 'localisation/**'
+      - 'marketing/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/localisation.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'build.js'
+      - 'build.ps1'
+      - 'website/src/**'
+      - 'website/dist/**'
+      - 'localisation/**'
+      - 'marketing/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/localisation.yml'
+
 permissions:
   contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: node scripts/validate-localisation.js
-      - run: node --test tests/*.test.js
-      - run: node build.js
-      - run: node scripts/check-packages.js
-  powershell:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: ./build.ps1
-        shell: pwsh
-      - run: node scripts/check-packages.js
+      - name: Generate committed localisation outputs
+        run: |
+          node scripts/generate-extension-locales.js
+          node scripts/generate-website.js
+          node scripts/generate-listings.js
+      - name: Validate localisation
+        run: node scripts/validate-localisation.js
+      - name: Run regression tests
+        run: node --test tests/website.test.js tests/localisation.test.js
+      - name: Build all browser packages
+        run: node build.js
+      - name: Reject stale generated files
+        run: git diff --exit-code
