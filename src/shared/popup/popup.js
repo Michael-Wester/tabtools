@@ -296,7 +296,7 @@
       main.appendChild(icon);
       label.textContent = t("inactive");
       main.appendChild(label);
-      count.textContent = String(item.inactiveCount ?? 0);
+      count.textContent = globalThis.ttNumber(item.inactiveCount ?? 0);
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
@@ -309,6 +309,9 @@
       const domain = String(item.domain || "");
       chip.dataset.domain = domain;
       label.textContent = domain;
+      label.dir = "ltr";
+      label.style.unicodeBidi = "isolate";
+      chip.setAttribute("aria-label", t("closeSiteLabel", { site: domain }));
       const iconUrl =
         typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
       if (iconUrl) {
