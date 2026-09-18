@@ -91,7 +91,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin-left: auto;
+        margin-inline-start: auto;
       }
       .stack {
         display: grid;
@@ -535,7 +535,7 @@
         justify-content: space-between;
       }
       .caption-inline {
-        margin-left: 8px;
+        margin-inline-start: 8px;
       }
       .undo-icon {
         width: 18px;
@@ -547,6 +547,14 @@
         align-items: center;
         gap: 6px;
       }
+      /* Translated counters and labels can be much longer than English. */
+      .header-row, .header-actions { flex-wrap: wrap; }
+      .header-main { flex-shrink: 0; }
+      .header-actions { max-width: 100%; }
+      #pc-suggest-card > .row { flex-wrap: wrap; }
+      .btn, .setting-label { overflow-wrap: anywhere; }
+      .chip .count { flex-shrink: 0; }
+      html[dir="rtl"] .undo-icon { transform: scaleX(-1); }
     </style>
   </head>
   <body class="stack">
@@ -609,6 +617,8 @@
               id="pc-query"
               class="input"
               type="text"
+              dir="auto"
+              data-i18n-aria="queryPlaceholder"
               data-i18n-placeholder="queryPlaceholder"
               placeholder="Close by keyword (press Enter)"
             />
@@ -723,6 +733,7 @@
       </section>
     </div>
 
+    <script src="../i18n-fallback.js"></script>
     <script src="../i18n.js"></script>
     <script src="popup.js"></script>
   </body>
