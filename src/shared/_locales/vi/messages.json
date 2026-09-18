@@ -68,51 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ thẻ đang mở",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_one": {
-    "message": "$count$ thẻ đang mở",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_two": {
-    "message": "$count$ thẻ đang mở",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "$count$ thẻ đang mở",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
-    "message": "$count$ thẻ đang mở",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_other": {
     "message": "$count$ thẻ đang mở",
     "placeholders": {
