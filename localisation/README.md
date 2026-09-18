@@ -38,7 +38,7 @@ updates a live store listing.
 
 Translation completion, technical validation, and linguistic review are
 tracked separately. Source freshness is fingerprinted per key and reported as
-current or stale in `coverage.md`; CI fails on stale non-English source
+current or stale in `COVERAGE.md`; CI fails on stale non-English source
 fingerprints. The current translations have AI self-review only; no
 native-speaker review is claimed. The official public documentation confirms
 the localisation mechanisms, while AMO and Edge expose the complete listing
