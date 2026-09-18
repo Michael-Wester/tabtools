@@ -68,15 +68,6 @@
       }
     }
   },
-  "openCount_zero": {
-    "message": "$count$ לשוניות פתוחות",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "openCount_one": {
     "message": "$count$ לשונית פתוחה",
     "placeholders": {
@@ -87,24 +78,6 @@
     }
   },
   "openCount_two": {
-    "message": "$count$ לשוניות פתוחות",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_few": {
-    "message": "$count$ לשוניות פתוחות",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCount_many": {
     "message": "$count$ לשוניות פתוחות",
     "placeholders": {
       "count": {
