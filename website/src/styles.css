@@ -418,7 +418,7 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 }
 
 /* Locale controls and text expansion share the existing theme tokens. */
-.language-picker { position: relative; display: inline-flex; width: 168px; min-width: 0; }
+.language-picker { position: relative; display: inline-flex; width: 168px; min-width: 0; order: 3; }
 .language-trigger {
   display: flex;
   width: 100%;
