@@ -25,7 +25,7 @@ Every translated key was authored and self-reviewed by AI against the English
 meaning for omissions, terminology, scope, placeholders and length. There was no
 native-speaker review. CI checks structure and fingerprints, not fluency.
 
-All 29 non-source catalogues need fluent-reader review before release. Specific
+All 28 non-source catalogues need fluent-reader review before release. Specific
 review priorities: the short Greek title uses **σάιτ** to fit the 50-character
 limit while body text uses **ιστότοπος**; confirm that abbreviation and the compact
 Finnish, Slovak, Swedish and Ukrainian titles read naturally. Check Norwegian
@@ -33,7 +33,7 @@ Bokmål versus Nynorsk distinctions, Serbian Cyrillic browser terminology, Hebre
 number phrases and RTL punctuation, and Portuguese/Chinese regional conventions.
 These are review priorities, not asserted known mistranslations.
 
-British English deliberately keeps the existing British-spelled English copy.
+The single English source keeps the existing British-spelled English copy.
 French `Suggestions`, `minutes`, `Open source`, `Contact`; Italian `Privacy`;
 Dutch `open tab(s)`, `Privacy`, `Product`, `Contact`; and Romanian `Inactive`,
 `Contact` are intentional shared spellings, with per-key reasons in the reviews.
