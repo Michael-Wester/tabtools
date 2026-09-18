@@ -21,7 +21,7 @@ files. Run the full validation before entering text into a publisher dashboard:
     node scripts/generate-listings.js
     node scripts/validate-localisation.js
 
-Validation applies conservative cross-store limits: 75 characters for a
+Validation applies conservative cross-store limits: 50 characters for a
 title/name, 132 for a summary/short description, and 250–10,000 for a full
 description. Recheck the current limits and enabled locale choices in each
 publisher dashboard immediately before release.
