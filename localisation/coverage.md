@@ -10,7 +10,6 @@ Intersection status: candidate-complete
 | cs | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
 | de | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
 | el | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
-| en-GB | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
 | es | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
 | fi | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
 | fr | 42/42 | 96/96 | 3/3 fields × 3 stores | current | structural checks | AI self-review only; no native-speaker review |
