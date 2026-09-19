@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('node:assert/strict');
 const L = require('./localisation');
-const { fullDescription, listing, stores } = require('./generate-listings');
+const { fullDescription, listing, listingIndex, stores } = require('./generate-listings');
 const { validateCatalogue, validateStoreCodes } = require('./catalogue-validation');
 const supportEvidence = require('../localisation/support-evidence.json');
 
@@ -129,6 +129,9 @@ for (const manifestName of ['chrome', 'firefox', 'edge']) {
 }
 
 const sitemap = fs.readFileSync(path.join(L.root, 'website', 'dist', 'sitemap.xml'), 'utf8');
+if (fs.readFileSync(path.join(L.root, 'marketing', 'INDEX.md'), 'utf8') !== listingIndex()) {
+  fail('stale store-text index; run node scripts/generate-listings.js');
+}
 for (const locale of L.registry) {
   if (!sitemap.includes('<loc>' + L.urlFor(locale) + '</loc>')) fail('sitemap missing ' + locale.locale);
 }
