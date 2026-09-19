@@ -25,14 +25,16 @@
     catch (_) { return String(value); }
   }
 
-  function getMessage(key, values = {}) {
+  function getMessage(key, values = {}, options = {}) {
     const named = values && typeof values === "object" && !Array.isArray(values) ? values : {};
-    const format = (name, value) => name === "count" ? number(value) : String(value);
-    const source = typeof english[key] === "object" ? english[key].other : english[key];
+    const format = (name, value) => name === "count" && options.formatNumbers !== false ? number(value) : String(value);
+    const sourceEntry = english[key];
+    const plural = sourceEntry && typeof sourceEntry === "object";
+    const source = plural ? sourceEntry.other : sourceEntry;
     const names = [...new Set((source || "").match(/\{\w+\}/g) || [])].map(token => token.slice(1, -1));
     const args = Array.isArray(values) ? values.map(String) :
       (names.length ? names : Object.keys(named)).map(name => format(name, named[name] ?? ""));
-    const category = key === "openCount" ? pluralCategory(named.count) : null;
+    const category = plural ? pluralCategory(named.count) : null;
     const messageKey = category ? key + "_" + category : key;
     let value = browserMessage(messageKey, args);
     if (!value && category) value = browserMessage(key + "_other", args);
