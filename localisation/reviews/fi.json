@@ -827,5 +827,19 @@
     "translation": "0228de573d37d22ff8880e913ad3744917c12fb48962a248e4279c7ba2914b3a",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
+  },
+  "openCountShort": {
+    "source": "7671d9362f535d314565cca701c54f25f53bac08284174487da77bdbf98bcdcf",
+    "translation": "62d143a37f3d1094325002a0f97dbafa2c04743e6dc575b6aecf697799135ad5",
+    "review": "AI self-review",
+    "note": "Reviewed concise popup state wording, count placeholder and required plural forms. No native-speaker review claimed.",
+    "date": "2026-09-19"
+  },
+  "closedCountShort": {
+    "source": "ad27145e5a914b2bb5318617855e3c6ffb3772cab92d74d28a32719fc44e28ac",
+    "translation": "e0bb8d2abd2dd0f4c6867ec6f45efd8dd6006b03f4b6e3d39c344c3c789dff03",
+    "review": "AI self-review",
+    "note": "Reviewed concise popup state wording, count placeholder and required plural forms. No native-speaker review claimed.",
+    "date": "2026-09-19"
   }
 }
