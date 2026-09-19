@@ -2,7 +2,7 @@
 
 Baseline commit: 519007f3dd06c0b2ab52d57519ed7a0d145b9c79
 Registry verification date: 2026-09-18
-Intersection status: candidate-complete
+Intersection status: candidate-user-selected
 
 | Locale | Extension | Website | Store text | Source freshness | Technical | Linguistic review |
 | --- | ---: | ---: | ---: | --- | --- | --- |
