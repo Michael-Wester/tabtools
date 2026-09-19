@@ -22,6 +22,14 @@
     "one": "{count} ανοιχτή καρτέλα",
     "other": "{count} ανοιχτές καρτέλες"
   },
+  "openCountShort": {
+    "one": "{count} ανοιχτή",
+    "other": "{count} ανοιχτές"
+  },
+  "closedCountShort": {
+    "one": "{count} κλειστή",
+    "other": "{count} κλειστές"
+  },
   "closeFailed": "Αποτυχία",
   "closedInactive": "Ανενεργές καρτέλες που έκλεισαν: {count}",
   "noInactive": "Δεν υπάρχουν ανενεργές καρτέλες",
