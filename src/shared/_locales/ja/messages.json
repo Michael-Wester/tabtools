@@ -77,6 +77,24 @@
       }
     }
   },
+  "openCountShort_other": {
+    "message": "開いている $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "閉じた $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "失敗しました"
   },
