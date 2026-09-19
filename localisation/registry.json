@@ -3,8 +3,8 @@
   "sourceLocale": "en",
   "verifiedAt": "2026-09-18",
   "baseCommit": "519007f3dd06c0b2ab52d57519ed7a0d145b9c79",
-  "intersectionStatus": "candidate-complete",
-  "intersectionNote": "Chrome publishes a supported-locale table. Edge and AMO expose listing-language choices through their publisher dashboards rather than a single stable public locale table; the entries below are the shared set used for this PR and must be rechecked in each dashboard immediately before applying store text.",
+  "intersectionStatus": "candidate-user-selected",
+  "intersectionNote": "These 29 locales are the candidate shared set selected for this PR, with the separate British English variant intentionally removed. Chrome listing codes and the pinned AMO production source define the recorded support evidence. Edge dashboard choices and exact identifiers remain unverified; recheck each publisher dashboard before applying store text.",
   "evidence": [
     {"store":"chrome","url":"https://developer.chrome.com/docs/extensions/reference/api/i18n","verifiedAt":"2026-09-18","note":"Official Chrome i18n locale table and fallback rules."},
     {"store":"chrome-listing","url":"https://developer.chrome.com/docs/webstore/cws-dashboard-listing","verifiedAt":"2026-09-18","note":"Official instructions for localized listing metadata."},
