@@ -24,6 +24,18 @@
     "many": "{count} відкритих вкладок",
     "other": "{count} відкритої вкладки"
   },
+  "openCountShort": {
+    "one": "{count} відкрита",
+    "few": "{count} відкриті",
+    "many": "{count} відкритих",
+    "other": "{count} відкритої"
+  },
+  "closedCountShort": {
+    "one": "{count} закрита",
+    "few": "{count} закриті",
+    "many": "{count} закритих",
+    "other": "{count} закритої"
+  },
   "closeFailed": "Не вдалося виконати дію",
   "closedInactive": "Закрито неактивних вкладок: {count}",
   "noInactive": "Немає неактивних вкладок",
