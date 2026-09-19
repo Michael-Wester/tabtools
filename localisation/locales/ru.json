@@ -24,6 +24,18 @@
     "many": "{count} открытых вкладок",
     "other": "{count} открытой вкладки"
   },
+  "openCountShort": {
+    "one": "{count} открыта",
+    "few": "{count} открыты",
+    "many": "{count} открыто",
+    "other": "{count} открыто"
+  },
+  "closedCountShort": {
+    "one": "{count} закрыта",
+    "few": "{count} закрыты",
+    "many": "{count} закрыто",
+    "other": "{count} закрыто"
+  },
   "closeFailed": "Не удалось выполнить действие",
   "closedInactive": "Закрыто неактивных вкладок: {count}",
   "noInactive": "Нет неактивных вкладок",
