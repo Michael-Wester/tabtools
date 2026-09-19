@@ -23,6 +23,16 @@
     "two": "{count} לשוניות פתוחות",
     "other": "{count} לשוניות פתוחות"
   },
+  "openCountShort": {
+    "one": "{count} פתוחה",
+    "two": "{count} פתוחות",
+    "other": "{count} פתוחות"
+  },
+  "closedCountShort": {
+    "one": "{count} סגורה",
+    "two": "{count} סגורות",
+    "other": "{count} סגורות"
+  },
   "closeFailed": "הפעולה נכשלה",
   "closedInactive": "לשוניות לא פעילות שנסגרו: {count}",
   "noInactive": "אין לשוניות לא פעילות",
