@@ -85,3 +85,50 @@ unverified rather than being inferred from DOM tests. No additional browser
 installation was attempted.
 
 The PR remains draft. Earlier unfinished checkouts were preserved. Updates use sequential file commits through the existing GitHub connection; no merge, force-push or manual deployment was performed.
+
+## Extension runtime review — 19 September 2026
+
+Reviewed the actual background and popup scripts from `e1360300039ec6b1e86b00a6aa1243acdf587262`.
+The following behaviours also existed before the localisation PR. They were
+reproduced with the shipped scripts and callback-based browser API fixtures,
+then corrected:
+
+- Site actions on single-label hosts such as `localhost` treated the hostname as
+  a keyword and closed unrelated tabs whose titles mentioned it. Context-menu
+  actions and site chips now explicitly request exact-host matching.
+- Whitespace-only requests matched every tab. The background now treats empty
+  trimmed queries as a no-op.
+- Failed tab removals were counted as successful and entered the undo list.
+  Each removal is now checked independently; stats and undo snapshots include
+  only successful removals. The popup flags partial failure, and complete
+  failure returns an error. Tab-query failures also return an error response.
+- Duplicate cleanup ignored pinned copies when deciding which unpinned copy to
+  retain. Pinned copies across all regular windows now seed the keep set; their
+  extra unpinned copies can be removed while pinned/private tabs remain.
+- A partially successful Undo discarded the entries that failed to reopen.
+  Failed entries now remain available for retry without recreating successful
+  entries. Undo remains limited to the open popup and restores URLs, not full
+  browser sessions or page state.
+- A missing background response crashed popup initialisation. The popup now
+  uses its translated error states and restores the Close button after failure.
+- Overlapping cleanups overwrote each other's stored statistics. Stats updates
+  and resets now run in sequence; a failed write does not block later writes.
+
+Added `tests/extension.test.js` to `npm test` and both CI workflows. Its 14 tests
+cover Chrome-worker/Firefox-background startup and translated menu registration
+for all 29 locales, exact-domain/keyword cleanup, private-tab exclusions,
+partial removal, pinned duplicates, inactive exclusions, sorting scope, stats
+concurrency, numeric settings persistence, popup errors and partial Undo retry.
+Seven targeted regressions failed before their corresponding fixes.
+
+Local validation: **36 tests pass**, all 29 catalogues validate, and the package
+regression builds/checks Chrome, Firefox and Edge. Regeneration leaves the
+existing generated files unchanged; `git diff --check` passes. The PR description
+records the final commit and CI run links after upload.
+
+These checks execute extension code with simulated browser APIs and a minimal
+popup DOM. They do not validate installed-browser API behaviour or visual layout.
+Installed Chrome/Firefox/Edge smoke tests, popup rendering, browser-managed
+context menus, real close/undo and offline behaviour remain required. The current
+browser cannot install extensions; its previously rejected extension-manager
+access was not retried or worked around.
