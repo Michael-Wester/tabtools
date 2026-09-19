@@ -23,6 +23,16 @@
     "many": "{count} separadores abertos",
     "other": "{count} separadores abertos"
   },
+  "openCountShort": {
+    "one": "{count} aberto",
+    "many": "{count} abertos",
+    "other": "{count} abertos"
+  },
+  "closedCountShort": {
+    "one": "{count} fechado",
+    "many": "{count} fechados",
+    "other": "{count} fechados"
+  },
   "closeFailed": "Falha",
   "closedInactive": "Separadores inativos fechados: {count}",
   "noInactive": "Sem separadores inativos",
