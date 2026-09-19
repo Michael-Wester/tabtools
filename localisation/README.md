@@ -34,18 +34,20 @@ node scripts/check-packages.js
 `website/src/template.html`, `website/src/styles.css`, and
 `website/src/script.js` are authored sources. `website/dist/index.html`,
 locale pages, `styles.css`, `script.js`, and `sitemap.xml` are generated
-outputs. Store text under `marketing/listings/` is generated from the same
-locale sources and is committed for review and future manual entry; it never
-updates a live store listing.
+outputs. Store text under `marketing/listings/` and its `marketing/INDEX.md` are generated
+from the same locale registry and text sources. Store descriptions include feature
+and privacy copy, without website-only navigation instructions. These outputs are
+committed for review and future manual entry; they never update a live store listing.
 
 Translation completion, technical validation, and linguistic review are
 tracked separately. Source freshness is fingerprinted per key and reported as
 current or stale in `COVERAGE.md`; CI fails on stale non-English source
 fingerprints. The current translations have AI self-review only; no
-native-speaker review is claimed. The official public documentation confirms
-the localisation mechanisms, while AMO and Edge expose the complete listing
-language choices in publisher dashboards. Recheck those dashboards before
-applying a store release.
+native-speaker review is claimed. The public documentation confirms the
+localisation mechanisms. The recorded Chrome locale table and pinned AMO production source constrain valid listing
+codes; Edge's full dashboard language list remains unverified. This PR has 29
+selected locales and intentionally omits a separate British English variant.
+Recheck the publisher dashboards before applying a store release.
 
 The website template uses explicit `{{messageKey}}` bindings. English copy edits
 belong in `locales/en.json`; no duplicated English phrases need to be updated in
@@ -60,6 +62,7 @@ node scripts/review-translation.js de settings "Reviewer name" "Terminology chec
 
 Validation rejects changed placeholders, missing plural forms, unsafe/unbalanced
 markup, missing brand/domain names, stale review fingerprints and stale listing
-content. These are technical checks, not proof of translation fluency.
+content and index links. Store locale codes are checked against the recorded
+Chrome and AMO evidence. These are technical checks, not proof of translation fluency.
 `COVERAGE.md` and `GLOSSARY.md` are the canonical documents; avoid case-only
 filename duplicates because they cannot coexist reliably on Windows.
