@@ -196,3 +196,26 @@ That run overlapped a separate compact-counter update: its broader Node suite
 still used the older French count fixture and failed while that update was
 incomplete. The Firefox result does not imply the entire combined PR passed at
 that intermediate commit. Final combined CI results belong in the PR description.
+
+## Restore native popup dimensions — 19 September 2026
+
+The user's installed Firefox screenshot showed a narrower popup and clipped
+right edges after the adaptive-width change. That change had moved the explicit
+width from `body` to `html`, leaving the body at `width: 100%; min-width: 0`.
+[Mozilla's popup-sizing documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups#popup_resizing)
+states that standards-mode popups are sized from the body's preferred layout width
+and that popup width must be set on `body`, rather than the root element.
+
+Restored explicit body width, minimum and maximum using the shared `--popup-width`
+value and removed the root width constraint. The default again matches the original
+380 px border-box body in base commit `519007f3`: 10 px padding, 12 px vertical
+margins, the existing font and content-driven height. Longer translations can
+still increase the shared width, and Main and Settings retain that width.
+Compact counters and the existing width cap are unchanged.
+
+Local validation: **41 tests pass**; Chrome, Firefox and Edge packages build and
+validate; generated localisation files are unchanged. An independent code review
+confirmed the original dimensions and body-sizing correction. The Node sizing
+tests supply geometry and did not catch this CSS/native-host regression. No
+installed-browser render is claimed: reload the rebuilt extension and check the
+original size, unclipped card edges, long translations and both Settings transitions.
