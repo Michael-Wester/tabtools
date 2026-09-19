@@ -105,13 +105,14 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
   return { state, api, context, send };
 }
 
-async function popup(runtime) {
+async function popup(runtime, sizing = {}) {
   class Element {
     constructor() {
       this.dataset = {}; this.attributes = {}; this.listeners = {}; this.children = [];
-      this.value = ''; this.disabled = false; this.hidden = false; this.style = {}; this.textContent = '';
+      this.value = ''; this.disabled = false; this.hidden = false; this.textContent = '';
+      this.style = { setProperty(key, value) { this[key] = value; } };
       const classes = new Set();
-      this.classList = { contains: key => classes.has(key), toggle: (key, enabled) => enabled ? classes.add(key) : classes.delete(key) };
+      this.classList = { contains: key => classes.has(key), remove: key => classes.delete(key), toggle: (key, enabled) => enabled ? classes.add(key) : classes.delete(key) };
     }
     get textContent() { return this.text; }
     set textContent(value) { this.text = value; this.children = []; }
@@ -123,16 +124,24 @@ async function popup(runtime) {
     async dispatch(name) { for (const fn of this.listeners[name] || []) await fn({}); }
     async click() { await this.dispatch('click'); }
   }
-  const ids = ['pc-status', 'pc-undo-close', 'min-open', 'inactive-threshold', 'pc-suggest-caption', 'pc-count-pill', 'pc-open-count', 'pc-close', 'pc-close-duplicates', 'pc-suggest-card', 'pc-suggest-chips', 'pc-suggest-empty', 'pc-suggest-more', 'pc-sort-tabs-quick', 'pc-tab-actions', 'pc-tab-settings', 'pc-settings-toggle', 'pc-query'];
+  const ids = ['pc-header', 'pc-status', 'pc-undo-close', 'min-open', 'inactive-threshold', 'pc-suggest-caption', 'pc-count-pill', 'pc-open-count', 'pc-close', 'pc-close-duplicates', 'pc-suggest-card', 'pc-suggest-chips', 'pc-suggest-empty', 'pc-suggest-more', 'pc-sort-tabs-quick', 'pc-tab-actions', 'pc-tab-settings', 'pc-settings-toggle', 'pc-query'];
   const elements = Object.fromEntries(ids.map(id => [id, new Element()]));
   const themes = ['light', 'dark'].map(theme => { const el = new Element(); el.dataset.themeValue = theme; return el; });
   elements.themes = themes;
   let ready;
-  const document = { documentElement: new Element(), querySelector: selector => elements[selector.slice(1)] || null,
+  const document = { documentElement: new Element(), body: new Element(), querySelector: selector => elements[selector.slice(1)] || null,
     getElementById: id => elements[id] || null,
     querySelectorAll: selector => selector === '[data-theme-value]' ? themes : [], createElement: () => new Element(),
     addEventListener(name, fn) { if (name === 'DOMContentLoaded') ready = fn; } };
-  const context = vm.createContext({ chrome: runtime.api, document, Intl, setTimeout: () => 1, console: runtime.context.console });
+  document.body.getBoundingClientRect = () => ({ width: parseFloat(document.documentElement.style['--popup-width']) || 380 });
+  elements['pc-header'].getBoundingClientRect = () => ({ width: document.body.getBoundingClientRect().width - 46 });
+  elements['pc-header'].children = [
+    { getBoundingClientRect: () => ({ width: 80 }) },
+    { getBoundingClientRect: () => ({ width: sizing.controlsWidth ?? 230 }) },
+  ];
+  elements.root = document.documentElement;
+  const context = vm.createContext({ chrome: runtime.api, document, Intl, setTimeout: () => 1, console: runtime.context.console,
+    getComputedStyle: () => ({ columnGap: '12px' }), screen: { availWidth: sizing.screenWidth || 1920 } });
   for (const file of ['i18n-fallback.js', 'i18n.js', 'popup/popup.js']) vm.runInContext(fs.readFileSync(path.join(L.root, 'src/shared', file), 'utf8'), context, { filename: file });
   await ready();
   return elements;
@@ -309,4 +318,47 @@ test('popup site chips use exact host matching and report partial close failures
   assert.deepEqual(runtime.state.removed, [1]);
   assert.equal(elements['pc-status'].textContent, 'Closed: 1 · Failed');
   assert.equal(elements['pc-undo-close'].disabled, false);
+});
+
+test('popup header restores compact counters without digit grouping', async () => {
+  const runtime = extension({ tabs: Array.from({ length: 14 }, (_, index) => ({ id: index + 1, url: 'https://example.com/' + index })) });
+  runtime.state.store['pc.stats'] = { totalTabsEaten: 2479 };
+  const elements = await popup(runtime);
+  assert.equal(elements['pc-open-count'].textContent, '14 open');
+  assert.equal(elements['pc-count-pill'].textContent, '2479 closed');
+});
+
+test('popup grows for longer measured labels and retains the width across Settings', async () => {
+  const runtime = extension({ locale: 'de' });
+  const sizing = { controlsWidth: 420 };
+  const elements = await popup(runtime, sizing);
+  const width = elements.root.style['--popup-width'];
+  assert.ok(parseFloat(width) > 380);
+  assert.equal(elements.root.classList.contains('popup-width-limited'), false);
+  await elements['pc-settings-toggle'].click();
+  assert.equal(elements['pc-tab-settings'].classList.contains('active'), true);
+  assert.equal(elements.root.style['--popup-width'], width);
+  await elements['pc-settings-toggle'].click();
+  assert.equal(elements.root.style['--popup-width'], width);
+
+  sizing.controlsWidth = 500;
+  runtime.state.tabs.push({ id: 1, url: 'https://example.com/' });
+  for (const listener of runtime.api.tabs.onCreated.listeners) await listener({});
+  assert.ok(parseFloat(elements.root.style['--popup-width']) > parseFloat(width));
+  const expanded = elements.root.style['--popup-width'];
+  sizing.controlsWidth = 200;
+  runtime.state.tabs = [];
+  for (const listener of runtime.api.tabs.onRemoved.listeners) await listener(1);
+  assert.equal(elements.root.style['--popup-width'], expanded);
+});
+
+test('popup caps excessive width and enables wrapping without resizing Settings', async () => {
+  for (const screenWidth of [1920, 640]) {
+    const elements = await popup(extension(), { controlsWidth: 1000, screenWidth });
+    const width = Math.min(800, screenWidth) + 'px';
+    assert.equal(elements.root.style['--popup-width'], width);
+    assert.equal(elements.root.classList.contains('popup-width-limited'), true);
+    await elements['pc-settings-toggle'].click();
+    assert.equal(elements.root.style['--popup-width'], width);
+  }
 });
