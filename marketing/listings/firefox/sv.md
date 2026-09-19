@@ -2,7 +2,7 @@
 
 - Store: Firefox Add-ons
 - Locale: sv (Svenska)
-- Store locale code: sv
+- Store locale code: sv-SE
 - Source baseline: 519007f3dd06c0b2ab52d57519ed7a0d145b9c79
 - Source URL: https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/
 - Generated from localisation/locales/sv.json
