@@ -53,4 +53,18 @@ function validateCatalogue(source, catalogue, locale) {
     }
   }
 }
-module.exports = { validateCatalogue, richKeys };
+function validateStoreCodes(locale, evidence) {
+  const errors = [];
+  const supported = {
+    chrome: evidence.chromeListingLocales,
+    firefox: evidence.amoProductionListingLocales,
+  };
+  for (const [store, codes] of Object.entries(supported)) {
+    const code = locale.stores?.[store];
+    if (!codes.includes(code)) errors.push(`${store}: unsupported listing locale ${code}`);
+  }
+  // Edge's complete dashboard language list has not been verified.
+  return errors;
+}
+
+module.exports = { validateCatalogue, validateStoreCodes, richKeys };
