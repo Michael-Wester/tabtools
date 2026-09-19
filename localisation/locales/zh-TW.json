@@ -21,6 +21,12 @@
   "openCount": {
     "other": "已開啟 {count} 個分頁"
   },
+  "openCountShort": {
+    "other": "已開啟 {count}"
+  },
+  "closedCountShort": {
+    "other": "已關閉 {count}"
+  },
   "closeFailed": "操作失敗",
   "closedInactive": "已關閉的閒置分頁：{count}",
   "noInactive": "沒有閒置分頁",
