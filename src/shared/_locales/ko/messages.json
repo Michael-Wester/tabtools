@@ -77,6 +77,24 @@
       }
     }
   },
+  "openCountShort_other": {
+    "message": "열림 $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "닫힘 $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "실패했습니다"
   },
