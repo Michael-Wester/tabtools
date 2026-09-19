@@ -1,6 +1,6 @@
 # Locale support and mappings
 
-Verified on **17 September 2026**. There are **30 implementation locales** across the extension, website and all three sets of proposed store text. This covers the complete Chrome/AMO intersection under the explicit aliases below, with Edge support inferred from its documented package-detection mechanism. **It is not a claim that the exhaustive three-store intersection or Edge dashboard codes have been independently confirmed.**
+The registry was reconciled on **19 September 2026**. It contains **29 implementation locales** across the extension, website and all three sets of proposed store text. These are the candidate shared locales selected for this PR; the separate British English variant was removed at the user's request. The Chrome/AMO evidence snapshot is dated 17 September 2026, and the pinned Mozilla source files were rechecked on 19 September. **The complete three-store intersection and Edge dashboard codes remain unverified.**
 
 ## Evidence
 
@@ -11,24 +11,23 @@ Verified on **17 September 2026**. There are **30 implementation locales** acros
 - `edge-publishing`: [Edge publishing instructions](https://learn.microsoft.com/en-us/microsoft-edge/extensions/publish/publish-extension), sections “Enter store listing details for each language” and “If a single locale appears”. Localised manifest references and packaged messages cause languages to be detected; each language still needs a separately entered full description. The complete “Add a language” dropdown is not enumerated in the documentation. No package was uploaded to a store to probe it.
 - [Firefox internationalisation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization): Firefox uses standard language codes; the package maps Chromium `no` to `nb` for Bokmål.
 
-Every registry entry refers to these source IDs and carries its verification date. Edge values below are candidate publishing identifiers based on the package code with BCP-47 separators, **not tested dashboard identifiers**. A release reviewer must verify all 30 rows and check for any additional shared locales; record the evidence before claiming an exhaustive three-store set.
+The registry records evidence at its top level; `support-evidence.json` preserves the source locale lists. Validation checks each Chrome and AMO listing code against those lists. Edge values below are candidate publishing identifiers from `registry.json`, **not tested dashboard identifiers**. A release reviewer must verify all 29 rows against the publisher dashboards before release; do not describe this user-selected set as an exhaustively confirmed intersection.
 
 ## Normalisation decisions
 
-English source remains at `/` and `_locales/en`, mapped to AMO's default English `en-US`; there is no duplicate `en_US` package or duplicate AMO row. The original British-spelled English copy is preserved. `en-GB` has its own URL and package, with deliberately identical reviewed British English text. Canadian English is not silently equated with US or British English.
+English source remains at `/` and `_locales/en`, mapped to AMO's default English `en-US`; there is no duplicate `en_US` package or duplicate AMO row. The website displays English with the UK flag and preserves the original British spelling. There is no separate `en-GB` URL, package or listing file; browser preferences such as `en-GB` resolve to the single English entry. Canadian English is not a separate store listing.
 
-Chrome Spanish `es` maps to AMO Spanish (Spain) `es-ES`. Chrome Latin American `es_419` is not equated with any one of AMO `es-AR`, `es-CL` or `es-MX`, so those are outside this set. Chromium `no` maps to canonical Bokmål `nb` and AMO `nb-NO`; Nynorsk `nn-NO` remains distinct. Generic Swedish `sv` maps to AMO `sv-SE`. Portuguese regions and Chinese scripts remain separate. Serbian uses Cyrillic for the shared `sr` code.
+Chrome Spanish `es` maps to AMO Spanish (Spain) `es-ES`; the website uses `es-ES` for its document language and hreflang. Chrome Latin American `es_419` is not equated with any one of AMO `es-AR`, `es-CL` or `es-MX`, so those are outside this set. Chromium `no` maps to canonical Bokmål `nb` and AMO `nb-NO`; Nynorsk `nn-NO` remains distinct. Generic Swedish `sv` maps to AMO `sv-SE`. Portuguese regions and Chinese scripts remain separate. Serbian uses Cyrillic for the shared `sr` code.
 
 AMO-only production codes excluded from the intersection: `dsb`, `en-CA`, `es-AR`, `es-CL`, `es-MX`, `fur`, `fy-NL`, `hsb`, `ia`, `ka`, `kab`, `nn-NO`, `sq`. Other Chrome languages (including Arabic and Danish) are not in this AMO production listing set. Hebrew supplies the RTL implementation case.
 
 | Language / native name | Canonical | Extension Chromium / Firefox | URL | hreflang | Chrome | AMO | Edge candidate | Direction |
 |---|---|---|---|---|---|---|---|---|
-| English / English | en | en / en | / | en | en | en-US | en | ltr |
+| English / English | en | en / en | / | en | en | en-US | en-US | ltr |
 | Czech / Čeština | cs | cs / cs | /cs/ | cs | cs | cs | cs | ltr |
 | German / Deutsch | de | de / de | /de/ | de | de | de | de | ltr |
 | Greek / Ελληνικά | el | el / el | /el/ | el | el | el | el | ltr |
-| English (British) / English (British) | en-GB | en_GB / en_GB | /en-gb/ | en-GB | en_GB | en-GB | en-GB | ltr |
-| Spanish (Spain) / Español (de España) | es | es / es | /es/ | es | es | es-ES | es | ltr |
+| Spanish (Spain) / Español (de España) | es-ES | es / es | /es/ | es-ES | es | es-ES | es-ES | ltr |
 | Finnish / suomi | fi | fi / fi | /fi/ | fi | fi | fi | fi | ltr |
 | French / Français | fr | fr / fr | /fr/ | fr | fr | fr | fr | ltr |
 | Hebrew / עברית | he | he / he | /he/ | he | he | he | he | rtl |
@@ -37,10 +36,10 @@ AMO-only production codes excluded from the intersection: `dsb`, `en-CA`, `es-AR
 | Italian / Italiano | it | it / it | /it/ | it | it | it | it | ltr |
 | Japanese / 日本語 | ja | ja / ja | /ja/ | ja | ja | ja | ja | ltr |
 | Korean / 한국어 | ko | ko / ko | /ko/ | ko | ko | ko | ko | ltr |
-| Norwegian (Bokmål) / Norsk bokmål | nb | no / nb | /nb/ | nb | no | nb-NO | no | ltr |
+| Norwegian (Bokmal) / Norsk bokmål | nb | no / nb | /nb/ | nb | no | nb-NO | nb-NO | ltr |
 | Dutch / Nederlands | nl | nl / nl | /nl/ | nl | nl | nl | nl | ltr |
 | Polish / Polski | pl | pl / pl | /pl/ | pl | pl | pl | pl | ltr |
-| Portuguese (Brazilian) / Português (do Brasil) | pt-BR | pt_BR / pt_BR | /pt-br/ | pt-BR | pt_BR | pt-BR | pt-BR | ltr |
+| Portuguese (Brazil) / Português (do Brasil) | pt-BR | pt_BR / pt_BR | /pt-br/ | pt-BR | pt_BR | pt-BR | pt-BR | ltr |
 | Portuguese (Portugal) / Português (Europeu) | pt-PT | pt_PT / pt_PT | /pt-pt/ | pt-PT | pt_PT | pt-PT | pt-PT | ltr |
 | Romanian / Română | ro | ro / ro | /ro/ | ro | ro | ro | ro | ltr |
 | Russian / Русский | ru | ru / ru | /ru/ | ru | ru | ru | ru | ltr |
