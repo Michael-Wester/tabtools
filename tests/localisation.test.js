@@ -26,6 +26,21 @@ test('extension messages preserve interpolation and plural categories', () => {
   assert.ok(messages.openCount_other);
 });
 
+test('store locale codes match the recorded Chrome and AMO evidence', () => {
+  const { validateStoreCodes } = require('../scripts/catalogue-validation');
+  const evidence = require('../localisation/support-evidence.json');
+  for (const locale of L.registry) {
+    assert.deepEqual(validateStoreCodes(locale, evidence), [], locale.locale);
+  }
+  const swedish = structuredClone(L.localeInfo('sv'));
+  assert.equal(swedish.extension, 'sv');
+  assert.equal(swedish.stores.firefox, 'sv-SE');
+  swedish.stores.firefox = 'sv';
+  assert.deepEqual(validateStoreCodes(swedish, evidence), ['firefox: unsupported listing locale sv']);
+  swedish.stores.chrome = 'sv-SE';
+  assert.ok(validateStoreCodes(swedish, evidence).includes('chrome: unsupported listing locale sv-SE'));
+});
+
 test('i18n helper selects a browser message and plural fallback', () => {
   const calls = [];
   const context = {
