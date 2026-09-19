@@ -53,9 +53,6 @@
       * {
         box-sizing: border-box;
       }
-      html {
-        width: var(--popup-width);
-      }
       html,
       body {
         scrollbar-gutter: stable;
@@ -68,8 +65,11 @@
       }
       body {
         margin: 12px auto;
-        width: 100%;
-        min-width: 0;
+        /* Firefox sizes the native popup from body, not the root element.
+           Preserve the original 380px box, then grow it for translated text. */
+        width: var(--popup-width);
+        min-width: var(--popup-width);
+        max-width: var(--popup-width);
         padding: 10px;
         font: 14px/1.4 system-ui, sans-serif;
         color: var(--fg);
