@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       :root {
+        --popup-width: 380px;
         --bg: #0b0f16;
         --fg: #e5e7eb;
         --muted: #9aa3b2;
@@ -52,6 +53,9 @@
       * {
         box-sizing: border-box;
       }
+      html {
+        width: var(--popup-width);
+      }
       html,
       body {
         scrollbar-gutter: stable;
@@ -64,9 +68,8 @@
       }
       body {
         margin: 12px auto;
-        width: 380px;
-        min-width: 380px;
-        max-width: 380px;
+        width: 100%;
+        min-width: 0;
         padding: 10px;
         font: 14px/1.4 system-ui, sans-serif;
         color: var(--fg);
@@ -86,12 +89,18 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        flex-shrink: 0;
       }
       .header-actions {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         margin-inline-start: auto;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .header-actions > * {
+        white-space: nowrap;
       }
       .stack {
         display: grid;
@@ -547,10 +556,11 @@
         align-items: center;
         gap: 6px;
       }
-      /* Translated counters and labels can be much longer than English. */
-      .header-row, .header-actions { flex-wrap: wrap; }
-      .header-main { flex-shrink: 0; }
-      .header-actions { max-width: 100%; }
+      /* Grow the shared popup width before wrapping a translated header. */
+      .popup-width-limited .header-row,
+      .popup-width-limited .header-actions { flex-wrap: wrap; }
+      .popup-width-limited .header-actions { max-width: 100%; flex-shrink: 1; }
+      .popup-width-limited .header-actions > * { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
       #pc-suggest-card > .row { flex-wrap: wrap; }
       .btn, .setting-label { overflow-wrap: anywhere; }
       .chip .count { flex-shrink: 0; }
@@ -560,7 +570,7 @@
   <body class="stack">
     <!-- Header -->
     <section class="card stack">
-      <div class="header-row">
+      <div id="pc-header" class="header-row">
         <div class="header-main">
           <img
             src="../icons/black/icon-32.png"
