@@ -90,9 +90,9 @@ function toWebExtensionMessages(locale) {
   };
 
   for (const [key, value] of Object.entries(source)) {
-    if (key === 'openCount' && value && typeof value === 'object') {
+    if (value && typeof value === 'object') {
       for (const [category, text] of Object.entries(value)) {
-        output['openCount_' + category] = messageEntry(text, catalogue('en').openCount.other);
+        output[key + '_' + category] = messageEntry(text, catalogue('en')[key].other);
       }
       continue;
     }
