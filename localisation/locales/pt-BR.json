@@ -23,6 +23,16 @@
     "many": "{count} abas abertas",
     "other": "{count} abas abertas"
   },
+  "openCountShort": {
+    "one": "{count} aberta",
+    "many": "{count} abertas",
+    "other": "{count} abertas"
+  },
+  "closedCountShort": {
+    "one": "{count} fechada",
+    "many": "{count} fechadas",
+    "other": "{count} fechadas"
+  },
   "closeFailed": "Falha",
   "closedInactive": "Abas inativas fechadas: {count}",
   "noInactive": "Nenhuma aba inativa",
