@@ -22,6 +22,14 @@
     "one": "{count} åpen fane",
     "other": "{count} åpne faner"
   },
+  "openCountShort": {
+    "one": "{count} åpen",
+    "other": "{count} åpne"
+  },
+  "closedCountShort": {
+    "one": "{count} lukket",
+    "other": "{count} lukkede"
+  },
   "closeFailed": "Mislyktes",
   "closedInactive": "Inaktive faner lukket: {count}",
   "noInactive": "Ingen inaktive faner",
