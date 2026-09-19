@@ -156,3 +156,43 @@ installed-browser rendering still requires checking. Reload the rebuilt extensio
 to check English, German and Hebrew, large counts, and both Settings transitions.
 The concurrent website iframe-permissions update at `c7e0fc2` and its new regression
 test were incorporated before regenerating the pages and running the full suite.
+
+## Website Firefox console review — 19 September 2026
+
+The attached Firefox console export identified the first-party warning as the
+YouTube demo iframe requesting unsupported `accelerometer`, `clipboard-write`,
+`encrypted-media`, and `gyroscope` policy features. The iframe now requests only
+`picture-in-picture; fullscreen` and retains fullscreen support through
+`allowfullscreen`, following the [iframe Permissions Policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe)
+semantics. All 29 generated pages were regenerated, and the website test now
+checks this exact policy on every page.
+
+The `moz-extension://` content-script and MetaMask provider stream messages are
+injected third-party extension noise, not site code. Hashed third-party script
+warnings are likely from the embedded YouTube player, but the export omits full
+URLs, so that attribution remains qualified. The collapsed `Content-Security-Policy
+warnings 4` entry does not contain enough detail to diagnose.
+
+Local checkpoint: **37 tests pass**, all 29 catalogues validate, the packaged
+browser builds/checks pass, and `git diff --check` passes. The focused 12-test
+website suite passes. A separate negative probe confirmed the assertion rejects
+the original seven-token policy. Source checkpoint `c7e0fc2de3a45b19b74f4965bdc76b5902e4cb30`
+was saved to GitHub; its Linux/Windows validation and PR preview workflows passed.
+
+Added a separate Playwright Firefox job to the existing localisation workflow.
+It checks English, German, Japanese and Hebrew, including theme, language-menu
+and Privacy interactions, console warnings/errors, uncaught errors, and failed
+first-party requests or HTTP responses. The YouTube frame uses an explicit stub;
+live player behaviour, installed extensions and native diagnostics outside
+Playwright's page events remain outside this check. A fifth case verifies the
+detector rejects an injected warning and uncaught error.
+
+Local syntax checks and Playwright test discovery pass. Local Firefox execution
+was blocked before a page opened by the container's user-namespace restriction
+(`uid_map: EPERM`); no browser pass is claimed from that attempt. GitHub's Ubuntu
+runner subsequently passed all **5 Firefox tests** at `7698e90a4e295b8c00181aabc2084aa954076f2b`
+([Firefox job](https://github.com/Michael-Wester/tabtools/actions/runs/35433631894/job/105872494312)).
+That run overlapped a separate compact-counter update: its broader Node suite
+still used the older French count fixture and failed while that update was
+incomplete. The Firefox result does not imply the entire combined PR passed at
+that intermediate commit. Final combined CI results belong in the PR description.
