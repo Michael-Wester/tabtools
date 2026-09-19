@@ -21,6 +21,12 @@
   "openCount": {
     "other": "已打开 {count} 个标签页"
   },
+  "openCountShort": {
+    "other": "已打开 {count}"
+  },
+  "closedCountShort": {
+    "other": "已关闭 {count}"
+  },
   "closeFailed": "操作失败",
   "closedInactive": "已关闭的不活跃标签页：{count}",
   "noInactive": "没有不活跃的标签页",
