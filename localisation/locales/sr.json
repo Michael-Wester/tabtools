@@ -23,6 +23,16 @@
     "few": "{count} отворене картице",
     "other": "{count} отворених картица"
   },
+  "openCountShort": {
+    "one": "{count} отворена",
+    "few": "{count} отворене",
+    "other": "{count} отворених"
+  },
+  "closedCountShort": {
+    "one": "{count} затворена",
+    "few": "{count} затворене",
+    "other": "{count} затворених"
+  },
   "closeFailed": "Радња није успела",
   "closedInactive": "Затворено неактивних картица: {count}",
   "noInactive": "Нема неактивних картица",
