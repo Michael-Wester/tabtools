@@ -22,6 +22,14 @@
     "one": "{count} open tab",
     "other": "{count} open tabs"
   },
+  "openCountShort": {
+    "one": "{count} open",
+    "other": "{count} open"
+  },
+  "closedCountShort": {
+    "one": "{count} gesloten",
+    "other": "{count} gesloten"
+  },
   "closeFailed": "Mislukt",
   "closedInactive": "Gesloten inactieve tabs: {count}",
   "noInactive": "Geen inactieve tabs",
