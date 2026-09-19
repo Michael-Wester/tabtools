@@ -23,6 +23,16 @@
     "many": "{count} pestañas abiertas",
     "other": "{count} pestañas abiertas"
   },
+  "openCountShort": {
+    "one": "{count} abierta",
+    "many": "{count} abiertas",
+    "other": "{count} abiertas"
+  },
+  "closedCountShort": {
+    "one": "{count} cerrada",
+    "many": "{count} cerradas",
+    "other": "{count} cerradas"
+  },
   "closeFailed": "Error",
   "closedInactive": "Pestañas inactivas cerradas: {count}",
   "noInactive": "No hay pestañas inactivas",
