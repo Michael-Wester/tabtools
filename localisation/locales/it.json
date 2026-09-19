@@ -23,6 +23,16 @@
     "many": "{count} schede aperte",
     "other": "{count} schede aperte"
   },
+  "openCountShort": {
+    "one": "{count} aperta",
+    "many": "{count} aperte",
+    "other": "{count} aperte"
+  },
+  "closedCountShort": {
+    "one": "{count} chiusa",
+    "many": "{count} chiuse",
+    "other": "{count} chiuse"
+  },
   "closeFailed": "Operazione non riuscita",
   "closedInactive": "Schede inattive chiuse: {count}",
   "noInactive": "Nessuna scheda inattiva",
