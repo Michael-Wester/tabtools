@@ -59,12 +59,29 @@ checkout is preserved; current work starts from the actual remote tree.
   Validation now checks Chrome and AMO listing codes against the recorded evidence.
 - Local checkpoint: 21 regression tests and all 29 catalogue checks pass;
   package builds/checks run by the suite pass. Generated output is current.
-- Next: remove the website-only browser-link instruction from generated store
-  descriptions; reconcile the locale matrix, store index and PR description;
-  verify the pushed browser fix and final CI results.
+- Checkpoint `3e171be685303ddba6dac148b82e7416345e2754` passed Linux/Windows
+  CI (35419950111) and the preview workflow (35419950187).
+- Live Chrome now opens German in a new tab at `/de/#features` after a middle-click,
+  and `/de/#privacy` after Ctrl-click following the privacy navigation. Both
+  preserve the selected section; the source tab stays English.
+- Removed the website-only instruction to use browser links from all 87 generated
+  store descriptions. Full-description provenance now includes the feature-title
+  keys as well as their bodies. All descriptions remain within the project limits
+  (424–1,411 characters).
+- Generate and validate the store index from the registry, removing three dead
+  links to the deleted British English listing. Reconciled the 29-row locale
+  matrix, Spanish document tag, Edge candidate codes and maintenance instructions.
+- Local final validation: 22 tests pass; all 29 catalogues and 87 store text files
+  pass validation; Chrome/Firefox/Edge packages and the static website build pass.
+  The generated-file comparison and `git diff --check` pass.
+- Rechecked Microsoft's published description range (250–10,000 characters).
+  Chrome's public listing guide does not state its full-description maximum;
+  dashboard verification remains a release check.
 
 The current cloud browser still exposes no viewport-resize or extension-install
-capability. Native-browser and mobile smoke tests remain unverified, rather than
-being inferred from DOM tests. No additional browser installation was attempted.
+capability. A local narrow-viewport test page was rejected by its URL security
+policy; no workaround was attempted. Native-browser and mobile smoke tests remain
+unverified rather than being inferred from DOM tests. No additional browser
+installation was attempted.
 
 The PR remains draft. Earlier unfinished checkouts were preserved. Updates use sequential file commits through the existing GitHub connection; no merge, force-push or manual deployment was performed.
