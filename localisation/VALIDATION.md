@@ -63,9 +63,14 @@ Japanese (CJK), Hebrew (RTL), Russian/Polish (plurals), then remaining locales f
 4. Check immediate Undo while the popup is open, settings persistence, and offline operation.
 5. Inspect 0/1/2/5/21 counts, large numbers, long domains, both themes and Hebrew direction.
    Header counters should read `14 open` / `2479 closed` in English, with compact
-   equivalents and ungrouped digits in other locales. Longer header text should
-   widen the popup while Main and Settings retain the same width in both
-   directions. Check the wrapping fallback at the maximum popup width.
+   equivalents and ungrouped digits in other locales. Confirm the original 380 px
+   body width (including padding), 10 px body padding and 12 px vertical margins
+   before testing expansion. The body must have an explicit pixel width; sizing
+   only the root element can undersize Firefox's native popup and clip its contents.
+   Longer header text should widen the popup while Main and Settings retain the
+   same width in both directions. Check right-edge visibility of every card and
+   control in both panels, including after reopening the popup, and the wrapping
+   fallback at the maximum popup width. Height should continue to follow content.
 
 For the website, serve `website/dist` locally or use the existing PR preview. Check
 320/390 px and desktop layouts, both themes, English/Hebrew and long regional names.
