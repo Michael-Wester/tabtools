@@ -17,7 +17,7 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
     focus(){this.focused=true;document.activeElement=this;},
     scrollIntoView(){this.scrolled=true;},
     hasAttribute(k){return k==='data-adaptive-store';},
-    querySelector(k){return this.parts?.[k] || null;}});
+    querySelector(k){return this.parts?.[k] || (k==='a'?this.children.find(child=>child.dataset?.locale):null) || null;}});
   const picker=element(), trigger=element(), menu=element(), flag=element(), name=element();
   const note=element(), toggle=element(), label=element(), storeNote=element();
   picker.parts={'[data-language-trigger]':trigger,'[data-language-menu]':menu};
@@ -42,11 +42,13 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
     querySelectorAll:s=>s==='[data-store]'?[store]:(s==='[data-language-option]'?options:[]),
     createElement:element,createTextNode:text=>({textContent:text})};
   const navigation=[];
+  const windowEvents={};
+  const location={search:'?campaign=test',hash:'#faq',assign:url=>navigation.push(url)};
   const context={document,URL,navigator:{languages:preferences,userAgent:ua},
     localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},
-    window:{location:{search:'?campaign=test',hash:'#faq',assign:url=>navigation.push(url)}}};
+    window:{location,addEventListener:(type,handler)=>{windowEvents[type]=handler;}}};
   vm.runInNewContext(script,context);
-  return {document,picker,trigger,menu,flag,name,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation};
+  return {document,picker,trigger,menu,flag,name,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation,windowEvents,location};
 }
 
 test('explicit language URLs are never replaced by saved or browser preferences',()=>{
@@ -167,7 +169,7 @@ test('matching saved or first browser preference suppresses contradictory sugges
   assert.equal(label.lang,'en');
   assert.equal(label.dir,'ltr');
   assert.equal(label.textContent,'French');
-  p.note.children[0].events.click();
+  p.note.children[0].events.click({});
   assert.equal(p.storage.get('tabtools-site-language'),'fr');
 });
 
@@ -178,6 +180,28 @@ test('modified language links keep normal browser navigation and the URL suffix'
   assert.equal(option.href,'/de/?campaign=test#faq');
   assert.deepEqual(p.navigation,[]);
   assert.equal(p.storage.get('tabtools-site-language'),undefined);
+});
+
+test('language hrefs follow in-page navigation before native new-tab actions', () => {
+  const p=pageRuntime('en',['de']);
+  const option=p.options.find(item=>item.dataset.locale==='de');
+  const suggestion=p.note.children[0];
+  p.location.hash='#features';
+  p.windowEvents.hashchange();
+  assert.equal(option.href,'/de/?campaign=test#features');
+  assert.equal(suggestion.href,option.href);
+  p.location.search='?campaign=back';
+  p.location.hash='#privacy';
+  p.windowEvents.popstate();
+  assert.equal(option.href,'/de/?campaign=back#privacy');
+  assert.equal(suggestion.href,option.href);
+  p.location.hash='#how-it-works';
+  p.trigger.events.click();
+  assert.equal(option.href,'/de/?campaign=back#how-it-works');
+  suggestion.events.click({ctrlKey:true,preventDefault(){assert.fail('native click intercepted');}});
+  assert.equal(suggestion.href,option.href);
+  assert.equal(p.storage.get('tabtools-site-language'),undefined);
+  assert.deepEqual(p.navigation,[]);
 });
 
 test('website translation output escapes text and permits only supported rich markup', () => {
