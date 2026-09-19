@@ -132,3 +132,27 @@ Installed Chrome/Firefox/Edge smoke tests, popup rendering, browser-managed
 context menus, real close/undo and offline behaviour remain required. The current
 browser cannot install extensions; its previously rejected extension-manager
 access was not retried or worked around.
+
+## Compact counters and adaptive popup width — 19 September 2026
+
+Following the user's screenshot and correction, restored concise header counters:
+`14 open` and `2479 closed` in English, with equivalent compact state labels and
+plural forms in all 29 locales. Header numbers have no digit grouping. Separate
+keys keep full tab-count wording and action-status messages available elsewhere.
+Only the two new keys received new AI self-review records; no native review is claimed.
+
+The popup starts at 380 px and measures the unwrapped header's actual controls,
+font and spacing to grow its shared document width when needed. Main and Settings
+panels use that same document width. The width does not shrink when switching
+panels or when a count loses a digit during the open session. Excessive content
+wraps after reaching the 800 px/screen-width cap. The 800 px browser limit is
+documented in [Chrome's action API](https://developer.chrome.com/docs/extensions/reference/api/action#popup).
+
+Local validation: **41 tests pass**, including compact counters across all locales,
+the exact `14 open` / `2479 closed` case, growth after longer measured controls,
+stable width across Settings, and the width-cap fallback. All catalogues and
+browser packages pass validation. The size tests supply layout measurements;
+installed-browser rendering still requires checking. Reload the rebuilt extension
+to check English, German and Hebrew, large counts, and both Settings transitions.
+The concurrent website iframe-permissions update at `c7e0fc2` and its new regression
+test were incorporated before regenerating the pages and running the full suite.
