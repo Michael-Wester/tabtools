@@ -24,6 +24,18 @@
     "many": "{count} otwartych kart",
     "other": "{count} otwartej karty"
   },
+  "openCountShort": {
+    "one": "{count} otwarta",
+    "few": "{count} otwarte",
+    "many": "{count} otwartych",
+    "other": "{count} otwartej"
+  },
+  "closedCountShort": {
+    "one": "{count} zamknięta",
+    "few": "{count} zamknięte",
+    "many": "{count} zamkniętych",
+    "other": "{count} zamkniętej"
+  },
   "closeFailed": "Niepowodzenie",
   "closedInactive": "Zamknięte nieaktywne karty: {count}",
   "noInactive": "Brak nieaktywnych kart",
