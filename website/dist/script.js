@@ -175,6 +175,16 @@
     return (window.location.search || '') + (window.location.hash || '');
   }
 
+  // Keep actual hrefs current, including middle-click and context-menu opens.
+  function updateLanguageLinks() {
+    const links = $$('[data-language-option]');
+    const suggestionLink = $('[data-language-suggestion]')?.querySelector('a');
+    if (suggestionLink) links.push(suggestionLink);
+    links.forEach(link => {
+      link.href = pathFor(link.dataset.locale) + currentLocationSuffix();
+    });
+  }
+
   function languageDisplayName(item) {
     return item?.languageName || item?.nativeName || item?.locale || '';
   }
@@ -184,6 +194,8 @@
   }
 
   function initLanguage() {
+    window.addEventListener('hashchange', updateLanguageLinks);
+    window.addEventListener('popstate', updateLanguageLinks);
     const picker = $('[data-language-picker]');
     const trigger = $('[data-language-trigger]');
     const menu = $('[data-language-menu]');
@@ -213,6 +225,7 @@
       };
 
       const setOpen = (open, focusSelected = false) => {
+        if (open) updateLanguageLinks();
         picker.dataset.open = open ? 'true' : 'false';
         trigger.setAttribute('aria-expanded', String(open));
         menu.hidden = !open;
@@ -299,6 +312,7 @@
     }
 
     const link = document.createElement('a');
+    link.dataset.locale = target.locale;
     link.href = pathFor(target.locale) + currentLocationSuffix();
     const label = document.createElement('bdi');
     label.lang = 'en';
@@ -306,7 +320,9 @@
     label.textContent = languageDisplayName(target);
     const parts = message('web_languageSuggestion', { language: '{language}' }).split('{language}');
     link.replaceChildren(document.createTextNode(parts[0]), label, document.createTextNode(parts[1] || ''));
-    link.addEventListener('click', () => {
+    link.addEventListener('click', event => {
+      updateLanguageLinks();
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button > 0) return;
       try { localStorage.setItem('tabtools-site-language', target.locale); } catch (_) {}
     });
     suggestion.replaceChildren(link);
@@ -333,6 +349,7 @@
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
         if (window.location.hash !== '#privacy') window.history.pushState(null, '', '#privacy');
+        updateLanguageLinks();
         $('#privacy').focus({ preventScroll: true });
         centerPrivacy();
       });
