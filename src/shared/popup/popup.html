@@ -104,6 +104,8 @@
       }
       .stack {
         display: grid;
+        /* Keep tracks inside the current width while measuring long headers. */
+        grid-template-columns: minmax(0, 1fr);
         gap: 10px;
       }
       .stack.tight {
