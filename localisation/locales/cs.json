@@ -24,6 +24,18 @@
     "many": "{count} otevřeného panelu",
     "other": "{count} otevřených panelů"
   },
+  "openCountShort": {
+    "one": "{count} otevřený",
+    "few": "{count} otevřené",
+    "many": "{count} otevřeného",
+    "other": "{count} otevřených"
+  },
+  "closedCountShort": {
+    "one": "{count} zavřený",
+    "few": "{count} zavřené",
+    "many": "{count} zavřeného",
+    "other": "{count} zavřených"
+  },
   "closeFailed": "Akce se nezdařila",
   "closedInactive": "Zavřené neaktivní panely: {count}",
   "noInactive": "Žádné neaktivní panely",
