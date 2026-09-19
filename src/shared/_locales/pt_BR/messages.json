@@ -95,6 +95,60 @@
       }
     }
   },
+  "openCountShort_one": {
+    "message": "$count$ aberta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ fechada",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ fechadas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ fechadas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "Falha"
   },
