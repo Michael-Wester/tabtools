@@ -21,6 +21,12 @@
   "openCount": {
     "other": "開いているタブ: {count}"
   },
+  "openCountShort": {
+    "other": "開いている {count}"
+  },
+  "closedCountShort": {
+    "other": "閉じた {count}"
+  },
   "closeFailed": "失敗しました",
   "closedInactive": "閉じた非アクティブなタブ: {count}",
   "noInactive": "非アクティブなタブはありません",
