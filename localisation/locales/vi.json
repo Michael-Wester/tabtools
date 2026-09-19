@@ -21,6 +21,12 @@
   "openCount": {
     "other": "{count} thẻ đang mở"
   },
+  "openCountShort": {
+    "other": "{count} đang mở"
+  },
+  "closedCountShort": {
+    "other": "{count} đã đóng"
+  },
   "closeFailed": "Không thành công",
   "closedInactive": "Số thẻ không hoạt động đã đóng: {count}",
   "noInactive": "Không có thẻ không hoạt động",
