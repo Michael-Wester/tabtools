@@ -18,6 +18,33 @@ CI runs on Linux and Windows with Node 22. Windows additionally runs `./build.ps
 and checks its packages. Generated locale files, pages and store text are committed;
 generation must leave them unchanged. Review fingerprints are never updated by generation.
 
+## Firefox browser smoke check
+
+The localisation workflow also runs a small Playwright check on Ubuntu with Firefox.
+It installs the exact `@playwright/test` version in `package-lock.json`, generates the
+website pages, serves `website/dist` from a loopback-only static server, and runs:
+
+```sh
+npm ci
+npx playwright install --with-deps firefox
+npm run locales:website
+npm run test:firefox
+```
+
+The check visits English, German, Japanese and Hebrew pages. It reports authored
+`console.error`/`console.warn` messages, uncaught page errors, and failed requests for
+first-party resources. It also exercises the theme toggle, language menu and privacy
+navigation. The embedded YouTube frame is fulfilled by a deterministic local stub so a
+live third-party response cannot make the first-party check flaky. The final spec case
+injects a warning and uncaught error in memory and verifies that the same diagnostics
+would fail the check.
+
+This is a focused Firefox smoke check, not a complete browser matrix. It does not
+validate the live YouTube frame, external store pages, installed extensions, or every
+native Firefox diagnostic that Playwright does not expose as a page event. The route
+stub is explicit and limited to the YouTube origin; there are no message-string
+allow-lists for first-party failures.
+
 The first review checkpoint passed both platforms:
 [validation run 35356589950](https://github.com/Michael-Wester/tabtools/actions/runs/35356589950).
 It repairs checks that were absent or broken despite the previous nine-test suite passing.
