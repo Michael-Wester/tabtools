@@ -134,6 +134,18 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
   }
 });
 
+test('YouTube demo delegates only the playback controls it uses',()=>{
+  const expectedAllow='picture-in-picture; fullscreen';
+  for(const locale of L.registry) {
+    const file=L.path.join(L.root,'website/dist',locale.website,'index.html');
+    const html=L.fs.readFileSync(file,'utf8');
+    const iframe=html.match(/<iframe class="product-video"[\s\S]*?<\/iframe>/)?.[0];
+    assert.ok(iframe,`${locale.locale}: YouTube demo iframe`);
+    assert.equal(iframe.match(/\ballow="([^"]+)"/)?.[1],expectedAllow,`${locale.locale}: iframe Permissions Policy`);
+    assert.match(iframe,/\ballowfullscreen\b/,`${locale.locale}: iframe fullscreen support`);
+  }
+});
+
 test('selector follows keyboard focus and dismisses on Tab/outside focus without trapping it', () => {
   const p=pageRuntime('en');
   const key=key=>({key,preventDefault(){}});
