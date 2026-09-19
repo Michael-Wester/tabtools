@@ -77,6 +77,24 @@
       }
     }
   },
+  "openCountShort_other": {
+    "message": "已開啟 $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "已關閉 $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "操作失敗"
   },
