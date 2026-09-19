@@ -42,4 +42,29 @@ Review baseline: `b492c9256eef9a1393eb3bbe2cff2afa7be27b5a` (18 September 2026).
 - Fluent-reader review of all translations, particularly Hebrew, Norwegian Bokmål, Serbian and compact titles.
 - Publisher-dashboard confirmation of the exact three-store locale intersection and release copy/version agreement.
 
+## Continuation — 19 September 2026
+
+Resumed from `4ed21686c0c54926ac06c25f2603f1b622e62ca5`, whose Linux/Windows
+validation (35363160387) and PR preview (35363160259) passed. The earlier
+checkout is preserved; current work starts from the actual remote tree.
+
+- Reproduced lost section navigation in live Chrome: click FAQ, open the language
+  menu, then middle-click German. The new tab opened `/de/` without `#faq`.
+  Language-option and suggestion hrefs now follow hash/history changes and the
+  privacy link's `pushState`, including native new-tab/context-menu navigation.
+  Modified suggestion clicks also leave the current saved preference unchanged.
+- Corrected the Swedish Firefox listing code from `sv` to `sv-SE`, independently
+  checked against Mozilla's pinned production language definitions and translated
+  field filtering. The browser package correctly retains `_locales/sv`.
+  Validation now checks Chrome and AMO listing codes against the recorded evidence.
+- Local checkpoint: 21 regression tests and all 29 catalogue checks pass;
+  package builds/checks run by the suite pass. Generated output is current.
+- Next: remove the website-only browser-link instruction from generated store
+  descriptions; reconcile the locale matrix, store index and PR description;
+  verify the pushed browser fix and final CI results.
+
+The current cloud browser still exposes no viewport-resize or extension-install
+capability. Native-browser and mobile smoke tests remain unverified, rather than
+being inferred from DOM tests. No additional browser installation was attempted.
+
 The PR remains draft. Earlier unfinished checkouts were preserved. Updates use sequential file commits through the existing GitHub connection; no merge, force-push or manual deployment was performed.
