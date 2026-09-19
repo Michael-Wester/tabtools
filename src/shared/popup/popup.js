@@ -13,8 +13,8 @@
         });
       } catch (_) { resolve({ ok: false }); }
     });
-  const t = (key, values) =>
-    typeof globalThis.ttMessage === "function" ? globalThis.ttMessage(key, values) : key;
+  const t = (key, values, options) =>
+    typeof globalThis.ttMessage === "function" ? globalThis.ttMessage(key, values, options) : key;
 
   const STORAGE_KEY = "pc.settings";
   const DEFAULTS = {
@@ -39,6 +39,26 @@
   let lastSuggestionsKey = null;
   let lastSuggestionsCount = null;
   const MAX_SUGGESTIONS = 12;
+
+  function fitPopupWidth() {
+    const header = byId("pc-header");
+    if (!header) return;
+    const root = document.documentElement;
+    // Measure the unwrapped controls, including the real font, borders and gaps.
+    // The persistent header drives both panels' width; changing panels cannot
+    // shrink it. Counts may grow the width again while the popup is open.
+    root.classList.remove("popup-width-limited");
+    const bodyWidth = document.body.getBoundingClientRect().width;
+    const headerWidth = header.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(header).columnGap) || 0;
+    const controlsWidth = Array.from(header.children).reduce((width, child) =>
+      width + child.getBoundingClientRect().width, 0) + gap * (header.children.length - 1);
+    const needed = Math.ceil(controlsWidth + bodyWidth - headerWidth);
+    const maximum = Math.min(800, globalThis.screen?.availWidth || 800);
+    const width = Math.min(maximum, Math.max(380, bodyWidth, needed));
+    root.style.setProperty("--popup-width", width + "px");
+    root.classList.toggle("popup-width-limited", needed > maximum);
+  }
 
   function setStatus(text, delay = 1400) {
     const el = $("#pc-status");
@@ -157,8 +177,9 @@
     const r = await msg("pc:getStats");
     const total = r?.stats?.totalTabsEaten || 0;
     if (total === lastStatsTotal) return;
-    $("#pc-count-pill").textContent = t("closedCount", { count: total });
+    $("#pc-count-pill").textContent = t("closedCountShort", { count: total }, { formatNumbers: false });
     lastStatsTotal = total;
+    fitPopupWidth();
   }
 
   async function renderOpenTabCount() {
@@ -170,8 +191,9 @@
         ? tabs.filter((t) => !t.incognito).length
         : 0;
       if (total !== lastOpenTabCount) {
-        el.textContent = t("openCount", { count: total });
+        el.textContent = t("openCountShort", { count: total }, { formatNumbers: false });
         lastOpenTabCount = total;
+        fitPopupWidth();
       }
     } catch (err) {
       console.error("Tab count load failed", err);
@@ -512,6 +534,8 @@
     if (typeof globalThis.ttLocalizeDocument === "function") {
       globalThis.ttLocalizeDocument(document);
     }
+    fitPopupWidth();
+    document.fonts?.ready.then(fitPopupWidth);
     await initUI();
     wireUI();
     setupSettingsBindings();
