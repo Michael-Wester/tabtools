@@ -56,7 +56,7 @@ jobs:
           node scripts/generate-website.js
           node scripts/generate-listings.js
           node scripts/validate-localisation.js
-          node --test tests/website.test.js tests/localisation.test.js
+          node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js
           git diff --exit-code
       - name: Select deployment target
         id: target
