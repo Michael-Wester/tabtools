@@ -22,6 +22,14 @@
     "one": "{count} avoin välilehti",
     "other": "{count} avointa välilehteä"
   },
+  "openCountShort": {
+    "one": "{count} auki",
+    "other": "{count} auki"
+  },
+  "closedCountShort": {
+    "one": "{count} suljettu",
+    "other": "{count} suljettua"
+  },
   "closeFailed": "Toiminto epäonnistui",
   "closedInactive": "Suljettuja käyttämättömiä välilehtiä: {count}",
   "noInactive": "Ei käyttämättömiä välilehtiä",
