@@ -86,6 +86,42 @@
       }
     }
   },
+  "openCountShort_one": {
+    "message": "$count$ ανοιχτή",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ ανοιχτές",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ κλειστή",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ κλειστές",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "Αποτυχία"
   },
