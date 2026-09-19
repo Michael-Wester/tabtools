@@ -24,6 +24,18 @@
     "many": "{count} otvorenej karty",
     "other": "{count} otvorených kariet"
   },
+  "openCountShort": {
+    "one": "{count} otvorená",
+    "few": "{count} otvorené",
+    "many": "{count} otvorenej",
+    "other": "{count} otvorených"
+  },
+  "closedCountShort": {
+    "one": "{count} zatvorená",
+    "few": "{count} zatvorené",
+    "many": "{count} zatvorenej",
+    "other": "{count} zatvorených"
+  },
   "closeFailed": "Akcia zlyhala",
   "closedInactive": "Zatvorené neaktívne karty: {count}",
   "noInactive": "Žiadne neaktívne karty",
