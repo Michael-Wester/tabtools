@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="sv" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="description" content="Stäng flikar från samma webbplats, sortera efter webbplats och ta bort dubbletter. TabTools är en gratis flikhanterare för Chrome, Firefox och Edge." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — Stäng och sortera flikar efter webbplats" />
+    <meta property="og:description" content="Stäng flikar efter webbplats, sortera flikraden och ta bort dubbletter med ett gratis tillägg med öppen källkod för Chrome, Firefox och Edge." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:url" content="https://tabtools.fyi/sv/" />
+    <link rel="canonical" href="https://tabtools.fyi/sv/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TabTools — Stäng och sortera flikar efter webbplats" />
+    <meta name="twitter:description" content="Stäng flikar efter webbplats, sortera flikraden och ta bort dubbletter med ett gratis tillägg med öppen källkod för Chrome, Firefox och Edge." />
+    <title>TabTools — Stäng och sortera flikar efter webbplats</title>
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TabTools","url":"https://tabtools.fyi/sv/","description":"Ett gratis webbläsartillägg för att stänga flikar efter webbplats, sortera flikar, ta bort dubbletter och stänga inaktiva flikar.","inLanguage":"sv","applicationCategory":"BrowserApplication","isAccessibleForFree":true}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />
+    <script type="application/json" id="locale-data">{"locale":"sv","registry":[{"locale":"en","canonical":"en","path":"/","languageName":"English","flagAsset":"en.svg"},{"locale":"zh-CN","canonical":"zh-CN","path":"/zh-cn/","languageName":"Chinese (Simplified)","flagAsset":"zh-CN.svg"},{"locale":"zh-TW","canonical":"zh-TW","path":"/zh-tw/","languageName":"Chinese (Traditional)","flagAsset":"zh-TW.svg"},{"locale":"hr","canonical":"hr","path":"/hr/","languageName":"Croatian","flagAsset":"hr.svg"},{"locale":"cs","canonical":"cs","path":"/cs/","languageName":"Czech","flagAsset":"cs.svg"},{"locale":"nl","canonical":"nl","path":"/nl/","languageName":"Dutch","flagAsset":"nl.svg"},{"locale":"fi","canonical":"fi","path":"/fi/","languageName":"Finnish","flagAsset":"fi.svg"},{"locale":"fr","canonical":"fr","path":"/fr/","languageName":"French","flagAsset":"fr.svg"},{"locale":"de","canonical":"de","path":"/de/","languageName":"German","flagAsset":"de.svg"},{"locale":"el","canonical":"el","path":"/el/","languageName":"Greek","flagAsset":"el.svg"},{"locale":"he","canonical":"he","path":"/he/","languageName":"Hebrew","flagAsset":"he.svg"},{"locale":"hu","canonical":"hu","path":"/hu/","languageName":"Hungarian","flagAsset":"hu.svg"},{"locale":"it","canonical":"it","path":"/it/","languageName":"Italian","flagAsset":"it.svg"},{"locale":"ja","canonical":"ja","path":"/ja/","languageName":"Japanese","flagAsset":"ja.svg"},{"locale":"ko","canonical":"ko","path":"/ko/","languageName":"Korean","flagAsset":"ko.svg"},{"locale":"nb","canonical":"nb","path":"/nb/","languageName":"Norwegian (Bokmal)","flagAsset":"nb.svg"},{"locale":"pl","canonical":"pl","path":"/pl/","languageName":"Polish","flagAsset":"pl.svg"},{"locale":"pt-BR","canonical":"pt-BR","path":"/pt-br/","languageName":"Portuguese (Brazil)","flagAsset":"pt-BR.svg"},{"locale":"pt-PT","canonical":"pt-PT","path":"/pt-pt/","languageName":"Portuguese (Portugal)","flagAsset":"pt-PT.svg"},{"locale":"ro","canonical":"ro","path":"/ro/","languageName":"Romanian","flagAsset":"ro.svg"},{"locale":"ru","canonical":"ru","path":"/ru/","languageName":"Russian","flagAsset":"ru.svg"},{"locale":"sr","canonical":"sr","path":"/sr/","languageName":"Serbian","flagAsset":"sr.svg"},{"locale":"sk","canonical":"sk","path":"/sk/","languageName":"Slovak","flagAsset":"sk.svg"},{"locale":"sl","canonical":"sl","path":"/sl/","languageName":"Slovenian","flagAsset":"sl.svg"},{"locale":"es","canonical":"es-ES","path":"/es/","languageName":"Spanish (Spain)","flagAsset":"es.svg"},{"locale":"sv","canonical":"sv","path":"/sv/","languageName":"Swedish","flagAsset":"sv.svg"},{"locale":"tr","canonical":"tr","path":"/tr/","languageName":"Turkish","flagAsset":"tr.svg"},{"locale":"uk","canonical":"uk","path":"/uk/","languageName":"Ukrainian","flagAsset":"uk.svg"},{"locale":"vi","canonical":"vi","path":"/vi/","languageName":"Vietnamese","flagAsset":"vi.svg"}],"messages":{"extensionName":"TabTools - Stäng och sortera flikar per webbplats","extensionDescription":"Stäng flikar från samma webbplats, sortera efter webbplats och ta bort dubbletter för att hålla ordning i webbläsaren.","openTabTools":"Öppna TabTools","settings":"Inställningar","suggestions":"Förslag","suggestCaption":"Tryck för att stänga webbplatsens flikar","queryPlaceholder":"Stäng efter sökord (tryck Enter)","close":"Stäng","sortTabs":"Sortera flikar","closeDuplicates":"Stäng dubbletter","undo":"Ångra","undoTitle":"Ångra senaste stängningen","theme":"Tema","light":"Ljust","dark":"Mörkt","minTabs":"Minsta antal flikar per webbplats för förslag","inactiveAfter":"Flikar inaktiva efter","minutes":"minuter","closedCount":"Stängda: {count}","openCount":{"one":"{count} öppen flik","other":"{count} öppna flikar"},"openCountShort":{"one":"{count} öppen","other":"{count} öppna"},"closedCountShort":{"one":"{count} stängd","other":"{count} stängda"},"closeFailed":"Misslyckades","closedInactive":"Stängda inaktiva flikar: {count}","noInactive":"Inga inaktiva flikar","closedDuplicates":"Stängda dubblettflikar: {count}","noDuplicates":"Inga dubbletter","nothingToUndo":"Inget att ångra","undoFailed":"Kunde inte ångra","restoredCount":"Återställda: {count}","nothingToRestore":"Inget att återställa","inactive":"Inaktiva","loadingSuggestions":"Läser in förslag…","suggestionsFailed":"Kunde inte läsa in förslag","noSuggestions":"Inga förslag just nu","moreCount":"Ytterligare förslag som inte visas: {count}","sortFailed":"Sorteringen misslyckades","sortedCount":"Omsorterade flikar: {count}","nothingToSort":"Inget att sortera","hide":"Dölj","show":"Visa","contextClose":"Stäng webbplatsens flikar","contextSort":"Sortera flikar (webbplatser med flest flikar först)","closeSiteLabel":"Stäng flikar från {site}","web_heroTitle":"Stäng flikar från \u003cem\u003esamma webbplats.\u003c/em\u003e","web_featuresTitle":"Stäng efter webbplats.\u003cbr\u003e\u003cem\u003eSortera det som blir kvar.\u003c/em\u003e","web_workflowTitle":"Lägg till TabTools.\u003cbr\u003e\u003cem\u003eVälj vad du vill stänga.\u003c/em\u003e","web_privacyTitle":"Dina flikdata stannar\u003cbr\u003ei din webbläsare.","web_finalTitle":"Stäng flikar du är klar med.\u003cbr\u003e\u003cem\u003eSortera resten.\u003c/em\u003e","web_siteBody":"Öppna TabTools och klicka på en webbplats under \u003cstrong\u003eFörslag\u003c/strong\u003e, eller högerklicka på en webbsida och välj \u003cstrong\u003eStäng webbplatsens flikar\u003c/strong\u003e. Det stänger matchande flikar i alla vanliga fönster, även den aktuella fliken.","web_addTo":"Lägg till i {browser}","web_storeNote":"Öppnar {store}.","web_storeAria":"{label} — öppnar {store} i en ny flik","web_language":"Språk","web_languageSuggestion":"Läs den här sidan på {language}","web_switchLight":"Byt till ljust läge","web_lightMode":"Ljust läge","web_structuredDescription":"Ett gratis webbläsartillägg för att stänga flikar efter webbplats, sortera flikar, ta bort dubbletter och stänga inaktiva flikar.","web_close_tabs_from_the_same":"Stäng flikar från samma webbplats, sortera efter webbplats och ta bort dubbletter. TabTools är en gratis flikhanterare för Chrome, Firefox och Edge.","web_tabtools_close_tabs_by_site":"TabTools — Stäng och sortera flikar efter webbplats","web_close_tabs_by_site_sort":"Stäng flikar efter webbplats, sortera flikraden och ta bort dubbletter med ett gratis tillägg med öppen källkod för Chrome, Firefox och Edge.","web_skip_to_content":"Hoppa till innehållet","web_tabtools_home":"TabTools startsida","web_main_navigation":"Huvudnavigering","web_features":"Funktioner","web_how_it_works":"Så fungerar det","web_privacy":"Integritet","web_faq":"Vanliga frågor","web_switch_to_dark_mode":"Byt till mörkt läge","web_dark_mode":"Mörkt läge","web_free_browser_tab_manager":"Gratis flikhanterare för webbläsaren","web_clear_a_website_s_tabs":"Stäng en webbplats flikar med en enda åtgärd eller sortera flikraden efter webbplats. TabTools tar också bort dubbletter och stänger inaktiva flikar i Chrome, Firefox och Edge.","web_free_to_use_no_account":"Gratis att använda. Inget konto behövs.","web_viewing_on_a_phone_or":"Använder du en mobil eller surfplatta? Öppna sidan på din dator för att lägga till TabTools.","web_tabtools_browser_stores":"TabTools i webbläsarnas tilläggsbutiker","web_choose_another_browser":"Välj en annan webbläsare:","web_tabtools_in_action":"TabTools i praktiken","web_full_demo":"Hela demonstrationen","web_tabtools_full_demo":"Fullständig demonstration av TabTools","web_see_tabtools_close_tabs_by":"Se hur TabTools stänger flikar efter webbplats, tar bort dubbletter, sorterar flikar och stänger inaktiva flikar.","web_tabtools_product_details":"Produktinformation om TabTools","web_close_tabs_by_site":"Stäng flikar efter webbplats","web_from_the_popup_or_right":"från popupfönstret eller högerklicksmenyn","web_local_by_design":"Körs lokalt","web_your_tab_list_stays_in":"din fliklista stannar i webbläsaren","web_open_source":"Öppen källkod","web_inspect_the_code_on_github":"Granska koden på GitHub","web_close_and_organise":"Stäng och ordna","web_clear_a_finished_task_bring":"Stäng flikarna från en avslutad uppgift, placera flikar från samma webbplats bredvid varandra eller rensa bort dubbletter och inaktiva sidor.","web_01_site_cleanup":"01 / Rensa efter webbplats","web_close_a_site_s_tabs":"Stäng en webbplats flikar tillsammans","web_see_how_to_get_started":"Se hur du kommer igång","web_02_organise":"02 / Ordna","web_sort_tabs_by_site":"Sortera flikar efter webbplats","web_bring_tabs_from_the_same":"Placera flikar från samma webbplats bredvid varandra i det aktuella fönstret, med webbplatserna som har flest öppna flikar först.","web_03_simplify":"03 / Förenkla","web_remove_duplicate_tabs":"Ta bort dubblettflikar","web_close_extra_copies_of_the":"Stäng extra kopior av samma sida med ett klick. Fästa flikar ligger kvar.","web_04_find":"04 / Hitta","web_search_by_keyword_or_domain":"Sök efter sökord eller domän","web_type_a_word_to_match":"Skriv ett ord för att söka i flikarnas titlar och URL:er, eller ange en exakt domän, till exempel youtube.com. Välj sedan Stäng.","web_05_reset":"05 / Rensa","web_clear_inactive_tabs":"Stäng inaktiva flikar","web_choose_an_inactivity_threshold_in":"Välj en tidsgräns för inaktivitet i Inställningar och klicka sedan på Inaktiva för att stänga berörda flikar. Aktiva och fästa flikar samt flikar som spelar ljud hålls öppna.","web_more_tabtools_details":"Mer information om TabTools","web_undo_cleanup_from_the_popup":"Ångra rensning från popupfönstret","web_light_and_dark_themes":"Ljust och mörkt tema","web_local_cleanup_statistics":"Lokal rensningsstatistik","web_start_with_one_busy_site":"Börja med en webbplats med många flikar. Använd popupfönstret för webbplatsförslag och sortering, eller högerklicksmenyn för att snabbt stänga flikar.","web_add_it_to_your_browser":"Lägg till i din webbläsare","web_open_the_chrome_firefox_or":"Öppna butikssidan för Chrome, Firefox eller Edge och lägg till det kostnadsfria tillägget.","web_click_the_tabtools_icon_in":"Klicka på TabTools-ikonen i webbläsarens tilläggsmeny för att se webbplatsförslag och snabbåtgärder.","web_close_a_site_or_sort":"Stäng en webbplats flikar eller sortera flikarna","web_click_a_site_under_suggestions":"Klicka på en webbplats under Förslag för att stänga dess flikar, eller välj Sortera flikar för att placera flikar från samma webbplats bredvid varandra.","web_private_by_design":"Utformat med integritet i åtanke","web_the_tabtools_extension_processes_tab":"TabTools-tillägget behandlar flikinformation på din enhet. Inställningar och rensningsstatistik lagras lokalt i webbläsaren. Tillägget har inga konton, analysverktyg, annonser eller extern databas.","web_read_the_privacy_policy":"Läs integritetspolicyn","web_before_you_add_tabtools":"Innan du lägger till TabTools","web_common_questions":"Vanliga frågor.","web_browsers_cleanup_and_privacy":"Webbläsare, rensning och integritet.","web_is_tabtools_free":"Är TabTools gratis?","web_yes_tabtools_is_free_to":"Ja. TabTools är gratis att använda. Du behöver inget konto.","web_which_browsers_can_i_use":"Vilka webbläsare fungerar det med?","web_tabtools_is_available_for_chrome":"TabTools finns för Chrome, Firefox och Microsoft Edge. Använd webbläsarlänkarna på den här sidan för att öppna rätt butik och lägga till tillägget på din dator.","web_how_do_i_close_tabs":"Hur stänger jag flikar från samma webbplats?","web_right_click_within_a_web":"Högerklicka på en webbsida och välj ”Stäng webbplatsens flikar”, eller öppna TabTools och klicka på webbplatsen under Förslag. Det stänger webbplatsens flikar i alla vanliga fönster, även den aktuella fliken. Du kan också skriva ett sökord eller en exakt domän i popupfönstret.","web_can_i_remove_duplicates_or":"Kan jag ta bort dubbletter eller stänga inaktiva flikar?","web_yes_choose_close_duplicates_to":"Ja. Välj Stäng dubbletter för att ta bort upprepade sidor, eller klicka på Inaktiva för att stänga berörda flikar. Du kan ändra tidsgränsen i Inställningar. Rensning sker när du väljer åtgärden.","web_does_tabtools_collect_or_share":"Samlar TabTools in eller delar mina data?","web_the_extension_processes_tab_information":"Tillägget behandlar flikinformation lokalt och skickar den inte till utvecklaren eller tredje part. Inställningar och statistik stannar på din enhet. Webbplatsens demo finns på YouTube; den inbäddade spelaren och webbläsarnas butiker har egna integritetspolicyer.","web_can_i_undo_a_cleanup":"Kan jag ångra en rensning?","web_use_undo_immediately_after_closing":"Använd Ångra direkt efter att du stängt flikar från TabTools-popupfönstret, medan det fortfarande är öppet. Du kan också öppna sidor igen via webbläsarens nyligen stängda flikar.","web_free_for_chrome_firefox_and":"Gratis för Chrome, Firefox och Edge","web_other_browser_stores":"Andra webbläsarbutiker","web_close_tabs_by_site_sort_2":"Stäng flikar efter webbplats, sortera flikraden och ta bort dubbletter.","web_product":"Produkt","web_try_it":"Prova","web_more":"Mer","web_contact":"Kontakt","web_free_and_open_source":"Gratis och med öppen källkod."}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Hoppa till innehållet</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="TabTools startsida">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Huvudnavigering">
+          <a href="#features">Funktioner</a>
+          <a href="#how-it-works">Så fungerar det</a>
+          <a href="#privacy">Integritet</a>
+          <a href="#faq">Vanliga frågor</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Lägg till i <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Byt till mörkt läge" title="Byt till mörkt läge">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Mörkt läge</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Språk: Swedish" title="Språk: Swedish" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Swedish</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Språk" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="true" tabindex="-1" href="/sv/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shell language-suggestion" hidden data-language-suggestion></p>
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Gratis flikhanterare för webbläsaren</p>
+            <h1>Stäng flikar från <span>samma webbplats.</span></h1>
+            <p class="hero-lede">Stäng en webbplats flikar med en enda åtgärd eller sortera flikraden efter webbplats. TabTools tar också bort dubbletter och stänger inaktiva flikar i Chrome, Firefox och Edge.</p>
+            <div class="hero-actions">
+              <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="hero" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_chrome" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Lägg till i <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p class="store-note"><span data-store-note>Öppnar Chrome Web Store.</span> Gratis att använda. Inget konto behövs.</p>
+            <p class="mobile-note" data-mobile-note hidden>Använder du en mobil eller surfplatta? Öppna sidan på din dator för att lägga till TabTools.</p>
+            <div class="browser-links" aria-label="TabTools i webbläsarnas tilläggsbutiker">
+              <span>Välj en annan webbläsare:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Lägg till i <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Lägg till i <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Lägg till i <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" id="demo">
+            <div class="recording-label"><span class="recording-dot" aria-hidden="true"></span><span>TabTools i praktiken</span><span class="recording-duration">Hela demonstrationen</span></div>
+            <div class="video-shell">
+              <iframe class="product-video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZUh6FSsB6A?rel=0" title="Fullständig demonstration av TabTools" aria-describedby="demo-caption" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-footer">
+              <p id="demo-caption">Se hur TabTools stänger flikar efter webbplats, tar bort dubbletter, sorterar flikar och stänger inaktiva flikar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Produktinformation om TabTools">
+        <div class="shell proof-grid">
+          <div class="proof-item"><strong>Stäng flikar efter webbplats</strong><span>från popupfönstret eller högerklicksmenyn</span></div>
+          <div class="proof-item"><strong>Körs lokalt</strong><span>din fliklista stannar i webbläsaren</span></div>
+          <div class="proof-item"><strong>Öppen källkod</strong><span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">Granska koden på GitHub</a></span></div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Stäng och ordna</p>
+              <h2>Stäng efter webbplats.<br /><span>Sortera det som blir kvar.</span></h2>
+            </div>
+            <p>Stäng flikarna från en avslutad uppgift, placera flikar från samma webbplats bredvid varandra eller rensa bort dubbletter och inaktiva sidor.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-primary">
+              <div class="feature-icon icon-purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 19.5h8M12 16.5v3"></path><path d="M8 9h8M8 12h5"></path></svg>
+              </div>
+              <p class="card-kicker">01 / Rensa efter webbplats</p>
+              <h3>Stäng en webbplats flikar tillsammans</h3>
+              <p>Öppna TabTools och klicka på en webbplats under <strong>Förslag</strong>, eller högerklicka på en webbsida och välj <strong>Stäng webbplatsens flikar</strong>. Det stänger matchande flikar i alla vanliga fönster, även den aktuella fliken.</p>
+              <a class="text-link" href="#how-it-works">Se hur du kommer igång <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h6"></path><path d="M17 11v7M14 15l3 3 3-3"></path></svg>
+              </div>
+              <p class="card-kicker">02 / Ordna</p>
+              <h3>Sortera flikar efter webbplats</h3>
+              <p>Placera flikar från samma webbplats bredvid varandra i det aktuella fönstret, med webbplatserna som har flest öppna flikar först.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="4" width="11" height="14" rx="2"></rect><path d="M8 7h5M8 10h5"></path><path d="M9 20h8a2 2 0 0 0 2-2V8"></path></svg>
+              </div>
+              <p class="card-kicker">03 / Förenkla</p>
+              <h3>Ta bort dubblettflikar</h3>
+              <p>Stäng extra kopior av samma sida med ett klick. Fästa flikar ligger kvar.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"></circle><path d="m16 16 4.2 4.2M8.3 10.8h5"></path></svg>
+              </div>
+              <p class="card-kicker">04 / Hitta</p>
+              <h3>Sök efter sökord eller domän</h3>
+              <p>Skriv ett ord för att söka i flikarnas titlar och URL:er, eller ange en exakt domän, till exempel youtube.com. Välj sedan Stäng.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-ink" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M12 7.5v5l3.2 2"></path></svg>
+              </div>
+              <p class="card-kicker">05 / Rensa</p>
+              <h3>Stäng inaktiva flikar</h3>
+              <p>Välj en tidsgräns för inaktivitet i Inställningar och klicka sedan på Inaktiva för att stänga berörda flikar. Aktiva och fästa flikar samt flikar som spelar ljud hålls öppna.</p>
+            </article>
+          </div>
+
+          <div class="supporting-row" aria-label="Mer information om TabTools">
+            <span>Ångra rensning från popupfönstret</span>
+            <span>Ljust och mörkt tema</span>
+            <span>Lokal rensningsstatistik</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid">
+          <div class="workflow-copy">
+            <p class="eyebrow">Så fungerar det</p>
+            <h2>Lägg till TabTools.<br /><span>Välj vad du vill stänga.</span></h2>
+            <p>Börja med en webbplats med många flikar. Använd popupfönstret för webbplatsförslag och sortering, eller högerklicksmenyn för att snabbt stänga flikar.</p>
+            <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="how_it_works" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=how_it_works_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Lägg till i <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <ol class="steps">
+            <li><span class="step-index">01</span><div><h3>Lägg till i din webbläsare</h3><p>Öppna butikssidan för Chrome, Firefox eller Edge och lägg till det kostnadsfria tillägget.</p></div></li>
+            <li><span class="step-index">02</span><div><h3>Öppna TabTools</h3><p>Klicka på TabTools-ikonen i webbläsarens tilläggsmeny för att se webbplatsförslag och snabbåtgärder.</p></div></li>
+            <li><span class="step-index">03</span><div><h3>Stäng en webbplats flikar eller sortera flikarna</h3><p>Klicka på en webbplats under Förslag för att stänga dess flikar, eller välj Sortera flikar för att placera flikar från samma webbplats bredvid varandra.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy" tabindex="-1" aria-labelledby="privacy-heading">
+        <div class="shell privacy-card">
+          <div class="privacy-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.3-2.8 7.7-7 9.1-4.2-1.4-7-4.8-7-9.1V6l7-2.5Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Utformat med integritet i åtanke</p>
+            <h2 id="privacy-heading">Dina flikdata stannar<br />i din webbläsare.</h2>
+            <p>TabTools-tillägget behandlar flikinformation på din enhet. Inställningar och rensningsstatistik lagras lokalt i webbläsaren. Tillägget har inga konton, analysverktyg, annonser eller extern databas.</p>
+            <a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Läs integritetspolicyn <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Innan du lägger till TabTools</p>
+            <h2>Vanliga frågor.</h2>
+            <p>Webbläsare, rensning och integritet.</p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Är TabTools gratis?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Ja. TabTools är gratis att använda. Du behöver inget konto.</p>
+            </details>
+            <details>
+              <summary>Vilka webbläsare fungerar det med?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>TabTools finns för Chrome, Firefox och Microsoft Edge. Använd webbläsarlänkarna på den här sidan för att öppna rätt butik och lägga till tillägget på din dator.</p>
+            </details>
+            <details>
+              <summary>Hur stänger jag flikar från samma webbplats?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Högerklicka på en webbsida och välj ”Stäng webbplatsens flikar”, eller öppna TabTools och klicka på webbplatsen under Förslag. Det stänger webbplatsens flikar i alla vanliga fönster, även den aktuella fliken. Du kan också skriva ett sökord eller en exakt domän i popupfönstret.</p>
+            </details>
+            <details>
+              <summary>Kan jag ta bort dubbletter eller stänga inaktiva flikar?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Ja. Välj Stäng dubbletter för att ta bort upprepade sidor, eller klicka på Inaktiva för att stänga berörda flikar. Du kan ändra tidsgränsen i Inställningar. Rensning sker när du väljer åtgärden.</p>
+            </details>
+            <details>
+              <summary>Samlar TabTools in eller delar mina data?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Tillägget behandlar flikinformation lokalt och skickar den inte till utvecklaren eller tredje part. Inställningar och statistik stannar på din enhet. Webbplatsens demo finns på YouTube; den inbäddade spelaren och webbläsarnas butiker har egna integritetspolicyer.</p>
+            </details>
+            <details>
+              <summary>Kan jag ångra en rensning?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Använd Ångra direkt efter att du stängt flikar från TabTools-popupfönstret, medan det fortfarande är öppet. Du kan också öppna sidor igen via webbläsarens nyligen stängda flikar.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner">
+          <div>
+            <p class="eyebrow">Gratis för Chrome, Firefox och Edge</p>
+            <h2>Stäng flikar du är klar med.<br /><span>Sortera resten.</span></h2>
+          </div>
+          <div class="final-cta-actions">
+            <a class="button browser-button button-light" data-adaptive-store data-utm-placement="final_cta" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_cta_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Lägg till i <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+            <div class="final-alternatives" aria-label="Andra webbläsarbutiker">
+              <span>Välj en annan webbläsare:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Lägg till i <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Lägg till i <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Lägg till i <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="TabTools startsida"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Stäng flikar efter webbplats, sortera flikraden och ta bort dubbletter.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Produkt</span><a href="#features">Funktioner</a><a href="#how-it-works">Så fungerar det</a><a href="#faq">Vanliga frågor</a></div>
+          <div><span class="footer-label">Prova</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Mer</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Integritet</a><a href="mailto:tabtools@michaelwester.com">Kontakt</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Gratis och med öppen källkod.</span></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

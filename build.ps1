@@ -4,6 +4,8 @@ param(
   [string[]]$Targets
 )
 
+$ErrorActionPreference = 'Stop'
+
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sharedDir = Join-Path $root "src/shared"
 $overridesRoot = Join-Path $root "src/overrides"
@@ -18,9 +20,16 @@ if (-not $Targets -or $Targets.Count -eq 0) {
   $Targets = @("firefox", "chrome", "edge")
 }
 
+$locales = (Get-Content (Join-Path $root 'localisation/registry.json') -Raw | ConvertFrom-Json).locales
+foreach ($locale in $locales) {
+  $messages = Join-Path $sharedDir ("_locales/" + $locale.extension + "/messages.json")
+  if (-not (Test-Path $messages)) { throw "Missing locale file: $messages. Run node scripts/generate-localisation.js after translation edits." }
+}
+
 New-Item -ItemType Directory -Force -Path $distRoot | Out-Null
 
 foreach ($browser in $Targets) {
+  if ($browser -notin @("chrome", "firefox", "edge")) { throw "Unknown browser: $browser" }
   $distDir = Join-Path $distRoot $browser
   $overrideDir = Join-Path $overridesRoot $browser
 
@@ -37,6 +46,13 @@ foreach ($browser in $Targets) {
     Write-Warning "No overrides found for '$browser'"
   }
 
+  if ($browser -eq "firefox") {
+    foreach ($locale in $locales) {
+      if ($locale.firefoxExtension -and $locale.firefoxExtension -ne $locale.extension) {
+        Move-Item (Join-Path $distDir ("_locales/" + $locale.extension)) (Join-Path $distDir ("_locales/" + $locale.firefoxExtension))
+      }
+    }
+  }
   $resolvedDist = (Resolve-Path $distDir).Path
   Write-Host "Built $browser -> $resolvedDist"
 }

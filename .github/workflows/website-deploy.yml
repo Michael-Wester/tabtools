@@ -5,10 +5,20 @@ on:
     branches: [main]
     paths:
       - 'website/dist/**'
+      - 'website/src/**'
+      - 'localisation/**'
+      - 'scripts/**'
+      - 'marketing/**'
+      - 'package.json'
       - '.github/workflows/website-deploy.yml'
   pull_request:
     paths:
       - 'website/dist/**'
+      - 'website/src/**'
+      - 'localisation/**'
+      - 'scripts/**'
+      - 'marketing/**'
+      - 'package.json'
       - '.github/workflows/website-deploy.yml'
   workflow_dispatch:
 
@@ -40,6 +50,14 @@ jobs:
           fi
       - name: Validate JavaScript
         run: node --check website/dist/script.js
+      - name: Generate and validate localisation
+        run: |
+          node scripts/generate-extension-locales.js
+          node scripts/generate-website.js
+          node scripts/generate-listings.js
+          node scripts/validate-localisation.js
+          node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js
+          git diff --exit-code
       - name: Select deployment target
         id: target
         env:

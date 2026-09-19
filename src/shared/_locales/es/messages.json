@@ -1,0 +1,254 @@
+{
+  "translationLocale": {
+    "message": "es"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Cierra y ordena pestañas por sitio"
+  },
+  "extensionDescription": {
+    "message": "Cierra pestañas del mismo sitio, ordénalas por sitio y elimina duplicados para mantener tu navegador organizado."
+  },
+  "openTabTools": {
+    "message": "Abrir TabTools"
+  },
+  "settings": {
+    "message": "Ajustes"
+  },
+  "suggestions": {
+    "message": "Sugerencias"
+  },
+  "suggestCaption": {
+    "message": "Pulsa para cerrar las pestañas del sitio"
+  },
+  "queryPlaceholder": {
+    "message": "Cerrar por palabra clave (pulsa Intro)"
+  },
+  "close": {
+    "message": "Cerrar"
+  },
+  "sortTabs": {
+    "message": "Ordenar pestañas"
+  },
+  "closeDuplicates": {
+    "message": "Cerrar duplicados"
+  },
+  "undo": {
+    "message": "Deshacer"
+  },
+  "undoTitle": {
+    "message": "Deshacer el último cierre"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Claro"
+  },
+  "dark": {
+    "message": "Oscuro"
+  },
+  "minTabs": {
+    "message": "Mínimo de pestañas por sitio para las sugerencias"
+  },
+  "inactiveAfter": {
+    "message": "Pestañas inactivas después de"
+  },
+  "minutes": {
+    "message": "minutos"
+  },
+  "closedCount": {
+    "message": "Cerradas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ pestaña abierta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ pestañas abiertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ pestañas abiertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ abierta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ abiertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ abiertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ cerrada",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ cerradas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ cerradas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Error"
+  },
+  "closedInactive": {
+    "message": "Pestañas inactivas cerradas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "No hay pestañas inactivas"
+  },
+  "closedDuplicates": {
+    "message": "Pestañas duplicadas cerradas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "No hay duplicados"
+  },
+  "nothingToUndo": {
+    "message": "No hay nada que deshacer"
+  },
+  "undoFailed": {
+    "message": "No se pudo deshacer"
+  },
+  "restoredCount": {
+    "message": "Restauradas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "No hay nada que restaurar"
+  },
+  "inactive": {
+    "message": "Inactivas"
+  },
+  "loadingSuggestions": {
+    "message": "Cargando sugerencias…"
+  },
+  "suggestionsFailed": {
+    "message": "No se pudieron cargar las sugerencias"
+  },
+  "noSuggestions": {
+    "message": "No hay sugerencias por ahora"
+  },
+  "moreCount": {
+    "message": "Otras sugerencias no mostradas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "No se pudo ordenar"
+  },
+  "sortedCount": {
+    "message": "Pestañas reordenadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "No hay nada que ordenar"
+  },
+  "hide": {
+    "message": "Ocultar"
+  },
+  "show": {
+    "message": "Mostrar"
+  },
+  "contextClose": {
+    "message": "Cerrar pestañas del sitio"
+  },
+  "contextSort": {
+    "message": "Ordenar pestañas (sitios con más pestañas primero)"
+  },
+  "closeSiteLabel": {
+    "message": "Cerrar pestañas de $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

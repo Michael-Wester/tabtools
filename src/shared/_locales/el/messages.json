@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "el"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools: Κλείσιμο/ταξινόμηση καρτελών ανά σάιτ"
+  },
+  "extensionDescription": {
+    "message": "Κλείστε καρτέλες του ίδιου ιστοτόπου, ταξινομήστε τις ανά ιστότοπο και αφαιρέστε διπλότυπα για πιο οργανωμένη περιήγηση."
+  },
+  "openTabTools": {
+    "message": "Άνοιγμα του TabTools"
+  },
+  "settings": {
+    "message": "Ρυθμίσεις"
+  },
+  "suggestions": {
+    "message": "Προτάσεις"
+  },
+  "suggestCaption": {
+    "message": "Πατήστε για κλείσιμο καρτελών του ιστοτόπου"
+  },
+  "queryPlaceholder": {
+    "message": "Κλείσιμο με λέξη-κλειδί (Enter)"
+  },
+  "close": {
+    "message": "Κλείσιμο"
+  },
+  "sortTabs": {
+    "message": "Ταξινόμηση καρτελών"
+  },
+  "closeDuplicates": {
+    "message": "Κλείσιμο διπλοτύπων"
+  },
+  "undo": {
+    "message": "Αναίρεση"
+  },
+  "undoTitle": {
+    "message": "Αναίρεση τελευταίου κλεισίματος"
+  },
+  "theme": {
+    "message": "Θέμα"
+  },
+  "light": {
+    "message": "Φωτεινό"
+  },
+  "dark": {
+    "message": "Σκοτεινό"
+  },
+  "minTabs": {
+    "message": "Ελάχιστες καρτέλες ανά ιστότοπο για προτάσεις"
+  },
+  "inactiveAfter": {
+    "message": "Οι καρτέλες θεωρούνται ανενεργές μετά από"
+  },
+  "minutes": {
+    "message": "λεπτά"
+  },
+  "closedCount": {
+    "message": "Έκλεισαν: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ ανοιχτή καρτέλα",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ ανοιχτές καρτέλες",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ ανοιχτή",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ ανοιχτές",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ κλειστή",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ κλειστές",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Αποτυχία"
+  },
+  "closedInactive": {
+    "message": "Ανενεργές καρτέλες που έκλεισαν: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Δεν υπάρχουν ανενεργές καρτέλες"
+  },
+  "closedDuplicates": {
+    "message": "Διπλότυπες καρτέλες που έκλεισαν: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Δεν υπάρχουν διπλότυπα"
+  },
+  "nothingToUndo": {
+    "message": "Δεν υπάρχει ενέργεια για αναίρεση"
+  },
+  "undoFailed": {
+    "message": "Η αναίρεση απέτυχε"
+  },
+  "restoredCount": {
+    "message": "Επαναφέρθηκαν: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Δεν υπάρχουν καρτέλες για επαναφορά"
+  },
+  "inactive": {
+    "message": "Ανενεργές"
+  },
+  "loadingSuggestions": {
+    "message": "Φόρτωση προτάσεων…"
+  },
+  "suggestionsFailed": {
+    "message": "Η φόρτωση προτάσεων απέτυχε"
+  },
+  "noSuggestions": {
+    "message": "Δεν υπάρχουν προτάσεις"
+  },
+  "moreCount": {
+    "message": "Επιπλέον προτάσεις που δεν εμφανίζονται: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Η ταξινόμηση απέτυχε"
+  },
+  "sortedCount": {
+    "message": "Καρτέλες που μετακινήθηκαν: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Δεν υπάρχουν καρτέλες για ταξινόμηση"
+  },
+  "hide": {
+    "message": "Απόκρυψη"
+  },
+  "show": {
+    "message": "Εμφάνιση"
+  },
+  "contextClose": {
+    "message": "Κλείσιμο καρτελών ιστοτόπου"
+  },
+  "contextSort": {
+    "message": "Ταξινόμηση καρτελών (οι συχνότεροι ιστότοποι πρώτα)"
+  },
+  "closeSiteLabel": {
+    "message": "Κλείσιμο καρτελών από $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

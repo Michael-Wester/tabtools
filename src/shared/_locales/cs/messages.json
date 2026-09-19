@@ -1,0 +1,281 @@
+{
+  "translationLocale": {
+    "message": "cs"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Zavírání a řazení panelů podle webu"
+  },
+  "extensionDescription": {
+    "message": "Zavírejte panely stejného webu, řaďte je podle webu a odstraňujte duplicity, aby byl prohlížeč přehledný."
+  },
+  "openTabTools": {
+    "message": "Otevřít TabTools"
+  },
+  "settings": {
+    "message": "Nastavení"
+  },
+  "suggestions": {
+    "message": "Návrhy"
+  },
+  "suggestCaption": {
+    "message": "Klepnutím zavřete panely webu"
+  },
+  "queryPlaceholder": {
+    "message": "Zavřít podle klíčového slova (Enter)"
+  },
+  "close": {
+    "message": "Zavřít"
+  },
+  "sortTabs": {
+    "message": "Seřadit panely"
+  },
+  "closeDuplicates": {
+    "message": "Zavřít duplicity"
+  },
+  "undo": {
+    "message": "Zpět"
+  },
+  "undoTitle": {
+    "message": "Vrátit poslední zavření"
+  },
+  "theme": {
+    "message": "Motiv"
+  },
+  "light": {
+    "message": "Světlý"
+  },
+  "dark": {
+    "message": "Tmavý"
+  },
+  "minTabs": {
+    "message": "Minimální počet panelů webu pro návrhy"
+  },
+  "inactiveAfter": {
+    "message": "Panely neaktivní po"
+  },
+  "minutes": {
+    "message": "minutách"
+  },
+  "closedCount": {
+    "message": "Zavřeno: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ otevřený panel",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ otevřené panely",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ otevřeného panelu",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ otevřených panelů",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ otevřený",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_few": {
+    "message": "$count$ otevřené",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ otevřeného",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ otevřených",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ zavřený",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_few": {
+    "message": "$count$ zavřené",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ zavřeného",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ zavřených",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Akce se nezdařila"
+  },
+  "closedInactive": {
+    "message": "Zavřené neaktivní panely: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Žádné neaktivní panely"
+  },
+  "closedDuplicates": {
+    "message": "Zavřené duplicitní panely: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Žádné duplicity"
+  },
+  "nothingToUndo": {
+    "message": "Není co vrátit"
+  },
+  "undoFailed": {
+    "message": "Vrácení se nezdařilo"
+  },
+  "restoredCount": {
+    "message": "Obnoveno: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Není co obnovit"
+  },
+  "inactive": {
+    "message": "Neaktivní"
+  },
+  "loadingSuggestions": {
+    "message": "Načítání návrhů…"
+  },
+  "suggestionsFailed": {
+    "message": "Návrhy se nepodařilo načíst"
+  },
+  "noSuggestions": {
+    "message": "Momentálně nejsou žádné návrhy"
+  },
+  "moreCount": {
+    "message": "Další nezobrazené návrhy: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Řazení se nezdařilo"
+  },
+  "sortedCount": {
+    "message": "Přeuspořádané panely: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Není co řadit"
+  },
+  "hide": {
+    "message": "Skrýt"
+  },
+  "show": {
+    "message": "Zobrazit"
+  },
+  "contextClose": {
+    "message": "Zavřít panely webu"
+  },
+  "contextSort": {
+    "message": "Seřadit panely (weby s nejvíce panely první)"
+  },
+  "closeSiteLabel": {
+    "message": "Zavřít panely webu $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

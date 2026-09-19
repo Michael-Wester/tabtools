@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="vi" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="description" content="Đóng các thẻ cùng trang web, sắp xếp thẻ theo trang web và loại bỏ thẻ trùng lặp. TabTools là công cụ quản lý thẻ miễn phí cho Chrome, Firefox và Edge." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — Đóng và sắp xếp thẻ theo trang web" />
+    <meta property="og:description" content="Đóng thẻ theo trang web, sắp xếp thanh thẻ và dọn thẻ trùng lặp bằng tiện ích miễn phí, mã nguồn mở cho Chrome, Firefox và Edge." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:url" content="https://tabtools.fyi/vi/" />
+    <link rel="canonical" href="https://tabtools.fyi/vi/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TabTools — Đóng và sắp xếp thẻ theo trang web" />
+    <meta name="twitter:description" content="Đóng thẻ theo trang web, sắp xếp thanh thẻ và dọn thẻ trùng lặp bằng tiện ích miễn phí, mã nguồn mở cho Chrome, Firefox và Edge." />
+    <title>TabTools — Đóng và sắp xếp thẻ theo trang web</title>
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TabTools","url":"https://tabtools.fyi/vi/","description":"Tiện ích trình duyệt miễn phí để đóng thẻ theo trang web, sắp xếp thẻ, loại bỏ thẻ trùng lặp và dọn thẻ không hoạt động.","inLanguage":"vi","applicationCategory":"BrowserApplication","isAccessibleForFree":true}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />
+    <script type="application/json" id="locale-data">{"locale":"vi","registry":[{"locale":"en","canonical":"en","path":"/","languageName":"English","flagAsset":"en.svg"},{"locale":"zh-CN","canonical":"zh-CN","path":"/zh-cn/","languageName":"Chinese (Simplified)","flagAsset":"zh-CN.svg"},{"locale":"zh-TW","canonical":"zh-TW","path":"/zh-tw/","languageName":"Chinese (Traditional)","flagAsset":"zh-TW.svg"},{"locale":"hr","canonical":"hr","path":"/hr/","languageName":"Croatian","flagAsset":"hr.svg"},{"locale":"cs","canonical":"cs","path":"/cs/","languageName":"Czech","flagAsset":"cs.svg"},{"locale":"nl","canonical":"nl","path":"/nl/","languageName":"Dutch","flagAsset":"nl.svg"},{"locale":"fi","canonical":"fi","path":"/fi/","languageName":"Finnish","flagAsset":"fi.svg"},{"locale":"fr","canonical":"fr","path":"/fr/","languageName":"French","flagAsset":"fr.svg"},{"locale":"de","canonical":"de","path":"/de/","languageName":"German","flagAsset":"de.svg"},{"locale":"el","canonical":"el","path":"/el/","languageName":"Greek","flagAsset":"el.svg"},{"locale":"he","canonical":"he","path":"/he/","languageName":"Hebrew","flagAsset":"he.svg"},{"locale":"hu","canonical":"hu","path":"/hu/","languageName":"Hungarian","flagAsset":"hu.svg"},{"locale":"it","canonical":"it","path":"/it/","languageName":"Italian","flagAsset":"it.svg"},{"locale":"ja","canonical":"ja","path":"/ja/","languageName":"Japanese","flagAsset":"ja.svg"},{"locale":"ko","canonical":"ko","path":"/ko/","languageName":"Korean","flagAsset":"ko.svg"},{"locale":"nb","canonical":"nb","path":"/nb/","languageName":"Norwegian (Bokmal)","flagAsset":"nb.svg"},{"locale":"pl","canonical":"pl","path":"/pl/","languageName":"Polish","flagAsset":"pl.svg"},{"locale":"pt-BR","canonical":"pt-BR","path":"/pt-br/","languageName":"Portuguese (Brazil)","flagAsset":"pt-BR.svg"},{"locale":"pt-PT","canonical":"pt-PT","path":"/pt-pt/","languageName":"Portuguese (Portugal)","flagAsset":"pt-PT.svg"},{"locale":"ro","canonical":"ro","path":"/ro/","languageName":"Romanian","flagAsset":"ro.svg"},{"locale":"ru","canonical":"ru","path":"/ru/","languageName":"Russian","flagAsset":"ru.svg"},{"locale":"sr","canonical":"sr","path":"/sr/","languageName":"Serbian","flagAsset":"sr.svg"},{"locale":"sk","canonical":"sk","path":"/sk/","languageName":"Slovak","flagAsset":"sk.svg"},{"locale":"sl","canonical":"sl","path":"/sl/","languageName":"Slovenian","flagAsset":"sl.svg"},{"locale":"es","canonical":"es-ES","path":"/es/","languageName":"Spanish (Spain)","flagAsset":"es.svg"},{"locale":"sv","canonical":"sv","path":"/sv/","languageName":"Swedish","flagAsset":"sv.svg"},{"locale":"tr","canonical":"tr","path":"/tr/","languageName":"Turkish","flagAsset":"tr.svg"},{"locale":"uk","canonical":"uk","path":"/uk/","languageName":"Ukrainian","flagAsset":"uk.svg"},{"locale":"vi","canonical":"vi","path":"/vi/","languageName":"Vietnamese","flagAsset":"vi.svg"}],"messages":{"extensionName":"TabTools - Đóng và xếp thẻ theo trang web","extensionDescription":"Đóng các thẻ cùng trang web, sắp xếp thẻ theo trang web và loại bỏ thẻ trùng lặp để giữ trình duyệt gọn gàng.","openTabTools":"Mở TabTools","settings":"Cài đặt","suggestions":"Gợi ý","suggestCaption":"Nhấn để đóng các thẻ của trang web","queryPlaceholder":"Đóng theo từ khóa (nhấn Enter)","close":"Đóng","sortTabs":"Sắp xếp thẻ","closeDuplicates":"Đóng thẻ trùng lặp","undo":"Hoàn tác","undoTitle":"Hoàn tác lần đóng gần nhất","theme":"Giao diện","light":"Sáng","dark":"Tối","minTabs":"Số thẻ tối thiểu mỗi trang web để gợi ý","inactiveAfter":"Thẻ không hoạt động sau","minutes":"phút","closedCount":"Đã đóng: {count}","openCount":{"other":"{count} thẻ đang mở"},"openCountShort":{"other":"{count} đang mở"},"closedCountShort":{"other":"{count} đã đóng"},"closeFailed":"Không thành công","closedInactive":"Số thẻ không hoạt động đã đóng: {count}","noInactive":"Không có thẻ không hoạt động","closedDuplicates":"Số thẻ trùng lặp đã đóng: {count}","noDuplicates":"Không có thẻ trùng lặp","nothingToUndo":"Không có thao tác để hoàn tác","undoFailed":"Không thể hoàn tác","restoredCount":"Đã khôi phục: {count}","nothingToRestore":"Không có thẻ để khôi phục","inactive":"Không hoạt động","loadingSuggestions":"Đang tải gợi ý…","suggestionsFailed":"Không thể tải gợi ý","noSuggestions":"Không có gợi ý","moreCount":"Số gợi ý khác chưa hiển thị: {count}","sortFailed":"Không thể sắp xếp","sortedCount":"Số thẻ đã đổi vị trí: {count}","nothingToSort":"Không có thẻ để sắp xếp","hide":"Ẩn","show":"Hiện","contextClose":"Đóng thẻ của trang web","contextSort":"Sắp xếp thẻ (trang mở nhiều nhất trước)","closeSiteLabel":"Đóng các thẻ của {site}","web_heroTitle":"Đóng các thẻ của \u003cem\u003ecùng một trang web.\u003c/em\u003e","web_featuresTitle":"Đóng theo trang web.\u003cbr\u003e\u003cem\u003eSắp xếp thẻ còn lại.\u003c/em\u003e","web_workflowTitle":"Thêm TabTools.\u003cbr\u003e\u003cem\u003eChọn thẻ cần dọn.\u003c/em\u003e","web_privacyTitle":"Dữ liệu thẻ luôn ở lại\u003cbr\u003etrong trình duyệt của bạn.","web_finalTitle":"Đóng thẻ đã dùng xong.\u003cbr\u003e\u003cem\u003eSắp xếp thẻ còn lại.\u003c/em\u003e","web_siteBody":"Mở TabTools và nhấp vào một trang web trong \u003cstrong\u003eGợi ý\u003c/strong\u003e, hoặc nhấp chuột phải trong một trang web rồi chọn \u003cstrong\u003eĐóng thẻ của trang web\u003c/strong\u003e. Thao tác này đóng các thẻ tương ứng trên mọi cửa sổ thông thường, kể cả thẻ hiện tại.","web_addTo":"Thêm vào {browser}","web_storeNote":"Mở {store}.","web_storeAria":"{label} — mở {store} trong thẻ mới","web_language":"Ngôn ngữ","web_languageSuggestion":"Đọc trang này bằng {language}","web_switchLight":"Chuyển sang chế độ sáng","web_lightMode":"Chế độ sáng","web_structuredDescription":"Tiện ích trình duyệt miễn phí để đóng thẻ theo trang web, sắp xếp thẻ, loại bỏ thẻ trùng lặp và dọn thẻ không hoạt động.","web_close_tabs_from_the_same":"Đóng các thẻ cùng trang web, sắp xếp thẻ theo trang web và loại bỏ thẻ trùng lặp. TabTools là công cụ quản lý thẻ miễn phí cho Chrome, Firefox và Edge.","web_tabtools_close_tabs_by_site":"TabTools — Đóng và sắp xếp thẻ theo trang web","web_close_tabs_by_site_sort":"Đóng thẻ theo trang web, sắp xếp thanh thẻ và dọn thẻ trùng lặp bằng tiện ích miễn phí, mã nguồn mở cho Chrome, Firefox và Edge.","web_skip_to_content":"Chuyển đến nội dung","web_tabtools_home":"Trang chủ TabTools","web_main_navigation":"Điều hướng chính","web_features":"Tính năng","web_how_it_works":"Cách sử dụng","web_privacy":"Quyền riêng tư","web_faq":"Câu hỏi thường gặp","web_switch_to_dark_mode":"Chuyển sang chế độ tối","web_dark_mode":"Chế độ tối","web_free_browser_tab_manager":"Công cụ quản lý thẻ trình duyệt miễn phí","web_clear_a_website_s_tabs":"Đóng các thẻ của một trang web bằng một thao tác, hoặc sắp xếp thanh thẻ theo trang web. TabTools còn loại bỏ thẻ trùng lặp và dọn thẻ không hoạt động trong Chrome, Firefox và Edge.","web_free_to_use_no_account":"Miễn phí. Không cần tài khoản.","web_viewing_on_a_phone_or":"Bạn đang dùng điện thoại hoặc máy tính bảng? Hãy mở trang này trên máy tính để thêm TabTools.","web_tabtools_browser_stores":"Các cửa hàng tiện ích có TabTools","web_choose_another_browser":"Chọn trình duyệt khác","web_tabtools_in_action":"Xem TabTools hoạt động","web_full_demo":"Video minh họa đầy đủ","web_tabtools_full_demo":"Video minh họa đầy đủ về TabTools","web_see_tabtools_close_tabs_by":"Xem TabTools đóng thẻ theo trang web, loại bỏ thẻ trùng lặp, sắp xếp thẻ và dọn thẻ không hoạt động.","web_tabtools_product_details":"Thông tin sản phẩm TabTools","web_close_tabs_by_site":"Đóng thẻ theo trang web","web_from_the_popup_or_right":"từ cửa sổ bật lên hoặc menu chuột phải","web_local_by_design":"Xử lý ngay trên thiết bị","web_your_tab_list_stays_in":"danh sách thẻ ở lại trong trình duyệt của bạn","web_open_source":"Mã nguồn mở","web_inspect_the_code_on_github":"Xem mã nguồn trên GitHub","web_close_and_organise":"Đóng và sắp xếp","web_clear_a_finished_task_bring":"Dọn thẻ khi xong việc, đưa các thẻ cùng trang web về cạnh nhau hoặc dọn các trang trùng lặp và không hoạt động.","web_01_site_cleanup":"01 / Dọn theo trang web","web_close_a_site_s_tabs":"Đóng cùng lúc các thẻ của một trang web","web_see_how_to_get_started":"Xem cách bắt đầu","web_02_organise":"02 / Sắp xếp","web_sort_tabs_by_site":"Sắp xếp thẻ theo trang web","web_bring_tabs_from_the_same":"Đưa các thẻ cùng trang web về cạnh nhau trong cửa sổ hiện tại, với những trang web có nhiều thẻ mở nhất ở đầu.","web_03_simplify":"03 / Tinh gọn","web_remove_duplicate_tabs":"Loại bỏ thẻ trùng lặp","web_close_extra_copies_of_the":"Đóng các bản sao của cùng một trang chỉ bằng một cú nhấp. Các thẻ đã ghim được giữ nguyên.","web_04_find":"04 / Tìm","web_search_by_keyword_or_domain":"Tìm theo từ khóa hoặc tên miền","web_type_a_word_to_match":"Nhập một từ để tìm trong tiêu đề và URL của thẻ, hoặc nhập tên miền chính xác như youtube.com. Sau đó chọn Đóng.","web_05_reset":"05 / Dọn dẹp","web_clear_inactive_tabs":"Dọn thẻ không hoạt động","web_choose_an_inactivity_threshold_in":"Chọn ngưỡng thời gian không hoạt động trong Cài đặt, rồi nhấp Không hoạt động để đóng các thẻ đủ điều kiện. Thẻ đang hoạt động, đã ghim hoặc đang phát âm thanh vẫn mở.","web_more_tabtools_details":"Thông tin thêm về TabTools","web_undo_cleanup_from_the_popup":"Hoàn tác việc dọn thẻ từ cửa sổ bật lên","web_light_and_dark_themes":"Giao diện sáng và tối","web_local_cleanup_statistics":"Thống kê dọn thẻ lưu trên thiết bị","web_start_with_one_busy_site":"Bắt đầu với một trang web đang mở nhiều thẻ. Dùng cửa sổ bật lên để xem gợi ý và sắp xếp, hoặc menu chuột phải để đóng nhanh.","web_add_it_to_your_browser":"Thêm vào trình duyệt","web_open_the_chrome_firefox_or":"Mở trang cửa hàng Chrome, Firefox hoặc Edge và thêm tiện ích miễn phí.","web_click_the_tabtools_icon_in":"Nhấp vào biểu tượng TabTools trong menu tiện ích của trình duyệt để xem gợi ý trang web và các thao tác nhanh.","web_close_a_site_or_sort":"Đóng thẻ của một trang web hoặc sắp xếp","web_click_a_site_under_suggestions":"Nhấp vào một trang web trong Gợi ý để đóng các thẻ của trang đó, hoặc chọn Sắp xếp thẻ để đưa các thẻ cùng trang web về cạnh nhau.","web_private_by_design":"Thiết kế bảo vệ quyền riêng tư","web_the_tabtools_extension_processes_tab":"Tiện ích TabTools xử lý thông tin thẻ trên thiết bị của bạn. Cài đặt và thống kê dọn thẻ được lưu trong bộ nhớ cục bộ của trình duyệt. Tiện ích không có tài khoản, công cụ phân tích, quảng cáo hay cơ sở dữ liệu bên ngoài.","web_read_the_privacy_policy":"Đọc chính sách quyền riêng tư","web_before_you_add_tabtools":"Trước khi thêm TabTools","web_common_questions":"Câu hỏi thường gặp","web_browsers_cleanup_and_privacy":"Trình duyệt, dọn thẻ và quyền riêng tư","web_is_tabtools_free":"TabTools có miễn phí không?","web_yes_tabtools_is_free_to":"Có. TabTools miễn phí và có mã nguồn mở.","web_which_browsers_can_i_use":"Tôi có thể dùng trình duyệt nào?","web_tabtools_is_available_for_chrome":"TabTools có trên Chrome, Firefox và Microsoft Edge. Để thêm tiện ích trên máy tính, hãy dùng các liên kết trình duyệt trên trang này để mở đúng cửa hàng.","web_how_do_i_close_tabs":"Làm thế nào để đóng các thẻ cùng trang web?","web_right_click_within_a_web":"Nhấp chuột phải trong một trang web và chọn ‘Đóng thẻ của trang web’, hoặc mở TabTools rồi nhấp vào trang web trong Gợi ý. Thao tác này đóng các thẻ của trang web đó trên mọi cửa sổ thông thường, kể cả thẻ hiện tại. Bạn cũng có thể nhập từ khóa hoặc tên miền chính xác trong cửa sổ bật lên.","web_can_i_remove_duplicates_or":"Tôi có thể loại bỏ thẻ trùng lặp hoặc không hoạt động không?","web_yes_choose_close_duplicates_to":"Có. Chọn Đóng thẻ trùng lặp để loại bỏ các trang lặp lại, hoặc nhấp Không hoạt động để đóng các thẻ đủ điều kiện. Bạn có thể đổi ngưỡng thời gian không hoạt động trong Cài đặt; việc dọn thẻ chỉ diễn ra khi bạn chọn thao tác đó.","web_does_tabtools_collect_or_share":"TabTools có thu thập hoặc chia sẻ thông tin thẻ không?","web_the_extension_processes_tab_information":"Tiện ích xử lý thông tin thẻ cục bộ và không gửi thông tin đó cho nhà phát triển hay bên thứ ba. Cài đặt và thống kê dọn thẻ ở lại trên thiết bị của bạn. Video minh họa trên trang này do YouTube lưu trữ; trình phát nhúng và các cửa hàng tiện ích có chính sách quyền riêng tư riêng.","web_can_i_undo_a_cleanup":"Tôi có thể hoàn tác việc dọn thẻ không?","web_use_undo_immediately_after_closing":"Dùng Hoàn tác ngay sau khi đóng thẻ từ cửa sổ bật lên của TabTools, khi cửa sổ đó vẫn mở. Bạn cũng có thể dùng danh sách thẻ đã đóng gần đây của trình duyệt để mở lại trang.","web_free_for_chrome_firefox_and":"Miễn phí cho Chrome, Firefox và Edge","web_other_browser_stores":"Các cửa hàng trình duyệt khác","web_close_tabs_by_site_sort_2":"Đóng thẻ theo trang web, sắp xếp thanh thẻ và dọn thẻ trùng lặp.","web_product":"Sản phẩm","web_try_it":"Dùng thử","web_more":"Thêm","web_contact":"Liên hệ","web_free_and_open_source":"Miễn phí và mã nguồn mở"}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Chuyển đến nội dung</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="Trang chủ TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Điều hướng chính">
+          <a href="#features">Tính năng</a>
+          <a href="#how-it-works">Cách sử dụng</a>
+          <a href="#privacy">Quyền riêng tư</a>
+          <a href="#faq">Câu hỏi thường gặp</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Thêm vào <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Chuyển sang chế độ tối" title="Chuyển sang chế độ tối">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Chế độ tối</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Ngôn ngữ: Vietnamese" title="Ngôn ngữ: Vietnamese" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Vietnamese</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Ngôn ngữ" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="true" tabindex="-1" href="/vi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shell language-suggestion" hidden data-language-suggestion></p>
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Công cụ quản lý thẻ trình duyệt miễn phí</p>
+            <h1>Đóng các thẻ của <span>cùng một trang web.</span></h1>
+            <p class="hero-lede">Đóng các thẻ của một trang web bằng một thao tác, hoặc sắp xếp thanh thẻ theo trang web. TabTools còn loại bỏ thẻ trùng lặp và dọn thẻ không hoạt động trong Chrome, Firefox và Edge.</p>
+            <div class="hero-actions">
+              <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="hero" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_chrome" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Thêm vào <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p class="store-note"><span data-store-note>Mở Chrome Web Store.</span> Miễn phí. Không cần tài khoản.</p>
+            <p class="mobile-note" data-mobile-note hidden>Bạn đang dùng điện thoại hoặc máy tính bảng? Hãy mở trang này trên máy tính để thêm TabTools.</p>
+            <div class="browser-links" aria-label="Các cửa hàng tiện ích có TabTools">
+              <span>Chọn trình duyệt khác</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Thêm vào <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Thêm vào <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Thêm vào <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" id="demo">
+            <div class="recording-label"><span class="recording-dot" aria-hidden="true"></span><span>Xem TabTools hoạt động</span><span class="recording-duration">Video minh họa đầy đủ</span></div>
+            <div class="video-shell">
+              <iframe class="product-video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZUh6FSsB6A?rel=0" title="Video minh họa đầy đủ về TabTools" aria-describedby="demo-caption" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-footer">
+              <p id="demo-caption">Xem TabTools đóng thẻ theo trang web, loại bỏ thẻ trùng lặp, sắp xếp thẻ và dọn thẻ không hoạt động.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Thông tin sản phẩm TabTools">
+        <div class="shell proof-grid">
+          <div class="proof-item"><strong>Đóng thẻ theo trang web</strong><span>từ cửa sổ bật lên hoặc menu chuột phải</span></div>
+          <div class="proof-item"><strong>Xử lý ngay trên thiết bị</strong><span>danh sách thẻ ở lại trong trình duyệt của bạn</span></div>
+          <div class="proof-item"><strong>Mã nguồn mở</strong><span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">Xem mã nguồn trên GitHub</a></span></div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Đóng và sắp xếp</p>
+              <h2>Đóng theo trang web.<br /><span>Sắp xếp thẻ còn lại.</span></h2>
+            </div>
+            <p>Dọn thẻ khi xong việc, đưa các thẻ cùng trang web về cạnh nhau hoặc dọn các trang trùng lặp và không hoạt động.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-primary">
+              <div class="feature-icon icon-purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 19.5h8M12 16.5v3"></path><path d="M8 9h8M8 12h5"></path></svg>
+              </div>
+              <p class="card-kicker">01 / Dọn theo trang web</p>
+              <h3>Đóng cùng lúc các thẻ của một trang web</h3>
+              <p>Mở TabTools và nhấp vào một trang web trong <strong>Gợi ý</strong>, hoặc nhấp chuột phải trong một trang web rồi chọn <strong>Đóng thẻ của trang web</strong>. Thao tác này đóng các thẻ tương ứng trên mọi cửa sổ thông thường, kể cả thẻ hiện tại.</p>
+              <a class="text-link" href="#how-it-works">Xem cách bắt đầu <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h6"></path><path d="M17 11v7M14 15l3 3 3-3"></path></svg>
+              </div>
+              <p class="card-kicker">02 / Sắp xếp</p>
+              <h3>Sắp xếp thẻ theo trang web</h3>
+              <p>Đưa các thẻ cùng trang web về cạnh nhau trong cửa sổ hiện tại, với những trang web có nhiều thẻ mở nhất ở đầu.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="4" width="11" height="14" rx="2"></rect><path d="M8 7h5M8 10h5"></path><path d="M9 20h8a2 2 0 0 0 2-2V8"></path></svg>
+              </div>
+              <p class="card-kicker">03 / Tinh gọn</p>
+              <h3>Loại bỏ thẻ trùng lặp</h3>
+              <p>Đóng các bản sao của cùng một trang chỉ bằng một cú nhấp. Các thẻ đã ghim được giữ nguyên.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"></circle><path d="m16 16 4.2 4.2M8.3 10.8h5"></path></svg>
+              </div>
+              <p class="card-kicker">04 / Tìm</p>
+              <h3>Tìm theo từ khóa hoặc tên miền</h3>
+              <p>Nhập một từ để tìm trong tiêu đề và URL của thẻ, hoặc nhập tên miền chính xác như youtube.com. Sau đó chọn Đóng.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-ink" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M12 7.5v5l3.2 2"></path></svg>
+              </div>
+              <p class="card-kicker">05 / Dọn dẹp</p>
+              <h3>Dọn thẻ không hoạt động</h3>
+              <p>Chọn ngưỡng thời gian không hoạt động trong Cài đặt, rồi nhấp Không hoạt động để đóng các thẻ đủ điều kiện. Thẻ đang hoạt động, đã ghim hoặc đang phát âm thanh vẫn mở.</p>
+            </article>
+          </div>
+
+          <div class="supporting-row" aria-label="Thông tin thêm về TabTools">
+            <span>Hoàn tác việc dọn thẻ từ cửa sổ bật lên</span>
+            <span>Giao diện sáng và tối</span>
+            <span>Thống kê dọn thẻ lưu trên thiết bị</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid">
+          <div class="workflow-copy">
+            <p class="eyebrow">Cách sử dụng</p>
+            <h2>Thêm TabTools.<br /><span>Chọn thẻ cần dọn.</span></h2>
+            <p>Bắt đầu với một trang web đang mở nhiều thẻ. Dùng cửa sổ bật lên để xem gợi ý và sắp xếp, hoặc menu chuột phải để đóng nhanh.</p>
+            <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="how_it_works" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=how_it_works_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Thêm vào <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <ol class="steps">
+            <li><span class="step-index">01</span><div><h3>Thêm vào trình duyệt</h3><p>Mở trang cửa hàng Chrome, Firefox hoặc Edge và thêm tiện ích miễn phí.</p></div></li>
+            <li><span class="step-index">02</span><div><h3>Mở TabTools</h3><p>Nhấp vào biểu tượng TabTools trong menu tiện ích của trình duyệt để xem gợi ý trang web và các thao tác nhanh.</p></div></li>
+            <li><span class="step-index">03</span><div><h3>Đóng thẻ của một trang web hoặc sắp xếp</h3><p>Nhấp vào một trang web trong Gợi ý để đóng các thẻ của trang đó, hoặc chọn Sắp xếp thẻ để đưa các thẻ cùng trang web về cạnh nhau.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy" tabindex="-1" aria-labelledby="privacy-heading">
+        <div class="shell privacy-card">
+          <div class="privacy-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.3-2.8 7.7-7 9.1-4.2-1.4-7-4.8-7-9.1V6l7-2.5Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Thiết kế bảo vệ quyền riêng tư</p>
+            <h2 id="privacy-heading">Dữ liệu thẻ luôn ở lại<br />trong trình duyệt của bạn.</h2>
+            <p>Tiện ích TabTools xử lý thông tin thẻ trên thiết bị của bạn. Cài đặt và thống kê dọn thẻ được lưu trong bộ nhớ cục bộ của trình duyệt. Tiện ích không có tài khoản, công cụ phân tích, quảng cáo hay cơ sở dữ liệu bên ngoài.</p>
+            <a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Đọc chính sách quyền riêng tư <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Trước khi thêm TabTools</p>
+            <h2>Câu hỏi thường gặp</h2>
+            <p>Trình duyệt, dọn thẻ và quyền riêng tư</p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>TabTools có miễn phí không?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Có. TabTools miễn phí và có mã nguồn mở.</p>
+            </details>
+            <details>
+              <summary>Tôi có thể dùng trình duyệt nào?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>TabTools có trên Chrome, Firefox và Microsoft Edge. Để thêm tiện ích trên máy tính, hãy dùng các liên kết trình duyệt trên trang này để mở đúng cửa hàng.</p>
+            </details>
+            <details>
+              <summary>Làm thế nào để đóng các thẻ cùng trang web?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Nhấp chuột phải trong một trang web và chọn ‘Đóng thẻ của trang web’, hoặc mở TabTools rồi nhấp vào trang web trong Gợi ý. Thao tác này đóng các thẻ của trang web đó trên mọi cửa sổ thông thường, kể cả thẻ hiện tại. Bạn cũng có thể nhập từ khóa hoặc tên miền chính xác trong cửa sổ bật lên.</p>
+            </details>
+            <details>
+              <summary>Tôi có thể loại bỏ thẻ trùng lặp hoặc không hoạt động không?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Có. Chọn Đóng thẻ trùng lặp để loại bỏ các trang lặp lại, hoặc nhấp Không hoạt động để đóng các thẻ đủ điều kiện. Bạn có thể đổi ngưỡng thời gian không hoạt động trong Cài đặt; việc dọn thẻ chỉ diễn ra khi bạn chọn thao tác đó.</p>
+            </details>
+            <details>
+              <summary>TabTools có thu thập hoặc chia sẻ thông tin thẻ không?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Tiện ích xử lý thông tin thẻ cục bộ và không gửi thông tin đó cho nhà phát triển hay bên thứ ba. Cài đặt và thống kê dọn thẻ ở lại trên thiết bị của bạn. Video minh họa trên trang này do YouTube lưu trữ; trình phát nhúng và các cửa hàng tiện ích có chính sách quyền riêng tư riêng.</p>
+            </details>
+            <details>
+              <summary>Tôi có thể hoàn tác việc dọn thẻ không?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Dùng Hoàn tác ngay sau khi đóng thẻ từ cửa sổ bật lên của TabTools, khi cửa sổ đó vẫn mở. Bạn cũng có thể dùng danh sách thẻ đã đóng gần đây của trình duyệt để mở lại trang.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner">
+          <div>
+            <p class="eyebrow">Miễn phí cho Chrome, Firefox và Edge</p>
+            <h2>Đóng thẻ đã dùng xong.<br /><span>Sắp xếp thẻ còn lại.</span></h2>
+          </div>
+          <div class="final-cta-actions">
+            <a class="button browser-button button-light" data-adaptive-store data-utm-placement="final_cta" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_cta_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Thêm vào <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+            <div class="final-alternatives" aria-label="Các cửa hàng trình duyệt khác">
+              <span>Chọn trình duyệt khác</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Thêm vào <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Thêm vào <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Thêm vào <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Trang chủ TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Đóng thẻ theo trang web, sắp xếp thanh thẻ và dọn thẻ trùng lặp.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Sản phẩm</span><a href="#features">Tính năng</a><a href="#how-it-works">Cách sử dụng</a><a href="#faq">Câu hỏi thường gặp</a></div>
+          <div><span class="footer-label">Dùng thử</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Thêm</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Quyền riêng tư</a><a href="mailto:tabtools@michaelwester.com">Liên hệ</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Miễn phí và mã nguồn mở</span></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

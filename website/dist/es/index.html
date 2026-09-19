@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es-ES" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="description" content="Cierra pestañas del mismo sitio, ordénalas por sitio y elimina duplicados. TabTools es un gestor de pestañas gratuito para Chrome, Firefox y Edge." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — Cierra y ordena pestañas por sitio" />
+    <meta property="og:description" content="Cierra pestañas por sitio, ordena tu barra de pestañas y elimina duplicados con una extensión gratuita y de código abierto para Chrome, Firefox y Edge." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:url" content="https://tabtools.fyi/es/" />
+    <link rel="canonical" href="https://tabtools.fyi/es/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TabTools — Cierra y ordena pestañas por sitio" />
+    <meta name="twitter:description" content="Cierra pestañas por sitio, ordena tu barra de pestañas y elimina duplicados con una extensión gratuita y de código abierto para Chrome, Firefox y Edge." />
+    <title>TabTools — Cierra y ordena pestañas por sitio</title>
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TabTools","url":"https://tabtools.fyi/es/","description":"Una extensión gratuita para cerrar pestañas por sitio, ordenarlas, eliminar duplicados y cerrar pestañas inactivas.","inLanguage":"es","applicationCategory":"BrowserApplication","isAccessibleForFree":true}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />
+    <script type="application/json" id="locale-data">{"locale":"es","registry":[{"locale":"en","canonical":"en","path":"/","languageName":"English","flagAsset":"en.svg"},{"locale":"zh-CN","canonical":"zh-CN","path":"/zh-cn/","languageName":"Chinese (Simplified)","flagAsset":"zh-CN.svg"},{"locale":"zh-TW","canonical":"zh-TW","path":"/zh-tw/","languageName":"Chinese (Traditional)","flagAsset":"zh-TW.svg"},{"locale":"hr","canonical":"hr","path":"/hr/","languageName":"Croatian","flagAsset":"hr.svg"},{"locale":"cs","canonical":"cs","path":"/cs/","languageName":"Czech","flagAsset":"cs.svg"},{"locale":"nl","canonical":"nl","path":"/nl/","languageName":"Dutch","flagAsset":"nl.svg"},{"locale":"fi","canonical":"fi","path":"/fi/","languageName":"Finnish","flagAsset":"fi.svg"},{"locale":"fr","canonical":"fr","path":"/fr/","languageName":"French","flagAsset":"fr.svg"},{"locale":"de","canonical":"de","path":"/de/","languageName":"German","flagAsset":"de.svg"},{"locale":"el","canonical":"el","path":"/el/","languageName":"Greek","flagAsset":"el.svg"},{"locale":"he","canonical":"he","path":"/he/","languageName":"Hebrew","flagAsset":"he.svg"},{"locale":"hu","canonical":"hu","path":"/hu/","languageName":"Hungarian","flagAsset":"hu.svg"},{"locale":"it","canonical":"it","path":"/it/","languageName":"Italian","flagAsset":"it.svg"},{"locale":"ja","canonical":"ja","path":"/ja/","languageName":"Japanese","flagAsset":"ja.svg"},{"locale":"ko","canonical":"ko","path":"/ko/","languageName":"Korean","flagAsset":"ko.svg"},{"locale":"nb","canonical":"nb","path":"/nb/","languageName":"Norwegian (Bokmal)","flagAsset":"nb.svg"},{"locale":"pl","canonical":"pl","path":"/pl/","languageName":"Polish","flagAsset":"pl.svg"},{"locale":"pt-BR","canonical":"pt-BR","path":"/pt-br/","languageName":"Portuguese (Brazil)","flagAsset":"pt-BR.svg"},{"locale":"pt-PT","canonical":"pt-PT","path":"/pt-pt/","languageName":"Portuguese (Portugal)","flagAsset":"pt-PT.svg"},{"locale":"ro","canonical":"ro","path":"/ro/","languageName":"Romanian","flagAsset":"ro.svg"},{"locale":"ru","canonical":"ru","path":"/ru/","languageName":"Russian","flagAsset":"ru.svg"},{"locale":"sr","canonical":"sr","path":"/sr/","languageName":"Serbian","flagAsset":"sr.svg"},{"locale":"sk","canonical":"sk","path":"/sk/","languageName":"Slovak","flagAsset":"sk.svg"},{"locale":"sl","canonical":"sl","path":"/sl/","languageName":"Slovenian","flagAsset":"sl.svg"},{"locale":"es","canonical":"es-ES","path":"/es/","languageName":"Spanish (Spain)","flagAsset":"es.svg"},{"locale":"sv","canonical":"sv","path":"/sv/","languageName":"Swedish","flagAsset":"sv.svg"},{"locale":"tr","canonical":"tr","path":"/tr/","languageName":"Turkish","flagAsset":"tr.svg"},{"locale":"uk","canonical":"uk","path":"/uk/","languageName":"Ukrainian","flagAsset":"uk.svg"},{"locale":"vi","canonical":"vi","path":"/vi/","languageName":"Vietnamese","flagAsset":"vi.svg"}],"messages":{"extensionName":"TabTools - Cierra y ordena pestañas por sitio","extensionDescription":"Cierra pestañas del mismo sitio, ordénalas por sitio y elimina duplicados para mantener tu navegador organizado.","openTabTools":"Abrir TabTools","settings":"Ajustes","suggestions":"Sugerencias","suggestCaption":"Pulsa para cerrar las pestañas del sitio","queryPlaceholder":"Cerrar por palabra clave (pulsa Intro)","close":"Cerrar","sortTabs":"Ordenar pestañas","closeDuplicates":"Cerrar duplicados","undo":"Deshacer","undoTitle":"Deshacer el último cierre","theme":"Tema","light":"Claro","dark":"Oscuro","minTabs":"Mínimo de pestañas por sitio para las sugerencias","inactiveAfter":"Pestañas inactivas después de","minutes":"minutos","closedCount":"Cerradas: {count}","openCount":{"one":"{count} pestaña abierta","many":"{count} pestañas abiertas","other":"{count} pestañas abiertas"},"openCountShort":{"one":"{count} abierta","many":"{count} abiertas","other":"{count} abiertas"},"closedCountShort":{"one":"{count} cerrada","many":"{count} cerradas","other":"{count} cerradas"},"closeFailed":"Error","closedInactive":"Pestañas inactivas cerradas: {count}","noInactive":"No hay pestañas inactivas","closedDuplicates":"Pestañas duplicadas cerradas: {count}","noDuplicates":"No hay duplicados","nothingToUndo":"No hay nada que deshacer","undoFailed":"No se pudo deshacer","restoredCount":"Restauradas: {count}","nothingToRestore":"No hay nada que restaurar","inactive":"Inactivas","loadingSuggestions":"Cargando sugerencias…","suggestionsFailed":"No se pudieron cargar las sugerencias","noSuggestions":"No hay sugerencias por ahora","moreCount":"Otras sugerencias no mostradas: {count}","sortFailed":"No se pudo ordenar","sortedCount":"Pestañas reordenadas: {count}","nothingToSort":"No hay nada que ordenar","hide":"Ocultar","show":"Mostrar","contextClose":"Cerrar pestañas del sitio","contextSort":"Ordenar pestañas (sitios con más pestañas primero)","closeSiteLabel":"Cerrar pestañas de {site}","web_heroTitle":"Cierra las pestañas del \u003cem\u003emismo sitio.\u003c/em\u003e","web_featuresTitle":"Cierra por sitio.\u003cbr\u003e\u003cem\u003eOrdena lo que queda.\u003c/em\u003e","web_workflowTitle":"Añade TabTools.\u003cbr\u003e\u003cem\u003eElige qué cerrar.\u003c/em\u003e","web_privacyTitle":"Los datos de tus pestañas se quedan\u003cbr\u003een tu navegador.","web_finalTitle":"Cierra las pestañas que ya no necesitas.\u003cbr\u003e\u003cem\u003eOrdena el resto.\u003c/em\u003e","web_siteBody":"Abre TabTools y haz clic en un sitio en \u003cstrong\u003eSugerencias\u003c/strong\u003e, o haz clic con el botón derecho dentro de una página y elige \u003cstrong\u003eCerrar pestañas del sitio\u003c/strong\u003e. Se cerrarán las pestañas correspondientes de todas tus ventanas normales, incluida la pestaña actual.","web_addTo":"Añadir a {browser}","web_storeNote":"Abre la tienda {store}.","web_storeAria":"{label} — abre {store} en una pestaña nueva","web_language":"Idioma","web_languageSuggestion":"Leer esta página en {language}","web_switchLight":"Cambiar al modo claro","web_lightMode":"Modo claro","web_structuredDescription":"Una extensión gratuita para cerrar pestañas por sitio, ordenarlas, eliminar duplicados y cerrar pestañas inactivas.","web_close_tabs_from_the_same":"Cierra pestañas del mismo sitio, ordénalas por sitio y elimina duplicados. TabTools es un gestor de pestañas gratuito para Chrome, Firefox y Edge.","web_tabtools_close_tabs_by_site":"TabTools — Cierra y ordena pestañas por sitio","web_close_tabs_by_site_sort":"Cierra pestañas por sitio, ordena tu barra de pestañas y elimina duplicados con una extensión gratuita y de código abierto para Chrome, Firefox y Edge.","web_skip_to_content":"Saltar al contenido","web_tabtools_home":"Inicio de TabTools","web_main_navigation":"Navegación principal","web_features":"Funciones","web_how_it_works":"Cómo funciona","web_privacy":"Privacidad","web_faq":"Preguntas frecuentes","web_switch_to_dark_mode":"Cambiar al modo oscuro","web_dark_mode":"Modo oscuro","web_free_browser_tab_manager":"Gestor de pestañas gratuito","web_clear_a_website_s_tabs":"Cierra las pestañas de un sitio con una sola acción u ordena tu barra de pestañas por sitio. TabTools también elimina duplicados y cierra pestañas inactivas en Chrome, Firefox y Edge.","web_free_to_use_no_account":"Gratis. Sin necesidad de una cuenta.","web_viewing_on_a_phone_or":"¿Estás en un móvil o una tableta? Abre esta página en tu ordenador para añadir TabTools.","web_tabtools_browser_stores":"TabTools en las tiendas de navegadores","web_choose_another_browser":"Elige otro navegador:","web_tabtools_in_action":"TabTools en acción","web_full_demo":"Demostración completa","web_tabtools_full_demo":"Demostración completa de TabTools","web_see_tabtools_close_tabs_by":"Mira cómo TabTools cierra pestañas por sitio, elimina duplicados, ordena pestañas y cierra las inactivas.","web_tabtools_product_details":"Detalles de TabTools","web_close_tabs_by_site":"Cierra pestañas por sitio","web_from_the_popup_or_right":"desde la ventana emergente o el menú contextual","web_local_by_design":"Funciona en tu dispositivo","web_your_tab_list_stays_in":"tu lista de pestañas se queda en tu navegador","web_open_source":"Código abierto","web_inspect_the_code_on_github":"Consulta el código en GitHub","web_close_and_organise":"Cierra y organiza","web_clear_a_finished_task_bring":"Cierra las pestañas de una tarea terminada, coloca juntas las del mismo sitio o limpia las páginas repetidas e inactivas.","web_01_site_cleanup":"01 / Limpieza por sitio","web_close_a_site_s_tabs":"Cierra juntas las pestañas de un sitio","web_see_how_to_get_started":"Descubre cómo empezar","web_02_organise":"02 / Organizar","web_sort_tabs_by_site":"Ordena pestañas por sitio","web_bring_tabs_from_the_same":"Coloca juntas las pestañas del mismo sitio en la ventana actual. Los sitios con más pestañas abiertas aparecen primero.","web_03_simplify":"03 / Simplificar","web_remove_duplicate_tabs":"Elimina pestañas duplicadas","web_close_extra_copies_of_the":"Cierra las copias adicionales de una página con un clic. Las pestañas fijadas permanecen en su sitio.","web_04_find":"04 / Buscar","web_search_by_keyword_or_domain":"Busca por palabra clave o dominio","web_type_a_word_to_match":"Escribe una palabra para buscar en títulos y URL de pestañas, o introduce un dominio exacto como youtube.com. Después, elige Cerrar.","web_05_reset":"05 / Limpiar","web_clear_inactive_tabs":"Cierra pestañas inactivas","web_choose_an_inactivity_threshold_in":"Elige un tiempo de inactividad en Ajustes y haz clic en Inactivas para cerrar las pestañas que cumplan ese criterio. Las pestañas activas, fijadas y que reproduzcan sonido permanecen abiertas.","web_more_tabtools_details":"Más detalles de TabTools","web_undo_cleanup_from_the_popup":"Deshaz la limpieza desde la ventana emergente","web_light_and_dark_themes":"Temas claro y oscuro","web_local_cleanup_statistics":"Estadísticas de limpieza locales","web_start_with_one_busy_site":"Empieza por un sitio con muchas pestañas. Usa la ventana emergente para ver sugerencias y ordenar, o el menú contextual para cerrar rápidamente.","web_add_it_to_your_browser":"Añádelo a tu navegador","web_open_the_chrome_firefox_or":"Abre la página de la tienda de Chrome, Firefox o Edge y añade la extensión gratuita.","web_click_the_tabtools_icon_in":"Haz clic en el icono de TabTools en el menú de extensiones de tu navegador para ver sugerencias de sitios y acciones rápidas.","web_close_a_site_or_sort":"Cierra las pestañas de un sitio u ordénalas","web_click_a_site_under_suggestions":"Haz clic en un sitio en Sugerencias para cerrar sus pestañas, o elige Ordenar pestañas para colocar juntas las del mismo sitio.","web_private_by_design":"Diseñado para respetar tu privacidad","web_the_tabtools_extension_processes_tab":"La extensión TabTools procesa la información de las pestañas en tu dispositivo. Los ajustes y las estadísticas de limpieza se guardan en el almacenamiento local de tu navegador. La extensión no usa cuentas, analítica, publicidad ni bases de datos externas.","web_read_the_privacy_policy":"Lee la política de privacidad","web_before_you_add_tabtools":"Antes de añadir TabTools","web_common_questions":"Preguntas frecuentes.","web_browsers_cleanup_and_privacy":"Navegadores, limpieza y privacidad.","web_is_tabtools_free":"¿TabTools es gratuito?","web_yes_tabtools_is_free_to":"Sí. TabTools es gratuito y no necesitas una cuenta.","web_which_browsers_can_i_use":"¿Con qué navegadores puedo usarlo?","web_tabtools_is_available_for_chrome":"TabTools está disponible para Chrome, Firefox y Microsoft Edge. Para añadirlo a tu ordenador, usa los enlaces de esta página para abrir la tienda de tu navegador.","web_how_do_i_close_tabs":"¿Cómo cierro las pestañas del mismo sitio web?","web_right_click_within_a_web":"Haz clic con el botón derecho dentro de una página y elige «Cerrar pestañas del sitio», o abre TabTools y haz clic en el sitio en Sugerencias. Se cerrarán sus pestañas de todas tus ventanas normales, incluida la actual. También puedes introducir una palabra clave o un dominio exacto en la ventana emergente.","web_can_i_remove_duplicates_or":"¿Puedo eliminar duplicados o cerrar pestañas inactivas?","web_yes_choose_close_duplicates_to":"Sí. Elige Cerrar duplicados para eliminar páginas repetidas o haz clic en Inactivas para cerrar las pestañas correspondientes. Puedes cambiar el tiempo de inactividad en Ajustes; la limpieza se realiza cuando eliges la acción.","web_does_tabtools_collect_or_share":"¿TabTools recopila o comparte mis datos?","web_the_extension_processes_tab_information":"La extensión procesa la información de las pestañas localmente y no la envía al desarrollador ni a terceros. Los ajustes y las estadísticas permanecen en tu dispositivo. La demostración de esta web está alojada en YouTube; el reproductor integrado y las tiendas de navegadores tienen sus propias políticas de privacidad.","web_can_i_undo_a_cleanup":"¿Puedo deshacer una limpieza?","web_use_undo_immediately_after_closing":"Usa Deshacer justo después de cerrar pestañas desde la ventana emergente de TabTools, mientras siga abierta. También puedes reabrir páginas desde las pestañas cerradas recientemente de tu navegador.","web_free_for_chrome_firefox_and":"Gratis para Chrome, Firefox y Edge","web_other_browser_stores":"Otras tiendas de navegadores","web_close_tabs_by_site_sort_2":"Cierra pestañas por sitio, ordena tu barra de pestañas y elimina duplicados.","web_product":"Producto","web_try_it":"Pruébalo","web_more":"Más","web_contact":"Contacto","web_free_and_open_source":"Gratis y de código abierto."}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="Inicio de TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+          <a href="#features">Funciones</a>
+          <a href="#how-it-works">Cómo funciona</a>
+          <a href="#privacy">Privacidad</a>
+          <a href="#faq">Preguntas frecuentes</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Añadir a <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar al modo oscuro" title="Cambiar al modo oscuro">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Modo oscuro</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Idioma: Spanish (Spain)" title="Idioma: Spanish (Spain)" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Spanish (Spain)</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Idioma" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="true" tabindex="-1" href="/es/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shell language-suggestion" hidden data-language-suggestion></p>
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Gestor de pestañas gratuito</p>
+            <h1>Cierra las pestañas del <span>mismo sitio.</span></h1>
+            <p class="hero-lede">Cierra las pestañas de un sitio con una sola acción u ordena tu barra de pestañas por sitio. TabTools también elimina duplicados y cierra pestañas inactivas en Chrome, Firefox y Edge.</p>
+            <div class="hero-actions">
+              <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="hero" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_chrome" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Añadir a <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p class="store-note"><span data-store-note>Abre la tienda Chrome Web Store.</span> Gratis. Sin necesidad de una cuenta.</p>
+            <p class="mobile-note" data-mobile-note hidden>¿Estás en un móvil o una tableta? Abre esta página en tu ordenador para añadir TabTools.</p>
+            <div class="browser-links" aria-label="TabTools en las tiendas de navegadores">
+              <span>Elige otro navegador:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Añadir a <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Añadir a <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Añadir a <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" id="demo">
+            <div class="recording-label"><span class="recording-dot" aria-hidden="true"></span><span>TabTools en acción</span><span class="recording-duration">Demostración completa</span></div>
+            <div class="video-shell">
+              <iframe class="product-video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZUh6FSsB6A?rel=0" title="Demostración completa de TabTools" aria-describedby="demo-caption" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-footer">
+              <p id="demo-caption">Mira cómo TabTools cierra pestañas por sitio, elimina duplicados, ordena pestañas y cierra las inactivas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Detalles de TabTools">
+        <div class="shell proof-grid">
+          <div class="proof-item"><strong>Cierra pestañas por sitio</strong><span>desde la ventana emergente o el menú contextual</span></div>
+          <div class="proof-item"><strong>Funciona en tu dispositivo</strong><span>tu lista de pestañas se queda en tu navegador</span></div>
+          <div class="proof-item"><strong>Código abierto</strong><span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">Consulta el código en GitHub</a></span></div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Cierra y organiza</p>
+              <h2>Cierra por sitio.<br /><span>Ordena lo que queda.</span></h2>
+            </div>
+            <p>Cierra las pestañas de una tarea terminada, coloca juntas las del mismo sitio o limpia las páginas repetidas e inactivas.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-primary">
+              <div class="feature-icon icon-purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 19.5h8M12 16.5v3"></path><path d="M8 9h8M8 12h5"></path></svg>
+              </div>
+              <p class="card-kicker">01 / Limpieza por sitio</p>
+              <h3>Cierra juntas las pestañas de un sitio</h3>
+              <p>Abre TabTools y haz clic en un sitio en <strong>Sugerencias</strong>, o haz clic con el botón derecho dentro de una página y elige <strong>Cerrar pestañas del sitio</strong>. Se cerrarán las pestañas correspondientes de todas tus ventanas normales, incluida la pestaña actual.</p>
+              <a class="text-link" href="#how-it-works">Descubre cómo empezar <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h6"></path><path d="M17 11v7M14 15l3 3 3-3"></path></svg>
+              </div>
+              <p class="card-kicker">02 / Organizar</p>
+              <h3>Ordena pestañas por sitio</h3>
+              <p>Coloca juntas las pestañas del mismo sitio en la ventana actual. Los sitios con más pestañas abiertas aparecen primero.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="4" width="11" height="14" rx="2"></rect><path d="M8 7h5M8 10h5"></path><path d="M9 20h8a2 2 0 0 0 2-2V8"></path></svg>
+              </div>
+              <p class="card-kicker">03 / Simplificar</p>
+              <h3>Elimina pestañas duplicadas</h3>
+              <p>Cierra las copias adicionales de una página con un clic. Las pestañas fijadas permanecen en su sitio.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"></circle><path d="m16 16 4.2 4.2M8.3 10.8h5"></path></svg>
+              </div>
+              <p class="card-kicker">04 / Buscar</p>
+              <h3>Busca por palabra clave o dominio</h3>
+              <p>Escribe una palabra para buscar en títulos y URL de pestañas, o introduce un dominio exacto como youtube.com. Después, elige Cerrar.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-ink" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M12 7.5v5l3.2 2"></path></svg>
+              </div>
+              <p class="card-kicker">05 / Limpiar</p>
+              <h3>Cierra pestañas inactivas</h3>
+              <p>Elige un tiempo de inactividad en Ajustes y haz clic en Inactivas para cerrar las pestañas que cumplan ese criterio. Las pestañas activas, fijadas y que reproduzcan sonido permanecen abiertas.</p>
+            </article>
+          </div>
+
+          <div class="supporting-row" aria-label="Más detalles de TabTools">
+            <span>Deshaz la limpieza desde la ventana emergente</span>
+            <span>Temas claro y oscuro</span>
+            <span>Estadísticas de limpieza locales</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid">
+          <div class="workflow-copy">
+            <p class="eyebrow">Cómo funciona</p>
+            <h2>Añade TabTools.<br /><span>Elige qué cerrar.</span></h2>
+            <p>Empieza por un sitio con muchas pestañas. Usa la ventana emergente para ver sugerencias y ordenar, o el menú contextual para cerrar rápidamente.</p>
+            <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="how_it_works" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=how_it_works_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Añadir a <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <ol class="steps">
+            <li><span class="step-index">01</span><div><h3>Añádelo a tu navegador</h3><p>Abre la página de la tienda de Chrome, Firefox o Edge y añade la extensión gratuita.</p></div></li>
+            <li><span class="step-index">02</span><div><h3>Abrir TabTools</h3><p>Haz clic en el icono de TabTools en el menú de extensiones de tu navegador para ver sugerencias de sitios y acciones rápidas.</p></div></li>
+            <li><span class="step-index">03</span><div><h3>Cierra las pestañas de un sitio u ordénalas</h3><p>Haz clic en un sitio en Sugerencias para cerrar sus pestañas, o elige Ordenar pestañas para colocar juntas las del mismo sitio.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy" tabindex="-1" aria-labelledby="privacy-heading">
+        <div class="shell privacy-card">
+          <div class="privacy-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.3-2.8 7.7-7 9.1-4.2-1.4-7-4.8-7-9.1V6l7-2.5Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Diseñado para respetar tu privacidad</p>
+            <h2 id="privacy-heading">Los datos de tus pestañas se quedan<br />en tu navegador.</h2>
+            <p>La extensión TabTools procesa la información de las pestañas en tu dispositivo. Los ajustes y las estadísticas de limpieza se guardan en el almacenamiento local de tu navegador. La extensión no usa cuentas, analítica, publicidad ni bases de datos externas.</p>
+            <a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Lee la política de privacidad <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Antes de añadir TabTools</p>
+            <h2>Preguntas frecuentes.</h2>
+            <p>Navegadores, limpieza y privacidad.</p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>¿TabTools es gratuito?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Sí. TabTools es gratuito y no necesitas una cuenta.</p>
+            </details>
+            <details>
+              <summary>¿Con qué navegadores puedo usarlo?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>TabTools está disponible para Chrome, Firefox y Microsoft Edge. Para añadirlo a tu ordenador, usa los enlaces de esta página para abrir la tienda de tu navegador.</p>
+            </details>
+            <details>
+              <summary>¿Cómo cierro las pestañas del mismo sitio web?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Haz clic con el botón derecho dentro de una página y elige «Cerrar pestañas del sitio», o abre TabTools y haz clic en el sitio en Sugerencias. Se cerrarán sus pestañas de todas tus ventanas normales, incluida la actual. También puedes introducir una palabra clave o un dominio exacto en la ventana emergente.</p>
+            </details>
+            <details>
+              <summary>¿Puedo eliminar duplicados o cerrar pestañas inactivas?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Sí. Elige Cerrar duplicados para eliminar páginas repetidas o haz clic en Inactivas para cerrar las pestañas correspondientes. Puedes cambiar el tiempo de inactividad en Ajustes; la limpieza se realiza cuando eliges la acción.</p>
+            </details>
+            <details>
+              <summary>¿TabTools recopila o comparte mis datos?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>La extensión procesa la información de las pestañas localmente y no la envía al desarrollador ni a terceros. Los ajustes y las estadísticas permanecen en tu dispositivo. La demostración de esta web está alojada en YouTube; el reproductor integrado y las tiendas de navegadores tienen sus propias políticas de privacidad.</p>
+            </details>
+            <details>
+              <summary>¿Puedo deshacer una limpieza?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Usa Deshacer justo después de cerrar pestañas desde la ventana emergente de TabTools, mientras siga abierta. También puedes reabrir páginas desde las pestañas cerradas recientemente de tu navegador.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner">
+          <div>
+            <p class="eyebrow">Gratis para Chrome, Firefox y Edge</p>
+            <h2>Cierra las pestañas que ya no necesitas.<br /><span>Ordena el resto.</span></h2>
+          </div>
+          <div class="final-cta-actions">
+            <a class="button browser-button button-light" data-adaptive-store data-utm-placement="final_cta" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_cta_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Añadir a <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+            <div class="final-alternatives" aria-label="Otras tiendas de navegadores">
+              <span>Elige otro navegador:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Añadir a <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Añadir a <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Añadir a <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Inicio de TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Cierra pestañas por sitio, ordena tu barra de pestañas y elimina duplicados.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Producto</span><a href="#features">Funciones</a><a href="#how-it-works">Cómo funciona</a><a href="#faq">Preguntas frecuentes</a></div>
+          <div><span class="footer-label">Pruébalo</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Más</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacidad</a><a href="mailto:tabtools@michaelwester.com">Contacto</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Gratis y de código abierto.</span></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

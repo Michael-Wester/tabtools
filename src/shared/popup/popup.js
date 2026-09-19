@@ -6,9 +6,15 @@
   const $ = (selector) => document.querySelector(selector);
   const byId = (id) => document.getElementById(id);
   const msg = (type, payload) =>
-    new Promise((res) =>
-      chrome.runtime.sendMessage({ type, ...(payload || {}) }, res)
-    );
+    new Promise((resolve) => {
+      try {
+        chrome.runtime.sendMessage({ type, ...(payload || {}) }, (response) => {
+          resolve(chrome.runtime.lastError ? { ok: false } : response || { ok: false });
+        });
+      } catch (_) { resolve({ ok: false }); }
+    });
+  const t = (key, values, options) =>
+    typeof globalThis.ttMessage === "function" ? globalThis.ttMessage(key, values, options) : key;
 
   const STORAGE_KEY = "pc.settings";
   const DEFAULTS = {
@@ -34,6 +40,26 @@
   let lastSuggestionsCount = null;
   const MAX_SUGGESTIONS = 12;
 
+  function fitPopupWidth() {
+    const header = byId("pc-header");
+    if (!header) return;
+    const root = document.documentElement;
+    // Measure the unwrapped controls, including the real font, borders and gaps.
+    // The persistent header drives both panels' width; changing panels cannot
+    // shrink it. Counts may grow the width again while the popup is open.
+    root.classList.remove("popup-width-limited");
+    const bodyWidth = document.body.getBoundingClientRect().width;
+    const headerWidth = header.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(header).columnGap) || 0;
+    const controlsWidth = Array.from(header.children).reduce((width, child) =>
+      width + child.getBoundingClientRect().width, 0) + gap * (header.children.length - 1);
+    const needed = Math.ceil(controlsWidth + bodyWidth - headerWidth);
+    const maximum = Math.min(800, globalThis.screen?.availWidth || 800);
+    const width = Math.min(maximum, Math.max(380, bodyWidth, needed));
+    root.style.setProperty("--popup-width", width + "px");
+    root.classList.toggle("popup-width-limited", needed > maximum);
+  }
+
   function setStatus(text, delay = 1400) {
     const el = $("#pc-status");
     if (!el) return;
@@ -45,6 +71,11 @@
         if (statusToken === token) el.textContent = "";
       }, delay);
     }
+  }
+
+  function closeStatus(key, result) {
+    const text = t(key, { count: result.closedCount });
+    return result.failedCount ? text + " · " + t("closeFailed") : text;
   }
 
   function updateUndoButton() {
@@ -138,7 +169,7 @@
     const settings = await readSettings();
     applyTheme(settings.theme);
     syncSettingsForm(settings);
-    $("#pc-suggest-caption").textContent = "Tap to close tabs from site";
+    $("#pc-suggest-caption").textContent = t("suggestCaption");
     updateUndoButton();
   }
 
@@ -146,8 +177,9 @@
     const r = await msg("pc:getStats");
     const total = r?.stats?.totalTabsEaten || 0;
     if (total === lastStatsTotal) return;
-    $("#pc-count-pill").textContent = `${total} closed`;
+    $("#pc-count-pill").textContent = t("closedCountShort", { count: total }, { formatNumbers: false });
     lastStatsTotal = total;
+    fitPopupWidth();
   }
 
   async function renderOpenTabCount() {
@@ -159,8 +191,9 @@
         ? tabs.filter((t) => !t.incognito).length
         : 0;
       if (total !== lastOpenTabCount) {
-        el.textContent = `${total} open`;
+        el.textContent = t("openCountShort", { count: total }, { formatNumbers: false });
         lastOpenTabCount = total;
+        fitPopupWidth();
       }
     } catch (err) {
       console.error("Tab count load failed", err);
@@ -173,13 +206,13 @@
     await renderStatsPill();
   }
 
-  async function runClose(query) {
+  async function runClose(query, exactDomain = false) {
     if (!query) return;
     $("#pc-close").disabled = true;
     try {
-      const out = await msg("pc:closeByKeyword", { query });
+      const out = await msg(exactDomain ? "pc:closeByDomain" : "pc:closeByKeyword", { query });
       if (out?.ok) {
-        setStatus(`Closed ${out.closedCount}`);
+        setStatus(closeStatus("closedCount", out));
         const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
         if (closed.length) {
           lastClosedTabs = closed;
@@ -188,7 +221,7 @@
         }
         updateUndoButton();
       } else {
-        setStatus("Failed");
+        setStatus(t("closeFailed"));
       }
       await renderStatsPill();
       await renderOpenTabCount();
@@ -201,14 +234,14 @@
   async function runCloseInactive() {
     const out = await msg("pc:closeInactive");
     if (out?.ok && out.closedCount) {
-      setStatus(`Closed ${out.closedCount} inactive`);
+      setStatus(closeStatus("closedInactive", out));
       const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
       lastClosedTabs = closed.length ? closed : [];
       updateUndoButton();
     } else if (out?.ok) {
-      setStatus("No inactive tabs", 1200);
+      setStatus(t("noInactive"), 1200);
     } else {
-      setStatus("Failed");
+      setStatus(t("closeFailed"));
     }
     await renderStatsPill();
     await renderOpenTabCount();
@@ -222,12 +255,12 @@
       const out = await msg("pc:closeDuplicates");
       if (out?.ok) {
         const count = out.closedCount || 0;
-        setStatus(count ? `Closed ${count} duplicates` : "No duplicates", 1400);
+        setStatus(count ? closeStatus("closedDuplicates", out) : t("noDuplicates"), 1400);
         const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
         lastClosedTabs = closed.length ? closed : count ? [] : lastClosedTabs;
         updateUndoButton();
       } else {
-        setStatus("Failed");
+        setStatus(t("closeFailed"));
       }
     } finally {
       if (btn) btn.disabled = false;
@@ -239,7 +272,7 @@
 
   async function undoLastClose() {
     if (!lastClosedTabs.length) {
-      setStatus("Nothing to undo", 1200);
+      setStatus(t("nothingToUndo"), 1200);
       return;
     }
     const undoBtn = $("#pc-undo-close");
@@ -249,19 +282,20 @@
     try {
       const out = await msg("pc:restoreTabs", { tabs: lastClosedTabs });
       if (!out?.ok) {
-        setStatus("Undo failed");
+        setStatus(t("undoFailed"));
         return;
       }
       restored = out.restoredCount || 0;
+      if (Array.isArray(out.remainingTabs)) lastClosedTabs = out.remainingTabs;
+      else if (restored) lastClosedTabs = [];
       if (restored) {
-        setStatus(`Restored ${restored}`);
-        lastClosedTabs = [];
+        setStatus(t("restoredCount", { count: restored }) + (lastClosedTabs.length ? " · " + t("undoFailed") : ""));
       } else {
-        setStatus("Nothing to restore", 1200);
+        setStatus(t(lastClosedTabs.length ? "undoFailed" : "nothingToRestore"), 1200);
       }
     } catch (err) {
       console.error("Undo failed", err);
-      setStatus("Undo failed");
+      setStatus(t("undoFailed"));
       return;
     } finally {
       updateUndoButton();
@@ -292,9 +326,9 @@
       icon.className = "favicon inactive-icon";
       icon.setAttribute("aria-hidden", "true");
       main.appendChild(icon);
-      label.textContent = "Inactive";
+      label.textContent = t("inactive");
       main.appendChild(label);
-      count.textContent = String(item.inactiveCount ?? 0);
+      count.textContent = globalThis.ttNumber(item.inactiveCount ?? 0);
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
@@ -307,6 +341,9 @@
       const domain = String(item.domain || "");
       chip.dataset.domain = domain;
       label.textContent = domain;
+      label.dir = "ltr";
+      label.style.unicodeBidi = "isolate";
+      chip.setAttribute("aria-label", t("closeSiteLabel", { site: domain }));
       const iconUrl =
         typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
       if (iconUrl) {
@@ -323,11 +360,11 @@
       }
       main.appendChild(label);
       const openCount = item.openCount ?? 0;
-      count.textContent = `${openCount} open`;
+      count.textContent = t("openCount", { count: openCount });
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
-          await runClose(item.domain);
+          await runClose(item.domain, true);
         } finally {
           chip.disabled = false;
         }
@@ -351,7 +388,7 @@
 
     const shouldShowLoading = lastSuggestionsKey === null;
     if (shouldShowLoading) {
-      empty.textContent = "Loading suggestion chips...";
+      empty.textContent = t("loadingSuggestions");
       caption.textContent = "";
       chipsWrap.textContent = "";
     }
@@ -369,24 +406,24 @@
     chipsWrap.textContent = "";
     more.textContent = "";
     if (!ok) {
-      empty.textContent = "Couldn't load suggestions";
+      empty.textContent = t("suggestionsFailed");
       caption.textContent = "";
       return;
     }
     if (!suggestions.length) {
-      empty.textContent = "No suggestions right now";
+      empty.textContent = t("noSuggestions");
       caption.textContent = "";
       return;
     }
 
     empty.textContent = "";
-    caption.textContent = "Tap to close tabs from site";
+    caption.textContent = t("suggestCaption");
     const limited = suggestions.slice(0, MAX_SUGGESTIONS);
     limited.forEach((item) =>
       chipsWrap.appendChild(renderSuggestionChip(item))
     );
     if (suggestions.length > MAX_SUGGESTIONS) {
-      more.textContent = `${suggestions.length - MAX_SUGGESTIONS} more not shown`;
+      more.textContent = t("moreCount", { count: suggestions.length - MAX_SUGGESTIONS });
     }
   }
 
@@ -396,14 +433,14 @@
     try {
       const out = await msg("pc:sortTabsByOpenCount");
       if (!out?.ok) {
-        setStatus("Sort failed", 1200);
+        setStatus(t("sortFailed"), 1200);
         return;
       }
       const moved = out.sortedCount || 0;
-      setStatus(moved ? `Reordered ${moved} tabs` : "Nothing to sort", 1200);
+      setStatus(moved ? t("sortedCount", { count: moved }) : t("nothingToSort"), 1200);
     } catch (err) {
       console.error("Sort tabs failed", err);
-      setStatus("Sort failed", 1200);
+      setStatus(t("sortFailed"), 1200);
     } finally {
       if (btn) btn.disabled = false;
     }
@@ -485,7 +522,7 @@
       quickToggle.addEventListener("click", () => {
         const hidden = quickBody.hidden === true;
         quickBody.hidden = !hidden;
-        quickToggle.textContent = hidden ? "Hide" : "Show";
+        quickToggle.textContent = t(hidden ? "hide" : "show");
         quickToggle.setAttribute("aria-pressed", hidden ? "true" : "false");
       });
     }
@@ -494,6 +531,11 @@
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
+    if (typeof globalThis.ttLocalizeDocument === "function") {
+      globalThis.ttLocalizeDocument(document);
+    }
+    fitPopupWidth();
+    document.fonts?.ready.then(fitPopupWidth);
     await initUI();
     wireUI();
     setupSettingsBindings();

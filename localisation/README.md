@@ -1,0 +1,68 @@
+# TabTools localisation sources
+
+This directory is the source of truth for user-facing translation text.
+English is represented by `locales/en.json`; the website uses it as the single
+English fallback. The locale registry in
+`registry.json` maps canonical language tags to the WebExtensions directory,
+website URL, hreflang value, and each store's listing code.
+
+The current repository extension version is 4.0.2. The 2026-09-18 baseline is commit
+`519007f3dd06c0b2ab52d57519ed7a0d145b9c79`. The imported translations carry
+per-key review metadata in `reviews/<locale>.json`; a review's `source`
+value is `sha256(JSON.stringify(EnglishValue))`. A source edit therefore
+makes the affected translation stale even if its key remains present.
+
+The read-only English live-store snapshot is in
+[`store-baseline.md`](store-baseline.md). It records Chrome Web Store 4.0.1
+and Firefox Add-ons 4.0.0 copy retrieved on 2026-09-18; the public Edge page
+was unavailable to the retrieval tool. The copy-ready listings intentionally
+follow the repository's current 4.0.2 source baseline and must be checked in
+the publisher dashboards before release.
+
+Run:
+
+```sh
+node scripts/generate-extension-locales.js
+node scripts/generate-website.js
+node scripts/generate-listings.js
+node scripts/validate-localisation.js
+node --test tests/website.test.js tests/localisation.test.js
+node build.js
+node scripts/check-packages.js
+```
+
+`website/src/template.html`, `website/src/styles.css`, and
+`website/src/script.js` are authored sources. `website/dist/index.html`,
+locale pages, `styles.css`, `script.js`, and `sitemap.xml` are generated
+outputs. Store text under `marketing/listings/` and its `marketing/INDEX.md` are generated
+from the same locale registry and text sources. Store descriptions include feature
+and privacy copy, without website-only navigation instructions. These outputs are
+committed for review and future manual entry; they never update a live store listing.
+
+Translation completion, technical validation, and linguistic review are
+tracked separately. Source freshness is fingerprinted per key and reported as
+current or stale in `COVERAGE.md`; CI fails on stale non-English source
+fingerprints. The current translations have AI self-review only; no
+native-speaker review is claimed. The public documentation confirms the
+localisation mechanisms. The recorded Chrome locale table and pinned AMO production source constrain valid listing
+codes; Edge's full dashboard language list remains unverified. This PR has 29
+selected locales and intentionally omits a separate British English variant.
+Recheck the publisher dashboards before applying a store release.
+
+The website template uses explicit `{{messageKey}}` bindings. English copy edits
+belong in `locales/en.json`; no duplicated English phrases need to be updated in
+the template. Plain text is HTML-escaped and only the six rich-text keys permit
+`em`, `strong` and `br` tags.
+
+After actually reviewing a changed translation, record its specific review:
+
+```sh
+node scripts/review-translation.js de settings "Reviewer name" "Terminology checked"
+```
+
+Validation rejects changed placeholders, missing plural forms, unsafe/unbalanced
+markup, missing brand/domain names, stale review fingerprints and stale listing
+content and index links. Store locale codes are checked against the recorded
+Chrome and AMO evidence. These are technical checks, not proof of translation fluency.
+`COVERAGE.md` and `GLOSSARY.md` are the canonical documents; avoid case-only
+filename duplicates because they cannot coexist reliably on Windows.

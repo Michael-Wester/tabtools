@@ -4,8 +4,8 @@
 
 Cloudflare Pages production project `tabtools-website` is live at
 https://tabtools.fyi/. DNS cutover and the HTTP checks below passed on
-15 September 2026 at approximately 03:44 UTC. Interactive browser checks and
-GitHub Actions credential setup remain outstanding.
+15 September 2026 at approximately 03:44 UTC. The historical migration checks below describe that cutover. Localisation checks
+and outstanding browser review are tracked in `localisation/VALIDATION.md`.
 
 - Live URL: https://tabtools.fyi/
 - Production Pages URL: https://tabtools-website.pages.dev/
@@ -16,10 +16,12 @@ GitHub Actions credential setup remain outstanding.
 
 ## Source and hosting
 
-The website is plain HTML, CSS and JavaScript. All authored assets live in
-`website/dist`. There is no compilation, package installation, server runtime,
-database, or website environment variable. Do not use the extension's root
-`build.js` or `build.ps1` for website deployment.
+The website is plain HTML, CSS and JavaScript. Authored layout, styles and scripts
+live in `website/src`, with text in `localisation/locales`. `node website/build.js`
+deterministically generates static pages in `website/dist`; existing assets stay
+in `website/dist/assets`. No package installation, server runtime, database or
+website environment variable is needed. Do not use the extension's root
+`build.js` or `build.ps1` for website generation.
 
 Imported source: ChatGPT Sites `tabtools-website` version 6, commit
 `c14898052e9e81d29d06c073694e5b87a4103740`. GitHub main had no website, and both
@@ -48,28 +50,25 @@ Workflow: `.github/workflows/website-deploy.yml`.
 The connected MCP cannot create API tokens (account token administration returned
 error 9109 Unauthorized). Create the CI credential manually:
 
-One-time remaining setup:
+The existing repository secret `CLOUDFLARE_API_TOKEN` is checked by the workflow.
+If it is absent in a new environment, create an Account > Cloudflare Pages > Edit
+token scoped to account `fee7bb9066b59347e43a2b35fcb827c3` and save it as that Actions
+secret. Do not put credentials in source or chat. This PR changes no credentials.
 
-1. Create a Cloudflare API token with **Account > Cloudflare Pages > Edit**,
-   scoped to the account `fee7bb9066b59347e43a2b35fcb827c3`. CI does not need DNS,
-   redirect, SSL, billing or database permissions.
-2. Save it as the repository Actions secret **CLOUDFLARE_API_TOKEN** at
-   https://github.com/Michael-Wester/tabtools/settings/secrets/actions.
-   Do not commit it or put it in a chat message. The non-secret account ID is
-   already in the workflow.
-3. Merge PR #13 into main. The workflow then deploys `website/dist` to
-   `tabtools-website`, branch `main` (production). Until this setup is complete,
-   automatic deployment is not operational.
+Changes under `website/**`, `localisation/**`, `scripts/**`, `tests/**`,
+`src/shared/_locales/**`, or the deployment workflow trigger it. CI validates
+translations, fingerprints, committed generated output and tests, then runs
+`node website/build.js` before uploading `website/dist`.
 
-Subsequent changes to `website/dist/**` deploy after merging to main. Changes to
-the deployment workflow also trigger it. Extension-only and documentation-only
-changes do not trigger deployments. Same-repository PRs deploy to `pr-N` preview
-branches; fork PRs skip deployment because they do not receive the secret.
-Manual workflow runs on main target production; manual runs on other branches
-use `manual-preview`. The workflow validates JavaScript syntax and uploads the
-authored static directory. There is no site build command.
+Same-repository PRs deploy only to `pr-N` preview branches. Fork PRs skip deployment
+because they do not receive the secret. Pushes to main target production; manual
+runs on main also target production, and other manual runs use `manual-preview`.
+The localisation task permits the PR preview only: do not merge, dispatch a main
+run or manually deploy production as part of localisation review.
 
-For a manual deployment from a reviewed checkout, authenticate Wrangler and run:
+For a separately authorised future production deployment from a reviewed checkout,
+first run the generation/validation commands in README.md, then authenticate
+Wrangler and run:
 
 ```sh
 npx wrangler pages deploy website/dist --project-name=tabtools-website --branch=main

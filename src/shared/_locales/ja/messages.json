@@ -1,0 +1,200 @@
+{
+  "translationLocale": {
+    "message": "ja"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - サイト別にタブを閉じる・並べ替える"
+  },
+  "extensionDescription": {
+    "message": "同じサイトのタブを閉じたり、サイト別に並べ替えたり、重複を削除したりして、ブラウザーを整理できます。"
+  },
+  "openTabTools": {
+    "message": "TabTools を開く"
+  },
+  "settings": {
+    "message": "設定"
+  },
+  "suggestions": {
+    "message": "候補"
+  },
+  "suggestCaption": {
+    "message": "タップしてサイトのタブを閉じる"
+  },
+  "queryPlaceholder": {
+    "message": "キーワードで閉じる（Enter キー）"
+  },
+  "close": {
+    "message": "閉じる"
+  },
+  "sortTabs": {
+    "message": "タブを並べ替え"
+  },
+  "closeDuplicates": {
+    "message": "重複を閉じる"
+  },
+  "undo": {
+    "message": "元に戻す"
+  },
+  "undoTitle": {
+    "message": "直前に閉じたタブを元に戻す"
+  },
+  "theme": {
+    "message": "テーマ"
+  },
+  "light": {
+    "message": "ライト"
+  },
+  "dark": {
+    "message": "ダーク"
+  },
+  "minTabs": {
+    "message": "候補に表示するサイトごとの最小タブ数"
+  },
+  "inactiveAfter": {
+    "message": "タブを非アクティブとみなすまでの時間"
+  },
+  "minutes": {
+    "message": "分"
+  },
+  "closedCount": {
+    "message": "閉じた数: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "開いているタブ: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "開いている $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "閉じた $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "失敗しました"
+  },
+  "closedInactive": {
+    "message": "閉じた非アクティブなタブ: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "非アクティブなタブはありません"
+  },
+  "closedDuplicates": {
+    "message": "閉じた重複タブ: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "重複はありません"
+  },
+  "nothingToUndo": {
+    "message": "元に戻す操作はありません"
+  },
+  "undoFailed": {
+    "message": "元に戻せませんでした"
+  },
+  "restoredCount": {
+    "message": "復元した数: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "復元するタブはありません"
+  },
+  "inactive": {
+    "message": "非アクティブ"
+  },
+  "loadingSuggestions": {
+    "message": "候補を読み込み中…"
+  },
+  "suggestionsFailed": {
+    "message": "候補を読み込めませんでした"
+  },
+  "noSuggestions": {
+    "message": "現在、候補はありません"
+  },
+  "moreCount": {
+    "message": "表示されていない候補: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "並べ替えに失敗しました"
+  },
+  "sortedCount": {
+    "message": "並べ替えたタブ: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "並べ替えるタブはありません"
+  },
+  "hide": {
+    "message": "非表示"
+  },
+  "show": {
+    "message": "表示"
+  },
+  "contextClose": {
+    "message": "このサイトのタブを閉じる"
+  },
+  "contextSort": {
+    "message": "タブを並べ替え（多いサイト順）"
+  },
+  "closeSiteLabel": {
+    "message": "$site$ のタブを閉じる",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "translationLocale": {
+    "message": "he"
+  },
+  "translationDirection": {
+    "message": "rtl"
+  },
+  "extensionName": {
+    "message": "TabTools - סגירה ומיון של לשוניות לפי אתר"
+  },
+  "extensionDescription": {
+    "message": "סגירת לשוניות מאותו אתר, מיון לפי אתר והסרת כפילויות כדי לשמור על הדפדפן מסודר."
+  },
+  "openTabTools": {
+    "message": "פתיחת TabTools"
+  },
+  "settings": {
+    "message": "הגדרות"
+  },
+  "suggestions": {
+    "message": "הצעות"
+  },
+  "suggestCaption": {
+    "message": "לחיצה לסגירת לשוניות מהאתר"
+  },
+  "queryPlaceholder": {
+    "message": "סגירה לפי מילת מפתח (Enter)"
+  },
+  "close": {
+    "message": "סגירה"
+  },
+  "sortTabs": {
+    "message": "מיון לשוניות"
+  },
+  "closeDuplicates": {
+    "message": "סגירת כפילויות"
+  },
+  "undo": {
+    "message": "ביטול"
+  },
+  "undoTitle": {
+    "message": "ביטול הסגירה האחרונה"
+  },
+  "theme": {
+    "message": "ערכת נושא"
+  },
+  "light": {
+    "message": "בהירה"
+  },
+  "dark": {
+    "message": "כהה"
+  },
+  "minTabs": {
+    "message": "מספר לשוניות מזערי לאתר להצגת הצעה"
+  },
+  "inactiveAfter": {
+    "message": "לשוניות נחשבות ללא פעילות אחרי"
+  },
+  "minutes": {
+    "message": "דקות"
+  },
+  "closedCount": {
+    "message": "נסגרו: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ לשונית פתוחה",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_two": {
+    "message": "$count$ לשוניות פתוחות",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ לשוניות פתוחות",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ פתוחה",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_two": {
+    "message": "$count$ פתוחות",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ פתוחות",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ סגורה",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_two": {
+    "message": "$count$ סגורות",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ סגורות",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "הפעולה נכשלה"
+  },
+  "closedInactive": {
+    "message": "לשוניות לא פעילות שנסגרו: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "אין לשוניות לא פעילות"
+  },
+  "closedDuplicates": {
+    "message": "לשוניות כפולות שנסגרו: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "אין כפילויות"
+  },
+  "nothingToUndo": {
+    "message": "אין פעולה לביטול"
+  },
+  "undoFailed": {
+    "message": "הביטול נכשל"
+  },
+  "restoredCount": {
+    "message": "שוחזרו: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "אין מה לשחזר"
+  },
+  "inactive": {
+    "message": "לא פעילות"
+  },
+  "loadingSuggestions": {
+    "message": "ההצעות נטענות…"
+  },
+  "suggestionsFailed": {
+    "message": "לא ניתן לטעון את ההצעות"
+  },
+  "noSuggestions": {
+    "message": "אין הצעות כרגע"
+  },
+  "moreCount": {
+    "message": "הצעות נוספות שאינן מוצגות: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "המיון נכשל"
+  },
+  "sortedCount": {
+    "message": "לשוניות שסודרו מחדש: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "אין מה למיין"
+  },
+  "hide": {
+    "message": "הסתרה"
+  },
+  "show": {
+    "message": "הצגה"
+  },
+  "contextClose": {
+    "message": "סגירת לשוניות האתר"
+  },
+  "contextSort": {
+    "message": "מיון לשוניות (האתרים עם הכי הרבה לשוניות תחילה)"
+  },
+  "closeSiteLabel": {
+    "message": "סגירת לשוניות של $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

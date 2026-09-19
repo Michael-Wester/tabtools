@@ -1,0 +1,10 @@
+{
+  "retrieved": "2026-09-17",
+  "url": "https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/",
+  "retrievalAPI": "https://addons.mozilla.org/api/v5/addons/addon/tabtools-michael-wester/?lang=en-US",
+  "version": "4.0.0",
+  "name": "TabTools",
+  "summary": "Clear your tab list quickly with site suggestions, inactive tab cleanup, duplicate removal, sorting, and undo.",
+  "description": "Close tabs by entering a keyword or domain, or use automatic suggestions based on the sites you have open. TabTools also provides quick actions to close inactive tabs, remove duplicates, sort tabs by site frequency, and undo your most recent cleanup.\n\nFeatures include:\n- Site suggestions based on open-tab counts\n- Close inactive tabs using a configurable time threshold\n- Close tabs by keyword or exact domain\n- Find and close duplicate tabs\n- Sort tabs by site frequency\n- Undo recently closed tabs\n- Context-menu access for closing tabs from the current site\n- Light and dark themes\n- Local statistics showing how many tabs you have closed\n\nTabTools does not collect or transmit personal data. Settings and statistics remain stored locally in your browser.",
+  "responseSHA256": "d681ed12090718301f1ce2ca62a45dd799a47f67af06d501cb0a7c7b87294dff"
+}

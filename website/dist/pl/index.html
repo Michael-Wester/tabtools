@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="description" content="Zamykaj karty tej samej witryny, sortuj według witryny i usuwaj duplikaty. TabTools to bezpłatny menedżer kart dla Chrome, Firefox i Edge." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TabTools — Zamykaj i sortuj karty według witryny" />
+    <meta property="og:description" content="Zamykaj karty według witryny, porządkuj pasek kart i usuwaj duplikaty dzięki bezpłatnemu rozszerzeniu o otwartym kodzie dla Chrome, Firefox i Edge." />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:url" content="https://tabtools.fyi/pl/" />
+    <link rel="canonical" href="https://tabtools.fyi/pl/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="TabTools — Zamykaj i sortuj karty według witryny" />
+    <meta name="twitter:description" content="Zamykaj karty według witryny, porządkuj pasek kart i usuwaj duplikaty dzięki bezpłatnemu rozszerzeniu o otwartym kodzie dla Chrome, Firefox i Edge." />
+    <title>TabTools — Zamykaj i sortuj karty według witryny</title>
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TabTools","url":"https://tabtools.fyi/pl/","description":"Bezpłatne rozszerzenie do zamykania kart według witryny, sortowania kart, usuwania duplikatów i zamykania nieaktywnych kart.","inLanguage":"pl","applicationCategory":"BrowserApplication","isAccessibleForFree":true}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/" />
+    <script type="application/json" id="locale-data">{"locale":"pl","registry":[{"locale":"en","canonical":"en","path":"/","languageName":"English","flagAsset":"en.svg"},{"locale":"zh-CN","canonical":"zh-CN","path":"/zh-cn/","languageName":"Chinese (Simplified)","flagAsset":"zh-CN.svg"},{"locale":"zh-TW","canonical":"zh-TW","path":"/zh-tw/","languageName":"Chinese (Traditional)","flagAsset":"zh-TW.svg"},{"locale":"hr","canonical":"hr","path":"/hr/","languageName":"Croatian","flagAsset":"hr.svg"},{"locale":"cs","canonical":"cs","path":"/cs/","languageName":"Czech","flagAsset":"cs.svg"},{"locale":"nl","canonical":"nl","path":"/nl/","languageName":"Dutch","flagAsset":"nl.svg"},{"locale":"fi","canonical":"fi","path":"/fi/","languageName":"Finnish","flagAsset":"fi.svg"},{"locale":"fr","canonical":"fr","path":"/fr/","languageName":"French","flagAsset":"fr.svg"},{"locale":"de","canonical":"de","path":"/de/","languageName":"German","flagAsset":"de.svg"},{"locale":"el","canonical":"el","path":"/el/","languageName":"Greek","flagAsset":"el.svg"},{"locale":"he","canonical":"he","path":"/he/","languageName":"Hebrew","flagAsset":"he.svg"},{"locale":"hu","canonical":"hu","path":"/hu/","languageName":"Hungarian","flagAsset":"hu.svg"},{"locale":"it","canonical":"it","path":"/it/","languageName":"Italian","flagAsset":"it.svg"},{"locale":"ja","canonical":"ja","path":"/ja/","languageName":"Japanese","flagAsset":"ja.svg"},{"locale":"ko","canonical":"ko","path":"/ko/","languageName":"Korean","flagAsset":"ko.svg"},{"locale":"nb","canonical":"nb","path":"/nb/","languageName":"Norwegian (Bokmal)","flagAsset":"nb.svg"},{"locale":"pl","canonical":"pl","path":"/pl/","languageName":"Polish","flagAsset":"pl.svg"},{"locale":"pt-BR","canonical":"pt-BR","path":"/pt-br/","languageName":"Portuguese (Brazil)","flagAsset":"pt-BR.svg"},{"locale":"pt-PT","canonical":"pt-PT","path":"/pt-pt/","languageName":"Portuguese (Portugal)","flagAsset":"pt-PT.svg"},{"locale":"ro","canonical":"ro","path":"/ro/","languageName":"Romanian","flagAsset":"ro.svg"},{"locale":"ru","canonical":"ru","path":"/ru/","languageName":"Russian","flagAsset":"ru.svg"},{"locale":"sr","canonical":"sr","path":"/sr/","languageName":"Serbian","flagAsset":"sr.svg"},{"locale":"sk","canonical":"sk","path":"/sk/","languageName":"Slovak","flagAsset":"sk.svg"},{"locale":"sl","canonical":"sl","path":"/sl/","languageName":"Slovenian","flagAsset":"sl.svg"},{"locale":"es","canonical":"es-ES","path":"/es/","languageName":"Spanish (Spain)","flagAsset":"es.svg"},{"locale":"sv","canonical":"sv","path":"/sv/","languageName":"Swedish","flagAsset":"sv.svg"},{"locale":"tr","canonical":"tr","path":"/tr/","languageName":"Turkish","flagAsset":"tr.svg"},{"locale":"uk","canonical":"uk","path":"/uk/","languageName":"Ukrainian","flagAsset":"uk.svg"},{"locale":"vi","canonical":"vi","path":"/vi/","languageName":"Vietnamese","flagAsset":"vi.svg"}],"messages":{"extensionName":"TabTools - Zamykaj i sortuj karty według witryny","extensionDescription":"Zamykaj karty tej samej witryny, sortuj je według witryny i usuwaj duplikaty, by utrzymać porządek w przeglądarce.","openTabTools":"Otwórz TabTools","settings":"Ustawienia","suggestions":"Sugestie","suggestCaption":"Kliknij, aby zamknąć karty witryny","queryPlaceholder":"Zamknij według słowa kluczowego (Enter)","close":"Zamknij","sortTabs":"Sortuj karty","closeDuplicates":"Zamknij duplikaty","undo":"Cofnij","undoTitle":"Cofnij ostatnie zamknięcie","theme":"Motyw","light":"Jasny","dark":"Ciemny","minTabs":"Minimalna liczba kart witryny w sugestiach","inactiveAfter":"Karty nieaktywne po","minutes":"minutach","closedCount":"Zamknięte: {count}","openCount":{"one":"{count} otwarta karta","few":"{count} otwarte karty","many":"{count} otwartych kart","other":"{count} otwartej karty"},"openCountShort":{"one":"{count} otwarta","few":"{count} otwarte","many":"{count} otwartych","other":"{count} otwartej"},"closedCountShort":{"one":"{count} zamknięta","few":"{count} zamknięte","many":"{count} zamkniętych","other":"{count} zamkniętej"},"closeFailed":"Niepowodzenie","closedInactive":"Zamknięte nieaktywne karty: {count}","noInactive":"Brak nieaktywnych kart","closedDuplicates":"Zamknięte duplikaty kart: {count}","noDuplicates":"Brak duplikatów","nothingToUndo":"Nie ma czego cofnąć","undoFailed":"Nie udało się cofnąć","restoredCount":"Przywrócone: {count}","nothingToRestore":"Nie ma czego przywrócić","inactive":"Nieaktywne","loadingSuggestions":"Wczytywanie sugestii…","suggestionsFailed":"Nie udało się wczytać sugestii","noSuggestions":"Obecnie brak sugestii","moreCount":"Pozostałe niewyświetlone sugestie: {count}","sortFailed":"Sortowanie nie powiodło się","sortedCount":"Przestawione karty: {count}","nothingToSort":"Nie ma czego sortować","hide":"Ukryj","show":"Pokaż","contextClose":"Zamknij karty witryny","contextSort":"Sortuj karty (witryny z największą liczbą kart najpierw)","closeSiteLabel":"Zamknij karty witryny {site}","web_heroTitle":"Zamknij karty \u003cem\u003etej samej witryny.\u003c/em\u003e","web_featuresTitle":"Zamykaj według witryny.\u003cbr\u003e\u003cem\u003ePosortuj to, co zostaje.\u003c/em\u003e","web_workflowTitle":"Dodaj TabTools.\u003cbr\u003e\u003cem\u003eWybierz, co zamknąć.\u003c/em\u003e","web_privacyTitle":"Dane kart zostają\u003cbr\u003ew Twojej przeglądarce.","web_finalTitle":"Zamknij niepotrzebne karty.\u003cbr\u003e\u003cem\u003ePosortuj pozostałe.\u003c/em\u003e","web_siteBody":"Otwórz TabTools i kliknij witrynę w sekcji \u003cstrong\u003eSugestie\u003c/strong\u003e albo kliknij prawym przyciskiem na stronie i wybierz \u003cstrong\u003eZamknij karty witryny\u003c/strong\u003e. Zamknie to pasujące karty we wszystkich zwykłych oknach, w tym bieżącą kartę.","web_addTo":"Dodaj do {browser}","web_storeNote":"Otwiera sklep {store}.","web_storeAria":"{label} — otwiera sklep {store} w nowej karcie","web_language":"Język","web_languageSuggestion":"Czytaj tę stronę w języku {language}","web_switchLight":"Przełącz na tryb jasny","web_lightMode":"Tryb jasny","web_structuredDescription":"Bezpłatne rozszerzenie do zamykania kart według witryny, sortowania kart, usuwania duplikatów i zamykania nieaktywnych kart.","web_close_tabs_from_the_same":"Zamykaj karty tej samej witryny, sortuj według witryny i usuwaj duplikaty. TabTools to bezpłatny menedżer kart dla Chrome, Firefox i Edge.","web_tabtools_close_tabs_by_site":"TabTools — Zamykaj i sortuj karty według witryny","web_close_tabs_by_site_sort":"Zamykaj karty według witryny, porządkuj pasek kart i usuwaj duplikaty dzięki bezpłatnemu rozszerzeniu o otwartym kodzie dla Chrome, Firefox i Edge.","web_skip_to_content":"Przejdź do treści","web_tabtools_home":"Strona główna TabTools","web_main_navigation":"Nawigacja główna","web_features":"Funkcje","web_how_it_works":"Jak to działa","web_privacy":"Prywatność","web_faq":"Częste pytania","web_switch_to_dark_mode":"Przełącz na tryb ciemny","web_dark_mode":"Tryb ciemny","web_free_browser_tab_manager":"Bezpłatny menedżer kart przeglądarki","web_clear_a_website_s_tabs":"Zamknij karty witryny jedną czynnością lub posortuj pasek kart według witryny. TabTools usuwa też duplikaty i zamyka nieaktywne karty w Chrome, Firefox i Edge.","web_free_to_use_no_account":"Bezpłatnie. Bez zakładania konta.","web_viewing_on_a_phone_or":"Korzystasz z telefonu lub tabletu? Otwórz tę stronę na komputerze, aby dodać TabTools.","web_tabtools_browser_stores":"TabTools w sklepach przeglądarek","web_choose_another_browser":"Wybierz inną przeglądarkę:","web_tabtools_in_action":"TabTools w działaniu","web_full_demo":"Pełna demonstracja","web_tabtools_full_demo":"Pełna demonstracja TabTools","web_see_tabtools_close_tabs_by":"Zobacz, jak TabTools zamyka karty według witryny, usuwa duplikaty, sortuje karty i zamyka nieaktywne karty.","web_tabtools_product_details":"Szczegóły produktu TabTools","web_close_tabs_by_site":"Zamykaj karty według witryny","web_from_the_popup_or_right":"z okienka rozszerzenia lub menu kontekstowego","web_local_by_design":"Działa lokalnie","web_your_tab_list_stays_in":"lista kart zostaje w Twojej przeglądarce","web_open_source":"Otwarty kod źródłowy","web_inspect_the_code_on_github":"Sprawdź kod na GitHub","web_close_and_organise":"Zamykaj i porządkuj","web_clear_a_finished_task_bring":"Zamknij karty zakończonego zadania, ustaw karty tej samej witryny obok siebie lub usuń powtarzające się i nieaktywne strony.","web_01_site_cleanup":"01 / Porządkowanie według witryny","web_close_a_site_s_tabs":"Zamknij karty witryny jednocześnie","web_see_how_to_get_started":"Zobacz, jak zacząć","web_02_organise":"02 / Porządkowanie","web_sort_tabs_by_site":"Sortuj karty według witryny","web_bring_tabs_from_the_same":"Ustaw karty tej samej witryny obok siebie w bieżącym oknie. Witryny z największą liczbą otwartych kart będą pierwsze.","web_03_simplify":"03 / Upraszczanie","web_remove_duplicate_tabs":"Usuń zduplikowane karty","web_close_extra_copies_of_the":"Zamknij dodatkowe kopie tej samej strony jednym kliknięciem. Przypięte karty pozostaną na miejscu.","web_04_find":"04 / Wyszukiwanie","web_search_by_keyword_or_domain":"Szukaj według słowa kluczowego lub domeny","web_type_a_word_to_match":"Wpisz słowo, aby przeszukać tytuły i adresy URL kart, albo dokładną domenę, np. youtube.com. Następnie wybierz Zamknij.","web_05_reset":"05 / Sprzątanie","web_clear_inactive_tabs":"Zamknij nieaktywne karty","web_choose_an_inactivity_threshold_in":"Wybierz czas nieaktywności w Ustawieniach, a następnie kliknij Nieaktywne, aby zamknąć karty spełniające warunki. Karty aktywne, przypięte i odtwarzające dźwięk pozostaną otwarte.","web_more_tabtools_details":"Więcej o TabTools","web_undo_cleanup_from_the_popup":"Cofanie porządkowania z okienka rozszerzenia","web_light_and_dark_themes":"Jasny i ciemny motyw","web_local_cleanup_statistics":"Lokalne statystyki porządkowania","web_start_with_one_busy_site":"Zacznij od witryny z wieloma kartami. Korzystaj z okienka rozszerzenia do sugestii i sortowania lub z menu kontekstowego do szybkiego zamykania.","web_add_it_to_your_browser":"Dodaj do przeglądarki","web_open_the_chrome_firefox_or":"Otwórz stronę sklepu Chrome, Firefox lub Edge i dodaj bezpłatne rozszerzenie.","web_click_the_tabtools_icon_in":"Kliknij ikonę TabTools w menu rozszerzeń przeglądarki, aby zobaczyć sugestie witryn i szybkie działania.","web_close_a_site_or_sort":"Zamknij karty witryny lub posortuj karty","web_click_a_site_under_suggestions":"Kliknij witrynę w sekcji Sugestie, aby zamknąć jej karty, lub wybierz Sortuj karty, by ustawić karty tej samej witryny obok siebie.","web_private_by_design":"Z myślą o prywatności","web_the_tabtools_extension_processes_tab":"Rozszerzenie TabTools przetwarza informacje o kartach na Twoim urządzeniu. Ustawienia i statystyki porządkowania zostają w lokalnej pamięci przeglądarki. Rozszerzenie nie korzysta z kont, analityki, reklam ani zewnętrznej bazy danych.","web_read_the_privacy_policy":"Przeczytaj politykę prywatności","web_before_you_add_tabtools":"Zanim dodasz TabTools","web_common_questions":"Częste pytania.","web_browsers_cleanup_and_privacy":"Przeglądarki, porządkowanie i prywatność.","web_is_tabtools_free":"Czy TabTools jest bezpłatny?","web_yes_tabtools_is_free_to":"Tak. TabTools jest bezpłatny i nie wymaga konta.","web_which_browsers_can_i_use":"Z jakimi przeglądarkami działa?","web_tabtools_is_available_for_chrome":"TabTools jest dostępny dla Chrome, Firefox i Microsoft Edge. Aby dodać go na komputerze, otwórz odpowiedni sklep za pomocą linków na tej stronie.","web_how_do_i_close_tabs":"Jak zamknąć karty tej samej witryny?","web_right_click_within_a_web":"Kliknij prawym przyciskiem na stronie i wybierz „Zamknij karty witryny” albo otwórz TabTools i kliknij witrynę w sekcji Sugestie. Zamknie to jej karty we wszystkich zwykłych oknach, w tym bieżącą kartę. Możesz też wpisać słowo kluczowe lub dokładną domenę w okienku rozszerzenia.","web_can_i_remove_duplicates_or":"Czy mogę usunąć duplikaty lub zamknąć nieaktywne karty?","web_yes_choose_close_duplicates_to":"Tak. Wybierz Zamknij duplikaty, aby usunąć powtarzające się strony, lub kliknij Nieaktywne, aby zamknąć odpowiednie karty. Czas nieaktywności można zmienić w Ustawieniach. Porządkowanie odbywa się po wybraniu działania.","web_does_tabtools_collect_or_share":"Czy TabTools zbiera lub udostępnia moje dane?","web_the_extension_processes_tab_information":"Rozszerzenie przetwarza informacje o kartach lokalnie i nie wysyła ich do twórcy ani osób trzecich. Ustawienia i statystyki zostają na urządzeniu. Demonstracja na tej stronie jest hostowana w YouTube; osadzony odtwarzacz i sklepy przeglądarek mają własne polityki prywatności.","web_can_i_undo_a_cleanup":"Czy mogę cofnąć porządkowanie?","web_use_undo_immediately_after_closing":"Użyj Cofnij zaraz po zamknięciu kart z okienka TabTools, dopóki pozostaje otwarte. Strony możesz też ponownie otworzyć z listy ostatnio zamkniętych kart przeglądarki.","web_free_for_chrome_firefox_and":"Bezpłatnie dla Chrome, Firefox i Edge","web_other_browser_stores":"Inne sklepy przeglądarek","web_close_tabs_by_site_sort_2":"Zamykaj karty według witryny, porządkuj pasek kart i usuwaj duplikaty.","web_product":"Produkt","web_try_it":"Wypróbuj","web_more":"Więcej","web_contact":"Kontakt","web_free_and_open_source":"Bezpłatny i z otwartym kodem."}}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="Strona główna TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Nawigacja główna">
+          <a href="#features">Funkcje</a>
+          <a href="#how-it-works">Jak to działa</a>
+          <a href="#privacy">Prywatność</a>
+          <a href="#faq">Częste pytania</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Przełącz na tryb ciemny" title="Przełącz na tryb ciemny">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Tryb ciemny</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Język: Polish" title="Język: Polish" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Polish</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Język" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="true" tabindex="-1" href="/pl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <p class="shell language-suggestion" hidden data-language-suggestion></p>
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Bezpłatny menedżer kart przeglądarki</p>
+            <h1>Zamknij karty <span>tej samej witryny.</span></h1>
+            <p class="hero-lede">Zamknij karty witryny jedną czynnością lub posortuj pasek kart według witryny. TabTools usuwa też duplikaty i zamyka nieaktywne karty w Chrome, Firefox i Edge.</p>
+            <div class="hero-actions">
+              <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="hero" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_chrome" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p class="store-note"><span data-store-note>Otwiera sklep Chrome Web Store.</span> Bezpłatnie. Bez zakładania konta.</p>
+            <p class="mobile-note" data-mobile-note hidden>Korzystasz z telefonu lub tabletu? Otwórz tę stronę na komputerze, aby dodać TabTools.</p>
+            <div class="browser-links" aria-label="TabTools w sklepach przeglądarek">
+              <span>Wybierz inną przeglądarkę:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Dodaj do <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="hero_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=hero_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Dodaj do <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual" id="demo">
+            <div class="recording-label"><span class="recording-dot" aria-hidden="true"></span><span>TabTools w działaniu</span><span class="recording-duration">Pełna demonstracja</span></div>
+            <div class="video-shell">
+              <iframe class="product-video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/9ZUh6FSsB6A?rel=0" title="Pełna demonstracja TabTools" aria-describedby="demo-caption" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="picture-in-picture; fullscreen" allowfullscreen></iframe>
+            </div>
+            <div class="video-footer">
+              <p id="demo-caption">Zobacz, jak TabTools zamyka karty według witryny, usuwa duplikaty, sortuje karty i zamyka nieaktywne karty.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-rail" aria-label="Szczegóły produktu TabTools">
+        <div class="shell proof-grid">
+          <div class="proof-item"><strong>Zamykaj karty według witryny</strong><span>z okienka rozszerzenia lub menu kontekstowego</span></div>
+          <div class="proof-item"><strong>Działa lokalnie</strong><span>lista kart zostaje w Twojej przeglądarce</span></div>
+          <div class="proof-item"><strong>Otwarty kod źródłowy</strong><span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">Sprawdź kod na GitHub</a></span></div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Zamykaj i porządkuj</p>
+              <h2>Zamykaj według witryny.<br /><span>Posortuj to, co zostaje.</span></h2>
+            </div>
+            <p>Zamknij karty zakończonego zadania, ustaw karty tej samej witryny obok siebie lub usuń powtarzające się i nieaktywne strony.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card feature-card-primary">
+              <div class="feature-icon icon-purple" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H4zM8 19.5h8M12 16.5v3"></path><path d="M8 9h8M8 12h5"></path></svg>
+              </div>
+              <p class="card-kicker">01 / Porządkowanie według witryny</p>
+              <h3>Zamknij karty witryny jednocześnie</h3>
+              <p>Otwórz TabTools i kliknij witrynę w sekcji <strong>Sugestie</strong> albo kliknij prawym przyciskiem na stronie i wybierz <strong>Zamknij karty witryny</strong>. Zamknie to pasujące karty we wszystkich zwykłych oknach, w tym bieżącą kartę.</p>
+              <a class="text-link" href="#how-it-works">Zobacz, jak zacząć <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-rose" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h6"></path><path d="M17 11v7M14 15l3 3 3-3"></path></svg>
+              </div>
+              <p class="card-kicker">02 / Porządkowanie</p>
+              <h3>Sortuj karty według witryny</h3>
+              <p>Ustaw karty tej samej witryny obok siebie w bieżącym oknie. Witryny z największą liczbą otwartych kart będą pierwsze.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="4" width="11" height="14" rx="2"></rect><path d="M8 7h5M8 10h5"></path><path d="M9 20h8a2 2 0 0 0 2-2V8"></path></svg>
+              </div>
+              <p class="card-kicker">03 / Upraszczanie</p>
+              <h3>Usuń zduplikowane karty</h3>
+              <p>Zamknij dodatkowe kopie tej samej strony jednym kliknięciem. Przypięte karty pozostaną na miejscu.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"></circle><path d="m16 16 4.2 4.2M8.3 10.8h5"></path></svg>
+              </div>
+              <p class="card-kicker">04 / Wyszukiwanie</p>
+              <h3>Szukaj według słowa kluczowego lub domeny</h3>
+              <p>Wpisz słowo, aby przeszukać tytuły i adresy URL kart, albo dokładną domenę, np. youtube.com. Następnie wybierz Zamknij.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon icon-ink" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"></circle><path d="M12 7.5v5l3.2 2"></path></svg>
+              </div>
+              <p class="card-kicker">05 / Sprzątanie</p>
+              <h3>Zamknij nieaktywne karty</h3>
+              <p>Wybierz czas nieaktywności w Ustawieniach, a następnie kliknij Nieaktywne, aby zamknąć karty spełniające warunki. Karty aktywne, przypięte i odtwarzające dźwięk pozostaną otwarte.</p>
+            </article>
+          </div>
+
+          <div class="supporting-row" aria-label="Więcej o TabTools">
+            <span>Cofanie porządkowania z okienka rozszerzenia</span>
+            <span>Jasny i ciemny motyw</span>
+            <span>Lokalne statystyki porządkowania</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="how-it-works">
+        <div class="shell workflow-grid">
+          <div class="workflow-copy">
+            <p class="eyebrow">Jak to działa</p>
+            <h2>Dodaj TabTools.<br /><span>Wybierz, co zamknąć.</span></h2>
+            <p>Zacznij od witryny z wieloma kartami. Korzystaj z okienka rozszerzenia do sugestii i sortowania lub z menu kontekstowego do szybkiego zamykania.</p>
+            <a class="button browser-button button-primary" data-adaptive-store data-utm-placement="how_it_works" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=how_it_works_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <ol class="steps">
+            <li><span class="step-index">01</span><div><h3>Dodaj do przeglądarki</h3><p>Otwórz stronę sklepu Chrome, Firefox lub Edge i dodaj bezpłatne rozszerzenie.</p></div></li>
+            <li><span class="step-index">02</span><div><h3>Otwórz TabTools</h3><p>Kliknij ikonę TabTools w menu rozszerzeń przeglądarki, aby zobaczyć sugestie witryn i szybkie działania.</p></div></li>
+            <li><span class="step-index">03</span><div><h3>Zamknij karty witryny lub posortuj karty</h3><p>Kliknij witrynę w sekcji Sugestie, aby zamknąć jej karty, lub wybierz Sortuj karty, by ustawić karty tej samej witryny obok siebie.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy" tabindex="-1" aria-labelledby="privacy-heading">
+        <div class="shell privacy-card">
+          <div class="privacy-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.3-2.8 7.7-7 9.1-4.2-1.4-7-4.8-7-9.1V6l7-2.5Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg>
+          </div>
+          <div>
+            <p class="eyebrow">Z myślą o prywatności</p>
+            <h2 id="privacy-heading">Dane kart zostają<br />w Twojej przeglądarce.</h2>
+            <p>Rozszerzenie TabTools przetwarza informacje o kartach na Twoim urządzeniu. Ustawienia i statystyki porządkowania zostają w lokalnej pamięci przeglądarki. Rozszerzenie nie korzysta z kont, analityki, reklam ani zewnętrznej bazy danych.</p>
+            <a class="text-link" href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Przeczytaj politykę prywatności <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="faq-heading">
+            <p class="eyebrow">Zanim dodasz TabTools</p>
+            <h2>Częste pytania.</h2>
+            <p>Przeglądarki, porządkowanie i prywatność.</p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Czy TabTools jest bezpłatny?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Tak. TabTools jest bezpłatny i nie wymaga konta.</p>
+            </details>
+            <details>
+              <summary>Z jakimi przeglądarkami działa?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>TabTools jest dostępny dla Chrome, Firefox i Microsoft Edge. Aby dodać go na komputerze, otwórz odpowiedni sklep za pomocą linków na tej stronie.</p>
+            </details>
+            <details>
+              <summary>Jak zamknąć karty tej samej witryny?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Kliknij prawym przyciskiem na stronie i wybierz „Zamknij karty witryny” albo otwórz TabTools i kliknij witrynę w sekcji Sugestie. Zamknie to jej karty we wszystkich zwykłych oknach, w tym bieżącą kartę. Możesz też wpisać słowo kluczowe lub dokładną domenę w okienku rozszerzenia.</p>
+            </details>
+            <details>
+              <summary>Czy mogę usunąć duplikaty lub zamknąć nieaktywne karty?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Tak. Wybierz Zamknij duplikaty, aby usunąć powtarzające się strony, lub kliknij Nieaktywne, aby zamknąć odpowiednie karty. Czas nieaktywności można zmienić w Ustawieniach. Porządkowanie odbywa się po wybraniu działania.</p>
+            </details>
+            <details>
+              <summary>Czy TabTools zbiera lub udostępnia moje dane?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Rozszerzenie przetwarza informacje o kartach lokalnie i nie wysyła ich do twórcy ani osób trzecich. Ustawienia i statystyki zostają na urządzeniu. Demonstracja na tej stronie jest hostowana w YouTube; osadzony odtwarzacz i sklepy przeglądarek mają własne polityki prywatności.</p>
+            </details>
+            <details>
+              <summary>Czy mogę cofnąć porządkowanie?<span class="faq-toggle" aria-hidden="true"></span></summary>
+              <p>Użyj Cofnij zaraz po zamknięciu kart z okienka TabTools, dopóki pozostaje otwarte. Strony możesz też ponownie otworzyć z listy ostatnio zamkniętych kart przeglądarki.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="shell final-cta-inner">
+          <div>
+            <p class="eyebrow">Bezpłatnie dla Chrome, Firefox i Edge</p>
+            <h2>Zamknij niepotrzebne karty.<br /><span>Posortuj pozostałe.</span></h2>
+          </div>
+          <div class="final-cta-actions">
+            <a class="button browser-button button-light" data-adaptive-store data-utm-placement="final_cta" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_cta_chrome" target="_blank" rel="noopener">
+              <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+              <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+              <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+            </a>
+            <div class="final-alternatives" aria-label="Inne sklepy przeglądarek">
+              <span>Wybierz inną przeglądarkę:</span>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="chrome" data-alternative-store href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_chrome" target="_blank" rel="noopener" hidden>
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="firefox" data-alternative-store href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_firefox" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/firefox.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Firefox">Dodaj do <span class="browser-button-name" data-browser-name>Firefox</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+              <a class="button browser-button browser-button-alternative browser-button-secondary" data-utm-placement="final_alternative" data-store="edge" data-alternative-store href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=final_alternative_edge" target="_blank" rel="noopener">
+                <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/edge.svg" width="40" height="40" alt="" /></span>
+                <span class="browser-button-copy" data-browser-copy="Edge">Dodaj do <span class="browser-button-name" data-browser-name>Edge</span></span>
+                <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Strona główna TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Zamykaj karty według witryny, porządkuj pasek kart i usuwaj duplikaty.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Produkt</span><a href="#features">Funkcje</a><a href="#how-it-works">Jak to działa</a><a href="#faq">Częste pytania</a></div>
+          <div><span class="footer-label">Wypróbuj</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Więcej</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Prywatność</a><a href="mailto:tabtools@michaelwester.com">Kontakt</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Bezpłatny i z otwartym kodem.</span></div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

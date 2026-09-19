@@ -4,8 +4,29 @@ Promotional landing page for the TabTools browser extension. The deployable
 static site lives in `dist/` so it can be hosted by ChatGPT Sites or another
 static host.
 
-The page is intentionally dependency-free. Edit the files in `dist/`, then
-serve that directory with any static web server for local review.
+The page is intentionally dependency-free. Serve `dist/` with any static web
+server for local review; edit the authored files in `src/` and regenerate the
+output as described below.
+
+## Localisation source and generation
+
+The authored website template is `src/template.html`, with explicit translation
+keys rather than duplicated English copy. The runtime and CSS live in `src/`; `dist/` is generated
+output and should not be edited by hand. The shared locale registry and source
+catalogues live in [`../localisation/`](../localisation/). From the repository
+root, run:
+
+```sh
+npm run locales:generate
+npm run locales:validate
+```
+
+The generator writes one page per supported locale, reciprocal `hreflang`
+metadata, the sitemap, and browser-store listing text. Locale paths use the
+registry values (`/de/`, `/pt-br/`, `/zh-cn/`, and so on); the root page is the
+English fallback. The language selector preserves a visitor's choice and
+offers a browser-language suggestion without replacing an explicitly chosen
+URL.
 
 ## Browser buttons
 
@@ -49,3 +70,11 @@ the extension and distinguishes the website's third-party YouTube player.
 
 See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
 hosting settings, verification requirements, and future deployment instructions.
+
+## Language selector flags
+
+The website language selector serves square SVG flags locally and clips them to
+circular controls. The flags are vendored from [`flag-icons`](https://github.com/lipis/flag-icons)
+under its MIT License; the attribution and permission notice are kept with the
+authored assets in [`src/assets/flags/`](src/assets/flags/) and copied to
+`dist/assets/flags/` during website generation.

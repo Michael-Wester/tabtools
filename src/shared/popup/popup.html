@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       :root {
+        --popup-width: 380px;
         --bg: #0b0f16;
         --fg: #e5e7eb;
         --muted: #9aa3b2;
@@ -64,9 +65,11 @@
       }
       body {
         margin: 12px auto;
-        width: 380px;
-        min-width: 380px;
-        max-width: 380px;
+        /* Firefox sizes the native popup from body, not the root element.
+           Preserve the original 380px box, then grow it for translated text. */
+        width: var(--popup-width);
+        min-width: var(--popup-width);
+        max-width: var(--popup-width);
         padding: 10px;
         font: 14px/1.4 system-ui, sans-serif;
         color: var(--fg);
@@ -86,15 +89,23 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        flex-shrink: 0;
       }
       .header-actions {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin-left: auto;
+        margin-inline-start: auto;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .header-actions > * {
+        white-space: nowrap;
       }
       .stack {
         display: grid;
+        /* Keep tracks inside the current width while measuring long headers. */
+        grid-template-columns: minmax(0, 1fr);
         gap: 10px;
       }
       .stack.tight {
@@ -535,7 +546,7 @@
         justify-content: space-between;
       }
       .caption-inline {
-        margin-left: 8px;
+        margin-inline-start: 8px;
       }
       .undo-icon {
         width: 18px;
@@ -547,12 +558,21 @@
         align-items: center;
         gap: 6px;
       }
+      /* Grow the shared popup width before wrapping a translated header. */
+      .popup-width-limited .header-row,
+      .popup-width-limited .header-actions { flex-wrap: wrap; }
+      .popup-width-limited .header-actions { max-width: 100%; flex-shrink: 1; }
+      .popup-width-limited .header-actions > * { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+      #pc-suggest-card > .row { flex-wrap: wrap; }
+      .btn, .setting-label { overflow-wrap: anywhere; }
+      .chip .count { flex-shrink: 0; }
+      html[dir="rtl"] .undo-icon { transform: scaleX(-1); }
     </style>
   </head>
   <body class="stack">
     <!-- Header -->
     <section class="card stack">
-      <div class="header-row">
+      <div id="pc-header" class="header-row">
         <div class="header-main">
           <img
             src="../icons/black/icon-32.png"
@@ -574,6 +594,7 @@
             class="btn small settings-toggle"
             aria-pressed="false"
             aria-controls="pc-tab-settings"
+            data-i18n="settings"
             type="button"
           >
             Settings
@@ -591,7 +612,7 @@
       <!-- Suggestion chips -->
       <section id="pc-suggest-card" class="card stack">
         <div class="row">
-          <strong>Suggestions</strong>
+          <strong data-i18n="suggestions">Suggestions</strong>
           <div class="spacer"></div>
           <span id="pc-suggest-caption" class="small muted"></span>
         </div>
@@ -608,15 +629,18 @@
               id="pc-query"
               class="input"
               type="text"
+              dir="auto"
+              data-i18n-aria="queryPlaceholder"
+              data-i18n-placeholder="queryPlaceholder"
               placeholder="Close by keyword (press Enter)"
             />
-            <button id="pc-close" class="btn primary">Close</button>
+            <button id="pc-close" class="btn primary" data-i18n="close">Close</button>
           </div>
           <div class="row wrap small no-top">
-            <button id="pc-sort-tabs-quick" class="btn ghost bordered">
+            <button id="pc-sort-tabs-quick" class="btn ghost bordered" data-i18n="sortTabs">
               Sort tabs
             </button>
-            <button id="pc-close-duplicates" class="btn ghost bordered">
+            <button id="pc-close-duplicates" class="btn ghost bordered" data-i18n="closeDuplicates">
               Close duplicates
             </button>
             <div class="spacer"></div>
@@ -624,9 +648,10 @@
               id="pc-undo-close"
               class="btn ghost bordered undo-btn"
               disabled
+              data-i18n-title="undoTitle"
               title="Undo last close"
             >
-              <span class="undo-label">Undo</span>
+              <span class="undo-label" data-i18n="undo">Undo</span>
               <svg
                 class="undo-icon"
                 viewBox="0 0 24 24"
@@ -653,11 +678,11 @@
       aria-hidden="true"
     >
       <section class="card stack">
-        <h2>Settings</h2>
+        <h2 data-i18n="settings">Settings</h2>
         <div class="grid settings-grid">
           <div class="row gap setting-row">
-            <span class="setting-label">Theme</span>
-            <div class="theme-toggle" role="group" aria-label="Theme">
+            <span class="setting-label" data-i18n="theme">Theme</span>
+            <div class="theme-toggle" role="group" aria-label="Theme" data-i18n-aria="theme">
               <button
                 type="button"
                 class="btn small theme-option"
@@ -672,7 +697,7 @@
                     ></path>
                   </svg>
                 </span>
-                <span class="theme-label">Light</span>
+                <span class="theme-label" data-i18n="light">Light</span>
               </button>
               <button
                 type="button"
@@ -685,13 +710,13 @@
                     <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
                   </svg>
                 </span>
-                <span class="theme-label">Dark</span>
+                <span class="theme-label" data-i18n="dark">Dark</span>
               </button>
             </div>
           </div>
 
           <label class="row gap setting-row">
-            <span class="setting-label">Suggestions min tab count by site</span>
+            <span class="setting-label" data-i18n="minTabs">Suggestions min tab count by site</span>
             <div class="counter-group">
               <input
                 id="min-open"
@@ -704,7 +729,7 @@
           </label>
 
           <label class="row gap setting-row">
-            <span class="setting-label">Tabs inactive after</span>
+            <span class="setting-label" data-i18n="inactiveAfter">Tabs inactive after</span>
             <div class="counter-group">
               <input
                 id="inactive-threshold"
@@ -713,13 +738,15 @@
                 value="120"
                 class="number counter-input"
               />
-              <span class="counter-suffix">minutes</span>
+              <span class="counter-suffix" data-i18n="minutes">minutes</span>
             </div>
           </label>
         </div>
       </section>
     </div>
 
+    <script src="../i18n-fallback.js"></script>
+    <script src="../i18n.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

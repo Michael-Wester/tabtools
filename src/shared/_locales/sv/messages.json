@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "sv"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Stäng och sortera flikar per webbplats"
+  },
+  "extensionDescription": {
+    "message": "Stäng flikar från samma webbplats, sortera efter webbplats och ta bort dubbletter för att hålla ordning i webbläsaren."
+  },
+  "openTabTools": {
+    "message": "Öppna TabTools"
+  },
+  "settings": {
+    "message": "Inställningar"
+  },
+  "suggestions": {
+    "message": "Förslag"
+  },
+  "suggestCaption": {
+    "message": "Tryck för att stänga webbplatsens flikar"
+  },
+  "queryPlaceholder": {
+    "message": "Stäng efter sökord (tryck Enter)"
+  },
+  "close": {
+    "message": "Stäng"
+  },
+  "sortTabs": {
+    "message": "Sortera flikar"
+  },
+  "closeDuplicates": {
+    "message": "Stäng dubbletter"
+  },
+  "undo": {
+    "message": "Ångra"
+  },
+  "undoTitle": {
+    "message": "Ångra senaste stängningen"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Ljust"
+  },
+  "dark": {
+    "message": "Mörkt"
+  },
+  "minTabs": {
+    "message": "Minsta antal flikar per webbplats för förslag"
+  },
+  "inactiveAfter": {
+    "message": "Flikar inaktiva efter"
+  },
+  "minutes": {
+    "message": "minuter"
+  },
+  "closedCount": {
+    "message": "Stängda: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ öppen flik",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ öppna flikar",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ öppen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ öppna",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ stängd",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ stängda",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Misslyckades"
+  },
+  "closedInactive": {
+    "message": "Stängda inaktiva flikar: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Inga inaktiva flikar"
+  },
+  "closedDuplicates": {
+    "message": "Stängda dubblettflikar: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Inga dubbletter"
+  },
+  "nothingToUndo": {
+    "message": "Inget att ångra"
+  },
+  "undoFailed": {
+    "message": "Kunde inte ångra"
+  },
+  "restoredCount": {
+    "message": "Återställda: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Inget att återställa"
+  },
+  "inactive": {
+    "message": "Inaktiva"
+  },
+  "loadingSuggestions": {
+    "message": "Läser in förslag…"
+  },
+  "suggestionsFailed": {
+    "message": "Kunde inte läsa in förslag"
+  },
+  "noSuggestions": {
+    "message": "Inga förslag just nu"
+  },
+  "moreCount": {
+    "message": "Ytterligare förslag som inte visas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sorteringen misslyckades"
+  },
+  "sortedCount": {
+    "message": "Omsorterade flikar: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Inget att sortera"
+  },
+  "hide": {
+    "message": "Dölj"
+  },
+  "show": {
+    "message": "Visa"
+  },
+  "contextClose": {
+    "message": "Stäng webbplatsens flikar"
+  },
+  "contextSort": {
+    "message": "Sortera flikar (webbplatser med flest flikar först)"
+  },
+  "closeSiteLabel": {
+    "message": "Stäng flikar från $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

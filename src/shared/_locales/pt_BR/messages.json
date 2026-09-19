@@ -1,0 +1,254 @@
+{
+  "translationLocale": {
+    "message": "pt-BR"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Feche e ordene abas por site"
+  },
+  "extensionDescription": {
+    "message": "Feche abas do mesmo site, ordene por site e remova duplicatas para manter seu navegador organizado."
+  },
+  "openTabTools": {
+    "message": "Abrir TabTools"
+  },
+  "settings": {
+    "message": "Configurações"
+  },
+  "suggestions": {
+    "message": "Sugestões"
+  },
+  "suggestCaption": {
+    "message": "Toque para fechar as abas do site"
+  },
+  "queryPlaceholder": {
+    "message": "Fechar por palavra-chave (pressione Enter)"
+  },
+  "close": {
+    "message": "Fechar"
+  },
+  "sortTabs": {
+    "message": "Ordenar abas"
+  },
+  "closeDuplicates": {
+    "message": "Fechar duplicatas"
+  },
+  "undo": {
+    "message": "Desfazer"
+  },
+  "undoTitle": {
+    "message": "Desfazer o último fechamento"
+  },
+  "theme": {
+    "message": "Tema"
+  },
+  "light": {
+    "message": "Claro"
+  },
+  "dark": {
+    "message": "Escuro"
+  },
+  "minTabs": {
+    "message": "Mínimo de abas por site para sugestões"
+  },
+  "inactiveAfter": {
+    "message": "Abas inativas após"
+  },
+  "minutes": {
+    "message": "minutos"
+  },
+  "closedCount": {
+    "message": "Fechadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ aba aberta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ abas abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ abas abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ aberta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ abertas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ fechada",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ fechadas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ fechadas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Falha"
+  },
+  "closedInactive": {
+    "message": "Abas inativas fechadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Nenhuma aba inativa"
+  },
+  "closedDuplicates": {
+    "message": "Abas duplicadas fechadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Nenhuma duplicata"
+  },
+  "nothingToUndo": {
+    "message": "Nada para desfazer"
+  },
+  "undoFailed": {
+    "message": "Não foi possível desfazer"
+  },
+  "restoredCount": {
+    "message": "Restauradas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nada para restaurar"
+  },
+  "inactive": {
+    "message": "Inativas"
+  },
+  "loadingSuggestions": {
+    "message": "Carregando sugestões…"
+  },
+  "suggestionsFailed": {
+    "message": "Não foi possível carregar as sugestões"
+  },
+  "noSuggestions": {
+    "message": "Nenhuma sugestão no momento"
+  },
+  "moreCount": {
+    "message": "Outras sugestões não exibidas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Falha ao ordenar"
+  },
+  "sortedCount": {
+    "message": "Abas reordenadas: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nada para ordenar"
+  },
+  "hide": {
+    "message": "Ocultar"
+  },
+  "show": {
+    "message": "Mostrar"
+  },
+  "contextClose": {
+    "message": "Fechar abas do site"
+  },
+  "contextSort": {
+    "message": "Ordenar abas (sites com mais abas primeiro)"
+  },
+  "closeSiteLabel": {
+    "message": "Fechar abas de $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

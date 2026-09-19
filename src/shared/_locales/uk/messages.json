@@ -1,0 +1,281 @@
+{
+  "translationLocale": {
+    "message": "uk"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools: Закривайте й сортуйте вкладки за сайтами"
+  },
+  "extensionDescription": {
+    "message": "Закривайте вкладки одного сайту, сортуйте вкладки за сайтами й видаляйте дублікати, щоб підтримувати лад у браузері."
+  },
+  "openTabTools": {
+    "message": "Відкрити TabTools"
+  },
+  "settings": {
+    "message": "Налаштування"
+  },
+  "suggestions": {
+    "message": "Пропозиції"
+  },
+  "suggestCaption": {
+    "message": "Натисніть, щоб закрити вкладки сайту"
+  },
+  "queryPlaceholder": {
+    "message": "Закрити за ключовим словом (Enter)"
+  },
+  "close": {
+    "message": "Закрити"
+  },
+  "sortTabs": {
+    "message": "Сортувати вкладки"
+  },
+  "closeDuplicates": {
+    "message": "Закрити дублікати"
+  },
+  "undo": {
+    "message": "Скасувати"
+  },
+  "undoTitle": {
+    "message": "Скасувати останнє закриття"
+  },
+  "theme": {
+    "message": "Тема"
+  },
+  "light": {
+    "message": "Світла"
+  },
+  "dark": {
+    "message": "Темна"
+  },
+  "minTabs": {
+    "message": "Мінімум вкладок сайту для пропозицій"
+  },
+  "inactiveAfter": {
+    "message": "Вважати вкладки неактивними через"
+  },
+  "minutes": {
+    "message": "хв"
+  },
+  "closedCount": {
+    "message": "Закрито: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ відкрита вкладка",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ відкриті вкладки",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ відкритих вкладок",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ відкритої вкладки",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ відкрита",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_few": {
+    "message": "$count$ відкриті",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ відкритих",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ відкритої",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ закрита",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_few": {
+    "message": "$count$ закриті",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ закритих",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ закритої",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Не вдалося виконати дію"
+  },
+  "closedInactive": {
+    "message": "Закрито неактивних вкладок: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Немає неактивних вкладок"
+  },
+  "closedDuplicates": {
+    "message": "Закрито дублікатів: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Немає дублікатів"
+  },
+  "nothingToUndo": {
+    "message": "Немає чого скасовувати"
+  },
+  "undoFailed": {
+    "message": "Не вдалося скасувати дію"
+  },
+  "restoredCount": {
+    "message": "Відновлено: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Немає чого відновлювати"
+  },
+  "inactive": {
+    "message": "Неактивні"
+  },
+  "loadingSuggestions": {
+    "message": "Завантаження пропозицій…"
+  },
+  "suggestionsFailed": {
+    "message": "Не вдалося завантажити пропозиції"
+  },
+  "noSuggestions": {
+    "message": "Немає пропозицій"
+  },
+  "moreCount": {
+    "message": "Не показано пропозицій: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Не вдалося відсортувати вкладки"
+  },
+  "sortedCount": {
+    "message": "Переміщено вкладок: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Немає чого сортувати"
+  },
+  "hide": {
+    "message": "Приховати"
+  },
+  "show": {
+    "message": "Показати"
+  },
+  "contextClose": {
+    "message": "Закрити вкладки сайту"
+  },
+  "contextSort": {
+    "message": "Сортувати вкладки (часті сайти першими)"
+  },
+  "closeSiteLabel": {
+    "message": "Закрити вкладки сайту $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

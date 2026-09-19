@@ -1,0 +1,281 @@
+{
+  "translationLocale": {
+    "message": "sk"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Zavri a trieď karty podľa webu"
+  },
+  "extensionDescription": {
+    "message": "Zatvárajte karty rovnakého webu, trieďte ich podľa webu a odstráňte duplicity, aby bol prehliadač prehľadný."
+  },
+  "openTabTools": {
+    "message": "Otvoriť TabTools"
+  },
+  "settings": {
+    "message": "Nastavenia"
+  },
+  "suggestions": {
+    "message": "Návrhy"
+  },
+  "suggestCaption": {
+    "message": "Ťuknutím zatvoríte karty webu"
+  },
+  "queryPlaceholder": {
+    "message": "Zatvoriť podľa kľúčového slova (Enter)"
+  },
+  "close": {
+    "message": "Zatvoriť"
+  },
+  "sortTabs": {
+    "message": "Zoradiť karty"
+  },
+  "closeDuplicates": {
+    "message": "Zatvoriť duplicity"
+  },
+  "undo": {
+    "message": "Späť"
+  },
+  "undoTitle": {
+    "message": "Vrátiť posledné zatvorenie"
+  },
+  "theme": {
+    "message": "Motív"
+  },
+  "light": {
+    "message": "Svetlý"
+  },
+  "dark": {
+    "message": "Tmavý"
+  },
+  "minTabs": {
+    "message": "Minimálny počet kariet webu pre návrhy"
+  },
+  "inactiveAfter": {
+    "message": "Karty neaktívne po"
+  },
+  "minutes": {
+    "message": "minútach"
+  },
+  "closedCount": {
+    "message": "Zatvorené: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ otvorená karta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ otvorené karty",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ otvorenej karty",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ otvorených kariet",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ otvorená",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_few": {
+    "message": "$count$ otvorené",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ otvorenej",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ otvorených",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ zatvorená",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_few": {
+    "message": "$count$ zatvorené",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ zatvorenej",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ zatvorených",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Akcia zlyhala"
+  },
+  "closedInactive": {
+    "message": "Zatvorené neaktívne karty: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Žiadne neaktívne karty"
+  },
+  "closedDuplicates": {
+    "message": "Zatvorené duplicitné karty: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Žiadne duplicity"
+  },
+  "nothingToUndo": {
+    "message": "Niet čo vrátiť"
+  },
+  "undoFailed": {
+    "message": "Vrátenie zlyhalo"
+  },
+  "restoredCount": {
+    "message": "Obnovené: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Niet čo obnoviť"
+  },
+  "inactive": {
+    "message": "Neaktívne"
+  },
+  "loadingSuggestions": {
+    "message": "Načítavajú sa návrhy…"
+  },
+  "suggestionsFailed": {
+    "message": "Návrhy sa nepodarilo načítať"
+  },
+  "noSuggestions": {
+    "message": "Momentálne nie sú žiadne návrhy"
+  },
+  "moreCount": {
+    "message": "Ďalšie nezobrazené návrhy: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Triedenie zlyhalo"
+  },
+  "sortedCount": {
+    "message": "Preusporiadané karty: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Niet čo triediť"
+  },
+  "hide": {
+    "message": "Skryť"
+  },
+  "show": {
+    "message": "Zobraziť"
+  },
+  "contextClose": {
+    "message": "Zatvoriť karty webu"
+  },
+  "contextSort": {
+    "message": "Zoradiť karty (weby s najviac kartami prvé)"
+  },
+  "closeSiteLabel": {
+    "message": "Zatvoriť karty webu $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}
