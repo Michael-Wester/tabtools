@@ -77,6 +77,24 @@
       }
     }
   },
+  "openCountShort_other": {
+    "message": "$count$ đang mở",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ đã đóng",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "Không thành công"
   },
