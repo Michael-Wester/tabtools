@@ -41,6 +41,23 @@ test('store locale codes match the recorded Chrome and AMO evidence', () => {
   assert.ok(validateStoreCodes(swedish, evidence).includes('chrome: unsupported listing locale sv-SE'));
 });
 
+test('store text omits website-only navigation and its index links to current listings', () => {
+  const { fullDescription, listingIndex } = require('../scripts/generate-listings');
+  for (const locale of L.registry) {
+    const catalogue = L.catalogue(locale.locale);
+    const description = fullDescription(catalogue);
+    assert.ok(!description.includes(catalogue.web_tabtools_is_available_for_chrome), locale.locale);
+    assert.ok(description.includes(catalogue.web_the_tabtools_extension_processes_tab), locale.locale);
+    assert.ok(Array.from(description).length >= 250, locale.locale);
+    assert.doesNotMatch(description, /<[^>]+>/);
+  }
+  const index = listingIndex();
+  const links = [...index.matchAll(/\[Text\]\(([^)]+)\)/g)];
+  assert.equal(links.length, L.registry.length * 3);
+  for (const [, link] of links) assert.ok(fs.existsSync(path.join(L.root, 'marketing', link)), link);
+  assert.doesNotMatch(index, /en-GB/);
+});
+
 test('i18n helper selects a browser message and plural fallback', () => {
   const calls = [];
   const context = {
