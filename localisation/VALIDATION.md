@@ -35,6 +35,10 @@ Japanese (CJK), Hebrew (RTL), Russian/Polish (plurals), then remaining locales f
    duplicates, and inactive cleanup with active/pinned/audible exceptions.
 4. Check immediate Undo while the popup is open, settings persistence, and offline operation.
 5. Inspect 0/1/2/5/21 counts, large numbers, long domains, both themes and Hebrew direction.
+   Header counters should read `14 open` / `2479 closed` in English, with compact
+   equivalents and ungrouped digits in other locales. Longer header text should
+   widen the popup while Main and Settings retain the same width in both
+   directions. Check the wrapping fallback at the maximum popup width.
 
 For the website, serve `website/dist` locally or use the existing PR preview. Check
 320/390 px and desktop layouts, both themes, English/Hebrew and long regional names.
