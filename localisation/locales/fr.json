@@ -23,6 +23,16 @@
     "many": "{count} onglets ouverts",
     "other": "{count} onglets ouverts"
   },
+  "openCountShort": {
+    "one": "{count} ouvert",
+    "many": "{count} ouverts",
+    "other": "{count} ouverts"
+  },
+  "closedCountShort": {
+    "one": "{count} fermé",
+    "many": "{count} fermés",
+    "other": "{count} fermés"
+  },
   "closeFailed": "Échec",
   "closedInactive": "Onglets inactifs fermés : {count}",
   "noInactive": "Aucun onglet inactif",
