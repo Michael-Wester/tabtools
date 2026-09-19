@@ -8,7 +8,6 @@ All fields are proposed next-release text; no live listings were edited. See [ma
 | cs | [Text](listings/chrome/cs.md) | [Text](listings/firefox/cs.md) | [Text](listings/edge/cs.md) |
 | de | [Text](listings/chrome/de.md) | [Text](listings/firefox/de.md) | [Text](listings/edge/de.md) |
 | el | [Text](listings/chrome/el.md) | [Text](listings/firefox/el.md) | [Text](listings/edge/el.md) |
-| en-GB | [Text](listings/chrome/en-GB.md) | [Text](listings/firefox/en-GB.md) | [Text](listings/edge/en-GB.md) |
 | es | [Text](listings/chrome/es.md) | [Text](listings/firefox/es.md) | [Text](listings/edge/es.md) |
 | fi | [Text](listings/chrome/fi.md) | [Text](listings/firefox/fi.md) | [Text](listings/edge/fi.md) |
 | fr | [Text](listings/chrome/fr.md) | [Text](listings/firefox/fr.md) | [Text](listings/edge/fr.md) |
