@@ -22,6 +22,14 @@
     "one": "{count} açık sekme",
     "other": "{count} açık sekme"
   },
+  "openCountShort": {
+    "one": "{count} açık",
+    "other": "{count} açık"
+  },
+  "closedCountShort": {
+    "one": "{count} kapalı",
+    "other": "{count} kapalı"
+  },
   "closeFailed": "İşlem başarısız",
   "closedInactive": "Kapatılan etkin olmayan sekmeler: {count}",
   "noInactive": "Etkin olmayan sekme yok",
