@@ -21,6 +21,12 @@
   "openCount": {
     "other": "열린 탭 {count}개"
   },
+  "openCountShort": {
+    "other": "열림 {count}"
+  },
+  "closedCountShort": {
+    "other": "닫힘 {count}"
+  },
   "closeFailed": "실패했습니다",
   "closedInactive": "닫은 비활성 탭: {count}개",
   "noInactive": "비활성 탭이 없습니다",
