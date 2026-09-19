@@ -52,7 +52,7 @@ jobs:
       - name: Validate localisation
         run: node scripts/validate-localisation.js
       - name: Run regression tests
-        run: node --test tests/website.test.js tests/localisation.test.js
+        run: node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js
       - name: Build all browser packages
         run: node build.js
       - name: Validate Node packages
