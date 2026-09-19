@@ -104,6 +104,78 @@
       }
     }
   },
+  "openCountShort_one": {
+    "message": "$count$ otvorená",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_few": {
+    "message": "$count$ otvorené",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ otvorenej",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ otvorených",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ zatvorená",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_few": {
+    "message": "$count$ zatvorené",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ zatvorenej",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ zatvorených",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "Akcia zlyhala"
   },
