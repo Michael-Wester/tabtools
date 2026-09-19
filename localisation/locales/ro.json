@@ -23,6 +23,16 @@
     "few": "{count} file deschise",
     "other": "{count} de file deschise"
   },
+  "openCountShort": {
+    "one": "{count} deschisă",
+    "few": "{count} deschise",
+    "other": "{count} deschise"
+  },
+  "closedCountShort": {
+    "one": "{count} închisă",
+    "few": "{count} închise",
+    "other": "{count} închise"
+  },
   "closeFailed": "Acțiunea a eșuat",
   "closedInactive": "File inactive închise: {count}",
   "noInactive": "Nicio filă inactivă",
