@@ -6,9 +6,13 @@
   const $ = (selector) => document.querySelector(selector);
   const byId = (id) => document.getElementById(id);
   const msg = (type, payload) =>
-    new Promise((res) =>
-      chrome.runtime.sendMessage({ type, ...(payload || {}) }, res)
-    );
+    new Promise((resolve) => {
+      try {
+        chrome.runtime.sendMessage({ type, ...(payload || {}) }, (response) => {
+          resolve(chrome.runtime.lastError ? { ok: false } : response || { ok: false });
+        });
+      } catch (_) { resolve({ ok: false }); }
+    });
   const t = (key, values) =>
     typeof globalThis.ttMessage === "function" ? globalThis.ttMessage(key, values) : key;
 
@@ -47,6 +51,11 @@
         if (statusToken === token) el.textContent = "";
       }, delay);
     }
+  }
+
+  function closeStatus(key, result) {
+    const text = t(key, { count: result.closedCount });
+    return result.failedCount ? text + " · " + t("closeFailed") : text;
   }
 
   function updateUndoButton() {
@@ -175,13 +184,13 @@
     await renderStatsPill();
   }
 
-  async function runClose(query) {
+  async function runClose(query, exactDomain = false) {
     if (!query) return;
     $("#pc-close").disabled = true;
     try {
-      const out = await msg("pc:closeByKeyword", { query });
+      const out = await msg(exactDomain ? "pc:closeByDomain" : "pc:closeByKeyword", { query });
       if (out?.ok) {
-        setStatus(t("closedCount", { count: out.closedCount }));
+        setStatus(closeStatus("closedCount", out));
         const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
         if (closed.length) {
           lastClosedTabs = closed;
@@ -203,7 +212,7 @@
   async function runCloseInactive() {
     const out = await msg("pc:closeInactive");
     if (out?.ok && out.closedCount) {
-      setStatus(t("closedInactive", { count: out.closedCount }));
+      setStatus(closeStatus("closedInactive", out));
       const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
       lastClosedTabs = closed.length ? closed : [];
       updateUndoButton();
@@ -224,7 +233,7 @@
       const out = await msg("pc:closeDuplicates");
       if (out?.ok) {
         const count = out.closedCount || 0;
-        setStatus(count ? t("closedDuplicates", { count }) : t("noDuplicates"), 1400);
+        setStatus(count ? closeStatus("closedDuplicates", out) : t("noDuplicates"), 1400);
         const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
         lastClosedTabs = closed.length ? closed : count ? [] : lastClosedTabs;
         updateUndoButton();
@@ -255,11 +264,12 @@
         return;
       }
       restored = out.restoredCount || 0;
+      if (Array.isArray(out.remainingTabs)) lastClosedTabs = out.remainingTabs;
+      else if (restored) lastClosedTabs = [];
       if (restored) {
-        setStatus(t("restoredCount", { count: restored }));
-        lastClosedTabs = [];
+        setStatus(t("restoredCount", { count: restored }) + (lastClosedTabs.length ? " · " + t("undoFailed") : ""));
       } else {
-        setStatus(t("nothingToRestore"), 1200);
+        setStatus(t(lastClosedTabs.length ? "undoFailed" : "nothingToRestore"), 1200);
       }
     } catch (err) {
       console.error("Undo failed", err);
@@ -332,7 +342,7 @@
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
-          await runClose(item.domain);
+          await runClose(item.domain, true);
         } finally {
           chip.disabled = false;
         }
