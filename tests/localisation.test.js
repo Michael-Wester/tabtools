@@ -61,6 +61,7 @@ test('store text omits website-only navigation and its index links to current li
 test('i18n helper selects a browser message and plural fallback', () => {
   const calls = [];
   const context = {
+    TabToolsEnglish: L.extensionSource(L.catalogue('en')),
     chrome: {
       i18n: {
         getUILanguage: () => 'fr',
@@ -136,6 +137,21 @@ test('plural counts, formatted numbers and missing-message fallback remain reada
   assert.equal(fallback.ttMessage('closeFailed'),'Failed');
   assert.equal(fallback.ttMessage('openCount',{count:2}),'2 open tabs');
   assert.equal(english.ttMessage('closeSiteLabel',{site:'<test>.example'}),'Close tabs from <test>.example');
+});
+
+test('compact popup counters use translated plural forms and unformatted digits in every locale', () => {
+  for (const locale of L.registry) {
+    const context = extensionRuntime(locale.locale);
+    for (const key of ['openCountShort', 'closedCountShort']) {
+      for (const count of [0, 1, 2, 5, 14, 21, 2479, 123456]) {
+        const category = new Intl.PluralRules(locale.locale).select(count);
+        const expected = L.catalogue(locale.locale)[key][category].replace('{count}', String(count));
+        assert.equal(context.ttMessage(key, { count }, { formatNumbers: false }), expected, locale.locale + '/' + key + '/' + count);
+      }
+    }
+  }
+  const fallback = extensionRuntime('he', 'he', ['closedCountShort_other']);
+  assert.equal(fallback.ttMessage('closedCountShort', { count: 2479 }, { formatNumbers: false }), '2479 closed');
 });
 
 test('placeholder positions are stable across repetition and translation order',()=>{
