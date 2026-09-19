@@ -33,9 +33,17 @@
     }
   };
   const getStore = (k) =>
-    new Promise((res) => chrome.storage.local.get(k, res));
+    new Promise((resolve, reject) => chrome.storage.local.get(k, (value) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(err);
+      else resolve(value);
+    }));
   const setStore = (o) =>
-    new Promise((res) => chrome.storage.local.set(o, res));
+    new Promise((resolve, reject) => chrome.storage.local.set(o, () => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(err);
+      else resolve();
+    }));
 
   async function getSettings() {
     const got = await getStore([KEYS.SETTINGS]);
@@ -51,7 +59,11 @@
     const got = await getStore([KEYS.SETTINGS]);
     const cfg = normalizeSettings(got[KEYS.SETTINGS]);
 
-    const tabs = await new Promise((res) => chrome.tabs.query({}, res));
+    const tabs = await new Promise((resolve, reject) => chrome.tabs.query({}, (value) => {
+      const err = chrome.runtime.lastError;
+      if (err) reject(err);
+      else resolve(value);
+    }));
     const openByDomain = new Map();
     for (const t of tabs) {
       if (t.incognito) continue;
@@ -120,43 +132,50 @@
       startedAt: now(),
     };
   }
-  async function resetStats() {
-    await setStore({
+  let statsWrite = Promise.resolve();
+  function queueStatsWrite(update) {
+    const next = statsWrite.then(update);
+    statsWrite = next.catch(() => {});
+    return next;
+  }
+  function resetStats() {
+    return queueStatsWrite(() => setStore({
       [KEYS.STATS]: { totalTabsEaten: 0, startedAt: now() },
-    });
+    }));
   }
   async function pcStatsEat({ count = 0 } = {}) {
     if (!count) return;
-    const got = await getStore([KEYS.STATS]);
-
-    const s =
-      got[KEYS.STATS] || {
-        totalTabsEaten: 0,
-        startedAt: now(),
-      };
-    s.totalTabsEaten += count;
-    await setStore({ [KEYS.STATS]: s });
+    return queueStatsWrite(async () => {
+      const got = await getStore([KEYS.STATS]);
+      const s = got[KEYS.STATS] || { totalTabsEaten: 0, startedAt: now() };
+      s.totalTabsEaten += count;
+      await setStore({ [KEYS.STATS]: s });
+    });
   }
 
   // Expose hooks to background.js / service worker global scope.
   root.pcStatsEat = pcStatsEat;
 
   chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+    if (!["pc:getSettings", "pc:updateSettings", "pc:getSuggestions", "pc:getStats", "pc:resetStats"].includes(msg?.type)) return;
     (async () => {
-      if (!msg || !msg.type) return;
-
-      if (msg.type === "pc:getSettings") {
-        sendResponse({ ok: true, settings: await getSettings() });
-      } else if (msg.type === "pc:updateSettings") {
-        await updateSettings(msg.payload || {});
-        sendResponse({ ok: true });
-      } else if (msg.type === "pc:getSuggestions") {
-        sendResponse({ ok: true, suggestions: await pcGetSuggestions() });
-      } else if (msg.type === "pc:getStats") {
-        sendResponse({ ok: true, stats: await getStats() });
-      } else if (msg.type === "pc:resetStats") {
-        await resetStats();
-        sendResponse({ ok: true });
+      try {
+        if (msg.type === "pc:getSettings") {
+          sendResponse({ ok: true, settings: await getSettings() });
+        } else if (msg.type === "pc:updateSettings") {
+          await updateSettings(msg.payload || {});
+          sendResponse({ ok: true });
+        } else if (msg.type === "pc:getSuggestions") {
+          sendResponse({ ok: true, suggestions: await pcGetSuggestions() });
+        } else if (msg.type === "pc:getStats") {
+          sendResponse({ ok: true, stats: await getStats() });
+        } else if (msg.type === "pc:resetStats") {
+          await resetStats();
+          sendResponse({ ok: true });
+        }
+      } catch (err) {
+        console.error("TabTools: request failed", msg.type, err);
+        sendResponse({ ok: false });
       }
     })();
     return true;
