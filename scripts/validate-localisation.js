@@ -6,7 +6,8 @@ const path = require('path');
 const assert = require('node:assert/strict');
 const L = require('./localisation');
 const { fullDescription, listing, stores } = require('./generate-listings');
-const { validateCatalogue } = require('./catalogue-validation');
+const { validateCatalogue, validateStoreCodes } = require('./catalogue-validation');
+const supportEvidence = require('../localisation/support-evidence.json');
 
 const errors = [];
 const warnings = [];
@@ -26,6 +27,7 @@ assert.equal(new Set(L.registry.map(item => item.website)).size, L.registry.leng
 
 for (const locale of L.registry) {
   const startErrors = errors.length;
+  for (const error of validateStoreCodes(locale, supportEvidence)) fail(locale.locale + ': ' + error);
   const catalogue = L.catalogue(locale.locale);
   for (const error of validateCatalogue(source, catalogue, locale.locale)) fail(locale.locale + ': ' + error);
   const missing = sourceKeys.filter(key => !(key in catalogue));
