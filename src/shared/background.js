@@ -80,10 +80,18 @@ function tabLooksInactive(tab, thresholdMs, nowTs) {
   return tab.discarded === true;
 }
 function tabsQuery(q) {
-  return new Promise((res) => chrome.tabs.query(q || {}, res));
+  return new Promise((resolve, reject) => chrome.tabs.query(q || {}, (tabs) => {
+    const err = getRuntimeLastError();
+    if (err) reject(err);
+    else resolve(tabs);
+  }));
 }
 function tabsRemove(ids) {
-  return new Promise((res) => chrome.tabs.remove(ids, res));
+  return new Promise((resolve, reject) => chrome.tabs.remove(ids, () => {
+    const err = getRuntimeLastError();
+    if (err) reject(err);
+    else resolve();
+  }));
 }
 function tabsCreate(options) {
   return new Promise((resolve, reject) => {
@@ -200,7 +208,7 @@ async function handleContextMenuClick(info, tab) {
   } catch {}
   if (!domain) return;
   try {
-    await closeByKeyword(domain);
+    await closeByKeyword(domain, true);
   } catch (err) {
     console.error("TabTools: context menu action failed", err);
   }
@@ -360,59 +368,55 @@ function getSettings() {
   });
 }
 
-async function closeByKeyword(keyword) {
-  if (!keyword || typeof keyword !== "string")
-    return { closedCount: 0, closedDomains: [] };
+async function closeTabs(tabs) {
+  // A tab may disappear or become uneditable after the query. Track each
+  // removal independently so failed tabs never enter stats or the undo list.
+  const results = await Promise.allSettled(tabs.map(tab => tabsRemove(tab.id)));
+  const closed = tabs.filter((_, index) => results[index].status === "fulfilled");
+  if (closed.length) {
+    if (typeof root.pcStatsEat === "function") {
+      try { await root.pcStatsEat({ count: closed.length }); } catch (err) {
+        console.warn("TabTools: unable to save close statistics", err);
+      }
+    }
+    scheduleIconRefresh();
+  }
+  return {
+    closedCount: closed.length,
+    failedCount: tabs.length - closed.length,
+    closedDomains: [...new Set(closed.map(tab => domainFromUrl(tab.url || tab.pendingUrl)).filter(Boolean))],
+    closedTabs: closed.map(serializeTab).filter(Boolean),
+  };
+}
+
+async function closeByKeyword(keyword, exactDomain = false) {
+  if (typeof keyword !== "string" || !keyword.trim()) return closeTabs([]);
 
   const kw = keyword.trim();
   const tabs = await tabsQuery({});
   const toClose = [];
-  const closedDomains = new Set();
-  const closedTabs = [];
 
-  const looksLikeDomain = /\./.test(kw);
+  const looksLikeDomain = exactDomain || /\./.test(kw);
   if (looksLikeDomain) {
-    const wanted = kw.replace(/^www\./, "").toLowerCase();
+    const wanted = kw.toLowerCase().replace(/^www\./, "");
     for (const t of tabs) {
       if (t.incognito) continue;
-      const d = domainFromUrl(t.url);
+      const d = domainFromUrl(t.url || t.pendingUrl);
       if (d === wanted) {
-        toClose.push(t.id);
-        if (d) closedDomains.add(d);
-        const snapshot = serializeTab(t);
-        if (snapshot) closedTabs.push(snapshot);
+        toClose.push(t);
       }
     }
   } else {
     const rx = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
     for (const t of tabs) {
       if (t.incognito) continue;
-      const d = domainFromUrl(t.url);
-      if ((t.title && rx.test(t.title)) || (t.url && rx.test(t.url))) {
-        toClose.push(t.id);
-        if (d) closedDomains.add(d);
-        const snapshot = serializeTab(t);
-        if (snapshot) closedTabs.push(snapshot);
+      if ((t.title && rx.test(t.title)) || rx.test(t.url || t.pendingUrl || "")) {
+        toClose.push(t);
       }
     }
   }
 
-  if (toClose.length) {
-    await tabsRemove(toClose);
-    const statsEat = root.pcStatsEat;
-    if (typeof statsEat === "function") {
-      try {
-        await statsEat({ count: toClose.length });
-      } catch {}
-    }
-  }
-
-  scheduleIconRefresh();
-  return {
-    closedCount: toClose.length,
-    closedDomains: Array.from(closedDomains),
-    closedTabs,
-  };
+  return closeTabs(toClose);
 }
 
 async function closeInactiveTabs() {
@@ -425,35 +429,7 @@ async function closeInactiveTabs() {
   const nowTs = Date.now();
 
   const tabs = await tabsQuery({});
-  const toClose = [];
-  const closedDomains = new Set();
-  const closedTabs = [];
-
-  for (const tab of tabs) {
-    if (!tabLooksInactive(tab, thresholdMs, nowTs)) continue;
-    toClose.push(tab.id);
-    const d = domainFromUrl(tab.url);
-    if (d) closedDomains.add(d);
-    const snapshot = serializeTab(tab);
-    if (snapshot) closedTabs.push(snapshot);
-  }
-
-  if (toClose.length) {
-    await tabsRemove(toClose);
-    const statsEat = root.pcStatsEat;
-    if (typeof statsEat === "function") {
-      try {
-        await statsEat({ count: toClose.length });
-      } catch {}
-    }
-    scheduleIconRefresh();
-  }
-
-  return {
-    closedCount: toClose.length,
-    closedDomains: Array.from(closedDomains),
-    closedTabs,
-  };
+  return closeTabs(tabs.filter(tab => tabLooksInactive(tab, thresholdMs, nowTs)));
 }
 
 function normalizeUrlForDedup(url) {
@@ -468,46 +444,28 @@ function normalizeUrlForDedup(url) {
 
 async function closeDuplicateTabs() {
   const tabs = await tabsQuery({});
-  const seen = new Set();
+  // Seed from every pinned tab first: query order can place an unpinned copy
+  // in an earlier window before the pinned copy we must keep.
+  const seen = new Set(tabs.filter(tab => tab.pinned && !tab.incognito)
+    .map(tab => normalizeUrlForDedup(tab.url || tab.pendingUrl || "")).filter(Boolean));
   const toClose = [];
-  const closedDomains = new Set();
-  const closedTabs = [];
 
   for (const tab of tabs) {
     if (tab.incognito || tab.pinned) continue;
     const key = normalizeUrlForDedup(tab.url || tab.pendingUrl || "");
     if (!key) continue;
     if (seen.has(key)) {
-      toClose.push(tab.id);
-      const d = domainFromUrl(tab.url);
-      if (d) closedDomains.add(d);
-      const snapshot = serializeTab(tab);
-      if (snapshot) closedTabs.push(snapshot);
+      toClose.push(tab);
     } else {
       seen.add(key);
     }
   }
 
-  if (toClose.length) {
-    await tabsRemove(toClose);
-    const statsEat = root.pcStatsEat;
-    if (typeof statsEat === "function") {
-      try {
-        await statsEat({ count: toClose.length });
-      } catch {}
-    }
-    scheduleIconRefresh();
-  }
-
-  return {
-    closedCount: toClose.length,
-    closedDomains: Array.from(closedDomains),
-    closedTabs,
-  };
+  return closeTabs(toClose);
 }
 
 async function restoreTabs(tabs) {
-  if (!Array.isArray(tabs) || !tabs.length) return { restoredCount: 0 };
+  if (!Array.isArray(tabs) || !tabs.length) return { restoredCount: 0, remainingTabs: [] };
 
   const cleaned = tabs
     .map((tab) => {
@@ -522,7 +480,7 @@ async function restoreTabs(tabs) {
     })
     .filter(Boolean);
 
-  if (!cleaned.length) return { restoredCount: 0 };
+  if (!cleaned.length) return { restoredCount: 0, remainingTabs: [] };
 
   cleaned.sort((a, b) => {
     const winA =
@@ -540,6 +498,7 @@ async function restoreTabs(tabs) {
   const activatedWindows = new Set();
   let activatedFallback = false;
   let restored = 0;
+  const remainingTabs = [];
 
   for (const tab of cleaned) {
     const opts = {
@@ -589,11 +548,12 @@ async function restoreTabs(tabs) {
       } else {
         console.warn("TabTools: restore failed", err);
       }
+      remainingTabs.push(tab);
     }
   }
 
   scheduleIconRefresh();
-  return { restoredCount: restored };
+  return { restoredCount: restored, remainingTabs };
 }
 
 async function sortTabsByOpenCount() {
@@ -650,61 +610,26 @@ async function sortTabsByOpenCount() {
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (!msg || !msg.type) return;
-
-  if (msg.type === "pc:closeByKeyword" && msg.query) {
-    (async () => {
-      sendResponse({ ok: true, ...(await closeByKeyword(msg.query)) });
-    })();
-    return true;
+  let action;
+  switch (msg.type) {
+    case "pc:closeByKeyword": action = () => closeByKeyword(msg.query); break;
+    case "pc:closeByDomain": action = () => closeByKeyword(msg.query, true); break;
+    case "pc:closeInactive": action = closeInactiveTabs; break;
+    case "pc:closeDuplicates": action = closeDuplicateTabs; break;
+    case "pc:sortTabsByOpenCount": action = sortTabsByOpenCount; break;
+    case "pc:restoreTabs": action = () => restoreTabs(msg.tabs); break;
+    default: return;
   }
-
-  if (msg.type === "pc:sortTabsByOpenCount") {
-    (async () => {
-      try {
-        const result = await sortTabsByOpenCount();
-        sendResponse({ ok: true, ...result });
-      } catch (err) {
-        console.error("TabTools: sortTabsByOpenCount failed", err);
-        sendResponse({ ok: false });
-      }
-    })();
-    return true;
-  }
-
-  if (msg.type === "pc:closeInactive") {
-    (async () => {
-      sendResponse({ ok: true, ...(await closeInactiveTabs()) });
-    })();
-    return true;
-  }
-
-  if (msg.type === "pc:restoreTabs") {
-    (async () => {
-      try {
-        const result = await restoreTabs(msg.tabs);
-        sendResponse({ ok: true, ...result });
-      } catch (err) {
-        console.error("TabTools: restoreTabs failed", err);
-        sendResponse({ ok: false });
-      }
-    })();
-    return true;
-  }
-
-  if (msg.type === "pc:closeDuplicates") {
-    (async () => {
-      try {
-        const result = await closeDuplicateTabs();
-        sendResponse({ ok: true, ...result });
-      } catch (err) {
-        console.error("TabTools: closeDuplicateTabs failed", err);
-        sendResponse({ ok: false });
-      }
-    })();
-    return true;
-  }
-
-  return undefined;
+  (async () => {
+    try {
+      const result = await action();
+      sendResponse({ ok: !result.failedCount || result.closedCount > 0, ...result });
+    } catch (err) {
+      console.error("TabTools: action failed", msg.type, err);
+      sendResponse({ ok: false });
+    }
+  })();
+  return true;
 });
 
 const tabsApi =
