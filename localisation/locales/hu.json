@@ -22,6 +22,14 @@
     "one": "{count} nyitott lap",
     "other": "{count} nyitott lap"
   },
+  "openCountShort": {
+    "one": "{count} nyitva",
+    "other": "{count} nyitva"
+  },
+  "closedCountShort": {
+    "one": "{count} bezárva",
+    "other": "{count} bezárva"
+  },
   "closeFailed": "Sikertelen művelet",
   "closedInactive": "Bezárt inaktív lapok: {count}",
   "noInactive": "Nincsenek inaktív lapok",
