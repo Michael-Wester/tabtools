@@ -9,7 +9,7 @@
     "locales:listings": "node scripts/generate-listings.js",
     "locales:generate": "npm run locales:extension && npm run locales:website && npm run locales:listings",
     "locales:validate": "node scripts/validate-localisation.js",
-    "test": "npm run locales:generate && npm run locales:validate && node --test tests/website.test.js tests/localisation.test.js",
+    "test": "npm run locales:generate && npm run locales:validate && node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js",
     "build": "node build.js"
   }
 }
