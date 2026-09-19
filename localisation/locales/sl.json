@@ -24,6 +24,18 @@
     "few": "{count} odprti zavihki",
     "other": "{count} odprtih zavihkov"
   },
+  "openCountShort": {
+    "one": "{count} odprt",
+    "two": "{count} odprta",
+    "few": "{count} odprti",
+    "other": "{count} odprtih"
+  },
+  "closedCountShort": {
+    "one": "{count} zaprt",
+    "two": "{count} zaprta",
+    "few": "{count} zaprti",
+    "other": "{count} zaprtih"
+  },
   "closeFailed": "Dejanje ni uspelo",
   "closedInactive": "Zaprti nedejavni zavihki: {count}",
   "noInactive": "Ni nedejavnih zavihkov",
