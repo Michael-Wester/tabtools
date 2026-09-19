@@ -22,6 +22,14 @@
     "one": "{count} öppen flik",
     "other": "{count} öppna flikar"
   },
+  "openCountShort": {
+    "one": "{count} öppen",
+    "other": "{count} öppna"
+  },
+  "closedCountShort": {
+    "one": "{count} stängd",
+    "other": "{count} stängda"
+  },
   "closeFailed": "Misslyckades",
   "closedInactive": "Stängda inaktiva flikar: {count}",
   "noInactive": "Inga inaktiva flikar",
