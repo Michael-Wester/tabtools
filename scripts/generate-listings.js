@@ -26,19 +26,25 @@ const stores = {
   },
 };
 
+const featureKeys = [
+  ['web_close_a_site_s_tabs', 'web_siteBody'],
+  ['web_sort_tabs_by_site', 'web_bring_tabs_from_the_same'],
+  ['web_remove_duplicate_tabs', 'web_close_extra_copies_of_the'],
+  ['web_search_by_keyword_or_domain', 'web_type_a_word_to_match'],
+  ['web_clear_inactive_tabs', 'web_choose_an_inactivity_threshold_in'],
+];
+const descriptionKeys = [
+  'web_close_tabs_by_site_sort', ...featureKeys.flat(),
+  'web_the_tabtools_extension_processes_tab',
+];
+
 function fullDescription(catalogue) {
   return [
     catalogue.web_close_tabs_by_site_sort,
     '',
-    catalogue.web_close_a_site_s_tabs + ': ' + catalogue.web_siteBody.replace(/<[^>]+>/g, ''),
-    catalogue.web_sort_tabs_by_site + ': ' + catalogue.web_bring_tabs_from_the_same,
-    catalogue.web_remove_duplicate_tabs + ': ' + catalogue.web_close_extra_copies_of_the,
-    catalogue.web_search_by_keyword_or_domain + ': ' + catalogue.web_type_a_word_to_match,
-    catalogue.web_clear_inactive_tabs + ': ' + catalogue.web_choose_an_inactivity_threshold_in,
+    ...featureKeys.map(([heading, body]) => catalogue[heading] + ': ' + catalogue[body].replace(/<[^>]+>/g, '')),
     '',
     catalogue.web_the_tabtools_extension_processes_tab,
-    '',
-    catalogue.web_tabtools_is_available_for_chrome,
   ].join('\n');
 }
 
@@ -82,8 +88,22 @@ function listing(locale, store) {
     '- Title source fingerprint: ' + L.fingerprint(source.extensionName),
     '- Summary source fingerprint: ' + L.fingerprint(source.extensionDescription),
     '- Full-description source fingerprint: ' + L.fingerprint(sourceDescription),
-    '- Full-description source keys: web_close_tabs_by_site_sort, web_siteBody, web_bring_tabs_from_the_same, web_close_extra_copies_of_the, web_type_a_word_to_match, web_choose_an_inactivity_threshold_in, web_the_tabtools_extension_processes_tab, web_tabtools_is_available_for_chrome',
+    '- Full-description source keys: ' + descriptionKeys.join(', '),
     '- Linguistic review: AI self-review only; no native-speaker review claimed',
+    '',
+  ].join('\n');
+}
+
+function listingIndex() {
+  return [
+    '# Store-text index',
+    '',
+    'All fields are proposed next-release text; no live listings were edited. See [maintenance and release checklist](README.md).',
+    '',
+    '| Locale | Chrome | Firefox | Edge |',
+    '|---|---|---|---|',
+    ...L.registry.map(locale => '| ' + locale.locale + ' | ' + Object.keys(stores).map(store =>
+      '[Text](listings/' + store + '/' + locale.locale + '.md)').join(' | ') + ' |'),
     '',
   ].join('\n');
 }
@@ -106,8 +126,9 @@ function main() {
       }
     }
   }
+  fs.writeFileSync(path.join(L.root, 'marketing', 'INDEX.md'), listingIndex());
 }
 
 if (require.main === module) main();
 
-module.exports = { main, fullDescription, listing, stores };
+module.exports = { main, fullDescription, listing, listingIndex, stores };
