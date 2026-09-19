@@ -86,6 +86,42 @@
       }
     }
   },
+  "openCountShort_one": {
+    "message": "$count$ åpen",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ åpne",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ lukket",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ lukkede",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "closeFailed": {
     "message": "Mislyktes"
   },
