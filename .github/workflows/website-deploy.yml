@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths:
       - 'website/dist/**'
+      - 'website/check-security.cjs'
       - '.github/workflows/website-deploy.yml'
   pull_request:
     paths:
       - 'website/dist/**'
+      - 'website/check-security.cjs'
       - '.github/workflows/website-deploy.yml'
   workflow_dispatch:
 
@@ -26,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
@@ -40,6 +42,8 @@ jobs:
           fi
       - name: Validate JavaScript
         run: node --check website/dist/script.js
+      - name: Validate website security policy
+        run: node website/check-security.cjs
       - name: Select deployment target
         id: target
         env:
@@ -55,7 +59,7 @@ jobs:
             echo 'branch=manual-preview' >> "$GITHUB_OUTPUT"
           fi
       - name: Deploy authored static files
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: fee7bb9066b59347e43a2b35fcb827c3
