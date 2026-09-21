@@ -119,6 +119,7 @@ html[data-theme="dark"] .brand-mark img, .site-footer .brand-mark img { filter: 
 .main-nav { display: flex; align-items: center; gap: 26px; margin-left: auto; color: var(--ink-soft); font-size: 14px; font-weight: 620; }
 .main-nav a { transition: color .18s ease; }
 .main-nav a:hover { color: var(--ink); }
+.main-nav a[aria-current="page"] { color: var(--accent-deep); }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 .theme-toggle {
   display: grid;
@@ -364,7 +365,8 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 @media (max-width: 720px) {
   .shell { width: min(100% - 32px, 560px); }
   .nav-shell { min-height: 66px; gap: 16px; }
-  .main-nav { display: none; }
+  .main-nav { display: flex; order: 3; flex-basis: 100%; justify-content: space-between; gap: 8px; margin-left: 0; font-size: 12px; }
+  main, section[id] { scroll-margin-top: 132px; }
   .nav-actions { margin-left: auto; }
   .theme-toggle { width: 44px; height: 44px; }
   .hero { padding: 40px 0 56px; }
