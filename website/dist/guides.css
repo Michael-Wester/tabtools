@@ -69,6 +69,7 @@
   .guide-card { padding: 24px; }
   .guide-card h2 { font-size: 24px; }
   .guide-layout { grid-template-columns: 200px minmax(0, 1fr); gap: 36px; }
+  .guide-sidebar { top: 128px; }
 }
 
 @media (max-width: 720px) {
