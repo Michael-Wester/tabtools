@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>How to Close Duplicate Tabs in Chrome, Firefox and Edge | TabTools</title>
+    <meta name="description" content="Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain." />
+    <link rel="canonical" href="https://tabtools.fyi/guides/close-duplicate-tabs/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="How to Close Duplicate Tabs in Chrome, Firefox and Edge" />
+    <meta property="og:description" content="Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain." />
+    <meta property="og:url" content="https://tabtools.fyi/guides/close-duplicate-tabs/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="How to Close Duplicate Tabs in Chrome, Firefox and Edge" />
+    <meta name="twitter:description" content="Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Close Duplicate Tabs in Chrome, Firefox and Edge",
+      "description": "Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain.",
+      "url": "https://tabtools.fyi/guides/close-duplicate-tabs/",
+      "mainEntityOfPage": "https://tabtools.fyi/guides/close-duplicate-tabs/",
+      "inLanguage": "en",
+      "dateModified": "2026-09-21",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tabtools.fyi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://tabtools.fyi/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Close duplicate tabs",
+          "item": "https://tabtools.fyi/guides/close-duplicate-tabs/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/#top" aria-label="TabTools home">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/#features">Features</a>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/guides/" aria-current="page">Guides</a>
+          <a href="/#privacy">Privacy</a>
+          <a href="/#faq">FAQ</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Dark mode</span>
+          </button>
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy"><span class="browser-button-prefix">Add to</span> <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Remove duplicates</span></nav>
+      <p class="eyebrow">Remove duplicates · Desktop browsers</p><h1>How to Close Duplicate Tabs in Chrome, Firefox and Edge</h1><p class="guides-lede">Opening the same document, search or video again is easy. Removing repeated copies makes the tab bar easier to navigate without clearing every page from a website.</p>
+      <p class="guide-byline">By <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creator of TabTools <span aria-hidden="true">·</span> 4 min read <span aria-hidden="true">·</span> Updated <time datetime="2026-09-21">21 September 2026</time></p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="On this page"><p class="eyebrow">On this page</p><ol><li><a href="#choose-a-method">Choose a method for your browser</a></li><li><a href="#what-counts-as-a-duplicate">What counts as a duplicate tab?</a></li><li><a href="#chrome-and-edge">Close duplicate tabs in Chrome or Edge</a></li><li><a href="#firefox-native-option">Use Firefox’s built-in duplicate commands</a></li><li><a href="#which-copy-stays">Which copy does TabTools keep?</a></li><li><a href="#undo-and-organise">Undo a cleanup and organise what remains</a></li></ol></nav><a class="guide-back" href="/guides/">← All guides</a></aside>
+      <article class="guide-article" aria-label="How to Close Duplicate Tabs in Chrome, Firefox and Edge"><div class="guide-answer"><p class="eyebrow">Quick answer</p><p>Open TabTools and click Close duplicates to remove repeated unpinned pages across your normal browser windows. Firefox also has built-in commands for closing duplicates of one tab or cleaning up duplicate tabs from its tab overview menu.</p></div>
+      <section id="choose-a-method"><h2>Choose a method for your browser</h2><table>
+  <thead><tr><th scope="col">Browser</th><th scope="col">Method covered here</th></tr></thead>
+  <tbody>
+    <tr><td>Chrome</td><td>Open TabTools and select <strong>Close duplicates</strong>.</td></tr>
+    <tr><td>Firefox</td><td>Use its built-in duplicate commands, or select <strong>Close duplicates</strong> in TabTools.</td></tr>
+    <tr><td>Microsoft Edge</td><td>Open TabTools and select <strong>Close duplicates</strong>.</td></tr>
+  </tbody>
+</table>
+<p>Before a bulk cleanup, finish any unsaved work in repeated pages. Two tabs can show the same URL while holding different text you have entered into a form.</p></section>
+<section id="what-counts-as-a-duplicate"><h2>What counts as a duplicate tab?</h2><p>Duplicate tabs are repeated copies of a page. Three copies of one YouTube video are duplicates; three different YouTube videos are different pages from the same website.</p>
+<p>TabTools compares page URLs after removing the fragment: the part beginning with <code>#</code>. Paths and query parameters remain part of the comparison.</p>
+<table>
+  <thead><tr><th scope="col">Example URLs</th><th scope="col">TabTools treatment</th></tr></thead>
+  <tbody>
+    <tr><td><code>example.com/guide</code> opened twice</td><td>Duplicates</td></tr>
+    <tr><td><code>example.com/guide#intro</code> and <code>example.com/guide#steps</code></td><td>Duplicates: fragments are ignored</td></tr>
+    <tr><td><code>example.com/guide</code> and <code>example.com/contact</code></td><td>Different pages</td></tr>
+    <tr><td><code>example.com/search?q=tabs</code> and <code>example.com/search?q=bookmarks</code></td><td>Different query parameters; both stay</td></tr>
+  </tbody>
+</table>
+<p>Some web apps use fragments to identify different screens, so those screens can count as duplicates. Conversely, tracking parameters can make otherwise similar pages count as different URLs. The command compares addresses; it does not inspect page content to decide whether two pages mean the same thing.</p></section><aside class="guide-install" aria-label="Get TabTools">
+    <div><p class="eyebrow">Free browser extension</p><h2>Put it into practice.</h2><p>Close tabs by site, remove duplicates and sort what stays.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-duplicate-tabs" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" />Add to Chrome</a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-duplicate-tabs" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" />Add to Firefox</a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-duplicate-tabs" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" />Add to Edge</a></div>
+    <p class="mobile-note" data-mobile-note hidden>Open this page on your computer to add TabTools.</p>
+  </aside>
+<section id="chrome-and-edge"><h2>Close duplicate tabs in Chrome or Edge</h2><p>The TabTools popup uses the same command in both browsers.</p>
+<ol>
+  <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>.</li>
+  <li>Open the extension from the toolbar or extensions menu.</li>
+  <li>Click <strong>Close duplicates</strong>.</li>
+  <li>Check the popup’s status message. It reports how many duplicates closed, or <strong>No duplicates</strong> when none matched.</li>
+</ol>
+<p>You do not need to select the repeated tabs first. The cleanup covers normal windows within that browser, so two copies of a page can be matched even when they are in different windows. Private or incognito tabs are excluded.</p>
+<p>Running the command in Chrome does not change Edge tabs, or vice versa. Use it separately in each browser if you have duplicates in both.</p></section>
+<section id="firefox-native-option"><h2>Use Firefox’s built-in duplicate commands</h2><p>Firefox provides native options if duplicate removal is all you need.</p>
+<ul>
+  <li><strong>For copies of one page:</strong> right-click the tab you want to keep and choose <strong>Close Duplicate Tabs</strong>.</li>
+  <li><strong>For a broader cleanup:</strong> open <strong>List all tabs</strong>, then choose its duplicate-closing command, shown as <strong>Close all duplicate tabs</strong> or <strong>Close Duplicate Tabs</strong> depending on the interface.</li>
+</ul>
+<p>Mozilla’s <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">tab context menu guide</a> explains the first option. Its <a href="https://support.mozilla.org/en-US/kb/tab-overview-menu">tab overview menu guide</a> describes the broader cleanup and says it keeps the last active tab among duplicates.</p>
+<p>If you already use <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">TabTools for Firefox</a>, open its popup and click <strong>Close duplicates</strong>. Its matching and retention rules are the TabTools rules below; do not assume they are identical to Firefox’s native command.</p></section>
+<section id="which-copy-stays"><h2>Which copy does TabTools keep?</h2><p>TabTools keeps the first unpinned copy encountered in the browser’s tab list and closes later matches. It does not deliberately choose the active tab, the newest tab or the tab you used most recently. A retained copy may therefore be in another window.</p>
+<p>Pinned tabs are skipped completely. They are neither closed nor counted as the copy to keep. If a page has one pinned tab and two unpinned copies, the pinned tab remains and one of the unpinned copies remains too.</p>
+<p>This makes pinning useful for keeping a page in place, but it means <strong>Close duplicates</strong> does not guarantee exactly one tab for every URL across pinned and unpinned tabs.</p></section>
+<section id="undo-and-organise"><h2>Undo a cleanup and organise what remains</h2><p>Keep the popup open after cleanup if you want to check the result. <strong>Undo</strong> can reopen the tabs from the latest popup close action during that popup session. It reopens pages by URL; unsaved page content is not guaranteed to return. Once the popup is closed, use your browser’s recently closed tabs or history instead.</p>
+<p>For different pages you have finished with, see <a href="/guides/close-tabs-from-same-website/">how to close all tabs from the same website</a>. For pages you want to keep, <a href="/guides/sort-tabs-by-website/">sorting tabs by website</a> brings related tabs together without closing them.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Related guides"><p class="eyebrow">Keep going</p><h2>More ways to organise your tabs.</h2><div class="guide-cards"><a class="guide-card" href="/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Close site tabs</span></div>
+    <h2>Close tabs from the same website</h2><p>Close tabs from the same website in Chrome with TabTools, use a manual alternative, and follow the steps for Firefox and Edge.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/guides/sort-tabs-by-website/">
+    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Sort tabs</span></div>
+    <h2>Sort tabs by website</h2><p>Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/#top" aria-label="TabTools home"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Close tabs by site, sort your tab bar, and clear duplicates.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Product</span><a href="/#features">Features</a><a href="/#how-it-works">How it works</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
+          <div><span class="footer-label">Try it</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">More</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Free and open source.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>
