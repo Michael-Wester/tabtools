@@ -49,3 +49,20 @@ the extension and distinguishes the website's third-party YouTube player.
 
 See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
 hosting settings, verification requirements, and future deployment instructions.
+
+## Security headers
+
+Cloudflare Pages reads `dist/_headers` to restrict resource loading, prevent
+framing, and enable a one-year, host-only HSTS policy. The YouTube demo and
+same-origin Cloudflare email decoder remain allowed. Camera, microphone and
+geolocation access are disabled. No `unsafe-inline` or `unsafe-eval` is allowed.
+
+Run `node website/check-security.cjs` from the repository root before deployment.
+The deployment workflow also runs this check. If an executable inline script
+changes, review it and update its SHA-256 hash in `_headers`; do not weaken CSP
+to silence the check. Inert JSON data blocks do not require script permission.
+With the localisation build in PR #17, run this check **after** page generation
+and preserve `_headers` in the deployable output.
+
+See [the security review](SECURITY-REVIEW.md) for findings, verification limits,
+future deployment isolation work, and HSTS rollout/rollback guidance.
