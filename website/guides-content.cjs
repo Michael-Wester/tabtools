@@ -1,4 +1,13 @@
 // Editorial source for the static guides. Regenerate pages with build-guides.cjs.
+const escape = value => value.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const screenshot = (filename, alt, caption) => `<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/${filename}" target="_blank" rel="noopener">
+    <img src="/assets/guides/${filename}" width="1280" height="800" loading="lazy" decoding="async" alt="${escape(alt)}" />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>${escape(caption)}</figcaption>
+</figure>`;
+
 module.exports = [
   {
     slug: "close-tabs-from-same-website",
@@ -7,20 +16,23 @@ module.exports = [
     description: "Close tabs from the same website in Chrome with TabTools, use a manual alternative, and follow the steps for Firefox and Edge.",
     category: "Close site tabs",
     lede: "Finished with a shopping session, a research rabbit hole or a stack of YouTube videos? You can close that website’s tabs together and leave your other websites open.",
-    answer: "With TabTools installed, right-click inside a page from the website you want to close and choose Close site tabs. This closes matching tabs across your normal browser windows, including matching active and pinned tabs.",
+    answer: "With TabTools installed, right-click a tab from the website you want to close in Chrome’s tab bar and choose Close site tabs. This closes matching tabs across your normal browser windows, including matching active and pinned tabs.",
     sections: [
       {
         id: "close-site-tabs-in-chrome",
         title: "Close a website’s tabs in Chrome",
-        html: `<p>The page menu gives you a shortcut when you are already on the website you have finished using.</p>
+        html: `<p>The tab’s context menu gives you a shortcut directly from Chrome’s tab bar.</p>
 <ol>
   <li><a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Install TabTools from the Chrome Web Store</a>.</li>
-  <li>Open a page on the website you want to close, such as a YouTube video.</li>
-  <li>Right-click inside the webpage. In Chrome, use the page’s context menu for this command.</li>
+  <li>Find a tab from the website you want to close, such as the YouTube homepage or a search results page.</li>
+  <li>Right-click that tab in Chrome’s tab bar.</li>
   <li>Choose <strong>Close site tabs</strong>. Tabs with the same website hostname close together.</li>
 </ol>
-<p>For example, several pages on <code>youtube.com</code> close while pages on Wikipedia and other websites stay open. You do not need to collect the YouTube tabs beside one another first.</p>
-<p>This is useful when you have finished with the whole website. If you still need a particular page from it, keep that in mind before using the command: it includes the page you are viewing.</p>`,
+${screenshot('close-site-01-tab-menu.png', 'Chrome with six mixed tabs and Close site tabs highlighted in a YouTube tab’s context menu.', 'Right-click a YouTube tab in Chrome’s tab bar and choose Close site tabs.')}
+<p>In this example, three pages on <code>youtube.com</code> close while two Wikipedia tabs and Google stay open. You do not need to collect the YouTube tabs beside one another first.</p>
+${screenshot('close-site-02-tabs-closed.png', 'Chrome after closing the three YouTube tabs, with two Wikipedia tabs and Google remaining.', 'After closing: only the two Wikipedia tabs and Google remain.')}
+<p>If <strong>Close site tabs</strong> is not available in a tab’s menu, open that tab and right-click inside the webpage instead, or use the TabTools popup below.</p>
+<p>This is useful when you have finished with the whole website. If you still need a particular page from it, keep that in mind before using the command: it includes the tab you right-click.</p>`,
       },
       {
         id: "use-the-popup",
@@ -31,7 +43,9 @@ module.exports = [
   <li>Find the website among the suggestions under <strong>Tap to close tabs from site</strong>. Each suggestion shows its open-tab count.</li>
   <li>Select the website to close its matching tabs.</li>
 </ol>
-<p>If the website is not shown, enter its hostname, such as <code>youtube.com</code>, in <strong>Close by keyword (press Enter)</strong>, then press Enter or click <strong>Close</strong>. Enter the hostname alone, without <code>https://</code> or a page path.</p>
+${screenshot('close-site-03-popup-suggestion.png', 'TabTools in Chrome with the pointer on the YouTube suggestion showing 3 open tabs.', 'With the same six tabs open, select the YouTube suggestion to close its three tabs without leaving Google.')}
+<p>You can also enter a hostname directly, which is useful if the website is not shown in Suggestions. Enter its hostname, such as <code>youtube.com</code>, in <strong>Close by keyword (press Enter)</strong>, then press Enter or click <strong>Close</strong>. Enter the hostname alone, without <code>https://</code> or a page path.</p>
+${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field contains youtube.com, with the pointer on Close.', 'Or enter youtube.com and click Close or press Enter.')}
 <p>A plain keyword such as <code>shopping</code> works differently: it searches tab titles and URLs. Use the exact hostname when your intention is to close one specific website.</p>`,
       },
       {
@@ -64,9 +78,9 @@ module.exports = [
         id: "firefox-and-edge",
         title: "Use the same workflow in Firefox and Edge",
         html: `<h3>Firefox</h3>
-<p><a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Install TabTools for Firefox</a>, then right-click the webpage and choose <strong>Close site tabs</strong>. Firefox also supports the TabTools command when you right-click a tab in the tab bar. The popup’s website suggestions offer the same way to choose a site directly.</p>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Install TabTools for Firefox</a>, then right-click a tab from the target website in the tab bar and choose <strong>Close site tabs</strong>. You can also right-click inside its webpage or choose a website from the popup’s suggestions.</p>
 <h3>Microsoft Edge</h3>
-<p><a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Install TabTools for Edge</a>, open a page from the target website, then right-click inside the page and choose <strong>Close site tabs</strong>. You can also enter the hostname in the popup. The matching rules and cross-window scope are the same as described above.</p>`,
+<p><a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Install TabTools for Edge</a>, then right-click a tab from the target website and choose <strong>Close site tabs</strong> if your Edge version shows it in the tab’s menu. Otherwise, open the tab and right-click inside the webpage, or enter the hostname in the popup. The matching rules and cross-window scope are the same as described above.</p>`,
       },
       {
         id: "undo-and-next-steps",
@@ -102,7 +116,7 @@ module.exports = [
       {
         id: "what-counts-as-a-duplicate",
         title: "What counts as a duplicate tab?",
-        html: `<p>Duplicate tabs are repeated copies of a page. Three copies of one YouTube video are duplicates; three different YouTube videos are different pages from the same website.</p>
+        html: `<p>Duplicate tabs are repeated copies of a page. Three copies of the YouTube homepage are duplicates; the homepage and two different YouTube search results are different pages from the same website.</p>
 <p>TabTools compares page URLs after removing the fragment: the part beginning with <code>#</code>. Paths and query parameters remain part of the comparison.</p>
 <table>
   <thead><tr><th scope="col">Example URLs</th><th scope="col">TabTools treatment</th></tr></thead>
@@ -118,12 +132,18 @@ module.exports = [
       {
         id: "chrome-and-edge",
         title: "Close duplicate tabs in Chrome or Edge",
-        html: `<p>The TabTools popup uses the same command in both browsers.</p>
+        html: `<p>The TabTools popup uses the same command in both browsers. These screenshots show Chrome with eight tabs, including three copies of the YouTube homepage.</p>
 <ol>
   <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>.</li>
-  <li>Open the extension from the toolbar or extensions menu.</li>
-  <li>Click <strong>Close duplicates</strong>.</li>
-  <li>Check the popup’s status message. It reports how many duplicates closed, or <strong>No duplicates</strong> when none matched.</li>
+  <li>Open the extension from the toolbar or extensions menu.
+    ${screenshot('duplicates-01-open-tabtools.png', 'Chrome with eight tabs, including three copies of the YouTube homepage, and the pointer on the TabTools toolbar icon.', 'Open TabTools from Chrome’s toolbar.')}
+  </li>
+  <li>Click <strong>Close duplicates</strong>.
+    ${screenshot('duplicates-02-close-duplicates.png', 'The TabTools popup shows 8 open tabs, with the pointer on Close duplicates.', 'Click Close duplicates to remove repeated copies.')}
+  </li>
+  <li>Check the popup’s status message. It reports how many duplicates closed, or <strong>No duplicates</strong> when none matched.
+    ${screenshot('duplicates-03-result-and-undo.png', 'TabTools reports Closed 2 duplicates, shows 6 open tabs, and offers an enabled Undo button.', 'Two duplicate copies close, leaving six tabs. Keep the popup open if you want to use Undo.')}
+  </li>
 </ol>
 <p>You do not need to select the repeated tabs first. The cleanup covers normal windows within that browser, so two copies of a page can be matched even when they are in different windows. Private or incognito tabs are excluded.</p>
 <p>Running the command in Chrome does not change Edge tabs, or vice versa. Use it separately in each browser if you have duplicates in both.</p>`,
@@ -166,12 +186,16 @@ module.exports = [
       {
         id: "sort-with-tabtools",
         title: "Sort the tabs in your current window",
-        html: `<p>The same popup action is available in Chrome, Firefox and Microsoft Edge.</p>
+        html: `<p>The same popup action is available in Chrome, Firefox and Microsoft Edge. This Chrome example starts with six tabs mixed between YouTube, Wikipedia and Google.</p>
 <ol>
   <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
-  <li>Switch to the browser window whose tabs you want to arrange.</li>
+  <li>Switch to the browser window whose tabs you want to arrange.
+    ${screenshot('sort-01-before.png', 'Chrome with three YouTube tabs, two Wikipedia tabs, and Google interleaved in the tab bar.', 'Before sorting: six tabs from three websites are mixed together.')}
+  </li>
   <li>Open TabTools from the toolbar or extensions menu.</li>
-  <li>Click <strong>Sort tabs</strong>.</li>
+  <li>Click <strong>Sort tabs</strong>.
+    ${screenshot('sort-02-sort-tabs.png', 'The TabTools popup in Chrome with the pointer on Sort tabs.', 'Click Sort tabs to bring pages from each website together.')}
+  </li>
 </ol>
 <p>Related unpinned tabs move beside one another. Pages stay open, and tabs in other windows are not brought into this window. If you want to organise another window, switch to it and run the command again.</p>
 <p>Sorting is a one-time action. New tabs open normally afterwards; TabTools does not continuously rearrange the tab bar as you browse. Click <strong>Sort tabs</strong> again when you want to tidy the current arrangement.</p>`,
@@ -183,13 +207,14 @@ module.exports = [
 <table>
   <thead><tr><th scope="col">Website</th><th scope="col">Open tabs</th><th scope="col">Position after sorting</th></tr></thead>
   <tbody>
-    <tr><td><code>youtube.com</code></td><td>5</td><td>First</td></tr>
-    <tr><td><code>github.com</code></td><td>3</td><td>Second</td></tr>
-    <tr><td><code>example.com</code></td><td>1</td><td>Third</td></tr>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>First</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>Second</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>Third</td></tr>
   </tbody>
 </table>
+${screenshot('sort-03-after.png', 'Chrome after sorting: three YouTube tabs, then two Wikipedia tabs, then Google; TabTools reports Reordered 6 tabs.', 'After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open.')}
 <p>“Most opened” means the largest number of tabs open right now. It does not mean your most visited website, browsing history or the number of times you have opened a site over the past week.</p>
-<p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, three GitHub pages retain their order within the GitHub set; they are not sorted by page title.</p>`,
+<p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, the three YouTube pages retain their order within the YouTube set; they are not sorted by page title.</p>`,
       },
       {
         id: "pinned-tabs-and-subdomains",

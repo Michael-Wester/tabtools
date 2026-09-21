@@ -122,7 +122,7 @@
   </tbody>
 </table>
 <p>Before a bulk cleanup, finish any unsaved work in repeated pages. Two tabs can show the same URL while holding different text you have entered into a form.</p></section>
-<section id="what-counts-as-a-duplicate"><h2>What counts as a duplicate tab?</h2><p>Duplicate tabs are repeated copies of a page. Three copies of one YouTube video are duplicates; three different YouTube videos are different pages from the same website.</p>
+<section id="what-counts-as-a-duplicate"><h2>What counts as a duplicate tab?</h2><p>Duplicate tabs are repeated copies of a page. Three copies of the YouTube homepage are duplicates; the homepage and two different YouTube search results are different pages from the same website.</p>
 <p>TabTools compares page URLs after removing the fragment: the part beginning with <code>#</code>. Paths and query parameters remain part of the comparison.</p>
 <table>
   <thead><tr><th scope="col">Example URLs</th><th scope="col">TabTools treatment</th></tr></thead>
@@ -138,12 +138,36 @@
     <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-duplicate-tabs" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" />Add to Chrome</a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-duplicate-tabs" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" />Add to Firefox</a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-duplicate-tabs" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" />Add to Edge</a></div>
     <p class="mobile-note" data-mobile-note hidden>Open this page on your computer to add TabTools.</p>
   </aside>
-<section id="chrome-and-edge"><h2>Close duplicate tabs in Chrome or Edge</h2><p>The TabTools popup uses the same command in both browsers.</p>
+<section id="chrome-and-edge"><h2>Close duplicate tabs in Chrome or Edge</h2><p>The TabTools popup uses the same command in both browsers. These screenshots show Chrome with eight tabs, including three copies of the YouTube homepage.</p>
 <ol>
   <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>.</li>
-  <li>Open the extension from the toolbar or extensions menu.</li>
-  <li>Click <strong>Close duplicates</strong>.</li>
-  <li>Check the popup’s status message. It reports how many duplicates closed, or <strong>No duplicates</strong> when none matched.</li>
+  <li>Open the extension from the toolbar or extensions menu.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-01-open-tabtools.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-01-open-tabtools.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome with eight tabs, including three copies of the YouTube homepage, and the pointer on the TabTools toolbar icon." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Open TabTools from Chrome’s toolbar.</figcaption>
+</figure>
+  </li>
+  <li>Click <strong>Close duplicates</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-02-close-duplicates.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-02-close-duplicates.png" width="1280" height="800" loading="lazy" decoding="async" alt="The TabTools popup shows 8 open tabs, with the pointer on Close duplicates." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Click Close duplicates to remove repeated copies.</figcaption>
+</figure>
+  </li>
+  <li>Check the popup’s status message. It reports how many duplicates closed, or <strong>No duplicates</strong> when none matched.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-03-result-and-undo.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-03-result-and-undo.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools reports Closed 2 duplicates, shows 6 open tabs, and offers an enabled Undo button." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Two duplicate copies close, leaving six tabs. Keep the popup open if you want to use Undo.</figcaption>
+</figure>
+  </li>
 </ol>
 <p>You do not need to select the repeated tabs first. The cleanup covers normal windows within that browser, so two copies of a page can be matched even when they are in different windows. Private or incognito tabs are excluded.</p>
 <p>Running the command in Chrome does not change Edge tabs, or vice versa. Use it separately in each browser if you have duplicates in both.</p></section>

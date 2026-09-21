@@ -113,12 +113,28 @@
       <p class="guide-byline">By <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creator of TabTools <span aria-hidden="true">·</span> 4 min read <span aria-hidden="true">·</span> Updated <time datetime="2026-09-21">21 September 2026</time></p></div>
       <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="On this page"><p class="eyebrow">On this page</p><ol><li><a href="#sort-with-tabtools">Sort the tabs in your current window</a></li><li><a href="#how-the-order-works">How TabTools chooses the order</a></li><li><a href="#pinned-tabs-and-subdomains">Pinned tabs and subdomains</a></li><li><a href="#sorting-or-tab-groups">Choose between sorting and tab groups</a></li><li><a href="#native-browser-options">Organise tabs without an extension</a></li><li><a href="#after-sorting">What to do after sorting</a></li></ol></nav><a class="guide-back" href="/guides/">← All guides</a></aside>
       <article class="guide-article" aria-label="How to Sort Tabs by Website in Chrome, Firefox and Edge"><div class="guide-answer"><p class="eyebrow">Quick answer</p><p>Open TabTools in the window you want to organise and click Sort tabs. It arranges unpinned tabs by website, putting sites with the most currently open tabs first. Pinned tabs stay in place.</p></div>
-      <section id="sort-with-tabtools"><h2>Sort the tabs in your current window</h2><p>The same popup action is available in Chrome, Firefox and Microsoft Edge.</p>
+      <section id="sort-with-tabtools"><h2>Sort the tabs in your current window</h2><p>The same popup action is available in Chrome, Firefox and Microsoft Edge. This Chrome example starts with six tabs mixed between YouTube, Wikipedia and Google.</p>
 <ol>
   <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
-  <li>Switch to the browser window whose tabs you want to arrange.</li>
+  <li>Switch to the browser window whose tabs you want to arrange.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome with three YouTube tabs, two Wikipedia tabs, and Google interleaved in the tab bar." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Before sorting: six tabs from three websites are mixed together.</figcaption>
+</figure>
+  </li>
   <li>Open TabTools from the toolbar or extensions menu.</li>
-  <li>Click <strong>Sort tabs</strong>.</li>
+  <li>Click <strong>Sort tabs</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="The TabTools popup in Chrome with the pointer on Sort tabs." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Click Sort tabs to bring pages from each website together.</figcaption>
+</figure>
+  </li>
 </ol>
 <p>Related unpinned tabs move beside one another. Pages stay open, and tabs in other windows are not brought into this window. If you want to organise another window, switch to it and run the command again.</p>
 <p>Sorting is a one-time action. New tabs open normally afterwards; TabTools does not continuously rearrange the tab bar as you browse. Click <strong>Sort tabs</strong> again when you want to tidy the current arrangement.</p></section>
@@ -126,13 +142,20 @@
 <table>
   <thead><tr><th scope="col">Website</th><th scope="col">Open tabs</th><th scope="col">Position after sorting</th></tr></thead>
   <tbody>
-    <tr><td><code>youtube.com</code></td><td>5</td><td>First</td></tr>
-    <tr><td><code>github.com</code></td><td>3</td><td>Second</td></tr>
-    <tr><td><code>example.com</code></td><td>1</td><td>Third</td></tr>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>First</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>Second</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>Third</td></tr>
   </tbody>
 </table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome after sorting: three YouTube tabs, then two Wikipedia tabs, then Google; TabTools reports Reordered 6 tabs." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open.</figcaption>
+</figure>
 <p>“Most opened” means the largest number of tabs open right now. It does not mean your most visited website, browsing history or the number of times you have opened a site over the past week.</p>
-<p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, three GitHub pages retain their order within the GitHub set; they are not sorted by page title.</p></section><aside class="guide-install" aria-label="Get TabTools">
+<p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, the three YouTube pages retain their order within the YouTube set; they are not sorted by page title.</p></section><aside class="guide-install" aria-label="Get TabTools">
     <div><p class="eyebrow">Free browser extension</p><h2>Put it into practice.</h2><p>Close tabs by site, remove duplicates and sort what stays.</p></div>
     <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" />Add to Chrome</a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" />Add to Firefox</a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" />Add to Edge</a></div>
     <p class="mobile-note" data-mobile-note hidden>Open this page on your computer to add TabTools.</p>

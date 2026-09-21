@@ -16,6 +16,12 @@ sitemap, reusing the homepage's header, footer and early theme bootstrap.
 Layout styles live in `dist/guides.css`. The generated HTML is committed so the
 deployment remains a static upload and all articles work without JavaScript.
 
+The ten Chrome screenshots live in `dist/assets/guides/` and are inserted with
+the `screenshot()` helper in `guides-content.cjs`. Keep the original 1280 × 800
+PNGs, descriptive alt text and captions aligned with each example. Images scale
+to the article width, reserve their aspect ratio, load lazily and link to the
+full-size PNG. Capture details are in `dist/assets/guides/README.md`.
+
 After editing article content, its template, or the homepage navigation/footer:
 
 ```sh
