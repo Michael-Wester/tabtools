@@ -3,6 +3,9 @@
 Branch: `feat/website-guides`, based on main `f5754a14b63ece94308ee29415757748eae394e0`.
 Independent of localisation PR #17. No extension code changes.
 
+PR: https://github.com/Michael-Wester/tabtools/pull/19
+Preview: https://pr-19.tabtools-website.pages.dev/guides/
+
 ## Completed
 
 - Wrote three original guides covering site closing, duplicate cleanup and sorting.
@@ -26,7 +29,16 @@ Independent of localisation PR #17. No extension code changes.
   store links, including metadata, JSON-LD, navigation and sitemap coverage.
 - Responsive CSS review led to an explicit second navigation row on tablets and
   a narrower install button on small phones. Actual mobile browser review is not
-  claimed. A live desktop PR preview review is in progress.
+  claimed.
+- GitHub validation and preview deployment passed in workflow run `35558168286`.
+- Live Chrome review at 1348px covered the Guides index and all three articles,
+  light/dark switching and theme persistence between pages, related links,
+  table rendering, loaded icons and no desktop horizontal overflow. The tested
+  contents link settled below the sticky header (96px versus header bottom 73px).
+  Browser logs showed injected browser-extension metadata errors; no website-source
+  error was observed in the inspected log entries.
+- Visual review found and fixed extra spacing in the author byline. Final CSS
+  polish requires the same preview deployment checks; no article logic changed.
 - Chromium could not be downloaded in this container (CDN timeouts and a 502).
   Local installed-extension screenshot and browser checks are not claimed.
 - No new screenshots are presented as installed-extension evidence. The guides use
