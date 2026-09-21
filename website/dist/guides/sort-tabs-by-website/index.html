@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>How to Sort Tabs by Website in Chrome, Firefox and Edge | TabTools</title>
+    <meta name="description" content="Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options." />
+    <link rel="canonical" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="How to Sort Tabs by Website in Chrome, Firefox and Edge" />
+    <meta property="og:description" content="Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options." />
+    <meta property="og:url" content="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="How to Sort Tabs by Website in Chrome, Firefox and Edge" />
+    <meta name="twitter:description" content="Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Sort Tabs by Website in Chrome, Firefox and Edge",
+      "description": "Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options.",
+      "url": "https://tabtools.fyi/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/guides/sort-tabs-by-website/",
+      "inLanguage": "en",
+      "dateModified": "2026-09-21",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tabtools.fyi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://tabtools.fyi/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sort tabs by website",
+          "item": "https://tabtools.fyi/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/#top" aria-label="TabTools home">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/#features">Features</a>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/guides/" aria-current="page">Guides</a>
+          <a href="/#privacy">Privacy</a>
+          <a href="/#faq">FAQ</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Dark mode</span>
+          </button>
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy"><span class="browser-button-prefix">Add to</span> <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Sort tabs</span></nav>
+      <p class="eyebrow">Sort tabs · Desktop browsers</p><h1>How to Sort Tabs by Website in Chrome, Firefox and Edge</h1><p class="guides-lede">When your tab bar mixes documents, videos and research pages, finding the next tab takes longer than it should. Sorting brings pages from the same website together while keeping them open.</p>
+      <p class="guide-byline">By <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creator of TabTools <span aria-hidden="true">·</span> 4 min read <span aria-hidden="true">·</span> Updated <time datetime="2026-09-21">21 September 2026</time></p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="On this page"><p class="eyebrow">On this page</p><ol><li><a href="#sort-with-tabtools">Sort the tabs in your current window</a></li><li><a href="#how-the-order-works">How TabTools chooses the order</a></li><li><a href="#pinned-tabs-and-subdomains">Pinned tabs and subdomains</a></li><li><a href="#sorting-or-tab-groups">Choose between sorting and tab groups</a></li><li><a href="#native-browser-options">Organise tabs without an extension</a></li><li><a href="#after-sorting">What to do after sorting</a></li></ol></nav><a class="guide-back" href="/guides/">← All guides</a></aside>
+      <article class="guide-article" aria-label="How to Sort Tabs by Website in Chrome, Firefox and Edge"><div class="guide-answer"><p class="eyebrow">Quick answer</p><p>Open TabTools in the window you want to organise and click Sort tabs. It arranges unpinned tabs by website, putting sites with the most currently open tabs first. Pinned tabs stay in place.</p></div>
+      <section id="sort-with-tabtools"><h2>Sort the tabs in your current window</h2><p>The same popup action is available in Chrome, Firefox and Microsoft Edge. This Chrome example starts with six tabs mixed between YouTube, Wikipedia and Google.</p>
+<ol>
+  <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
+  <li>Switch to the browser window whose tabs you want to arrange.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome with three YouTube tabs, two Wikipedia tabs, and Google interleaved in the tab bar." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Before sorting: six tabs from three websites are mixed together.</figcaption>
+</figure>
+  </li>
+  <li>Open TabTools from the toolbar or extensions menu.</li>
+  <li>Click <strong>Sort tabs</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="The TabTools popup in Chrome with the pointer on Sort tabs." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>Click Sort tabs to bring pages from each website together.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>Related unpinned tabs move beside one another. Pages stay open, and tabs in other windows are not brought into this window. If you want to organise another window, switch to it and run the command again.</p>
+<p>Sorting is a one-time action. New tabs open normally afterwards; TabTools does not continuously rearrange the tab bar as you browse. Click <strong>Sort tabs</strong> again when you want to tidy the current arrangement.</p></section>
+<section id="how-the-order-works"><h2>How TabTools chooses the order</h2><p>TabTools counts the open tabs for each website in the current window. Sites with larger counts come first, immediately after pinned tabs. Here is a simple example with no pinned tabs:</p>
+<table>
+  <thead><tr><th scope="col">Website</th><th scope="col">Open tabs</th><th scope="col">Position after sorting</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>First</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>Second</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>Third</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome after sorting: three YouTube tabs, then two Wikipedia tabs, then Google; TabTools reports Reordered 6 tabs." />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open.</figcaption>
+</figure>
+<p>“Most opened” means the largest number of tabs open right now. It does not mean your most visited website, browsing history or the number of times you have opened a site over the past week.</p>
+<p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, the three YouTube pages retain their order within the YouTube set; they are not sorted by page title.</p></section><aside class="guide-install" aria-label="Get TabTools">
+    <div><p class="eyebrow">Free browser extension</p><h2>Put it into practice.</h2><p>Close tabs by site, remove duplicates and sort what stays.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" />Add to Chrome</a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" />Add to Firefox</a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" />Add to Edge</a></div>
+    <p class="mobile-note" data-mobile-note hidden>Open this page on your computer to add TabTools.</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>Pinned tabs and subdomains</h2><p>Pinned tabs stay in their pinned positions. They still contribute to a website’s count when TabTools decides the order of its unpinned tabs.</p>
+<p>For example, two pinned GitHub tabs and two unpinned GitHub tabs give GitHub a count of four. Its unpinned tabs therefore come ahead of a website with three open tabs, while the two pinned GitHub tabs remain where they are.</p>
+<p>Website matching uses the hostname and ignores a leading <code>www.</code>. Pages on <code>example.com</code> and <code>www.example.com</code> belong together. Pages on <code>docs.example.com</code> form a separate set from <code>shop.example.com</code>.</p>
+<p>This is useful when different services share a parent domain: documentation and a shop can remain separate in the sorted tab bar.</p></section>
+<section id="sorting-or-tab-groups"><h2>Choose between sorting and tab groups</h2><p>Sorting is useful when the website itself is the organising rule. Browser tab groups are useful when your organising rule is a task, such as a holiday, a work project or a purchase that involves several websites.</p>
+<table>
+  <thead><tr><th scope="col">Your goal</th><th scope="col">A suitable option</th></tr></thead>
+  <tbody>
+    <tr><td>Put pages from each website beside one another</td><td>TabTools <strong>Sort tabs</strong></td></tr>
+    <tr><td>Choose the exact order of a few tabs</td><td>Drag tabs manually</td></tr>
+    <tr><td>Keep a project’s different websites together under a name</td><td>Your browser’s named tab groups</td></tr>
+  </tbody>
+</table>
+<p>TabTools rearranges tabs; it does not create named or coloured browser groups. If you have deliberately arranged tabs by project, consider whether sorting by website suits that window before changing the order.</p></section>
+<section id="native-browser-options"><h2>Organise tabs without an extension</h2><h3>Chrome</h3>
+<p>Drag tabs along the tab bar to set their order manually. You can also use named tab groups when related work spans several websites. Google’s <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">Chrome tabs guide</a> covers arranging and grouping tabs.</p>
+<h3>Firefox</h3>
+<p>Use the tab bar to move individual tabs, or use the grouping options in Firefox’s tab context menu for a named collection. Mozilla’s <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">tab context menu guide</a> describes the available tab actions.</p>
+<h3>Microsoft Edge</h3>
+<p>Edge offers named tab groups and an <strong>Organize tabs</strong> feature that can group related tabs. Availability can vary. These organise by your chosen groups or relevance, which differs from sorting by current website counts. Microsoft explains them in its <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">Edge tab groups guide</a>.</p></section>
+<section id="after-sorting"><h2>What to do after sorting</h2><p>TabTools has no undo action for sorting. The popup’s <strong>Undo</strong> button is for its latest tab-closing action, not the previous tab order. If you want a different arrangement after sorting, drag the tabs into place.</p>
+<p>Sorting also keeps repeated copies of pages. If that makes the largest sets unnecessarily long, <a href="/guides/close-duplicate-tabs/">close duplicate tabs</a> and sort again using the remaining counts.</p>
+<p>When you finish with an entire website, use <a href="/guides/close-tabs-from-same-website/">Close site tabs</a> to remove its pages. Sorting is the option for the tabs you still need: it makes them easier to find without deciding which pages to close.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Related guides"><p class="eyebrow">Keep going</p><h2>More ways to organise your tabs.</h2><div class="guide-cards"><a class="guide-card" href="/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Close site tabs</span></div>
+    <h2>Close tabs from the same website</h2><p>Close tabs from the same website in Chrome with TabTools, use a manual alternative, and follow the steps for Firefox and Edge.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Remove duplicates</span></div>
+    <h2>Close duplicate tabs</h2><p>Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/#top" aria-label="TabTools home"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Close tabs by site, sort your tab bar, and clear duplicates.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Product</span><a href="/#features">Features</a><a href="/#how-it-works">How it works</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
+          <div><span class="footer-label">Try it</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">More</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Free and open source.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

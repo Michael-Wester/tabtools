@@ -4,8 +4,40 @@ Promotional landing page for the TabTools browser extension. The deployable
 static site lives in `dist/` so it can be hosted by ChatGPT Sites or another
 static host.
 
-The page is intentionally dependency-free. Edit the files in `dist/`, then
-serve that directory with any static web server for local review.
+The site is intentionally dependency-free. Edit the homepage and shared assets
+in `dist/`, then serve that directory with any static web server for local review.
+
+## Guides
+
+`/guides/` lists three English guides: closing tabs from the same website,
+removing duplicates, and sorting tabs by website. Article content lives in
+`guides-content.cjs`; `build-guides.cjs` generates the index, article pages and
+sitemap, reusing the homepage's header, footer and early theme bootstrap.
+Layout styles live in `dist/guides.css`. The generated HTML is committed so the
+deployment remains a static upload and all articles work without JavaScript.
+
+The ten Chrome screenshots live in `dist/assets/guides/` and are inserted with
+the `screenshot()` helper in `guides-content.cjs`. Keep the original 1280 × 800
+PNGs, descriptive alt text and captions aligned with each example. Images scale
+to the article width, reserve their aspect ratio, load lazily and link to the
+full-size PNG. Capture details are in `dist/assets/guides/README.md`.
+
+After editing article content, its template, or the homepage navigation/footer:
+
+```sh
+node website/build-guides.cjs
+node website/build-guides.cjs --check
+node website/check-guides.cjs
+node website/check-security.cjs
+```
+
+Run these commands from the repository root. The deploy workflow rejects stale
+generated pages, broken internal links, missing assets and invalid security
+policy. Keep the article review date in `build-guides.cjs` aligned with a real
+content review. Review the extension's behaviour when its cleanup/sorting rules
+change; the guides describe main, independently of the pending localisation PR.
+Store links use placement-specific attribution, including `guide_inline` and
+`guide_<slug>`. No analytics service or extra browser permissions are added.
 
 ## Browser buttons
 

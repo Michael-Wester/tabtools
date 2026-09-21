@@ -37,7 +37,7 @@
         const browserName = link.querySelector('[data-browser-name]');
         if (browserName) browserName.textContent = browserNames[key];
         const browserIcon = link.querySelector('[data-browser-icon]');
-        if (browserIcon) browserIcon.src = 'assets/browsers/' + key + '.svg';
+        if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
         const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
         link.setAttribute('aria-label', visibleLabel + ' — opens the ' + browserLabel(key) + ' in a new tab');
       }
