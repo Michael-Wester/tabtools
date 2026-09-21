@@ -42,8 +42,8 @@ assert.equal(headers.get('x-frame-options'), 'DENY', 'X-Frame-Options must be DE
 assert.equal(headers.get('x-content-type-options'), 'nosniff', 'X-Content-Type-Options must be nosniff');
 assert.equal(headers.get('referrer-policy'), 'strict-origin-when-cross-origin', 'Keep the YouTube-compatible referrer policy');
 const hsts = headers.get('strict-transport-security') || '';
-assert(/(?:^|;\s*)max-age=\d+(?:;|$)/.test(hsts) && Number(hsts.match(/max-age=(\d+)/)[1]) >= 86400,
-  'HSTS must have max-age of at least 86400 seconds');
+assert(/(?:^|;\s*)max-age=\d+(?:;|$)/.test(hsts) && Number(hsts.match(/max-age=(\d+)/)[1]) >= 31536000,
+  'HSTS must have max-age of at least 31536000 seconds');
 for (const feature of ['camera', 'microphone', 'geolocation']) {
   assert(new RegExp(`(?:^|,\\s*)${feature}=\\(\\)`).test(headers.get('permissions-policy') || ''),
     `Permissions-Policy must disable ${feature}`);
