@@ -6,11 +6,17 @@ on:
     paths:
       - 'website/dist/**'
       - 'website/check-security.cjs'
+      - 'website/build-guides.cjs'
+      - 'website/guides-content.cjs'
+      - 'website/check-guides.cjs'
       - '.github/workflows/website-deploy.yml'
   pull_request:
     paths:
       - 'website/dist/**'
       - 'website/check-security.cjs'
+      - 'website/build-guides.cjs'
+      - 'website/guides-content.cjs'
+      - 'website/check-guides.cjs'
       - '.github/workflows/website-deploy.yml'
   workflow_dispatch:
 
@@ -42,6 +48,10 @@ jobs:
           fi
       - name: Validate JavaScript
         run: node --check website/dist/script.js
+      - name: Validate generated guides and navigation
+        run: |
+          node website/build-guides.cjs --check
+          node website/check-guides.cjs
       - name: Validate website security policy
         run: node website/check-security.cjs
       - name: Select deployment target
