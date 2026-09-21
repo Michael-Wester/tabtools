@@ -25,7 +25,7 @@
 .guide-masthead { padding-top: 30px; padding-bottom: 38px; border-bottom: 1px solid var(--line); }
 .breadcrumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; color: var(--ink-faint); font-size: 13px; }
 .breadcrumbs a:hover, .guide-byline a:hover { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; }
-.guide-byline { display: flex; flex-wrap: wrap; column-gap: 5px; margin: 24px 0 0; color: var(--ink-faint); font-size: 13px; line-height: 1.7; }
+.guide-byline { margin: 24px 0 0; color: var(--ink-faint); font-size: 13px; line-height: 1.7; }
 .guide-byline > span { margin-inline: 4px; }
 .guide-layout { display: grid; grid-template-columns: 245px minmax(0, 760px); justify-content: space-between; gap: 60px; padding-top: 42px; padding-bottom: 65px; }
 .guide-sidebar { align-self: start; position: sticky; top: 108px; }
