@@ -53,7 +53,7 @@ hosting settings, verification requirements, and future deployment instructions.
 ## Security headers
 
 Cloudflare Pages reads `dist/_headers` to restrict resource loading, prevent
-framing, and enable a one-day, host-only HSTS policy. The YouTube demo and
+framing, and enable a one-year, host-only HSTS policy. The YouTube demo and
 same-origin Cloudflare email decoder remain allowed. Camera, microphone and
 geolocation access are disabled. No `unsafe-inline` or `unsafe-eval` is allowed.
 
