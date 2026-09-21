@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tabtools.fyi/</loc>
-  </url>
+  <url><loc>https://tabtools.fyi/</loc></url>
+  <url><loc>https://tabtools.fyi/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/guides/sort-tabs-by-website/</loc></url>
 </urlset>
