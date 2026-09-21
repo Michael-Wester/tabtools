@@ -24,7 +24,7 @@ No intrusive probes or third-party scanner submissions were made.
 | --- | --- | --- |
 | No Content-Security-Policy | Missing defence against injected scripts/resources; no exploitable injection found | Enforced CSP allows local assets, the exact inline theme script and the YouTube privacy-enhanced frame; blocks arbitrary inline/eval code, objects, base URLs, forms and parent-page network connections |
 | No framing protection | Low impact for this unauthenticated promotional page; possible misleading embedding | `frame-ancestors 'none'` and `X-Frame-Options: DENY` |
-| No HSTS | HTTP correctly redirects, but browsers did not retain an HTTPS requirement | Host-only `max-age=86400`; no subdomain commitment or preload |
+| No HSTS | HTTP correctly redirects, but browsers did not retain an HTTPS requirement | Host-only `max-age=31536000`; no subdomain commitment or preload |
 | No explicit sensitive-feature restriction | Low-risk hardening | Deny camera, microphone and geolocation through Permissions-Policy |
 | Mutable deployment action tags | Supply-chain hardening opportunity | Pin checkout v6 and Wrangler action v3 to their verified upstream commit SHAs |
 | Future HTML edits could invalidate CSP hashes | Availability/maintenance risk introduced by an enforced policy | Dependency-free pre-deployment check validates the policy and executable inline scripts across all HTML pages |
@@ -58,11 +58,11 @@ added to the parent page. The current inline-script bytes match production.
    checks before merge, restrict force pushes/deletion and decide suitable
    reviewer/bypass rules for a solo-maintained project. These settings change
    the release process and were not modified.
-3. **Extend HSTS only after a successful rollout.** Start with the committed
-   one-day host-only policy, then consider a longer duration once HTTPS and
-   renewal are established. Inventory all subdomains before considering
-   `includeSubDomains` or preload. Preload is optional, not a prerequisite
-   for resolving this finding. It creates a much longer-lived commitment.
+3. **Subdomain coverage and preload remain separate decisions.** The owner
+   approved a one-year host-only policy on 21 September 2026. Inventory all
+   subdomains before considering `includeSubDomains` or preload. Preload is
+   optional, not a prerequisite for resolving this finding, and requires
+   separate review. Keep HTTPS and certificate renewal operational.
 
 No website framework, server, paid security service or hosting migration is
 needed to apply the minor fixes. Loading the YouTube player only after a click
@@ -98,7 +98,7 @@ For a CSP compatibility problem, restore a reviewed `_headers` policy through
 the normal release process. Keep unrelated protections. HSTS is cached by
 browsers: removing its header does not immediately undo it. To disable HSTS,
 serve `Strict-Transport-Security: max-age=0` over working HTTPS; clients must
-receive that response or let their previously cached one-day policy expire.
+receive that response or let their previously cached one-year policy expire.
 Keep HTTPS available during the rollback.
 
 ## References
