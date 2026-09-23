@@ -13,6 +13,7 @@
         --card: #0f1420;
         --border: #1f2937;
         --accent: #a78bfa;
+        --on-accent: #0b0f16;
         --accent-soft: rgba(167, 139, 250, 0.12);
         --accent-glow: rgba(167, 139, 250, 0.2);
       }
@@ -24,6 +25,7 @@
           --card: #f7f7f8;
           --border: #e5e7eb;
           --accent: #7c3aed;
+          --on-accent: #fff;
           --accent-soft: rgba(124, 58, 237, 0.12);
           --accent-glow: rgba(124, 58, 237, 0.2);
         }
@@ -35,6 +37,7 @@
         --card: #f7f7f8;
         --border: #e5e7eb;
         --accent: #7c3aed;
+        --on-accent: #fff;
         --accent-soft: rgba(124, 58, 237, 0.12);
         --accent-glow: rgba(124, 58, 237, 0.2);
       }
@@ -45,6 +48,7 @@
         --card: #0f1420;
         --border: #1f2937;
         --accent: #a78bfa;
+        --on-accent: #0b0f16;
         --accent-soft: rgba(167, 139, 250, 0.12);
         --accent-glow: rgba(167, 139, 250, 0.2);
       }
@@ -131,7 +135,7 @@
       }
       .btn.primary {
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         border-color: transparent;
       }
       .btn.settings-toggle {
@@ -143,12 +147,8 @@
       }
       .btn.settings-toggle.active {
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         border-color: transparent;
-      }
-      .btn:disabled {
-        opacity: 0.5;
-        cursor: default;
       }
       .btn:hover:not(:disabled) {
         transform: translateY(-1px);
@@ -246,7 +246,7 @@
         border-color: var(--border);
         background: rgba(255, 255, 255, 0.02);
       }
-      .btn.ghost:hover {
+      .btn.ghost:hover:not(:disabled) {
         border-color: var(--accent);
       }
       .tab-panel {
@@ -339,11 +339,11 @@
       }
       .theme-option.active {
         background: var(--accent);
-        color: #fff;
+        color: var(--on-accent);
         border-color: var(--accent);
         box-shadow: none;
       }
-      .theme-option:not(.active):hover {
+      .theme-option:not(.active):hover:not(:disabled) {
         border-color: var(--accent);
         color: var(--fg);
         background: rgba(167, 139, 250, 0.12);
@@ -525,6 +525,18 @@
         border-color: transparent;
         background: #ef4444;
         color: #fff;
+      }
+      /* Neutral colours keep disabled labels readable without implying an action. */
+      .btn:disabled,
+      .btn.active:disabled,
+      .btn.bordered:disabled {
+        background: var(--card);
+        color: var(--muted);
+        border-color: var(--border);
+        opacity: 1;
+        box-shadow: none;
+        transform: none;
+        cursor: default;
       }
       .stats {
         margin-top: 12px;
