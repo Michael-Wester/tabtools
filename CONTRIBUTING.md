@@ -55,8 +55,47 @@ Open `edge://extensions`, enable **Developer mode**, select
 
 ### Firefox
 
-Open `about:debugging#/runtime/this-firefox`, select
-**Load Temporary Add-on**, and choose `dist/firefox/manifest.json`.
+Use a separate Firefox test profile with disposable tabs. Closing tabs by site
+affects matching tabs across normal windows in that profile, not just the
+current window.
+
+1. From the repository root, run `node build.js firefox` or
+   `.\build.ps1 -Targets firefox` to build the Firefox package.
+2. Open `about:debugging#/runtime/this-firefox`, select
+   **Load Temporary Add-on**, and choose `dist/firefox/manifest.json`.
+   Use the generated manifest, not `src/overrides/firefox/manifest.json`:
+   the generated directory also contains the shared scripts, popup and icons.
+3. Open TabTools from Firefox's toolbar or extensions menu and run the short
+   smoke check below.
+
+#### Quick smoke check
+
+- Open two tabs at `https://example.com/` and one at `https://example.org/`.
+  Keep them unpinned and ensure no other tabs in the test profile use those
+  sites. Leave `example.org` active, then open TabTools, enter `example.com`
+  and select **Close**. Both matching
+  tabs should close, the `example.org` tab should remain, and the popup should
+  report **Closed 2**.
+- While that same popup remains open, select **Undo** and check that both test
+  tabs reopen. The current main-branch build keeps this Undo batch only for the
+  lifetime of the popup; do not expect it to survive closing and reopening it.
+- Open **Settings**, switch between **Light** and **Dark**, and check that the
+  labels are readable and keyboard focus is visible. Close and reopen the popup
+  to confirm the selected theme is retained.
+
+#### Rebuild, reload and debug
+
+After editing files in `src`, rerun the build command, then select **Reload**
+beside TabTools in `about:debugging#/runtime/this-firefox` and reopen the popup.
+Reloading alone does not copy source changes into `dist`; do not edit generated
+files there. For debugging, use **Inspect** beside TabTools and record the
+Firefox version, source commit, reproduction steps and relevant console errors.
+
+Temporary add-ons are removed when Firefox restarts; load the generated manifest
+again to resume testing. See Mozilla's
+[temporary-installation guide](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/)
+for installation and reload details. This smoke check is a starting point, not
+a substitute for testing the changed behaviour in every affected browser.
 
 ## Making changes
 
