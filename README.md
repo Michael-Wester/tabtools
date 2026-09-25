@@ -4,9 +4,9 @@ Clear your tab list quickly with site suggestions, inactive tab cleanup, duplica
 
 [![TabTools popup showing site suggestions, inactive tab cleanup, sorting, duplicate removal, and Undo](docs/images/tabtools-overview.png)](https://tabtools.fyi/)
 
-[Chrome](https://tabtools.fyi/chrome) |
-[Firefox](https://tabtools.fyi/firefox) |
-[Microsoft Edge](https://tabtools.fyi/edge)
+[![Add to Chrome](docs/images/add-to-chrome.svg)](https://tabtools.fyi/chrome)
+[![Add to Firefox](docs/images/add-to-firefox.svg)](https://tabtools.fyi/firefox)
+[![Add to Edge](docs/images/add-to-edge.svg)](https://tabtools.fyi/edge)
 
 ## Highlights
 
