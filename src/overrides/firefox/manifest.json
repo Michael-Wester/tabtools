@@ -4,7 +4,7 @@
   "version": "4.0.2",
   "description": "Close tabs from the same website, sort tabs by site and remove duplicates to keep your browser organised.",
   "author": "Michael Wester",
-  "homepage_url": "https://github.com/Michael-Wester/tabtools",
+  "homepage_url": "https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/",
   "permissions": ["tabs", "storage", "contextMenus"],
   "background": { "scripts": ["background.js", "background.suggestions.js"] },
   "browser_action": {
