@@ -4,9 +4,9 @@ Clear your tab list quickly with site suggestions, inactive tab cleanup, duplica
 
 [![TabTools popup showing site suggestions, inactive tab cleanup, sorting, duplicate removal, and Undo](docs/images/tabtools-overview.png)](https://tabtools.fyi/)
 
-[![Add to Chrome](https://img.shields.io/badge/Add%20to%20Chrome-4285F4?style=for-the-badge)](https://tabtools.fyi/chrome)
-[![Add to Firefox](https://img.shields.io/badge/Add%20to%20Firefox-FF7139?style=for-the-badge)](https://tabtools.fyi/firefox)
-[![Add to Edge](https://img.shields.io/badge/Add%20to%20Edge-0078D7?style=for-the-badge)](https://tabtools.fyi/edge)
+[![Add to Chrome](docs/images/add-to-chrome.svg)](https://tabtools.fyi/chrome)
+[![Add to Firefox](docs/images/add-to-firefox.svg)](https://tabtools.fyi/firefox)
+[![Add to Edge](docs/images/add-to-edge.svg)](https://tabtools.fyi/edge)
 
 ## Highlights
 
