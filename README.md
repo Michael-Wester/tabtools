@@ -2,11 +2,11 @@
 
 Clear your tab list quickly with site suggestions, inactive tab cleanup, duplicate removal, and sorting.
 
-[<img width="640" height="400" alt="TabTools-Too-Many-Tabs-1280x800" src="https://github.com/user-attachments/assets/5013720b-eca8-42a1-bbe7-3032f754adf1" />](https://tabtools.michaelwester.com)
+[![TabTools popup showing site suggestions, inactive tab cleanup, sorting, duplicate removal, and Undo](docs/images/tabtools-overview.png)](https://tabtools.fyi/)
 
-[Chrome](https://tabtools.michaelwester.com/chrome) |
-[Firefox](https://tabtools.michaelwester.com/firefox) |
-[Microsoft Edge](https://tabtools.michaelwester.com/edge) 
+[Chrome](https://tabtools.fyi/chrome) |
+[Firefox](https://tabtools.fyi/firefox) |
+[Microsoft Edge](https://tabtools.fyi/edge)
 
 ## Highlights
 
@@ -14,6 +14,20 @@ Clear your tab list quickly with site suggestions, inactive tab cleanup, duplica
 - One-click cleanup for inactive tabs, duplicates, and domain-heavy windows.
 - Undo the last close, track total tabs closed, and toggle light/dark themes.
 - Context menu entry to close tabs for the current site.
+
+## See it in action
+
+### Right-click cleanup
+
+Close tabs from the same website using the **Close site tabs** context menu action.
+
+![The Close site tabs action highlighted in the browser context menu](docs/images/tabtools-right-click.png)
+
+### Sort tabs by site
+
+Bring tabs from the same website together with **Sort tabs**.
+
+![TabTools Sort tabs action with a before-and-after illustration of tabs arranged by website](docs/images/tabtools-sort-tabs.png)
 
 ## Usage
 
