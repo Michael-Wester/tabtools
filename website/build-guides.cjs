@@ -28,7 +28,7 @@ const storeLinks = [
 function install(placement) {
   return `<aside class="guide-install" aria-label="Get TabTools">
     <div><p class="eyebrow">Free browser extension</p><h2>Put it into practice.</h2><p>Close tabs by site, remove duplicates and sort what stays.</p></div>
-    <div class="guide-store-links">${storeLinks.map(([key, name, url]) => `<a class="button button-secondary" data-store="${key}" data-utm-placement="${placement}" href="${escape(`${url}?utm_source=tabtools.fyi&utm_medium=referral&utm_campaign=website&utm_content=${placement}_${key}`)}" target="_blank" rel="noopener"><img src="/assets/browsers/${key}.svg" width="24" height="24" alt="" />Add to ${name}</a>`).join('')}</div>
+    <div class="guide-store-links">${storeLinks.map(([key, name, url]) => `<a class="button button-secondary" data-store="${key}" data-utm-placement="${placement}" href="${escape(`${url}?utm_source=tabtools.fyi&utm_medium=referral&utm_campaign=website&utm_content=${placement}_${key}`)}" target="_blank" rel="noopener"><img src="/assets/browsers/${key}.svg" width="24" height="24" alt="" /><span><span data-install-prefix>Add to</span> ${name}</span></a>`).join('')}</div>
     <p class="mobile-note" data-mobile-note hidden>Open this page on your computer to add TabTools.</p>
   </aside>`;
 }
