@@ -18,7 +18,9 @@ GitHub Actions credential setup remain outstanding.
 
 The website is plain HTML, CSS and JavaScript. All authored assets live in
 `website/dist`. There is no compilation, package installation, server runtime,
-database, or website environment variable. Do not use the extension's root
+database, or server environment. Optional website analytics configuration is
+generated at deployment from GitHub Actions variables (see [POSTHOG.md](POSTHOG.md)).
+Do not use the extension's root
 `build.js` or `build.ps1` for website deployment.
 
 Imported source: ChatGPT Sites `tabtools-website` version 6, commit
@@ -67,7 +69,9 @@ changes do not trigger deployments. Same-repository PRs deploy to `pr-N` preview
 branches; fork PRs skip deployment because they do not receive the secret.
 Manual workflow runs on main target production; manual runs on other branches
 use `manual-preview`. The workflow validates JavaScript syntax and uploads the
-authored static directory. There is no site build command.
+authored static directory after generating `analytics-config.js`. There is no
+package installation or bundling step. The analytics configuration is disabled
+for all preview deployments and whenever the public project token is absent.
 
 For a manual deployment from a reviewed checkout, authenticate Wrangler and run:
 

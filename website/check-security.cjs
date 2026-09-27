@@ -59,13 +59,17 @@ for (const part of (headers.get('content-security-policy') || '').split(';')) {
 }
 for (const [name, value] of Object.entries({
   'default-src': "'self'", 'style-src': "'self'", 'img-src': "'self'", 'font-src': "'self'",
-  'media-src': "'self'", 'connect-src': "'none'", 'object-src': "'none'", 'base-uri': "'none'",
+  'media-src': "'self'", 'object-src': "'none'", 'base-uri': "'none'",
   'form-action': "'none'", 'frame-ancestors': "'none'"
 })) assert.deepEqual(policy.get(name), [value], `CSP ${name} must be ${value}`);
 assert.deepEqual(policy.get('upgrade-insecure-requests'), [], 'CSP must include upgrade-insecure-requests');
 const scripts = policy.get('script-src') || [];
-assert(scripts.includes("'self'") && scripts.every(value => value === "'self'" || /^'sha256-[A-Za-z0-9+/]{43}='$/.test(value)),
-  'CSP script-src must allow self and exact SHA-256 hashes only');
+const posthogAssets = ['https://us-assets.i.posthog.com', 'https://eu-assets.i.posthog.com'];
+assert(scripts.includes("'self'") && scripts.every(value => value === "'self'" || posthogAssets.includes(value) || /^'sha256-[A-Za-z0-9+/]{43}='$/.test(value)),
+  'CSP script-src must allow only self, exact hashes and the PostHog asset hosts');
+for (const host of posthogAssets) assert(scripts.includes(host), `CSP is missing ${host}`);
+assert.deepEqual(policy.get('connect-src'), ['https://us.i.posthog.com', 'https://eu.i.posthog.com', ...posthogAssets],
+  'CSP connect-src must allow only the PostHog ingestion and asset hosts');
 // These override script-src, so reject them until this validator explicitly supports them.
 assert(!policy.has('script-src-elem') && !policy.has('script-src-attr'), 'Unexpected CSP script-src override');
 const frames = policy.get('frame-src') || [];

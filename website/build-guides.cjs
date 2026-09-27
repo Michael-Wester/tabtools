@@ -64,6 +64,8 @@ function page({ title, description, route, body, schema, article = false }) {
     <main id="main-content" tabindex="-1">${body}</main>
     ${footer}
     <script src="/script.js" defer></script>
+    <script src="/analytics-config.js" defer></script>
+    <script src="/analytics.js" defer></script>
   </body>
 </html>
 `;

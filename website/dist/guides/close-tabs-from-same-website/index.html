@@ -207,11 +207,24 @@
         <div class="footer-links">
           <div><span class="footer-label">Product</span><a href="/#features">Features</a><a href="/#how-it-works">How it works</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
           <div><span class="footer-label">Try it</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
-          <div><span class="footer-label">More</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
+          <div><span class="footer-label">More</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Extension privacy</a><a href="/#website-privacy">Website privacy</a><button class="analytics-preferences" type="button" data-analytics-preferences hidden>Analytics preferences</button><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
         </div>
       </div>
       <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Free and open source.</span></div>
+      <section class="analytics-consent" data-analytics-consent aria-labelledby="analytics-heading" hidden>
+        <div>
+          <h2 id="analytics-heading" tabindex="-1">Help improve this website?</h2>
+          <p>Allow optional PostHog analytics to measure visits, store clicks and errors. No session recordings or tab data. <a href="/#website-privacy">Website privacy</a></p>
+          <p class="analytics-status" data-analytics-status></p>
+        </div>
+        <div class="analytics-actions">
+          <button class="button button-secondary" type="button" data-analytics-deny>Decline analytics</button>
+          <button class="button button-secondary" type="button" data-analytics-allow>Allow analytics</button>
+        </div>
+      </section>
     </footer>
     <script src="/script.js" defer></script>
+    <script src="/analytics-config.js" defer></script>
+    <script src="/analytics.js" defer></script>
   </body>
 </html>
