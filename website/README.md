@@ -52,6 +52,10 @@ calls to action explain that installation should be completed on a computer.
 Browser detection, direct store destinations and attribution stay the same.
 Compact desktop windows keep the desktop "Add to" wording.
 
+The [mobile regression suite](tests/README.md) checks narrow layouts, navigation,
+store wording and guide anchors in Chromium and WebKit. Its independent CI
+workflow saves mobile screenshots for review without deployment credentials.
+
 Button surfaces use the site's purple and neutral theme colours. The original
 browser artwork is served locally, with provenance and ownership documented in
 [`dist/assets/browsers/README.md`](dist/assets/browsers/README.md).

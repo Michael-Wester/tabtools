@@ -1,0 +1,12 @@
+{
+  "name": "tabtools-website-mobile-checks",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project='chromium-*'",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
