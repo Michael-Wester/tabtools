@@ -6,6 +6,9 @@ on:
     paths:
       - 'website/dist/**'
       - 'website/check-security.cjs'
+      - 'website/configure-analytics.cjs'
+      - 'website/check-analytics.cjs'
+      - 'website/posthog-report.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
       - 'website/check-guides.cjs'
@@ -14,6 +17,9 @@ on:
     paths:
       - 'website/dist/**'
       - 'website/check-security.cjs'
+      - 'website/configure-analytics.cjs'
+      - 'website/check-analytics.cjs'
+      - 'website/posthog-report.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
       - 'website/check-guides.cjs'
@@ -47,7 +53,11 @@ jobs:
             exit 1
           fi
       - name: Validate JavaScript
-        run: node --check website/dist/script.js
+        run: |
+          node --check website/dist/script.js
+          node --check website/dist/analytics.js
+          node --check website/dist/analytics-config.js
+          node website/check-analytics.cjs
       - name: Validate generated guides and navigation
         run: |
           node website/build-guides.cjs --check
@@ -68,6 +78,12 @@ jobs:
           else
             echo 'branch=manual-preview' >> "$GITHUB_OUTPUT"
           fi
+      - name: Configure website analytics
+        env:
+          POSTHOG_ENVIRONMENT: ${{ steps.target.outputs.branch == 'main' && 'production' || 'preview' }}
+          POSTHOG_PROJECT_TOKEN: ${{ vars.POSTHOG_PROJECT_TOKEN }}
+          POSTHOG_API_HOST: ${{ vars.POSTHOG_API_HOST }}
+        run: node website/configure-analytics.cjs
       - name: Deploy authored static files
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:

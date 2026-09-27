@@ -4,8 +4,10 @@ Promotional landing page for the TabTools browser extension. The deployable
 static site lives in `dist/` so it can be hosted by ChatGPT Sites or another
 static host.
 
-The site is intentionally dependency-free. Edit the homepage and shared assets
-in `dist/`, then serve that directory with any static web server for local review.
+The site needs no package installation or compilation. Edit the homepage and
+shared assets in `dist/`, then serve that directory with any static web server
+for local review. Optional PostHog analytics load their browser SDK only on the
+production domain after a visitor grants permission.
 
 ## Guides
 
@@ -29,6 +31,7 @@ node website/build-guides.cjs
 node website/build-guides.cjs --check
 node website/check-guides.cjs
 node website/check-security.cjs
+node website/check-analytics.cjs
 ```
 
 Run these commands from the repository root. The deploy workflow rejects stale
@@ -37,7 +40,8 @@ policy. Keep the article review date in `build-guides.cjs` aligned with a real
 content review. Review the extension's behaviour when its cleanup/sorting rules
 change; the guides describe main, independently of the pending localisation PR.
 Store links use placement-specific attribution, including `guide_inline` and
-`guide_<slug>`. No analytics service or extra browser permissions are added.
+`guide_<slug>`. The same consent-gated analytics cover the homepage and guides.
+No extension permissions are added.
 
 ## Browser buttons
 
@@ -60,9 +64,17 @@ and `utm_campaign=website`. `utm_content` combines the placement
 
 HTML fallback links are tagged, and browser detection regenerates tags for the
 actual destination. Store links use direct URLs so intermediary redirects cannot
-drop the parameters. Internal navigation remains untagged. No analytics scripts,
-cookies, or visitor identifiers are added. Reporting depends on each destination
-store's analytics support; tags alone do not provide a website analytics dashboard.
+drop the parameters. Internal navigation remains untagged. PostHog can measure
+website visits and store clicks separately from the destination stores' own
+reports. A store click is not evidence of a completed installation.
+
+## PostHog and improvement workflows
+
+See [POSTHOG.md](POSTHOG.md) for project setup, event definitions, consent and
+privacy controls, a read-only analytics report, and PostHog self-driving setup.
+The checked-in configuration disables tracking. The deployment workflow injects
+the public project token and regional ingestion host from repository variables
+for production only; previews and local development do not collect analytics.
 
 ## Search and content
 
@@ -77,7 +89,7 @@ Store attribution remains independent of theme and browser detection.
 Product instructions are grounded in the extension source: closing by site
 affects matching tabs in regular windows; sorting affects the current window;
 popup Undo is available while that popup remains open. Privacy copy refers to
-the extension and distinguishes the website's third-party YouTube player.
+the extension and distinguishes the website's optional analytics and YouTube player.
 
 See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
 hosting settings, verification requirements, and future deployment instructions.
@@ -87,7 +99,9 @@ hosting settings, verification requirements, and future deployment instructions.
 Cloudflare Pages reads `dist/_headers` to restrict resource loading, prevent
 framing, and enable a one-year, host-only HSTS policy. The YouTube demo and
 same-origin Cloudflare email decoder remain allowed. Camera, microphone and
-geolocation access are disabled. No `unsafe-inline` or `unsafe-eval` is allowed.
+geolocation access are disabled. The two regional PostHog asset and ingestion
+hosts are explicitly allowed for consented analytics. No `unsafe-inline`,
+`unsafe-eval`, wildcard script sources or broad connection sources are allowed.
 
 Run `node website/check-security.cjs` from the repository root before deployment.
 The deployment workflow also runs this check. If an executable inline script
