@@ -96,6 +96,18 @@
     }
   }
 
+  function initHeaderOffset() {
+    const header = $('.site-header');
+    if (!header) return;
+    const update = () => {
+      const offset = Math.ceil(header.getBoundingClientRect().height) + 16;
+      document.documentElement.style.setProperty('--header-offset', offset + 'px');
+    };
+    update();
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(header);
+    else window.addEventListener('resize', update);
+  }
+
   function initPrivacyNavigation() {
     const card = $('#privacy .privacy-card');
     if (!card) return;
@@ -132,6 +144,7 @@
   function init() {
     setStoreLinks();
     initTheme();
+    initHeaderOffset();
     initPrivacyNavigation();
   }
 

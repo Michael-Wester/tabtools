@@ -51,6 +51,11 @@ async function checkOverflow(page) {
 }
 
 async function checkHeader(page, width) {
+  if (width <= 430) {
+    const brand = await page.locator('.site-header .brand').boundingBox();
+    const actions = await page.locator('.nav-actions').boundingBox();
+    expect(Math.abs(brand.y - actions.y), 'Brand and controls stay on the same header row').toBeLessThan(1);
+  }
   const nav = page.getByRole('navigation', { name: 'Main navigation', exact: true });
   await expect(nav).toBeVisible();
   const links = nav.getByRole('link');
@@ -75,7 +80,7 @@ async function checkHeader(page, width) {
 }
 
 async function saveReviewScreenshot(page, testInfo, route) {
-  if (testInfo.project.metadata.width !== 390 ||
+  if (![320, 390].includes(testInfo.project.metadata.width) ||
       !['/', '/guides/close-tabs-from-same-website/'].includes(route)) return;
   // Load below-fold local images before taking a full-page review capture.
   await page.locator('img').evaluateAll(async images => {

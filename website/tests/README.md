@@ -21,7 +21,7 @@ wording, FAQ interaction, uncaught page errors, and article links clearing the
 sticky header. A compact desktop window separately
 checks that desktop installation wording remains available.
 
-The 390px homepage and close-site-tabs guide get full-page screenshots in both
+The 320px and 390px homepage and close-site-tabs guide get full-page screenshots in both
 themes and engines. YouTube is a labelled placeholder and other external
 requests are blocked, so these checks do not contact store listings or depend on
 third-party content. Screenshots are review artifacts rather than pixel baselines.

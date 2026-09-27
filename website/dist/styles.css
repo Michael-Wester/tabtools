@@ -63,7 +63,7 @@ html[data-theme="dark"] {
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 [hidden] { display: none !important; }
-main, section[id] { scroll-margin-top: 96px; }
+main, section[id] { scroll-margin-top: var(--header-offset, 96px); }
 body {
   margin: 0;
   background: var(--page);
@@ -209,7 +209,7 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 
 .hero { padding: clamp(60px, 6vw, 88px) 0 72px; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); gap: clamp(40px, 5vw, 68px); align-items: center; }
-.hero-copy { max-width: 520px; }
+.hero-copy { min-width: 0; max-width: 520px; }
 .eyebrow {
   display: flex;
   align-items: center;
@@ -358,8 +358,8 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
   .main-nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; }
   .footer-links a { display: inline-flex; min-height: 44px; align-items: center; }
   .nav-actions { margin-left: auto; }
-  main, section[id] { scroll-margin-top: 132px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+  main, section[id] { scroll-margin-top: var(--header-offset, 132px); }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; }
   .hero-copy { max-width: 680px; }
   .hero-visual { max-width: 780px; }
   .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -373,7 +373,7 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
   .nav-shell { min-height: 66px; gap: 16px; }
   .main-nav { display: flex; order: 3; flex-basis: 100%; justify-content: space-between; gap: 8px; margin-left: 0; font-size: 12px; }
   .main-nav a { justify-content: center; }
-  main, section[id] { scroll-margin-top: 132px; }
+  main, section[id] { scroll-margin-top: var(--header-offset, 132px); }
   .nav-actions { margin-left: auto; }
   .theme-toggle { width: 44px; height: 44px; }
   .hero { padding: 40px 0 56px; }
@@ -409,7 +409,9 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 }
 
 @media (max-width: 430px) {
-  .brand { font-size: 18px; }
+  .brand { gap: 6px; font-size: 18px; }
+  .brand-mark { width: 26px; height: 26px; }
+  .nav-shell { column-gap: 8px; }
   .button-small { padding: 0 10px; font-size: 14px; }
   .nav-actions .button-icon { display: none; }
   .nav-actions { gap: 7px; }

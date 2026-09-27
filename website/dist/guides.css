@@ -28,7 +28,7 @@
 .guide-byline { margin: 24px 0 0; color: var(--ink-faint); font-size: 13px; line-height: 1.7; }
 .guide-byline > span { margin-inline: 4px; }
 .guide-layout { display: grid; grid-template-columns: 245px minmax(0, 760px); justify-content: space-between; gap: 60px; padding-top: 42px; padding-bottom: 65px; }
-.guide-sidebar { align-self: start; position: sticky; top: 108px; }
+.guide-sidebar { align-self: start; position: sticky; top: var(--header-offset, 108px); }
 .guide-sidebar ol { list-style: none; margin: 18px 0 25px; padding: 0; }
 .guide-sidebar li { margin: 0; border-bottom: 1px solid var(--line); }
 .guide-sidebar li a { display: block; padding: 12px 0; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
@@ -74,7 +74,7 @@
   .guide-card { padding: 24px; }
   .guide-card h2 { font-size: 24px; }
   .guide-layout { grid-template-columns: 200px minmax(0, 1fr); gap: 36px; }
-  .guide-sidebar { top: 128px; }
+  .guide-sidebar { top: var(--header-offset, 128px); }
 }
 
 @media (max-width: 720px) {
