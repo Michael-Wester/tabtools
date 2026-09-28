@@ -4,9 +4,9 @@ Clear your tab list quickly with site suggestions, inactive tab cleanup, duplica
 
 [![TabTools popup showing site suggestions, inactive tab cleanup, sorting, duplicate removal, and Undo](docs/images/tabtools-overview.png)](https://tabtools.fyi/)
 
-[![Add to Chrome](docs/images/add-to-chrome.svg)](https://tabtools.fyi/chrome)
-[![Add to Firefox](docs/images/add-to-firefox.svg)](https://tabtools.fyi/firefox)
-[![Add to Edge](docs/images/add-to-edge.svg)](https://tabtools.fyi/edge)
+[![Add to Chrome](docs/images/add-to-chrome.svg)](https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=badge_chrome)
+[![Add to Firefox](docs/images/add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=badge_firefox)
+[![Add to Edge](docs/images/add-to-edge.svg)](https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=badge_edge)
 
 ## Highlights
 
