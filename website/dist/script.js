@@ -24,6 +24,8 @@
 
   function setStoreLinks() {
     const detected = browserKey();
+    const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '') ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     $$('[data-store]').forEach(link => {
       const key = link.hasAttribute('data-adaptive-store') ? detected : link.dataset.store;
       if (stores[key]) {
@@ -38,6 +40,8 @@
         if (browserName) browserName.textContent = browserNames[key];
         const browserIcon = link.querySelector('[data-browser-icon]');
         if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
+        const prefix = link.querySelector('.browser-button-prefix, [data-install-prefix]');
+        if (prefix) prefix.textContent = mobile ? 'View' : 'Add to';
         const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
         link.setAttribute('aria-label', visibleLabel + ' — opens the ' + browserLabel(key) + ' in a new tab');
       }
@@ -50,12 +54,9 @@
     const note = $('[data-store-note]');
     if (note) note.textContent = 'Opens the ' + browserLabel(detected) + '.';
 
-    const mobileNote = $('[data-mobile-note]');
-    if (mobileNote) {
-      const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '') ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    $$('[data-mobile-note]').forEach(mobileNote => {
       mobileNote.hidden = !mobile;
-    }
+    });
   }
 
   function setTheme(theme) {
@@ -95,6 +96,18 @@
     }
   }
 
+  function initHeaderOffset() {
+    const header = $('.site-header');
+    if (!header) return;
+    const update = () => {
+      const offset = Math.ceil(header.getBoundingClientRect().height) + 16;
+      document.documentElement.style.setProperty('--header-offset', offset + 'px');
+    };
+    update();
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(header);
+    else window.addEventListener('resize', update);
+  }
+
   function initPrivacyNavigation() {
     const card = $('#privacy .privacy-card');
     if (!card) return;
@@ -131,6 +144,7 @@
   function init() {
     setStoreLinks();
     initTheme();
+    initHeaderOffset();
     initPrivacyNavigation();
   }
 
