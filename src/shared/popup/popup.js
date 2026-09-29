@@ -33,6 +33,7 @@
   let lastSuggestionsKey = null;
   let lastSuggestionsCount = null;
   const MAX_SUGGESTIONS = 12;
+  const SUGGESTION_FALLBACK_ICON = "../icons/site-fallback.svg";
 
   function setStatus(text, delay = 1400) {
     const el = $("#pc-status");
@@ -274,6 +275,22 @@
     }
   }
 
+  function createSuggestionFavicon(iconUrl) {
+    const requestedIcon =
+      typeof iconUrl === "string" ? iconUrl.trim() : "";
+    const icon = document.createElement("img");
+    icon.className = "favicon";
+    icon.alt = "";
+    icon.loading = "lazy";
+    icon.decoding = "async";
+    icon.src = requestedIcon || SUGGESTION_FALLBACK_ICON;
+    icon.addEventListener("error", () => {
+      if (icon.getAttribute("src") === SUGGESTION_FALLBACK_ICON) return;
+      icon.src = SUGGESTION_FALLBACK_ICON;
+    });
+    return icon;
+  }
+
   function renderSuggestionChip(item) {
     const chip = document.createElement("button");
     chip.type = "button";
@@ -307,20 +324,7 @@
       const domain = String(item.domain || "");
       chip.dataset.domain = domain;
       label.textContent = domain;
-      const iconUrl =
-        typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
-      if (iconUrl) {
-        const icon = document.createElement("img");
-        icon.className = "favicon";
-        icon.alt = "";
-        icon.loading = "lazy";
-        icon.decoding = "async";
-        icon.src = iconUrl;
-        icon.addEventListener("error", () => {
-          icon.hidden = true;
-        });
-        main.appendChild(icon);
-      }
+      main.appendChild(createSuggestionFavicon(item.favIconUrl));
       main.appendChild(label);
       const openCount = item.openCount ?? 0;
       count.textContent = `${openCount} open`;
