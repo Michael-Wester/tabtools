@@ -257,4 +257,74 @@ ${screenshot('sort-03-after.png', 'Chrome after sorting: three YouTube tabs, the
       },
     ],
   },
+  {
+    slug: "close-inactive-tabs",
+    title: "How to Close Inactive Tabs in Chrome, Firefox and Edge",
+    shortTitle: "Close inactive tabs",
+    description: "Close inactive tabs in Chrome, Firefox and Edge with a configurable TabTools threshold, clear safety rules and an honest explanation of browser activity data.",
+    category: "Clear inactive tabs",
+    updated: "2026-10-01",
+    updatedLabel: "1 October 2026",
+    lede: "Old research, shopping and reference tabs can remain open long after you stop using them. TabTools can identify tabs that have been inactive beyond a threshold, then let you review the count before closing them together.",
+    answer: "Open TabTools and look for the inactive-tabs suggestion. Select it to close inactive tabs across your normal browser windows. The default threshold is 120 minutes, and you can change it in Settings. Active, pinned, audible and private or incognito tabs are excluded.",
+    sections: [
+      {
+        id: "close-inactive-tabs-with-tabtools",
+        title: "Close inactive tabs with TabTools",
+        html: `<p>TabTools does not close tabs automatically in the background. It counts tabs that currently meet your threshold and shows an inactive-tabs suggestion in the popup. Nothing closes until you select that suggestion.</p>
+<ol>
+  <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>.</li>
+  <li>Open TabTools from the browser toolbar or extensions menu.</li>
+  <li>Under <strong>Suggestions</strong>, find the inactive-tabs item. Its count is the number of tabs that currently qualify.</li>
+  <li>Select the item to close those tabs. Keep the popup open if you want to use <strong>Undo</strong>.</li>
+</ol>
+<p>If there is no inactive-tabs item, no eligible tab currently meets the threshold. The site suggestions can still appear independently.</p>`,
+      },
+      {
+        id: "change-the-inactive-threshold",
+        title: "Change when a tab counts as inactive",
+        html: `<p>The default threshold is <strong>120 minutes</strong>. To change it:</p>
+<ol>
+  <li>Open TabTools and select <strong>Settings</strong>.</li>
+  <li>Find <strong>Tabs inactive after</strong>.</li>
+  <li>Enter the number of minutes you want to use. The minimum is one minute.</li>
+</ol>
+<p>A shorter threshold produces a broader cleanup; a longer threshold is more conservative. The setting is stored locally in the browser where you change it.</p>
+<table>
+  <thead><tr><th scope="col">Example threshold</th><th scope="col">A suitable use</th></tr></thead>
+  <tbody>
+    <tr><td>120 minutes</td><td>The default for clearing pages left behind during the day.</td></tr>
+    <tr><td>480 minutes</td><td>A more conservative eight-hour workday threshold.</td></tr>
+    <tr><td>1,440 minutes</td><td>A one-day threshold for longer-running research.</td></tr>
+  </tbody>
+</table>`,
+      },
+      {
+        id: "tabs-tabtools-protects",
+        title: "Tabs TabTools protects from inactive cleanup",
+        html: `<p>The inactive cleanup excludes several categories before applying the time threshold:</p>
+<ul>
+  <li><strong>The active tab</strong> in each normal browser window.</li>
+  <li><strong>Pinned tabs</strong>, even when you have not used them recently.</li>
+  <li><strong>Audible tabs</strong>, such as a tab currently playing audio.</li>
+  <li><strong>Private or incognito tabs</strong>.</li>
+</ul>
+<p>Other eligible tabs can be matched across your normal windows, not only the window where you opened the popup. A muted media tab is not necessarily reported as audible, so check the count and keep important pages pinned before a broad cleanup.</p>`,
+      },
+      {
+        id: "what-inactive-means",
+        title: "What “inactive” means in the browser",
+        html: `<p>TabTools uses the activity information supplied by the browser. When a tab has a browser-reported <code>lastAccessed</code> time, TabTools compares that time with your threshold. If that timestamp is unavailable, a browser-discarded tab can qualify instead.</p>
+<p>This is not a measure of whether a page is important, whether a form contains unsaved text, or how much memory it uses. Chrome Memory Saver and similar browser features can unload a tab without closing it; TabTools’ inactive cleanup closes eligible tabs after you choose the suggestion.</p>
+<p><strong>Current limitation:</strong> browser activity time can describe when a tab became active rather than the exact moment you switched away. A tab used continuously for hours may therefore meet a short threshold soon after you leave it. Use a conservative threshold and pin pages you must keep.</p>`,
+      },
+      {
+        id: "undo-and-recovery",
+        title: "Undo inactive-tab cleanup",
+        html: `<p>After selecting the inactive-tabs suggestion, keep the TabTools popup open and use <strong>Undo</strong> to reopen the URLs from that cleanup. The current Undo batch lasts only for that popup session.</p>
+<p>Reopening a URL does not guarantee restoration of unsaved form input, video position or every detail of the previous page state. Once the popup is closed, use the browser’s recently closed tabs or history instead.</p>
+<p>If inactivity is not the right rule, choose a more specific cleanup: <a href="/guides/close-tabs-from-same-website/">close tabs from one website</a>, <a href="/guides/close-duplicate-tabs/">remove duplicate tabs</a>, or <a href="/guides/sort-tabs-by-website/">sort tabs without closing them</a>.</p>`,
+      },
+    ],
+  },
 ];

@@ -7,7 +7,8 @@ const routes = [
   '/guides/',
   '/guides/close-tabs-from-same-website/',
   '/guides/close-duplicate-tabs/',
-  '/guides/sort-tabs-by-website/'
+  '/guides/sort-tabs-by-website/',
+  '/guides/close-inactive-tabs/'
 ];
 
 test.beforeEach(async ({ page }, testInfo) => {

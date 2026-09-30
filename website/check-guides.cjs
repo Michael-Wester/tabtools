@@ -11,7 +11,8 @@ const origin = 'https://tabtools.fyi';
 const guideRoutes = [
   '/guides/close-tabs-from-same-website/',
   '/guides/close-duplicate-tabs/',
-  '/guides/sort-tabs-by-website/'
+  '/guides/sort-tabs-by-website/',
+  '/guides/close-inactive-tabs/'
 ];
 const stores = {
   chrome: 'https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk',

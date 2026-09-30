@@ -10,7 +10,8 @@ const guides = require('./guides-content.cjs');
 const dist = path.join(__dirname, 'dist');
 const home = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 const base = 'https://tabtools.fyi';
-const updated = '2026-09-21';
+const defaultUpdated = '2026-09-21';
+const defaultUpdatedLabel = '21 September 2026';
 const check = process.argv.includes('--check');
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const json = value => JSON.stringify(value, null, 2).replace(/</g, '\\u003c');
@@ -94,7 +95,7 @@ for (const guide of guides) {
   }
 }
 
-const indexDescription = 'Practical TabTools guides for closing tabs from one website, removing duplicate tabs and sorting tabs by site in Chrome, Firefox and Edge.';
+const indexDescription = 'Practical TabTools guides for closing tabs from one website, clearing inactive and duplicate tabs, and sorting tabs by site in Chrome, Firefox and Edge.';
 const output = new Map();
 output.set('guides/index.html', page({
   title: 'Browser tab guides', description: indexDescription, route: '/guides/',
@@ -102,15 +103,17 @@ output.set('guides/index.html', page({
     mainEntity: { '@type': 'ItemList', itemListElement: guides.map((guide, i) => ({ '@type': 'ListItem', position: i + 1, name: guide.title, url: `${base}/guides/${guide.slug}/` })) } },
   body: `<section class="guides-intro shell"><p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> TabTools guides</p>
     <h1>A clearer tab bar.<br /><span>One task at a time.</span></h1>
-    <p class="guides-lede">Close a website’s tabs, clear repeated pages or bring related tabs together. Pick a guide and follow the steps in your browser.</p>
+    <p class="guides-lede">Close a website’s tabs, clear inactive or repeated pages, or bring related tabs together. Pick a guide and follow the steps in your browser.</p>
     <p class="guides-platforms">For Chrome, Firefox and Edge on desktop</p></section>
     <section class="shell guides-list" aria-label="Browse guides">${cards(guides)}</section>
-    <section class="shell guides-start"><div><p class="eyebrow">New to TabTools?</p><h2>Three ways to tidy up.</h2></div><p>Closing by site removes a website’s pages. Duplicate cleanup removes repeated URLs. Sorting keeps your tabs open and changes their order. Each guide explains what happens, with examples and browser alternatives.</p><a class="text-link" href="/#features">Explore TabTools <span aria-hidden="true">→</span></a></section>`
+    <section class="shell guides-start"><div><p class="eyebrow">New to TabTools?</p><h2>Four ways to tidy up.</h2></div><p>Closing by site removes a website’s pages. Inactive cleanup clears tabs beyond a time threshold. Duplicate cleanup removes repeated URLs. Sorting keeps your tabs open and changes their order. Each guide explains what happens, with examples and browser alternatives.</p><a class="text-link" href="/#features">Explore TabTools <span aria-hidden="true">→</span></a></section>`
 }));
 
 for (const guide of guides) {
   const route = `/guides/${guide.slug}/`;
   const url = base + route;
+  const updated = guide.updated || defaultUpdated;
+  const updatedLabel = guide.updatedLabel || defaultUpdatedLabel;
   const schema = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'Article', headline: guide.title, description: guide.description, url, mainEntityOfPage: url, inLanguage: 'en', dateModified: updated,
       author: { '@type': 'Person', name: 'Michael Wester', url: 'https://github.com/Michael-Wester' }, publisher: { '@type': 'Organization', name: 'TabTools', url: base + '/' } },
@@ -123,7 +126,7 @@ for (const guide of guides) {
   output.set(`guides/${guide.slug}/index.html`, page({ title: guide.title, description: guide.description, route, schema, article: true,
     body: `<div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">${escape(guide.category)}</span></nav>
       <p class="eyebrow">${escape(guide.category)} · Desktop browsers</p><h1>${escape(guide.title)}</h1><p class="guides-lede">${escape(guide.lede)}</p>
-      <p class="guide-byline">By <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creator of TabTools <span aria-hidden="true">·</span> ${readTime(guide)} min read <span aria-hidden="true">·</span> Updated <time datetime="${updated}">21 September 2026</time></p></div>
+      <p class="guide-byline">By <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creator of TabTools <span aria-hidden="true">·</span> ${readTime(guide)} min read <span aria-hidden="true">·</span> Updated <time datetime="${updated}">${escape(updatedLabel)}</time></p></div>
       <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="On this page"><p class="eyebrow">On this page</p><ol>${guide.sections.map(s => `<li><a href="#${s.id}">${escape(s.title)}</a></li>`).join('')}</ol></nav><a class="guide-back" href="/guides/">← All guides</a></aside>
       <article class="guide-article" aria-label="${escape(guide.title)}"><div class="guide-answer"><p class="eyebrow">Quick answer</p><p>${guide.answer}</p></div>
       ${guide.sections.map((section, i) => `<section id="${section.id}"><h2>${escape(section.title)}</h2>${section.html}</section>${i === 1 ? install(`guide_${guide.slug}`) : ''}`).join('\n')}
