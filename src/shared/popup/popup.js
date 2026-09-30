@@ -32,7 +32,9 @@
     return settings;
   }
 
+  let savedSettings = { ...DEFAULTS };
   let lastClosedTabs = [];
+  let cleanupRunning = false;
   let statusToken = 0;
   let lastStatsTotal = null;
   let lastOpenTabCount = null;
@@ -58,17 +60,29 @@
     const width = Math.min(maximum, Math.max(380, bodyWidth, needed));
     root.style.setProperty("--popup-width", width + "px");
     root.classList.toggle("popup-width-limited", needed > maximum);
+    fitSuggestionChips();
+  }
+
+  function fitSuggestionChips() {
+    const chips = document.querySelectorAll("#pc-suggest-chips .chip");
+    // Reset before measuring so larger headers can restore the compact grid.
+    chips.forEach((chip) => chip.classList.remove("wide"));
+    const wide = Array.from(chips).filter((chip) => {
+      const label = chip.querySelector(".label");
+      return label && label.scrollWidth > label.clientWidth + 1;
+    });
+    wide.forEach((chip) => chip.classList.add("wide"));
   }
 
   function setStatus(text, delay = 1400) {
-    const el = $("#pc-status");
-    if (!el) return;
-    el.textContent = text || "";
+    const elements = [byId("pc-status"), byId("pc-settings-status")].filter(Boolean);
+    if (!elements.length) return;
+    elements.forEach((el) => { el.textContent = text || ""; });
     statusToken += 1;
     const token = statusToken;
     if (delay > 0) {
       setTimeout(() => {
-        if (statusToken === token) el.textContent = "";
+        if (statusToken === token) elements.forEach((el) => { el.textContent = ""; });
       }, delay);
     }
   }
@@ -81,28 +95,66 @@
   function updateUndoButton() {
     const btn = $("#pc-undo-close");
     if (!btn) return;
-    btn.disabled = !lastClosedTabs.length;
+    btn.disabled = cleanupRunning || !lastClosedTabs.length;
   }
+
+  function setCleanupBusy(busy) {
+    cleanupRunning = busy;
+    [byId("pc-close"), byId("pc-close-duplicates")].filter(Boolean)
+      .forEach((btn) => { btn.disabled = busy; });
+    document.querySelectorAll("#pc-suggest-chips .chip")
+      .forEach((chip) => { chip.disabled = busy; });
+    updateUndoButton();
+  }
+
+  async function runCleanup(action) {
+    // Enter and another chip can arrive while an earlier close/undo awaits
+    // the background. Keep the undo snapshot tied to one completed action.
+    if (cleanupRunning) return;
+    setCleanupBusy(true);
+    try { return await action(); }
+    finally { setCleanupBusy(false); }
+  }
+
+  const runClose = (query, exactDomain = false) =>
+    runCleanup(() => closeByQuery(query, exactDomain));
+  const runCloseInactive = () => runCleanup(closeInactive);
+  const runCloseDuplicates = () => runCleanup(closeDuplicates);
+  const undoLastClose = () => runCleanup(restoreLastClose);
 
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme || "light");
   }
 
   async function readSettings() {
-    const raw = await new Promise((r) =>
-      chrome.storage.local.get(STORAGE_KEY, r)
-    );
-    return normalizeSettings(raw[STORAGE_KEY]);
+    const raw = await new Promise((resolve) => {
+      try {
+        chrome.storage.local.get(STORAGE_KEY, (result) => {
+          resolve(chrome.runtime.lastError ? null : result || {});
+        });
+      } catch (_) { resolve(null); }
+    });
+    if (raw === null) {
+      setStatus(t("closeFailed"));
+      return savedSettings;
+    }
+    savedSettings = normalizeSettings(raw[STORAGE_KEY]);
+    return savedSettings;
   }
 
   async function writeSettings(patch) {
-    const current = await readSettings();
-    const next = normalizeSettings({ ...current, ...(patch || {}) });
-    await new Promise((resolve) =>
-      chrome.storage.local.set({ [STORAGE_KEY]: next }, resolve)
-    );
-    applyTheme(next.theme);
-    return next;
+    // The background serializes settings patches from every open popup.
+    const out = await msg("pc:updateSettings", { payload: patch || {} });
+    if (!out?.ok || !out.settings) {
+      applyTheme(savedSettings.theme);
+      syncSettingsForm(savedSettings);
+      setStatus(t("closeFailed"));
+      return null;
+    }
+    savedSettings = normalizeSettings(out.settings);
+    applyTheme(savedSettings.theme);
+    syncSettingsForm(savedSettings);
+    return savedSettings;
   }
 
   function syncThemeButtons(theme) {
@@ -137,7 +189,7 @@
     if (!el) return;
     const handler = async () => {
       const next = await writeSettings(map(el));
-      if (typeof after === "function") after(next);
+      if (next && typeof after === "function") after(next);
     };
     el.addEventListener("change", handler);
   }
@@ -147,19 +199,50 @@
     buttons.forEach((btn) => {
       btn.addEventListener("click", async () => {
         const theme = btn.dataset.themeValue || "light";
-        const next = await writeSettings({ theme });
-        syncThemeButtons(next.theme);
+        await writeSettings({ theme });
       });
     });
   }
 
   let suggestionsRequestToken = 0;
+  let suggestionsRefreshTimer = null;
+
+  function scheduleSuggestionsRefresh() {
+    if (suggestionsRefreshTimer !== null) clearTimeout(suggestionsRefreshTimer);
+    // Restored tabs can first appear as about:blank, especially in Firefox.
+    // Wait for navigation events rather than leaving the initial list cached.
+    suggestionsRefreshTimer = setTimeout(() => {
+      suggestionsRefreshTimer = null;
+      renderSuggestions();
+    }, 80);
+  }
+
+  function bindTabUpdates() {
+    const tabsApi = chrome?.tabs;
+    if (!tabsApi) return;
+    const updateTabs = () => {
+      scheduleSuggestionsRefresh();
+      return renderOpenTabCount();
+    };
+    tabsApi.onCreated?.addListener((tab) => {
+      if (!tab?.incognito) return updateTabs();
+    });
+    tabsApi.onRemoved?.addListener(updateTabs);
+    tabsApi.onReplaced?.addListener(updateTabs);
+    tabsApi.onUpdated?.addListener((_tabId, changes, tab) => {
+      if (tab?.incognito) return;
+      if (changes?.url || changes?.status === "complete") {
+        scheduleSuggestionsRefresh();
+      }
+    });
+  }
 
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== "local") return;
     const next = changes[STORAGE_KEY]?.newValue;
     if (!next) return;
     const settings = normalizeSettings(next);
+    savedSettings = settings;
     applyTheme(settings.theme);
     syncSettingsForm(settings);
     renderSuggestions();
@@ -206,7 +289,7 @@
     await renderStatsPill();
   }
 
-  async function runClose(query, exactDomain = false) {
+  async function closeByQuery(query, exactDomain = false) {
     if (!query) return;
     $("#pc-close").disabled = true;
     try {
@@ -227,11 +310,11 @@
       await renderOpenTabCount();
       await renderSuggestions();
     } finally {
-      $("#pc-close").disabled = false;
+      $("#pc-close").disabled = cleanupRunning;
     }
   }
 
-  async function runCloseInactive() {
+  async function closeInactive() {
     const out = await msg("pc:closeInactive");
     if (out?.ok && out.closedCount) {
       setStatus(closeStatus("closedInactive", out));
@@ -248,7 +331,7 @@
     await renderSuggestions();
   }
 
-  async function runCloseDuplicates() {
+  async function closeDuplicates() {
     const btn = byId("pc-close-duplicates");
     if (btn) btn.disabled = true;
     try {
@@ -263,14 +346,14 @@
         setStatus(t("closeFailed"));
       }
     } finally {
-      if (btn) btn.disabled = false;
+      if (btn) btn.disabled = cleanupRunning;
     }
     await renderStatsPill();
     await renderOpenTabCount();
     await renderSuggestions();
   }
 
-  async function undoLastClose() {
+  async function restoreLastClose() {
     if (!lastClosedTabs.length) {
       setStatus(t("nothingToUndo"), 1200);
       return;
@@ -312,6 +395,7 @@
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = "chip";
+    chip.disabled = cleanupRunning;
 
     const main = document.createElement("span");
     main.className = "chip-main";
@@ -329,12 +413,13 @@
       label.textContent = t("inactive");
       main.appendChild(label);
       count.textContent = globalThis.ttNumber(item.inactiveCount ?? 0);
+      chip.title = label.textContent + " · " + count.textContent;
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
           await runCloseInactive();
         } finally {
-          chip.disabled = false;
+          chip.disabled = cleanupRunning;
         }
       });
     } else {
@@ -343,7 +428,6 @@
       label.textContent = domain;
       label.dir = "ltr";
       label.style.unicodeBidi = "isolate";
-      chip.setAttribute("aria-label", t("closeSiteLabel", { site: domain }));
       const iconUrl =
         typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
       if (iconUrl) {
@@ -360,13 +444,18 @@
       }
       main.appendChild(label);
       const openCount = item.openCount ?? 0;
-      count.textContent = t("openCount", { count: openCount });
+      // A compact number leaves room for the site in every language. Preserve
+      // the full translated meaning in the accessible name and hover text.
+      count.textContent = globalThis.ttNumber(openCount);
+      const description = t("closeSiteLabel", { site: domain }) + " · " + t("openCount", { count: openCount });
+      chip.setAttribute("aria-label", description);
+      chip.title = description;
       chip.addEventListener("click", async () => {
         chip.disabled = true;
         try {
           await runClose(item.domain, true);
         } finally {
-          chip.disabled = false;
+          chip.disabled = cleanupRunning;
         }
       });
     }
@@ -422,6 +511,7 @@
     limited.forEach((item) =>
       chipsWrap.appendChild(renderSuggestionChip(item))
     );
+    fitSuggestionChips();
     if (suggestions.length > MAX_SUGGESTIONS) {
       more.textContent = t("moreCount", { count: suggestions.length - MAX_SUGGESTIONS });
     }
@@ -483,6 +573,8 @@
 
     if (showSettings) {
       renderSettingsStats();
+    } else {
+      fitSuggestionChips();
     }
   }
 
@@ -539,14 +631,10 @@
     await initUI();
     wireUI();
     setupSettingsBindings();
+    bindTabUpdates();
     toggleSettingsPanel(false);
     await renderStatsPill();
     await renderOpenTabCount();
     await renderSuggestions();
-    const initial = await readSettings();
-    const tabsApi = chrome?.tabs;
-    if (tabsApi?.onCreated) tabsApi.onCreated.addListener(renderOpenTabCount);
-    if (tabsApi?.onRemoved) tabsApi.onRemoved.addListener(renderOpenTabCount);
-    if (tabsApi?.onReplaced) tabsApi.onReplaced.addListener(renderOpenTabCount);
   });
 })();

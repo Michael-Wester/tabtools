@@ -105,6 +105,25 @@ toolchain. Committed generated messages remain available to PowerShell builds
 without Node. See [website development](website/README.md) for the separate
 static-page generation command.
 
+### Automated regression checks
+
+```sh
+npm ci
+npm test
+node build.js
+node scripts/check-packages.js
+npx playwright install --with-deps chromium firefox
+npm run test:extension
+npm run test:firefox
+```
+
+The extension suite installs the built Chrome package in disposable Chromium
+profiles, opens native action popups for every language, and exercises tab actions
+with local test pages. The Firefox suite checks website diagnostics and navigation.
+For Chromium/WebKit mobile website checks, follow [website test setup](website/tests/README.md).
+See [localisation validation](localisation/VALIDATION.md) for coverage and remaining
+manual release checks.
+
 ## Making changes
 
 Create a branch for your change:

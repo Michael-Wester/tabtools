@@ -23,7 +23,7 @@ if (-not $Targets -or $Targets.Count -eq 0) {
 $locales = (Get-Content (Join-Path $root 'localisation/registry.json') -Raw | ConvertFrom-Json).locales
 foreach ($locale in $locales) {
   $messages = Join-Path $sharedDir ("_locales/" + $locale.extension + "/messages.json")
-  if (-not (Test-Path $messages)) { throw "Missing locale file: $messages. Run node scripts/generate-localisation.js after translation edits." }
+  if (-not (Test-Path $messages)) { throw "Missing locale file: $messages. Run node scripts/generate-extension-locales.js after translation edits." }
 }
 
 New-Item -ItemType Directory -Force -Path $distRoot | Out-Null

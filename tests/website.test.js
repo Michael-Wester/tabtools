@@ -146,6 +146,22 @@ test('YouTube demo delegates only the playback controls it uses',()=>{
   }
 });
 
+test('all locales expose native language navigation when JavaScript is disabled', () => {
+  const css = L.fs.readFileSync(L.path.join(L.root,'website/dist/no-script.css'),'utf8');
+  assert.match(css, /\.theme-toggle,[\s\S]*\.language-picker[\s\S]*display:\s*none/);
+  for (const locale of L.registry) {
+    const html = L.fs.readFileSync(L.path.join(L.root,'website/dist',locale.website,'index.html'),'utf8');
+    assert.ok(html.includes('<noscript><link rel="stylesheet" href="/no-script.css" /></noscript>'), locale.locale);
+    const fallback = html.match(/<noscript><details class="language-fallback">([\s\S]*?)<\/details><\/noscript>/)?.[1];
+    assert.ok(fallback, `${locale.locale}: native language fallback`);
+    assert.match(fallback, /<summary class="language-fallback-trigger" aria-label="[^"]+">/);
+    const routes = [...fallback.matchAll(/class="language-fallback-option" href="([^"]+)"/g)].map(match=>match[1]);
+    assert.deepEqual(routes, L.presentationRegistry.map(item=>item.path), locale.locale);
+    assert.equal((fallback.match(/aria-current="page"/g) || []).length, 1, locale.locale);
+    assert.doesNotMatch(fallback, /tabindex="-1"|data-language-option/, locale.locale);
+  }
+});
+
 test('localized homepages retain main guide links, social previews and skip-link focus targets',()=>{
   const guideRoutes = [
     '/guides/',
@@ -206,6 +222,18 @@ test('matching saved or first browser preference suppresses contradictory sugges
   assert.equal(label.textContent,'French');
   p.note.children[0].events.click({});
   assert.equal(p.storage.get('tabtools-site-language'),'fr');
+});
+
+test('selecting the current language dismisses stale suggestions and restores focus before same-document navigation', () => {
+  const p=pageRuntime('es',['en']);
+  assert.equal(p.note.hidden,false);
+  p.trigger.events.click();
+  p.options.find(option=>option.dataset.locale==='es').events.click({preventDefault(){}});
+  assert.equal(p.storage.get('tabtools-site-language'),'es');
+  assert.equal(p.note.hidden,true);
+  assert.equal(p.menu.hidden,true);
+  assert.equal(p.document.activeElement,p.trigger);
+  assert.deepEqual(p.navigation,['/es/?campaign=test#faq']);
 });
 
 test('modified language links keep normal browser navigation and the URL suffix', () => {

@@ -23,7 +23,7 @@ Character count: 109
 
 Chiudi le schede per sito, ordina la barra delle schede ed elimina i duplicati con un’estensione gratuita e open source per Chrome, Firefox ed Edge.
 
-Chiudi insieme le schede di un sito: Apri TabTools e fai clic su un sito in Suggerimenti, oppure fai clic con il tasto destro in una pagina e scegli Chiudi le schede del sito. L’azione chiude le schede corrispondenti in tutte le finestre normali, compresa quella attuale.
+Chiudi insieme le schede di un sito: Apri TabTools e fai clic su un sito in Suggerimenti, oppure fai clic con il tasto destro in una pagina e scegli Chiudi le schede del sito. L’azione chiude le schede corrispondenti in tutte le finestre normali, compresa la scheda attuale.
 Ordina le schede per sito: Affianca le schede dello stesso sito nella finestra attuale, mettendo prima i siti con più schede aperte.
 Elimina le schede duplicate: Chiudi le copie in più della stessa pagina con un clic. Le schede appuntate restano al loro posto.
 Cerca per parola chiave o dominio: Digita una parola da cercare nei titoli e negli URL delle schede, oppure un dominio esatto come youtube.com. Poi scegli Chiudi.
@@ -31,7 +31,7 @@ Chiudi le schede inattive: Scegli una soglia di inattività nelle Impostazioni, 
 
 L’estensione TabTools elabora le informazioni sulle schede sul tuo dispositivo. Impostazioni e statistiche di pulizia restano nella memoria locale del browser. L’estensione non usa account, analisi dell’utilizzo, pubblicità o database esterni.
 
-Character count: 1290
+Character count: 1293
 
 ## Maintenance metadata
 

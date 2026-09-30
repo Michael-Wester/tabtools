@@ -283,9 +283,10 @@
   },
   "web_siteBody": {
     "source": "6feeb7fe972af192464438ecceb6bb6152922cd067e371451a3f16286797ec84",
-    "translation": "991a323522a4c1389edcfce7d71cc81d9b1d13279d22b4a6b66264d8305c26f4",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "dfd7c1cfd789bc7d83f2ea2a28dfdff814a762055dfef340eb82216aca8f446a",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Checked site-closing scope against English and the glossary; explicitly names the current browser tab so the inclusion cannot refer to the preceding windows. AI self-review only; no native-speaker review."
   },
   "web_addTo": {
     "source": "3d56b85792599cd2cc9d4d3d803e940b33195abde1b02792ef4d5f976b02b838",
@@ -740,9 +741,10 @@
   },
   "web_right_click_within_a_web": {
     "source": "6cffc5c27e656068508eb2833ec543d5bbc44219ca99dbffb5d27cce3b8b8e8a",
-    "translation": "90fd706c84bb0267b6bac715787a54674b3da8e4ab7cdea75ca5106980bd4623",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "7d57336e069c7a0b5a96950cd1fdd88bc95f54f9477312efbe0f4a3ce91476c4",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Checked site-closing scope against English and the glossary; explicitly names the current browser tab so the inclusion cannot refer to the preceding windows. AI self-review only; no native-speaker review."
   },
   "web_can_i_remove_duplicates_or": {
     "source": "88961d678388555fd6e4c2a7312283443a177e7e3531b9d61d4e5f95a4242c80",

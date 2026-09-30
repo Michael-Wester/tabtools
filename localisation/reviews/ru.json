@@ -715,9 +715,10 @@
   },
   "web_yes_tabtools_is_free_to": {
     "source": "84385a9904f9cff841a288b2a335d1568389d08ccd5140f025d051ac238205c3",
-    "translation": "4892275a3c3092ed5159dc6566bd46b3162cb4e081aadad0a7641b53f175b3c1",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "6b0c54112c116ce2d232d542d8ab6262f83116c378976021ef43aa5077e26a7b",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared the complete FAQ answer with English; restored the omitted no-account requirement rather than substituting the separate open-source claim. AI self-review only; no native-speaker review."
   },
   "web_which_browsers_can_i_use": {
     "source": "8452483931bdf3093d0d57f6455d29c3b8da2165aba537fcbeeaea961a95ffd6",

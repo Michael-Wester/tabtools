@@ -246,6 +246,14 @@
         if (!chosen) return;
         try { localStorage.setItem('tabtools-site-language', chosen.locale); } catch (_) {}
         setOpen(false);
+        trigger.focus?.();
+        // Selecting this page's language can be a same-document navigation.
+        // Apply the saved choice immediately instead of retaining an outdated
+        // browser-language suggestion until a reload.
+        if (chosen.locale === currentLocale) {
+          const suggestion = $('[data-language-suggestion]');
+          if (suggestion) suggestion.hidden = true;
+        }
         window.location.assign(pathFor(chosen.locale) + currentLocationSuffix());
       };
 

@@ -49,10 +49,18 @@
     const got = await getStore([KEYS.SETTINGS]);
     return normalizeSettings(got[KEYS.SETTINGS]);
   }
-  async function updateSettings(patch) {
-    const cur = await getSettings();
-    const next = normalizeSettings({ ...cur, ...(patch || {}) });
-    await setStore({ [KEYS.SETTINGS]: next });
+  let settingsWrite = Promise.resolve();
+  function updateSettings(patch) {
+    // Multiple popup controls/windows can submit patches before a storage
+    // read completes. Read each patch's starting state after the prior write.
+    const next = settingsWrite.then(async () => {
+      const cur = await getSettings();
+      const settings = normalizeSettings({ ...cur, ...(patch || {}) });
+      await setStore({ [KEYS.SETTINGS]: settings });
+      return settings;
+    });
+    settingsWrite = next.catch(() => {});
+    return next;
   }
 
   async function pcGetSuggestions() {
@@ -67,7 +75,7 @@
     const openByDomain = new Map();
     for (const t of tabs) {
       if (t.incognito) continue;
-      const d = domainFromUrl(t.url);
+      const d = domainFromUrl(t.url || t.pendingUrl);
       if (!d) continue;
       const existing = openByDomain.get(d) || { openCount: 0, favIconUrl: "" };
       const tabIcon =
@@ -163,8 +171,7 @@
         if (msg.type === "pc:getSettings") {
           sendResponse({ ok: true, settings: await getSettings() });
         } else if (msg.type === "pc:updateSettings") {
-          await updateSettings(msg.payload || {});
-          sendResponse({ ok: true });
+          sendResponse({ ok: true, settings: await updateSettings(msg.payload || {}) });
         } else if (msg.type === "pc:getSuggestions") {
           sendResponse({ ok: true, suggestions: await pcGetSuggestions() });
         } else if (msg.type === "pc:getStats") {

@@ -571,9 +571,10 @@
   },
   "web_close_extra_copies_of_the": {
     "source": "89292bb2c0263c586a7f2b9cc83645841bcc3568f7c5939cc28f1dfe7c914cfa",
-    "translation": "ad84b3cac72e6fa6f5391e10c57cd8c8e6629c55746e539a6b2050a04b3c1c84",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "9debeb2189fe3f3e85ab2c41edc7d04ed66d821b50d1bc59b45280dfc38fff8b",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Checked duplicate-cleanup scope against English; specifies extra copies and retains the exception for pinned tabs. AI self-review only; no native-speaker review."
   },
   "web_04_find": {
     "source": "8992efc33e7b22392195cca1d5d82f206ec6f20a26291a0319ae987fecc5b4c5",
@@ -715,9 +716,10 @@
   },
   "web_yes_tabtools_is_free_to": {
     "source": "84385a9904f9cff841a288b2a335d1568389d08ccd5140f025d051ac238205c3",
-    "translation": "104883e134b093e65e82c363d79a494da375741d237aa1c1b6fbef8b79023bb9",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "3bfb3f157ea3baf30118e8e8074046e93f405e9c185d6cc4e60c62bb1f78917e",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared the complete FAQ answer with English; restored the omitted no-account requirement rather than substituting the separate open-source claim. AI self-review only; no native-speaker review."
   },
   "web_which_browsers_can_i_use": {
     "source": "8452483931bdf3093d0d57f6455d29c3b8da2165aba537fcbeeaea961a95ffd6",

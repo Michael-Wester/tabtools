@@ -57,6 +57,7 @@ function page({ title, description, route, body, schema, article = false }) {
     <meta name="twitter:description" content="${escape(description)}" />
     <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
     <link rel="stylesheet" href="/guides.css" />
     <script type="application/ld+json">${json(schema)}</script>
     ${theme}

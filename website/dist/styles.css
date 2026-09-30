@@ -532,6 +532,47 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .language-option[aria-selected="true"] .language-option-check { opacity: 1; }
 .language-suggestion { padding-block: 14px; font-size: 14px; }
 .language-suggestion a { color: var(--accent); }
+.language-fallback { position: relative; width: 44px; height: 44px; }
+.language-fallback-trigger {
+  display: block;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  cursor: pointer;
+}
+.language-fallback-trigger::-webkit-details-marker { display: none; }
+.language-fallback-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 30;
+  width: min(280px, calc(100vw - 32px));
+  max-height: min(60vh, 420px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+.language-fallback-option {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.language-fallback-option:hover,
+.language-fallback-option:focus-visible,
+.language-fallback-option[aria-current="page"] { background: var(--accent-soft); }
 .nav-shell, .nav-actions, .main-nav { flex-wrap: wrap; }
 .nav-shell { padding-block: 12px; }
 .browser-button-copy { white-space: normal; overflow-wrap: anywhere; }

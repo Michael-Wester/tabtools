@@ -482,9 +482,10 @@
   },
   "web_from_the_popup_or_right": {
     "source": "e7b3d2bba3f38a9200c0d036664d7867d81b96ff1989c13469c524fe02ffcf87",
-    "translation": "cba011dd6268b74a18831f6df6b20f9a6a0b0e16117eb7b9758a1df7694c6244",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "b1db04ce038589cd87e679e6a348e9ff40650dc12bee5efb7081aaf5114daca1",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared popup references with English; uses vyskakovacie okno for the extension popup and keeps the separate right-click menu distinction. AI self-review only; no native-speaker review."
   },
   "web_local_by_design": {
     "source": "6e963af255a3a94744215a9106ca0a11d4150cf0917fcd444933baeb04fa28a2",
@@ -620,9 +621,10 @@
   },
   "web_undo_cleanup_from_the_popup": {
     "source": "1644123d7fb4d8c7d9facde84c99c75e9004dc459fa9cc7cdd80810205c75b90",
-    "translation": "1c3cf70e440de391a3b211ca92efa6538ee85383ab364086a5fcc4471ef79a4b",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "843a32ab326d288e9a67f632e25ca1d0178b9552bd411f032986d71b9defc299",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared popup references with English; uses vyskakovacie okno for the extension popup and keeps the separate right-click menu distinction. AI self-review only; no native-speaker review."
   },
   "web_light_and_dark_themes": {
     "source": "53c2c087b3ab74bf037c2cafa75f9fb68d6c76e34623c97df10efb58aed12590",
@@ -638,9 +640,10 @@
   },
   "web_start_with_one_busy_site": {
     "source": "dd56f42d03a5d237e0bf3ba170f4be5328e2ff76f57051f2ad40385d730c99dc",
-    "translation": "6ba73ec1dd938648a113c8c5f4c229dd790318af2f5c32d81dc82dcad21c369b",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "ab41ddf4d7a2696e5d668e217b7a885c59ecd7b6466d7b00fc66a72e88a4b050",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared popup references with English; uses vyskakovacie okno for the extension popup and keeps the separate right-click menu distinction. AI self-review only; no native-speaker review."
   },
   "web_add_it_to_your_browser": {
     "source": "c1af6e4065593581ce457f86b8b6a53a0c3a2cc3fc14d0c109364da54bd0007b",
@@ -740,9 +743,10 @@
   },
   "web_right_click_within_a_web": {
     "source": "6cffc5c27e656068508eb2833ec543d5bbc44219ca99dbffb5d27cce3b8b8e8a",
-    "translation": "a9f4583ecc286994048559db8881834127ae1ab7cfa5b78e7d6999969327bdc6",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "68fb6b988f062414ceb014bc98aa07bfa6a41d03541ab6bcb6a921e221961435",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared popup references with English; uses vyskakovacie okno for the extension popup and keeps the separate right-click menu distinction. AI self-review only; no native-speaker review."
   },
   "web_can_i_remove_duplicates_or": {
     "source": "88961d678388555fd6e4c2a7312283443a177e7e3531b9d61d4e5f95a4242c80",
@@ -776,9 +780,10 @@
   },
   "web_use_undo_immediately_after_closing": {
     "source": "0eff9b5fef778418b95ef56b22ea2c06d08b5378eb363e876d53687d1e120f4e",
-    "translation": "8f2dfc03a0cb975e9a681f2ba29231f32aceb19f392d068358dba094facb78cd",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "translation": "47f255c8266f958243c4b6b5dd7ec960db3fb13ce7538a008f26da5c95e0bfe2",
+    "review": "AI self-review",
+    "date": "2026-09-30",
+    "note": "Compared popup references with English; uses vyskakovacie okno for the extension popup and keeps the separate right-click menu distinction. AI self-review only; no native-speaker review."
   },
   "web_free_for_chrome_firefox_and": {
     "source": "4954bb0fac64f3f06a3704c91de0d11ae1484db78d1039563b75fed3a0eef2ce",

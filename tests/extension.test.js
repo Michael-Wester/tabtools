@@ -14,7 +14,8 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
     tabs: tabs.map((tab, index) => ({ windowId: 1, index, active: false, pinned: false, incognito: false, ...tab })),
     store: {}, menus: [], removed: [], created: [], moves: [], errors: [],
     failRemove: new Set(), failCreate: new Set(), missingWindows: new Set(),
-    failQuery: false, failMessage: false,
+    failQuery: false, failMessage: false, failStorageGet: false, failStorageSet: false,
+    delayCreatedNavigation: false, queryCount: 0,
   };
   let nextId = Math.max(0, ...tabs.map(tab => tab.id)) + 1;
   const api = { runtime: { onMessage: event(), onInstalled: event(), onStartup: event() } };
@@ -26,6 +27,7 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
   }
   api.tabs = {
     query(query, cb) {
+      state.queryCount += 1;
       const selected = state.tabs.filter(tab => (!query.currentWindow || tab.windowId === 1) && (!query.active || tab.active));
       callback(cb, state.failQuery ? undefined : structuredClone(selected), state.failQuery ? 'Query failed' : null);
     },
@@ -44,6 +46,7 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
         return;
       }
       const tab = { id: nextId++, windowId: 1, index: state.tabs.length, pinned: false, ...options };
+      if (state.delayCreatedNavigation) tab.url = 'about:blank';
       state.created.push(structuredClone(options));
       state.tabs.push(tab);
       callback(cb, structuredClone(tab));
@@ -58,11 +61,12 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
   api.storage = { local: {
     get(keys, cb) {
       const names = typeof keys === 'string' ? [keys] : keys;
-      callback(cb, structuredClone(Object.fromEntries(names.filter(key => key in state.store).map(key => [key, state.store[key]]))));
+      const value = structuredClone(Object.fromEntries(names.filter(key => key in state.store).map(key => [key, state.store[key]])));
+      callback(cb, state.failStorageGet ? undefined : value, state.failStorageGet ? 'Storage unavailable' : null);
     },
     set(values, cb) {
-      Object.assign(state.store, structuredClone(values));
-      callback(cb);
+      if (!state.failStorageSet) Object.assign(state.store, structuredClone(values));
+      callback(cb, undefined, state.failStorageSet ? 'Storage write failed' : null);
     },
   }, onChanged: event() };
   api.contextMenus = {
@@ -124,7 +128,7 @@ async function popup(runtime, sizing = {}) {
     async dispatch(name) { for (const fn of this.listeners[name] || []) await fn({}); }
     async click() { await this.dispatch('click'); }
   }
-  const ids = ['pc-header', 'pc-status', 'pc-undo-close', 'min-open', 'inactive-threshold', 'pc-suggest-caption', 'pc-count-pill', 'pc-open-count', 'pc-close', 'pc-close-duplicates', 'pc-suggest-card', 'pc-suggest-chips', 'pc-suggest-empty', 'pc-suggest-more', 'pc-sort-tabs-quick', 'pc-tab-actions', 'pc-tab-settings', 'pc-settings-toggle', 'pc-query'];
+  const ids = ['pc-header', 'pc-status', 'pc-settings-status', 'pc-undo-close', 'min-open', 'inactive-threshold', 'pc-suggest-caption', 'pc-count-pill', 'pc-open-count', 'pc-close', 'pc-close-duplicates', 'pc-suggest-card', 'pc-suggest-chips', 'pc-suggest-empty', 'pc-suggest-more', 'pc-sort-tabs-quick', 'pc-tab-actions', 'pc-tab-settings', 'pc-settings-toggle', 'pc-query'];
   const elements = Object.fromEntries(ids.map(id => [id, new Element()]));
   const themes = ['light', 'dark'].map(theme => { const el = new Element(); el.dataset.themeValue = theme; return el; });
   elements.themes = themes;
@@ -140,11 +144,29 @@ async function popup(runtime, sizing = {}) {
     { getBoundingClientRect: () => ({ width: sizing.controlsWidth ?? 230 }) },
   ];
   elements.root = document.documentElement;
-  const context = vm.createContext({ chrome: runtime.api, document, Intl, setTimeout: () => 1, console: runtime.context.console,
+  const context = vm.createContext({ chrome: runtime.api, document, Intl,
+    setTimeout: sizing.timers?.setTimeout || (() => 1), clearTimeout: sizing.timers?.clearTimeout || (() => {}), console: runtime.context.console,
     getComputedStyle: () => ({ columnGap: '12px' }), screen: { availWidth: sizing.screenWidth || 1920 } });
   for (const file of ['i18n-fallback.js', 'i18n.js', 'popup/popup.js']) vm.runInContext(fs.readFileSync(path.join(L.root, 'src/shared', file), 'utf8'), context, { filename: file });
   await ready();
   return elements;
+}
+
+function popupTimers() {
+  const pending = new Map();
+  let nextId = 0;
+  return {
+    setTimeout(callback, delay) { const id = ++nextId; pending.set(id, { callback, delay }); return id; },
+    clearTimeout(id) { pending.delete(id); },
+    async flushRefreshes() {
+      // Run event debounces without expiring user-visible status messages.
+      for (const [id, timer] of pending) if (timer.delay < 1000) {
+        pending.delete(id);
+        timer.callback();
+      }
+      await new Promise(resolve => setImmediate(resolve));
+    },
+  };
 }
 
 test('Chrome worker and Firefox background register translated, stable context-menu actions', async () => {
@@ -216,6 +238,45 @@ test('concurrent cleanups do not overwrite each other’s stored statistics', as
   assert.equal(runtime.state.store['pc.stats'].totalTabsEaten, 3);
 });
 
+test('concurrent settings patches preserve each control and recover after a failed write', async () => {
+  const runtime = extension();
+  const patches = [{ suggestMinOpenTabsPerDomain: 3 }, { inactiveThresholdMinutes: 45 }, { theme: 'dark' }];
+  const replies = await Promise.all(patches.map(payload => runtime.send({ type: 'pc:updateSettings', payload })));
+  assert.ok(replies.every(reply => reply.ok));
+  const saved = runtime.state.store['pc.settings'];
+  for (const patch of patches) for (const [key, value] of Object.entries(patch)) assert.equal(saved[key], value);
+  assert.deepEqual(replies.at(-1).settings, saved);
+
+  runtime.state.failStorageSet = true;
+  assert.equal((await runtime.send({ type: 'pc:updateSettings', payload: { theme: 'light' } })).ok, false);
+  runtime.state.failStorageSet = false;
+  assert.equal((await runtime.send({ type: 'pc:updateSettings', payload: { inactiveThresholdMinutes: 90 } })).ok, true);
+  assert.equal(runtime.state.store['pc.settings'].theme, 'dark');
+  assert.equal(runtime.state.store['pc.settings'].inactiveThresholdMinutes, 90);
+});
+
+test('inactive cleanup never uses defaults after its settings read fails', async () => {
+  const runtime = extension({ tabs: [{ id: 1, url: 'https://example.com/', discarded: true }] });
+  runtime.state.failStorageGet = true;
+  for (const type of ['pc:closeInactive', 'pc:getSuggestions', 'pc:getSettings', 'pc:getStats']) {
+    assert.equal((await runtime.send({ type })).ok, false, type);
+  }
+  assert.deepEqual(runtime.state.removed, []);
+});
+
+test('site suggestions include pending navigation and match the tabs they close', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, pendingUrl: 'https://www.example.com/loading' },
+    { id: 2, pendingUrl: 'https://example.com/private', incognito: true },
+  ] });
+  const result = await runtime.send({ type: 'pc:getSuggestions' });
+  assert.equal(result.suggestions.find(item => item.domain === 'example.com').openCount, 1);
+  const closed = await runtime.send({ type: 'pc:closeByDomain', query: 'example.com' });
+  assert.equal(closed.closedCount, 1);
+  assert.equal(closed.closedTabs[0].url, 'https://www.example.com/loading');
+  assert.deepEqual(runtime.state.removed, [1]);
+});
+
 test('tab-query failures return errors to close and suggestion requests', async () => {
   const runtime = extension();
   runtime.state.failQuery = true;
@@ -279,6 +340,67 @@ test('popup retains failed undo entries for retry without recreating successful 
   assert.equal(elements['pc-undo-close'].disabled, true);
 });
 
+test('popup blocks another cleanup while Undo is restoring its snapshot', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://first.example/one' },
+    { id: 2, url: 'https://second.example/two' },
+  ] });
+  const elements = await popup(runtime);
+  elements['pc-query'].value = 'first.example';
+  await elements['pc-close'].click();
+  const nextChip = elements['pc-suggest-chips'].children.find(child => child.dataset.domain === 'second.example');
+  await Promise.all([elements['pc-undo-close'].click(), nextChip.click()]);
+  assert.deepEqual(runtime.state.removed, [1]);
+  assert.deepEqual(runtime.state.created.map(tab => tab.url), ['https://first.example/one']);
+  assert.ok(runtime.state.tabs.some(tab => tab.id === 2));
+  assert.equal(elements['pc-undo-close'].disabled, true);
+  assert.equal(elements['pc-close'].disabled, false);
+});
+
+test('popup refreshes a restored site when its initially blank tab finishes navigation', async () => {
+  for (const firefox of [false, true]) {
+    const runtime = extension({ firefox, tabs: [{ id: 1, url: 'https://example.com/restored' }] });
+    const timers = popupTimers();
+    const elements = await popup(runtime, { timers });
+    elements['pc-query'].value = 'example.com';
+    await elements['pc-close'].click();
+    runtime.state.delayCreatedNavigation = true;
+    await elements['pc-undo-close'].click();
+    const restored = runtime.state.tabs[0];
+    assert.equal(restored.url, 'about:blank');
+    assert.equal(elements['pc-suggest-chips'].children.length, 0);
+
+    restored.url = 'https://example.com/restored';
+    for (const listener of runtime.api.tabs.onUpdated.listeners) await listener(restored.id, { url: restored.url, status: 'complete' }, restored);
+    await timers.flushRefreshes();
+    assert.equal(elements['pc-suggest-chips'].children[0].dataset.domain, 'example.com');
+
+    const queries = runtime.state.queryCount;
+    for (const listener of runtime.api.tabs.onUpdated.listeners) {
+      await listener(restored.id, { title: 'Updated title' }, restored);
+      await listener(99, { url: 'https://private.test/', status: 'complete' }, { id: 99, incognito: true });
+    }
+    await timers.flushRefreshes();
+    assert.equal(runtime.state.queryCount, queries);
+  }
+});
+
+test('popup keeps site suggestions current when regular tabs are created and removed', async () => {
+  const runtime = extension();
+  const timers = popupTimers();
+  const elements = await popup(runtime, { timers });
+  const created = { id: 1, url: 'https://new.example/', windowId: 1, incognito: false };
+  runtime.state.tabs.push(created);
+  for (const listener of runtime.api.tabs.onCreated.listeners) await listener(created);
+  await timers.flushRefreshes();
+  assert.equal(elements['pc-suggest-chips'].children[0].dataset.domain, 'new.example');
+
+  runtime.state.tabs = [];
+  for (const listener of runtime.api.tabs.onRemoved.listeners) await listener(created.id, { windowId: 1, isWindowClosing: false });
+  await timers.flushRefreshes();
+  assert.equal(elements['pc-suggest-chips'].children.length, 0);
+});
+
 test('popup handles an unavailable background with its translated error state', async () => {
   const runtime = extension({ locale: 'de' });
   runtime.state.failMessage = true;
@@ -304,6 +426,40 @@ test('popup settings persist as numeric values when a translated popup is reopen
   assert.equal(reopened.themes[1].getAttribute('aria-pressed'), 'true');
   assert.equal(runtime.state.store['pc.settings'].suggestMinOpenTabsPerDomain, 3);
   assert.equal(runtime.state.store['pc.settings'].inactiveThresholdMinutes, 45);
+});
+
+test('popup settings changes arriving together retain every saved value', async () => {
+  const runtime = extension();
+  const elements = await popup(runtime);
+  elements['min-open'].value = '3';
+  elements['inactive-threshold'].value = '45';
+  await Promise.all([
+    elements['min-open'].dispatch('change'),
+    elements['inactive-threshold'].dispatch('change'),
+    elements.themes[1].click(),
+  ]);
+  const reopened = await popup(runtime);
+  assert.equal(reopened['min-open'].value, 3);
+  assert.equal(reopened['inactive-threshold'].value, 45);
+  assert.equal(reopened.themes[1].getAttribute('aria-pressed'), 'true');
+});
+
+test('popup does not apply or keep settings changes that failed to save', async () => {
+  const runtime = extension({ locale: 'es' });
+  runtime.state.store['pc.settings'] = { theme: 'light', suggestMinOpenTabsPerDomain: 3 };
+  const elements = await popup(runtime);
+  await elements['pc-settings-toggle'].click();
+  runtime.state.failStorageSet = true;
+  elements['min-open'].value = '6';
+  await elements['min-open'].dispatch('change');
+  await elements.themes[1].click();
+  assert.equal(runtime.state.store['pc.settings'].suggestMinOpenTabsPerDomain, 3);
+  assert.equal(runtime.state.store['pc.settings'].theme, 'light');
+  assert.equal(elements['min-open'].value, 3);
+  assert.equal(elements.root.getAttribute('data-theme'), 'light');
+  assert.equal(elements.themes[0].getAttribute('aria-pressed'), 'true');
+  assert.equal(elements['pc-status'].textContent, L.catalogue('es').closeFailed);
+  assert.equal(elements['pc-settings-status'].textContent, L.catalogue('es').closeFailed);
 });
 
 test('popup site chips use exact host matching and report partial close failures', async () => {

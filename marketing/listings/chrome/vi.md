@@ -25,13 +25,13 @@ Character count: 109
 
 Đóng cùng lúc các thẻ của một trang web: Mở TabTools và nhấp vào một trang web trong Gợi ý, hoặc nhấp chuột phải trong một trang web rồi chọn Đóng thẻ của trang web. Thao tác này đóng các thẻ tương ứng trên mọi cửa sổ thông thường, kể cả thẻ hiện tại.
 Sắp xếp thẻ theo trang web: Đưa các thẻ cùng trang web về cạnh nhau trong cửa sổ hiện tại, với những trang web có nhiều thẻ mở nhất ở đầu.
-Loại bỏ thẻ trùng lặp: Đóng các bản sao của cùng một trang chỉ bằng một cú nhấp. Các thẻ đã ghim được giữ nguyên.
+Loại bỏ thẻ trùng lặp: Đóng các bản sao dư thừa của cùng một trang chỉ bằng một cú nhấp. Các thẻ đã ghim được giữ nguyên.
 Tìm theo từ khóa hoặc tên miền: Nhập một từ để tìm trong tiêu đề và URL của thẻ, hoặc nhập tên miền chính xác như youtube.com. Sau đó chọn Đóng.
 Dọn thẻ không hoạt động: Chọn ngưỡng thời gian không hoạt động trong Cài đặt, rồi nhấp Không hoạt động để đóng các thẻ đủ điều kiện. Thẻ đang hoạt động, đã ghim hoặc đang phát âm thanh vẫn mở.
 
 Tiện ích TabTools xử lý thông tin thẻ trên thiết bị của bạn. Cài đặt và thống kê dọn thẻ được lưu trong bộ nhớ cục bộ của trình duyệt. Tiện ích không có tài khoản, công cụ phân tích, quảng cáo hay cơ sở dữ liệu bên ngoài.
 
-Character count: 1195
+Character count: 1203
 
 ## Maintenance metadata
 

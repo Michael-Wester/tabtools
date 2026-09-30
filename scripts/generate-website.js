@@ -53,6 +53,12 @@ function languagePickerMarkup(current, label) {
   }).join('');
   const currentName = current.languageName || current.locale;
   const accessibleLabel = String(label) + ': ' + currentName;
+  const fallbackOptions = L.presentationRegistry.map(item =>
+    '<a class="language-fallback-option" href="' + L.escape(item.path) + '"' +
+      (item.locale === current.locale ? ' aria-current="page"' : '') + '>' +
+      flagMarkup(item, 'language-flag-option') +
+      '<span lang="en" dir="ltr">' + L.escape(item.languageName) + '</span></a>'
+  ).join('');
   return '<div class="language-picker" data-language-picker>' +
     '<button class="language-trigger" type="button" data-language-trigger aria-label="' + L.escape(accessibleLabel) +
       '" title="' + L.escape(accessibleLabel) + '" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">' +
@@ -62,7 +68,14 @@ function languagePickerMarkup(current, label) {
     '<div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="' + L.escape(label) + '" hidden>' +
       options +
     '</div>' +
-  '</div>';
+  '</div>' +
+    '<noscript><details class="language-fallback">' +
+      '<summary class="language-fallback-trigger" aria-label="' + L.escape(accessibleLabel) + '">' +
+        flagMarkup(current, 'language-flag-fallback') +
+        '<span class="sr-only" lang="en" dir="ltr">' + L.escape(accessibleLabel) + '</span>' +
+      '</summary>' +
+      '<nav class="language-fallback-menu" aria-label="' + L.escape(label) + '">' + fallbackOptions + '</nav>' +
+    '</details></noscript>';
 }
 
 function seoLinks() {
@@ -132,6 +145,7 @@ function main() {
     }
   }
   fs.copyFileSync(path.join(sourceDir, 'styles.css'), path.join(outputDir, 'styles.css'));
+  fs.copyFileSync(path.join(sourceDir, 'no-script.css'), path.join(outputDir, 'no-script.css'));
   fs.copyFileSync(path.join(sourceDir, 'script.js'), path.join(outputDir, 'script.js'));
   copyFlagAssets();
   for (const locale of L.registry) writePage(locale);

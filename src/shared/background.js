@@ -361,9 +361,11 @@ function installContextMenu() {
 }
 
 function getSettings() {
-  return new Promise((res) => {
+  return new Promise((res, reject) => {
     chrome.storage.local.get(SETTINGS_KEY, (raw) => {
-      res(normalizeSettings(raw?.[SETTINGS_KEY]));
+      const err = getRuntimeLastError();
+      if (err) reject(err);
+      else res(normalizeSettings(raw?.[SETTINGS_KEY]));
     });
   });
 }

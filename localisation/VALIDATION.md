@@ -10,6 +10,8 @@ npm test
 node build.js
 node scripts/check-packages.js
 node website/build.js
+node website/check-guides.cjs
+node website/check-security.cjs
 node scripts/validate-localisation.js --report
 git diff --exit-code
 ```
@@ -17,6 +19,44 @@ git diff --exit-code
 CI runs on Linux and Windows with Node 22. Windows additionally runs `./build.ps1`
 and checks its packages. Generated locale files, pages and store text are committed;
 generation must leave them unchanged. Review fingerprints are never updated by generation.
+
+## Installed Chromium extension regression
+
+```sh
+npm ci
+npx playwright install --with-deps chromium
+node build.js
+npm run test:extension
+```
+
+The native-extension job installs `dist/chrome` in disposable profiles and opens
+the actual browser action popup. It checks every supported catalogue, long site
+labels, counters, Main/Settings layout and theme changes. Native API checks cover
+multi-window cleanup and Undo, private-tab exclusions, pinned duplicate retention,
+sorting, inactive exceptions, concurrent settings patches and offline operation.
+Web pages for the controlled tabs are fulfilled locally. This is Chromium coverage;
+it does not establish native Firefox or Microsoft Edge behavior.
+
+The same suite can check an installed official Edge executable and the Edge
+package on Linux:
+
+```sh
+TABTOOLS_CHROMIUM_PATH=/path/to/msedge TABTOOLS_EXTENSION_TARGET=edge npm run test:extension
+```
+
+Use a disposable profile; the suite creates and closes its own controlled tabs.
+The executable override selects the actual browser binary, rather than merely
+changing Chromium's user agent.
+
+## Website mobile regression
+
+The independent website workflow runs the existing English homepage/guide matrix
+and all 29 localized homepages in Chromium and WebKit. The localized matrix checks
+320/390 px layouts and representative keyboard, saved-preference, RTL/CJK and
+JavaScript-disabled navigation. Run it from `website/tests` with `npm ci`,
+`npx playwright install --with-deps chromium webkit`, then `npm test`.
+See [website test details](../website/tests/README.md). Browser emulation does not
+replace physical-device acceptance or fluent-reader review.
 
 ## Firefox browser smoke check
 

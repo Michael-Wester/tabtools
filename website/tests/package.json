@@ -2,8 +2,9 @@
   "name": "tabtools-website-mobile-checks",
   "private": true,
   "scripts": {
-    "test": "playwright test",
-    "test:chromium": "playwright test --project='chromium-*'",
+    "test": "playwright test --config=regression.config.cjs",
+    "test:localisation": "playwright test --config=localisation.config.cjs",
+    "test:chromium": "playwright test --config=regression.config.cjs --project='chromium-*'",
     "report": "playwright show-report"
   },
   "devDependencies": {

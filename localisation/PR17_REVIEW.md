@@ -2,6 +2,10 @@
 
 Review baseline: `b492c9256eef9a1393eb3bbe2cff2afa7be27b5a` (18 September 2026).
 
+The dated sections below preserve earlier evidence and environment limitations.
+The [30 September full review](#full-review--30-september-2026) records current
+capabilities and supersedes earlier incomplete browser checks.
+
 ## Completed
 
 - Preserved earlier checkouts and reviewed the actual GitHub head in a separate checkout.
@@ -219,3 +223,94 @@ confirmed the original dimensions and body-sizing correction. The Node sizing
 tests supply geometry and did not catch this CSS/native-host regression. No
 installed-browser render is claimed: reload the rebuilt extension and check the
 original size, unclipped card edges, long translations and both Settings transitions.
+
+## Full review — 30 September 2026
+
+This review starts from merge `090a91ba316fa6c3b3bf6bfdc4bb580540dc3d76`.
+Main `3cf1f3fb4d5fa11dbe87583f5fec239a43613a32` is an ancestor: its guide pages,
+mobile navigation/store wording, touch targets, social metadata and strict
+security headers are preserved. Current remote CI outcomes are recorded in the
+PR description; the results below describe local evidence.
+
+### Changes implemented
+
+- Site chips display compact localized numbers, with complete translated action
+  and count descriptions in accessible names/tooltips. Measured long domains
+  expand to a full row and wrap; short domains retain the original grid. The
+  380 px body sizing, padding, vertical margins and shared Settings width remain.
+- Settings patches are serialized in the background so rapid controls or multiple
+  popups cannot overwrite one another. Failed saves restore accepted values and
+  show an error in Settings. Inactive cleanup fails safely when settings cannot
+  be read. Site suggestions include pending URLs consistently with cleanup.
+- Close and Undo share a popup guard so overlapping actions cannot overwrite the
+  current Undo snapshot. Error paths restore controls for retry.
+- Native Firefox review reproduced a stale site list after Undo: restored tabs
+  initially appeared as `about:blank`, and completed navigation never refreshed
+  the chips. Debounced URL/load-complete events now refresh suggestions, including
+  normal tab creation/removal. Private/title-only updates do not trigger a refresh.
+  Both focused regressions failed before the fix and pass afterward.
+- Choosing the current website language dismisses a stale language suggestion
+  and restores trigger focus before same-document navigation. A native details
+  selector provides all 29 language links when JavaScript is disabled, including
+  on guides. It uses a same-origin stylesheet compatible with the existing CSP.
+- Reviewed all 4,263 values (44 extension and 103 website keys per locale).
+  Corrected 16 meaning/context issues across ten languages: omitted no-account
+  guarantees, Italian current-tab instructions, Vietnamese duplicate-copy wording
+  and Slovak popup terminology. Only corrected keys received updated AI review
+  fingerprints; no fluent/native-speaker approval is claimed.
+- Added persistent native-extension tests and a CI job; expanded the website
+  browser suite with 156 locale/interaction/no-JS cases. Existing main viewport
+  cases remain isolated and CLI filters apply to both website suites.
+
+### Validation evidence
+
+- **52 Node regressions pass**; all 29 catalogues, review fingerprints and 87
+  generated listings validate. All three browser packages build and pass integrity
+  checks (47 runtime files and 29 locales each). Windows PowerShell verification
+  remains enforced in CI.
+- **33 native Chromium cases pass** using the installed Chrome package and actual
+  action popups. Every catalogue, real counter strings, full domain readability,
+  Settings transitions, and very long hostnames/large counts are checked. Native
+  APIs cover multi-window cleanup/Undo, private exclusions, pinned duplicates,
+  sorting, inactivity, concurrent settings and offline operation. Tab pages are
+  controlled local fixtures. This is Chromium/CFT evidence, not branded Chrome.
+- **33 native Microsoft Edge cases pass** with official Linux Edge
+  `154.0.4258.48` and `dist/edge`. The downloaded package's SHA-256 matched the
+  Microsoft repository metadata. The same native assertions and all languages
+  passed; changing a user agent was not used as a substitute for Edge.
+- Existing website matrix: **102 passes and 18 intentional configuration skips**
+  across English homepage/guides, themes and viewports. New locale cases verify
+  all 29 homepages at 320/390 px in Chromium/WebKit plus representative keyboard,
+  saved-language, query/anchor, RTL/CJK and JavaScript-disabled interactions.
+  Local Chromium 320/390px and WebKit 320px cases all passed (117 cases), along
+  with the first 20 WebKit 390px cases. The latter run then stalled in browser
+  page creation before navigation, also reproducible on an empty page. That failure
+  is recorded rather than counted as a site pass. The full matrix runs in CI.
+- **5 Firefox website smoke cases pass**. The explicit YouTube stub and diagnostic
+  negative probes remain; authored/unknown-origin warnings and page errors fail.
+- Native Firefox `153.0` temporary-addon checks pass for Spanish, Hebrew and
+  Japanese: genuine action panels, full site labels, no horizontal overflow,
+  large counters, Settings/theme width and persistence, concurrent settings,
+  real Close and UI Undo. Marionette reads the native popup window actor; the
+  popup is not loaded as a web tab. The bundled binary carries only en-US browser
+  UI resources, so available/requested locales were selected in the disposable
+  profile to exercise native extension catalogue selection. This verifies the
+  extension locales, not installed language packs or a fully translated Firefox UI.
+- Guide/navigation checks pass for 33 pages, 5,848 local references and 411 tagged
+  store links; security checks pass for all 33 pages and inline bootstrap hashes.
+  Independent Chromium/WebKit probes under the deployed CSP confirm working
+  language/theme controls and keyboard/no-JS navigation with zero policy violations.
+- Recaptured the actual Spanish native popup at 380 px with five local sample tabs
+  on two sites, compact counters, complete domain labels and no page errors.
+
+### Release readiness boundary
+
+Translation coverage is 100% of the scoped catalogue keys. Engineering readiness
+is an estimate based on source review and validated behavior, not a measurement
+of linguistic accuracy or a promise of zero defects. Fluent-reader review of the
+AI-authored translations and publisher-dashboard verification (Edge locale codes,
+Chrome description limit and released-version/copy agreement) remain before a
+store release. Physical-device behavior, live YouTube/store integrations and
+browser-managed context-menu presentation are outside the deterministic suites.
+The main-authored guides intentionally remain English. No live listing or
+production release is changed; the PR remains draft for the external release checks.

@@ -17,6 +17,8 @@ on:
       - 'package-lock.json'
       - 'playwright.config.js'
       - 'playwright/**'
+      - 'playwright.extension.config.js'
+      - 'extension-playwright/**'
       - '.github/workflows/localisation.yml'
   pull_request:
     paths:
@@ -33,6 +35,8 @@ on:
       - 'package-lock.json'
       - 'playwright.config.js'
       - 'playwright/**'
+      - 'playwright.extension.config.js'
+      - 'extension-playwright/**'
       - '.github/workflows/localisation.yml'
 
 permissions:
@@ -90,3 +94,30 @@ jobs:
         run: npm run locales:website
       - name: Run Firefox console smoke check
         run: npm run test:firefox
+
+  native-chromium-extension:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install test dependencies
+        run: npm ci
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Build extension packages
+        run: node build.js
+      - name: Check native extension actions and all popup languages
+        run: npm run test:extension
+      - name: Upload native extension test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: native-extension-results
+          path: test-results/native-extension/
+          retention-days: 7
