@@ -577,7 +577,7 @@ html[data-theme="dark"] .theme-icon-moon { display: none; }
 .nav-shell { padding-block: 12px; }
 .browser-button-copy { white-space: normal; overflow-wrap: anywhere; }
 .browser-button-name { display: inline; }
-.hero-copy, .feature-card, .workflow-copy, .faq-heading, .footer-links > div { min-width: 0; overflow-wrap: anywhere; }
+.hero-copy, .section-heading h2, .feature-card, .workflow-copy, .faq-heading, .privacy-card > div, .footer-links > div { min-width: 0; overflow-wrap: anywhere; }
 html[dir="rtl"] .button-icon, html[dir="rtl"] .text-link svg { transform: scaleX(-1); }
 html[dir="rtl"] .recording-duration { margin-left: 0; margin-inline-start: auto; }
 html[dir="rtl"] .proof-item + .proof-item { border-left: 0; border-inline-start: 1px solid var(--line); }

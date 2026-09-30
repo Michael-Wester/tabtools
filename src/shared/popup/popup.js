@@ -64,14 +64,26 @@
   }
 
   function fitSuggestionChips() {
-    const chips = document.querySelectorAll("#pc-suggest-chips .chip");
+    const chips = Array.from(document.querySelectorAll("#pc-suggest-chips .chip"));
     // Reset before measuring so larger headers can restore the compact grid.
     chips.forEach((chip) => chip.classList.remove("wide"));
-    const wide = Array.from(chips).filter((chip) => {
-      const label = chip.querySelector(".label");
-      return label && label.scrollWidth > label.clientWidth + 1;
-    });
-    wide.forEach((chip) => chip.classList.add("wide"));
+    // A spanning chip occupies otherwise collapsed auto-fit tracks. Recheck
+    // the other chips after widening, since those tracks can make them smaller.
+    // Every pass adds at least one wide chip, so the chip count bounds the loop.
+    for (let pass = 0; pass < chips.length; pass += 1) {
+      const wide = chips.filter((chip) => {
+        if (chip.classList.contains("wide")) return false;
+        const label = chip.querySelector(".label");
+        if (!label) return false;
+        // Integer scroll/client widths can hide a fractional overflow, which
+        // still replaces the hostname's ending with an ellipsis in Firefox.
+        const text = document.createRange();
+        text.selectNodeContents(label);
+        return text.getBoundingClientRect().width > label.getBoundingClientRect().width;
+      });
+      if (!wide.length) break;
+      wide.forEach((chip) => chip.classList.add("wide"));
+    }
   }
 
   function setStatus(text, delay = 1400) {

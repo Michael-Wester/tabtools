@@ -102,6 +102,12 @@ for (const locale of L.registry) {
     await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
     await expect(page.locator('h1')).toBeVisible();
     await checkGeometry(page);
+    // CI's wider system font exposed intrinsic grid sizing and long heading
+    // words that the local fallback font concealed. Keep both layouts checked.
+    if (testInfo.project.metadata.width === 320 && ['hu', 'uk'].includes(locale.locale)) {
+      await page.addStyleTag({ content: 'body { font-family: "DejaVu Sans", sans-serif; }' });
+      await checkGeometry(page);
+    }
     await checkHeader(page);
 
     // Test the complete translated placeholder order, including suffixes in

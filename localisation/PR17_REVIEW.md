@@ -238,6 +238,14 @@ PR description; the results below describe local evidence.
   and count descriptions in accessible names/tooltips. Measured long domains
   expand to a full row and wrap; short domains retain the original grid. The
   380 px body sizing, padding, vertical margins and shared Settings width remain.
+  A subsequent native Hebrew check caught fractional text clipping after Undo;
+  exact text/label rectangles now replace integer widths with a 1px allowance.
+  Browser assertions use the same precise visibility requirement.
+  A native 500px case also reproduced an auto-fit grid cascade: widening one
+  chip activated another column and shrank its neighbor. Fitting now rechecks
+  remaining chips until stable, bounded by the chip count. The new browser
+  regression fails with the prior single-pass code and passes with this fix;
+  native width sweeps preserve compact layouts at 380/550/600px.
 - Settings patches are serialized in the background so rapid controls or multiple
   popups cannot overwrite one another. Failed saves restore accepted values and
   show an error in Settings. Inactive cleanup fails safely when settings cannot
@@ -253,6 +261,10 @@ PR description; the results below describe local evidence.
   and restores trigger focus before same-document navigation. A native details
   selector provides all 29 language links when JavaScript is disabled, including
   on guides. It uses a same-origin stylesheet compatible with the existing CSP.
+- Clean CI exposed Hungarian/Ukrainian 320px overflow with wider fallback fonts.
+  Privacy text grid children can now shrink, and long section-heading words can
+  wrap. Their existing narrow-screen cases also exercise DejaVu Sans so font
+  differences cannot conceal the regression.
 - Reviewed all 4,263 values (44 extension and 103 website keys per locale).
   Corrected 16 meaning/context issues across ten languages: omitted no-account
   guarantees, Italian current-tab instructions, Vietnamese duplicate-copy wording
@@ -268,16 +280,20 @@ PR description; the results below describe local evidence.
   generated listings validate. All three browser packages build and pass integrity
   checks (47 runtime files and 29 locales each). Windows PowerShell verification
   remains enforced in CI.
-- **33 native Chromium cases pass** using the installed Chrome package and actual
+- **34 native Chromium cases pass** using the installed Chrome package and actual
   action popups. Every catalogue, real counter strings, full domain readability,
   Settings transitions, and very long hostnames/large counts are checked. Native
   APIs cover multi-window cleanup/Undo, private exclusions, pinned duplicates,
   sorting, inactivity, concurrent settings and offline operation. Tab pages are
   controlled local fixtures. This is Chromium/CFT evidence, not branded Chrome.
+  The final full suite passes on CI's exact Chromium revision 1234; the new
+  500px grid regression is included.
 - **33 native Microsoft Edge cases pass** with official Linux Edge
   `154.0.4258.48` and `dist/edge`. The downloaded package's SHA-256 matched the
   Microsoft repository metadata. The same native assertions and all languages
   passed; changing a user agent was not used as a substitute for Edge.
+  Eight targeted native cases pass after the final fitting change, including
+  the 500px regression, layout extremes and all cleanup/settings actions.
 - Existing website matrix: **102 passes and 18 intentional configuration skips**
   across English homepage/guides, themes and viewports. New locale cases verify
   all 29 homepages at 320/390 px in Chromium/WebKit plus representative keyboard,

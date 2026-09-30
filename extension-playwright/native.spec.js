@@ -136,9 +136,11 @@ async function layout(popup) {
       const rect = element.getBoundingClientRect();
       return rect.left < body.left - 1 || rect.right > body.right + 1;
     }).map(element => element.id || element.className);
-    const labels = [...document.querySelectorAll('.chip[data-domain] .label')].map(element => ({
-      text: element.textContent, width: element.clientWidth, required: element.scrollWidth
-    }));
+    const labels = [...document.querySelectorAll('.chip[data-domain] .label')].map(element => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return { text: element.textContent, width: element.getBoundingClientRect().width, textWidth: range.getBoundingClientRect().width };
+    });
     return { width: body.width, viewport: innerWidth, horizontalOverflow: document.documentElement.scrollWidth - innerWidth, outside, labels };
   })()`);
 }
@@ -169,7 +171,7 @@ for (const entry of registry) {
       expect(actions.width).toBeLessThanOrEqual(actions.viewport);
       expect(actions.horizontalOverflow).toBeLessThanOrEqual(1);
       expect(actions.outside).toEqual([]);
-      for (const label of actions.labels) expect(label.required, `${entry.locale}: ${label.text} must stay readable`).toBeLessThanOrEqual(label.width + 1);
+      for (const label of actions.labels) expect(label.textWidth, `${entry.locale}: ${label.text} must stay readable`).toBeLessThanOrEqual(label.width + 0.01);
       await click(popup, '#pc-settings-toggle');
       expect(await popup.evaluate('document.querySelector("#pc-tab-settings").getAttribute("aria-hidden")')).toBe('false');
       const settings = await layout(popup);
@@ -267,6 +269,30 @@ test('native actions: close, undo, pinned duplicate retention, sorting, inactive
   } finally { await browser.close(); }
 });
 
+test('native Spanish: a long hostname keeps neighboring sites readable at 500px', async ({}, testInfo) => {
+  const browser = await launchExtension(testInfo, 'es');
+  try {
+    const domain = ['a'.repeat(63), 'b'.repeat(63), 'c'.repeat(63), 'test'].join('.');
+    await createTabs(browser, [{ url: `https://${domain}/one` }, { url: 'https://developer.mozilla.org/two' }]);
+    const popup = await nativePopup(browser);
+    await expect.poll(() => popup.evaluate('document.querySelectorAll(".chip[data-domain]").length')).toBe(2);
+    // Translated headers can grow the real popup to this supported width. A
+    // long site spanning the grid must leave its neighboring site readable.
+    await popup.evaluate('document.documentElement.style.setProperty("--popup-width", "500px")');
+    await expect.poll(() => popup.evaluate('innerWidth')).toBe(500);
+    await click(popup, '#pc-settings-toggle');
+    await click(popup, '#pc-settings-toggle');
+    const metrics = await layout(popup);
+    expect(metrics.width).toBe(500);
+    expect(metrics.viewport).toBe(500);
+    expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
+    expect(metrics.outside).toEqual([]);
+    expect(metrics.labels.map(label => label.text).sort()).toEqual([domain, 'developer.mozilla.org'].sort());
+    for (const label of metrics.labels) expect(label.textWidth, label.text).toBeLessThanOrEqual(label.width + 0.01);
+    expect(popup.diagnostics).toEqual([]);
+  } finally { await browser.close(); }
+});
+
 for (const locale of ['es', 'he', 'ja']) {
   test(`native ${locale}: very long hostname and lifetime count survive settings transitions`, async ({}, testInfo) => {
     const browser = await launchExtension(testInfo, locale);
@@ -281,7 +307,7 @@ for (const locale of ['es', 'he', 'ja']) {
         expect(metrics.width).toBeLessThanOrEqual(800);
         expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
         expect(metrics.outside).toEqual([]);
-        for (const label of metrics.labels) expect(label.required, `${locale}: ${label.text}`).toBeLessThanOrEqual(label.width + 1);
+        for (const label of metrics.labels) expect(label.textWidth, `${locale}: ${label.text}`).toBeLessThanOrEqual(label.width + 0.01);
         return metrics.width;
       };
       const originalWidth = await assertFits();
