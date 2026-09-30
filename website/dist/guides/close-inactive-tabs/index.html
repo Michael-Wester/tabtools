@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>How to Close Inactive Tabs in Chrome, Firefox and Edge | TabTools</title>
+    <meta name="description" content="Close inactive tabs in Chrome, Firefox and Edge with a configurable TabTools threshold, clear safety rules and an honest explanation of browser activity data." />
+    <link rel="canonical" href="https://tabtools.fyi/guides/close-inactive-tabs/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="How to Close Inactive Tabs in Chrome, Firefox and Edge" />
+    <meta property="og:description" content="Close inactive tabs in Chrome, Firefox and Edge with a configurable TabTools threshold, clear safety rules and an honest explanation of browser activity data." />
+    <meta property="og:url" content="https://tabtools.fyi/guides/close-inactive-tabs/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="How to Close Inactive Tabs in Chrome, Firefox and Edge" />
+    <meta name="twitter:description" content="Close inactive tabs in Chrome, Firefox and Edge with a configurable TabTools threshold, clear safety rules and an honest explanation of browser activity data." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Close Inactive Tabs in Chrome, Firefox and Edge",
+      "description": "Close inactive tabs in Chrome, Firefox and Edge with a configurable TabTools threshold, clear safety rules and an honest explanation of browser activity data.",
+      "url": "https://tabtools.fyi/guides/close-inactive-tabs/",
+      "mainEntityOfPage": "https://tabtools.fyi/guides/close-inactive-tabs/",
+      "inLanguage": "en",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tabtools.fyi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://tabtools.fyi/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Close inactive tabs",
+          "item": "https://tabtools.fyi/guides/close-inactive-tabs/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/#top" aria-label="TabTools home">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/#features">Features</a>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/guides/" aria-current="page">Guides</a>
+          <a href="/#privacy">Privacy</a>
+          <a href="/#faq">FAQ</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Dark mode</span>
+          </button>
+          <a class="button browser-button button-primary browser-button-compact" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy"><span class="browser-button-prefix">Add to</span> <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Clear inactive tabs</span></nav>
+      <p class="eyebrow">Clear inactive tabs · Desktop browsers</p><h1>How to Close Inactive Tabs in Chrome, Firefox and Edge</h1><p class="guides-lede">Old research, shopping and reference tabs can remain open long after you stop using them. TabTools can identify tabs that have been inactive beyond a threshold, then let you review the count before closing them together.</p>
+      <p class="guide-byline">By <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creator of TabTools <span aria-hidden="true">·</span> 3 min read <span aria-hidden="true">·</span> Updated <time datetime="2026-10-01">1 October 2026</time></p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="On this page"><p class="eyebrow">On this page</p><ol><li><a href="#close-inactive-tabs-with-tabtools">Close inactive tabs with TabTools</a></li><li><a href="#change-the-inactive-threshold">Change when a tab counts as inactive</a></li><li><a href="#tabs-tabtools-protects">Tabs TabTools protects from inactive cleanup</a></li><li><a href="#what-inactive-means">What “inactive” means in the browser</a></li><li><a href="#undo-and-recovery">Undo inactive-tab cleanup</a></li></ol></nav><a class="guide-back" href="/guides/">← All guides</a></aside>
+      <article class="guide-article" aria-label="How to Close Inactive Tabs in Chrome, Firefox and Edge"><div class="guide-answer"><p class="eyebrow">Quick answer</p><p>Open TabTools and look for the inactive-tabs suggestion. Select it to close inactive tabs across your normal browser windows. The default threshold is 120 minutes, and you can change it in Settings. Active, pinned, audible and private or incognito tabs are excluded.</p></div>
+      <section id="close-inactive-tabs-with-tabtools"><h2>Close inactive tabs with TabTools</h2><p>TabTools does not close tabs automatically in the background. It counts tabs that currently meet your threshold and shows an inactive-tabs suggestion in the popup. Nothing closes until you select that suggestion.</p>
+<ol>
+  <li>Install TabTools for <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> or <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>.</li>
+  <li>Open TabTools from the browser toolbar or extensions menu.</li>
+  <li>Under <strong>Suggestions</strong>, find the inactive-tabs item. Its count is the number of tabs that currently qualify.</li>
+  <li>Select the item to close those tabs. Keep the popup open if you want to use <strong>Undo</strong>.</li>
+</ol>
+<p>If there is no inactive-tabs item, no eligible tab currently meets the threshold. The site suggestions can still appear independently.</p></section>
+<section id="change-the-inactive-threshold"><h2>Change when a tab counts as inactive</h2><p>The default threshold is <strong>120 minutes</strong>. To change it:</p>
+<ol>
+  <li>Open TabTools and select <strong>Settings</strong>.</li>
+  <li>Find <strong>Tabs inactive after</strong>.</li>
+  <li>Enter the number of minutes you want to use. The minimum is one minute.</li>
+</ol>
+<p>A shorter threshold produces a broader cleanup; a longer threshold is more conservative. The setting is stored locally in the browser where you change it.</p>
+<table>
+  <thead><tr><th scope="col">Example threshold</th><th scope="col">A suitable use</th></tr></thead>
+  <tbody>
+    <tr><td>120 minutes</td><td>The default for clearing pages left behind during the day.</td></tr>
+    <tr><td>480 minutes</td><td>A more conservative eight-hour workday threshold.</td></tr>
+    <tr><td>1,440 minutes</td><td>A one-day threshold for longer-running research.</td></tr>
+  </tbody>
+</table></section><aside class="guide-install" aria-label="Get TabTools">
+    <div><p class="eyebrow">Free browser extension</p><h2>Put it into practice.</h2><p>Close tabs by site, remove duplicates and sort what stays.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-inactive-tabs" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-inactive-tabs_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span><span data-install-prefix>Add to</span> Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-inactive-tabs" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-inactive-tabs_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span><span data-install-prefix>Add to</span> Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-inactive-tabs" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-inactive-tabs_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span><span data-install-prefix>Add to</span> Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Open this page on your computer to add TabTools.</p>
+  </aside>
+<section id="tabs-tabtools-protects"><h2>Tabs TabTools protects from inactive cleanup</h2><p>The inactive cleanup excludes several categories before applying the time threshold:</p>
+<ul>
+  <li><strong>The active tab</strong> in each normal browser window.</li>
+  <li><strong>Pinned tabs</strong>, even when you have not used them recently.</li>
+  <li><strong>Audible tabs</strong>, such as a tab currently playing audio.</li>
+  <li><strong>Private or incognito tabs</strong>.</li>
+</ul>
+<p>Other eligible tabs can be matched across your normal windows, not only the window where you opened the popup. A muted media tab is not necessarily reported as audible, so check the count and keep important pages pinned before a broad cleanup.</p></section>
+<section id="what-inactive-means"><h2>What “inactive” means in the browser</h2><p>TabTools uses the activity information supplied by the browser. When a tab has a browser-reported <code>lastAccessed</code> time, TabTools compares that time with your threshold. If that timestamp is unavailable, a browser-discarded tab can qualify instead.</p>
+<p>This is not a measure of whether a page is important, whether a form contains unsaved text, or how much memory it uses. Chrome Memory Saver and similar browser features can unload a tab without closing it; TabTools’ inactive cleanup closes eligible tabs after you choose the suggestion.</p>
+<p><strong>Current limitation:</strong> browser activity time can describe when a tab became active rather than the exact moment you switched away. A tab used continuously for hours may therefore meet a short threshold soon after you leave it. Use a conservative threshold and pin pages you must keep.</p></section>
+<section id="undo-and-recovery"><h2>Undo inactive-tab cleanup</h2><p>After selecting the inactive-tabs suggestion, keep the TabTools popup open and use <strong>Undo</strong> to reopen the URLs from that cleanup. The current Undo batch lasts only for that popup session.</p>
+<p>Reopening a URL does not guarantee restoration of unsaved form input, video position or every detail of the previous page state. Once the popup is closed, use the browser’s recently closed tabs or history instead.</p>
+<p>If inactivity is not the right rule, choose a more specific cleanup: <a href="/guides/close-tabs-from-same-website/">close tabs from one website</a>, <a href="/guides/close-duplicate-tabs/">remove duplicate tabs</a>, or <a href="/guides/sort-tabs-by-website/">sort tabs without closing them</a>.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Related guides"><p class="eyebrow">Keep going</p><h2>More ways to organise your tabs.</h2><div class="guide-cards"><a class="guide-card" href="/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Close site tabs</span></div>
+    <h2>Close tabs from the same website</h2><p>Close tabs from the same website in Chrome with TabTools, use a manual alternative, and follow the steps for Firefox and Edge.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Remove duplicates</span></div>
+    <h2>Close duplicate tabs</h2><p>Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/guides/sort-tabs-by-website/">
+    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Sort tabs</span></div>
+    <h2>Sort tabs by website</h2><p>Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options.</p>
+    <span class="guide-card-bottom"><span>4 min read</span><span class="guide-card-link">Read guide <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/#top" aria-label="TabTools home"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Close tabs by site, sort your tab bar, and clear duplicates.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Product</span><a href="/#features">Features</a><a href="/#how-it-works">How it works</a><a href="/guides/">Guides</a><a href="/#faq">FAQ</a></div>
+          <div><span class="footer-label">Try it</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">More</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Free and open source.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>
