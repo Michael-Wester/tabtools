@@ -153,5 +153,12 @@
   "web_try_it": "Vyskúšať",
   "web_more": "Ďalšie",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Zadarmo a s otvoreným zdrojovým kódom."
+  "web_free_and_open_source": "Zadarmo a s otvoreným zdrojovým kódom.",
+  "web_view": "Zobraziť {browser}",
+  "web_guides": "Návody",
+  "web_readSiteGuide": "Prečítajte si návod na zatváranie kariet rovnakého webu",
+  "web_readSortingGuide": "Prečítajte si návod na zoraďovanie kariet",
+  "web_readDuplicateGuide": "Prečítajte si návod na odstraňovanie duplicitných kariet",
+  "web_finalMobileNote": "Ak chcete pridať TabTools, otvorte túto stránku na počítači. Nižšie si môžete pozrieť stránky rozšírenia v obchodoch.",
+  "web_socialImageAlt": "Rozšírenie prehliadača TabTools predvádza správu kariet"
 }

@@ -150,5 +150,12 @@
   "web_try_it": "לנסות",
   "web_more": "עוד",
   "web_contact": "יצירת קשר",
-  "web_free_and_open_source": "חינמי ובקוד פתוח."
+  "web_free_and_open_source": "חינמי ובקוד פתוח.",
+  "web_view": "הצגת {browser}",
+  "web_guides": "מדריכים",
+  "web_readSiteGuide": "קריאת המדריך לסגירת לשוניות מאותו אתר",
+  "web_readSortingGuide": "קריאת המדריך למיון לשוניות",
+  "web_readDuplicateGuide": "קריאת המדריך להסרת לשוניות כפולות",
+  "web_finalMobileNote": "כדי להוסיף את TabTools, יש לפתוח את הדף הזה במחשב. ניתן לצפות בדפי התוסף בחנויות למטה.",
+  "web_socialImageAlt": "תוסף הדפדפן TabTools מדגים ניהול לשוניות"
 }

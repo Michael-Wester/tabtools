@@ -5,7 +5,7 @@
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "author": "Michael Wester",
-  "homepage_url": "https://github.com/Michael-Wester/tabtools",
+  "homepage_url": "https://tabtools.fyi/",
   "permissions": ["tabs", "storage", "contextMenus"],
   "background": { "scripts": ["i18n-fallback.js", "i18n.js", "background.js", "background.suggestions.js"] },
   "browser_action": {

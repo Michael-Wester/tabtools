@@ -153,5 +153,12 @@
   "web_try_it": "Vyzkoušet",
   "web_more": "Další",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Zdarma a s otevřeným zdrojovým kódem."
+  "web_free_and_open_source": "Zdarma a s otevřeným zdrojovým kódem.",
+  "web_view": "Zobrazit {browser}",
+  "web_guides": "Návody",
+  "web_readSiteGuide": "Přečtěte si návod na zavírání panelů stejného webu",
+  "web_readSortingGuide": "Přečtěte si návod na řazení panelů",
+  "web_readDuplicateGuide": "Přečtěte si návod na odstraňování duplicitních panelů",
+  "web_finalMobileNote": "Chcete-li přidat TabTools, otevřete tuto stránku na počítači. Níže si můžete prohlédnout stránky v obchodech.",
+  "web_socialImageAlt": "Rozšíření prohlížeče TabTools předvádějící správu panelů"
 }

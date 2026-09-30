@@ -147,5 +147,12 @@
   "web_try_it": "Kokeile",
   "web_more": "Lisää",
   "web_contact": "Yhteystiedot",
-  "web_free_and_open_source": "Ilmainen ja avointa lähdekoodia."
+  "web_free_and_open_source": "Ilmainen ja avointa lähdekoodia.",
+  "web_view": "Näytä {browser}",
+  "web_guides": "Oppaat",
+  "web_readSiteGuide": "Lue opas saman sivuston välilehtien sulkemiseen",
+  "web_readSortingGuide": "Lue välilehtien lajitteluopas",
+  "web_readDuplicateGuide": "Lue välilehtien kaksoiskappaleiden poistamisopas",
+  "web_finalMobileNote": "Avaa tämä sivu tietokoneella lisätäksesi TabToolsin. Voit katsella alla olevia kauppasivuja.",
+  "web_socialImageAlt": "TabTools-selainlaajennus esittelee välilehtien hallintaa"
 }

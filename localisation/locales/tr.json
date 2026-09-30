@@ -147,5 +147,12 @@
   "web_try_it": "Deneyin",
   "web_more": "Diğer",
   "web_contact": "İletişim",
-  "web_free_and_open_source": "Ücretsiz ve açık kaynak"
+  "web_free_and_open_source": "Ücretsiz ve açık kaynak",
+  "web_view": "{browser} sayfasını görüntüle",
+  "web_guides": "Kılavuzlar",
+  "web_readSiteGuide": "Aynı sitenin sekmelerini kapatma kılavuzunu okuyun",
+  "web_readSortingGuide": "Sekmeleri sıralama kılavuzunu okuyun",
+  "web_readDuplicateGuide": "Yinelenen sekmeleri kaldırma kılavuzunu okuyun",
+  "web_finalMobileNote": "TabTools'u eklemek için bu sayfayı bilgisayarınızda açın. Aşağıdaki mağaza sayfalarını görüntüleyebilirsiniz.",
+  "web_socialImageAlt": "Sekme yönetimini gösteren TabTools tarayıcı uzantısı"
 }

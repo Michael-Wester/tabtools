@@ -147,5 +147,12 @@
   "web_try_it": "Próbálja ki",
   "web_more": "Továbbiak",
   "web_contact": "Kapcsolat",
-  "web_free_and_open_source": "Ingyenes és nyílt forráskódú"
+  "web_free_and_open_source": "Ingyenes és nyílt forráskódú",
+  "web_view": "{browser} megtekintése",
+  "web_guides": "Útmutatók",
+  "web_readSiteGuide": "Olvassa el az azonos webhelyhez tartozó lapok bezárásának útmutatóját",
+  "web_readSortingGuide": "Olvassa el a lapok rendezésének útmutatóját",
+  "web_readDuplicateGuide": "Olvassa el a duplikált lapok eltávolításának útmutatóját",
+  "web_finalMobileNote": "Nyissa meg ezt az oldalt számítógépen a TabTools hozzáadásához. Alább megtekintheti a bővítmény áruházi adatlapjait.",
+  "web_socialImageAlt": "A TabTools böngészőbővítmény bemutatja a lapok kezelését"
 }

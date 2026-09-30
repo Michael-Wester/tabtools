@@ -144,5 +144,12 @@
   "web_try_it": "试用",
   "web_more": "更多",
   "web_contact": "联系",
-  "web_free_and_open_source": "免费且开源。"
+  "web_free_and_open_source": "免费且开源。",
+  "web_view": "查看 {browser}",
+  "web_guides": "指南",
+  "web_readSiteGuide": "阅读按网站关闭标签页的指南",
+  "web_readSortingGuide": "阅读标签页排序指南",
+  "web_readDuplicateGuide": "阅读移除重复标签页的指南",
+  "web_finalMobileNote": "请在电脑上打开此页面以添加 TabTools。你可以查看下方的商店详情页面。",
+  "web_socialImageAlt": "演示标签页管理功能的 TabTools 浏览器扩展"
 }

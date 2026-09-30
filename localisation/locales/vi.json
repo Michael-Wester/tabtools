@@ -144,5 +144,12 @@
   "web_try_it": "Dùng thử",
   "web_more": "Thêm",
   "web_contact": "Liên hệ",
-  "web_free_and_open_source": "Miễn phí và mã nguồn mở"
+  "web_free_and_open_source": "Miễn phí và mã nguồn mở",
+  "web_view": "Xem {browser}",
+  "web_guides": "Hướng dẫn",
+  "web_readSiteGuide": "Đọc hướng dẫn đóng thẻ theo trang web",
+  "web_readSortingGuide": "Đọc hướng dẫn sắp xếp thẻ",
+  "web_readDuplicateGuide": "Đọc hướng dẫn loại bỏ thẻ trùng lặp",
+  "web_finalMobileNote": "Hãy mở trang này trên máy tính để thêm TabTools. Bạn có thể xem các trang giới thiệu tiện ích trên cửa hàng bên dưới.",
+  "web_socialImageAlt": "Tiện ích trình duyệt TabTools minh họa cách quản lý thẻ"
 }

@@ -147,5 +147,12 @@
   "web_try_it": "Proberen",
   "web_more": "Meer",
   "web_contact": "Contact",
-  "web_free_and_open_source": "Gratis en met open broncode."
+  "web_free_and_open_source": "Gratis en met open broncode.",
+  "web_view": "{browser} bekijken",
+  "web_guides": "Handleidingen",
+  "web_readSiteGuide": "Lees de handleiding voor het sluiten van tabs per site",
+  "web_readSortingGuide": "Lees de handleiding voor het sorteren van tabs",
+  "web_readDuplicateGuide": "Lees de handleiding voor het verwijderen van dubbele tabs",
+  "web_finalMobileNote": "Open deze pagina op je computer om TabTools toe te voegen. Je kunt de winkelpagina’s hieronder bekijken.",
+  "web_socialImageAlt": "De browserextensie TabTools demonstreert het beheren van tabs"
 }

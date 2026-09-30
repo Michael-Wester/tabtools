@@ -153,5 +153,12 @@
   "web_try_it": "Preizkusite",
   "web_more": "Več",
   "web_contact": "Stik",
-  "web_free_and_open_source": "Brezplačno in odprtokodno."
+  "web_free_and_open_source": "Brezplačno in odprtokodno.",
+  "web_view": "Prikaži {browser}",
+  "web_guides": "Vodniki",
+  "web_readSiteGuide": "Preberite vodnik za zapiranje zavihkov istega spletišča",
+  "web_readSortingGuide": "Preberite vodnik za razvrščanje zavihkov",
+  "web_readDuplicateGuide": "Preberite vodnik za odstranjevanje podvojenih zavihkov",
+  "web_finalMobileNote": "Za dodajanje TabTools odprite to stran na računalniku. Spodaj si lahko ogledate strani razširitve v trgovinah.",
+  "web_socialImageAlt": "Razširitev brskalnika TabTools prikazuje upravljanje zavihkov"
 }

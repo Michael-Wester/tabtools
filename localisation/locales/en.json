@@ -147,5 +147,12 @@
   "web_try_it": "Try it",
   "web_more": "More",
   "web_contact": "Contact",
-  "web_free_and_open_source": "Free and open source."
+  "web_free_and_open_source": "Free and open source.",
+  "web_view": "View {browser}",
+  "web_guides": "Guides",
+  "web_readSiteGuide": "Read the site-closing guide",
+  "web_readSortingGuide": "Read the sorting guide",
+  "web_readDuplicateGuide": "Read the duplicate-tab guide",
+  "web_finalMobileNote": "Open this page on your computer to add TabTools. You can view the store listings below.",
+  "web_socialImageAlt": "TabTools browser extension demonstrating tab management"
 }

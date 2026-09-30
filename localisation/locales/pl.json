@@ -153,5 +153,12 @@
   "web_try_it": "Wypróbuj",
   "web_more": "Więcej",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Bezpłatny i z otwartym kodem."
+  "web_free_and_open_source": "Bezpłatny i z otwartym kodem.",
+  "web_view": "Zobacz {browser}",
+  "web_guides": "Poradniki",
+  "web_readSiteGuide": "Przeczytaj poradnik zamykania kart tej samej witryny",
+  "web_readSortingGuide": "Przeczytaj poradnik sortowania kart",
+  "web_readDuplicateGuide": "Przeczytaj poradnik usuwania zduplikowanych kart",
+  "web_finalMobileNote": "Otwórz tę stronę na komputerze, aby dodać TabTools. Poniżej możesz zobaczyć strony rozszerzenia w sklepach.",
+  "web_socialImageAlt": "Rozszerzenie przeglądarki TabTools demonstrujące zarządzanie kartami"
 }

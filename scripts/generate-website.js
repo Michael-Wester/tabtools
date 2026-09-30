@@ -96,6 +96,7 @@ function applyTranslations(html, locale) {
   };
   return html.replace(/{{(\w+)(?::([^}]+))?}}/g, (_, key, argument) => {
     if (Object.hasOwn(special, key)) return special[key];
+    if (key === 'storeLabel') return L.escape(target.web_addTo.replace('{browser}', argument));
     const value = target[key];
     if (typeof value !== 'string') throw new Error('Missing website message ' + locale.locale + ':' + key);
     if (key === 'web_addTo') {
@@ -126,7 +127,7 @@ function main() {
   fs.mkdirSync(outputDir, { recursive: true });
   const expectedDirectories = new Set(L.registry.map(locale => locale.website).filter(Boolean));
   for (const entry of fs.readdirSync(outputDir, { withFileTypes: true })) {
-    if (entry.isDirectory() && entry.name !== 'assets' && !expectedDirectories.has(entry.name)) {
+    if (entry.isDirectory() && !['assets', 'guides'].includes(entry.name) && !expectedDirectories.has(entry.name)) {
       fs.rmSync(path.join(outputDir, entry.name), { recursive: true, force: true });
     }
   }
@@ -142,6 +143,7 @@ function main() {
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
       urls.join('\n') + '\n</urlset>\n'
   );
+  require('../website/build-guides.cjs').buildGuides();
 }
 
 if (require.main === module) main();

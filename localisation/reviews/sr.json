@@ -840,5 +840,54 @@
     "review": "AI self-review",
     "note": "Reviewed concise popup state wording, count placeholder and required plural forms. No native-speaker review claimed.",
     "date": "2026-09-19"
+  },
+  "web_view": {
+    "source": "5679f5c49ce9e6e02a8987332141e248aff18be8735747e22e9ab080323e6653",
+    "translation": "f6bab9430f8854e3af1741c752a81fb8566a9294187dd2691de91d1fb30b19dc",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed concise wording for a store-listing link and preserved the literal {browser} placeholder.",
+    "date": "2026-09-30"
+  },
+  "web_guides": {
+    "source": "892d5dd34372028b6a086373440d0d9e817892520e0caaffae39a94300cd8c6e",
+    "translation": "5841a7cf168bc1a4e72189499d10d4d9a28fd5f782ad0ae2ae0440b1c23ad805",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed the short footer heading for user how-to guides.",
+    "date": "2026-09-30"
+  },
+  "web_readSiteGuide": {
+    "source": "9ba441430ac80ae0af97b2b12426ecf08ff6c0ba872fba89a67c3b5bb2ffbf74",
+    "translation": "dd01e93ea84a2135877259acf7a578eb9e60ce0d432cb9b4af5885c9c1640c06",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed the guide link for closing matching tabs from the same website, using the locale’s browser-tab terminology.",
+    "date": "2026-09-30"
+  },
+  "web_readSortingGuide": {
+    "source": "4141a5aa617053b85e1ea230c482f833fd5bef9c98be7df3bb19dcd999dca484",
+    "translation": "011dfdf4d71e6f14e4edacc5ebdb838a807122a1c3223c3866bb21c2a9d32cff",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed the guide link for sorting browser tabs by site, using terminology consistent with the catalogue.",
+    "date": "2026-09-30"
+  },
+  "web_readDuplicateGuide": {
+    "source": "55f1d58ecd127494df6462ddded6a52e11e9b6e25cb5c4dbc3c20dcd9512d2da",
+    "translation": "76ac92f0a9519d06be041178f3a83d3399d9de17e127c4e58f7c5d595ba80947",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed the guide link for removing duplicate browser tabs, using the locale’s browser-tab terminology.",
+    "date": "2026-09-30"
+  },
+  "web_finalMobileNote": {
+    "source": "04dc9f157ba24054dd547e190afea335b41cce5652d7886c3cb1cbc24ff081a3",
+    "translation": "5270b8baca2e33e77743c90a40a63f2572ea42ac7d86c6dcd8adceb9b3c95656",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed the instruction to open this page on a computer to add TabTools and the ability to view store listings below; retained the brand.",
+    "date": "2026-09-30"
+  },
+  "web_socialImageAlt": {
+    "source": "f81b8e0930f0fcc02d20f674704207eb9a9224d6a860e123bdccec6cbf936419",
+    "translation": "3d43a5ea736514b6bc71fa320a8b563f5e38a36115998b9123ccede17f5a03ee",
+    "review": "AI-authored and AI self-reviewed; no native-speaker review",
+    "note": "Reviewed the social-image description of the TabTools browser extension demonstrating tab management; retained the brand.",
+    "date": "2026-09-30"
   }
 }

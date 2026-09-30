@@ -150,5 +150,12 @@
   "web_try_it": "Pruébalo",
   "web_more": "Más",
   "web_contact": "Contacto",
-  "web_free_and_open_source": "Gratis y de código abierto."
+  "web_free_and_open_source": "Gratis y de código abierto.",
+  "web_view": "Ver {browser}",
+  "web_guides": "Guías",
+  "web_readSiteGuide": "Lee la guía para cerrar pestañas de un mismo sitio",
+  "web_readSortingGuide": "Lee la guía para ordenar pestañas",
+  "web_readDuplicateGuide": "Lee la guía para eliminar pestañas duplicadas",
+  "web_finalMobileNote": "Abre esta página en tu ordenador para añadir TabTools. Puedes ver las páginas de las tiendas a continuación.",
+  "web_socialImageAlt": "La extensión de navegador TabTools muestra cómo gestionar las pestañas"
 }

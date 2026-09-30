@@ -150,5 +150,12 @@
   "web_try_it": "Provalo",
   "web_more": "Altro",
   "web_contact": "Contatti",
-  "web_free_and_open_source": "Gratuito e open source."
+  "web_free_and_open_source": "Gratuito e open source.",
+  "web_view": "Visualizza {browser}",
+  "web_guides": "Guide",
+  "web_readSiteGuide": "Leggi la guida per chiudere le schede di un sito",
+  "web_readSortingGuide": "Leggi la guida per ordinare le schede",
+  "web_readDuplicateGuide": "Leggi la guida per eliminare le schede duplicate",
+  "web_finalMobileNote": "Apri questa pagina sul computer per aggiungere TabTools. Puoi visualizzare le pagine degli store qui sotto.",
+  "web_socialImageAlt": "L’estensione del browser TabTools mostra come gestire le schede"
 }

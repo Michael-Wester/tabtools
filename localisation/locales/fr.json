@@ -150,5 +150,12 @@
   "web_try_it": "Essayer",
   "web_more": "Plus",
   "web_contact": "Contact",
-  "web_free_and_open_source": "Gratuit et open source."
+  "web_free_and_open_source": "Gratuit et open source.",
+  "web_view": "Voir {browser}",
+  "web_guides": "Guides",
+  "web_readSiteGuide": "Lire le guide pour fermer les onglets d’un même site",
+  "web_readSortingGuide": "Lire le guide pour trier les onglets",
+  "web_readDuplicateGuide": "Lire le guide pour supprimer les onglets en double",
+  "web_finalMobileNote": "Ouvrez cette page sur votre ordinateur pour ajouter TabTools. Vous pouvez consulter les fiches des boutiques ci-dessous.",
+  "web_socialImageAlt": "Extension de navigateur TabTools présentant la gestion des onglets"
 }

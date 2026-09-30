@@ -150,5 +150,12 @@
   "web_try_it": "Isprobajte",
   "web_more": "Više",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Besplatno i otvorenog koda."
+  "web_free_and_open_source": "Besplatno i otvorenog koda.",
+  "web_view": "Prikaži {browser}",
+  "web_guides": "Vodiči",
+  "web_readSiteGuide": "Pročitajte vodič za zatvaranje kartica istog web-mjesta",
+  "web_readSortingGuide": "Pročitajte vodič za razvrstavanje kartica",
+  "web_readDuplicateGuide": "Pročitajte vodič za uklanjanje duplikata kartica",
+  "web_finalMobileNote": "Otvorite ovu stranicu na računalu kako biste dodali TabTools. U nastavku možete pregledati stranice proširenja u trgovinama.",
+  "web_socialImageAlt": "Proširenje preglednika TabTools prikazuje upravljanje karticama"
 }

@@ -147,5 +147,12 @@
   "web_try_it": "Ausprobieren",
   "web_more": "Mehr",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Kostenlos und quelloffen."
+  "web_free_and_open_source": "Kostenlos und quelloffen.",
+  "web_view": "{browser} ansehen",
+  "web_guides": "Anleitungen",
+  "web_readSiteGuide": "Anleitung zum Schließen von Tabs derselben Website lesen",
+  "web_readSortingGuide": "Anleitung zum Sortieren von Tabs lesen",
+  "web_readDuplicateGuide": "Anleitung zum Entfernen doppelter Tabs lesen",
+  "web_finalMobileNote": "Öffne diese Seite auf deinem Computer, um TabTools hinzuzufügen. Die Store-Einträge kannst du dir unten ansehen.",
+  "web_socialImageAlt": "Browser-Erweiterung TabTools demonstriert die Verwaltung von Tabs"
 }

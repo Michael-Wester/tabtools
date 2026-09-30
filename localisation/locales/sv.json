@@ -147,5 +147,12 @@
   "web_try_it": "Prova",
   "web_more": "Mer",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Gratis och med öppen källkod."
+  "web_free_and_open_source": "Gratis och med öppen källkod.",
+  "web_view": "Visa {browser}",
+  "web_guides": "Guider",
+  "web_readSiteGuide": "Läs guiden för att stänga flikar efter webbplats",
+  "web_readSortingGuide": "Läs guiden för att sortera flikar",
+  "web_readDuplicateGuide": "Läs guiden för att ta bort dubblettflikar",
+  "web_finalMobileNote": "Öppna sidan på din dator för att lägga till TabTools. Du kan visa butikssidorna nedan.",
+  "web_socialImageAlt": "Webbläsartillägget TabTools visar hur flikar hanteras"
 }

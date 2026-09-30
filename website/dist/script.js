@@ -45,25 +45,23 @@
     return storeNames[key] || storeNames.chrome;
   }
 
-  function localisedAddLabel(key) {
-    const value = message('web_addTo', { browser: browserNames[key] });
-    return value.includes('{browser}')
-      ? value.replace('{browser}', browserNames[key])
-      : value;
-  }
-
-  function setCopyLabel(link, key) {
+  function setCopyLabel(link, key, mobile) {
     const copy = link.querySelector('[data-browser-copy]');
     if (!copy) return;
     const name = link.querySelector('[data-browser-name]');
-    const fullLabel = localisedAddLabel(key);
+    const messageKey = mobile ? 'web_view' : 'web_addTo';
+    const template = message(messageKey, { browser: '{browser}' }) ||
+      (mobile ? 'View {browser}' : 'Add to {browser}');
+    const fullLabel = template.replace('{browser}', browserNames[key]);
     if (name) {
-      const template = message('web_addTo', { browser: '{browser}' });
       const parts = template.split('{browser}');
       name.textContent = browserNames[key];
       if (parts.length === 2) {
+        const prefix = document.createElement('span');
+        prefix.className = 'browser-button-prefix';
+        prefix.textContent = parts[0];
         copy.replaceChildren(
-          document.createTextNode(parts[0]),
+          prefix,
           name,
           document.createTextNode(parts[1])
         );
@@ -77,6 +75,8 @@
 
   function setStoreLinks() {
     const detected = browserKey();
+    const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '') ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     $$('[data-store]').forEach(link => {
       const key = link.hasAttribute('data-adaptive-store') ? detected : link.dataset.store;
       if (!stores[key]) return;
@@ -88,7 +88,12 @@
       url.searchParams.set('utm_content', (link.dataset.utmPlacement || 'store') + '_' + key);
       link.href = url.href;
       link.dataset.store = key;
-      setCopyLabel(link, key);
+      setCopyLabel(link, key, mobile);
+
+      const installPrefix = link.querySelector('[data-install-prefix]');
+      if (installPrefix) {
+        installPrefix.textContent = mobile ? 'View' : 'Add to';
+      }
 
       const browserIcon = link.querySelector('[data-browser-icon]');
       if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
@@ -106,12 +111,9 @@
     const note = $('[data-store-note]');
     if (note) note.textContent = message('web_storeNote', { store: browserLabel(detected) });
 
-    const mobileNote = $('[data-mobile-note]');
-    if (mobileNote) {
-      const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '') ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    $$('[data-mobile-note]').forEach(mobileNote => {
       mobileNote.hidden = !mobile;
-    }
+    });
   }
 
   function setTheme(theme) {
@@ -329,6 +331,18 @@
     suggestion.hidden = false;
   }
 
+  function initHeaderOffset() {
+    const header = $('.site-header');
+    if (!header) return;
+    const update = () => {
+      const offset = Math.ceil(header.getBoundingClientRect().height) + 16;
+      document.documentElement.style.setProperty('--header-offset', offset + 'px');
+    };
+    update();
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(header);
+    else window.addEventListener('resize', update);
+  }
+
   function initPrivacyNavigation() {
     const card = $('#privacy .privacy-card');
     if (!card) return;
@@ -365,6 +379,7 @@
   function init() {
     setStoreLinks();
     initTheme();
+    initHeaderOffset();
     initLanguage();
     initPrivacyNavigation();
   }

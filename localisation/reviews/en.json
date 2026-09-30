@@ -964,5 +964,61 @@
     "review": "AI self-review for British English; no native-speaker review",
     "date": "2026-09-17",
     "identicalReason": "The existing English source already uses British spelling and this wording also applies to British English."
+  },
+  "web_view": {
+    "source": "5679f5c49ce9e6e02a8987332141e248aff18be8735747e22e9ab080323e6653",
+    "translation": "5679f5c49ce9e6e02a8987332141e248aff18be8735747e22e9ab080323e6653",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed concise store-link action wording and retained the literal {browser} placeholder.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
+  },
+  "web_guides": {
+    "source": "892d5dd34372028b6a086373440d0d9e817892520e0caaffae39a94300cd8c6e",
+    "translation": "892d5dd34372028b6a086373440d0d9e817892520e0caaffae39a94300cd8c6e",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed the plural navigation label for user how-to guides.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
+  },
+  "web_readSiteGuide": {
+    "source": "9ba441430ac80ae0af97b2b12426ecf08ff6c0ba872fba89a67c3b5bb2ffbf74",
+    "translation": "9ba441430ac80ae0af97b2b12426ecf08ff6c0ba872fba89a67c3b5bb2ffbf74",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed the guide-link label for closing tabs from the same website, using existing locale terminology for tabs.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
+  },
+  "web_readSortingGuide": {
+    "source": "4141a5aa617053b85e1ea230c482f833fd5bef9c98be7df3bb19dcd999dca484",
+    "translation": "4141a5aa617053b85e1ea230c482f833fd5bef9c98be7df3bb19dcd999dca484",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed the guide-link label for sorting tabs, using existing locale terminology for tabs.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
+  },
+  "web_readDuplicateGuide": {
+    "source": "55f1d58ecd127494df6462ddded6a52e11e9b6e25cb5c4dbc3c20dcd9512d2da",
+    "translation": "55f1d58ecd127494df6462ddded6a52e11e9b6e25cb5c4dbc3c20dcd9512d2da",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed the guide-link label for duplicate-tab cleanup, using existing locale terminology for tabs.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
+  },
+  "web_finalMobileNote": {
+    "source": "04dc9f157ba24054dd547e190afea335b41cce5652d7886c3cb1cbc24ff081a3",
+    "translation": "04dc9f157ba24054dd547e190afea335b41cce5652d7886c3cb1cbc24ff081a3",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed both the computer-installation instruction and the availability of store listing links below; retained the TabTools brand.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
+  },
+  "web_socialImageAlt": {
+    "source": "f81b8e0930f0fcc02d20f674704207eb9a9224d6a860e123bdccec6cbf936419",
+    "translation": "f81b8e0930f0fcc02d20f674704207eb9a9224d6a860e123bdccec6cbf936419",
+    "review": "AI self-review of English source baseline; no native-speaker review",
+    "note": "Reviewed descriptive image alternative text identifying the TabTools browser extension and its tab-management demonstration.",
+    "date": "2026-09-30",
+    "identicalReason": "English is the source locale; this text is the source baseline."
   }
 }

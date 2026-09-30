@@ -4,29 +4,72 @@ Promotional landing page for the TabTools browser extension. The deployable
 static site lives in `dist/` so it can be hosted by ChatGPT Sites or another
 static host.
 
-The page is intentionally dependency-free. Serve `dist/` with any static web
+The site is intentionally dependency-free. Serve `dist/` with any static web
 server for local review; edit the authored files in `src/` and regenerate the
 output as described below.
 
 ## Localisation source and generation
 
 The authored website template is `src/template.html`, with explicit translation
-keys rather than duplicated English copy. The runtime and CSS live in `src/`; `dist/` is generated
-output and should not be edited by hand. The shared locale registry and source
-catalogues live in [`../localisation/`](../localisation/). From the repository
-root, run:
+keys rather than duplicated English copy. The runtime and CSS live in `src/`;
+the landing-page HTML and shared runtime/CSS files in `dist/` are generated and
+should not be edited by hand. Guide content, guide styles and security headers
+have separate sources described below. The shared locale registry and source
+catalogues live in [`../localisation/`](../localisation/). From the repository root,
+run:
 
 ```sh
 npm run locales:generate
 npm run locales:validate
+node website/build-guides.cjs --check
+node website/check-guides.cjs
+node website/check-security.cjs
 ```
 
-The generator writes one page per supported locale, reciprocal `hreflang`
+The generators write one page per supported locale, reciprocal `hreflang`
 metadata, the sitemap, and browser-store listing text. Locale paths use the
 registry values (`/de/`, `/pt-br/`, `/zh-cn/`, and so on); the root page is the
 English fallback. The language selector preserves a visitor's choice and
 offers a browser-language suggestion without replacing an explicitly chosen
-URL.
+URL. Website generation also regenerates the English guides after the landing
+pages so they use the current shared header, footer and theme bootstrap.
+
+## Guides
+
+`/guides/` lists three English guides: closing tabs from the same website,
+removing duplicates, and sorting tabs by website. Article content lives in
+`guides-content.cjs`; `build-guides.cjs` generates the index, article pages and
+sitemap, reusing the homepage's header, footer and early theme bootstrap.
+Layout styles live in `dist/guides.css`. The generated HTML is committed so the
+deployment remains a static upload and all articles work without JavaScript.
+The guide index and articles remain in English; the translated landing pages
+link to these English guides.
+
+The ten Chrome screenshots live in `dist/assets/guides/` and are inserted with
+the `screenshot()` helper in `guides-content.cjs`. Keep the original 1280 × 800
+PNGs, descriptive alt text and captions aligned with each example. Images scale
+to the article width, reserve their aspect ratio, load lazily and link to the
+full-size PNG. Capture details are in `dist/assets/guides/README.md`.
+
+After editing article content, its template, or the homepage navigation/footer:
+
+```sh
+npm run locales:generate
+npm run locales:validate
+node website/build-guides.cjs --check
+node website/check-guides.cjs
+node website/check-security.cjs
+```
+
+Run these commands from the repository root, generating the landing pages before
+the guides so their shared header, footer and theme bootstrap are current.
+The deploy workflow generates both sets of pages before validating them and
+rejects uncommitted generated changes, broken internal links, missing assets
+and invalid security policy. Keep the article review date in `build-guides.cjs`
+aligned with a real content review. Review the extension's behaviour when its cleanup/sorting rules
+change; localisation does not translate or change the guide instructions.
+Store links use placement-specific attribution, including `guide_inline` and
+`guide_<slug>`. No analytics service or extra browser permissions are added.
 
 ## Browser buttons
 
@@ -35,6 +78,15 @@ The header, hero, how-it-works section, and final call to action adapt their
 The hero and final section also show buttons for the other two browsers.
 Without JavaScript, Chrome is the primary button and Firefox and Edge remain
 available. The footer always lists all three stores.
+
+On phones and tablets, store buttons say "View" and the homepage and article
+calls to action explain that installation should be completed on a computer.
+Browser detection, direct store destinations and attribution stay the same.
+Compact desktop windows keep the desktop "Add to" wording.
+
+The [mobile regression suite](tests/README.md) checks narrow layouts, navigation,
+store wording and guide anchors in Chromium and WebKit. Its independent CI
+workflow saves mobile screenshots for review without deployment credentials.
 
 Button surfaces use the site's purple and neutral theme colours. The original
 browser artwork is served locally, with provenance and ownership documented in
@@ -78,3 +130,20 @@ circular controls. The flags are vendored from [`flag-icons`](https://github.com
 under its MIT License; the attribution and permission notice are kept with the
 authored assets in [`src/assets/flags/`](src/assets/flags/) and copied to
 `dist/assets/flags/` during website generation.
+
+## Security headers
+
+Cloudflare Pages reads `dist/_headers` to restrict resource loading, prevent
+framing, and enable a one-year, host-only HSTS policy. The YouTube demo and
+same-origin Cloudflare email decoder remain allowed. Camera, microphone and
+geolocation access are disabled. No `unsafe-inline` or `unsafe-eval` is allowed.
+
+Run `node website/check-security.cjs` from the repository root before deployment.
+The deployment workflow also runs this check. If an executable inline script
+changes, review it and update its SHA-256 hash in `_headers`; do not weaken CSP
+to silence the check. Inert JSON data blocks do not require script permission.
+Run this check **after** landing-page and guide generation and preserve
+`_headers` in the deployable output.
+
+See [the security review](SECURITY-REVIEW.md) for findings, verification limits,
+future deployment isolation work, and HSTS rollout/rollback guidance.

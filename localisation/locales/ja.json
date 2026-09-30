@@ -144,5 +144,12 @@
   "web_try_it": "試してみる",
   "web_more": "その他",
   "web_contact": "お問い合わせ",
-  "web_free_and_open_source": "無料・オープンソース。"
+  "web_free_and_open_source": "無料・オープンソース。",
+  "web_view": "{browser} を見る",
+  "web_guides": "ガイド",
+  "web_readSiteGuide": "サイト別にタブを閉じるガイドを読む",
+  "web_readSortingGuide": "タブを並べ替えるガイドを読む",
+  "web_readDuplicateGuide": "重複タブを削除するガイドを読む",
+  "web_finalMobileNote": "TabTools を追加するには、パソコンでこのページを開いてください。ストアの掲載ページは以下から確認できます。",
+  "web_socialImageAlt": "タブ管理を実演するブラウザー拡張機能 TabTools"
 }

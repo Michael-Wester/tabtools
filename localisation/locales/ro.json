@@ -150,5 +150,12 @@
   "web_try_it": "Încearcă",
   "web_more": "Mai multe",
   "web_contact": "Contact",
-  "web_free_and_open_source": "Gratuit și cu sursă deschisă."
+  "web_free_and_open_source": "Gratuit și cu sursă deschisă.",
+  "web_view": "Vezi {browser}",
+  "web_guides": "Ghiduri",
+  "web_readSiteGuide": "Citește ghidul pentru închiderea filelor aceluiași site",
+  "web_readSortingGuide": "Citește ghidul pentru sortarea filelor",
+  "web_readDuplicateGuide": "Citește ghidul pentru eliminarea filelor duplicate",
+  "web_finalMobileNote": "Deschide această pagină pe computer pentru a adăuga TabTools. Mai jos poți vedea paginile extensiei în magazine.",
+  "web_socialImageAlt": "Extensia de browser TabTools demonstrează gestionarea filelor"
 }

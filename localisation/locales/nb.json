@@ -147,5 +147,12 @@
   "web_try_it": "Prøv",
   "web_more": "Mer",
   "web_contact": "Kontakt",
-  "web_free_and_open_source": "Gratis og med åpen kildekode."
+  "web_free_and_open_source": "Gratis og med åpen kildekode.",
+  "web_view": "Se {browser}",
+  "web_guides": "Veiledninger",
+  "web_readSiteGuide": "Les veiledningen for å lukke faner fra samme nettsted",
+  "web_readSortingGuide": "Les veiledningen for å sortere faner",
+  "web_readDuplicateGuide": "Les veiledningen for å fjerne duplikatfaner",
+  "web_finalMobileNote": "Åpne denne siden på datamaskinen for å legge til TabTools. Du kan se oppføringene i nettleserbutikkene nedenfor.",
+  "web_socialImageAlt": "Nettleserutvidelsen TabTools viser fanehåndtering"
 }

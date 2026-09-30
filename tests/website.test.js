@@ -146,6 +146,29 @@ test('YouTube demo delegates only the playback controls it uses',()=>{
   }
 });
 
+test('localized homepages retain main guide links, social previews and skip-link focus targets',()=>{
+  const guideRoutes = [
+    '/guides/',
+    '/guides/close-tabs-from-same-website/',
+    '/guides/sort-tabs-by-website/',
+    '/guides/close-duplicate-tabs/',
+  ];
+  const sitemap = L.fs.readFileSync(L.path.join(L.root,'website/dist/sitemap.xml'),'utf8');
+  for (const route of guideRoutes) {
+    assert.ok(L.fs.existsSync(L.path.join(L.root,'website/dist',route,'index.html')), route);
+    assert.ok(sitemap.includes(`<loc>https://tabtools.fyi${route}</loc>`), route);
+  }
+  for (const locale of L.registry) {
+    const html = L.fs.readFileSync(L.path.join(L.root,'website/dist',locale.website,'index.html'),'utf8');
+    for (const route of guideRoutes) assert.ok(html.includes(`href="${route}"`), `${locale.locale}: ${route}`);
+    assert.match(html, /<main id="main-content" tabindex="-1">/, locale.locale);
+    assert.match(html, /<meta name="twitter:card" content="summary_large_image" \/>/, locale.locale);
+    for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
+      assert.ok(html.includes(`<meta ${attribute} content="https://tabtools.fyi/assets/tabtools-demo-menu-poster.jpg" />`), locale.locale);
+    }
+  }
+});
+
 test('selector follows keyboard focus and dismisses on Tab/outside focus without trapping it', () => {
   const p=pageRuntime('en');
   const key=key=>({key,preventDefault(){}});

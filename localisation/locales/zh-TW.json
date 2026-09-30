@@ -144,5 +144,12 @@
   "web_try_it": "試用",
   "web_more": "更多",
   "web_contact": "聯絡",
-  "web_free_and_open_source": "免費且開放原始碼。"
+  "web_free_and_open_source": "免費且開放原始碼。",
+  "web_view": "查看 {browser}",
+  "web_guides": "指南",
+  "web_readSiteGuide": "閱讀依網站關閉分頁的指南",
+  "web_readSortingGuide": "閱讀分頁排序指南",
+  "web_readDuplicateGuide": "閱讀移除重複分頁的指南",
+  "web_finalMobileNote": "請在電腦上開啟此頁面以新增 TabTools。你可以查看下方的商店詳細資訊頁面。",
+  "web_socialImageAlt": "示範分頁管理功能的 TabTools 瀏覽器擴充功能"
 }

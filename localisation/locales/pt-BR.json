@@ -150,5 +150,12 @@
   "web_try_it": "Experimente",
   "web_more": "Mais",
   "web_contact": "Contato",
-  "web_free_and_open_source": "Gratuito e de código aberto."
+  "web_free_and_open_source": "Gratuito e de código aberto.",
+  "web_view": "Ver {browser}",
+  "web_guides": "Guias",
+  "web_readSiteGuide": "Leia o guia para fechar abas por site",
+  "web_readSortingGuide": "Leia o guia para ordenar abas",
+  "web_readDuplicateGuide": "Leia o guia para remover abas duplicadas",
+  "web_finalMobileNote": "Abra esta página no computador para adicionar o TabTools. Você pode ver as páginas das lojas abaixo.",
+  "web_socialImageAlt": "Extensão de navegador TabTools demonstrando o gerenciamento de abas"
 }

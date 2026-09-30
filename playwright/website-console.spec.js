@@ -4,6 +4,7 @@ const assert = require('node:assert/strict');
 const { test, expect } = require('@playwright/test');
 
 const youtubeStub = '<!doctype html><html><body data-playwright-youtube-stub></body></html>';
+const thirdPartyDiagnosticsByPage = new WeakMap();
 const representativeLocales = [
   { locale: 'de', path: '/de/', direction: 'ltr' },
   { locale: 'ja', path: '/ja/', direction: 'ltr' },
@@ -20,10 +21,21 @@ function firstPartyUrl(value, origin) {
 
 function watchDiagnostics(page, origin) {
   const diagnostics = [];
+  const thirdPartyDiagnostics = [];
+  thirdPartyDiagnosticsByPage.set(page, thirdPartyDiagnostics);
   page.on('console', message => {
     if (message.type() !== 'error' && message.type() !== 'warning') return;
     const location = message.location();
-    diagnostics.push(`console.${message.type()} ${location.url || '(unknown source)'}:${location.lineNumber}: ${message.text()}`);
+    const diagnostic = `console.${message.type()} ${location.url || '(unknown source)'}:${location.lineNumber}: ${message.text()}`;
+    let sourceOrigin;
+    try { sourceOrigin = new URL(location.url).origin; } catch (_) {}
+    // Keep unknown and opaque sources in the failure set. Only an explicit
+    // different origin belongs to the external player, rather than this site.
+    if (sourceOrigin && sourceOrigin !== 'null' && sourceOrigin !== origin) {
+      thirdPartyDiagnostics.push(diagnostic);
+    } else {
+      diagnostics.push(diagnostic);
+    }
   });
   page.on('pageerror', error => {
     diagnostics.push(`pageerror: ${error.message}`);
@@ -38,6 +50,16 @@ function watchDiagnostics(page, origin) {
   });
   return diagnostics;
 }
+
+test.afterEach(async ({ page }, testInfo) => {
+  const diagnostics = thirdPartyDiagnosticsByPage.get(page) || [];
+  if (diagnostics.length) {
+    await testInfo.attach('third-party-console-diagnostics', {
+      body: diagnostics.join('\n'),
+      contentType: 'text/plain'
+    });
+  }
+});
 
 function assertNoDiagnostics(diagnostics) {
   assert.deepEqual(diagnostics, [], diagnostics.join('\n'));
@@ -108,6 +130,19 @@ test.describe('Firefox website console smoke', () => {
 
   test('the smoke check catches an authored console warning and page error', async ({ page }) => {
     const diagnostics = await openLocale(page, '/');
+    assertNoDiagnostics(diagnostics);
+    // Exercise origin scoping with real script provenance in the stub iframe.
+    const externalWarning = 'smoke check injected external warning';
+    await page.route('https://www.youtube-nocookie.com/smoke-check-warning.js', route => route.fulfill({
+      contentType: 'application/javascript',
+      body: `console.warn(${JSON.stringify(externalWarning)});`
+    }));
+    await page.frameLocator('.product-video').locator('[data-playwright-youtube-stub]').evaluate(body => {
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube-nocookie.com/smoke-check-warning.js';
+      body.append(script);
+    });
+    await expect.poll(() => thirdPartyDiagnosticsByPage.get(page).some(item => item.includes(externalWarning))).toBeTruthy();
     assertNoDiagnostics(diagnostics);
     const before = diagnostics.length;
     await page.evaluate(() => {

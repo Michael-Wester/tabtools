@@ -32,12 +32,16 @@ npm run test:firefox
 ```
 
 The check visits English, German, Japanese and Hebrew pages. It reports authored
-`console.error`/`console.warn` messages, uncaught page errors, and failed requests for
-first-party resources. It also exercises the theme toggle, language menu and privacy
-navigation. The embedded YouTube frame is fulfilled by a deterministic local stub so a
+first-party `console.error`/`console.warn` messages, uncaught page errors, and failed
+requests for first-party resources. Console messages with unknown or opaque source
+origins also fail the check. Console warnings/errors from explicit third-party
+origins are recorded separately in test attachments; Firefox can emit a native
+layout warning for the deterministic YouTube stub. It also exercises the theme toggle,
+language menu and privacy navigation. The embedded YouTube frame is fulfilled by a deterministic local stub so a
 live third-party response cannot make the first-party check flaky. The final spec case
-injects a warning and uncaught error in memory and verifies that the same diagnostics
-would fail the check.
+injects a warning from an external script in the stub frame and verifies that it is
+recorded separately, then injects a warning and uncaught error in the main page and
+verifies that those diagnostics would fail the check.
 
 This is a focused Firefox smoke check, not a complete browser matrix. It does not
 validate the live YouTube frame, external store pages, installed extensions, or every

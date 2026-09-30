@@ -150,5 +150,12 @@
   "web_try_it": "Experimente",
   "web_more": "Mais",
   "web_contact": "Contacto",
-  "web_free_and_open_source": "Gratuito e de código aberto."
+  "web_free_and_open_source": "Gratuito e de código aberto.",
+  "web_view": "Ver {browser}",
+  "web_guides": "Guias",
+  "web_readSiteGuide": "Leia o guia para fechar separadores por site",
+  "web_readSortingGuide": "Leia o guia para ordenar separadores",
+  "web_readDuplicateGuide": "Leia o guia para remover separadores duplicados",
+  "web_finalMobileNote": "Abra esta página no computador para adicionar o TabTools. Pode consultar as páginas das lojas abaixo.",
+  "web_socialImageAlt": "Extensão de navegador TabTools a demonstrar a gestão de separadores"
 }

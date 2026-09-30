@@ -144,5 +144,12 @@
   "web_try_it": "사용해 보기",
   "web_more": "더 보기",
   "web_contact": "문의",
-  "web_free_and_open_source": "무료 오픈 소스"
+  "web_free_and_open_source": "무료 오픈 소스",
+  "web_view": "{browser} 보기",
+  "web_guides": "가이드",
+  "web_readSiteGuide": "사이트별 탭 닫기 가이드 읽기",
+  "web_readSortingGuide": "탭 정렬 가이드 읽기",
+  "web_readDuplicateGuide": "중복 탭 제거 가이드 읽기",
+  "web_finalMobileNote": "컴퓨터에서 이 페이지를 열어 TabTools를 추가하세요. 아래에서 스토어 등록 페이지를 볼 수 있습니다.",
+  "web_socialImageAlt": "탭 관리를 시연하는 TabTools 브라우저 확장 프로그램"
 }
