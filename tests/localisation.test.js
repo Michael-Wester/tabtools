@@ -97,6 +97,18 @@ test('built packages preserve metadata and contain each browser locale', () => {
   const invalid = spawnSync(process.execPath, ['build.js', '../outside'], { cwd: L.root, encoding: 'utf8' });
   assert.notEqual(invalid.status, 0);
   assert.match(invalid.stderr, /Unknown browser/);
+  const manifestFile = path.join(L.root, 'dist/chrome/manifest.json');
+  const original = fs.readFileSync(manifestFile, 'utf8');
+  try {
+    const manifest = JSON.parse(original);
+    manifest.version = '0.0.1';
+    fs.writeFileSync(manifestFile, JSON.stringify(manifest));
+    const stale = spawnSync(process.execPath, ['scripts/check-packages.js'], { cwd: L.root, encoding: 'utf8' });
+    assert.notEqual(stale.status, 0);
+    assert.match(stale.stderr, /packaged version differs from source/);
+  } finally {
+    fs.writeFileSync(manifestFile, original);
+  }
 });
 
 function extensionRuntime(locale, uiLanguage=locale, missing=[]) {

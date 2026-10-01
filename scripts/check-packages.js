@@ -13,9 +13,11 @@ for (const browser of ['chrome', 'firefox', 'edge']) {
   const directory = L.path.join(L.root, 'dist', browser);
   const manifest = read(`dist/${browser}/manifest.json`);
   const baseline = read(`localisation/baseline/${browser}-manifest.json`);
-  for (const field of ['manifest_version', 'version', 'permissions', 'browser_specific_settings']) {
+  for (const field of ['manifest_version', 'permissions', 'browser_specific_settings']) {
     assert.deepEqual(manifest[field], baseline[field], `${browser}: changed ${field}`);
   }
+  const sourceManifest = read(`src/overrides/${browser}/manifest.json`);
+  assert.equal(manifest.version, sourceManifest.version, `${browser}: packaged version differs from source`);
   const codeFor = locale => browser === 'firefox' ? (locale.firefoxExtension || locale.extension) : locale.extension;
   const localeDirs = L.fs.readdirSync(L.path.join(directory, '_locales'));
   assert.deepEqual(localeDirs.sort(), L.registry.map(codeFor).sort(), `${browser}: unexpected locales`);

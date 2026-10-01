@@ -330,3 +330,29 @@ store release. Physical-device behavior, live YouTube/store integrations and
 browser-managed context-menu presentation are outside the deterministic suites.
 The main-authored guides intentionally remain English. No live listing or
 production release is changed; the PR remains draft for the external release checks.
+
+## Chrome release preparation — 1 October 2026
+
+The publisher dashboard shows Chrome 4.0.2 already published. The Chrome manifest
+is bumped to 4.0.3 for the localisation release; Firefox and Edge remain 4.0.2.
+The package checker compares release versions to their authored manifests while
+continuing to enforce historical permissions and browser metadata. A negative
+regression rejects stale packaged versions. No permissions are added.
+
+The base revision for this release is `a50eaf5617c80de43b4a224474377250ecfe3b8f`.
+Its three GitHub workflows were rechecked and are successful. Local regeneration,
+52 Node regressions, all 29 catalogues and 87 listing files, all three package
+integrity checks, generated-file freshness, and 33-page website security/navigation
+checks passed again. Store text is unchanged from the reviewed catalogues.
+
+Translations remain AI-reviewed only; no fluent-reader sign-off is claimed.
+Chrome dashboard review, account requirements, package upload and submission are
+separate release steps. Website, Firefox and Edge publishing are outside this
+Chrome release preparation.
+
+The local native Chromium rerun could not start: this container denied browser
+socket creation (`EPERM`), including one approved retry. No local native-browser
+pass is claimed for 4.0.3. The verified native Chromium CI job on the base revision
+is 109932025474 (run 36728644627); release runtime bytes differ only in the Chrome
+manifest version. No other browser release, website deployment, or main merge
+was performed during preparation.
