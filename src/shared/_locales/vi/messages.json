@@ -1,0 +1,200 @@
+{
+  "translationLocale": {
+    "message": "vi"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Đóng và xếp thẻ theo trang web"
+  },
+  "extensionDescription": {
+    "message": "Đóng các thẻ cùng trang web, sắp xếp thẻ theo trang web và loại bỏ thẻ trùng lặp để giữ trình duyệt gọn gàng."
+  },
+  "openTabTools": {
+    "message": "Mở TabTools"
+  },
+  "settings": {
+    "message": "Cài đặt"
+  },
+  "suggestions": {
+    "message": "Gợi ý"
+  },
+  "suggestCaption": {
+    "message": "Nhấn để đóng các thẻ của trang web"
+  },
+  "queryPlaceholder": {
+    "message": "Đóng theo từ khóa (nhấn Enter)"
+  },
+  "close": {
+    "message": "Đóng"
+  },
+  "sortTabs": {
+    "message": "Sắp xếp thẻ"
+  },
+  "closeDuplicates": {
+    "message": "Đóng thẻ trùng lặp"
+  },
+  "undo": {
+    "message": "Hoàn tác"
+  },
+  "undoTitle": {
+    "message": "Hoàn tác lần đóng gần nhất"
+  },
+  "theme": {
+    "message": "Giao diện"
+  },
+  "light": {
+    "message": "Sáng"
+  },
+  "dark": {
+    "message": "Tối"
+  },
+  "minTabs": {
+    "message": "Số thẻ tối thiểu mỗi trang web để gợi ý"
+  },
+  "inactiveAfter": {
+    "message": "Thẻ không hoạt động sau"
+  },
+  "minutes": {
+    "message": "phút"
+  },
+  "closedCount": {
+    "message": "Đã đóng: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ thẻ đang mở",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ đang mở",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ đã đóng",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Không thành công"
+  },
+  "closedInactive": {
+    "message": "Số thẻ không hoạt động đã đóng: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Không có thẻ không hoạt động"
+  },
+  "closedDuplicates": {
+    "message": "Số thẻ trùng lặp đã đóng: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Không có thẻ trùng lặp"
+  },
+  "nothingToUndo": {
+    "message": "Không có thao tác để hoàn tác"
+  },
+  "undoFailed": {
+    "message": "Không thể hoàn tác"
+  },
+  "restoredCount": {
+    "message": "Đã khôi phục: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Không có thẻ để khôi phục"
+  },
+  "inactive": {
+    "message": "Không hoạt động"
+  },
+  "loadingSuggestions": {
+    "message": "Đang tải gợi ý…"
+  },
+  "suggestionsFailed": {
+    "message": "Không thể tải gợi ý"
+  },
+  "noSuggestions": {
+    "message": "Không có gợi ý"
+  },
+  "moreCount": {
+    "message": "Số gợi ý khác chưa hiển thị: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Không thể sắp xếp"
+  },
+  "sortedCount": {
+    "message": "Số thẻ đã đổi vị trí: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Không có thẻ để sắp xếp"
+  },
+  "hide": {
+    "message": "Ẩn"
+  },
+  "show": {
+    "message": "Hiện"
+  },
+  "contextClose": {
+    "message": "Đóng thẻ của trang web"
+  },
+  "contextSort": {
+    "message": "Sắp xếp thẻ (trang mở nhiều nhất trước)"
+  },
+  "closeSiteLabel": {
+    "message": "Đóng các thẻ của $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

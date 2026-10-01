@@ -1,0 +1,2667 @@
+{
+  "schemaVersion": 1,
+  "description": "Final five-image store artwork sources. Promotional illustrations, not native browser captures.",
+  "order": [
+    "overview",
+    "sort",
+    "rightclick",
+    "count",
+    "inactive"
+  ],
+  "dimensions": {
+    "width": 1280,
+    "height": 800
+  },
+  "localisedSourceCount": 29,
+  "globalSourceCount": 1,
+  "assets": [
+    {
+      "path": "shared/Inter-400.ttf",
+      "mime": "font/ttf",
+      "sha256": "1b08e7fc267a5c7e1d614100f604b83e7e8a0be241f0f288faa2b3ac93a683ba",
+      "bytes": 324820
+    },
+    {
+      "path": "shared/Inter-500.ttf",
+      "mime": "font/ttf",
+      "sha256": "8c883f63b2c4157d997319f2c8bc6995ed4357ef371940d31ca159004a4aae63",
+      "bytes": 325304
+    },
+    {
+      "path": "shared/Inter-600.ttf",
+      "mime": "font/ttf",
+      "sha256": "e7a1aaf7eda9f2fad4131725fa556265ec75ca7b2d756260173a040363e8d4f7",
+      "bytes": 326048
+    },
+    {
+      "path": "shared/Inter-700.ttf",
+      "mime": "font/ttf",
+      "sha256": "b37284b5701b6b168dfc770aa1a4ac492106422fd3ba76bc7641e37434e8019c",
+      "bytes": 326468
+    },
+    {
+      "path": "shared/Inter-800.ttf",
+      "mime": "font/ttf",
+      "sha256": "eec66af7f2337bd34fe6e801cf92ededcb57a20c0d7bc40a61d4eefcbe3dd40c",
+      "bytes": 327324
+    },
+    {
+      "path": "shared/Inter-900.ttf",
+      "mime": "font/ttf",
+      "sha256": "5b717029a2c4cfca2167e97be1157edb24151591e5ec96eb484745c392817a7a",
+      "bytes": 327260
+    },
+    {
+      "path": "shared/asset-08f01d668311d4f42e22bd26efbab8a7486931b78a2b54445a71cd4cf5efb357.svg",
+      "mime": "image/svg+xml",
+      "sha256": "08f01d668311d4f42e22bd26efbab8a7486931b78a2b54445a71cd4cf5efb357",
+      "bytes": 182
+    },
+    {
+      "path": "shared/asset-0dcc9c87c529e4ed66d16238c991a2b3b32aee3d040169832df1f7ae97c3c6d4.svg",
+      "mime": "image/svg+xml",
+      "sha256": "0dcc9c87c529e4ed66d16238c991a2b3b32aee3d040169832df1f7ae97c3c6d4",
+      "bytes": 286
+    },
+    {
+      "path": "shared/asset-127f2158bf3ac285b0db4646d8cc032b2bd942a36563e5b57c4a2a975bc8d526.svg",
+      "mime": "image/svg+xml",
+      "sha256": "127f2158bf3ac285b0db4646d8cc032b2bd942a36563e5b57c4a2a975bc8d526",
+      "bytes": 3385
+    },
+    {
+      "path": "shared/asset-20b7478864b3f6df8e8650d525fada555d5a6beccd7a2e732b8fea837591631f.svg",
+      "mime": "image/svg+xml",
+      "sha256": "20b7478864b3f6df8e8650d525fada555d5a6beccd7a2e732b8fea837591631f",
+      "bytes": 200
+    },
+    {
+      "path": "shared/asset-339858679d46a37228a73dc66560d0db1950991056827181701c723d2c956a3e.svg",
+      "mime": "image/svg+xml",
+      "sha256": "339858679d46a37228a73dc66560d0db1950991056827181701c723d2c956a3e",
+      "bytes": 231
+    },
+    {
+      "path": "shared/asset-3acaf105549b0a376c5d0045cd1c3d985d0e1982615e9538bc14085271fdbd04.svg",
+      "mime": "image/svg+xml",
+      "sha256": "3acaf105549b0a376c5d0045cd1c3d985d0e1982615e9538bc14085271fdbd04",
+      "bytes": 3380
+    },
+    {
+      "path": "shared/asset-4e2b4125a6ab6ece92e440cbd06d7f515535b661e596cab227da5f2ab8bbe4e2.svg",
+      "mime": "image/svg+xml",
+      "sha256": "4e2b4125a6ab6ece92e440cbd06d7f515535b661e596cab227da5f2ab8bbe4e2",
+      "bytes": 201
+    },
+    {
+      "path": "shared/asset-4f799e3a4c8383ecce9e383d07187423cf5f278d95a9cb72054feae1bfb7001c.svg",
+      "mime": "image/svg+xml",
+      "sha256": "4f799e3a4c8383ecce9e383d07187423cf5f278d95a9cb72054feae1bfb7001c",
+      "bytes": 329
+    },
+    {
+      "path": "shared/asset-51007f0ed99aeca62db287934ef36ac40b012f74cbb426cc80db5e0fda2919fa.svg",
+      "mime": "image/svg+xml",
+      "sha256": "51007f0ed99aeca62db287934ef36ac40b012f74cbb426cc80db5e0fda2919fa",
+      "bytes": 202
+    },
+    {
+      "path": "shared/asset-5902351f6775f9ab79df1756015b8d49344aca07a49086b8de5928369b978917.svg",
+      "mime": "image/svg+xml",
+      "sha256": "5902351f6775f9ab79df1756015b8d49344aca07a49086b8de5928369b978917",
+      "bytes": 216
+    },
+    {
+      "path": "shared/asset-5d444ecba5a921c3fec8408135b323c7dd6fd2ebc3c92141c491a0583f979220.svg",
+      "mime": "image/svg+xml",
+      "sha256": "5d444ecba5a921c3fec8408135b323c7dd6fd2ebc3c92141c491a0583f979220",
+      "bytes": 1061
+    },
+    {
+      "path": "shared/asset-6b4c0240e0ef976c1376067736d9e6781eb7ae4154c04f59afe55968adabb7b1.svg",
+      "mime": "image/svg+xml",
+      "sha256": "6b4c0240e0ef976c1376067736d9e6781eb7ae4154c04f59afe55968adabb7b1",
+      "bytes": 372
+    },
+    {
+      "path": "shared/asset-77f62554b8df19e4cc100447e26314256cf5a6ba4a099989175bb728e2dec8aa.svg",
+      "mime": "image/svg+xml",
+      "sha256": "77f62554b8df19e4cc100447e26314256cf5a6ba4a099989175bb728e2dec8aa",
+      "bytes": 235
+    },
+    {
+      "path": "shared/asset-8356f60b3e8a1277918bd8d0d4dba267ab9d0a67f537d86dde2b9f2b0f786ae9.svg",
+      "mime": "image/svg+xml",
+      "sha256": "8356f60b3e8a1277918bd8d0d4dba267ab9d0a67f537d86dde2b9f2b0f786ae9",
+      "bytes": 2798
+    },
+    {
+      "path": "shared/asset-93fd63884cd2d66081d4d017a123223c26e33cb3ffd1c110965641bb437e9008.svg",
+      "mime": "image/svg+xml",
+      "sha256": "93fd63884cd2d66081d4d017a123223c26e33cb3ffd1c110965641bb437e9008",
+      "bytes": 196
+    },
+    {
+      "path": "shared/asset-947b25db1032d2bb9027f2c0c5c9261bf3d591ef51591364fcc8cc6f920b0d40.svg",
+      "mime": "image/svg+xml",
+      "sha256": "947b25db1032d2bb9027f2c0c5c9261bf3d591ef51591364fcc8cc6f920b0d40",
+      "bytes": 1399
+    },
+    {
+      "path": "shared/asset-9f55d0d64420e36201aa0ec33fe45105918878190e3bedb4b79158c5a5739fae.svg",
+      "mime": "image/svg+xml",
+      "sha256": "9f55d0d64420e36201aa0ec33fe45105918878190e3bedb4b79158c5a5739fae",
+      "bytes": 170
+    },
+    {
+      "path": "shared/asset-a5a9b3b69cced548e42bd9a6008ee93d10c36641c7d2dafa91df14238b903dba.svg",
+      "mime": "image/svg+xml",
+      "sha256": "a5a9b3b69cced548e42bd9a6008ee93d10c36641c7d2dafa91df14238b903dba",
+      "bytes": 321
+    },
+    {
+      "path": "shared/asset-a7b7dee5878e76cc97456b634bc245b4ea8e01b420540592821a0e87eb6c28bb.svg",
+      "mime": "image/svg+xml",
+      "sha256": "a7b7dee5878e76cc97456b634bc245b4ea8e01b420540592821a0e87eb6c28bb",
+      "bytes": 628
+    },
+    {
+      "path": "shared/asset-c0e756bcd2670b3969164cb2d1bcdf3cbc68684c279ecb5e3bdbdebc94f25d4d.svg",
+      "mime": "image/svg+xml",
+      "sha256": "c0e756bcd2670b3969164cb2d1bcdf3cbc68684c279ecb5e3bdbdebc94f25d4d",
+      "bytes": 7122
+    },
+    {
+      "path": "shared/asset-c9d6c88bb68ed2e57363ec46277efe9a8dfc7bc868211aa592bc2185e914fddb.svg",
+      "mime": "image/svg+xml",
+      "sha256": "c9d6c88bb68ed2e57363ec46277efe9a8dfc7bc868211aa592bc2185e914fddb",
+      "bytes": 816
+    },
+    {
+      "path": "shared/asset-d8708cdc9c2d8b743ee6f459521c27b63d78595a6402ffeafd87e2c03b1d0797.svg",
+      "mime": "image/svg+xml",
+      "sha256": "d8708cdc9c2d8b743ee6f459521c27b63d78595a6402ffeafd87e2c03b1d0797",
+      "bytes": 560
+    },
+    {
+      "path": "shared/asset-e16858ed68b1d55e4c1c372679a4ad37a656a156bd37c35460226d26e6bda075.svg",
+      "mime": "image/svg+xml",
+      "sha256": "e16858ed68b1d55e4c1c372679a4ad37a656a156bd37c35460226d26e6bda075",
+      "bytes": 382
+    },
+    {
+      "path": "shared/asset-e4afa6dbacf95f4738a2ac3961959e53db26c0c5bb3a06b1ee0e4495cb79e8c1.svg",
+      "mime": "image/svg+xml",
+      "sha256": "e4afa6dbacf95f4738a2ac3961959e53db26c0c5bb3a06b1ee0e4495cb79e8c1",
+      "bytes": 972
+    },
+    {
+      "path": "shared/asset-e6a77fb1d549a147c4140079e80bdf121075f0e7407c33abf950dc2599f3708e.svg",
+      "mime": "image/svg+xml",
+      "sha256": "e6a77fb1d549a147c4140079e80bdf121075f0e7407c33abf950dc2599f3708e",
+      "bytes": 1172
+    },
+    {
+      "path": "shared/asset-ea4d0a0b296acf811390998945e5d134e18bcc494def5588998fab9ef195db7d.svg",
+      "mime": "image/svg+xml",
+      "sha256": "ea4d0a0b296acf811390998945e5d134e18bcc494def5588998fab9ef195db7d",
+      "bytes": 1095
+    },
+    {
+      "path": "shared/asset-f24a1cab0ea450c7b82cb262988664c8ba0d8ed4304dceefe7670171427678cd.svg",
+      "mime": "image/svg+xml",
+      "sha256": "f24a1cab0ea450c7b82cb262988664c8ba0d8ed4304dceefe7670171427678cd",
+      "bytes": 1564
+    },
+    {
+      "path": "shared/asset-f7d90809268daaeeb968d8766b9dd5a86ad398d0a09563f6aa4eac1667b1b51b.svg",
+      "mime": "image/svg+xml",
+      "sha256": "f7d90809268daaeeb968d8766b9dd5a86ad398d0a09563f6aa4eac1667b1b51b",
+      "bytes": 1023
+    },
+    {
+      "path": "shared/asset-fe1e5bd17966c62a495675879adf43609188742221c1b5f52105ff2b1b19dcf8.svg",
+      "mime": "image/svg+xml",
+      "sha256": "fe1e5bd17966c62a495675879adf43609188742221c1b5f52105ff2b1b19dcf8",
+      "bytes": 382
+    },
+    {
+      "path": "shared/asset-fec8deab67af7872fbed9fedac7f9f45e3875fe9533d3f642454d431de1a6ada.png",
+      "mime": "image/png",
+      "sha256": "fec8deab67af7872fbed9fedac7f9f45e3875fe9533d3f642454d431de1a6ada",
+      "bytes": 89511
+    }
+  ],
+  "sources": [
+    {
+      "locale": "en",
+      "path": "sources/en.html",
+      "storedSha256": "43032010b5503adece6ef749d9322f8ec8a4b6d52ce1bfee0db7c7549959fe6c",
+      "expandedSha256": "726709598564f5eb0a5dbcb00102e92cf63da5857049bc73a4f98f9e0a3c02b7",
+      "expandedBytes": 2965904,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "aae8d3327cbfc79990dd3b28351889b79009b53d354f65971b429b08dd9827a4",
+          "approvedExport": {
+            "path": "en/screenshot-1.png",
+            "sha256": "01cecacd82a5ac2d84970a0694f76f26e4082fcbf64d7572e069b29b8e6b227a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "7f6681e3e4cf7677d52addaa6b8919d0278be2c883292dfa986f30846553416a",
+          "approvedExport": {
+            "path": "en/screenshot-2.png",
+            "sha256": "d03d65c6a2bb5eecac8acf400c5e39a53df9cfb0b25a4f000a9a18f39edc24c5",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "52a0a2e58f803e33408f8d47733cc7b18a40d94e8f0f522df77511d1579943d1",
+          "approvedExport": {
+            "path": "en/screenshot-3.png",
+            "sha256": "230003d1ab1581738e415f9740f797ee959554f2ac1d05349835c7c34dc5c8ba",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "8c1b6b9559328bd26e5330994ea8b25b117dfbbdbf7b605f204f9732a91392b2",
+          "approvedExport": {
+            "path": "en/screenshot-4.png",
+            "sha256": "53db911751ed36c86aadaa83df8345bd0e319b6258170f6a0d720cbba5bc99b6",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "54420f3004f128baf686dad5027595058ec669fe72b440fcac02de51c7086142",
+          "approvedExport": {
+            "path": "en/screenshot-5.png",
+            "sha256": "15792cdd1b689fe16d86fe65b9fed540ce28723862f1a63544b8089736a3ae7f",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "cs",
+      "path": "sources/cs.html",
+      "storedSha256": "e357a6ca406821f2968b676cd59fc48a71f0bead5c71daffb7a271601776fcef",
+      "expandedSha256": "b3d6191545ef56612ca2edd9b5c398efa4f574ef002067a806d6b0bb40a13b3b",
+      "expandedBytes": 2967792,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "2e0f80c5ee890c72be22b65d5f8b561e9652e678a837f3b43cf8b8b7c8954714",
+          "approvedExport": {
+            "path": "cs/screenshot-1.png",
+            "sha256": "c73ec37cb4c8b631a731112cd398f580e2580abd1cf0643b5bbb47d526d91322",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "fcf6b747f00faa6f5ca142fb29f2ba0735768a0fdffd115ea09debd3902b8adb",
+          "approvedExport": {
+            "path": "cs/screenshot-2.png",
+            "sha256": "049587606ee16c05e4eb0aa663f88fae99b40da4ce72a4d045c81c9751a4b785",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "0d48b12d2bdccf83e132cd84b99c87c30995520dc7c8c7833c876f16284dd5ff",
+          "approvedExport": {
+            "path": "cs/screenshot-3.png",
+            "sha256": "0b04b2fff991f178ee7b12521cdb6c26d55ac46bfef8e12bfdd24967f6f72d73",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "b46e5ea65ad47353ed5cacf91e29fee63699d27b3394cb2f2830c77b83e509f5",
+          "approvedExport": {
+            "path": "cs/screenshot-4.png",
+            "sha256": "c322ef418b49a7f07b12fd48b26117daf0f991aec80a1c66a6553ec566715bf0",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "52ac7b13cb58050b20deb1b483cffa5941cfcc2c11bf169873d25e79b69a5223",
+          "approvedExport": {
+            "path": "cs/screenshot-5.png",
+            "sha256": "1b206693d37f8e55859b595140527f6819e22cab7fe4927005db417af663874a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "de",
+      "path": "sources/de.html",
+      "storedSha256": "3a76e1c33f95cd942ca6c73e7688b2f18b6ec2226760ebc697c9d274087b32a8",
+      "expandedSha256": "2941cbbd3c528d785ccd202f47a15bd38b3469341102dc2819e197b4e0d203c5",
+      "expandedBytes": 2966935,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "5868cc8aaa6413772990b65f5bebf5a9501579f344a828c7c6ba517f934dbd9d",
+          "approvedExport": {
+            "path": "de/screenshot-1.png",
+            "sha256": "560b1e6f19aca388aef03661aee47ef439304581bab88dc4f176004d6f5231f1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "55f48a51017ad5043b2dd3600865a4f6e8e7366f3c808d84b295a5110a1517cf",
+          "approvedExport": {
+            "path": "de/screenshot-2.png",
+            "sha256": "4cec288d86e6934a2da215884846a351dd04a381fd622c9f42aa8c0ea591c627",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "42e505fe051aedf71f0eb10786455dc32a894f454348fdde68faa50655e3dbc8",
+          "approvedExport": {
+            "path": "de/screenshot-3.png",
+            "sha256": "9754347de359899c6a7ae57a365453e9d4b494aaef01fdafd82df9c2f9c3dcfc",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "2c4a07a5f9d2d4336d242beb20d6fbf9671589ad648c26ca12dec131b2804461",
+          "approvedExport": {
+            "path": "de/screenshot-4.png",
+            "sha256": "72db03d8130b0d17b2903c1a60a5fcff6d9e279e52a24bc2f247536b4b396d00",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "e99dd91b73466328876455d7397a9f9235f2c99c798b4cf4de894d97e3f46993",
+          "approvedExport": {
+            "path": "de/screenshot-5.png",
+            "sha256": "9ad3ab50577c0a049eb29192cb3a171b2ce3704c54c15004ec71f17c5321f0c7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "el",
+      "path": "sources/el.html",
+      "storedSha256": "cb67551ef35733cd38d5506a5c2bba4e59c136514158d5419d45c67748fe9d3b",
+      "expandedSha256": "f35b3185b6917d3198e8d43be5233ea4fbde6f859e9107429a6b4d111d83e131",
+      "expandedBytes": 2968676,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "02af6428a09093c5b8bb66360ac65dc454669c0c959d44c31fa06eeb6175b52e",
+          "approvedExport": {
+            "path": "el/screenshot-1.png",
+            "sha256": "a61eb134a62fe2919b5bbda33775b012ac7274fc15c2bfee3b8c28da4c865cdd",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "5c7c2efdbcfea918b8bdcea7dc98f678a3059d4762cd5d478406f347335bc269",
+          "approvedExport": {
+            "path": "el/screenshot-2.png",
+            "sha256": "e801dac5da8ebad9fd5693a29b1b396cd3268fe8ba62d170b8397cbc7c30b2d1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "993abe2f36eb707e464d625d7e8e082d70a62af5fd4c15384cb4140ff3757578",
+          "approvedExport": {
+            "path": "el/screenshot-3.png",
+            "sha256": "0a4c9b937a591110ccdc3b842bdfe8892ff5a7fc2abba48446d0a9dc6d8d0ca8",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "d9d35c15515d71802334ada5b458d3f2406d74525bfdbc722d62117cc5ab883b",
+          "approvedExport": {
+            "path": "el/screenshot-4.png",
+            "sha256": "034730f3fa72f52448cb6a28093b81f5032096f9caf29633b0a2546b5de93fc2",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "b4d7210e6b7ef283ded8dfd87e5357010ec60640b1ce15456b809ad1bbbd2e0e",
+          "approvedExport": {
+            "path": "el/screenshot-5.png",
+            "sha256": "be2875c7b52f6228e71a241fb26f90df40663c3fddf4103c0c8a2e3dc1d311b1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "path": "sources/es.html",
+      "storedSha256": "8a16a15156f629621ebf6b2316e880b45d317889937f7717279fdd75a56891a6",
+      "expandedSha256": "096de951592396934e8072c25c18ce300874d59347700b91adabf02ff8f3df3d",
+      "expandedBytes": 2966964,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "765616af2111bfe1892030a0a0b9445944905a4bbffca48148abd617790ebebf",
+          "approvedExport": {
+            "path": "es/screenshot-1.png",
+            "sha256": "22e2298ecfc5f722ed6460758daef7121549857d91967856d8fb1a4a53223f9c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "0bc7fbf5264878f3a1bec9805214f08d58376fba14f0fac8a67af1858bc026b4",
+          "approvedExport": {
+            "path": "es/screenshot-2.png",
+            "sha256": "eecd98bc270a874a04e0672f02a126f52b596476d666c686bc181c33fe99a7f2",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "4b8edc1e975bb8da3a3218de0311f0cc9e347cf848b51360ed852f348bdedcfb",
+          "approvedExport": {
+            "path": "es/screenshot-3.png",
+            "sha256": "7c0548dfea572ad48f75a9f15cc6a7f63b9800b60f9dceb79b306d0adb1751ea",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "22d30ecb39008677e688004bd753244d05102e66b41927d20850cde6fb78a99f",
+          "approvedExport": {
+            "path": "es/screenshot-4.png",
+            "sha256": "e4cd3f51a2db03a8b9be2a7c77c41d3317d507ff751e5f93f758cc6ae6fc0a60",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "6f7377385b9c041c9c33f939e78a819c26c2263ded14523e09b1383e7a300c84",
+          "approvedExport": {
+            "path": "es/screenshot-5.png",
+            "sha256": "9bd9249ba6a4d8b73626e32f3df165cbfdf18edd28578d4311bf717385dfea50",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "fi",
+      "path": "sources/fi.html",
+      "storedSha256": "9c78a5055c23899f1b8b76bce5a750992e8a96a3629591e34f030d00ba887b77",
+      "expandedSha256": "1f6ee3a6d7e98ab4718e947932f9a60bbe6e78dfbac611b4cf03df876502e9b3",
+      "expandedBytes": 2967742,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "438c9f9a45014f2b93faff46f3c23742a82e242228f83268eb540f5a0f3cfaa5",
+          "approvedExport": {
+            "path": "fi/screenshot-1.png",
+            "sha256": "c123618752e52d4a6cdf0d5225c88f67736f27eb2e6fdf2761ed0e19babe56ec",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "2221dad2591a8d8709e3a48d2a97f7162f1e6a5e3eb72549032fc10d6c9c64ca",
+          "approvedExport": {
+            "path": "fi/screenshot-2.png",
+            "sha256": "f06ebbbbb13348c50e7c6f0d40e16fdf75db32b6e56062503738c25a4d87290c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "ec516028c4905471840bcf4273e344fe3b3a03564c67aa1582651170a7881797",
+          "approvedExport": {
+            "path": "fi/screenshot-3.png",
+            "sha256": "2c42ada0b8ba8b26bf1d591124843c32e8c215ddfb68d052ac5fbaff611cf627",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "1bd55780050741c55824f25328c379bc52b2ca14fc869fe35e15574ac2b028d0",
+          "approvedExport": {
+            "path": "fi/screenshot-4.png",
+            "sha256": "13e0cb4057edbc08c6a5e568415dcbfaa8ff773e0ed64d227bb51dc0856bc703",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "63be5949c912aa642195504ceb4269f21040450b08c34cbca6713859bff2bc2e",
+          "approvedExport": {
+            "path": "fi/screenshot-5.png",
+            "sha256": "4a91aaa2a41fbfcd0cf4d64b7b4636b33b8b14af5911938eb4e5c865753a0ac9",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "fr",
+      "path": "sources/fr.html",
+      "storedSha256": "5f43b8c7ada23c2b01b60cc3f8f6713133d53e2d2ae100fecfc1e32c45c99217",
+      "expandedSha256": "f9e3d1be8fd4e71ebf0d684f98bc3d465df467ecfd0c52433ed9fc17ee5f968d",
+      "expandedBytes": 2967730,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "45618c44bf088f01b8acef92c9444547e6eaf07f267e0ced4fbeed870ea5b865",
+          "approvedExport": {
+            "path": "fr/screenshot-1.png",
+            "sha256": "1b30599359c35d0467ace4fd9a34357cec0fbfb084f6bfb64249b3f2f406bd6d",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "7eb31d52cf0da242a16603710132f8a13ad94312deca2966d385411f633f6dfe",
+          "approvedExport": {
+            "path": "fr/screenshot-2.png",
+            "sha256": "a381b00132c27398ec8d961beda76d62a5ec83974a888298220efce5bc529eb4",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "280bc9672ccd5255838189a7cc43d013f4d9f2f17b166bf984d4f9641bcde944",
+          "approvedExport": {
+            "path": "fr/screenshot-3.png",
+            "sha256": "7922c8b7fbe2ada1ca9c1b89f72881ac1cbbd6572e9f73111d32241ce77e7098",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "86fe0f13752992ec44b01015a25a27dfa8307154c0cfc97c05076c340dee86a1",
+          "approvedExport": {
+            "path": "fr/screenshot-4.png",
+            "sha256": "e979689fe75a08127187ac381cf5dfe3134e0d29597e6b7a7e8baffd1403b9cd",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "3df5b4e8fc3d1d6e3fda773b0a67cacc68534f51aad90f1bba9ad27627bdf363",
+          "approvedExport": {
+            "path": "fr/screenshot-5.png",
+            "sha256": "5092da419ef27fba0f8bca15107c56fe19e05ff2f12a462f57fe625441eb1049",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "he",
+      "path": "sources/he.html",
+      "storedSha256": "afb2262e977340d7260cdb7a19b85047a660cd2a1ac2895a2376fe89c603144c",
+      "expandedSha256": "68a9a16dda021a47c5431143f3582b38fcc24667843f8a1e5a7ef0cff196380d",
+      "expandedBytes": 2978397,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "b308661c81ba6fa5c1b1d1c2cb63a9d0700ac9bad4fbf5e5213e131d19ae1140",
+          "approvedExport": {
+            "path": "he/screenshot-1.png",
+            "sha256": "7ba32c98dcf2e5b6c239dcffd1a3735725471b71109b009f94d5e14ca4473d6d",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "8d2dd2ce45d06da5ef320a03914fde3930bab6fa771666fe661f825853656650",
+          "approvedExport": {
+            "path": "he/screenshot-2.png",
+            "sha256": "e5f7217ebfd127f4c8f72fe2ee716ed2a7ae2ad0b9de2852b17ac7025e1a9274",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "aabdd4b9c60b538a0d4c6d4e2f307b3f524c35f4a74b31b7cc910b48e9079dd7",
+          "approvedExport": {
+            "path": "he/screenshot-3.png",
+            "sha256": "a15f0a48790d5f8e684bbc4501a46d77599a1b12bb103a55405fc9ea5213cab7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "9af783e1ed4c527ffc11ac0994eaa92fa2adaacf03258c92de7d00280fa18e22",
+          "approvedExport": {
+            "path": "he/screenshot-4.png",
+            "sha256": "91694bad0fb468061684531ca749b837d3a1c65c37cbf2c6c113f1bdc6c285ce",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "52d27b66ff63e491283ea5b91ece7138b2128dbf6b9d1d1cba5f12e8c521ccd9",
+          "approvedExport": {
+            "path": "he/screenshot-5.png",
+            "sha256": "8c45f3f484025325115740dab4b0763d1e5f2e5385c534e0a829ad1a00f120fb",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "hr",
+      "path": "sources/hr.html",
+      "storedSha256": "137ba05bbf2c96cc16936da1b72280d9a1cf61333cf5b26916e661ee06b3c90b",
+      "expandedSha256": "db7e9b210a68c9bd2d345af45b48480d51f55ccecc988fa1c64ffc85c33074ad",
+      "expandedBytes": 2967734,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "b659ca671c5760bc272aafcfd6ecbbd6a9236d30d7b28ddd46f79d5d930c654c",
+          "approvedExport": {
+            "path": "hr/screenshot-1.png",
+            "sha256": "94aae77559565f039d8cebb7a19cfc4f5f6042f519ab06eff2591ad6a4468285",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "002ea9a64aa609f3c35a89a10a6333eed071ec9cd7452fb36eaa51d5d1547822",
+          "approvedExport": {
+            "path": "hr/screenshot-2.png",
+            "sha256": "798b1dbb8ccc2e81bdc7bcae6b4d2db0763e8ee347efa6d54187c857fae8cbb9",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "bf7ac806376d3a553c852ae8cd6216062b341f133b6f81a345572be7fdf13634",
+          "approvedExport": {
+            "path": "hr/screenshot-3.png",
+            "sha256": "93c02658d019e3d12c95f64bb6384c733a5e1d6f11dea74160f5571055b8c6c2",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "8c7b90313e5c05c8868c73deab3255c24d9f93c5fafa7b0d0767b7b5b5a5f321",
+          "approvedExport": {
+            "path": "hr/screenshot-4.png",
+            "sha256": "a9af97359b4191f57d99f4cf085a14e8f528717c3873c1518a2c34021244e227",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "152671989085cc0edf9e26eede1ae01e1f2cf83931ae80edf9444cddbf15488a",
+          "approvedExport": {
+            "path": "hr/screenshot-5.png",
+            "sha256": "380411e84df9c6a8bdc321fc97818631b400a59112baa00b3722aad8ce1e1e97",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "hu",
+      "path": "sources/hu.html",
+      "storedSha256": "23781af270d7d74a13dc885664dcde3e2a7b3185750abad479027d5a4f4bfec7",
+      "expandedSha256": "30e1efaf0f8c25f7099037db6656ef8f17f4c041228ee47cf44d813685be5c86",
+      "expandedBytes": 2967026,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "ce4c9253a2ab8ed085fe8e307004e10674a8b1d88f89a55e78cb5056c47b8f49",
+          "approvedExport": {
+            "path": "hu/screenshot-1.png",
+            "sha256": "5e3a95dc5cc6e6b528c6b1116ee2f3ec27ef48b29d92f5cf7507d872da412dd5",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "0f80266fa54063e3c058cdc5bfb3f9c184fa6bfa68ce25b5cf6810ac13302a17",
+          "approvedExport": {
+            "path": "hu/screenshot-2.png",
+            "sha256": "4e4df47511b89d25a8eec0e06c52ba6b840d32b084a9748e104def7b4c419dc7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "dc7e4f4ac88511db70dc7c97b83735745ec4dd485add9940c50af2f0d992b092",
+          "approvedExport": {
+            "path": "hu/screenshot-3.png",
+            "sha256": "092e6f4c8e4419869dc3cf6228cb2ba3e7e67bcdc4ae85d57fe674a49c506deb",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "334bbd40cbc9143a41c9eaf80770eb65098216d1677936078146e69810c95525",
+          "approvedExport": {
+            "path": "hu/screenshot-4.png",
+            "sha256": "36ee125ce9b0da170eb03e511b09697ff427fb1ce8891d00d2eab6de37abde0c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "18d72d48100e1da6ba8de8df81fa5e21e29b92ff278c843e7dac6aafa653a305",
+          "approvedExport": {
+            "path": "hu/screenshot-5.png",
+            "sha256": "35f380fdb980d329db3e132a3ac7208d207f5d371d384160b8468ee58c8a787c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "it",
+      "path": "sources/it.html",
+      "storedSha256": "ce408945653e11e35c83b6083f6e94649b319ead088fca783406ce84a2758d70",
+      "expandedSha256": "1334fe2175ffff2b4e0c2dc8c79e08701a6be4dbf362be334535b6664a212129",
+      "expandedBytes": 2967548,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "9cd53c1080075cbf5a583c28182f2a913727e7d355516edcd7516f60758f6aaf",
+          "approvedExport": {
+            "path": "it/screenshot-1.png",
+            "sha256": "9581dd2932fb74cc3fc2d7819c04360c78251c75d738323b73a0fba6a3c26f87",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "ed11dd96227064b16e7cb0797a0dc935f9786f1feff2db0a36a4bd92d81b206c",
+          "approvedExport": {
+            "path": "it/screenshot-2.png",
+            "sha256": "d26ad7d42635fab2f860e2944454e64dcc377bcf70099fed5a922e5819c53891",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "155ef48fc10d494f015c842652e3500ef24d8930b3b57e65d081fc8f0eca2ca0",
+          "approvedExport": {
+            "path": "it/screenshot-3.png",
+            "sha256": "dc28dc1c6e288cc05a64b7bf223f41eece6767526cfd43e6731cdf4989153b88",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "537108b1d8fda01b0aa823bd280ea98e5cc120650862bef2ea90335fd62ab05d",
+          "approvedExport": {
+            "path": "it/screenshot-4.png",
+            "sha256": "067ddc6a8e9c196d30f598dc37979493441be6068e5446329ac757d30289720e",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "e168136589910df5377654bddf48f31fdadba23f34239afb958feea6a6c1f5b0",
+          "approvedExport": {
+            "path": "it/screenshot-5.png",
+            "sha256": "22929849a8e2afbec56c1041f8f42935dcc3eb32b49cc0a2b23c9552c9923eee",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "path": "sources/ja.html",
+      "storedSha256": "855a7b3a26d5e74f3f87eb7be23e7b859d4562a4bd217d89ba0aaa4ffc2e3163",
+      "expandedSha256": "1fd30f6b55432078f00ff1bd8f89c37c9eeecc706614c55af76d256a7a4b6d06",
+      "expandedBytes": 2971674,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "6b90e6b2acf278df237cdeb793f8ff80ad33d6fbed661aeca9fd549878fb831d",
+          "approvedExport": {
+            "path": "ja/screenshot-1.png",
+            "sha256": "29efd8bf84e15d9de1c032cfd555440c25e47435f1d088f969d2d2a26fced965",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "b153672977c5019a8dbd98efec7e7e717d9aba12d5289bdf5861a353aeb9affb",
+          "approvedExport": {
+            "path": "ja/screenshot-2.png",
+            "sha256": "7c92b338443794c82445591a59ff54a2bcd5c56cd21cde746d1a72a69a3ef7e9",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "06c14a872215d12d02a631b48e91201db5c0cef06b99a11b100ad55e854f8070",
+          "approvedExport": {
+            "path": "ja/screenshot-3.png",
+            "sha256": "099df5de5ab816375db69d46f11d27e391dbe61f5a1e258766e016b9f1cb273a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "718a3fcdae81e27fea41b71b6a67fc5e78d3788461ee835bf1bc0d806ad0e618",
+          "approvedExport": {
+            "path": "ja/screenshot-4.png",
+            "sha256": "6b646ca2a7ad25febcc260573e98f7273e7205bae50f2755704c56fdfb77b596",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "acd7718f7f8a214bb605625a69974f967947298e3d1396b4660db8219eb3bcb1",
+          "approvedExport": {
+            "path": "ja/screenshot-5.png",
+            "sha256": "f497f8224cf815f4379190fb75dcefb41410cb3d01f3269ce3fdc892cf15a93b",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "sources/ko.html",
+      "storedSha256": "bf5666d7b9c931c303bddf7e8c968c5b114e138609e3e53dcb84116edf17362a",
+      "expandedSha256": "0ae7ea0c8556ee0cba33fc02815125ef3338485783907fbac4083d8aab055829",
+      "expandedBytes": 2970975,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "0912b5e0ca1bdcf91f38681e015e2f0c0a0acb1318441abd4422f20da6d25f44",
+          "approvedExport": {
+            "path": "ko/screenshot-1.png",
+            "sha256": "c32868e43b6328848c0423b8bfd58f650eb227a56359ee835d6be9ccd9bb3c5a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "8b26e9a9035f6393a01076986a4cc3b5aa0d9fd9529f4a749b43b1e788103eb6",
+          "approvedExport": {
+            "path": "ko/screenshot-2.png",
+            "sha256": "f077e2eeb732035e2c5eecdd6b70a4d7074169f7e8304ff34dafaf54c9324538",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "a2a2be8a61ff93b759e273b708dd2790f68381e39b7cf6d936c6a61296730601",
+          "approvedExport": {
+            "path": "ko/screenshot-3.png",
+            "sha256": "97ec41efade7f46f34f948b9fa0c8e6ee24eb3e315c688adbd2596530bd256fd",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "5b752d26fde8815fabf6b3860ffd90e6471bc937edf16636c58b228bae174b8d",
+          "approvedExport": {
+            "path": "ko/screenshot-4.png",
+            "sha256": "4f4191227e9666a27d919515de0619d980b03aaf9335f04e92c1304d332de1c9",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "495c135c97354ea7f7df6de4c9d99cf8d6727445a9221bdda4ae2ce44dd8910b",
+          "approvedExport": {
+            "path": "ko/screenshot-5.png",
+            "sha256": "1fa0bc6cae02d48beb14b196bff3440a92c399999ce1d62d9ffc881d66dadb40",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "nb",
+      "path": "sources/nb.html",
+      "storedSha256": "89192a098d58696689315ba6eb511e6e8e419b40e4026a3fc1eaf03b299a3726",
+      "expandedSha256": "6944e1616da900ad94fcbd5c05ece4cc287f3cf3169616b16df7cfb0503d2dc4",
+      "expandedBytes": 2967445,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "066d52f086c00efa6c956406cd8c5e6d56139ba9a97765ac15cc06f1d26b4c4b",
+          "approvedExport": {
+            "path": "nb/screenshot-1.png",
+            "sha256": "87af52f6ee396b2d385f42ed8eed0eb49012e1345b943e64f8088ebc1c487fe7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "f0e9b28640474214fdf3d15ba9a8f56a9fce7bce79062274e69c0c3f8186f7c6",
+          "approvedExport": {
+            "path": "nb/screenshot-2.png",
+            "sha256": "e9f86d6aa3c1b0cf597e05210b7d340175f2c46b38c2ed1aeeb9b341e6de2604",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "9d99b9a493fad2e6c551bcc5b7e1aa36d48a3489630370448fa979eb7d230f8c",
+          "approvedExport": {
+            "path": "nb/screenshot-3.png",
+            "sha256": "5e934a10665ae7938beda4879e71a0425046ca678585c04bdbd554b95585b3e4",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "6e5e7835343027a4c7317a3daddd937735b258420e7f8bf91ccf2df73e71a8ed",
+          "approvedExport": {
+            "path": "nb/screenshot-4.png",
+            "sha256": "af4f3f2c6a8f31675fc8c1f370b75b13687d05b4738b11eb11ea00ec54db4493",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "db2a4cb0d416580248b2843864fbd70bb67dbbbc93ef654c16cd75cae252130a",
+          "approvedExport": {
+            "path": "nb/screenshot-5.png",
+            "sha256": "27e25dee38f5801c40478bcea8e72ad9beb6ce62d6b82ef1ea1ac52011d89150",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "nl",
+      "path": "sources/nl.html",
+      "storedSha256": "5aaa19b93e29534c7d5db10256464abdaab29ee2b0338c80f2b50c5574074779",
+      "expandedSha256": "3e15af644c69dbe4d8119d4a456ac030375faedf498d92cc66fd2717d456e121",
+      "expandedBytes": 2966771,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "22065f9e877c825ff6aeadb45e0058cdea0c9310eacc336c00442916dc2cadac",
+          "approvedExport": {
+            "path": "nl/screenshot-1.png",
+            "sha256": "47afe3342890fc125d0f8ed4ed1a28627e69ba6b00d0ffc8dc793c913f75ff6f",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "a95ceed893a8d1cf8d71edc7ac03f8579088627bc15d67cd5b557a62e5d85eb1",
+          "approvedExport": {
+            "path": "nl/screenshot-2.png",
+            "sha256": "359af079324feb15e6caca683431802ad8e1191d752824fa5644d03b8dadd11f",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "c2539c24ff70589ac099abefab9dabbaf165eed2d08aaf752a430886b44a58b2",
+          "approvedExport": {
+            "path": "nl/screenshot-3.png",
+            "sha256": "18ff90908bdbbda4f18b6c9f051caf9568471d44d214416be7be263c43cccfac",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "14eb31533978b9a63530c721ad840fe41351956cfe3c55f9628e8f75de42c61f",
+          "approvedExport": {
+            "path": "nl/screenshot-4.png",
+            "sha256": "e3320cdf2900bacbd39f9549a1dd99f4a63dadfa2a4593adec350b99f3319ff9",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "46146e07171daa31efe14b651508c845b0097056cbec493ca65b54ce26e4cbcd",
+          "approvedExport": {
+            "path": "nl/screenshot-5.png",
+            "sha256": "b824a6a9779f77477bec988e4adcde77d063c505ac1cc888750237561a4e8f88",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "pl",
+      "path": "sources/pl.html",
+      "storedSha256": "c2fd6c0abe9182ee8b9d350ed11dce2bacc0565d08073d65537c898ea535e3d3",
+      "expandedSha256": "1d5ecf104453d4b76f6a1925bd1fe49c200de5407c50d4fc59503aea7b200694",
+      "expandedBytes": 2967673,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "26bf954ea9cecee54e34ce278906eff63c4070fb53f15a2bebf2c741c4d832f8",
+          "approvedExport": {
+            "path": "pl/screenshot-1.png",
+            "sha256": "94cc36fb94592ff77b7d5487c6d322dde516478ed1086b09b1b3c728d40d6caa",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "aae3afc7d29e715fe5a8159a08c487486ad4e0f3719497f7c5e74711be0ae85f",
+          "approvedExport": {
+            "path": "pl/screenshot-2.png",
+            "sha256": "a9924f298f7962bb0741da750ac5bdf8332cdf818928ad00f834d7d7acf4fa58",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "0a32ad70acb3a15f666d3253d4188ea21029c78f127ff1d12a09e1b46805d1b0",
+          "approvedExport": {
+            "path": "pl/screenshot-3.png",
+            "sha256": "6c733de37531d03fff904a1c0543e4736249550dd301e2e86f2951d4310c011a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "79038807f52f5eddc5a1d4ef588fe4040e243b355458d18301eaf29a1b4860a1",
+          "approvedExport": {
+            "path": "pl/screenshot-4.png",
+            "sha256": "439e95e741db9b23886d94d9ec9c4b984cbb0ca0860cd371f61b5188242bab6d",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "fdcbf133c9de63349da10e325ce6b5d2958eef416e0c3b5ba71d06ad1c3d6277",
+          "approvedExport": {
+            "path": "pl/screenshot-5.png",
+            "sha256": "a0f5a07f2ad87a35bfd227ea8112e3cedcc9fd87ad0f23992ecf5a4229916c2a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "pt-BR",
+      "path": "sources/pt-BR.html",
+      "storedSha256": "e519b8d752f301c6e0fadfc2009731b7bff5a7738b9897cdc10c43cecfaa3b72",
+      "expandedSha256": "4305e08c1cd2c04fefa4cdfdaaef1224851359b5a3a38945e4fd4876cca58bb9",
+      "expandedBytes": 2966795,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "47b917db4d9ea8a370c7351c19667b2b74f60d167beb4316ab9e4c4f4d3fc89d",
+          "approvedExport": {
+            "path": "pt-BR/screenshot-1.png",
+            "sha256": "eef287cf7ca8fb7b0ca593c9fb8e407a2d8e4042ecca96fece357236e38a0070",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "bf4755379ce732099346934624e2169d0c2f45b158e1c79cf375f522c714e095",
+          "approvedExport": {
+            "path": "pt-BR/screenshot-2.png",
+            "sha256": "83c9267b04bfe54ceb92e1190a0d8f88bf7421d23df099e5f01dcab329e96450",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "57ca85111022e8deefe162930e482be40ce5727474eb49cf3f6e1b995e1386a0",
+          "approvedExport": {
+            "path": "pt-BR/screenshot-3.png",
+            "sha256": "20c9796270c34f151b705fdbe66950e26b15f58e0d8afb2285c63e693330218e",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "89a4fc2deee2426e1f6dbdf18c180c80f100107098cb9f72963ba797f1965823",
+          "approvedExport": {
+            "path": "pt-BR/screenshot-4.png",
+            "sha256": "c2381efc7332f98ea046554a56fd5b0fefb369ffd043543cb8b2ed2febbe090e",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "2ec3425dda644b934c25f8a57459c0c5fa338ad8728240fd5b7842d33e52435d",
+          "approvedExport": {
+            "path": "pt-BR/screenshot-5.png",
+            "sha256": "13055484c24371ef5d622ae36dcc51b1e0eece0e0b86b804c6dde1d1ab3632d0",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "pt-PT",
+      "path": "sources/pt-PT.html",
+      "storedSha256": "ab64261e3b8c26334160c7a9213602cf3cfbd9ce063408c71dd826335077dc61",
+      "expandedSha256": "6e76bb330dda165225e4a1fb549ca99c76779263d9adb80a8d20a3e33b08a752",
+      "expandedBytes": 2967779,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "48ea89fcc696821cd4304ce41db69338c78a2658169679408008713ea3bf94f3",
+          "approvedExport": {
+            "path": "pt-PT/screenshot-1.png",
+            "sha256": "c2eb3e86fe4b182f6030a680b6bed4b4d6a2b56bb27da27dd361a08fde255866",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "0c4d39486bb8b14ba86abd09974b047dfe635290906b190711267bee4393f2ed",
+          "approvedExport": {
+            "path": "pt-PT/screenshot-2.png",
+            "sha256": "448ea58c8440461ec5aeab3fe8a3fe74cc2fbf3b2dc9e26d9b5498ec65bfa3e0",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "1f92140109a20301a73086177c42d68a981385e35263eb453f33641f5439daf5",
+          "approvedExport": {
+            "path": "pt-PT/screenshot-3.png",
+            "sha256": "bca518b59ac78a0c3ac6fc36c8768e80ea01b186108a6d1929523ffc36b355f6",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "9b92918917a75e4dafcce7fe1a3f13d60bedd894834ee54411a1fbe18d8d46b9",
+          "approvedExport": {
+            "path": "pt-PT/screenshot-4.png",
+            "sha256": "21d8229e6a305eacfeb69d6a1332c5add32692c214621312985f5cae3df963b1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "ec6313147f2f9ee5ece5c1689f9f5ebbf6a25be577ac13551244e7a7f7b2f57e",
+          "approvedExport": {
+            "path": "pt-PT/screenshot-5.png",
+            "sha256": "ce579f4356ed70fa27644c8bdf9da4ebee91cbd6160fcf031904dddc1c3d1c2d",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "ro",
+      "path": "sources/ro.html",
+      "storedSha256": "e6fbf53cc40e1382c0588a26ba608790152f583aa4a6b3445482d55540674e61",
+      "expandedSha256": "266e9674bc52523d44dbf7283670b11a01fd1e51dc5b400f376b4c7e72d91f7c",
+      "expandedBytes": 2966961,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "ea2b4382e31e34b0e6ccbbbc7b9f0b8a8e79d597c37c624658798ae469f69bc3",
+          "approvedExport": {
+            "path": "ro/screenshot-1.png",
+            "sha256": "f705dfd067805fd4d7b94760f7a9a4f767187dca9e70970ccee3280af26caaea",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "462afd6dcefc7803b4e148ef9083238623fc787da7092bb3fc4083098a67be15",
+          "approvedExport": {
+            "path": "ro/screenshot-2.png",
+            "sha256": "e4a0c7c431ec85252e9130d0c61030631f102d981ae8508a4e01f1f2210ab5e0",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "3a98257818515cc6c530ff705bfeca5e038a60a1cccdcf65c11c59d13abaac85",
+          "approvedExport": {
+            "path": "ro/screenshot-3.png",
+            "sha256": "631d14154bd7f5986a1c72f84e6343959d717eda48c142c96af25db1e5d9dca8",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "e846fc579f235c35fe18cfc081dde2fd3a9c0da88de71fa8a0da8f81050b4e6b",
+          "approvedExport": {
+            "path": "ro/screenshot-4.png",
+            "sha256": "759b14583ecd59f6518374eab72756dd35034e9de60ae6116cc7eba9452dde06",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "5e2ac2a2950c7a123eae6c496080e57cead57ea125d07e72fff906ed4f2792df",
+          "approvedExport": {
+            "path": "ro/screenshot-5.png",
+            "sha256": "cb1dcf7d8b078f0f45b585ff7824351cc2f94c314d7e17ec7232b26f6d7a86ba",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "path": "sources/ru.html",
+      "storedSha256": "cb57b37c4b45e60a81bdc30d7b34dd9174a63310760cc058d718b9a6390b74d1",
+      "expandedSha256": "9c6e2e141cec7fce1f74c53d5e69ec24e3b8d2ebee514cc02e177865e0f42d50",
+      "expandedBytes": 2968476,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "f5374237a411b2550186b016758b558eec011e05b3d2587b570280ddb2d2adf4",
+          "approvedExport": {
+            "path": "ru/screenshot-1.png",
+            "sha256": "3fc2f7fca83f1c556aeeb7983e4e77c3d22f1e94cb9c1836074790f2dc4bf108",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "fbfb26cf653ecdfe5b2c5f5a3f5b0d683512d2b74e1b9ce14b42aac90469a5e1",
+          "approvedExport": {
+            "path": "ru/screenshot-2.png",
+            "sha256": "3ff34f0d632e8972b281d70f5714f645ceda12d77c0514f07a6db1abb420a413",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "e3e2c3e48207b756137deca47f25e35a57a342ea449975309e0ceb74bbfadd44",
+          "approvedExport": {
+            "path": "ru/screenshot-3.png",
+            "sha256": "a8ee120423bf14dfa15fdf0c0963f6a20ef0c5ec0514b5a5b87d4f054730154b",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "314444ad175c0e812833d3d7e73eb6ea640efc25a41f2fea5b678646af1076a1",
+          "approvedExport": {
+            "path": "ru/screenshot-4.png",
+            "sha256": "fb1eeb6100252a9a973962852a0ce2581de92f3ed14b96aebc2400b2e8ffecd4",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "3f653e9e43b2ee768294e1f19d7e0a026e65a78cf7c79cbf1ad73bba966f89a3",
+          "approvedExport": {
+            "path": "ru/screenshot-5.png",
+            "sha256": "b73a32d84c492fd0a9165915078726e077e082581cab136d98e8d5b5a24c9ce6",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "sk",
+      "path": "sources/sk.html",
+      "storedSha256": "24589d981bc76c672d09b9cb33459ed6c81358865a655c64790b59daca051f16",
+      "expandedSha256": "35fee465733ed6656a14e8d5fd13f990c31dfdd3b52eebbaf522c175fb20ebf9",
+      "expandedBytes": 2967792,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "d08aee033b3e608cae73cd383cd856f7f783fe49a8689b4022539175578e6a24",
+          "approvedExport": {
+            "path": "sk/screenshot-1.png",
+            "sha256": "0012e09cdc87932bc7a50c1cb43c7e7f6e11c666103c70b8cb77f9abe4ab969c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "d81a609c253f956c7998465639d051b230bb8ab85032f58ea2538ff875b8e752",
+          "approvedExport": {
+            "path": "sk/screenshot-2.png",
+            "sha256": "9b37ba4990b9d55dc56c329647c549620f9244c6106a19c943fe7cc2b7af290b",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "89c5f932369703cb60b341ac40f2b2b6edefc8d77e67afe5a46fad60220deee6",
+          "approvedExport": {
+            "path": "sk/screenshot-3.png",
+            "sha256": "ebaa40a45b5c4cb546b70a9ece61e9217ab051e7a6e2177250ee7791f3beb358",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "a849d74ed38f6c1491cf01a69a6adc5c674036add60a7144e1bdde46798966f3",
+          "approvedExport": {
+            "path": "sk/screenshot-4.png",
+            "sha256": "c2826f2a5322bcd37464145bce24ef99003f0e1c24a2ec22f563f1004a4c4a1e",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "fd1fec36382306ca7cb2919bff5111575421ded020965616aeff1beddc6665e2",
+          "approvedExport": {
+            "path": "sk/screenshot-5.png",
+            "sha256": "f6e6569f2e86ba820cd54a1a8bc97f42b82bc5907b76fd75c02a13f30eb049ba",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "sl",
+      "path": "sources/sl.html",
+      "storedSha256": "095fb9a0beec7ff0c4ee97eca1d5eb780e44ca98da9106f23a0e0d08c5a9aeb7",
+      "expandedSha256": "660cab04493dd8c1998a1e0dc612456b4a19dbbe0f64f89ce64437d4a723cac0",
+      "expandedBytes": 2966813,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "f0bd2ca3db8f1e27c6000c6a60735e3706d97da254f4829383bcfc4ed0fbf1a2",
+          "approvedExport": {
+            "path": "sl/screenshot-1.png",
+            "sha256": "f170e6455753d467ef372cde5320769d98452737496f9286b4a7bd37852e6266",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "6ff3e6ce7366a76688cfa04be0a663eab2b39370409194db876d5288d0116156",
+          "approvedExport": {
+            "path": "sl/screenshot-2.png",
+            "sha256": "0d7c5e712d43825493a22cf8cfab46c59acbade543835cf3bb42ef668c0b071a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "8574beedf2364d5d3972d129384440684672616f5968a6bda1415b96d3fe0727",
+          "approvedExport": {
+            "path": "sl/screenshot-3.png",
+            "sha256": "8a402148beecb06dbd0263dd73403dff901485587d2d339d2722a06a5a4f0825",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "6627909114e2083b72596961f7b99d84b681dc3292a92be45e3680ca0996f591",
+          "approvedExport": {
+            "path": "sl/screenshot-4.png",
+            "sha256": "bc7495f2b6ff79528e3da05af01d5966d8199e33cee303c710a289dfef63d28c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "70c7bada76b5d22d4901428b66704a5dcec3b43983c817592c9efbdecbca7b6c",
+          "approvedExport": {
+            "path": "sl/screenshot-5.png",
+            "sha256": "bf7617ab3b8941a8269cd1f828ca9e47a690bdd3a9ce3b044782a13cd42d4825",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "sr",
+      "path": "sources/sr.html",
+      "storedSha256": "f23bf75ad61786eefaf0d549769de6b330da0efd85a1f86d77dac839c0068db7",
+      "expandedSha256": "76a52fc8fe8e2ba78e6ccd6445226c12a212949aea4b8d1ff4e198dd6a4430b5",
+      "expandedBytes": 2969297,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "71f28258a7867a506824967f2531eebb22d6122d5a67420e4ca713b9703ab286",
+          "approvedExport": {
+            "path": "sr/screenshot-1.png",
+            "sha256": "1997482270e1737300b1c398a03d9c9bbd52afe2e59d9ce606542596c2b04f4c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "beb6d1e249ae2e30f9499b485d8974f79d98c78a60ad4f997de32ab8311a2a8d",
+          "approvedExport": {
+            "path": "sr/screenshot-2.png",
+            "sha256": "530eb909881a3a895885dc4bfe837019a8924f35154dbd8740b3f7bbdd2ce5f6",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "f4a1cfd5032f078015d5e6451bd2f66ffaf75fb89f236c1082be66340e1adc41",
+          "approvedExport": {
+            "path": "sr/screenshot-3.png",
+            "sha256": "fe8ae968903f4e79265ee7deb2ed82d08598bbfc9768bc80437b8dedbe4c1725",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "a7b5f772ed78bd9efa3a2535c8ff5251e7284cf2e87a572bc7d161a90c5e9557",
+          "approvedExport": {
+            "path": "sr/screenshot-4.png",
+            "sha256": "1ca25a16bd29bcee42fe2d1e74c19d9299218d99c6c026ca439e403f17f9aa9a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "ba7119ea0a18f0b549182024d7d3d754d7b79f8a7e1d497936cdb7af43004cf4",
+          "approvedExport": {
+            "path": "sr/screenshot-5.png",
+            "sha256": "f1994e10743a5eaf87d20a2c878ce7c302972423a820d22e0415061d7324eb60",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "sv",
+      "path": "sources/sv.html",
+      "storedSha256": "51aa810ece9b3b0512132168e43a47085199f9eec60cd714928954a4c069c34a",
+      "expandedSha256": "4676902922afd72544a2259082e442aae9c5644f25a2107b3b41bf3113ecc075",
+      "expandedBytes": 2967597,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "7274b8a985aaab58e86418ea4a8f084ab95a8245de014356ae88443ba5be62b3",
+          "approvedExport": {
+            "path": "sv/screenshot-1.png",
+            "sha256": "5e4dfb284c2d80ba6f0b5c2c70a1646c669988e896348d293a32bbfd7f0366a1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "068975c43191293340bcd8f52d558e27d90179fe088a81effd27cda694018a06",
+          "approvedExport": {
+            "path": "sv/screenshot-2.png",
+            "sha256": "b7626e177016142bd9f8a83eee069140f601ba49f50c52ff4c219ffc2c9e55be",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "2e7f4f008e100021f44ba44823736b1fe94e460508a1ded9f0519b1a7e60cdeb",
+          "approvedExport": {
+            "path": "sv/screenshot-3.png",
+            "sha256": "19ff531a5da6597eb3353b72495a03833085557053b5f68a98c98fb520143919",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "655eafcea8696b9db3cd1c968ab1f2244bf49123ee30af2c5508ea4a2be074b3",
+          "approvedExport": {
+            "path": "sv/screenshot-4.png",
+            "sha256": "2c4ad44b2399069932493a85198f89979d0be75cafbd7a1d95d780840befe1a7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "abb27fe016f1eff9977674e4830f2fe78a7348b77ed9174408491810b274c979",
+          "approvedExport": {
+            "path": "sv/screenshot-5.png",
+            "sha256": "1ac0ed2aec58582768f56201d658d45ab42a62caa8c4e138c9b1df15b3c028a7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "tr",
+      "path": "sources/tr.html",
+      "storedSha256": "d02c10159dc9adc636d66d4ab19664e6a9c87893f04126098ee11c757fed2a52",
+      "expandedSha256": "8081b5490cb2aaf33b2b53aaac4df7f186ad11d41319c3bb8eef7d63c21b3dc1",
+      "expandedBytes": 2967678,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "031c1878192ba0dadeef024667aa641419fe86c046f59bca2ff32b274c7b7e0c",
+          "approvedExport": {
+            "path": "tr/screenshot-1.png",
+            "sha256": "9810d5279b8f3e2d5c6bbdf6ca37175fe728ce6f5b520ce78102ad7ff02789cd",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "e374c68de69fd02dece330d0ee267ca2b242ea4615a33bcba18648b7c9c9ff56",
+          "approvedExport": {
+            "path": "tr/screenshot-2.png",
+            "sha256": "572d22059e468671e739e095b3593d764a0d2f7127066cb19a8cd82c73a7d286",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "eac30e7e349787fbe8c55c7611bd3aa76011c23df35333a1161abaddcfdd3d4c",
+          "approvedExport": {
+            "path": "tr/screenshot-3.png",
+            "sha256": "d423b2ca33e498adcc4b19d8cccf894346e601105c039836b3dbc065aeb99750",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "037fa0cc6c7a7e8ea08a7b18ee719ea882350a19ea42c48f803fbd6c0094a392",
+          "approvedExport": {
+            "path": "tr/screenshot-4.png",
+            "sha256": "d217d09fe126b14ba0b0da511cbd6d0c16ccc34b0369d14ce16c17a1c10ab95b",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "85be719e963812c078c3af06d7c067e4997cd4df4e1e674d88b84199683daadb",
+          "approvedExport": {
+            "path": "tr/screenshot-5.png",
+            "sha256": "7b6dd31e8565729692780ed180235e12d3a3c68f84f57886f4317bcde2b380d2",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "uk",
+      "path": "sources/uk.html",
+      "storedSha256": "4f4ac89a69056b6e00b0e2c6bd7f01e99be0cbe07e6ed04077bc0baad0ea3514",
+      "expandedSha256": "9473d6c57e91edfa5bcb56d50a664756cbd3eb3a386fd252f16b2639bd6b025a",
+      "expandedBytes": 2968566,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "55d18c10cb76ebdd3759a6fc0abe0a8345a5d11ad71feddc2aa9701fac71f545",
+          "approvedExport": {
+            "path": "uk/screenshot-1.png",
+            "sha256": "bd1294e3b1c3af4d32c4106131814faac9da717e40a0fed52255d5c466364ea8",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "f3fa574fc6a5ef5370684f00c184a398ec1e5593fc211c3304f4d1f561c4b400",
+          "approvedExport": {
+            "path": "uk/screenshot-2.png",
+            "sha256": "4e4a806dbd5360dd66fc303d1ae906eef76ad8d92c4b8fe3920e7b14c5d73b1a",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "3c115b74ed4e75d1302dbf562f78789fa79fdb9aecff91290dd60ae10f296837",
+          "approvedExport": {
+            "path": "uk/screenshot-3.png",
+            "sha256": "1281c724d2ab15410e624aaea7dfb5f0f48ba0531f7de2a393d4706cfbadcd4f",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "6a01736a6a55da771eca87e298aafee546222c5a5abff54e45e36f291ffb00e9",
+          "approvedExport": {
+            "path": "uk/screenshot-4.png",
+            "sha256": "f9dd2fd2854662be1eafa9faffbe72d7cf558c4f14109797aa176f3ee3967ca2",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "62f8273a5092773ff503b73e9375e3ac372ad46e955a43419c5a85ef2d3a7521",
+          "approvedExport": {
+            "path": "uk/screenshot-5.png",
+            "sha256": "281b0a8c5be526482f5bf4ccfd24de3c893404004875eceec81248764bde8ab1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "vi",
+      "path": "sources/vi.html",
+      "storedSha256": "f296cadf9cf0a286e1abbcf9c44cc7e98a69d93bef38231798748dc37cfa6910",
+      "expandedSha256": "55ad0b2b21bb1d69134e63db8ef3b902f61320ab9c0a3312eb0e7abf3360431c",
+      "expandedBytes": 2967322,
+      "assetReferences": 132,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "125a8c4750847fae608f0542a9ecc87d6402941236eea4cc6cd44dfe67cc92a4",
+          "approvedExport": {
+            "path": "vi/screenshot-1.png",
+            "sha256": "027b1c543d8bccbf91b11022896901c7deb6a8526deeaa54859273648b947c03",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "22d8a96e84ac29be81a51fbf73230c88ecb850be219853d3def410e6c1f30a49",
+          "approvedExport": {
+            "path": "vi/screenshot-2.png",
+            "sha256": "fd69298008ba1b4d68159ada223d329e1b76df4b05630161c7464ccb4851965e",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "1f7f6aac2eb09030e650a81253988aabb49ca8c583424748d1867457fb7c47ad",
+          "approvedExport": {
+            "path": "vi/screenshot-3.png",
+            "sha256": "d60835dae06d095747837524509277e2274e982075fa9d75bf12c2b1a431f990",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "c64ba6a59bebff2e5a21f84ca4addaab84a119b6ffa28acb58f4aeca3f56289e",
+          "approvedExport": {
+            "path": "vi/screenshot-4.png",
+            "sha256": "68152de11beed6cb96a576c3a764607b01b5106be82941195fa923ec1345751d",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "acf69d33bb4a846cdf4e910254321614c6ceda0a1f399e7ebc32bd5ef8e37b09",
+          "approvedExport": {
+            "path": "vi/screenshot-5.png",
+            "sha256": "28259f528d5c964b2de89e85d42073bdb7f7a4797ed8fea011b6fb859b9fcef9",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "path": "sources/zh-CN.html",
+      "storedSha256": "e384e5b3cdc53d102b1dd88023bf3edd4f786fb9850bb2e7a9c9cf14d9d39460",
+      "expandedSha256": "15e07e20a0f87cc010deba7f5f6c53a5b7e5ad2e847a6e1e40347f14d181e881",
+      "expandedBytes": 2971055,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "9730ae82d4aa784c3746a562c49a383a4690d6e0969db4332e0c2abd3269731f",
+          "approvedExport": {
+            "path": "zh-CN/screenshot-1.png",
+            "sha256": "8ff3dfcb70bd73d51d022a6cf32c58a2828a83ca80f55f5acea14297b1ba6134",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "4f33602eb3ee0fd56377d722c5829b93ac45053da5cfc938d77b0cc02148f259",
+          "approvedExport": {
+            "path": "zh-CN/screenshot-2.png",
+            "sha256": "d1a00a73fd7ced1d8752df3474092887336752b93025cbcc9e65a4e3ecc0fb0c",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "d0f4d47041d45295cf29c831790cee513be9645193e2c898461da0b912f98b35",
+          "approvedExport": {
+            "path": "zh-CN/screenshot-3.png",
+            "sha256": "554233a2b5f7651ead6776784c1dc843364b389637c8778d0cb57462a1e4d495",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "8b21338b1a1b7778155c2d77c25055294ec150823724dbdf1cbd906879b6121b",
+          "approvedExport": {
+            "path": "zh-CN/screenshot-4.png",
+            "sha256": "4d4fa11dab1c26a88c873e0396e4eeb9c80a996cb372452981cc29e8880058dc",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "28029cd5d950aab4f08b0fe07a4388a647f56219b29fa244bfb457ad9630a50e",
+          "approvedExport": {
+            "path": "zh-CN/screenshot-5.png",
+            "sha256": "0eb22c52f5db94555598d498050cdfbfde569b9f53e9dd209e0020e1c6c9fea3",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "zh-TW",
+      "path": "sources/zh-TW.html",
+      "storedSha256": "40f6df251fd9215caee814c385dd88f5d2f61ecac919f4195a7c23f98beb16d1",
+      "expandedSha256": "8f836566eba044c025430b04e3577ef4c69f61e0cd9d8e681f19b290b7b1f8c6",
+      "expandedBytes": 2970948,
+      "assetReferences": 136,
+      "exportMethod": "WeasyPrint PDF and Poppler PNG; original slots 1 and 2 retained",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "bdc0ab13dbdbaffec0145a8db739e0dcb3f6e6c9e8e9796d8af1341120945bab",
+          "approvedExport": {
+            "path": "zh-TW/screenshot-1.png",
+            "sha256": "02f29554e66ac8ec30552ed10560cef2095d5cd29f994d7eb94073bd218a4841",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "7a3b71ddbcb8f4f5f6672b2952537419c05c486f083ed463d89ed73aa654b74a",
+          "approvedExport": {
+            "path": "zh-TW/screenshot-2.png",
+            "sha256": "b74a32aadcac26b8bf747afcc4fb725851a1d3caee39cb2381c3d2f0573adaa1",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "05-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "a73e2f4fbfa360a5a8271361f3166c34d11292a16d105a646a1cb9e7b3dea493",
+          "approvedExport": {
+            "path": "zh-TW/screenshot-3.png",
+            "sha256": "3a6e3078c39ea53a743e71d8466a9eaf15da93542b7172373ba12ecc20784fe2",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "9ecced6f6c4ef67a3d5b882f768f1e6d1f2230290fd59e425cc8e49b3a213445",
+          "approvedExport": {
+            "path": "zh-TW/screenshot-4.png",
+            "sha256": "dfb4135fb81c61ae4e967917815fa2cc2e699479d23aa80d76cf88527a8440ce",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "84b837609416515e006a71291d38df924133e1813b2352f9ba6604ade2ef7a03",
+          "approvedExport": {
+            "path": "zh-TW/screenshot-5.png",
+            "sha256": "0e892a1a960607dd8e67fd9a61bdd39afac0e1f7fd101d2247965e7a83e642e5",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    },
+    {
+      "locale": "global",
+      "path": "sources/global.html",
+      "storedSha256": "efa77bf29c8e4db1fc3e04d20e684c56d1c549866e47bf20a14fbdb4761faa5e",
+      "expandedSha256": "27e1893ecf8322ff7532781f78cdf04abbf92c986bffd1a999a89126d8679212",
+      "expandedBytes": 2956210,
+      "assetReferences": 136,
+      "exportMethod": "footer-only composite over original PNGs",
+      "slides": [
+        {
+          "order": 1,
+          "feature": "overview",
+          "sectionId": "01-Overview",
+          "footer": "01 / 05",
+          "expandedSectionSha256": "4185b6e8744406f69b525abed910d9cb21a3019fe7f908da96ef76c2c7ec41cd",
+          "approvedExport": {
+            "path": "global/screenshot-1.png",
+            "sha256": "095df1ff9ef326a1eb13ca1cea487774f37f42cb04deb3a795850dfc90dd09f7",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 2,
+          "feature": "sort",
+          "sectionId": "02-Sort-Tabs",
+          "footer": "02 / 05",
+          "expandedSectionSha256": "c1baaaf897e6b530cb4fe2608be4cbc3d916fba5faed002cf86d637ad0f606d7",
+          "approvedExport": {
+            "path": "global/screenshot-2.png",
+            "sha256": "76d145be3e9c3fa2eb36aeb64597e7ae6b0a368c0255e8e483af5472c70af501",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 3,
+          "feature": "rightclick",
+          "sectionId": "03-Right-Click",
+          "footer": "03 / 05",
+          "expandedSectionSha256": "9f17f4f96fd7464ee4e51143cdbf8f71ed2295bf1322e268ddf695cb0d6e7cbf",
+          "approvedExport": {
+            "path": "global/screenshot-3.png",
+            "sha256": "dc89915d85a81d831fd99db2abdab769bbdf9b1e587d497854cbfc78370f8479",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 4,
+          "feature": "count",
+          "sectionId": "04-Cleanup-Count",
+          "footer": "04 / 05",
+          "expandedSectionSha256": "ac11e82d1464035bb3f7f42ba768ff5f196a2a3639d03c120fe01a129fc3e231",
+          "approvedExport": {
+            "path": "global/screenshot-4.png",
+            "sha256": "9732953e60da3a7a5aa15ef1d915df56953be9c2d84438ef079d5a59b1c06fa0",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        },
+        {
+          "order": 5,
+          "feature": "inactive",
+          "sectionId": "05-Inactive-Tabs",
+          "footer": "05 / 05",
+          "expandedSectionSha256": "675940bf98b5daf05806bc8ad54e796230ddbe40c5792b9113d8b1333abd3fc9",
+          "approvedExport": {
+            "path": "global/screenshot-5.png",
+            "sha256": "c5f7d1c6ba3f1c544f107460549bd21f999ba6babf9add0c75e72ba77306b003",
+            "width": 1280,
+            "height": 800,
+            "mode": "RGB"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "translationLocale": {
+    "message": "sr"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Затвори и поређај картице по сајту"
+  },
+  "extensionDescription": {
+    "message": "Затворите картице истог сајта, поређајте картице по сајту и уклоните дупликате да би прегледач остао уредан."
+  },
+  "openTabTools": {
+    "message": "Отвори TabTools"
+  },
+  "settings": {
+    "message": "Подешавања"
+  },
+  "suggestions": {
+    "message": "Предлози"
+  },
+  "suggestCaption": {
+    "message": "Додирните да затворите картице сајта"
+  },
+  "queryPlaceholder": {
+    "message": "Затвори по кључној речи (Enter)"
+  },
+  "close": {
+    "message": "Затвори"
+  },
+  "sortTabs": {
+    "message": "Поређај картице"
+  },
+  "closeDuplicates": {
+    "message": "Затвори дупликате"
+  },
+  "undo": {
+    "message": "Опозови"
+  },
+  "undoTitle": {
+    "message": "Опозови последње затварање"
+  },
+  "theme": {
+    "message": "Тема"
+  },
+  "light": {
+    "message": "Светла"
+  },
+  "dark": {
+    "message": "Тамна"
+  },
+  "minTabs": {
+    "message": "Најмањи број картица сајта за предлоге"
+  },
+  "inactiveAfter": {
+    "message": "Картице су неактивне после"
+  },
+  "minutes": {
+    "message": "мин."
+  },
+  "closedCount": {
+    "message": "Затворено: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ отворена картица",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ отворене картице",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ отворених картица",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ отворена",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_few": {
+    "message": "$count$ отворене",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ отворених",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ затворена",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_few": {
+    "message": "$count$ затворене",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ затворених",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Радња није успела"
+  },
+  "closedInactive": {
+    "message": "Затворено неактивних картица: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Нема неактивних картица"
+  },
+  "closedDuplicates": {
+    "message": "Затворено дупликата: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Нема дупликата"
+  },
+  "nothingToUndo": {
+    "message": "Нема радње за опозив"
+  },
+  "undoFailed": {
+    "message": "Опозив није успео"
+  },
+  "restoredCount": {
+    "message": "Враћено: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Нема картица за враћање"
+  },
+  "inactive": {
+    "message": "Неактивне"
+  },
+  "loadingSuggestions": {
+    "message": "Учитавање предлога…"
+  },
+  "suggestionsFailed": {
+    "message": "Учитавање предлога није успело"
+  },
+  "noSuggestions": {
+    "message": "Нема предлога"
+  },
+  "moreCount": {
+    "message": "Неприказани предлози: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Ређање није успело"
+  },
+  "sortedCount": {
+    "message": "Премештено картица: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Нема картица за ређање"
+  },
+  "hide": {
+    "message": "Сакриј"
+  },
+  "show": {
+    "message": "Прикажи"
+  },
+  "contextClose": {
+    "message": "Затвори картице сајта"
+  },
+  "contextSort": {
+    "message": "Поређај картице (најзаступљенији сајтови први)"
+  },
+  "closeSiteLabel": {
+    "message": "Затвори картице сајта $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

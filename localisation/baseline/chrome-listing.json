@@ -1,0 +1,9 @@
+{
+  "retrieved": "2026-09-17",
+  "url": "https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk",
+  "version": "4.0.1",
+  "name": "TabTools",
+  "summary": "Clear your tab list quickly and keep your browser tidy.",
+  "description": "Too many tabs? TabTools helps you close unwanted tabs, remove duplicates and organise your browser in seconds.\n\n⚡ QUICK TAB CLEANUP\n• Right-click shortcuts — close tabs from the current site through the context menu.\n• Close by keyword or domain — target the tabs you want to clear.\n• Site suggestions — see which sites have the most open tabs and close them together.\n• Close inactive tabs — choose how long a tab can be inactive before it qualifies for cleanup.\n\n🗂️ KEEP YOUR BROWSER ORGANISED\n• Sort by site frequency — group tabs by site, ordered by how many you have open.\n• Remove duplicate tabs — clear repeated tabs in one click.\n• Light and dark themes — choose the look you prefer.\n• Local statistics — see how many tabs you have closed with TabTools.\n\n🔒 PRIVATE BY DESIGN\nTab Tools does not collect or transmit personal data. Your settings and statistics stay stored locally in your browser.\n\nGithub: https://github.com/Michael-Wester/tabtools\nEmail: tabtools@michaelwester.com",
+  "responseSHA256": "21426ad54f9298ef5ce0bacac8fb66ec1d324f4347d105e78fcc4858997bc049"
+}

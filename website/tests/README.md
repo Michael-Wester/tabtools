@@ -21,6 +21,19 @@ wording, FAQ interaction, uncaught page errors, and article links clearing the
 sticky header. A compact desktop window separately
 checks that desktop installation wording remains available.
 
+The localized suite checks all 29 homepages at 320px and 390px in Chromium and
+WebKit, with light and dark themes across those widths. It verifies translated
+browser labels (including CJK placeholder ordering), header touch targets,
+language-menu bounds, selected-option focus, and theme persistence. German,
+Spanish, Japanese, Hebrew, and Traditional Chinese additionally cover keyboard
+navigation, saved language choices, query/anchor preservation, sticky-header
+navigation, and native language links and FAQs with JavaScript disabled.
+
+`npm test` runs both matrices once (276 cases: 120 existing layout cases and
+156 localized cases). CLI filters such as `npm test -- --workers=2` apply to
+both suites. Use `npm run test:localisation` for the localized matrix alone or
+`npm run test:chromium` for both matrices in Chromium.
+
 The 320px and 390px homepage and close-site-tabs guide get full-page screenshots in both
 themes and engines. YouTube is a labelled placeholder and other external
 requests are blocked, so these checks do not contact store listings or depend on

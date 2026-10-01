@@ -1,0 +1,123 @@
+name: Validate TabTools localisation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'build.js'
+      - 'build.ps1'
+      - 'website/src/**'
+      - 'website/dist/**'
+      - 'localisation/**'
+      - 'marketing/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'playwright.config.js'
+      - 'playwright/**'
+      - 'playwright.extension.config.js'
+      - 'extension-playwright/**'
+      - '.github/workflows/localisation.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'build.js'
+      - 'build.ps1'
+      - 'website/src/**'
+      - 'website/dist/**'
+      - 'localisation/**'
+      - 'marketing/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'playwright.config.js'
+      - 'playwright/**'
+      - 'playwright.extension.config.js'
+      - 'extension-playwright/**'
+      - '.github/workflows/localisation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate committed localisation outputs
+        run: |
+          node scripts/generate-extension-locales.js
+          node scripts/generate-website.js
+          node scripts/generate-listings.js
+      - name: Validate localisation
+        run: node scripts/validate-localisation.js
+      - name: Run regression tests
+        run: node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js tests/store-assets.test.js
+      - name: Build all browser packages
+        run: node build.js
+      - name: Validate Node packages
+        run: node scripts/check-packages.js
+      - name: Build with PowerShell
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./build.ps1
+      - name: Validate PowerShell packages
+        if: runner.os == 'Windows'
+        run: node scripts/check-packages.js
+      - name: Reject stale generated files
+        run: git diff --exit-code
+
+  firefox-console-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install test dependencies
+        run: npm ci
+      - name: Install Firefox for Playwright
+        run: npx playwright install --with-deps firefox
+      - name: Generate website pages
+        run: npm run locales:website
+      - name: Run Firefox console smoke check
+        run: npm run test:firefox
+
+  native-chromium-extension:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install test dependencies
+        run: npm ci
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Build extension packages
+        run: node build.js
+      - name: Check native extension actions and all popup languages
+        run: npm run test:extension
+      - name: Upload native extension test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: native-extension-results
+          path: test-results/native-extension/
+          retention-days: 7

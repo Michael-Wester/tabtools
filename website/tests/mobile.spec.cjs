@@ -70,7 +70,7 @@ async function checkHeader(page, width) {
       expect(rect.width, 'Navigation touch target width').toBeGreaterThanOrEqual(44);
     }
   }
-  for (const control of await page.locator('.nav-actions button, .nav-actions a').all()) {
+  for (const control of await page.locator('.nav-actions button, .nav-actions a:not([data-language-option])').all()) {
     await expect(control).toBeInViewport();
     await control.click({ trial: true });
     const rect = await control.boundingBox();

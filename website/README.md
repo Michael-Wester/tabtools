@@ -4,8 +4,35 @@ Promotional landing page for the TabTools browser extension. The deployable
 static site lives in `dist/` so it can be hosted by ChatGPT Sites or another
 static host.
 
-The site is intentionally dependency-free. Edit the homepage and shared assets
-in `dist/`, then serve that directory with any static web server for local review.
+The site is intentionally dependency-free. Serve `dist/` with any static web
+server for local review; edit the authored files in `src/` and regenerate the
+output as described below.
+
+## Localisation source and generation
+
+The authored website template is `src/template.html`, with explicit translation
+keys rather than duplicated English copy. The runtime and CSS live in `src/`;
+the landing-page HTML and shared runtime/CSS files in `dist/` are generated and
+should not be edited by hand. Guide content, guide styles and security headers
+have separate sources described below. The shared locale registry and source
+catalogues live in [`../localisation/`](../localisation/). From the repository root,
+run:
+
+```sh
+npm run locales:generate
+npm run locales:validate
+node website/build-guides.cjs --check
+node website/check-guides.cjs
+node website/check-security.cjs
+```
+
+The generators write one page per supported locale, reciprocal `hreflang`
+metadata, the sitemap, and browser-store listing text. Locale paths use the
+registry values (`/de/`, `/pt-br/`, `/zh-cn/`, and so on); the root page is the
+English fallback. The language selector preserves a visitor's choice and
+offers a browser-language suggestion without replacing an explicitly chosen
+URL. Website generation also regenerates the English guides after the landing
+pages so they use the current shared header, footer and theme bootstrap.
 
 ## Guides
 
@@ -15,6 +42,8 @@ removing duplicates, and sorting tabs by website. Article content lives in
 sitemap, reusing the homepage's header, footer and early theme bootstrap.
 Layout styles live in `dist/guides.css`. The generated HTML is committed so the
 deployment remains a static upload and all articles work without JavaScript.
+The guide index and articles remain in English; the translated landing pages
+link to these English guides.
 
 The ten Chrome screenshots live in `dist/assets/guides/` and are inserted with
 the `screenshot()` helper in `guides-content.cjs`. Keep the original 1280 × 800
@@ -25,17 +54,20 @@ full-size PNG. Capture details are in `dist/assets/guides/README.md`.
 After editing article content, its template, or the homepage navigation/footer:
 
 ```sh
-node website/build-guides.cjs
+npm run locales:generate
+npm run locales:validate
 node website/build-guides.cjs --check
 node website/check-guides.cjs
 node website/check-security.cjs
 ```
 
-Run these commands from the repository root. The deploy workflow rejects stale
-generated pages, broken internal links, missing assets and invalid security
-policy. Keep the article review date in `build-guides.cjs` aligned with a real
-content review. Review the extension's behaviour when its cleanup/sorting rules
-change; the guides describe main, independently of the pending localisation PR.
+Run these commands from the repository root, generating the landing pages before
+the guides so their shared header, footer and theme bootstrap are current.
+The deploy workflow generates both sets of pages before validating them and
+rejects uncommitted generated changes, broken internal links, missing assets
+and invalid security policy. Keep the article review date in `build-guides.cjs`
+aligned with a real content review. Review the extension's behaviour when its cleanup/sorting rules
+change; localisation does not translate or change the guide instructions.
 Store links use placement-specific attribution, including `guide_inline` and
 `guide_<slug>`. No analytics service or extra browser permissions are added.
 
@@ -91,6 +123,14 @@ the extension and distinguishes the website's third-party YouTube player.
 See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
 hosting settings, verification requirements, and future deployment instructions.
 
+## Language selector flags
+
+The website language selector serves square SVG flags locally and clips them to
+circular controls. The flags are vendored from [`flag-icons`](https://github.com/lipis/flag-icons)
+under its MIT License; the attribution and permission notice are kept with the
+authored assets in [`src/assets/flags/`](src/assets/flags/) and copied to
+`dist/assets/flags/` during website generation.
+
 ## Security headers
 
 Cloudflare Pages reads `dist/_headers` to restrict resource loading, prevent
@@ -102,8 +142,8 @@ Run `node website/check-security.cjs` from the repository root before deployment
 The deployment workflow also runs this check. If an executable inline script
 changes, review it and update its SHA-256 hash in `_headers`; do not weaken CSP
 to silence the check. Inert JSON data blocks do not require script permission.
-With the localisation build in PR #17, run this check **after** page generation
-and preserve `_headers` in the deployable output.
+Run this check **after** landing-page and guide generation and preserve
+`_headers` in the deployable output.
 
 See [the security review](SECURITY-REVIEW.md) for findings, verification limits,
 future deployment isolation work, and HSTS rollout/rollback guidance.

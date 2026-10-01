@@ -7,11 +7,12 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const guides = require('./guides-content.cjs');
+
+function buildGuides({ check = false } = {}) {
 const dist = path.join(__dirname, 'dist');
 const home = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 const base = 'https://tabtools.fyi';
 const updated = '2026-09-21';
-const check = process.argv.includes('--check');
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const json = value => JSON.stringify(value, null, 2).replace(/</g, '\\u003c');
 const absoluteLinks = html => html.replace(/(href|src)="(?!https?:|mailto:|\/)([^"]*)"/g, '$1="/$2"');
@@ -19,6 +20,8 @@ const header = absoluteLinks(home.match(/<header class="site-header">[\s\S]*?<\/
   .replace('href="/guides/"', 'href="/guides/" aria-current="page"');
 const footer = absoluteLinks(home.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)[0]);
 const theme = home.match(/<script>\s*\(\(\) => \{[\s\S]*?<\/script>/)[0];
+const localeData = home.match(/<script\b[^>]*\bid="locale-data"[^>]*>[\s\S]*?<\/script>/)?.[0];
+assert(localeData, 'English homepage is missing locale data; generate the homepage before the guides');
 const storeLinks = [
   ['chrome', 'Chrome', 'https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk'],
   ['firefox', 'Firefox', 'https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/'],
@@ -54,9 +57,11 @@ function page({ title, description, route, body, schema, article = false }) {
     <meta name="twitter:description" content="${escape(description)}" />
     <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
     <link rel="stylesheet" href="/guides.css" />
     <script type="application/ld+json">${json(schema)}</script>
     ${theme}
+    ${localeData}
   </head>
   <body class="guides-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -136,7 +141,7 @@ for (const guide of guides) {
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const locations = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
 for (const filename of output.keys()) locations.add(base + '/' + filename.replace(/index\.html$/, ''));
-output.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...locations].map(url => `  <url><loc>${escape(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
+output.set('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...locations].sort().map(url => `  <url><loc>${escape(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
 
 for (const [name, content] of output) {
   const file = path.join(dist, name);
@@ -148,3 +153,7 @@ for (const [name, content] of output) {
   }
 }
 console.log(`Guide ${check ? 'checks' : 'build'} passed: ${guides.length} articles, index and sitemap.`);
+}
+
+if (require.main === module) buildGuides({ check: process.argv.includes('--check') });
+module.exports = { buildGuides };

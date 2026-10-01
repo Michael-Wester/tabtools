@@ -1,0 +1,14 @@
+# Versions used for the preserved final artwork. Native libraries/fonts also matter.
+weasyprint==70.0
+pydyf==0.12.1
+cffi==2.1.1
+pycparser==3.0
+tinyhtml5==2.1.0
+tinycss2==1.5.1
+cssselect2==0.10.1
+Pyphen==0.18.1
+Pillow==12.3.0
+fonttools==4.66.1
+Brotli==1.2.0
+zopfli==0.4.3
+webencodings==0.6.1

@@ -1,0 +1,281 @@
+{
+  "translationLocale": {
+    "message": "pl"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Zamykaj i sortuj karty według witryny"
+  },
+  "extensionDescription": {
+    "message": "Zamykaj karty tej samej witryny, sortuj je według witryny i usuwaj duplikaty, by utrzymać porządek w przeglądarce."
+  },
+  "openTabTools": {
+    "message": "Otwórz TabTools"
+  },
+  "settings": {
+    "message": "Ustawienia"
+  },
+  "suggestions": {
+    "message": "Sugestie"
+  },
+  "suggestCaption": {
+    "message": "Kliknij, aby zamknąć karty witryny"
+  },
+  "queryPlaceholder": {
+    "message": "Zamknij według słowa kluczowego (Enter)"
+  },
+  "close": {
+    "message": "Zamknij"
+  },
+  "sortTabs": {
+    "message": "Sortuj karty"
+  },
+  "closeDuplicates": {
+    "message": "Zamknij duplikaty"
+  },
+  "undo": {
+    "message": "Cofnij"
+  },
+  "undoTitle": {
+    "message": "Cofnij ostatnie zamknięcie"
+  },
+  "theme": {
+    "message": "Motyw"
+  },
+  "light": {
+    "message": "Jasny"
+  },
+  "dark": {
+    "message": "Ciemny"
+  },
+  "minTabs": {
+    "message": "Minimalna liczba kart witryny w sugestiach"
+  },
+  "inactiveAfter": {
+    "message": "Karty nieaktywne po"
+  },
+  "minutes": {
+    "message": "minutach"
+  },
+  "closedCount": {
+    "message": "Zamknięte: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ otwarta karta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_few": {
+    "message": "$count$ otwarte karty",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ otwartych kart",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ otwartej karty",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ otwarta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_few": {
+    "message": "$count$ otwarte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ otwartych",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ otwartej",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ zamknięta",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_few": {
+    "message": "$count$ zamknięte",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ zamkniętych",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ zamkniętej",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Niepowodzenie"
+  },
+  "closedInactive": {
+    "message": "Zamknięte nieaktywne karty: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Brak nieaktywnych kart"
+  },
+  "closedDuplicates": {
+    "message": "Zamknięte duplikaty kart: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Brak duplikatów"
+  },
+  "nothingToUndo": {
+    "message": "Nie ma czego cofnąć"
+  },
+  "undoFailed": {
+    "message": "Nie udało się cofnąć"
+  },
+  "restoredCount": {
+    "message": "Przywrócone: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nie ma czego przywrócić"
+  },
+  "inactive": {
+    "message": "Nieaktywne"
+  },
+  "loadingSuggestions": {
+    "message": "Wczytywanie sugestii…"
+  },
+  "suggestionsFailed": {
+    "message": "Nie udało się wczytać sugestii"
+  },
+  "noSuggestions": {
+    "message": "Obecnie brak sugestii"
+  },
+  "moreCount": {
+    "message": "Pozostałe niewyświetlone sugestie: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sortowanie nie powiodło się"
+  },
+  "sortedCount": {
+    "message": "Przestawione karty: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nie ma czego sortować"
+  },
+  "hide": {
+    "message": "Ukryj"
+  },
+  "show": {
+    "message": "Pokaż"
+  },
+  "contextClose": {
+    "message": "Zamknij karty witryny"
+  },
+  "contextSort": {
+    "message": "Sortuj karty (witryny z największą liczbą kart najpierw)"
+  },
+  "closeSiteLabel": {
+    "message": "Zamknij karty witryny $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

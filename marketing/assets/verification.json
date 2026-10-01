@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-01",
+  "sourceManifestSha256": "a98651d70e57b055100c1ea612bfac74428c36446fb93d041bb78b0a889bb155",
+  "sourceRoundtrip": {
+    "sources": 30,
+    "originalBytes": 89040275,
+    "byteIdentical": 30,
+    "sharedAssets": 36
+  },
+  "rasterComparison": {
+    "locales": 29,
+    "localizedImages": 145,
+    "localizedExactHashes": 144,
+    "globalImages": 5,
+    "globalExactHashes": 0,
+    "mismatches": [
+      {
+        "locale": "hu",
+        "order": 3,
+        "approvedSha256": "092e6f4c8e4419869dc3cf6228cb2ba3e7e67bcdc4ae85d57fe674a49c506deb",
+        "renderedSha256": "127e8a0e0933a0dbfc0be0641332497649363a5a0bcfbd7c0b51febfea8b430f",
+        "note": "232 differing menu-text pixels; inspected wording/layout unchanged; source roundtrip byte-exact",
+        "differingPixels": 232,
+        "differenceBoundingBox": [
+          848,
+          261,
+          1051,
+          668
+        ]
+      },
+      {
+        "locale": "global",
+        "order": 1,
+        "approvedSha256": "095df1ff9ef326a1eb13ca1cea487774f37f42cb04deb3a795850dfc90dd09f7",
+        "renderedSha256": "ec731810691d443f3f9db2ae74d7a8ed7eee20a330b03164660de15646bc253a",
+        "note": "Footer-only composite baseline; full HTML rerender expected to differ"
+      },
+      {
+        "locale": "global",
+        "order": 2,
+        "approvedSha256": "76d145be3e9c3fa2eb36aeb64597e7ae6b0a368c0255e8e483af5472c70af501",
+        "renderedSha256": "758ca1ffc9af75be34cc3a5e7567a676a09f33e32fb442a519273fe812a1f8a2",
+        "note": "Footer-only composite baseline; full HTML rerender expected to differ"
+      },
+      {
+        "locale": "global",
+        "order": 3,
+        "approvedSha256": "dc89915d85a81d831fd99db2abdab769bbdf9b1e587d497854cbfc78370f8479",
+        "renderedSha256": "35cf02ea829414d9ff1864da5b9d2a4419aaf2ceab0da795c293191af75a3abe",
+        "note": "Footer-only composite baseline; full HTML rerender expected to differ"
+      },
+      {
+        "locale": "global",
+        "order": 4,
+        "approvedSha256": "9732953e60da3a7a5aa15ef1d915df56953be9c2d84438ef079d5a59b1c06fa0",
+        "renderedSha256": "c0178aea30cc0bac3fa3fcc712f60f67823d8c22bbbbb517a19caf8df171c6a4",
+        "note": "Footer-only composite baseline; full HTML rerender expected to differ"
+      },
+      {
+        "locale": "global",
+        "order": 5,
+        "approvedSha256": "c5f7d1c6ba3f1c544f107460549bd21f999ba6babf9add0c75e72ba77306b003",
+        "renderedSha256": "476d4bafde29d9ce10af1eaae01cdadbbe84c1eb25270b3a20a2b322fde9555d",
+        "note": "Footer-only composite baseline; full HTML rerender expected to differ"
+      }
+    ]
+  },
+  "runtime": {
+    "platform": "Linux",
+    "python": "3.12.14",
+    "weasyprint": "70.0",
+    "poppler": "pdftoppm version 26.05.0",
+    "systemFonts": [
+      {
+        "filename": "NotoSansCJK-Regular.ttc",
+        "sha256": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a"
+      },
+      {
+        "filename": "NotoSansCJK-Bold.ttc",
+        "sha256": "faa5f3656a78b2e2d450d27fe8382c778bc2b6bb5ea29c986664a6a435056ceb"
+      },
+      {
+        "filename": "NotoSansHebrew-Regular.ttf",
+        "sha256": "436900d5ad77d33e4234247f3076eaecd25b92b9bea0519514f684140e3566a7"
+      },
+      {
+        "filename": "NotoSansHebrew-Bold.ttf",
+        "sha256": "d3b01343f71e8a93fffb84c345a1aecbaf4694b98d0eaace916cb9eac9e6dcd3"
+      }
+    ]
+  },
+  "scope": "Source fidelity and stated raster comparisons only. Does not prove store publication, native browser behavior, cross-platform rendering equivalence or a new third-party rights audit."
+}

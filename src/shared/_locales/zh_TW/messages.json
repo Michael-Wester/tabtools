@@ -1,0 +1,200 @@
+{
+  "translationLocale": {
+    "message": "zh-TW"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - 依網站關閉與排序分頁"
+  },
+  "extensionDescription": {
+    "message": "關閉同一網站的分頁、依網站排序並移除重複分頁，讓瀏覽器保持整齊。"
+  },
+  "openTabTools": {
+    "message": "開啟 TabTools"
+  },
+  "settings": {
+    "message": "設定"
+  },
+  "suggestions": {
+    "message": "建議"
+  },
+  "suggestCaption": {
+    "message": "點選以關閉該網站的分頁"
+  },
+  "queryPlaceholder": {
+    "message": "依關鍵字關閉（按 Enter 鍵）"
+  },
+  "close": {
+    "message": "關閉"
+  },
+  "sortTabs": {
+    "message": "排序分頁"
+  },
+  "closeDuplicates": {
+    "message": "關閉重複項目"
+  },
+  "undo": {
+    "message": "復原"
+  },
+  "undoTitle": {
+    "message": "復原上次關閉"
+  },
+  "theme": {
+    "message": "佈景主題"
+  },
+  "light": {
+    "message": "淺色"
+  },
+  "dark": {
+    "message": "深色"
+  },
+  "minTabs": {
+    "message": "顯示網站建議所需的最少分頁數"
+  },
+  "inactiveAfter": {
+    "message": "分頁視為閒置前的時間"
+  },
+  "minutes": {
+    "message": "分鐘"
+  },
+  "closedCount": {
+    "message": "已關閉：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "已開啟 $count$ 個分頁",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "已開啟 $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "已關閉 $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "操作失敗"
+  },
+  "closedInactive": {
+    "message": "已關閉的閒置分頁：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "沒有閒置分頁"
+  },
+  "closedDuplicates": {
+    "message": "已關閉的重複分頁：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "沒有重複項目"
+  },
+  "nothingToUndo": {
+    "message": "沒有可復原的操作"
+  },
+  "undoFailed": {
+    "message": "復原失敗"
+  },
+  "restoredCount": {
+    "message": "已還原：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "沒有可還原的分頁"
+  },
+  "inactive": {
+    "message": "閒置"
+  },
+  "loadingSuggestions": {
+    "message": "正在載入建議…"
+  },
+  "suggestionsFailed": {
+    "message": "無法載入建議"
+  },
+  "noSuggestions": {
+    "message": "目前沒有建議"
+  },
+  "moreCount": {
+    "message": "未顯示的其他建議：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "排序失敗"
+  },
+  "sortedCount": {
+    "message": "已重新排序的分頁：$count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "沒有需要排序的分頁"
+  },
+  "hide": {
+    "message": "隱藏"
+  },
+  "show": {
+    "message": "顯示"
+  },
+  "contextClose": {
+    "message": "關閉此網站的分頁"
+  },
+  "contextSort": {
+    "message": "排序分頁（分頁最多的網站優先）"
+  },
+  "closeSiteLabel": {
+    "message": "關閉 $site$ 的分頁",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

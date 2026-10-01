@@ -1,0 +1,227 @@
+{
+  "translationLocale": {
+    "message": "hu"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Lapok bezárása és rendezése oldalanként"
+  },
+  "extensionDescription": {
+    "message": "Zárja be az azonos webhelyhez tartozó lapokat, rendezze őket webhely szerint, és távolítsa el a duplikátumokat."
+  },
+  "openTabTools": {
+    "message": "TabTools megnyitása"
+  },
+  "settings": {
+    "message": "Beállítások"
+  },
+  "suggestions": {
+    "message": "Javaslatok"
+  },
+  "suggestCaption": {
+    "message": "Koppintson a webhely lapjainak bezárásához"
+  },
+  "queryPlaceholder": {
+    "message": "Bezárás kulcsszó alapján (Enter)"
+  },
+  "close": {
+    "message": "Bezárás"
+  },
+  "sortTabs": {
+    "message": "Lapok rendezése"
+  },
+  "closeDuplicates": {
+    "message": "Duplikátumok bezárása"
+  },
+  "undo": {
+    "message": "Visszavonás"
+  },
+  "undoTitle": {
+    "message": "Utolsó bezárás visszavonása"
+  },
+  "theme": {
+    "message": "Téma"
+  },
+  "light": {
+    "message": "Világos"
+  },
+  "dark": {
+    "message": "Sötét"
+  },
+  "minTabs": {
+    "message": "Javaslatokhoz szükséges lapszám webhelyenként"
+  },
+  "inactiveAfter": {
+    "message": "A lapok ennyi idő után inaktívak"
+  },
+  "minutes": {
+    "message": "perc"
+  },
+  "closedCount": {
+    "message": "Bezárva: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ nyitott lap",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ nyitott lap",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ nyitva",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ nyitva",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ bezárva",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ bezárva",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Sikertelen művelet"
+  },
+  "closedInactive": {
+    "message": "Bezárt inaktív lapok: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Nincsenek inaktív lapok"
+  },
+  "closedDuplicates": {
+    "message": "Bezárt duplikátumok: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Nincsenek duplikátumok"
+  },
+  "nothingToUndo": {
+    "message": "Nincs mit visszavonni"
+  },
+  "undoFailed": {
+    "message": "Sikertelen visszavonás"
+  },
+  "restoredCount": {
+    "message": "Visszaállítva: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Nincs mit visszaállítani"
+  },
+  "inactive": {
+    "message": "Inaktívak"
+  },
+  "loadingSuggestions": {
+    "message": "Javaslatok betöltése…"
+  },
+  "suggestionsFailed": {
+    "message": "A javaslatok betöltése sikertelen"
+  },
+  "noSuggestions": {
+    "message": "Nincsenek javaslatok"
+  },
+  "moreCount": {
+    "message": "Nem megjelenített további javaslatok: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Sikertelen rendezés"
+  },
+  "sortedCount": {
+    "message": "Áthelyezett lapok: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Nincs mit rendezni"
+  },
+  "hide": {
+    "message": "Elrejtés"
+  },
+  "show": {
+    "message": "Megjelenítés"
+  },
+  "contextClose": {
+    "message": "Webhely lapjainak bezárása"
+  },
+  "contextSort": {
+    "message": "Lapok rendezése (a leggyakoribb webhelyek előre)"
+  },
+  "closeSiteLabel": {
+    "message": "A(z) $site$ lapjainak bezárása",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

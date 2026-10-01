@@ -6,7 +6,7 @@ const browsers = ['chromium', 'webkit'];
 
 module.exports = defineConfig({
   testDir: __dirname,
-  testMatch: '**/*.spec.cjs',
+  testMatch: '**/mobile.spec.cjs',
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: 0,

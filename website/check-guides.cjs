@@ -6,6 +6,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { registry } = require('../scripts/localisation');
 const dist = path.join(__dirname, 'dist');
 const origin = 'https://tabtools.fyi';
 const guideRoutes = [
@@ -95,15 +96,22 @@ for (const file of htmlFiles(dist)) {
 }
 
 const byRoute = new Map([...pages.values()].map(page => [page.route, page]));
-for (const route of ['/', '/guides/', ...guideRoutes]) assert(byRoute.has(route), `Missing page ${route}`);
+const homepageRoutes = registry.map(locale => locale.path);
+for (const route of [...homepageRoutes, '/guides/', ...guideRoutes]) assert(byRoute.has(route), `Missing page ${route}`);
 let localReferences = 0;
 let storeLinks = 0;
-const unique = { title: new Set(), description: new Set(), canonical: new Set(), ogTitle: new Set() };
+const uniqueCanonicals = new Set();
+const uniqueByLanguage = new Map();
 for (const page of pages.values()) {
   const { label, elements, html, schemas, route } = page;
   const canonicalUrl = origin + route;
   const isGuide = route.startsWith('/guides/');
   const isArticle = isGuide && route !== '/guides/';
+  const language = elements.find(el => el.tag === 'html')?.attrs.get('lang');
+  assert(language, `${label}: missing HTML language`);
+  if (isGuide) assert.equal(language, 'en', `${label}: guides must retain their authored English language`);
+  if (!uniqueByLanguage.has(language)) uniqueByLanguage.set(language, { title: new Set(), description: new Set(), ogTitle: new Set() });
+  const unique = uniqueByLanguage.get(language);
   const titles = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/gi)];
   assert.equal(titles.length, 1, `${label}: expected one title`);
   const title = decode(titles[0][1]).trim();
@@ -121,7 +129,11 @@ for (const page of pages.values()) {
   const description = meta('description');
   const ogTitle = meta('og:title');
   const ogDescription = meta('og:description');
-  for (const [key, value] of Object.entries({ title, description, canonical: canonicalUrl, ogTitle })) {
+  assert(!uniqueCanonicals.has(canonicalUrl), `${label}: duplicate canonical`);
+  uniqueCanonicals.add(canonicalUrl);
+  // Separate language variants can legitimately have the same visible wording.
+  // Authored pages within one language must still have distinct metadata.
+  for (const [key, value] of Object.entries({ title, description, ogTitle })) {
     assert(value && !unique[key].has(value), `${label}: empty or duplicate ${key}`);
     unique[key].add(value);
   }
@@ -138,6 +150,15 @@ for (const page of pages.values()) {
       assert(links.some(href => href === '/' || href?.startsWith('/#')), `${label}: ${section} missing home navigation`);
     }
     assert(elements.some(el => el.tag === 'script' && el.attrs.get('src') === '/script.js'), `${label}: missing shared script`);
+    const dataBlocks = [...html.matchAll(/<script\b[^>]*\bid="locale-data"[^>]*>([\s\S]*?)<\/script>/g)];
+    assert.equal(dataBlocks.length, 1, `${label}: expected one locale-data block`);
+    const localeData = JSON.parse(dataBlocks[0][1]);
+    assert.equal(localeData.locale, 'en', `${label}: guide locale data must be English`);
+    assert(localeData.messages?.web_language && localeData.messages?.web_addTo &&
+      localeData.messages?.web_switchLight && localeData.messages?.web_switch_to_dark_mode,
+    `${label}: locale data is missing shared control labels`);
+    assert.deepEqual(localeData.registry.map(locale => locale.path).sort(), [...homepageRoutes].sort(),
+      `${label}: language selector registry is missing a homepage`);
     for (const stylesheet of ['/styles.css', '/guides.css']) {
       assert(elements.some(el => el.tag === 'link' && el.attrs.get('href') === stylesheet), `${label}: missing ${stylesheet}`);
     }
@@ -201,7 +222,9 @@ const items = collection.mainEntity?.itemListElement;
 assert(Array.isArray(items), 'Guides index: missing article ItemList');
 assert.deepEqual(items.map(item => item.url).sort(), guideRoutes.map(route => origin + route).sort(), 'Guides index: schema omits or duplicates an article');
 assert.deepEqual(items.map(item => item.position), items.map((_, i) => i + 1), 'Guides index: invalid ItemList positions');
-assert(byRoute.get('/').links.has('/guides/'), 'Homepage must link to the Guides index');
+for (const route of homepageRoutes) {
+  assert(byRoute.get(route).links.has('/guides/'), `${route}: homepage must link to the Guides index`);
+}
 for (const route of guideRoutes) {
   assert(hub.links.has(route), `Guides index does not link to ${route}`);
   const page = byRoute.get(route);
@@ -214,6 +237,6 @@ for (const route of ['/guides/', ...guideRoutes]) assert(reachable.has(route), `
 const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
 const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => decode(match[1]));
 assert.equal(new Set(locations).size, locations.length, 'Sitemap contains duplicate locations');
-for (const route of ['/guides/', ...guideRoutes]) assert(locations.includes(origin + route), `Sitemap is missing ${route}`);
+for (const route of [...homepageRoutes, '/guides/', ...guideRoutes]) assert(locations.includes(origin + route), `Sitemap is missing ${route}`);
 
 console.log(`Guide structure checks passed: ${pages.size} pages, ${localReferences} local references, ${storeLinks} tagged store links; metadata, JSON-LD, navigation and sitemap.`);

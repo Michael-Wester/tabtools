@@ -1,0 +1,5 @@
+/* Hide controls that require JavaScript; native details provides language navigation. */
+.theme-toggle,
+.language-picker {
+  display: none;
+}

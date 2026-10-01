@@ -1,0 +1,254 @@
+{
+  "translationLocale": {
+    "message": "fr"
+  },
+  "translationDirection": {
+    "message": "ltr"
+  },
+  "extensionName": {
+    "message": "TabTools - Fermer et trier les onglets par site"
+  },
+  "extensionDescription": {
+    "message": "Fermez les onglets d’un même site, triez-les par site et supprimez les doublons pour garder votre navigateur en ordre."
+  },
+  "openTabTools": {
+    "message": "Ouvrir TabTools"
+  },
+  "settings": {
+    "message": "Paramètres"
+  },
+  "suggestions": {
+    "message": "Suggestions"
+  },
+  "suggestCaption": {
+    "message": "Touchez pour fermer les onglets du site"
+  },
+  "queryPlaceholder": {
+    "message": "Fermer par mot-clé (touche Entrée)"
+  },
+  "close": {
+    "message": "Fermer"
+  },
+  "sortTabs": {
+    "message": "Trier les onglets"
+  },
+  "closeDuplicates": {
+    "message": "Fermer les doublons"
+  },
+  "undo": {
+    "message": "Annuler"
+  },
+  "undoTitle": {
+    "message": "Annuler la dernière fermeture"
+  },
+  "theme": {
+    "message": "Thème"
+  },
+  "light": {
+    "message": "Clair"
+  },
+  "dark": {
+    "message": "Sombre"
+  },
+  "minTabs": {
+    "message": "Nombre minimal d’onglets par site pour les suggestions"
+  },
+  "inactiveAfter": {
+    "message": "Onglets inactifs après"
+  },
+  "minutes": {
+    "message": "minutes"
+  },
+  "closedCount": {
+    "message": "Fermés : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_one": {
+    "message": "$count$ onglet ouvert",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_many": {
+    "message": "$count$ onglets ouverts",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCount_other": {
+    "message": "$count$ onglets ouverts",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_one": {
+    "message": "$count$ ouvert",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_many": {
+    "message": "$count$ ouverts",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "openCountShort_other": {
+    "message": "$count$ ouverts",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_one": {
+    "message": "$count$ fermé",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_many": {
+    "message": "$count$ fermés",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closedCountShort_other": {
+    "message": "$count$ fermés",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "closeFailed": {
+    "message": "Échec"
+  },
+  "closedInactive": {
+    "message": "Onglets inactifs fermés : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noInactive": {
+    "message": "Aucun onglet inactif"
+  },
+  "closedDuplicates": {
+    "message": "Doublons fermés : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noDuplicates": {
+    "message": "Aucun doublon"
+  },
+  "nothingToUndo": {
+    "message": "Rien à annuler"
+  },
+  "undoFailed": {
+    "message": "Échec de l’annulation"
+  },
+  "restoredCount": {
+    "message": "Restaurés : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToRestore": {
+    "message": "Rien à restaurer"
+  },
+  "inactive": {
+    "message": "Inactifs"
+  },
+  "loadingSuggestions": {
+    "message": "Chargement des suggestions…"
+  },
+  "suggestionsFailed": {
+    "message": "Impossible de charger les suggestions"
+  },
+  "noSuggestions": {
+    "message": "Aucune suggestion pour le moment"
+  },
+  "moreCount": {
+    "message": "Autres suggestions non affichées : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "sortFailed": {
+    "message": "Échec du tri"
+  },
+  "sortedCount": {
+    "message": "Onglets réorganisés : $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "nothingToSort": {
+    "message": "Rien à trier"
+  },
+  "hide": {
+    "message": "Masquer"
+  },
+  "show": {
+    "message": "Afficher"
+  },
+  "contextClose": {
+    "message": "Fermer les onglets du site"
+  },
+  "contextSort": {
+    "message": "Trier les onglets (sites les plus ouverts d’abord)"
+  },
+  "closeSiteLabel": {
+    "message": "Fermer les onglets de $site$",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}
