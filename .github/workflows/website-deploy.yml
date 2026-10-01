@@ -66,7 +66,7 @@ jobs:
       - name: Validate localisation
         run: |
           node scripts/validate-localisation.js
-          node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js
+          node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js tests/store-assets.test.js
       - name: Validate generated guides and navigation
         run: |
           node website/build-guides.cjs --check

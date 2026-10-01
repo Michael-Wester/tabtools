@@ -125,4 +125,6 @@ modified-click navigation and saved preference without automatic redirects. Chec
 privacy focus, adaptive store buttons, UTM values, canonical/hreflang and sitemap.
 
 These checks do not constitute native-speaker review or store-dashboard verification.
-Media is intentionally untranslated. No live store listing is changed by this repository.
+Final localized store artwork sources are preserved under `marketing/assets/`;
+see its README for provenance and rendering limits. Repository generation does not
+change a live store listing.

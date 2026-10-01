@@ -1,0 +1,4 @@
+# Optional local render output; prefer an output directory outside the repository.
+rendered/
+.venv/
+__pycache__/

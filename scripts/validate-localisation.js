@@ -5,7 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('node:assert/strict');
 const L = require('./localisation');
-const { fullDescription, listing, listingIndex, stores } = require('./generate-listings');
+const { listingDescription, listing, listingIndex, stores } = require('./generate-listings');
+const chromeDescriptions = require('../marketing/sources/chrome-descriptions.json');
 const { validateCatalogue, validateStoreCodes } = require('./catalogue-validation');
 const supportEvidence = require('../localisation/support-evidence.json');
 
@@ -24,11 +25,21 @@ function count(value) { return Array.from(String(value)).length; }
 assert.equal(new Set(L.registry.map(item => item.locale)).size, L.registry.length);
 assert.equal(new Set(L.registry.map(item => item.extension)).size, L.registry.length);
 assert.equal(new Set(L.registry.map(item => item.website)).size, L.registry.length);
+assert.deepEqual(Object.keys(chromeDescriptions.locales).sort(), L.registry.map(item => item.locale).sort(),
+  'Chrome description sources must cover exactly the registered locales');
+const chromeEnglishFingerprint = L.fingerprint(chromeDescriptions.locales.en.description);
 
 for (const locale of L.registry) {
   const startErrors = errors.length;
   for (const error of validateStoreCodes(locale, supportEvidence)) fail(locale.locale + ': ' + error);
   const catalogue = L.catalogue(locale.locale);
+  const chromeDescription = chromeDescriptions.locales[locale.locale];
+  if (chromeDescription.englishSourceFingerprint !== chromeEnglishFingerprint) {
+    fail(locale.locale + ': stale Chrome description English source fingerprint');
+  }
+  if (chromeDescription.descriptionFingerprint !== L.fingerprint(chromeDescription.description)) {
+    fail(locale.locale + ': changed Chrome description snapshot; reconcile the source and provenance explicitly');
+  }
   for (const error of validateCatalogue(source, catalogue, locale.locale)) fail(locale.locale + ': ' + error);
   const missing = sourceKeys.filter(key => !(key in catalogue));
   const extra = Object.keys(catalogue).filter(key => !(key in source));
@@ -107,7 +118,7 @@ for (const locale of L.registry) {
     const expectedFingerprints = [
       '- Title source fingerprint: ' + L.fingerprint(source.extensionName),
       '- Summary source fingerprint: ' + L.fingerprint(source.extensionDescription),
-      '- Full-description source fingerprint: ' + L.fingerprint(fullDescription(source)),
+      '- Full-description source fingerprint: ' + L.fingerprint(listingDescription(L.localeInfo('en'), store)),
     ];
     for (const fingerprint of expectedFingerprints) {
       if (!text.includes(fingerprint)) fail(locale.locale + ': stale ' + store + ' source fingerprint');
@@ -162,7 +173,8 @@ for (const locale of L.registry) {
     ' | ' + webCount + '/' + Object.keys(source).filter(key => key.startsWith('web_')).length +
     ' | 3/3 fields × 3 stores | ' + freshness + ' | ' + (localeErrors.get(locale.locale) ? 'FAIL (' + localeErrors.get(locale.locale) + ')' : 'PASS') + ' | ' + linguistic + ' |');
 }
-coverage.push('', 'No images, screenshots, banners, or videos are translated by this task.');
+coverage.push('', 'Chrome 4.0.3 description snapshots are maintained separately in marketing/sources/.',
+  'Editable localized screenshot sources and their validation are documented in marketing/assets/.');
 fs.writeFileSync(path.join(L.root, 'localisation', 'COVERAGE.md'), coverage.join('\n') + '\n');
 
 if (warnings.length) console.warn(warnings.join('\n'));

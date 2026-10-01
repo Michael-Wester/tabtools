@@ -1,6 +1,6 @@
 # Store-text index
 
-All fields are proposed next-release text; no live listings were edited. See [maintenance and release checklist](README.md).
+Chrome descriptions preserve the final 4.0.3 dashboard copy captured on 1 October 2026. Firefox and Edge remain proposed next-release text. Generation does not publish listings. See [maintenance and release checklist](README.md).
 
 | Locale | Chrome | Firefox | Edge |
 |---|---|---|---|

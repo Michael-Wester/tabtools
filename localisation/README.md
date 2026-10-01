@@ -6,7 +6,7 @@ English fallback. The locale registry in
 `registry.json` maps canonical language tags to the WebExtensions directory,
 website URL, hreflang value, and each store's listing code.
 
-The current repository extension version is 4.0.2. The 2026-09-18 baseline is commit
+The current browser manifest versions are Chrome 4.0.3 and Firefox/Edge 4.0.2. The 2026-09-18 baseline is commit
 `519007f3dd06c0b2ab52d57519ed7a0d145b9c79`. The imported translations carry
 per-key review metadata in `reviews/<locale>.json`; a review's `source`
 value is `sha256(JSON.stringify(EnglishValue))`. A source edit therefore
@@ -15,9 +15,9 @@ makes the affected translation stale even if its key remains present.
 The read-only English live-store snapshot is in
 [`store-baseline.md`](store-baseline.md). It records Chrome Web Store 4.0.1
 and Firefox Add-ons 4.0.0 copy retrieved on 2026-09-18; the public Edge page
-was unavailable to the retrieval tool. The copy-ready listings intentionally
-follow the repository's current 4.0.2 source baseline and must be checked in
-the publisher dashboards before release.
+was unavailable to the retrieval tool. Chrome descriptions preserve the final 4.0.3 publisher-dashboard snapshot from
+1 October 2026. Firefox and Edge copy follows the catalogue baseline and must be
+checked in the publisher dashboards before their releases.
 
 Run:
 
@@ -35,8 +35,11 @@ node scripts/check-packages.js
 `website/src/script.js` are authored sources. `website/dist/index.html`,
 locale pages, `styles.css`, `script.js`, and `sitemap.xml` are generated
 outputs. Store text under `marketing/listings/` and its `marketing/INDEX.md` are generated
-from the same locale registry and text sources. Store descriptions include feature
-and privacy copy, without website-only navigation instructions. These outputs are
+from the locale registry and text sources. Chrome descriptions use the separate
+`marketing/sources/chrome-descriptions.json` snapshot so regeneration preserves
+the final browser-specific introduction and current/pinned-tab warnings. Other
+store descriptions use catalogue feature and privacy copy without website-only
+navigation instructions. These outputs are
 committed for review and future manual entry; they never update a live store listing.
 
 Translation completion, technical validation, and linguistic review are

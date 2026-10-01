@@ -1,0 +1,7 @@
+# Artwork snapshot fingerprints and self-contained restoration require exact bytes,
+# including when contributors use core.autocrlf on Windows.
+marketing/assets/sources/*.html -text
+marketing/assets/shared/* -text
+
+# Preserve third-party SVG input whitespace as part of the approved source bytes.
+marketing/assets/shared/*.svg -whitespace

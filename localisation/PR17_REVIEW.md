@@ -3,8 +3,58 @@
 Review baseline: `b492c9256eef9a1393eb3bbe2cff2afa7be27b5a` (18 September 2026).
 
 The dated sections below preserve earlier evidence and environment limitations.
-The [30 September full review](#full-review--30-september-2026) records current
-capabilities and supersedes earlier incomplete browser checks.
+The current merge-preparation checkpoint below supersedes earlier draft-status
+and store-copy statements. Historical browser results remain identified by date.
+
+## Merge preparation — 1 October 2026
+
+The starting PR head was `87bc04bd932218592ec524d0ef680dd94a63a6b9`; current main
+`3cf1f3fb4d5fa11dbe87583f5fec239a43613a32` is already its ancestor. PR #30's separate
+inactive-tab guide branch is not folded into this work.
+
+The final 29 Chrome descriptions are now preserved exactly in
+`marketing/sources/chrome-descriptions.json`, rather than being overwritten by
+cross-browser website text during generation. They retain the Chrome-only intro,
+web-page context-menu wording, and warnings that site cleanup closes the current
+and pinned matching tabs. Store-specific regressions check all 29 locale IDs,
+source/description fingerprints and missing-source rejection. Firefox/Edge copy
+and extension/website runtime files are unchanged by this reconciliation.
+
+Final editable screenshot HTML, shared inputs, provenance, approved-export hashes,
+and a portable source restoration/rendering workflow are in `marketing/assets/`.
+All 30 HTML sources (29 locales plus the separate global design) restore byte-for-
+byte to their approved source snapshots. Four regressions check source/asset
+integrity, all 150 page order/footer fingerprints, locale coverage and portability;
+they run in `npm test` and both applicable CI workflows. The renderer reproduced
+144/145 localized PNG hashes in the checked Linux runtime; Hungarian right-click
+has a small raster difference, and global exports used footer-only composites.
+These limits are documented without changing approved artwork or export hashes.
+
+Local validation at this checkpoint:
+
+- 58 Node regressions; 29 catalogues, translation fingerprints and 87 generated
+  store listings
+- All three browser package checks; Chrome 4.0.3 and Firefox/Edge 4.0.2
+- Guide/navigation and security checks for all 33 website pages
+- Source restoration for all 30 artwork sets and shared-asset integrity checks
+- Independent review of closure/Undo safety, storage races, i18n, packaging,
+  website/CSP/navigation and final source-preservation changes
+
+Every one of the 47 rebuilt Chrome runtime files remains byte-identical to the
+submitted 4.0.3 ZIP, whose SHA-256 is
+`12205bd904188540ac5c4d7ad820fa0b7f6ba4b60cce88b2dab7d2069cdb3c83`.
+No package was resubmitted. Chrome store review is separate from repository merge
+readiness. No main merge, automatic merge, or new store publication is performed.
+
+Fresh GitHub Actions results for the final pushed head, exact commit SHA and
+mergeability are recorded in the PR description. Native browser checks run in CI;
+this container's earlier native-launch `EPERM` restriction is not bypassed and no
+fresh local native-browser pass is claimed. Earlier native Edge/Firefox evidence
+is historical, not a new execution at this checkpoint.
+
+Fluent-reader review remains unclaimed, and Edge dashboard locale confirmation
+remains a prerequisite for an Edge store release. Neither is represented as a
+completed engineering check. Human maintainers decide when to merge and publish.
 
 ## Completed
 

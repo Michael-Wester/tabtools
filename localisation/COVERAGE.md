@@ -36,4 +36,5 @@ Intersection status: candidate-user-selected
 | zh-CN | 44/44 | 103/103 | 3/3 fields × 3 stores | current | PASS | AI self-review only; no native-speaker review |
 | zh-TW | 44/44 | 103/103 | 3/3 fields × 3 stores | current | PASS | AI self-review only; no native-speaker review |
 
-No images, screenshots, banners, or videos are translated by this task.
+Chrome 4.0.3 description snapshots are maintained separately in marketing/sources/.
+Editable localized screenshot sources and their validation are documented in marketing/assets/.

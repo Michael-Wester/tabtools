@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const L = require('./localisation');
+const chromeDescriptions = require('../marketing/sources/chrome-descriptions.json');
 
 const stores = {
   chrome: {
@@ -48,13 +49,24 @@ function fullDescription(catalogue) {
   ].join('\n');
 }
 
+function listingDescription(locale, storeKey) {
+  if (storeKey === 'chrome') {
+    const entry = chromeDescriptions.locales[locale.locale];
+    if (!entry || entry.storeLocale !== locale.stores.chrome || typeof entry.description !== 'string') {
+      throw new Error('Missing or mismatched Chrome description source: ' + locale.locale);
+    }
+    return entry.description;
+  }
+  return fullDescription(L.catalogue(locale.locale));
+}
+
 function listing(locale, store) {
   const c = L.catalogue(locale.locale);
   const title = c.extensionName;
   const summary = c.extensionDescription;
-  const description = fullDescription(c);
+  const description = listingDescription(locale, store.key);
   const source = L.catalogue('en');
-  const sourceDescription = fullDescription(source);
+  const sourceDescription = listingDescription(L.localeInfo('en'), store.key);
   return [
     '# TabTools listing text',
     '',
@@ -63,7 +75,8 @@ function listing(locale, store) {
     '- Store locale code: ' + locale.stores[store.key],
     '- Source baseline: ' + L.registrySource.baseCommit,
     '- Source URL: ' + store.url,
-    '- Generated from localisation/locales/' + locale.locale + '.json',
+    '- Generated from localisation/locales/' + locale.locale + '.json' +
+      (store.key === 'chrome' ? ' and marketing/sources/chrome-descriptions.json' : ''),
     '',
     '## ' + store.titleField,
     '',
@@ -88,7 +101,11 @@ function listing(locale, store) {
     '- Title source fingerprint: ' + L.fingerprint(source.extensionName),
     '- Summary source fingerprint: ' + L.fingerprint(source.extensionDescription),
     '- Full-description source fingerprint: ' + L.fingerprint(sourceDescription),
-    '- Full-description source keys: ' + descriptionKeys.join(', '),
+    ...(store.key === 'chrome' ? [
+      '- Full-description source: marketing/sources/chrome-descriptions.json#locales.' + locale.locale,
+      '- Description snapshot: ' + chromeDescriptions.capturedOn + '; Chrome ' + chromeDescriptions.extensionVersion,
+      '- Description fingerprint: ' + L.fingerprint(description),
+    ] : ['- Full-description source keys: ' + descriptionKeys.join(', ')]),
     '- Linguistic review: AI self-review only; no native-speaker review claimed',
     '',
   ].join('\n');
@@ -98,7 +115,7 @@ function listingIndex() {
   return [
     '# Store-text index',
     '',
-    'All fields are proposed next-release text; no live listings were edited. See [maintenance and release checklist](README.md).',
+    'Chrome descriptions preserve the final 4.0.3 dashboard copy captured on 1 October 2026. Firefox and Edge remain proposed next-release text. Generation does not publish listings. See [maintenance and release checklist](README.md).',
     '',
     '| Locale | Chrome | Firefox | Edge |',
     '|---|---|---|---|',
@@ -131,4 +148,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { main, fullDescription, listing, listingIndex, stores };
+module.exports = { main, fullDescription, listingDescription, listing, listingIndex, stores };

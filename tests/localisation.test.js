@@ -58,6 +58,36 @@ test('store text omits website-only navigation and its index links to current li
   assert.doesNotMatch(index, /en-GB/);
 });
 
+test('Chrome listings preserve the final browser-specific description snapshot for all locales', () => {
+  const snapshot = require('../marketing/sources/chrome-descriptions.json');
+  const { listingDescription, listing, stores, fullDescription } = require('../scripts/generate-listings');
+  assert.equal(snapshot.extensionVersion, '4.0.3');
+  assert.deepEqual(Object.keys(snapshot.locales).sort(), L.registry.map(locale => locale.locale).sort());
+  const english = snapshot.locales.en.description;
+  assert.match(english, /including the current tab and pinned tabs/);
+  assert.match(english, /right-click within a web page/);
+  for (const locale of L.registry) {
+    const entry = snapshot.locales[locale.locale];
+    assert.equal(entry.storeLocale, locale.stores.chrome, locale.locale);
+    assert.equal(entry.englishSourceFingerprint, L.fingerprint(english), locale.locale);
+    assert.equal(entry.descriptionFingerprint, L.fingerprint(entry.description), locale.locale);
+    assert.match(entry.description.split('\n')[0], /Chrome/, locale.locale);
+    assert.doesNotMatch(entry.description, /Firefox|\bEdge\b|<[^>]+>/, locale.locale);
+    assert.equal(entry.description.split('\n\n').length, 7, locale.locale);
+    assert.equal(listingDescription(locale, 'chrome'), entry.description, locale.locale);
+    assert.ok(listing(locale, { ...stores.chrome, key: 'chrome' }).includes('\n' + entry.description + '\n'));
+    for (const store of ['firefox', 'edge']) {
+      assert.equal(listingDescription(locale, store), fullDescription(L.catalogue(locale.locale)), locale.locale + '/' + store);
+    }
+  }
+});
+
+test('Chrome generation rejects missing or mismatched sources instead of falling back to generic copy', () => {
+  const { listingDescription } = require('../scripts/generate-listings');
+  assert.throws(() => listingDescription({ locale: 'missing', stores: { chrome: 'missing' } }, 'chrome'), /Missing or mismatched/);
+  assert.throws(() => listingDescription({ ...L.localeInfo('nb'), stores: { chrome: 'nb' } }, 'chrome'), /Missing or mismatched/);
+});
+
 test('i18n helper selects a browser message and plural fallback', () => {
   const calls = [];
   const context = {
