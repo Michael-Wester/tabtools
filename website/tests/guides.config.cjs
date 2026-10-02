@@ -13,7 +13,13 @@ module.exports = defineConfig({
     ...['chromium', 'webkit'].map(browserName => ({
       name: `${browserName}-guides-desktop`,
       testMatch: desktopMatch,
-      use: { ...devices[browserName === 'webkit' ? 'Desktop Safari' : 'Desktop Chrome'], browserName }
+      use: {
+        ...devices[browserName === 'webkit' ? 'Desktop Safari' : 'Desktop Chrome'],
+        browserName,
+        // Use full Chromium for browser-managed modifier-click tab creation;
+        // the layout matrix retains the default headless shell.
+        ...(browserName === 'chromium' ? { channel: 'chromium' } : {})
+      }
     }))
   ]
 });
