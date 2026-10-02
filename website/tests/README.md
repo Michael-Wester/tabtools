@@ -29,13 +29,25 @@ Spanish, Japanese, Hebrew, and Traditional Chinese additionally cover keyboard
 navigation, saved language choices, query/anchor preservation, sticky-header
 navigation, and native language links and FAQs with JavaScript disabled.
 
-`npm test` runs both matrices once (276 cases: 120 existing layout cases and
-156 localized cases). CLI filters such as `npm test -- --workers=2` apply to
-both suites. Use `npm run test:localisation` for the localized matrix alone or
-`npm run test:chromium` for both matrices in Chromium.
+The guide suite adds all 29 localized indexes and all 87 articles at both narrow
+widths in Chromium and WebKit. It follows header/footer Guides links, checks
+translated headings and overflow, switches every language while keeping the
+article/query/section, exercises direct links, reload and Back/Forward, and checks
+that intentional Home links still work. Simplified Chinese, Traditional Chinese
+and Hebrew also exercise every guide route with JavaScript disabled. Desktop
+Chromium and WebKit additionally cover keyboard selection, Escape/focus recovery,
+and a real modified-click new tab while preserving the current guide and anchor.
+
+`npm test` runs all three matrices (406 cases: 120 English layout, 156 localized
+homepage and 130 localized guide cases, including the existing intentional
+compact-desktop skips). CLI filters such as `npm test -- --workers=2` apply to
+all suites. Use `npm run test:localisation` or `npm run test:guides` for one matrix,
+or `npm run test:chromium` for all Chromium cases.
 
 The 320px and 390px homepage and close-site-tabs guide get full-page screenshots in both
-themes and engines. YouTube is a labelled placeholder and other external
+themes and engines. The guide suite also captures the first article in German,
+Simplified Chinese, Traditional Chinese and Hebrew at both narrow widths and
+engines. YouTube is a labelled placeholder and other external
 requests are blocked, so these checks do not contact store listings or depend on
 third-party content. Screenshots are review artifacts rather than pixel baselines.
 

@@ -1,0 +1,164 @@
+{
+  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "review": {
+    "status": "ai-reviewed",
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+  },
+  "ui": {
+    "indexTitle": "Hướng dẫn về thẻ trình duyệt",
+    "indexDescription": "Các hướng dẫn TabTools thiết thực để đóng thẻ của cùng một trang web, loại bỏ thẻ trùng lặp và sắp xếp thẻ theo trang web trong Chrome, Firefox và Edge.",
+    "indexEyebrow": "Hướng dẫn TabTools",
+    "indexHeading": "Thanh thẻ gọn gàng hơn.",
+    "indexHeadingAccent": "Từng việc một.",
+    "indexLede": "Đóng các thẻ của một trang web, dọn các trang trùng lặp hoặc đưa những thẻ liên quan về cạnh nhau. Chọn một hướng dẫn rồi làm theo các bước trong trình duyệt của bạn.",
+    "indexPlatforms": "Dành cho Chrome, Firefox và Edge trên máy tính",
+    "startEyebrow": "Bạn mới dùng TabTools?",
+    "startHeading": "Ba cách dọn thẻ.",
+    "startBody": "Đóng theo trang web sẽ đóng các trang của một website. Dọn thẻ trùng lặp sẽ loại bỏ các URL lặp lại. Sắp xếp vẫn giữ các thẻ mở và chỉ thay đổi thứ tự. Mỗi hướng dẫn giải thích kết quả của thao tác, kèm ví dụ và cách thay thế bằng tính năng của trình duyệt.",
+    "explore": "Khám phá TabTools",
+    "browseGuides": "Xem các hướng dẫn",
+    "readGuide": "Đọc hướng dẫn",
+    "readTime": "Đọc trong {minutes} phút",
+    "getTabTools": "Tải TabTools",
+    "installEyebrow": "Tiện ích trình duyệt miễn phí",
+    "installHeading": "Bắt tay vào thực hiện.",
+    "installBody": "Đóng thẻ theo trang web, loại bỏ thẻ trùng lặp và sắp xếp các thẻ còn lại.",
+    "desktopBrowsers": "Trình duyệt trên máy tính",
+    "byline": "Tác giả: {author}, người tạo TabTools",
+    "updated": "Cập nhật ngày {date}",
+    "onThisPage": "Trên trang này",
+    "allGuides": "Tất cả hướng dẫn",
+    "quickAnswer": "Trả lời nhanh",
+    "relatedGuides": "Hướng dẫn liên quan",
+    "relatedEyebrow": "Đọc tiếp",
+    "relatedHeading": "Thêm cách sắp xếp thẻ.",
+    "home": "Trang chủ",
+    "breadcrumb": "Đường dẫn điều hướng",
+    "screenshotNote": "Ảnh chụp màn hình hiển thị giao diện tiếng Anh; tên các mục có thể khác theo ngôn ngữ của trình duyệt."
+  },
+  "guides": [
+    {
+      "slug": "close-tabs-from-same-website",
+      "title": "Cách đóng tất cả thẻ của cùng một trang web trong Chrome",
+      "shortTitle": "Đóng thẻ của cùng một trang web",
+      "description": "Đóng các thẻ cùng trang web trong Chrome bằng TabTools, tìm hiểu cách làm thủ công và các bước dành cho Firefox và Edge.",
+      "category": "Đóng thẻ của trang web",
+      "lede": "Bạn đã mua sắm xong, tìm hiểu đủ sâu về một chủ đề hoặc xem xong cả loạt video YouTube? Bạn có thể đóng cùng lúc các thẻ của trang web đó mà vẫn giữ những trang web khác mở.",
+      "answer": "Sau khi cài TabTools, nhấp chuột phải vào một thẻ của trang web bạn muốn đóng trên thanh thẻ Chrome rồi chọn Đóng thẻ của trang web. Thao tác này đóng các thẻ khớp trên mọi cửa sổ trình duyệt thông thường, kể cả thẻ đang hoạt động và thẻ đã ghim nếu chúng khớp.",
+      "sections": [
+        {
+          "id": "close-site-tabs-in-chrome",
+          "title": "Đóng các thẻ của một trang web trong Chrome",
+          "html": "<p>Menu chuột phải của thẻ cho phép bạn thao tác nhanh ngay trên thanh thẻ Chrome.</p>\n<ol>\n  <li><a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Cài TabTools từ Chrome Web Store</a>.</li>\n  <li>Tìm một thẻ của trang web bạn muốn đóng, chẳng hạn trang chủ YouTube hoặc trang kết quả tìm kiếm.</li>\n  <li>Nhấp chuột phải vào thẻ đó trên thanh thẻ Chrome.</li>\n  <li>Chọn <strong>Đóng thẻ của trang web</strong>. Các thẻ có cùng tên máy chủ của trang web sẽ đóng cùng nhau.</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-01-tab-menu.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-01-tab-menu.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome với sáu thẻ xen kẽ và mục Đóng thẻ của trang web (Close site tabs) được tô sáng trong menu chuột phải của một thẻ YouTube.\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Nhấp chuột phải vào một thẻ YouTube trên thanh thẻ Chrome rồi chọn Đóng thẻ của trang web (Close site tabs).</figcaption>\n</figure>\n<p>Trong ví dụ này, ba trang trên <code>youtube.com</code> sẽ đóng, còn hai thẻ Wikipedia và Google vẫn mở. Bạn không cần đưa các thẻ YouTube về cạnh nhau trước.</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-02-tabs-closed.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-02-tabs-closed.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome sau khi đóng ba thẻ YouTube, còn lại hai thẻ Wikipedia và Google.\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Sau khi đóng: chỉ còn hai thẻ Wikipedia và Google.</figcaption>\n</figure>\n<p>Nếu không có mục <strong>Đóng thẻ của trang web</strong> trong menu của thẻ, hãy mở thẻ đó rồi nhấp chuột phải bên trong trang, hoặc dùng cửa sổ bật lên TabTools như bên dưới.</p>\n<p>Cách này hữu ích khi bạn đã dùng xong toàn bộ website. Nếu vẫn cần một trang cụ thể, hãy lưu ý trước khi chạy lệnh: thẻ bạn nhấp chuột phải cũng sẽ bị đóng.</p>"
+        },
+        {
+          "id": "use-the-popup",
+          "title": "Đóng thẻ của trang web khác từ cửa sổ bật lên",
+          "html": "<p>Bạn cũng có thể chọn một website mà không cần chuyển sang trang nào của website đó.</p>\n<ol>\n  <li>Mở TabTools từ menu tiện ích hoặc thanh công cụ của trình duyệt.</li>\n  <li>Tìm trang web trong các gợi ý bên dưới <strong>Nhấn để đóng các thẻ của trang web</strong>. Mỗi gợi ý hiển thị số thẻ đang mở của website đó.</li>\n  <li>Chọn trang web để đóng các thẻ khớp.</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-03-popup-suggestion.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-03-popup-suggestion.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools trong Chrome với con trỏ ở gợi ý YouTube đang hiển thị 3 thẻ mở.\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Với cùng sáu thẻ đang mở, chọn gợi ý YouTube để đóng ba thẻ của website đó mà không rời Google.</figcaption>\n</figure>\n<p>Bạn cũng có thể nhập trực tiếp tên máy chủ, đặc biệt hữu ích nếu website không xuất hiện trong Gợi ý. Nhập tên máy chủ, chẳng hạn <code>youtube.com</code>, vào ô <strong>Đóng theo từ khóa (nhấn Enter)</strong>, rồi nhấn Enter hoặc nhấp <strong>Đóng</strong>. Chỉ nhập tên máy chủ, không kèm <code>https://</code> hoặc đường dẫn của trang.</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-04-enter-hostname.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-04-enter-hostname.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Ô từ khóa của TabTools chứa youtube.com, con trỏ đặt trên Đóng (Close).\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Hoặc nhập youtube.com rồi nhấp Đóng (Close) hay nhấn Enter.</figcaption>\n</figure>\n<p>Một từ khóa thông thường như <code>shopping</code> hoạt động theo cách khác: nó tìm trong tiêu đề và URL của thẻ. Hãy dùng tên máy chủ chính xác nếu bạn muốn đóng một website cụ thể.</p>"
+        },
+        {
+          "id": "which-tabs-close",
+          "title": "Những thẻ nào được xem là cùng một trang web?",
+          "html": "<p>Đóng theo trang web đối chiếu tên máy chủ và bỏ qua tiền tố <code>www.</code>. Các trang có cùng tên máy chủ vẫn khớp dù đường dẫn hoặc tham số truy vấn khác nhau.</p>\n<table>\n  <thead><tr><th scope=\"col\">Khi đóng example.com</th><th scope=\"col\">Kết quả</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/article-one</code></td><td>Đóng</td></tr>\n    <tr><td><code>www.example.com/article-two</code></td><td>Đóng</td></tr>\n    <tr><td><code>shop.example.com/product</code></td><td>Vẫn mở: thuộc tên miền phụ khác</td></tr>\n    <tr><td><code>another-site.com/example</code></td><td>Vẫn mở</td></tr>\n  </tbody>\n</table>\n<p>Lệnh áp dụng cho các cửa sổ thông thường trong trình duyệt mà bạn đang chạy lệnh. Thẻ đã ghim và thẻ đang hoạt động cũng được tính nếu khớp; thẻ riêng tư hoặc ẩn danh bị loại trừ. Lệnh không tác động đến thẻ trong ứng dụng trình duyệt khác.</p>"
+        },
+        {
+          "id": "without-an-extension",
+          "title": "Đóng thủ công các thẻ khớp trong Chrome",
+          "html": "<p>Nếu có ít thẻ, tính năng Tìm kiếm thẻ của Chrome là một cách xử lý thủ công.</p>\n<ol>\n  <li>Mở Tìm kiếm thẻ bằng <strong>Ctrl + Shift + A</strong> trên Windows hoặc Linux, hoặc <strong>Command + Shift + A</strong> trên Mac.</li>\n  <li>Tìm tên website hoặc tên máy chủ.</li>\n  <li>Kiểm tra kết quả thẻ đang mở và dùng nút đóng cho từng trang bạn muốn loại bỏ.</li>\n</ol>\n<p>Cách này cho phép bạn giữ lại những trang đã chọn của website, nhưng cũng đòi hỏi xem xét và đóng từng kết quả khớp. Google giải thích các nút tìm kiếm và đóng trong <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">hướng dẫn về thẻ Chrome</a>.</p>"
+        },
+        {
+          "id": "firefox-and-edge",
+          "title": "Thực hiện tương tự trong Firefox và Edge",
+          "html": "<h3>Firefox</h3>\n<p><a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Cài TabTools cho Firefox</a>, sau đó nhấp chuột phải vào một thẻ của website cần đóng trên thanh thẻ rồi chọn <strong>Đóng thẻ của trang web</strong>. Bạn cũng có thể nhấp chuột phải bên trong trang hoặc chọn website từ các gợi ý trong cửa sổ bật lên.</p>\n<h3>Microsoft Edge</h3>\n<p><a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Cài TabTools cho Edge</a>, sau đó nhấp chuột phải vào một thẻ của website cần đóng rồi chọn <strong>Đóng thẻ của trang web</strong> nếu phiên bản Edge của bạn hiển thị mục đó trong menu thẻ. Nếu không, hãy mở thẻ rồi nhấp chuột phải bên trong trang hoặc nhập tên máy chủ trong cửa sổ bật lên. Quy tắc đối chiếu và phạm vi áp dụng trên nhiều cửa sổ giống như mô tả ở trên.</p>"
+        },
+        {
+          "id": "undo-and-next-steps",
+          "title": "Mở lại thẻ hoặc thu hẹp phạm vi dọn dẹp",
+          "html": "<p>Sau khi đóng thẻ qua cửa sổ bật lên, nút <strong>Hoàn tác</strong> có thể mở lại các thẻ của lần dọn gần nhất từ cửa sổ đó, miễn là cửa sổ bật lên vẫn mở. Thao tác <strong>Đóng thẻ của trang web</strong> trong menu chuột phải không được nút Hoàn tác của cửa sổ bật lên ghi nhận.</p>\n<p>Sau khi đóng bằng menu chuột phải, hãy tìm trong danh sách thẻ đã đóng gần đây hoặc lịch sử trình duyệt. Mở lại một URL không đồng nghĩa với khôi phục nội dung biểu mẫu chưa lưu hay mọi chi tiết trong trạng thái trước đó của trang.</p>\n<p>Nếu muốn giữ lại một bản sao cho mỗi trang, hãy xem hướng dẫn <a href=\"/guides/close-duplicate-tabs/\">đóng thẻ trùng lặp</a>. Để giữ tất cả các trang và dễ tìm hơn, bạn có thể <a href=\"/guides/sort-tabs-by-website/\">sắp xếp thẻ theo trang web</a> .</p>"
+        }
+      ]
+    },
+    {
+      "slug": "close-duplicate-tabs",
+      "title": "Cách đóng thẻ trùng lặp trong Chrome, Firefox và Edge",
+      "shortTitle": "Đóng thẻ trùng lặp",
+      "description": "Loại bỏ thẻ trùng lặp trong Chrome, Firefox và Edge. Làm theo các bước của TabTools, dùng tính năng tích hợp của Firefox và tìm hiểu bản sao nào được giữ lại.",
+      "category": "Loại bỏ thẻ trùng lặp",
+      "lede": "Rất dễ mở lại cùng một tài liệu, kết quả tìm kiếm hoặc video. Loại bỏ các bản sao giúp bạn di chuyển trên thanh thẻ dễ hơn mà không phải đóng mọi trang của một website.",
+      "answer": "Mở TabTools và nhấp Đóng thẻ trùng lặp để loại bỏ các trang lặp lại chưa ghim trên mọi cửa sổ trình duyệt thông thường. Firefox cũng có lệnh tích hợp để đóng các bản sao của một thẻ hoặc dọn thẻ trùng lặp từ menu tổng quan thẻ.",
+      "sections": [
+        {
+          "id": "choose-a-method",
+          "title": "Chọn cách phù hợp với trình duyệt",
+          "html": "<table>\n  <thead><tr><th scope=\"col\">Trình duyệt</th><th scope=\"col\">Phương pháp trong hướng dẫn này</th></tr></thead>\n  <tbody>\n    <tr><td>Chrome</td><td>Mở TabTools rồi chọn <strong>Đóng thẻ trùng lặp</strong>.</td></tr>\n    <tr><td>Firefox</td><td>Dùng các lệnh xử lý thẻ trùng lặp tích hợp, hoặc chọn <strong>Đóng thẻ trùng lặp</strong> trong TabTools.</td></tr>\n    <tr><td>Microsoft Edge</td><td>Mở TabTools rồi chọn <strong>Đóng thẻ trùng lặp</strong>.</td></tr>\n  </tbody>\n</table>\n<p>Trước khi dọn hàng loạt, hãy hoàn tất và lưu công việc trên các trang lặp lại. Hai thẻ có thể hiển thị cùng URL nhưng chứa nội dung khác nhau mà bạn đã nhập vào biểu mẫu.</p>"
+        },
+        {
+          "id": "what-counts-as-a-duplicate",
+          "title": "Thế nào là thẻ trùng lặp?",
+          "html": "<p>Thẻ trùng lặp là nhiều bản sao của cùng một trang. Ba bản sao của trang chủ YouTube là trùng lặp; trang chủ và hai kết quả tìm kiếm YouTube khác nhau là các trang khác nhau thuộc cùng một website.</p>\n<p>TabTools phân tích từng URL của trang và bỏ phần phân đoạn, tức phần bắt đầu bằng <code>#</code>. Trình phân tích URL chuẩn hóa chữ hoa và chữ thường trong lược đồ URL và tên máy chủ. Chữ hoa và chữ thường trong đường dẫn và chuỗi truy vấn, cũng như thứ tự các tham số truy vấn, vẫn được phân biệt khi so sánh.</p>\n<table>\n  <thead><tr><th scope=\"col\">URL ví dụ</th><th scope=\"col\">Cách TabTools xử lý</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/guide</code> được mở hai lần</td><td>Trùng lặp</td></tr>\n    <tr><td><code>example.com/guide#intro</code> và <code>example.com/guide#steps</code></td><td>Trùng lặp: bỏ qua phần phân đoạn</td></tr>\n    <tr><td><code>example.com/guide</code> và <code>example.com/contact</code></td><td>Các trang khác nhau</td></tr>\n    <tr><td><code>example.com/search?q=tabs</code> và <code>example.com/search?q=bookmarks</code></td><td>Tham số truy vấn khác nhau; giữ cả hai</td></tr>\n  </tbody>\n</table>\n<p>Một số ứng dụng web dùng phần phân đoạn để xác định các màn hình khác nhau, nên những màn hình đó có thể bị xem là trùng lặp. Ngược lại, tham số theo dõi có thể khiến các trang vốn tương tự được xem là những URL khác nhau. Lệnh này so sánh địa chỉ, không kiểm tra nội dung để quyết định hai trang có cùng ý nghĩa hay không.</p>"
+        },
+        {
+          "id": "chrome-and-edge",
+          "title": "Đóng thẻ trùng lặp trong Chrome hoặc Edge",
+          "html": "<p>Cửa sổ bật lên TabTools dùng cùng một lệnh trong cả hai trình duyệt. Các ảnh này cho thấy Chrome với tám thẻ, trong đó có ba bản sao trang chủ YouTube.</p>\n<ol>\n  <li>Cài TabTools cho <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a> hoặc <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Microsoft Edge</a>.</li>\n  <li>Mở tiện ích từ thanh công cụ hoặc menu tiện ích.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-01-open-tabtools.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-01-open-tabtools.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome với tám thẻ, gồm ba bản sao trang chủ YouTube, và con trỏ đặt trên biểu tượng TabTools ở thanh công cụ.\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Mở TabTools từ thanh công cụ Chrome.</figcaption>\n</figure>\n  </li>\n  <li>Nhấp <strong>Đóng thẻ trùng lặp</strong>.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-02-close-duplicates.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-02-close-duplicates.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Cửa sổ bật lên TabTools hiển thị 8 thẻ đang mở, con trỏ đặt trên Đóng thẻ trùng lặp (Close duplicates).\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Nhấp Đóng thẻ trùng lặp (Close duplicates) để loại bỏ các bản sao dư thừa.</figcaption>\n</figure>\n  </li>\n  <li>Kiểm tra thông báo trạng thái trong cửa sổ bật lên. Thông báo cho biết số thẻ trùng lặp đã đóng, hoặc hiển thị <strong>Không có thẻ trùng lặp</strong> nếu không tìm thấy thẻ khớp.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-03-result-and-undo.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-03-result-and-undo.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools thông báo đã đóng 2 thẻ trùng lặp (Closed 2 duplicates), hiển thị 6 thẻ đang mở và nút Hoàn tác (Undo) có thể sử dụng.\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Hai bản sao trùng lặp đóng lại, còn sáu thẻ. Giữ cửa sổ bật lên mở nếu bạn muốn dùng Hoàn tác (Undo).</figcaption>\n</figure>\n  </li>\n</ol>\n<p>Bạn không cần chọn các thẻ trùng lặp trước. Việc dọn áp dụng cho các cửa sổ thông thường trong trình duyệt đó, nên hai bản sao của một trang vẫn được nhận diện dù nằm ở các cửa sổ khác nhau. Thẻ riêng tư hoặc ẩn danh bị loại trừ.</p>\n<p>Chạy lệnh trong Chrome không thay đổi thẻ của Edge và ngược lại. Hãy chạy riêng trong từng trình duyệt nếu cả hai đều có thẻ trùng lặp.</p>"
+        },
+        {
+          "id": "firefox-native-option",
+          "title": "Dùng lệnh xử lý thẻ trùng lặp tích hợp của Firefox",
+          "html": "<p>Firefox có các lựa chọn tích hợp nếu bạn chỉ cần loại bỏ thẻ trùng lặp.</p>\n<ul>\n  <li><strong>Với các bản sao của một trang:</strong> nhấp chuột phải vào thẻ bạn muốn giữ rồi chọn <strong>Đóng thẻ trùng lặp (Close Duplicate Tabs)</strong>.</li>\n  <li><strong>Để dọn trên phạm vi rộng hơn:</strong> mở <strong>Liệt kê tất cả thẻ (List all tabs)</strong>, rồi chọn lệnh đóng thẻ trùng lặp, được hiển thị là <strong>Đóng tất cả thẻ trùng lặp (Close all duplicate tabs)</strong> hoặc <strong>Đóng thẻ trùng lặp (Close Duplicate Tabs)</strong> tùy theo giao diện.</li>\n</ul>\n<p>Mozilla có <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">hướng dẫn về menu chuột phải của thẻ</a> giải thích lựa chọn đầu tiên. Còn <a href=\"https://support.mozilla.org/en-US/kb/tab-overview-menu\">hướng dẫn về menu tổng quan thẻ</a> mô tả cách dọn rộng hơn và cho biết tính năng này giữ lại thẻ hoạt động gần nhất trong số các thẻ trùng lặp.</p>\n<p>Nếu bạn đã dùng <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">TabTools cho Firefox</a>, hãy mở cửa sổ bật lên rồi nhấp <strong>Đóng thẻ trùng lặp</strong>. Quy tắc đối chiếu và giữ lại của tiện ích là các quy tắc TabTools bên dưới; đừng cho rằng chúng giống với lệnh tích hợp của Firefox.</p>"
+        },
+        {
+          "id": "which-copy-stays",
+          "title": "TabTools giữ lại bản sao nào?",
+          "html": "<p>TabTools giữ lại các bản sao đã ghim và đóng các thẻ chưa ghim khớp trên mọi cửa sổ thông thường. Nếu không có bản sao đã ghim, tiện ích giữ lại bản sao chưa ghim đầu tiên gặp trong danh sách thẻ của trình duyệt và đóng các thẻ khớp về sau.</p>\n<p>Tiện ích không chủ đích chọn thẻ đang hoạt động, thẻ mới nhất hay thẻ bạn dùng gần nhất. Vì vậy, bản sao được giữ lại có thể ở một cửa sổ khác. Nếu một trang có một thẻ đã ghim và hai bản sao chưa ghim, chỉ thẻ đã ghim còn lại.</p>\n<p>Thẻ đã ghim không bao giờ bị đóng bởi <strong>Đóng thẻ trùng lặp</strong>. Nếu một trang có nhiều bản sao đã ghim, tất cả vẫn được giữ lại, nên lệnh này không bảo đảm mỗi URL chỉ còn đúng một thẻ.</p>"
+        },
+        {
+          "id": "undo-and-organise",
+          "title": "Hoàn tác việc dọn thẻ và sắp xếp phần còn lại",
+          "html": "<p>Giữ cửa sổ bật lên mở sau khi dọn nếu bạn muốn kiểm tra kết quả. <strong>Hoàn tác</strong> có thể mở lại các thẻ của lần đóng gần nhất từ cửa sổ bật lên trong phiên đó. Tiện ích mở lại trang theo URL, nên không bảo đảm khôi phục nội dung chưa lưu. Sau khi cửa sổ bật lên đóng, hãy dùng danh sách thẻ đã đóng gần đây hoặc lịch sử trình duyệt.</p>\n<p>Với các trang khác nhau mà bạn đã dùng xong, hãy xem <a href=\"/guides/close-tabs-from-same-website/\">cách đóng tất cả thẻ của cùng một trang web</a>. Với các trang muốn giữ lại, <a href=\"/guides/sort-tabs-by-website/\">sắp xếp thẻ theo trang web</a> sẽ đưa những thẻ liên quan về cạnh nhau mà không đóng chúng.</p>"
+        }
+      ]
+    },
+    {
+      "slug": "sort-tabs-by-website",
+      "title": "Cách sắp xếp thẻ theo trang web trong Chrome, Firefox và Edge",
+      "shortTitle": "Sắp xếp thẻ theo trang web",
+      "description": "Đưa các thẻ liên quan về cạnh nhau trong Chrome, Firefox và Edge bằng TabTools. Tìm hiểu số thẻ mỗi trang web, thẻ đã ghim và nhóm thẻ của trình duyệt ảnh hưởng thế nào đến lựa chọn của bạn.",
+      "category": "Sắp xếp thẻ",
+      "lede": "Khi thanh thẻ trộn lẫn tài liệu, video và các trang nghiên cứu, bạn mất nhiều thời gian hơn để tìm thẻ tiếp theo. Sắp xếp sẽ đưa các trang của cùng một website về cạnh nhau mà vẫn giữ chúng mở.",
+      "answer": "Mở TabTools trong cửa sổ bạn muốn sắp xếp rồi nhấp Sắp xếp thẻ. Các thẻ chưa ghim được xếp theo trang web, với những website có nhiều thẻ đang mở nhất ở đầu. Thẻ đã ghim giữ nguyên vị trí.",
+      "sections": [
+        {
+          "id": "sort-with-tabtools",
+          "title": "Sắp xếp thẻ trong cửa sổ hiện tại",
+          "html": "<p>Chrome, Firefox và Microsoft Edge đều có cùng thao tác trong cửa sổ bật lên. Ví dụ trên Chrome này bắt đầu với sáu thẻ YouTube, Wikipedia và Google nằm xen kẽ.</p>\n<ol>\n  <li>Cài TabTools cho <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a>, <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox</a> hoặc <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge</a>.</li>\n  <li>Chuyển sang cửa sổ trình duyệt có các thẻ bạn muốn sắp xếp.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-01-before.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-01-before.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome với ba thẻ YouTube, hai thẻ Wikipedia và Google nằm xen kẽ trên thanh thẻ.\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Trước khi sắp xếp: sáu thẻ của ba website nằm lẫn nhau.</figcaption>\n</figure>\n  </li>\n  <li>Mở TabTools từ thanh công cụ hoặc menu tiện ích.</li>\n  <li>Nhấp <strong>Sắp xếp thẻ</strong>.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-02-sort-tabs.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-02-sort-tabs.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Cửa sổ bật lên TabTools trong Chrome với con trỏ đặt trên Sắp xếp thẻ (Sort tabs).\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Nhấp Sắp xếp thẻ (Sort tabs) để đưa các trang của mỗi website về cạnh nhau.</figcaption>\n</figure>\n  </li>\n</ol>\n<p>Các thẻ chưa ghim có liên quan sẽ di chuyển về cạnh nhau. Trang vẫn mở và thẻ ở cửa sổ khác không bị chuyển vào cửa sổ này. Nếu muốn sắp xếp một cửa sổ khác, hãy chuyển sang đó rồi chạy lại lệnh.</p>\n<p>Sắp xếp là thao tác thực hiện một lần. Sau đó, thẻ mới vẫn mở như bình thường; TabTools không liên tục đổi thứ tự thanh thẻ khi bạn duyệt web. Nhấp <strong>Sắp xếp thẻ</strong> lần nữa khi bạn muốn chỉnh lại cách bố trí hiện tại.</p>"
+        },
+        {
+          "id": "how-the-order-works",
+          "title": "Cách TabTools xác định thứ tự",
+          "html": "<p>TabTools đếm số thẻ đang mở của mỗi website trong cửa sổ hiện tại. Website có nhiều thẻ hơn được xếp trước, ngay sau các thẻ đã ghim. Đây là ví dụ đơn giản khi không có thẻ ghim:</p>\n<table>\n  <thead><tr><th scope=\"col\">Trang web</th><th scope=\"col\">Số thẻ đang mở</th><th scope=\"col\">Vị trí sau khi sắp xếp</th></tr></thead>\n  <tbody>\n    <tr><td><code>youtube.com</code></td><td>3</td><td>Đầu tiên</td></tr>\n    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>Thứ hai</td></tr>\n    <tr><td><code>google.com</code></td><td>1</td><td>Thứ ba</td></tr>\n  </tbody>\n</table>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-03-after.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-03-after.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome sau khi sắp xếp: ba thẻ YouTube, rồi hai thẻ Wikipedia, cuối cùng là Google; TabTools thông báo đã đổi vị trí 6 thẻ (Reordered 6 tabs).\" />\n    <span class=\"guide-screenshot-zoom\">Xem kích thước đầy đủ <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (mở trong thẻ mới)</span></span>\n  </a>\n  <figcaption>Sau khi sắp xếp: YouTube ×3, Wikipedia ×2, rồi Google. Cả sáu thẻ vẫn mở.</figcaption>\n</figure>\n<p>“Mở nhiều nhất” nghĩa là có số thẻ đang mở nhiều nhất ngay lúc này. Nó không nói đến website bạn truy cập thường xuyên nhất, lịch sử duyệt web hay số lần bạn mở website trong tuần qua.</p>\n<p>Nếu hai website có cùng số thẻ, tên máy chủ sẽ quyết định thứ tự theo bảng chữ cái. Các thẻ cùng tên máy chủ giữ nguyên thứ tự tương đối. Ví dụ, ba trang YouTube giữ thứ tự bên trong nhóm YouTube; chúng không được xếp theo tiêu đề trang.</p>"
+        },
+        {
+          "id": "pinned-tabs-and-subdomains",
+          "title": "Thẻ đã ghim và tên miền phụ",
+          "html": "<p>Thẻ đã ghim giữ nguyên vị trí ghim. Chúng vẫn được tính vào số thẻ của website khi TabTools quyết định thứ tự cho các thẻ chưa ghim.</p>\n<p>Ví dụ, hai thẻ GitHub đã ghim và hai thẻ GitHub chưa ghim tạo thành tổng cộng bốn thẻ GitHub. Vì vậy, các thẻ GitHub chưa ghim sẽ đứng trước website có ba thẻ đang mở, còn hai thẻ GitHub đã ghim vẫn giữ nguyên vị trí.</p>\n<p>Việc đối chiếu website dùng tên máy chủ và bỏ qua tiền tố <code>www.</code>. Các trang trên <code>example.com</code> và <code>www.example.com</code> được xếp cùng nhau. Các trang trên <code>docs.example.com</code> tạo thành một nhóm riêng, tách khỏi <code>shop.example.com</code>.</p>\n<p>Điều này hữu ích khi các dịch vụ khác nhau dùng chung một tên miền mẹ: tài liệu và cửa hàng có thể vẫn tách biệt trên thanh thẻ sau khi sắp xếp.</p>"
+        },
+        {
+          "id": "sorting-or-tab-groups",
+          "title": "Chọn sắp xếp hay nhóm thẻ",
+          "html": "<p>Sắp xếp hữu ích khi website chính là tiêu chí tổ chức. Nhóm thẻ của trình duyệt hữu ích khi tiêu chí là một công việc, chẳng hạn một kỳ nghỉ, dự án công việc hoặc lần mua sắm liên quan đến nhiều website.</p>\n<table>\n  <thead><tr><th scope=\"col\">Mục tiêu của bạn</th><th scope=\"col\">Lựa chọn phù hợp</th></tr></thead>\n  <tbody>\n    <tr><td>Đặt các trang của mỗi website cạnh nhau</td><td>TabTools <strong>Sắp xếp thẻ</strong></td></tr>\n    <tr><td>Chọn thứ tự chính xác cho một vài thẻ</td><td>Kéo thẻ thủ công</td></tr>\n    <tr><td>Gom các website của một dự án dưới cùng một tên</td><td>Nhóm thẻ có tên của trình duyệt</td></tr>\n  </tbody>\n</table>\n<p>TabTools đổi thứ tự thẻ, không tạo nhóm trình duyệt có tên hay màu sắc. Nếu đã chủ động sắp xếp thẻ theo dự án, hãy cân nhắc xem sắp xếp theo website có phù hợp với cửa sổ đó không trước khi thay đổi thứ tự.</p>"
+        },
+        {
+          "id": "native-browser-options",
+          "title": "Sắp xếp thẻ mà không cần tiện ích",
+          "html": "<h3>Chrome</h3>\n<p>Kéo thẻ dọc thanh thẻ để tự đặt thứ tự. Bạn cũng có thể dùng nhóm thẻ có tên khi công việc liên quan đến nhiều website. Google có <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">hướng dẫn về thẻ Chrome</a> trình bày cách sắp xếp và nhóm thẻ.</p>\n<h3>Firefox</h3>\n<p>Dùng thanh thẻ để di chuyển từng thẻ hoặc dùng các lựa chọn nhóm trong menu chuột phải của thẻ Firefox để tạo một tập hợp có tên. Mozilla có <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">hướng dẫn về menu chuột phải của thẻ</a> mô tả những thao tác thẻ có sẵn.</p>\n<h3>Microsoft Edge</h3>\n<p>Edge cung cấp nhóm thẻ có tên và tính năng <strong>Sắp xếp thẻ (Organize tabs)</strong> có thể nhóm các thẻ liên quan. Khả năng sử dụng có thể khác nhau. Các cách này tổ chức theo nhóm bạn chọn hoặc mức độ liên quan, khác với việc xếp theo số thẻ hiện tại của mỗi website. Microsoft giải thích trong <a href=\"https://www.microsoft.com/en-us/edge/features/tab-groups\">hướng dẫn về nhóm thẻ Edge</a>.</p>"
+        },
+        {
+          "id": "after-sorting",
+          "title": "Làm gì sau khi sắp xếp",
+          "html": "<p>TabTools không có thao tác hoàn tác việc sắp xếp. Nút <strong>Hoàn tác</strong> trong cửa sổ bật lên dành cho lần đóng thẻ gần nhất, không khôi phục thứ tự thẻ trước đó. Nếu muốn bố trí khác sau khi sắp xếp, hãy kéo thẻ đến vị trí mong muốn.</p>\n<p>Sắp xếp cũng giữ nguyên các bản sao của trang. Nếu điều này khiến những nhóm lớn dài hơn mức cần thiết, hãy <a href=\"/guides/close-duplicate-tabs/\">đóng thẻ trùng lặp</a> rồi sắp xếp lại theo số thẻ còn lại.</p>\n<p>Khi đã dùng xong toàn bộ website, hãy dùng <a href=\"/guides/close-tabs-from-same-website/\">Đóng thẻ của trang web</a> để đóng các trang của website đó. Sắp xếp là lựa chọn cho những thẻ bạn vẫn cần: nó giúp dễ tìm hơn mà không quyết định trang nào cần đóng.</p>"
+        }
+      ]
+    }
+  ]
+}

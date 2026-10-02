@@ -20,7 +20,9 @@ concurrency:
 jobs:
   mobile:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # The complete localized-guide matrix takes about 14 minutes including
+    # browser installation; leave room for ordinary runner variation.
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: website/tests
@@ -38,7 +40,9 @@ jobs:
       - name: Install Chromium and WebKit
         run: npx playwright install --with-deps chromium webkit
       - name: Check responsive layouts and interactions
-        run: npm test
+        run: |
+          npm run test:guides -- --project=chromium-guides-desktop --project=webkit-guides-desktop
+          npm test
       - name: Upload review screenshots and test results
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

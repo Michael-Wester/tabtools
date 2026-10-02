@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="sk" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Ako v Chrome zatvoriť všetky karty rovnakého webu | TabTools</title>
+    <meta name="description" content="Zatvorte karty rovnakého webu v Chrome pomocou TabTools, využite ručnú alternatívu a postupujte podľa návodu pre Firefox a Edge." />
+    <link rel="canonical" href="https://tabtools.fyi/sk/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/close-tabs-from-same-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Ako v Chrome zatvoriť všetky karty rovnakého webu" />
+    <meta property="og:description" content="Zatvorte karty rovnakého webu v Chrome pomocou TabTools, využite ručnú alternatívu a postupujte podľa návodu pre Firefox a Edge." />
+    <meta property="og:url" content="https://tabtools.fyi/sk/guides/close-tabs-from-same-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ako v Chrome zatvoriť všetky karty rovnakého webu" />
+    <meta name="twitter:description" content="Zatvorte karty rovnakého webu v Chrome pomocou TabTools, využite ručnú alternatívu a postupujte podľa návodu pre Firefox a Edge." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Ako v Chrome zatvoriť všetky karty rovnakého webu",
+      "description": "Zatvorte karty rovnakého webu v Chrome pomocou TabTools, využite ručnú alternatívu a postupujte podľa návodu pre Firefox a Edge.",
+      "url": "https://tabtools.fyi/sk/guides/close-tabs-from-same-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/sk/guides/close-tabs-from-same-website/",
+      "inLanguage": "sk",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Domov",
+          "item": "https://tabtools.fyi/sk/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Návody",
+          "item": "https://tabtools.fyi/sk/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Zatvoriť karty rovnakého webu",
+          "item": "https://tabtools.fyi/sk/guides/close-tabs-from-same-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "sk",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/close-tabs-from-same-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/close-tabs-from-same-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/close-tabs-from-same-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/close-tabs-from-same-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/close-tabs-from-same-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/close-tabs-from-same-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/close-tabs-from-same-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/close-tabs-from-same-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/close-tabs-from-same-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/close-tabs-from-same-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/close-tabs-from-same-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/close-tabs-from-same-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/close-tabs-from-same-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/close-tabs-from-same-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/close-tabs-from-same-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/close-tabs-from-same-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/close-tabs-from-same-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/close-tabs-from-same-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/close-tabs-from-same-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/close-tabs-from-same-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/close-tabs-from-same-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/close-tabs-from-same-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/close-tabs-from-same-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/close-tabs-from-same-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/close-tabs-from-same-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/close-tabs-from-same-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/close-tabs-from-same-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/close-tabs-from-same-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/close-tabs-from-same-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Zavri a trieď karty podľa webu",
+    "extensionDescription": "Zatvárajte karty rovnakého webu, trieďte ich podľa webu a odstráňte duplicity, aby bol prehliadač prehľadný.",
+    "openTabTools": "Otvoriť TabTools",
+    "settings": "Nastavenia",
+    "suggestions": "Návrhy",
+    "suggestCaption": "Ťuknutím zatvoríte karty webu",
+    "queryPlaceholder": "Zatvoriť podľa kľúčového slova (Enter)",
+    "close": "Zatvoriť",
+    "sortTabs": "Zoradiť karty",
+    "closeDuplicates": "Zatvoriť duplicity",
+    "undo": "Späť",
+    "undoTitle": "Vrátiť posledné zatvorenie",
+    "theme": "Motív",
+    "light": "Svetlý",
+    "dark": "Tmavý",
+    "minTabs": "Minimálny počet kariet webu pre návrhy",
+    "inactiveAfter": "Karty neaktívne po",
+    "minutes": "minútach",
+    "closedCount": "Zatvorené: {count}",
+    "openCount": {
+      "one": "{count} otvorená karta",
+      "few": "{count} otvorené karty",
+      "many": "{count} otvorenej karty",
+      "other": "{count} otvorených kariet"
+    },
+    "openCountShort": {
+      "one": "{count} otvorená",
+      "few": "{count} otvorené",
+      "many": "{count} otvorenej",
+      "other": "{count} otvorených"
+    },
+    "closedCountShort": {
+      "one": "{count} zatvorená",
+      "few": "{count} zatvorené",
+      "many": "{count} zatvorenej",
+      "other": "{count} zatvorených"
+    },
+    "closeFailed": "Akcia zlyhala",
+    "closedInactive": "Zatvorené neaktívne karty: {count}",
+    "noInactive": "Žiadne neaktívne karty",
+    "closedDuplicates": "Zatvorené duplicitné karty: {count}",
+    "noDuplicates": "Žiadne duplicity",
+    "nothingToUndo": "Niet čo vrátiť",
+    "undoFailed": "Vrátenie zlyhalo",
+    "restoredCount": "Obnovené: {count}",
+    "nothingToRestore": "Niet čo obnoviť",
+    "inactive": "Neaktívne",
+    "loadingSuggestions": "Načítavajú sa návrhy…",
+    "suggestionsFailed": "Návrhy sa nepodarilo načítať",
+    "noSuggestions": "Momentálne nie sú žiadne návrhy",
+    "moreCount": "Ďalšie nezobrazené návrhy: {count}",
+    "sortFailed": "Triedenie zlyhalo",
+    "sortedCount": "Preusporiadané karty: {count}",
+    "nothingToSort": "Niet čo triediť",
+    "hide": "Skryť",
+    "show": "Zobraziť",
+    "contextClose": "Zatvoriť karty webu",
+    "contextSort": "Zoradiť karty (weby s najviac kartami prvé)",
+    "closeSiteLabel": "Zatvoriť karty webu {site}",
+    "web_heroTitle": "Zatvorte karty \u003cem>rovnakého webu.\u003c/em>",
+    "web_featuresTitle": "Zatvárajte podľa webu.\u003cbr>\u003cem>Zoraďte, čo zostane.\u003c/em>",
+    "web_workflowTitle": "Pridajte TabTools.\u003cbr>\u003cem>Vyberte, čo zatvoriť.\u003c/em>",
+    "web_privacyTitle": "Údaje o kartách zostávajú\u003cbr>vo vašom prehliadači.",
+    "web_finalTitle": "Zatvorte nepotrebné karty.\u003cbr>\u003cem>Zoraďte zvyšok.\u003c/em>",
+    "web_siteBody": "Otvorte TabTools a kliknite na web v časti \u003cstrong>Návrhy\u003c/strong>, alebo kliknite pravým tlačidlom na webovú stránku a vyberte \u003cstrong>Zatvoriť karty webu\u003c/strong>. Zatvoria sa zodpovedajúce karty vo všetkých bežných oknách vrátane aktuálnej karty.",
+    "web_addTo": "Pridať do {browser}",
+    "web_storeNote": "Otvorí obchod {store}.",
+    "web_storeAria": "{label} — otvorí obchod {store} na novej karte",
+    "web_language": "Jazyk",
+    "web_languageSuggestion": "Čítať túto stránku v jazyku {language}",
+    "web_switchLight": "Prepnúť na svetlý režim",
+    "web_lightMode": "Svetlý režim",
+    "web_structuredDescription": "Bezplatné rozšírenie na zatváranie kariet podľa webu, triedenie kariet, odstránenie duplicít a zatváranie neaktívnych kariet.",
+    "web_close_tabs_from_the_same": "Zatvárajte karty rovnakého webu, trieďte podľa webu a odstráňte duplicity. TabTools je bezplatný správca kariet pre Chrome, Firefox a Edge.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Zatváranie a triedenie kariet podľa webu",
+    "web_close_tabs_by_site_sort": "Zatvárajte karty podľa webu, zoraďte lištu kariet a odstráňte duplicity pomocou bezplatného rozšírenia s otvoreným zdrojovým kódom pre Chrome, Firefox a Edge.",
+    "web_skip_to_content": "Prejsť na obsah",
+    "web_tabtools_home": "Domovská stránka TabTools",
+    "web_main_navigation": "Hlavná navigácia",
+    "web_features": "Funkcie",
+    "web_how_it_works": "Ako to funguje",
+    "web_privacy": "Súkromie",
+    "web_faq": "Časté otázky",
+    "web_switch_to_dark_mode": "Prepnúť na tmavý režim",
+    "web_dark_mode": "Tmavý režim",
+    "web_free_browser_tab_manager": "Bezplatný správca kariet prehliadača",
+    "web_clear_a_website_s_tabs": "Zatvorte karty webu jedinou akciou alebo zoraďte lištu kariet podľa webu. TabTools tiež odstraňuje duplicity a zatvára neaktívne karty v Chrome, Firefoxe a Edge.",
+    "web_free_to_use_no_account": "Zadarmo. Bez potreby účtu.",
+    "web_viewing_on_a_phone_or": "Používate telefón alebo tablet? Na pridanie TabTools otvorte túto stránku na počítači.",
+    "web_tabtools_browser_stores": "TabTools v obchodoch prehliadačov",
+    "web_choose_another_browser": "Vyberte iný prehliadač:",
+    "web_tabtools_in_action": "TabTools v akcii",
+    "web_full_demo": "Celá ukážka",
+    "web_tabtools_full_demo": "Celá ukážka TabTools",
+    "web_see_tabtools_close_tabs_by": "Pozrite sa, ako TabTools zatvára karty podľa webu, odstraňuje duplicity, triedi karty a zatvára tie neaktívne.",
+    "web_tabtools_product_details": "Podrobnosti o TabTools",
+    "web_close_tabs_by_site": "Zatváranie kariet podľa webu",
+    "web_from_the_popup_or_right": "z vyskakovacieho okna alebo ponuky pravého tlačidla",
+    "web_local_by_design": "Lokálne spracovanie",
+    "web_your_tab_list_stays_in": "zoznam kariet zostáva v prehliadači",
+    "web_open_source": "Otvorený zdrojový kód",
+    "web_inspect_the_code_on_github": "Pozrite si kód na GitHube",
+    "web_close_and_organise": "Zatvárajte a usporiadajte",
+    "web_clear_a_finished_task_bring": "Zatvorte karty dokončenej úlohy, umiestnite karty rovnakého webu vedľa seba alebo upracte opakované a neaktívne stránky.",
+    "web_01_site_cleanup": "01 / Upratovanie podľa webu",
+    "web_close_a_site_s_tabs": "Zatvorte karty webu naraz",
+    "web_see_how_to_get_started": "Zistite, ako začať",
+    "web_02_organise": "02 / Usporiadanie",
+    "web_sort_tabs_by_site": "Triedenie kariet podľa webu",
+    "web_bring_tabs_from_the_same": "Umiestnite karty rovnakého webu vedľa seba v aktuálnom okne. Weby s najväčším počtom otvorených kariet budú prvé.",
+    "web_03_simplify": "03 / Zjednodušenie",
+    "web_remove_duplicate_tabs": "Odstránenie duplicitných kariet",
+    "web_close_extra_copies_of_the": "Jedným kliknutím zatvorte ďalšie kópie rovnakej stránky. Pripnuté karty zostanú na mieste.",
+    "web_04_find": "04 / Hľadanie",
+    "web_search_by_keyword_or_domain": "Hľadanie podľa kľúčového slova alebo domény",
+    "web_type_a_word_to_match": "Zadajte slovo na hľadanie v názvoch a URL kariet alebo presnú doménu, napríklad youtube.com. Potom vyberte Zatvoriť.",
+    "web_05_reset": "05 / Upratovanie",
+    "web_clear_inactive_tabs": "Zatváranie neaktívnych kariet",
+    "web_choose_an_inactivity_threshold_in": "V Nastaveniach zvoľte čas neaktivity a kliknutím na Neaktívne zatvorte zodpovedajúce karty. Aktívne a pripnuté karty aj karty prehrávajúce zvuk zostanú otvorené.",
+    "web_more_tabtools_details": "Ďalšie informácie o TabTools",
+    "web_undo_cleanup_from_the_popup": "Vrátenie upratovania z vyskakovacieho okna",
+    "web_light_and_dark_themes": "Svetlý a tmavý motív",
+    "web_local_cleanup_statistics": "Lokálne štatistiky upratovania",
+    "web_start_with_one_busy_site": "Začnite webom s mnohými kartami. Vyskakovacie okno ponúka návrhy webov a triedenie, ponuka pravého tlačidla rýchle zatváranie.",
+    "web_add_it_to_your_browser": "Pridajte do prehliadača",
+    "web_open_the_chrome_firefox_or": "Otvorte stránku obchodu pre Chrome, Firefox alebo Edge a pridajte bezplatné rozšírenie.",
+    "web_click_the_tabtools_icon_in": "Kliknite na ikonu TabTools v ponuke rozšírení prehliadača. Zobrazia sa návrhy webov a rýchle akcie.",
+    "web_close_a_site_or_sort": "Zatvorte karty webu alebo karty zoraďte",
+    "web_click_a_site_under_suggestions": "Kliknutím na web v časti Návrhy zatvoríte jeho karty. Voľbou Zoradiť karty umiestnite karty rovnakého webu vedľa seba.",
+    "web_private_by_design": "Navrhnuté s ohľadom na súkromie",
+    "web_the_tabtools_extension_processes_tab": "Rozšírenie TabTools spracúva údaje o kartách na vašom zariadení. Nastavenia a štatistiky upratovania zostávajú v lokálnom úložisku prehliadača. Rozšírenie nepoužíva účty, analýzu používania, reklamy ani externú databázu.",
+    "web_read_the_privacy_policy": "Prečítajte si zásady ochrany súkromia",
+    "web_before_you_add_tabtools": "Pred pridaním TabTools",
+    "web_common_questions": "Časté otázky.",
+    "web_browsers_cleanup_and_privacy": "Prehliadače, upratovanie a súkromie.",
+    "web_is_tabtools_free": "Je TabTools zadarmo?",
+    "web_yes_tabtools_is_free_to": "Áno. TabTools môžete používať zadarmo a bez účtu.",
+    "web_which_browsers_can_i_use": "S ktorými prehliadačmi funguje?",
+    "web_tabtools_is_available_for_chrome": "TabTools je dostupný pre Chrome, Firefox a Microsoft Edge. Ak ho chcete pridať na počítači, otvorte správny obchod pomocou odkazov na tejto stránke.",
+    "web_how_do_i_close_tabs": "Ako zatvorím karty rovnakého webu?",
+    "web_right_click_within_a_web": "Kliknite pravým tlačidlom na webovú stránku a vyberte „Zatvoriť karty webu“, alebo otvorte TabTools a kliknite na web v časti Návrhy. Zatvoria sa jeho karty vo všetkých bežných oknách vrátane aktuálnej karty. Vo vyskakovacom okne môžete zadať aj kľúčové slovo alebo presnú doménu.",
+    "web_can_i_remove_duplicates_or": "Môžem odstrániť duplicity alebo zatvoriť neaktívne karty?",
+    "web_yes_choose_close_duplicates_to": "Áno. Voľbou Zatvoriť duplicity odstránite opakované stránky, kliknutím na Neaktívne zatvoríte zodpovedajúce karty. Čas neaktivity možno zmeniť v Nastaveniach. Upratovanie sa vykoná až po výbere akcie.",
+    "web_does_tabtools_collect_or_share": "Zhromažďuje alebo zdieľa TabTools moje údaje?",
+    "web_the_extension_processes_tab_information": "Rozšírenie spracúva údaje o kartách lokálne a neposiela ich vývojárovi ani tretím stranám. Nastavenia a štatistiky zostávajú na zariadení. Ukážku na tomto webe hostí YouTube; vložený prehrávač aj obchody prehliadačov majú vlastné zásady ochrany súkromia.",
+    "web_can_i_undo_a_cleanup": "Môžem upratovanie vrátiť späť?",
+    "web_use_undo_immediately_after_closing": "Použite Späť hneď po zatvorení kariet z vyskakovacieho okna TabTools, kým je stále otvorené. Stránky možno znovu otvoriť aj cez zoznam nedávno zatvorených kariet prehliadača.",
+    "web_free_for_chrome_firefox_and": "Zadarmo pre Chrome, Firefox a Edge",
+    "web_other_browser_stores": "Ďalšie obchody prehliadačov",
+    "web_close_tabs_by_site_sort_2": "Zatvárajte karty podľa webu, trieďte lištu kariet a odstraňujte duplicity.",
+    "web_product": "Produkt",
+    "web_try_it": "Vyskúšať",
+    "web_more": "Ďalšie",
+    "web_contact": "Kontakt",
+    "web_free_and_open_source": "Zadarmo a s otvoreným zdrojovým kódom.",
+    "web_view": "Zobraziť {browser}",
+    "web_guides": "Návody",
+    "web_readSiteGuide": "Prečítajte si návod na zatváranie kariet rovnakého webu",
+    "web_readSortingGuide": "Prečítajte si návod na zoraďovanie kariet",
+    "web_readDuplicateGuide": "Prečítajte si návod na odstraňovanie duplicitných kariet",
+    "web_finalMobileNote": "Ak chcete pridať TabTools, otvorte túto stránku na počítači. Nižšie si môžete pozrieť stránky rozšírenia v obchodoch.",
+    "web_socialImageAlt": "Rozšírenie prehliadača TabTools predvádza správu kariet"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Prejsť na obsah</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/sk/#top" aria-label="Domovská stránka TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+          <a href="/sk/#features">Funkcie</a>
+          <a href="/sk/#how-it-works">Ako to funguje</a>
+          <a href="/sk/guides/" aria-current="page">Návody</a>
+          <a href="/sk/#privacy">Súkromie</a>
+          <a href="/sk/#faq">Časté otázky</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Pridať do Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Pridať do <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Prepnúť na tmavý režim" title="Prepnúť na tmavý režim">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Tmavý režim</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Jazyk: Slovak" title="Jazyk: Slovak" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Slovak</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Jazyk" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="true" tabindex="-1" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Jazyk: Slovak"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Jazyk: Slovak</span></summary><nav class="language-fallback-menu" aria-label="Jazyk"><a class="language-fallback-option" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/close-tabs-from-same-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Omrvinková navigácia"><a href="/sk/">Domov</a><span aria-hidden="true">/</span><a href="/sk/guides/">Návody</a><span aria-hidden="true">/</span><span aria-current="page">Zatvoriť karty webu</span></nav>
+      <p class="eyebrow">Zatvoriť karty webu · Prehliadače pre počítače</p><h1>Ako v Chrome zatvoriť všetky karty rovnakého webu</h1><p class="guides-lede">Dokončili ste nakupovanie, podrobný prieskum témy alebo sériu videí na YouTube? Karty daného webu môžete zatvoriť naraz a ostatné weby nechať otvorené.</p>
+      <p class="guide-byline">Autor: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, tvorca TabTools <span aria-hidden="true">·</span> Čítanie na 4 min <span aria-hidden="true">·</span> Aktualizované <time datetime="2026-10-01">1. októbra 2026</time></p>
+      <p class="guide-screenshot-note">Snímky obrazovky zobrazujú anglické rozhranie; označenia sa môžu v jazykovej verzii vášho prehliadača líšiť.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Na tejto stránke"><p class="eyebrow">Na tejto stránke</p><ol><li><a href="#close-site-tabs-in-chrome">Zatvorenie kariet webu v Chrome</a></li><li><a href="#use-the-popup">Zatvorenie iného webu z vyskakovacieho okna</a></li><li><a href="#which-tabs-close">Ktoré karty sa počítajú ako rovnaký web?</a></li><li><a href="#without-an-extension">Ručné zatvorenie zodpovedajúcich kariet v Chrome</a></li><li><a href="#firefox-and-edge">Rovnaký postup vo Firefoxe a Edge</a></li><li><a href="#undo-and-next-steps">Opätovné otvorenie kariet alebo menšie upratanie</a></li></ol></nav><a class="guide-back" href="/sk/guides/">← Všetky návody</a></aside>
+      <article class="guide-article" aria-label="Ako v Chrome zatvoriť všetky karty rovnakého webu"><div class="guide-answer"><p class="eyebrow">Stručná odpoveď</p><p>Po inštalácii TabTools kliknite pravým tlačidlom na kartu webu, ktorý chcete zatvoriť, na paneli kariet Chrome a zvoľte Zatvoriť karty webu. Zatvoríte tým zodpovedajúce karty vo všetkých bežných oknách prehliadača vrátane zodpovedajúcich aktívnych a pripnutých kariet.</p></div>
+      <section id="close-site-tabs-in-chrome"><h2>Zatvorenie kariet webu v Chrome</h2><p>Kontextová ponuka karty poskytuje rýchly prístup priamo z panela kariet Chrome.</p>
+<ol>
+  <li><a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Nainštalujte TabTools z Chrome Web Store</a>.</li>
+  <li>Nájdite kartu webu, ktorý chcete zatvoriť, napríklad domovskú stránku YouTube alebo stránku s výsledkami vyhľadávania.</li>
+  <li>Kliknite pravým tlačidlom na túto kartu na paneli kariet Chrome.</li>
+  <li>Zvoľte <strong>Zatvoriť karty webu</strong>. Karty s rovnakým názvom hostiteľa webu sa zatvoria spoločne.</li>
+</ol>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-01-tab-menu.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-01-tab-menu.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome so šiestimi rôznymi kartami a zvýraznenou položkou Zatvoriť karty webu (Close site tabs) v kontextovej ponuke karty YouTube." />
+    <span class="guide-screenshot-zoom">Zobraziť v plnej veľkosti <span aria-hidden="true">↗</span><span class="sr-only"> (otvorí sa na novej karte)</span></span>
+  </a>
+  <figcaption>Kliknite pravým tlačidlom na kartu YouTube na paneli kariet Chrome a zvoľte Zatvoriť karty webu (Close site tabs).</figcaption>
+</figure>
+<p>V tomto príklade sa zatvoria tri stránky na <code>youtube.com</code>, zatiaľ čo dve karty Wikipédie a Google zostanú otvorené. Karty YouTube nemusíte najprv presunúť vedľa seba.</p>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-02-tabs-closed.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-02-tabs-closed.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome po zatvorení troch kariet YouTube; zostávajú dve karty Wikipédie a Google." />
+    <span class="guide-screenshot-zoom">Zobraziť v plnej veľkosti <span aria-hidden="true">↗</span><span class="sr-only"> (otvorí sa na novej karte)</span></span>
+  </a>
+  <figcaption>Po zatvorení: zostávajú len dve karty Wikipédie a Google.</figcaption>
+</figure>
+<p>Ak položka <strong>Zatvoriť karty webu</strong> nie je v ponuke karty dostupná, otvorte túto kartu a namiesto toho kliknite pravým tlačidlom do webovej stránky alebo použite nižšie opísané vyskakovacie okno TabTools.</p>
+<p>To je užitočné, keď už celý web nepotrebujete. Ak z neho ešte potrebujete určitú stránku, myslite na to pred použitím príkazu: zahŕňa aj kartu, na ktorú kliknete pravým tlačidlom.</p></section>
+<section id="use-the-popup"><h2>Zatvorenie iného webu z vyskakovacieho okna</h2><p>Web môžete vybrať aj bez prepnutia na niektorú z jeho stránok.</p>
+<ol>
+  <li>Otvorte TabTools z ponuky rozšírení alebo z panela nástrojov prehliadača.</li>
+  <li>Nájdite web medzi návrhmi pod nadpisom <strong>Ťuknutím zatvoríte karty webu</strong>. Každý návrh zobrazuje počet otvorených kariet.</li>
+  <li>Vyberte web a zatvorte jeho zodpovedajúce karty.</li>
+</ol>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-03-popup-suggestion.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-03-popup-suggestion.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools v Chrome s ukazovateľom na návrhu YouTube, ktorý zobrazuje 3 otvorené karty." />
+    <span class="guide-screenshot-zoom">Zobraziť v plnej veľkosti <span aria-hidden="true">↗</span><span class="sr-only"> (otvorí sa na novej karte)</span></span>
+  </a>
+  <figcaption>Pri rovnakých šiestich otvorených kartách vyberte návrh YouTube a zatvorte jeho tri karty bez toho, aby ste opustili Google.</figcaption>
+</figure>
+<p>Názov hostiteľa môžete zadať aj priamo, čo sa hodí, ak sa web nezobrazuje v časti Návrhy. Zadajte jeho názov hostiteľa, napríklad <code>youtube.com</code>, do poľa <strong>Zatvoriť podľa kľúčového slova (Enter)</strong> a potom stlačte Enter alebo kliknite na <strong>Zatvoriť</strong>. Zadajte iba názov hostiteľa bez <code>https://</code> alebo cesty k stránke.</p>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-04-enter-hostname.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-04-enter-hostname.png" width="1280" height="800" loading="lazy" decoding="async" alt="Pole pre kľúčové slovo v TabTools obsahuje youtube.com a ukazovateľ je na tlačidle Zatvoriť (Close)." />
+    <span class="guide-screenshot-zoom">Zobraziť v plnej veľkosti <span aria-hidden="true">↗</span><span class="sr-only"> (otvorí sa na novej karte)</span></span>
+  </a>
+  <figcaption>Alebo zadajte youtube.com a kliknite na Zatvoriť (Close), prípadne stlačte Enter.</figcaption>
+</figure>
+<p>Bežné kľúčové slovo, napríklad <code>shopping</code>, funguje inak: prehľadáva názvy kariet a adresy URL. Ak chcete zatvoriť jeden konkrétny web, použite presný názov hostiteľa.</p></section><aside class="guide-install" aria-label="Získať TabTools">
+    <div><p class="eyebrow">Bezplatné rozšírenie prehliadača</p><h2>Vyskúšajte to v praxi.</h2><p>Zatvorte karty podľa webu, odstráňte duplicity a zoraďte zvyšok.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-tabs-from-same-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Pridať do Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-tabs-from-same-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Pridať do Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-tabs-from-same-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Pridať do Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Používate telefón alebo tablet? Na pridanie TabTools otvorte túto stránku na počítači.</p>
+  </aside>
+<section id="which-tabs-close"><h2>Ktoré karty sa počítajú ako rovnaký web?</h2><p>Zatváranie podľa webu porovnáva názov hostiteľa a ignoruje úvodné <code>www.</code>. Rôzne stránky na tomto hostiteľovi sa zhodujú, aj keď majú odlišné cesty alebo parametre dopytu.</p>
+<table>
+  <thead><tr><th scope="col">Pri zatváraní example.com</th><th scope="col">Výsledok</th></tr></thead>
+  <tbody>
+    <tr><td><code>example.com/article-one</code></td><td>Zatvorí sa</td></tr>
+    <tr><td><code>www.example.com/article-two</code></td><td>Zatvorí sa</td></tr>
+    <tr><td><code>shop.example.com/product</code></td><td>Zostane otvorená: iná subdoména</td></tr>
+    <tr><td><code>another-site.com/example</code></td><td>Zostane otvorená</td></tr>
+  </tbody>
+</table>
+<p>Príkaz zahŕňa bežné okná prehliadača, v ktorom ho spustíte. Zodpovedajúce pripnuté aj aktívne karty sú zahrnuté; súkromné a anonymné karty sú vylúčené. Na karty v inej aplikácii prehliadača nedosiahne.</p></section>
+<section id="without-an-extension"><h2>Ručné zatvorenie zodpovedajúcich kariet v Chrome</h2><p>Pri malom počte kariet ponúka vyhľadávanie kariet v Chrome ručný postup.</p>
+<ol>
+  <li>Otvorte vyhľadávanie kariet klávesovou skratkou <strong>Ctrl + Shift + A</strong> vo Windows alebo Linuxe, prípadne <strong>Command + Shift + A</strong> na Macu.</li>
+  <li>Vyhľadajte názov webu alebo jeho hostiteľa.</li>
+  <li>Skontrolujte výsledky otvorených kariet a pri každej stránke, ktorú chcete odstrániť, použite tlačidlo na zatvorenie.</li>
+</ol>
+<p>Môžete tak zachovať vybrané stránky webu. Zároveň to znamená kontrolovať a zatvárať výsledky jednotlivo. Google opisuje ovládanie vyhľadávania a zatvárania vo svojom <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">návode ku kartám Chrome</a>.</p></section>
+<section id="firefox-and-edge"><h2>Rovnaký postup vo Firefoxe a Edge</h2><h3>Firefox</h3>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Nainštalujte TabTools pre Firefox</a>, potom kliknite pravým tlačidlom na kartu cieľového webu na paneli kariet a zvoľte <strong>Zatvoriť karty webu</strong>. Môžete tiež kliknúť pravým tlačidlom do webovej stránky alebo vybrať web z návrhov vo vyskakovacom okne.</p>
+<h3>Microsoft Edge</h3>
+<p><a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Nainštalujte TabTools pre Edge</a>, potom kliknite pravým tlačidlom na kartu cieľového webu a zvoľte <strong>Zatvoriť karty webu</strong>, ak vaša verzia Edge túto položku v ponuke karty zobrazuje. Inak otvorte kartu a kliknite pravým tlačidlom do webovej stránky alebo zadajte názov hostiteľa do vyskakovacieho okna. Pravidlá zhody a rozsah naprieč oknami sú rovnaké ako vyššie.</p></section>
+<section id="undo-and-next-steps"><h2>Opätovné otvorenie kariet alebo menšie upratanie</h2><p>Po zatvorení kariet prostredníctvom vyskakovacieho okna môže jeho tlačidlo <strong>Späť</strong> znovu otvoriť karty z posledného upratania v tomto okne, kým zostáva otvorené. Akciu z ponuky pravého tlačidla <strong>Zatvoriť karty webu</strong> tlačidlo Späť vo vyskakovacom okne nezaznamenáva.</p>
+<p>Po zatvorení cez kontextovú ponuku sa pozrite do nedávno zatvorených kariet alebo histórie prehliadača. Opätovné otvorenie adresy URL nemožno považovať za obnovenie neuložených údajov vo formulári ani všetkých podrobností predchádzajúceho stavu stránky.</p>
+<p>Ak chcete zachovať jednu kópiu každej stránky, postupujte podľa návodu na <a href="/sk/guides/close-duplicate-tabs/">zatváranie duplicitných kariet</a>. Ak chcete zachovať všetky stránky a sprehľadniť ich, môžete namiesto toho <a href="/sk/guides/sort-tabs-by-website/">zoradiť karty podľa webu</a> a uľahčiť si ich prezeranie.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Súvisiace návody"><p class="eyebrow">Pokračujte ďalej</p><h2>Ďalšie spôsoby, ako usporiadať karty.</h2><div class="guide-cards"><a class="guide-card" href="/sk/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Odstrániť duplicity</span></div>
+    <h2>Zatvoriť duplicitné karty</h2><p>Odstráňte duplicitné karty v Chrome, Firefoxe a Edge. Postupujte podľa krokov pre TabTools, použite vstavanú možnosť Firefoxu a zistite, ktoré kópie zostanú.</p>
+    <span class="guide-card-bottom"><span>Čítanie na 4 min</span><span class="guide-card-link">Prečítať návod <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/sk/guides/sort-tabs-by-website/">
+    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Zoradiť karty</span></div>
+    <h2>Zoradiť karty podľa webu</h2><p>Presuňte súvisiace karty vedľa seba v Chrome, Firefoxe a Edge pomocou TabTools. Zistite, ako vaše možnosti ovplyvňujú počty kariet jednotlivých webov, pripnuté karty a skupiny kariet prehliadača.</p>
+    <span class="guide-card-bottom"><span>Čítanie na 4 min</span><span class="guide-card-link">Prečítať návod <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/sk/#top" aria-label="Domovská stránka TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Zatvárajte karty podľa webu, trieďte lištu kariet a odstraňujte duplicity.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Produkt</span><a href="/sk/#features">Funkcie</a><a href="/sk/#how-it-works">Ako to funguje</a><a href="/sk/guides/">Návody</a><a href="/sk/#faq">Časté otázky</a></div>
+          <div><span class="footer-label">Vyskúšať</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Ďalšie</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Súkromie</a><a href="mailto:tabtools@michaelwester.com">Kontakt</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Zadarmo a s otvoreným zdrojovým kódom.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

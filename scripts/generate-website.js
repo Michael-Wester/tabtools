@@ -122,7 +122,8 @@ function applyTranslations(html, locale) {
 }
 
 function writePage(locale) {
-  const output = applyTranslations(template, locale);
+  const output = applyTranslations(template, locale)
+    .replace(/href="\/guides\//g, 'href="' + locale.path + 'guides/');
   const directory = path.join(outputDir, locale.website);
   fs.mkdirSync(directory, { recursive: true });
   fs.writeFileSync(path.join(directory, 'index.html'), output);

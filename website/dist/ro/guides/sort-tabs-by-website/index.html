@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="ro" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Cum sortezi filele după site în Chrome, Firefox și Edge | TabTools</title>
+    <meta name="description" content="Așază alături filele asociate în Chrome, Firefox și Edge cu TabTools. Află cum îți influențează opțiunile numărul filelor pe site, filele fixate și grupurile de file ale browserului." />
+    <link rel="canonical" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Cum sortezi filele după site în Chrome, Firefox și Edge" />
+    <meta property="og:description" content="Așază alături filele asociate în Chrome, Firefox și Edge cu TabTools. Află cum îți influențează opțiunile numărul filelor pe site, filele fixate și grupurile de file ale browserului." />
+    <meta property="og:url" content="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Cum sortezi filele după site în Chrome, Firefox și Edge" />
+    <meta name="twitter:description" content="Așază alături filele asociate în Chrome, Firefox și Edge cu TabTools. Află cum îți influențează opțiunile numărul filelor pe site, filele fixate și grupurile de file ale browserului." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Cum sortezi filele după site în Chrome, Firefox și Edge",
+      "description": "Așază alături filele asociate în Chrome, Firefox și Edge cu TabTools. Află cum îți influențează opțiunile numărul filelor pe site, filele fixate și grupurile de file ale browserului.",
+      "url": "https://tabtools.fyi/ro/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/ro/guides/sort-tabs-by-website/",
+      "inLanguage": "ro",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Pagina principală",
+          "item": "https://tabtools.fyi/ro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ghiduri",
+          "item": "https://tabtools.fyi/ro/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sortează filele după site",
+          "item": "https://tabtools.fyi/ro/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "ro",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/sort-tabs-by-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/sort-tabs-by-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/sort-tabs-by-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/sort-tabs-by-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/sort-tabs-by-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/sort-tabs-by-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/sort-tabs-by-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/sort-tabs-by-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/sort-tabs-by-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/sort-tabs-by-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/sort-tabs-by-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/sort-tabs-by-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/sort-tabs-by-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/sort-tabs-by-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/sort-tabs-by-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/sort-tabs-by-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/sort-tabs-by-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/sort-tabs-by-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/sort-tabs-by-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/sort-tabs-by-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/sort-tabs-by-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/sort-tabs-by-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/sort-tabs-by-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/sort-tabs-by-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/sort-tabs-by-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Închide și sortează filele după site",
+    "extensionDescription": "Închide filele aceluiași site, sortează-le după site și elimină duplicatele pentru a păstra browserul ordonat.",
+    "openTabTools": "Deschide TabTools",
+    "settings": "Setări",
+    "suggestions": "Sugestii",
+    "suggestCaption": "Apasă pentru a închide filele site-ului",
+    "queryPlaceholder": "Închide după cuvânt-cheie (apasă Enter)",
+    "close": "Închide",
+    "sortTabs": "Sortează filele",
+    "closeDuplicates": "Închide duplicatele",
+    "undo": "Anulează",
+    "undoTitle": "Anulează ultima închidere",
+    "theme": "Temă",
+    "light": "Luminoasă",
+    "dark": "Întunecată",
+    "minTabs": "Număr minim de file pe site pentru sugestii",
+    "inactiveAfter": "File inactive după",
+    "minutes": "minute",
+    "closedCount": "Închise: {count}",
+    "openCount": {
+      "one": "{count} filă deschisă",
+      "few": "{count} file deschise",
+      "other": "{count} de file deschise"
+    },
+    "openCountShort": {
+      "one": "{count} deschisă",
+      "few": "{count} deschise",
+      "other": "{count} deschise"
+    },
+    "closedCountShort": {
+      "one": "{count} închisă",
+      "few": "{count} închise",
+      "other": "{count} închise"
+    },
+    "closeFailed": "Acțiunea a eșuat",
+    "closedInactive": "File inactive închise: {count}",
+    "noInactive": "Nicio filă inactivă",
+    "closedDuplicates": "File duplicate închise: {count}",
+    "noDuplicates": "Niciun duplicat",
+    "nothingToUndo": "Nimic de anulat",
+    "undoFailed": "Anularea a eșuat",
+    "restoredCount": "Restaurate: {count}",
+    "nothingToRestore": "Nimic de restaurat",
+    "inactive": "Inactive",
+    "loadingSuggestions": "Se încarcă sugestiile…",
+    "suggestionsFailed": "Sugestiile nu au putut fi încărcate",
+    "noSuggestions": "Nu există sugestii momentan",
+    "moreCount": "Alte sugestii neafișate: {count}",
+    "sortFailed": "Sortarea a eșuat",
+    "sortedCount": "File reordonate: {count}",
+    "nothingToSort": "Nimic de sortat",
+    "hide": "Ascunde",
+    "show": "Afișează",
+    "contextClose": "Închide filele site-ului",
+    "contextSort": "Sortează filele (site-urile cu cele mai multe file primele)",
+    "closeSiteLabel": "Închide filele de pe {site}",
+    "web_heroTitle": "Închide filele \u003cem>aceluiași site.\u003c/em>",
+    "web_featuresTitle": "Închide după site.\u003cbr>\u003cem>Sortează ce rămâne.\u003c/em>",
+    "web_workflowTitle": "Adaugă TabTools.\u003cbr>\u003cem>Alege ce să închizi.\u003c/em>",
+    "web_privacyTitle": "Datele filelor rămân\u003cbr>în browserul tău.",
+    "web_finalTitle": "Închide filele de care nu mai ai nevoie.\u003cbr>\u003cem>Sortează restul.\u003c/em>",
+    "web_siteBody": "Deschide TabTools și apasă pe un site din \u003cstrong>Sugestii\u003c/strong>, sau fă clic dreapta într-o pagină web și alege \u003cstrong>Închide filele site-ului\u003c/strong>. Se închid filele corespunzătoare din toate ferestrele obișnuite, inclusiv fila curentă.",
+    "web_addTo": "Adaugă în {browser}",
+    "web_storeNote": "Deschide magazinul {store}.",
+    "web_storeAria": "{label} — deschide magazinul {store} într-o filă nouă",
+    "web_language": "Limbă",
+    "web_languageSuggestion": "Citește această pagină în {language}",
+    "web_switchLight": "Treci la modul luminos",
+    "web_lightMode": "Mod luminos",
+    "web_structuredDescription": "O extensie gratuită pentru închiderea filelor după site, sortarea lor, eliminarea duplicatelor și închiderea filelor inactive.",
+    "web_close_tabs_from_the_same": "Închide filele aceluiași site, sortează după site și elimină duplicatele. TabTools este un gestionar de file gratuit pentru Chrome, Firefox și Edge.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Închide și sortează filele după site",
+    "web_close_tabs_by_site_sort": "Închide filele după site, sortează bara de file și elimină duplicatele cu o extensie gratuită, cu sursă deschisă, pentru Chrome, Firefox și Edge.",
+    "web_skip_to_content": "Sari la conținut",
+    "web_tabtools_home": "Pagina principală TabTools",
+    "web_main_navigation": "Navigare principală",
+    "web_features": "Funcții",
+    "web_how_it_works": "Cum funcționează",
+    "web_privacy": "Confidențialitate",
+    "web_faq": "Întrebări frecvente",
+    "web_switch_to_dark_mode": "Treci la modul întunecat",
+    "web_dark_mode": "Mod întunecat",
+    "web_free_browser_tab_manager": "Gestionar de file gratuit",
+    "web_clear_a_website_s_tabs": "Închide filele unui site cu o singură acțiune sau sortează bara de file după site. TabTools elimină și duplicatele și închide filele inactive în Chrome, Firefox și Edge.",
+    "web_free_to_use_no_account": "Gratuit. Nu ai nevoie de cont.",
+    "web_viewing_on_a_phone_or": "Folosești un telefon sau o tabletă? Deschide pagina pe computer pentru a adăuga TabTools.",
+    "web_tabtools_browser_stores": "TabTools în magazinele browserelor",
+    "web_choose_another_browser": "Alege alt browser:",
+    "web_tabtools_in_action": "TabTools în acțiune",
+    "web_full_demo": "Demonstrație completă",
+    "web_tabtools_full_demo": "Demonstrație completă TabTools",
+    "web_see_tabtools_close_tabs_by": "Vezi cum TabTools închide filele după site, elimină duplicatele, sortează filele și le închide pe cele inactive.",
+    "web_tabtools_product_details": "Detalii despre TabTools",
+    "web_close_tabs_by_site": "Închide filele după site",
+    "web_from_the_popup_or_right": "din fereastra extensiei sau din meniul contextual",
+    "web_local_by_design": "Funcționează local",
+    "web_your_tab_list_stays_in": "lista de file rămâne în browser",
+    "web_open_source": "Sursă deschisă",
+    "web_inspect_the_code_on_github": "Consultă codul pe GitHub",
+    "web_close_and_organise": "Închide și organizează",
+    "web_clear_a_finished_task_bring": "Închide filele unei sarcini terminate, așază alături filele aceluiași site sau curăță paginile repetate și inactive.",
+    "web_01_site_cleanup": "01 / Curățare după site",
+    "web_close_a_site_s_tabs": "Închide împreună filele unui site",
+    "web_see_how_to_get_started": "Vezi cum să începi",
+    "web_02_organise": "02 / Organizare",
+    "web_sort_tabs_by_site": "Sortează filele după site",
+    "web_bring_tabs_from_the_same": "Așază alături filele aceluiași site în fereastra curentă, începând cu site-urile care au cele mai multe file deschise.",
+    "web_03_simplify": "03 / Simplificare",
+    "web_remove_duplicate_tabs": "Elimină filele duplicate",
+    "web_close_extra_copies_of_the": "Închide copiile suplimentare ale aceleiași pagini cu un clic. Filele fixate rămân pe loc.",
+    "web_04_find": "04 / Căutare",
+    "web_search_by_keyword_or_domain": "Caută după cuvânt-cheie sau domeniu",
+    "web_type_a_word_to_match": "Scrie un cuvânt pentru a căuta în titlurile și URL-urile filelor sau un domeniu exact, precum youtube.com. Apoi alege Închide.",
+    "web_05_reset": "05 / Curățare",
+    "web_clear_inactive_tabs": "Închide filele inactive",
+    "web_choose_an_inactivity_threshold_in": "Alege un prag de inactivitate în Setări, apoi apasă pe Inactive pentru a închide filele care îndeplinesc condițiile. Filele active, fixate sau care redau sunet rămân deschise.",
+    "web_more_tabtools_details": "Mai multe detalii despre TabTools",
+    "web_undo_cleanup_from_the_popup": "Anulează curățarea din fereastra extensiei",
+    "web_light_and_dark_themes": "Teme luminoasă și întunecată",
+    "web_local_cleanup_statistics": "Statistici locale de curățare",
+    "web_start_with_one_busy_site": "Începe cu un site cu multe file. Folosește fereastra extensiei pentru sugestii și sortare sau meniul contextual pentru închidere rapidă.",
+    "web_add_it_to_your_browser": "Adaugă în browser",
+    "web_open_the_chrome_firefox_or": "Deschide pagina magazinului Chrome, Firefox sau Edge și adaugă extensia gratuită.",
+    "web_click_the_tabtools_icon_in": "Apasă pe pictograma TabTools din meniul de extensii al browserului pentru a vedea sugestii de site-uri și acțiuni rapide.",
+    "web_close_a_site_or_sort": "Închide filele unui site sau sortează filele",
+    "web_click_a_site_under_suggestions": "Apasă pe un site din Sugestii pentru a-i închide filele sau alege Sortează filele pentru a așeza alături filele aceluiași site.",
+    "web_private_by_design": "Conceput pentru confidențialitate",
+    "web_the_tabtools_extension_processes_tab": "Extensia TabTools prelucrează informațiile despre file pe dispozitivul tău. Setările și statisticile de curățare rămân în stocarea locală a browserului. Extensia nu folosește conturi, analize de utilizare, reclame sau baze de date externe.",
+    "web_read_the_privacy_policy": "Citește politica de confidențialitate",
+    "web_before_you_add_tabtools": "Înainte să adaugi TabTools",
+    "web_common_questions": "Întrebări frecvente.",
+    "web_browsers_cleanup_and_privacy": "Browsere, curățare și confidențialitate.",
+    "web_is_tabtools_free": "TabTools este gratuit?",
+    "web_yes_tabtools_is_free_to": "Da. TabTools este gratuit și nu necesită un cont.",
+    "web_which_browsers_can_i_use": "Cu ce browsere îl pot folosi?",
+    "web_tabtools_is_available_for_chrome": "TabTools este disponibil pentru Chrome, Firefox și Microsoft Edge. Pentru a-l adăuga pe computer, folosește linkurile de pe această pagină pentru a deschide magazinul browserului potrivit.",
+    "web_how_do_i_close_tabs": "Cum închid filele aceluiași site?",
+    "web_right_click_within_a_web": "Fă clic dreapta într-o pagină web și alege „Închide filele site-ului” sau deschide TabTools și apasă pe site în Sugestii. Se închid filele site-ului din toate ferestrele obișnuite, inclusiv fila curentă. Poți introduce și un cuvânt-cheie sau un domeniu exact în fereastra extensiei.",
+    "web_can_i_remove_duplicates_or": "Pot elimina duplicatele sau închide filele inactive?",
+    "web_yes_choose_close_duplicates_to": "Da. Alege Închide duplicatele pentru a elimina paginile repetate sau apasă pe Inactive pentru a închide filele corespunzătoare. Poți modifica pragul de inactivitate în Setări; curățarea are loc când alegi acțiunea.",
+    "web_does_tabtools_collect_or_share": "TabTools colectează sau partajează datele mele?",
+    "web_the_extension_processes_tab_information": "Extensia prelucrează informațiile despre file local și nu le trimite dezvoltatorului sau unor terțe părți. Setările și statisticile rămân pe dispozitiv. Demonstrația de pe acest site este găzduită de YouTube; playerul încorporat și magazinele browserelor au propriile politici de confidențialitate.",
+    "web_can_i_undo_a_cleanup": "Pot anula o curățare?",
+    "web_use_undo_immediately_after_closing": "Folosește Anulează imediat după închiderea filelor din fereastra TabTools, cât timp aceasta este încă deschisă. Poți redeschide pagini și din lista filelor închise recent a browserului.",
+    "web_free_for_chrome_firefox_and": "Gratuit pentru Chrome, Firefox și Edge",
+    "web_other_browser_stores": "Alte magazine de browsere",
+    "web_close_tabs_by_site_sort_2": "Închide filele după site, sortează bara de file și elimină duplicatele.",
+    "web_product": "Produs",
+    "web_try_it": "Încearcă",
+    "web_more": "Mai multe",
+    "web_contact": "Contact",
+    "web_free_and_open_source": "Gratuit și cu sursă deschisă.",
+    "web_view": "Vezi {browser}",
+    "web_guides": "Ghiduri",
+    "web_readSiteGuide": "Citește ghidul pentru închiderea filelor aceluiași site",
+    "web_readSortingGuide": "Citește ghidul pentru sortarea filelor",
+    "web_readDuplicateGuide": "Citește ghidul pentru eliminarea filelor duplicate",
+    "web_finalMobileNote": "Deschide această pagină pe computer pentru a adăuga TabTools. Mai jos poți vedea paginile extensiei în magazine.",
+    "web_socialImageAlt": "Extensia de browser TabTools demonstrează gestionarea filelor"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Sari la conținut</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/ro/#top" aria-label="Pagina principală TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Navigare principală">
+          <a href="/ro/#features">Funcții</a>
+          <a href="/ro/#how-it-works">Cum funcționează</a>
+          <a href="/ro/guides/" aria-current="page">Ghiduri</a>
+          <a href="/ro/#privacy">Confidențialitate</a>
+          <a href="/ro/#faq">Întrebări frecvente</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Adaugă în Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Adaugă în <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Treci la modul întunecat" title="Treci la modul întunecat">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Mod întunecat</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Limbă: Romanian" title="Limbă: Romanian" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Romanian</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Limbă" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="true" tabindex="-1" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Limbă: Romanian"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Limbă: Romanian</span></summary><nav class="language-fallback-menu" aria-label="Limbă"><a class="language-fallback-option" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/sort-tabs-by-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Traseu de navigare"><a href="/ro/">Pagina principală</a><span aria-hidden="true">/</span><a href="/ro/guides/">Ghiduri</a><span aria-hidden="true">/</span><span aria-current="page">Sortează filele</span></nav>
+      <p class="eyebrow">Sortează filele · Browsere pentru computer</p><h1>Cum sortezi filele după site în Chrome, Firefox și Edge</h1><p class="guides-lede">Când bara de file amestecă documente, videoclipuri și pagini de cercetare, găsirea următoarei file durează mai mult decât ar trebui. Sortarea aduce împreună paginile aceluiași site, păstrându-le deschise.</p>
+      <p class="guide-byline">De <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, creatorul TabTools <span aria-hidden="true">·</span> 4 min de lectură <span aria-hidden="true">·</span> Actualizat la <time datetime="2026-10-01">1 octombrie 2026</time></p>
+      <p class="guide-screenshot-note">Capturile de ecran arată interfața în engleză; etichetele pot fi diferite în limba browserului tău.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Pe această pagină"><p class="eyebrow">Pe această pagină</p><ol><li><a href="#sort-with-tabtools">Sortează filele din fereastra curentă</a></li><li><a href="#how-the-order-works">Cum alege TabTools ordinea</a></li><li><a href="#pinned-tabs-and-subdomains">File fixate și subdomenii</a></li><li><a href="#sorting-or-tab-groups">Alege între sortare și grupuri de file</a></li><li><a href="#native-browser-options">Organizează filele fără o extensie</a></li><li><a href="#after-sorting">Ce faci după sortare</a></li></ol></nav><a class="guide-back" href="/ro/guides/">← Toate ghidurile</a></aside>
+      <article class="guide-article" aria-label="Cum sortezi filele după site în Chrome, Firefox și Edge"><div class="guide-answer"><p class="eyebrow">Răspuns pe scurt</p><p>Deschide TabTools în fereastra pe care vrei să o organizezi și fă clic pe Sortează filele. Acțiunea aranjează filele nefixate după site, punând primele site-urile cu cele mai multe file deschise în acel moment. Filele fixate rămân pe loc.</p></div>
+      <section id="sort-with-tabtools"><h2>Sortează filele din fereastra curentă</h2><p>Aceeași acțiune din fereastra extensiei este disponibilă în Chrome, Firefox și Microsoft Edge. Exemplul din Chrome începe cu șase file amestecate de pe YouTube, Wikipedia și Google.</p>
+<ol>
+  <li>Instalează TabTools pentru <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> sau <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
+  <li>Treci la fereastra browserului ale cărei file vrei să le aranjezi.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome cu trei file YouTube, două file Wikipedia și Google intercalate în bara de file." />
+    <span class="guide-screenshot-zoom">Vezi la dimensiune completă <span aria-hidden="true">↗</span><span class="sr-only"> (se deschide într-o filă nouă)</span></span>
+  </a>
+  <figcaption>Înainte de sortare: șase file de pe trei site-uri sunt amestecate.</figcaption>
+</figure>
+  </li>
+  <li>Deschide TabTools din bara de instrumente sau din meniul de extensii.</li>
+  <li>Fă clic pe <strong>Sortează filele</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="Fereastra extensiei TabTools în Chrome, cu indicatorul pe Sortează filele (Sort tabs)." />
+    <span class="guide-screenshot-zoom">Vezi la dimensiune completă <span aria-hidden="true">↗</span><span class="sr-only"> (se deschide într-o filă nouă)</span></span>
+  </a>
+  <figcaption>Fă clic pe Sortează filele (Sort tabs) pentru a aduce împreună paginile fiecărui site.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>Filele asociate nefixate sunt așezate una lângă alta. Paginile rămân deschise, iar filele din alte ferestre nu sunt aduse în această fereastră. Dacă vrei să organizezi altă fereastră, treci la ea și rulează din nou comanda.</p>
+<p>Sortarea este o acțiune punctuală. Filele noi se deschid normal după aceea; TabTools nu rearanjează continuu bara în timpul navigării. Fă clic din nou pe <strong>Sortează filele</strong> când vrei să faci ordine în aranjamentul curent.</p></section>
+<section id="how-the-order-works"><h2>Cum alege TabTools ordinea</h2><p>TabTools numără filele deschise ale fiecărui site din fereastra curentă. Site-urile cu mai multe file apar primele, imediat după filele fixate. Iată un exemplu simplu, fără file fixate:</p>
+<table>
+  <thead><tr><th scope="col">Site</th><th scope="col">File deschise</th><th scope="col">Poziție după sortare</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>Prima</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>A doua</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>A treia</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome după sortare: trei file YouTube, apoi două Wikipedia, apoi Google; TabTools indică 6 file reordonate (Reordered 6 tabs)." />
+    <span class="guide-screenshot-zoom">Vezi la dimensiune completă <span aria-hidden="true">↗</span><span class="sr-only"> (se deschide într-o filă nouă)</span></span>
+  </a>
+  <figcaption>După sortare: YouTube ×3, Wikipedia ×2, apoi Google. Toate cele șase file rămân deschise.</figcaption>
+</figure>
+<p>„Cele mai deschise” înseamnă cel mai mare număr de file deschise chiar acum. Nu se referă la site-ul cel mai vizitat, la istoricul de navigare sau la numărul de ori în care ai deschis un site în ultima săptămână.</p>
+<p>Dacă două site-uri au același număr de file, numele lor de gazdă determină ordinea alfabetică. Filele aceleiași gazde își păstrează ordinea relativă. De exemplu, cele trei pagini YouTube își păstrează ordinea în setul YouTube; nu sunt sortate după titlul paginii.</p></section><aside class="guide-install" aria-label="Instalează TabTools">
+    <div><p class="eyebrow">Extensie gratuită pentru browser</p><h2>Pune în practică.</h2><p>Închide filele după site, elimină duplicatele și sortează ce rămâne.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Adaugă în Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Adaugă în Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Adaugă în Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Folosești un telefon sau o tabletă? Deschide pagina pe computer pentru a adăuga TabTools.</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>File fixate și subdomenii</h2><p>Filele fixate rămân în pozițiile lor fixe. Ele contribuie în continuare la numărul filelor unui site când TabTools decide ordinea filelor sale nefixate.</p>
+<p>De exemplu, două file GitHub fixate și două nefixate dau un total de patru pentru GitHub. Filele sale nefixate apar astfel înaintea unui site cu trei file deschise, în timp ce cele două file GitHub fixate rămân unde sunt.</p>
+<p>Potrivirea site-urilor folosește numele de gazdă și ignoră prefixul <code>www.</code>. Paginile de pe <code>example.com</code> și <code>www.example.com</code> sunt așezate împreună. Paginile de pe <code>docs.example.com</code> formează un set separat de <code>shop.example.com</code>.</p>
+<p>Este util când servicii diferite au același domeniu părinte: documentația și un magazin pot rămâne separate în bara de file sortată.</p></section>
+<section id="sorting-or-tab-groups"><h2>Alege între sortare și grupuri de file</h2><p>Sortarea este utilă când site-ul în sine este criteriul de organizare. Grupurile de file ale browserului sunt utile când criteriul este o sarcină, cum ar fi o vacanță, un proiect de lucru sau o achiziție care implică mai multe site-uri.</p>
+<table>
+  <thead><tr><th scope="col">Obiectivul tău</th><th scope="col">O opțiune potrivită</th></tr></thead>
+  <tbody>
+    <tr><td>Așază alături paginile fiecărui site</td><td>TabTools <strong>Sortează filele</strong></td></tr>
+    <tr><td>Alege ordinea exactă a câtorva file</td><td>Trage filele manual</td></tr>
+    <tr><td>Păstrează împreună, sub un nume, diferitele site-uri ale unui proiect</td><td>Grupurile de file cu nume ale browserului</td></tr>
+  </tbody>
+</table>
+<p>TabTools rearanjează filele; nu creează grupuri cu nume sau culori în browser. Dacă ai aranjat intenționat filele după proiect, gândește-te dacă sortarea după site se potrivește acelei ferestre înainte să schimbi ordinea.</p></section>
+<section id="native-browser-options"><h2>Organizează filele fără o extensie</h2><h3>Chrome</h3>
+<p>Trage filele de-a lungul barei pentru a le stabili manual ordinea. Poți folosi și grupuri cu nume când lucrul asociat implică mai multe site-uri. Consultă <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">ghidul filelor din Chrome</a> de la Google pentru aranjarea și gruparea filelor.</p>
+<h3>Firefox</h3>
+<p>Folosește bara de file pentru a muta file individuale sau opțiunile de grupare din meniul contextual al filelor Firefox pentru o colecție cu nume. Consultă <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">ghidul meniului contextual al filelor</a> de la Mozilla pentru acțiunile disponibile asupra filelor.</p>
+<h3>Microsoft Edge</h3>
+<p>Edge oferă grupuri de file cu nume și o funcție <strong>Organizează filele</strong> care poate grupa filele asociate. Disponibilitatea poate varia. Aceste opțiuni organizează după grupurile alese sau relevanță, ceea ce diferă de sortarea după numărul actual de file pe site. Microsoft le explică în <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">ghidul grupurilor de file din Edge</a>.</p></section>
+<section id="after-sorting"><h2>Ce faci după sortare</h2><p>TabTools nu are o acțiune de anulare a sortării. Butonul <strong>Anulează</strong> din fereastra extensiei este pentru ultima sa acțiune de închidere a filelor, nu pentru ordinea anterioară. Dacă vrei alt aranjament după sortare, trage filele în pozițiile dorite.</p>
+<p>Sortarea păstrează și copiile repetate ale paginilor. Dacă asta face seturile cele mai mari inutil de lungi, <a href="/ro/guides/close-duplicate-tabs/">închide filele duplicate</a> și sortează din nou folosind numărul filelor rămase.</p>
+<p>Când ai terminat cu un site întreg, folosește <a href="/ro/guides/close-tabs-from-same-website/">Închide filele site-ului</a> pentru a-i elimina paginile. Sortarea este opțiunea pentru filele de care încă ai nevoie: le face mai ușor de găsit fără să decidă ce pagini să închidă.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Ghiduri conexe"><p class="eyebrow">Descoperă în continuare</p><h2>Mai multe moduri de a-ți organiza filele.</h2><div class="guide-cards"><a class="guide-card" href="/ro/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Închide filele site-ului</span></div>
+    <h2>Închide filele aceluiași site</h2><p>Închide filele aceluiași site în Chrome cu TabTools, folosește o alternativă manuală și urmează pașii pentru Firefox și Edge.</p>
+    <span class="guide-card-bottom"><span>4 min de lectură</span><span class="guide-card-link">Citește ghidul <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/ro/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Elimină duplicatele</span></div>
+    <h2>Închide filele duplicate</h2><p>Elimină filele duplicate în Chrome, Firefox și Edge. Urmează pașii pentru TabTools, folosește opțiunea integrată în Firefox și află ce copii rămân.</p>
+    <span class="guide-card-bottom"><span>4 min de lectură</span><span class="guide-card-link">Citește ghidul <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/ro/#top" aria-label="Pagina principală TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Închide filele după site, sortează bara de file și elimină duplicatele.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Produs</span><a href="/ro/#features">Funcții</a><a href="/ro/#how-it-works">Cum funcționează</a><a href="/ro/guides/">Ghiduri</a><a href="/ro/#faq">Întrebări frecvente</a></div>
+          <div><span class="footer-label">Încearcă</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Mai multe</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Confidențialitate</a><a href="mailto:tabtools@michaelwester.com">Contact</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Gratuit și cu sursă deschisă.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

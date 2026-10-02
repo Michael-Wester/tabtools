@@ -13,6 +13,9 @@ on:
       - 'website/check-security.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
+      - 'website/guide-ui.cjs'
+      - 'website/guide-localisation.cjs'
+      - 'website/guide-locales/**'
       - 'website/check-guides.cjs'
       - '.github/workflows/website-deploy.yml'
   pull_request:
@@ -26,6 +29,9 @@ on:
       - 'website/check-security.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
+      - 'website/guide-ui.cjs'
+      - 'website/guide-localisation.cjs'
+      - 'website/guide-locales/**'
       - 'website/check-guides.cjs'
       - '.github/workflows/website-deploy.yml'
   workflow_dispatch:

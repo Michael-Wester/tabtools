@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="hu" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Lapok rendezése webhely szerint Chrome-ban, Firefoxban és Edge-ben | TabTools</title>
+    <meta name="description" content="Helyezze egymás mellé az összetartozó lapokat Chrome-ban, Firefoxban és Edge-ben a TabTools segítségével. Ismerje meg, hogyan befolyásolja lehetőségeit a webhelyenkénti lapszám, a rögzített lapok és a böngésző lapcsoportjai." />
+    <link rel="canonical" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Lapok rendezése webhely szerint Chrome-ban, Firefoxban és Edge-ben" />
+    <meta property="og:description" content="Helyezze egymás mellé az összetartozó lapokat Chrome-ban, Firefoxban és Edge-ben a TabTools segítségével. Ismerje meg, hogyan befolyásolja lehetőségeit a webhelyenkénti lapszám, a rögzített lapok és a böngésző lapcsoportjai." />
+    <meta property="og:url" content="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Lapok rendezése webhely szerint Chrome-ban, Firefoxban és Edge-ben" />
+    <meta name="twitter:description" content="Helyezze egymás mellé az összetartozó lapokat Chrome-ban, Firefoxban és Edge-ben a TabTools segítségével. Ismerje meg, hogyan befolyásolja lehetőségeit a webhelyenkénti lapszám, a rögzített lapok és a böngésző lapcsoportjai." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Lapok rendezése webhely szerint Chrome-ban, Firefoxban és Edge-ben",
+      "description": "Helyezze egymás mellé az összetartozó lapokat Chrome-ban, Firefoxban és Edge-ben a TabTools segítségével. Ismerje meg, hogyan befolyásolja lehetőségeit a webhelyenkénti lapszám, a rögzített lapok és a böngésző lapcsoportjai.",
+      "url": "https://tabtools.fyi/hu/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/hu/guides/sort-tabs-by-website/",
+      "inLanguage": "hu",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Kezdőlap",
+          "item": "https://tabtools.fyi/hu/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Útmutatók",
+          "item": "https://tabtools.fyi/hu/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Lapok rendezése webhely szerint",
+          "item": "https://tabtools.fyi/hu/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "hu",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/sort-tabs-by-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/sort-tabs-by-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/sort-tabs-by-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/sort-tabs-by-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/sort-tabs-by-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/sort-tabs-by-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/sort-tabs-by-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/sort-tabs-by-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/sort-tabs-by-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/sort-tabs-by-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/sort-tabs-by-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/sort-tabs-by-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/sort-tabs-by-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/sort-tabs-by-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/sort-tabs-by-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/sort-tabs-by-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/sort-tabs-by-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/sort-tabs-by-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/sort-tabs-by-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/sort-tabs-by-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/sort-tabs-by-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/sort-tabs-by-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/sort-tabs-by-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/sort-tabs-by-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/sort-tabs-by-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Lapok bezárása és rendezése oldalanként",
+    "extensionDescription": "Zárja be az azonos webhelyhez tartozó lapokat, rendezze őket webhely szerint, és távolítsa el a duplikátumokat.",
+    "openTabTools": "TabTools megnyitása",
+    "settings": "Beállítások",
+    "suggestions": "Javaslatok",
+    "suggestCaption": "Koppintson a webhely lapjainak bezárásához",
+    "queryPlaceholder": "Bezárás kulcsszó alapján (Enter)",
+    "close": "Bezárás",
+    "sortTabs": "Lapok rendezése",
+    "closeDuplicates": "Duplikátumok bezárása",
+    "undo": "Visszavonás",
+    "undoTitle": "Utolsó bezárás visszavonása",
+    "theme": "Téma",
+    "light": "Világos",
+    "dark": "Sötét",
+    "minTabs": "Javaslatokhoz szükséges lapszám webhelyenként",
+    "inactiveAfter": "A lapok ennyi idő után inaktívak",
+    "minutes": "perc",
+    "closedCount": "Bezárva: {count}",
+    "openCount": {
+      "one": "{count} nyitott lap",
+      "other": "{count} nyitott lap"
+    },
+    "openCountShort": {
+      "one": "{count} nyitva",
+      "other": "{count} nyitva"
+    },
+    "closedCountShort": {
+      "one": "{count} bezárva",
+      "other": "{count} bezárva"
+    },
+    "closeFailed": "Sikertelen művelet",
+    "closedInactive": "Bezárt inaktív lapok: {count}",
+    "noInactive": "Nincsenek inaktív lapok",
+    "closedDuplicates": "Bezárt duplikátumok: {count}",
+    "noDuplicates": "Nincsenek duplikátumok",
+    "nothingToUndo": "Nincs mit visszavonni",
+    "undoFailed": "Sikertelen visszavonás",
+    "restoredCount": "Visszaállítva: {count}",
+    "nothingToRestore": "Nincs mit visszaállítani",
+    "inactive": "Inaktívak",
+    "loadingSuggestions": "Javaslatok betöltése…",
+    "suggestionsFailed": "A javaslatok betöltése sikertelen",
+    "noSuggestions": "Nincsenek javaslatok",
+    "moreCount": "Nem megjelenített további javaslatok: {count}",
+    "sortFailed": "Sikertelen rendezés",
+    "sortedCount": "Áthelyezett lapok: {count}",
+    "nothingToSort": "Nincs mit rendezni",
+    "hide": "Elrejtés",
+    "show": "Megjelenítés",
+    "contextClose": "Webhely lapjainak bezárása",
+    "contextSort": "Lapok rendezése (a leggyakoribb webhelyek előre)",
+    "closeSiteLabel": "A(z) {site} lapjainak bezárása",
+    "web_heroTitle": "Zárja be az \u003cem>azonos webhely lapjait.\u003c/em>",
+    "web_featuresTitle": "Zárjon be webhelyenként.\u003cbr>\u003cem>Rendezze a többit.\u003c/em>",
+    "web_workflowTitle": "Adja hozzá a TabTools-t.\u003cbr>\u003cem>Válassza ki, mit zár be.\u003c/em>",
+    "web_privacyTitle": "A lapok adatai\u003cbr>a böngészőjében maradnak.",
+    "web_finalTitle": "Zárja be, amivel végzett.\u003cbr>\u003cem>Rendezze a többi lapot.\u003c/em>",
+    "web_siteBody": "Nyissa meg a TabTools-t, és kattintson egy webhelyre a \u003cstrong>Javaslatok\u003c/strong> alatt, vagy kattintson jobb gombbal egy weboldalon, és válassza a \u003cstrong>Webhely lapjainak bezárása\u003c/strong> lehetőséget. Ez minden normál ablakban bezárja a megfelelő lapokat, az aktuális lapot is beleértve.",
+    "web_addTo": "Hozzáadás a(z) {browser} böngészőhöz",
+    "web_storeNote": "Megnyílik a(z) {store}.",
+    "web_storeAria": "{label} — a(z) {store} megnyitása új lapon",
+    "web_language": "Nyelv",
+    "web_languageSuggestion": "Az oldal olvasása ezen a nyelven: {language}",
+    "web_switchLight": "Váltás világos módra",
+    "web_lightMode": "Világos mód",
+    "web_structuredDescription": "Ingyenes böngészőbővítmény lapok webhely szerinti bezárásához és rendezéséhez, valamint duplikátumok és inaktív lapok eltávolításához.",
+    "web_close_tabs_from_the_same": "Zárja be az azonos webhely lapjait, rendezze a lapokat webhely szerint, és távolítsa el a duplikátumokat. A TabTools ingyenes lapkezelő Chrome, Firefox és Edge böngészőkhöz.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Lapok bezárása és rendezése webhely szerint",
+    "web_close_tabs_by_site_sort": "Zárjon be lapokat webhelyenként, rendezze a lapsávot, és törölje a duplikátumokat az ingyenes, nyílt forráskódú Chrome-, Firefox- és Edge-bővítménnyel.",
+    "web_skip_to_content": "Ugrás a tartalomra",
+    "web_tabtools_home": "TabTools kezdőlap",
+    "web_main_navigation": "Fő navigáció",
+    "web_features": "Funkciók",
+    "web_how_it_works": "Használat",
+    "web_privacy": "Adatvédelem",
+    "web_faq": "GYIK",
+    "web_switch_to_dark_mode": "Váltás sötét módra",
+    "web_dark_mode": "Sötét mód",
+    "web_free_browser_tab_manager": "Ingyenes böngészőlap-kezelő",
+    "web_clear_a_website_s_tabs": "Zárja be egy webhely lapjait egyetlen művelettel, vagy rendezze a lapsávot webhely szerint. A TabTools a duplikált és inaktív lapokat is eltávolítja Chrome, Firefox és Edge böngészőkben.",
+    "web_free_to_use_no_account": "Ingyenes. Nem kell fiók.",
+    "web_viewing_on_a_phone_or": "Telefonon vagy táblagépen nézi? Nyissa meg ezt az oldalt számítógépen a TabTools hozzáadásához.",
+    "web_tabtools_browser_stores": "TabTools a bővítményáruházakban",
+    "web_choose_another_browser": "Másik böngésző választása",
+    "web_tabtools_in_action": "TabTools működés közben",
+    "web_full_demo": "Teljes bemutató",
+    "web_tabtools_full_demo": "A TabTools teljes bemutatója",
+    "web_see_tabtools_close_tabs_by": "Nézze meg, hogyan zár be a TabTools lapokat webhelyenként, távolít el duplikátumokat, rendez lapokat és zár be inaktív lapokat.",
+    "web_tabtools_product_details": "A TabTools termékadatai",
+    "web_close_tabs_by_site": "Lapok bezárása webhelyenként",
+    "web_from_the_popup_or_right": "a felugró ablakból vagy a jobb kattintásos menüből",
+    "web_local_by_design": "Helyi működésre tervezve",
+    "web_your_tab_list_stays_in": "a lapok listája a böngészőjében marad",
+    "web_open_source": "Nyílt forráskód",
+    "web_inspect_the_code_on_github": "Nézze meg a kódot a GitHubon",
+    "web_close_and_organise": "Bezárás és rendszerezés",
+    "web_clear_a_finished_task_bring": "Zárja be a befejezett feladat lapjait, helyezze egymás mellé az azonos webhely lapjait, vagy távolítsa el az ismétlődő és inaktív oldalakat.",
+    "web_01_site_cleanup": "01 / Bezárás webhelyenként",
+    "web_close_a_site_s_tabs": "Zárja be együtt egy webhely lapjait",
+    "web_see_how_to_get_started": "Nézze meg az első lépéseket",
+    "web_02_organise": "02 / Rendszerezés",
+    "web_sort_tabs_by_site": "Rendezze a lapokat webhely szerint",
+    "web_bring_tabs_from_the_same": "Helyezze egymás mellé az azonos webhely lapjait az aktuális ablakban. A legtöbb nyitott lappal rendelkező webhelyek kerülnek előre.",
+    "web_03_simplify": "03 / Egyszerűsítés",
+    "web_remove_duplicate_tabs": "Távolítsa el a duplikált lapokat",
+    "web_close_extra_copies_of_the": "Zárja be ugyanannak az oldalnak a fölösleges példányait egy kattintással. A rögzített lapok a helyükön maradnak.",
+    "web_04_find": "04 / Keresés",
+    "web_search_by_keyword_or_domain": "Keresés kulcsszó vagy tartománynév alapján",
+    "web_type_a_word_to_match": "Írjon be egy szót a lapok címében és URL-jében való kereséshez, vagy adjon meg egy pontos tartománynevet, például youtube.com. Ezután válassza a Bezárás lehetőséget.",
+    "web_05_reset": "05 / Rendrakás",
+    "web_clear_inactive_tabs": "Zárja be az inaktív lapokat",
+    "web_choose_an_inactivity_threshold_in": "Adja meg az inaktivitás időkorlátját a Beállításokban, majd kattintson az Inaktívak gombra az érintett lapok bezárásához. Az aktív, rögzített és hangot lejátszó lapok nyitva maradnak.",
+    "web_more_tabtools_details": "További tudnivalók a TabTools-ról",
+    "web_undo_cleanup_from_the_popup": "Bezárás visszavonása a felugró ablakból",
+    "web_light_and_dark_themes": "Világos és sötét téma",
+    "web_local_cleanup_statistics": "Helyben tárolt lapbezárási statisztikák",
+    "web_start_with_one_busy_site": "Kezdje egy sok lappal rendelkező webhellyel. A felugró ablakban webhelyjavaslatokat és rendezést talál, a jobb kattintásos menüben pedig gyors bezárást.",
+    "web_add_it_to_your_browser": "Adja hozzá a böngészőjéhez",
+    "web_open_the_chrome_firefox_or": "Nyissa meg a Chrome, Firefox vagy Edge áruházát, és adja hozzá az ingyenes bővítményt.",
+    "web_click_the_tabtools_icon_in": "Kattintson a TabTools ikonjára a böngésző bővítménymenüjében a webhelyjavaslatok és gyors műveletek megjelenítéséhez.",
+    "web_close_a_site_or_sort": "Zárja be egy webhely lapjait, vagy rendezze őket",
+    "web_click_a_site_under_suggestions": "Kattintson egy webhelyre a Javaslatok alatt a lapjainak bezárásához, vagy válassza a Lapok rendezése lehetőséget az azonos webhely lapjainak egymás mellé helyezéséhez.",
+    "web_private_by_design": "Adatvédelemre tervezve",
+    "web_the_tabtools_extension_processes_tab": "A TabTools bővítmény az Ön eszközén dolgozza fel a lapok adatait. A beállítások és a lapbezárási statisztikák a böngésző helyi tárhelyén maradnak. A bővítményben nincsenek fiókok, analitika, hirdetések vagy külső adatbázis.",
+    "web_read_the_privacy_policy": "Olvassa el az adatvédelmi szabályzatot",
+    "web_before_you_add_tabtools": "A TabTools hozzáadása előtt",
+    "web_common_questions": "Gyakori kérdések",
+    "web_browsers_cleanup_and_privacy": "Böngészők, lapbezárás és adatvédelem",
+    "web_is_tabtools_free": "Ingyenes a TabTools?",
+    "web_yes_tabtools_is_free_to": "Igen. A TabTools ingyenesen használható. Nincs szükség fiókra.",
+    "web_which_browsers_can_i_use": "Mely böngészőket használhatom?",
+    "web_tabtools_is_available_for_chrome": "A TabTools Chrome, Firefox és Microsoft Edge böngészőkhöz érhető el. A számítógépen való hozzáadáshoz nyissa meg a megfelelő áruházat az oldalon található böngészőhivatkozásokkal.",
+    "web_how_do_i_close_tabs": "Hogyan zárhatom be az azonos webhely lapjait?",
+    "web_right_click_within_a_web": "Kattintson jobb gombbal egy weboldalon, és válassza a „Webhely lapjainak bezárása” lehetőséget, vagy nyissa meg a TabTools-t, és kattintson a webhelyre a Javaslatok alatt. Ez minden normál ablakban bezárja a webhely lapjait, az aktuális lapot is beleértve. A felugró ablakban kulcsszót vagy pontos tartománynevet is megadhat.",
+    "web_can_i_remove_duplicates_or": "Eltávolíthatom a duplikált vagy inaktív lapokat?",
+    "web_yes_choose_close_duplicates_to": "Igen. Válassza a Duplikátumok bezárása lehetőséget az ismétlődő oldalak eltávolításához, vagy kattintson az Inaktívak gombra az érintett lapok bezárásához. Az inaktivitás időkorlátját a Beállításokban módosíthatja; a bezárás a művelet kiválasztásakor történik.",
+    "web_does_tabtools_collect_or_share": "Gyűjti vagy megosztja a TabTools a lapok adatait?",
+    "web_the_extension_processes_tab_information": "A bővítmény helyben dolgozza fel a lapok adatait, és nem küldi el őket a fejlesztőnek vagy harmadik feleknek. A beállítások és a lapbezárási statisztikák az eszközén maradnak. A webhely bemutatóját a YouTube tárolja; a beágyazott lejátszóra és a bővítményáruházakra saját adatvédelmi szabályzatuk vonatkozik.",
+    "web_can_i_undo_a_cleanup": "Visszavonhatom a lapok bezárását?",
+    "web_use_undo_immediately_after_closing": "Használja a Visszavonás gombot közvetlenül azután, hogy lapokat zárt be a TabTools felugró ablakából, amíg az ablak még nyitva van. A böngésző nemrég bezárt lapjait is használhatja az oldalak újbóli megnyitásához.",
+    "web_free_for_chrome_firefox_and": "Ingyenes Chrome, Firefox és Edge böngészőkhöz",
+    "web_other_browser_stores": "További bővítményáruházak",
+    "web_close_tabs_by_site_sort_2": "Zárjon be lapokat webhelyenként, rendezze a lapsávot, és távolítsa el a duplikátumokat.",
+    "web_product": "Termék",
+    "web_try_it": "Próbálja ki",
+    "web_more": "Továbbiak",
+    "web_contact": "Kapcsolat",
+    "web_free_and_open_source": "Ingyenes és nyílt forráskódú",
+    "web_view": "{browser} megtekintése",
+    "web_guides": "Útmutatók",
+    "web_readSiteGuide": "Olvassa el az azonos webhelyhez tartozó lapok bezárásának útmutatóját",
+    "web_readSortingGuide": "Olvassa el a lapok rendezésének útmutatóját",
+    "web_readDuplicateGuide": "Olvassa el a duplikált lapok eltávolításának útmutatóját",
+    "web_finalMobileNote": "Nyissa meg ezt az oldalt számítógépen a TabTools hozzáadásához. Alább megtekintheti a bővítmény áruházi adatlapjait.",
+    "web_socialImageAlt": "A TabTools böngészőbővítmény bemutatja a lapok kezelését"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/hu/#top" aria-label="TabTools kezdőlap">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Fő navigáció">
+          <a href="/hu/#features">Funkciók</a>
+          <a href="/hu/#how-it-works">Használat</a>
+          <a href="/hu/guides/" aria-current="page">Útmutatók</a>
+          <a href="/hu/#privacy">Adatvédelem</a>
+          <a href="/hu/#faq">GYIK</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Hozzáadás a(z) Chrome böngészőhöz" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Hozzáadás a(z) <span class="browser-button-name" data-browser-name>Chrome</span> böngészőhöz</span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Váltás sötét módra" title="Váltás sötét módra">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Sötét mód</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Nyelv: Hungarian" title="Nyelv: Hungarian" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Hungarian</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Nyelv" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="true" tabindex="-1" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Nyelv: Hungarian"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Nyelv: Hungarian</span></summary><nav class="language-fallback-menu" aria-label="Nyelv"><a class="language-fallback-option" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/sort-tabs-by-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Navigációs útvonal"><a href="/hu/">Kezdőlap</a><span aria-hidden="true">/</span><a href="/hu/guides/">Útmutatók</a><span aria-hidden="true">/</span><span aria-current="page">Lapok rendezése</span></nav>
+      <p class="eyebrow">Lapok rendezése · Böngészők számítógépre</p><h1>Lapok rendezése webhely szerint Chrome-ban, Firefoxban és Edge-ben</h1><p class="guides-lede">Ha a lapsávban dokumentumok, videók és kutatáshoz használt oldalak keverednek, a következő lap megtalálása a kelleténél tovább tart. A rendezés egymás mellé helyezi az azonos webhely oldalait, miközben nyitva hagyja őket.</p>
+      <p class="guide-byline">Szerző: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, a TabTools készítője <span aria-hidden="true">·</span> 4 perc olvasás <span aria-hidden="true">·</span> Frissítve: <time datetime="2026-10-01">2026. október 1.</time></p>
+      <p class="guide-screenshot-note">A képernyőképek az angol felületet mutatják; a feliratok a böngésző nyelvétől függően eltérhetnek.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Ezen az oldalon"><p class="eyebrow">Ezen az oldalon</p><ol><li><a href="#sort-with-tabtools">Az aktuális ablak lapjainak rendezése</a></li><li><a href="#how-the-order-works">Hogyan választja ki a TabTools a sorrendet?</a></li><li><a href="#pinned-tabs-and-subdomains">Rögzített lapok és aldomainek</a></li><li><a href="#sorting-or-tab-groups">Választás a rendezés és a lapcsoportok között</a></li><li><a href="#native-browser-options">Lapok rendezése bővítmény nélkül</a></li><li><a href="#after-sorting">Teendők rendezés után</a></li></ol></nav><a class="guide-back" href="/hu/guides/">← Összes útmutató</a></aside>
+      <article class="guide-article" aria-label="Lapok rendezése webhely szerint Chrome-ban, Firefoxban és Edge-ben"><div class="guide-answer"><p class="eyebrow">Rövid válasz</p><p>Nyissa meg a TabTools bővítményt a rendezni kívánt ablakban, és kattintson a Lapok rendezése gombra. A nem rögzített lapokat webhely szerint rendezi, előre helyezve azokat a webhelyeket, amelyekből éppen a legtöbb lap van nyitva. A rögzített lapok a helyükön maradnak.</p></div>
+      <section id="sort-with-tabtools"><h2>Az aktuális ablak lapjainak rendezése</h2><p>Ugyanez a felugró ablakból elérhető művelet használható Chrome-ban, Firefoxban és Microsoft Edge-ben. A Chrome-példa hat, YouTube-, Wikipedia- és Google-oldalakból álló, vegyesen elhelyezett lappal indul.</p>
+<ol>
+  <li>Telepítse a TabTools bővítményt a következőhöz: <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> vagy <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
+  <li>Váltson arra a böngészőablakra, amelynek a lapjait rendezni szeretné.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome három YouTube-lappal, két Wikipedia-lappal és a Google oldalával, vegyesen a lapsávban." />
+    <span class="guide-screenshot-zoom">Megtekintés teljes méretben <span aria-hidden="true">↗</span><span class="sr-only"> (új lapon nyílik meg)</span></span>
+  </a>
+  <figcaption>Rendezés előtt: három webhely hat lapja van összekeveredve.</figcaption>
+</figure>
+  </li>
+  <li>Nyissa meg a TabTools bővítményt az eszköztárról vagy a bővítménymenüből.</li>
+  <li>Kattintson erre: <strong>Lapok rendezése</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="A TabTools felugró ablaka Chrome-ban; a mutató a Lapok rendezése (Sort tabs) gombon áll." />
+    <span class="guide-screenshot-zoom">Megtekintés teljes méretben <span aria-hidden="true">↗</span><span class="sr-only"> (új lapon nyílik meg)</span></span>
+  </a>
+  <figcaption>Kattintson a Lapok rendezése (Sort tabs) gombra az egyes webhelyek oldalainak egymás mellé helyezéséhez.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>Az összetartozó, nem rögzített lapok egymás mellé kerülnek. Az oldalak nyitva maradnak, és más ablakok lapjai nem kerülnek át ebbe az ablakba. Ha másik ablakot szeretne rendezni, váltson át rá, és futtassa újra a parancsot.</p>
+<p>A rendezés egyszeri művelet. Az új lapok utána a megszokott módon nyílnak meg; a TabTools böngészés közben nem rendezi át folyamatosan a lapsávot. Kattintson ismét erre: <strong>Lapok rendezése</strong>, amikor rendet szeretne tenni az aktuális elrendezésben.</p></section>
+<section id="how-the-order-works"><h2>Hogyan választja ki a TabTools a sorrendet?</h2><p>A TabTools megszámolja az egyes webhelyek nyitott lapjait az aktuális ablakban. A több lappal rendelkező webhelyek kerülnek előre, közvetlenül a rögzített lapok után. Egyszerű példa rögzített lapok nélkül:</p>
+<table>
+  <thead><tr><th scope="col">Webhely</th><th scope="col">Nyitott lapok</th><th scope="col">Helyezés rendezés után</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>Első</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>Második</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>Harmadik</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome rendezés után: három YouTube-lap, majd két Wikipedia-lap, végül a Google; a TabTools 6 áthelyezett lapot jelez (Reordered 6 tabs)." />
+    <span class="guide-screenshot-zoom">Megtekintés teljes méretben <span aria-hidden="true">↗</span><span class="sr-only"> (új lapon nyílik meg)</span></span>
+  </a>
+  <figcaption>Rendezés után: YouTube ×3, Wikipedia ×2, majd Google. Mind a hat lap nyitva marad.</figcaption>
+</figure>
+<p>A „legtöbb megnyitott” a jelenleg nyitott lapok legnagyobb számát jelenti. Nem a leggyakrabban látogatott webhelyre, a böngészési előzményekre vagy a webhely elmúlt heti megnyitásainak számára utal.</p>
+<p>Ha két webhely lapszáma megegyezik, az állomásnevük ábécésorrendje dönt. Az azonos állomásnévhez tartozó lapok megtartják egymáshoz viszonyított sorrendjüket. Például a három YouTube-oldal sorrendje a YouTube-készleten belül megmarad; nem az oldal címe szerint rendeződnek.</p></section><aside class="guide-install" aria-label="A TabTools telepítése">
+    <div><p class="eyebrow">Ingyenes böngészőbővítmény</p><h2>Próbálja ki a gyakorlatban.</h2><p>Zárjon be lapokat webhely szerint, távolítsa el a duplikátumokat, és rendezze a megmaradt lapokat.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Hozzáadás a(z) Chrome böngészőhöz</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Hozzáadás a(z) Firefox böngészőhöz</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Hozzáadás a(z) Edge böngészőhöz</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Telefonon vagy táblagépen nézi? Nyissa meg ezt az oldalt számítógépen a TabTools hozzáadásához.</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>Rögzített lapok és aldomainek</h2><p>A rögzített lapok rögzített helyükön maradnak. Továbbra is beleszámítanak a webhely lapszámába, amikor a TabTools meghatározza a nem rögzített lapok sorrendjét.</p>
+<p>Például két rögzített és két nem rögzített GitHub-lap összesen négyet jelent a GitHub számára. Így a nem rögzített lapjai egy három nyitott lappal rendelkező webhely elé kerülnek, miközben a két rögzített GitHub-lap a helyén marad.</p>
+<p>A webhelyek egyeztetése az állomásnevet használja, és figyelmen kívül hagyja a kezdő <code>www.</code>előtagot. Az <code>example.com</code> és <code>www.example.com</code> oldalai összetartoznak. A <code>docs.example.com</code> oldalai külön készletet alkotnak a következőhöz képest: <code>shop.example.com</code>.</p>
+<p>Ez hasznos, ha különböző szolgáltatások közös szülődomainhez tartoznak: a dokumentáció és egy áruház külön maradhat a rendezett lapsávon.</p></section>
+<section id="sorting-or-tab-groups"><h2>Választás a rendezés és a lapcsoportok között</h2><p>A rendezés akkor hasznos, ha maga a webhely a szervezési szempont. A böngésző lapcsoportjai akkor hasznosak, ha a szempont egy feladat, például nyaralás, munkahelyi projekt vagy több webhelyet érintő vásárlás.</p>
+<table>
+  <thead><tr><th scope="col">Az Ön célja</th><th scope="col">Megfelelő lehetőség</th></tr></thead>
+  <tbody>
+    <tr><td>Az egyes webhelyek oldalainak egymás mellé helyezése</td><td>TabTools <strong>Lapok rendezése</strong></td></tr>
+    <tr><td>Néhány lap pontos sorrendjének kiválasztása</td><td>A lapok kézi áthúzása</td></tr>
+    <tr><td>Egy projekt különböző webhelyeinek együtt tartása egy név alatt</td><td>A böngésző elnevezett lapcsoportjai</td></tr>
+  </tbody>
+</table>
+<p>A TabTools átrendezi a lapokat; nem hoz létre elnevezett vagy színes böngészőcsoportokat. Ha szándékosan projektenként rendezte a lapokat, a sorrend módosítása előtt gondolja át, megfelelő-e az adott ablakhoz a webhely szerinti rendezés.</p></section>
+<section id="native-browser-options"><h2>Lapok rendezése bővítmény nélkül</h2><h3>Chrome</h3>
+<p>Húzza a lapokat a lapsávon a kívánt kézi sorrendbe. Elnevezett lapcsoportokat is használhat, ha az összetartozó munka több webhelyre terjed ki. A Google leírása: <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">útmutató a Chrome lapjaihoz</a>. Ez a lapok elrendezését és csoportosítását ismerteti.</p>
+<h3>Firefox</h3>
+<p>A lapsávon mozgassa az egyes lapokat, vagy használja a Firefox lapjainak helyi menüjében a csoportosítási lehetőségeket egy elnevezett gyűjteményhez. A Mozilla <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">útmutatója a lapok helyi menüjéhez</a> az elérhető lapműveleteket ismerteti.</p>
+<h3>Microsoft Edge</h3>
+<p>Az Edge elnevezett lapcsoportokat és egy <strong>Lapok rendszerezése</strong> funkciót kínál, amellyel az összetartozó lapok csoportosíthatók. Az elérhetőség változhat. Ezek a választott csoportok vagy relevancia alapján rendeznek, ami eltér a webhelyenként jelenleg nyitott lapok száma szerinti rendezéstől. A Microsoft itt ismerteti őket: <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">útmutató az Edge lapcsoportjaihoz</a>.</p></section>
+<section id="after-sorting"><h2>Teendők rendezés után</h2><p>A TabTools nem tudja visszavonni a rendezést. A felugró ablak <strong>Visszavonás</strong> gombja a legutóbbi lapbezárási műveletre szolgál, nem a korábbi lapsorrend visszaállítására. Ha rendezés után más elrendezést szeretne, húzza a lapokat a kívánt helyre.</p>
+<p>A rendezés az oldalak ismétlődő példányait is megtartja. Ha emiatt a legnagyobb készletek szükségtelenül hosszúak, <a href="/hu/guides/close-duplicate-tabs/">zárja be a duplikált lapokat</a>, majd rendezzen újra a megmaradt lapszámok alapján.</p>
+<p>Ha végzett egy teljes webhellyel, használja a <a href="/hu/guides/close-tabs-from-same-website/">Webhely lapjainak bezárása</a> parancsot az oldalai eltávolításához. A rendezés a még szükséges lapokhoz való: könnyebben megtalálhatóvá teszi őket anélkül, hogy eldöntené, mely oldalakat zárja be.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Kapcsolódó útmutatók"><p class="eyebrow">Fedezzen fel többet</p><h2>További lehetőségek a lapok rendezésére.</h2><div class="guide-cards"><a class="guide-card" href="/hu/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Webhely lapjainak bezárása</span></div>
+    <h2>Azonos webhelyhez tartozó lapok bezárása</h2><p>Zárja be egy webhely lapjait Chrome-ban a TabTools segítségével, próbálja ki a kézi megoldást, és kövesse a Firefoxhoz és Edge-hez tartozó lépéseket.</p>
+    <span class="guide-card-bottom"><span>4 perc olvasás</span><span class="guide-card-link">Útmutató olvasása <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/hu/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Duplikátumok eltávolítása</span></div>
+    <h2>Duplikált lapok bezárása</h2><p>Távolítsa el a duplikált lapokat Chrome-ban, Firefoxban és Edge-ben. Kövesse a TabTools lépéseit, használja a Firefox beépített lehetőségét, és ismerje meg, mely példányok maradnak meg.</p>
+    <span class="guide-card-bottom"><span>4 perc olvasás</span><span class="guide-card-link">Útmutató olvasása <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/hu/#top" aria-label="TabTools kezdőlap"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Zárjon be lapokat webhelyenként, rendezze a lapsávot, és távolítsa el a duplikátumokat.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Termék</span><a href="/hu/#features">Funkciók</a><a href="/hu/#how-it-works">Használat</a><a href="/hu/guides/">Útmutatók</a><a href="/hu/#faq">GYIK</a></div>
+          <div><span class="footer-label">Próbálja ki</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Továbbiak</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Adatvédelem</a><a href="mailto:tabtools@michaelwester.com">Kapcsolat</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Ingyenes és nyílt forráskódú</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

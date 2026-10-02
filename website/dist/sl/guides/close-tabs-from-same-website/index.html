@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="sl" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Kako zapreti vse zavihke istega spletišča v brskalniku Chrome | TabTools</title>
+    <meta name="description" content="Zaprite zavihke istega spletišča v brskalniku Chrome s TabTools, uporabite ročno alternativo in sledite korakom za Firefox in Edge." />
+    <link rel="canonical" href="https://tabtools.fyi/sl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/close-tabs-from-same-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/close-tabs-from-same-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Kako zapreti vse zavihke istega spletišča v brskalniku Chrome" />
+    <meta property="og:description" content="Zaprite zavihke istega spletišča v brskalniku Chrome s TabTools, uporabite ročno alternativo in sledite korakom za Firefox in Edge." />
+    <meta property="og:url" content="https://tabtools.fyi/sl/guides/close-tabs-from-same-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Kako zapreti vse zavihke istega spletišča v brskalniku Chrome" />
+    <meta name="twitter:description" content="Zaprite zavihke istega spletišča v brskalniku Chrome s TabTools, uporabite ročno alternativo in sledite korakom za Firefox in Edge." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Kako zapreti vse zavihke istega spletišča v brskalniku Chrome",
+      "description": "Zaprite zavihke istega spletišča v brskalniku Chrome s TabTools, uporabite ročno alternativo in sledite korakom za Firefox in Edge.",
+      "url": "https://tabtools.fyi/sl/guides/close-tabs-from-same-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/sl/guides/close-tabs-from-same-website/",
+      "inLanguage": "sl",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Domov",
+          "item": "https://tabtools.fyi/sl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Vodniki",
+          "item": "https://tabtools.fyi/sl/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Zapiranje zavihkov istega spletišča",
+          "item": "https://tabtools.fyi/sl/guides/close-tabs-from-same-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "sl",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/close-tabs-from-same-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/close-tabs-from-same-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/close-tabs-from-same-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/close-tabs-from-same-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/close-tabs-from-same-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/close-tabs-from-same-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/close-tabs-from-same-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/close-tabs-from-same-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/close-tabs-from-same-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/close-tabs-from-same-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/close-tabs-from-same-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/close-tabs-from-same-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/close-tabs-from-same-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/close-tabs-from-same-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/close-tabs-from-same-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/close-tabs-from-same-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/close-tabs-from-same-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/close-tabs-from-same-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/close-tabs-from-same-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/close-tabs-from-same-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/close-tabs-from-same-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/close-tabs-from-same-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/close-tabs-from-same-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/close-tabs-from-same-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/close-tabs-from-same-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/close-tabs-from-same-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/close-tabs-from-same-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/close-tabs-from-same-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/close-tabs-from-same-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Zapri in razvrsti zavihke po spletišču",
+    "extensionDescription": "Zaprite zavihke istega spletišča, jih razvrstite po spletišču in odstranite dvojnike za urejen brskalnik.",
+    "openTabTools": "Odpri TabTools",
+    "settings": "Nastavitve",
+    "suggestions": "Predlogi",
+    "suggestCaption": "Tapnite za zapiranje zavihkov spletišča",
+    "queryPlaceholder": "Zapri po ključni besedi (Enter)",
+    "close": "Zapri",
+    "sortTabs": "Razvrsti zavihke",
+    "closeDuplicates": "Zapri dvojnike",
+    "undo": "Razveljavi",
+    "undoTitle": "Razveljavi zadnje zapiranje",
+    "theme": "Tema",
+    "light": "Svetla",
+    "dark": "Temna",
+    "minTabs": "Najmanjše število zavihkov spletišča za predloge",
+    "inactiveAfter": "Zavihki nedejavni po",
+    "minutes": "minutah",
+    "closedCount": "Zaprto: {count}",
+    "openCount": {
+      "one": "{count} odprt zavihek",
+      "two": "{count} odprta zavihka",
+      "few": "{count} odprti zavihki",
+      "other": "{count} odprtih zavihkov"
+    },
+    "openCountShort": {
+      "one": "{count} odprt",
+      "two": "{count} odprta",
+      "few": "{count} odprti",
+      "other": "{count} odprtih"
+    },
+    "closedCountShort": {
+      "one": "{count} zaprt",
+      "two": "{count} zaprta",
+      "few": "{count} zaprti",
+      "other": "{count} zaprtih"
+    },
+    "closeFailed": "Dejanje ni uspelo",
+    "closedInactive": "Zaprti nedejavni zavihki: {count}",
+    "noInactive": "Ni nedejavnih zavihkov",
+    "closedDuplicates": "Zaprti podvojeni zavihki: {count}",
+    "noDuplicates": "Ni dvojnikov",
+    "nothingToUndo": "Ničesar ni mogoče razveljaviti",
+    "undoFailed": "Razveljavitev ni uspela",
+    "restoredCount": "Obnovljeno: {count}",
+    "nothingToRestore": "Ničesar ni mogoče obnoviti",
+    "inactive": "Nedejavni",
+    "loadingSuggestions": "Nalaganje predlogov …",
+    "suggestionsFailed": "Predlogov ni bilo mogoče naložiti",
+    "noSuggestions": "Trenutno ni predlogov",
+    "moreCount": "Drugi neprikazani predlogi: {count}",
+    "sortFailed": "Razvrščanje ni uspelo",
+    "sortedCount": "Prerazporejeni zavihki: {count}",
+    "nothingToSort": "Ni zavihkov za razvrščanje",
+    "hide": "Skrij",
+    "show": "Pokaži",
+    "contextClose": "Zapri zavihke spletišča",
+    "contextSort": "Razvrsti zavihke (spletišča z največ zavihki najprej)",
+    "closeSiteLabel": "Zapri zavihke spletišča {site}",
+    "web_heroTitle": "Zaprite zavihke \u003cem>istega spletišča.\u003c/em>",
+    "web_featuresTitle": "Zaprite po spletišču.\u003cbr>\u003cem>Razvrstite, kar ostane.\u003c/em>",
+    "web_workflowTitle": "Dodajte TabTools.\u003cbr>\u003cem>Izberite, kaj zapreti.\u003c/em>",
+    "web_privacyTitle": "Podatki o zavihkih ostanejo\u003cbr>v vašem brskalniku.",
+    "web_finalTitle": "Zaprite zavihke, ki jih ne potrebujete več.\u003cbr>\u003cem>Razvrstite preostale.\u003c/em>",
+    "web_siteBody": "Odprite TabTools in kliknite spletišče v razdelku \u003cstrong>Predlogi\u003c/strong> ali z desno tipko kliknite spletno stran in izberite \u003cstrong>Zapri zavihke spletišča\u003c/strong>. Zaprejo se ustrezni zavihki v vseh običajnih oknih, vključno s trenutnim zavihkom.",
+    "web_addTo": "Dodaj v {browser}",
+    "web_storeNote": "Odpre trgovino {store}.",
+    "web_storeAria": "{label} — odpre trgovino {store} v novem zavihku",
+    "web_language": "Jezik",
+    "web_languageSuggestion": "Preberite stran v jeziku {language}",
+    "web_switchLight": "Preklopi na svetli način",
+    "web_lightMode": "Svetli način",
+    "web_structuredDescription": "Brezplačna razširitev za zapiranje zavihkov po spletišču, razvrščanje zavihkov, odstranjevanje dvojnikov in zapiranje nedejavnih zavihkov.",
+    "web_close_tabs_from_the_same": "Zaprite zavihke istega spletišča, jih razvrstite in odstranite dvojnike. TabTools je brezplačen upravitelj zavihkov za Chrome, Firefox in Edge.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Zapiranje in razvrščanje zavihkov po spletišču",
+    "web_close_tabs_by_site_sort": "Zaprite zavihke po spletišču, uredite vrstico zavihkov in odstranite dvojnike z brezplačno odprtokodno razširitvijo za Chrome, Firefox in Edge.",
+    "web_skip_to_content": "Preskoči na vsebino",
+    "web_tabtools_home": "Domača stran TabTools",
+    "web_main_navigation": "Glavna navigacija",
+    "web_features": "Funkcije",
+    "web_how_it_works": "Kako deluje",
+    "web_privacy": "Zasebnost",
+    "web_faq": "Pogosta vprašanja",
+    "web_switch_to_dark_mode": "Preklopi na temni način",
+    "web_dark_mode": "Temni način",
+    "web_free_browser_tab_manager": "Brezplačen upravitelj zavihkov brskalnika",
+    "web_clear_a_website_s_tabs": "Zaprite zavihke spletišča z enim dejanjem ali jih razvrstite po spletišču. TabTools tudi odstrani dvojnike in zapre nedejavne zavihke v brskalnikih Chrome, Firefox in Edge.",
+    "web_free_to_use_no_account": "Brezplačna uporaba. Račun ni potreben.",
+    "web_viewing_on_a_phone_or": "Uporabljate telefon ali tablico? Za dodajanje TabTools odprite to stran v računalniku.",
+    "web_tabtools_browser_stores": "TabTools v trgovinah brskalnikov",
+    "web_choose_another_browser": "Izberite drug brskalnik:",
+    "web_tabtools_in_action": "TabTools v uporabi",
+    "web_full_demo": "Celotna predstavitev",
+    "web_tabtools_full_demo": "Celotna predstavitev TabTools",
+    "web_see_tabtools_close_tabs_by": "Oglejte si, kako TabTools zapira zavihke po spletišču, odstranjuje dvojnike, razvršča zavihke in zapira nedejavne zavihke.",
+    "web_tabtools_product_details": "Podrobnosti o TabTools",
+    "web_close_tabs_by_site": "Zaprite zavihke po spletišču",
+    "web_from_the_popup_or_right": "iz pojavnega okna ali priročnega menija",
+    "web_local_by_design": "Lokalno delovanje",
+    "web_your_tab_list_stays_in": "seznam zavihkov ostane v brskalniku",
+    "web_open_source": "Odprta koda",
+    "web_inspect_the_code_on_github": "Oglejte si kodo na GitHubu",
+    "web_close_and_organise": "Zaprite in uredite",
+    "web_clear_a_finished_task_bring": "Zaprite zavihke končanega opravila, postavite zavihke istega spletišča drugega ob drugega ali počistite ponovljene in nedejavne strani.",
+    "web_01_site_cleanup": "01 / Čiščenje po spletišču",
+    "web_close_a_site_s_tabs": "Zaprite zavihke spletišča skupaj",
+    "web_see_how_to_get_started": "Oglejte si, kako začeti",
+    "web_02_organise": "02 / Urejanje",
+    "web_sort_tabs_by_site": "Razvrstite zavihke po spletišču",
+    "web_bring_tabs_from_the_same": "Postavite zavihke istega spletišča drugega ob drugega v trenutnem oknu. Spletišča z največ odprtimi zavihki so prva.",
+    "web_03_simplify": "03 / Poenostavitev",
+    "web_remove_duplicate_tabs": "Odstranite podvojene zavihke",
+    "web_close_extra_copies_of_the": "Zaprite dodatne kopije iste strani z enim klikom. Pripeti zavihki ostanejo na mestu.",
+    "web_04_find": "04 / Iskanje",
+    "web_search_by_keyword_or_domain": "Iščite po ključni besedi ali domeni",
+    "web_type_a_word_to_match": "Vnesite besedo za iskanje po naslovih in URL-jih zavihkov ali točno domeno, na primer youtube.com. Nato izberite Zapri.",
+    "web_05_reset": "05 / Čiščenje",
+    "web_clear_inactive_tabs": "Zaprite nedejavne zavihke",
+    "web_choose_an_inactivity_threshold_in": "V Nastavitvah izberite čas nedejavnosti in kliknite Nedejavni, da zaprete ustrezne zavihke. Dejavni in pripeti zavihki ter zavihki, ki predvajajo zvok, ostanejo odprti.",
+    "web_more_tabtools_details": "Več o TabTools",
+    "web_undo_cleanup_from_the_popup": "Razveljavitev čiščenja iz pojavnega okna",
+    "web_light_and_dark_themes": "Svetla in temna tema",
+    "web_local_cleanup_statistics": "Lokalna statistika čiščenja",
+    "web_start_with_one_busy_site": "Začnite s spletiščem z veliko zavihki. Pojavno okno uporabite za predloge in razvrščanje, priročni meni pa za hitro zapiranje.",
+    "web_add_it_to_your_browser": "Dodajte v brskalnik",
+    "web_open_the_chrome_firefox_or": "Odprite stran trgovine Chrome, Firefox ali Edge in dodajte brezplačno razširitev.",
+    "web_click_the_tabtools_icon_in": "Kliknite ikono TabTools v meniju razširitev brskalnika za predloge spletišč in hitra dejanja.",
+    "web_close_a_site_or_sort": "Zaprite zavihke spletišča ali razvrstite zavihke",
+    "web_click_a_site_under_suggestions": "Kliknite spletišče v Predlogih, da zaprete njegove zavihke, ali izberite Razvrsti zavihke, da zavihke istega spletišča postavite drugega ob drugega.",
+    "web_private_by_design": "Zasnovano z mislijo na zasebnost",
+    "web_the_tabtools_extension_processes_tab": "Razširitev TabTools obdeluje podatke o zavihkih v vaši napravi. Nastavitve in statistika čiščenja ostanejo v lokalni shrambi brskalnika. Razširitev ne uporablja računov, analitike, oglasov ali zunanje zbirke podatkov.",
+    "web_read_the_privacy_policy": "Preberite pravilnik o zasebnosti",
+    "web_before_you_add_tabtools": "Preden dodate TabTools",
+    "web_common_questions": "Pogosta vprašanja.",
+    "web_browsers_cleanup_and_privacy": "Brskalniki, čiščenje in zasebnost.",
+    "web_is_tabtools_free": "Ali je TabTools brezplačen?",
+    "web_yes_tabtools_is_free_to": "Da. TabTools je brezplačen in ne zahteva računa.",
+    "web_which_browsers_can_i_use": "V katerih brskalnikih deluje?",
+    "web_tabtools_is_available_for_chrome": "TabTools je na voljo za Chrome, Firefox in Microsoft Edge. Za dodajanje v računalnik odprite ustrezno trgovino s povezavami na tej strani.",
+    "web_how_do_i_close_tabs": "Kako zaprem zavihke istega spletišča?",
+    "web_right_click_within_a_web": "Z desno tipko kliknite spletno stran in izberite »Zapri zavihke spletišča« ali odprite TabTools in kliknite spletišče v Predlogih. Zaprejo se njegovi zavihki v vseh običajnih oknih, vključno s trenutnim zavihkom. V pojavno okno lahko vnesete tudi ključno besedo ali točno domeno.",
+    "web_can_i_remove_duplicates_or": "Ali lahko odstranim dvojnike ali zaprem nedejavne zavihke?",
+    "web_yes_choose_close_duplicates_to": "Da. Izberite Zapri dvojnike za odstranitev ponovljenih strani ali kliknite Nedejavni za zapiranje ustreznih zavihkov. Čas nedejavnosti lahko spremenite v Nastavitvah; čiščenje se izvede, ko izberete dejanje.",
+    "web_does_tabtools_collect_or_share": "Ali TabTools zbira ali deli moje podatke?",
+    "web_the_extension_processes_tab_information": "Razširitev obdeluje podatke o zavihkih lokalno in jih ne pošilja razvijalcu ali tretjim osebam. Nastavitve in statistika ostanejo v napravi. Predstavitev na tej strani gostuje na platformi YouTube; vdelani predvajalnik in trgovine brskalnikov imajo svoje pravilnike o zasebnosti.",
+    "web_can_i_undo_a_cleanup": "Ali lahko razveljavim čiščenje?",
+    "web_use_undo_immediately_after_closing": "Uporabite Razveljavi takoj po zapiranju zavihkov iz pojavnega okna TabTools, dokler je še odprto. Strani lahko znova odprete tudi prek nedavno zaprtih zavihkov brskalnika.",
+    "web_free_for_chrome_firefox_and": "Brezplačno za Chrome, Firefox in Edge",
+    "web_other_browser_stores": "Druge trgovine brskalnikov",
+    "web_close_tabs_by_site_sort_2": "Zaprite zavihke po spletišču, uredite vrstico zavihkov in odstranite dvojnike.",
+    "web_product": "Izdelek",
+    "web_try_it": "Preizkusite",
+    "web_more": "Več",
+    "web_contact": "Stik",
+    "web_free_and_open_source": "Brezplačno in odprtokodno.",
+    "web_view": "Prikaži {browser}",
+    "web_guides": "Vodniki",
+    "web_readSiteGuide": "Preberite vodnik za zapiranje zavihkov istega spletišča",
+    "web_readSortingGuide": "Preberite vodnik za razvrščanje zavihkov",
+    "web_readDuplicateGuide": "Preberite vodnik za odstranjevanje podvojenih zavihkov",
+    "web_finalMobileNote": "Za dodajanje TabTools odprite to stran na računalniku. Spodaj si lahko ogledate strani razširitve v trgovinah.",
+    "web_socialImageAlt": "Razširitev brskalnika TabTools prikazuje upravljanje zavihkov"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Preskoči na vsebino</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/sl/#top" aria-label="Domača stran TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Glavna navigacija">
+          <a href="/sl/#features">Funkcije</a>
+          <a href="/sl/#how-it-works">Kako deluje</a>
+          <a href="/sl/guides/" aria-current="page">Vodniki</a>
+          <a href="/sl/#privacy">Zasebnost</a>
+          <a href="/sl/#faq">Pogosta vprašanja</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Dodaj v Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Dodaj v <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Preklopi na temni način" title="Preklopi na temni način">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Temni način</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Jezik: Slovenian" title="Jezik: Slovenian" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Slovenian</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Jezik" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="true" tabindex="-1" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Jezik: Slovenian"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Jezik: Slovenian</span></summary><nav class="language-fallback-menu" aria-label="Jezik"><a class="language-fallback-option" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/close-tabs-from-same-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Navigacijska pot"><a href="/sl/">Domov</a><span aria-hidden="true">/</span><a href="/sl/guides/">Vodniki</a><span aria-hidden="true">/</span><span aria-current="page">Zapri zavihke spletišča</span></nav>
+      <p class="eyebrow">Zapri zavihke spletišča · Brskalniki za računalnik</p><h1>Kako zapreti vse zavihke istega spletišča v brskalniku Chrome</h1><p class="guides-lede">Ste končali nakupovanje, poglobljeno raziskovanje ali ogled niza videoposnetkov YouTube? Zavihke tega spletišča lahko zaprete skupaj, druga spletišča pa pustite odprta.</p>
+      <p class="guide-byline">Avtor: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, ustvarjalec TabTools <span aria-hidden="true">·</span> 4 min branja <span aria-hidden="true">·</span> Posodobljeno <time datetime="2026-10-01">1. oktober 2026</time></p>
+      <p class="guide-screenshot-note">Posnetki zaslona prikazujejo angleški vmesnik; oznake se lahko v jeziku vašega brskalnika razlikujejo.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Na tej strani"><p class="eyebrow">Na tej strani</p><ol><li><a href="#close-site-tabs-in-chrome">Zaprite zavihke spletišča v brskalniku Chrome</a></li><li><a href="#use-the-popup">Zaprite drugo spletišče iz pojavnega okna</a></li><li><a href="#which-tabs-close">Kateri zavihki veljajo za isto spletišče?</a></li><li><a href="#without-an-extension">Ročno zaprite ustrezne zavihke v brskalniku Chrome</a></li><li><a href="#firefox-and-edge">Uporabite isti postopek v brskalnikih Firefox in Edge</a></li><li><a href="#undo-and-next-steps">Znova odprite zavihke ali izberite manjši obseg čiščenja</a></li></ol></nav><a class="guide-back" href="/sl/guides/">← Vsi vodniki</a></aside>
+      <article class="guide-article" aria-label="Kako zapreti vse zavihke istega spletišča v brskalniku Chrome"><div class="guide-answer"><p class="eyebrow">Kratek odgovor</p><p>Ko je TabTools nameščen, v vrstici zavihkov brskalnika Chrome z desno tipko kliknite zavihek spletišča, ki ga želite zapreti, in izberite Zapri zavihke spletišča. S tem zaprete ustrezne zavihke v vseh običajnih oknih brskalnika, vključno z ustreznimi aktivnimi in pripetimi zavihki.</p></div>
+      <section id="close-site-tabs-in-chrome"><h2>Zaprite zavihke spletišča v brskalniku Chrome</h2><p>Priročni meni zavihka omogoča bližnjico neposredno iz vrstice zavihkov brskalnika Chrome.</p>
+<ol>
+  <li><a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Namestite TabTools iz trgovine Chrome Web Store</a>.</li>
+  <li>Poiščite zavihek spletišča, ki ga želite zapreti, na primer domačo stran YouTube ali stran z rezultati iskanja.</li>
+  <li>Z desno tipko kliknite ta zavihek v vrstici zavihkov brskalnika Chrome.</li>
+  <li>Izberite <strong>Zapri zavihke spletišča</strong>. Zavihki z istim imenom gostitelja se zaprejo skupaj.</li>
+</ol>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-01-tab-menu.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-01-tab-menu.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome s šestimi pomešanimi zavihki in označeno možnostjo Zapri zavihke spletišča (Close site tabs) v priročnem meniju zavihka YouTube." />
+    <span class="guide-screenshot-zoom">Ogled v polni velikosti <span aria-hidden="true">↗</span><span class="sr-only"> (odpre se v novem zavihku)</span></span>
+  </a>
+  <figcaption>Z desno tipko kliknite zavihek YouTube v vrstici zavihkov brskalnika Chrome in izberite Zapri zavihke spletišča (Close site tabs).</figcaption>
+</figure>
+<p>V tem primeru se tri strani na <code>youtube.com</code> zaprejo, dva zavihka Wikipedia in Google pa ostanejo odprti. Zavihkov YouTube vam ni treba najprej postaviti drugega ob drugega.</p>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-02-tabs-closed.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-02-tabs-closed.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome po zaprtju treh zavihkov YouTube; dva zavihka Wikipedia in Google ostanejo odprti." />
+    <span class="guide-screenshot-zoom">Ogled v polni velikosti <span aria-hidden="true">↗</span><span class="sr-only"> (odpre se v novem zavihku)</span></span>
+  </a>
+  <figcaption>Po zaprtju: ostanejo samo dva zavihka Wikipedia in Google.</figcaption>
+</figure>
+<p>Če možnost <strong>Zapri zavihke spletišča</strong> ni na voljo v meniju zavihka, odprite ta zavihek in z desno tipko kliknite znotraj spletne strani ali uporabite pojavno okno TabTools, opisano spodaj.</p>
+<p>To je uporabno, ko ste končali s celotnim spletiščem. Če katero od njegovih strani še potrebujete, to upoštevajte pred uporabo ukaza: vključuje tudi zavihek, ki ga kliknete z desno tipko.</p></section>
+<section id="use-the-popup"><h2>Zaprite drugo spletišče iz pojavnega okna</h2><p>Spletišče lahko izberete tudi brez preklopa na katero od njegovih strani.</p>
+<ol>
+  <li>Odprite TabTools iz menija razširitev ali orodne vrstice brskalnika.</li>
+  <li>Poiščite spletišče med predlogi pod napisom <strong>Tapnite za zapiranje zavihkov spletišča</strong>. Vsak predlog prikazuje število odprtih zavihkov tega spletišča.</li>
+  <li>Izberite spletišče, da zaprete njegove ustrezne zavihke.</li>
+</ol>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-03-popup-suggestion.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-03-popup-suggestion.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools v brskalniku Chrome s kazalcem na predlogu YouTube, ki prikazuje 3 odprte zavihke." />
+    <span class="guide-screenshot-zoom">Ogled v polni velikosti <span aria-hidden="true">↗</span><span class="sr-only"> (odpre se v novem zavihku)</span></span>
+  </a>
+  <figcaption>Ko je odprtih istih šest zavihkov, izberite predlog YouTube, da zaprete njegove tri zavihke, ne da bi zapustili Google.</figcaption>
+</figure>
+<p>Ime gostitelja lahko vnesete tudi neposredno, kar je uporabno, če spletišča ni med Predlogi. Vnesite njegovo ime gostitelja, na primer <code>youtube.com</code>, v <strong>Zapri po ključni besedi (Enter)</strong>, nato pritisnite Enter ali kliknite <strong>Zapri</strong>. Vnesite samo ime gostitelja, brez <code>https://</code> ali poti strani.</p>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/close-site-04-enter-hostname.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/close-site-04-enter-hostname.png" width="1280" height="800" loading="lazy" decoding="async" alt="Polje za ključno besedo v TabTools vsebuje youtube.com, kazalec pa je na gumbu Zapri (Close)." />
+    <span class="guide-screenshot-zoom">Ogled v polni velikosti <span aria-hidden="true">↗</span><span class="sr-only"> (odpre se v novem zavihku)</span></span>
+  </a>
+  <figcaption>Ali vnesite youtube.com in kliknite Zapri (Close) oziroma pritisnite Enter.</figcaption>
+</figure>
+<p>Navadna ključna beseda, kot je <code>nakupovanje</code>, deluje drugače: išče po naslovih in URL-jih zavihkov. Če želite zapreti določeno spletišče, uporabite natančno ime gostitelja.</p></section><aside class="guide-install" aria-label="Namestite TabTools">
+    <div><p class="eyebrow">Brezplačna razširitev brskalnika</p><h2>Preizkusite v praksi.</h2><p>Zaprite zavihke po spletišču, odstranite dvojnike in razvrstite preostale.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-tabs-from-same-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Dodaj v Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-tabs-from-same-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Dodaj v Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-tabs-from-same-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Dodaj v Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Uporabljate telefon ali tablico? Za dodajanje TabTools odprite to stran v računalniku.</p>
+  </aside>
+<section id="which-tabs-close"><h2>Kateri zavihki veljajo za isto spletišče?</h2><p>Zapiranje po spletišču primerja ime gostitelja in prezre začetni <code>www.</code>. Različne strani tega gostitelja se ujemajo tudi, če se njihove poti ali parametri poizvedbe razlikujejo.</p>
+<table>
+  <thead><tr><th scope="col">Pri zapiranju example.com</th><th scope="col">Rezultat</th></tr></thead>
+  <tbody>
+    <tr><td><code>example.com/article-one</code></td><td>Se zapre</td></tr>
+    <tr><td><code>www.example.com/article-two</code></td><td>Se zapre</td></tr>
+    <tr><td><code>shop.example.com/product</code></td><td>Ostane odprt: druga poddomena</td></tr>
+    <tr><td><code>another-site.com/example</code></td><td>Ostane odprt</td></tr>
+  </tbody>
+</table>
+<p>Ukaz zajema običajna okna brskalnika, v katerem ga izvedete. Vključeni so ustrezni pripeti in aktivni zavihki; zasebni zavihki in zavihki brez beleženja zgodovine so izključeni. Ne posega v zavihke drugega brskalnika.</p></section>
+<section id="without-an-extension"><h2>Ročno zaprite ustrezne zavihke v brskalniku Chrome</h2><p>Za manjše število zavihkov iskanje po zavihkih v brskalniku Chrome ponuja ročno možnost.</p>
+<ol>
+  <li>Odprite iskanje po zavihkih s kombinacijo <strong>Ctrl + Shift + A</strong> v sistemu Windows ali Linux oziroma <strong>Command + Shift + A</strong> na računalniku Mac.</li>
+  <li>Poiščite ime spletišča ali njegovo ime gostitelja.</li>
+  <li>Preglejte zadetke med odprtimi zavihki in za vsako stran, ki jo želite odstraniti, uporabite gumb za zapiranje.</li>
+</ol>
+<p>Tako lahko ohranite izbrane strani spletišča. To hkrati pomeni, da morate zadetke pregledati in zapreti posamično. Google opisuje iskanje in zapiranje v svojem <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">vodniku za zavihke brskalnika Chrome</a>.</p></section>
+<section id="firefox-and-edge"><h2>Uporabite isti postopek v brskalnikih Firefox in Edge</h2><h3>Firefox</h3>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Namestite TabTools za Firefox</a>, nato v vrstici zavihkov z desno tipko kliknite zavihek želenega spletišča in izberite <strong>Zapri zavihke spletišča</strong>. Z desno tipko lahko kliknete tudi znotraj spletne strani ali izberete spletišče med predlogi pojavnega okna.</p>
+<h3>Microsoft Edge</h3>
+<p><a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Namestite TabTools za Edge</a>, nato z desno tipko kliknite zavihek želenega spletišča in izberite <strong>Zapri zavihke spletišča</strong>, če vaša različica brskalnika Edge to možnost prikazuje v meniju zavihka. Sicer odprite zavihek in z desno tipko kliknite znotraj spletne strani ali v pojavno okno vnesite ime gostitelja. Pravila ujemanja in obseg čez več oken so enaki kot zgoraj.</p></section>
+<section id="undo-and-next-steps"><h2>Znova odprite zavihke ali izberite manjši obseg čiščenja</h2><p>Po zapiranju zavihkov prek pojavnega okna lahko gumb <strong>Razveljavi</strong> znova odpre zavihke zadnjega čiščenja v tem oknu, dokler ostane odprto. Dejanje iz priročnega menija <strong>Zapri zavihke spletišča</strong> ni zabeleženo za gumb Razveljavi v pojavnem oknu.</p>
+<p>Po zapiranju iz priročnega menija preverite nedavno zaprte zavihke ali zgodovino brskalnika. Ponovnega odpiranja URL-ja ne smete razumeti kot obnovitev neshranjenih podatkov obrazcev ali vseh podrobnosti prejšnjega stanja strani.</p>
+<p>Če želite ohraniti eno kopijo vsake strani, sledite vodniku za <a href="/sl/guides/close-duplicate-tabs/">zapiranje podvojenih zavihkov</a>. Če želite ohraniti vse strani in jih lažje pregledovati, <a href="/sl/guides/sort-tabs-by-website/">razvrstite zavihke po spletišču</a> namesto tega.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Povezani vodniki"><p class="eyebrow">Raziščite še več</p><h2>Več načinov za urejanje zavihkov.</h2><div class="guide-cards"><a class="guide-card" href="/sl/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Odstranjevanje dvojnikov</span></div>
+    <h2>Zapiranje podvojenih zavihkov</h2><p>Odstranite podvojene zavihke v brskalnikih Chrome, Firefox in Edge. Sledite korakom za TabTools, uporabite vgrajeno možnost Firefox in spoznajte, katere kopije ostanejo.</p>
+    <span class="guide-card-bottom"><span>4 min branja</span><span class="guide-card-link">Preberite vodnik <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/sl/guides/sort-tabs-by-website/">
+    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Razvrsti zavihke</span></div>
+    <h2>Razvrščanje zavihkov po spletiščih</h2><p>Postavite povezane zavihke skupaj v brskalnikih Chrome, Firefox in Edge s TabTools. Spoznajte, kako na možnosti vplivajo število zavihkov spletišča, pripeti zavihki in skupine zavihkov brskalnika.</p>
+    <span class="guide-card-bottom"><span>4 min branja</span><span class="guide-card-link">Preberite vodnik <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/sl/#top" aria-label="Domača stran TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Zaprite zavihke po spletišču, uredite vrstico zavihkov in odstranite dvojnike.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Izdelek</span><a href="/sl/#features">Funkcije</a><a href="/sl/#how-it-works">Kako deluje</a><a href="/sl/guides/">Vodniki</a><a href="/sl/#faq">Pogosta vprašanja</a></div>
+          <div><span class="footer-label">Preizkusite</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Več</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Zasebnost</a><a href="mailto:tabtools@michaelwester.com">Stik</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Brezplačno in odprtokodno.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

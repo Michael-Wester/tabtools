@@ -1,0 +1,164 @@
+{
+  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "review": {
+    "status": "ai-reviewed",
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+  },
+  "ui": {
+    "indexTitle": "מדריכים ללשוניות הדפדפן",
+    "indexDescription": "מדריכי TabTools מעשיים לסגירת לשוניות של אתר אחד, להסרת לשוניות כפולות ולמיון לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge.",
+    "indexEyebrow": "מדריכי TabTools",
+    "indexHeading": "שורת לשוניות מסודרת יותר.",
+    "indexHeadingAccent": "משימה אחת בכל פעם.",
+    "indexLede": "סגרו את הלשוניות של אתר מסוים, הסירו עמודים כפולים או רכזו לשוניות קשורות זו לצד זו. בחרו מדריך ובצעו את השלבים בדפדפן שלכם.",
+    "indexPlatforms": "ל־Chrome, ל־Firefox ול־Edge במחשב",
+    "startEyebrow": "חדשים ב־TabTools?",
+    "startHeading": "שלוש דרכים לעשות סדר.",
+    "startBody": "סגירה לפי אתר סוגרת את העמודים של אתר מסוים. ניקוי כפילויות מסיר עמודים בעלי כתובות URL חוזרות. מיון משאיר את הלשוניות פתוחות ומשנה את הסדר שלהן. כל מדריך מסביר מה קורה, עם דוגמאות וחלופות מובנות בדפדפן.",
+    "explore": "הכירו את TabTools",
+    "browseGuides": "עיון במדריכים",
+    "readGuide": "קריאת המדריך",
+    "readTime": "{minutes} דקות קריאה",
+    "getTabTools": "קבלת TabTools",
+    "installEyebrow": "תוסף חינמי לדפדפן",
+    "installHeading": "נסו בעצמכם.",
+    "installBody": "סגרו לשוניות לפי אתר, הסירו כפילויות ומיינו את מה שנשאר.",
+    "desktopBrowsers": "דפדפנים למחשב",
+    "byline": "מאת {author}, יוצר TabTools",
+    "updated": "עודכן ב־{date}",
+    "onThisPage": "בעמוד זה",
+    "allGuides": "כל המדריכים",
+    "quickAnswer": "תשובה מהירה",
+    "relatedGuides": "מדריכים קשורים",
+    "relatedEyebrow": "ממשיכים הלאה",
+    "relatedHeading": "דרכים נוספות לארגן את הלשוניות.",
+    "home": "דף הבית",
+    "breadcrumb": "נתיב ניווט",
+    "screenshotNote": "צילומי המסך מציגים את הממשק באנגלית; שמות הפקדים עשויים להשתנות בהתאם לשפת הדפדפן."
+  },
+  "guides": [
+    {
+      "slug": "close-tabs-from-same-website",
+      "title": "איך לסגור את כל הלשוניות של אותו אתר ב־Chrome",
+      "shortTitle": "סגירת לשוניות של אותו אתר",
+      "description": "סגרו לשוניות של אותו אתר ב־Chrome באמצעות TabTools, הכירו חלופה ידנית ובצעו את השלבים גם ב־Firefox וב־Edge.",
+      "category": "סגירת לשוניות אתר",
+      "lede": "סיימתם סבב קניות, מחקר מעמיק או רצף סרטונים ב־YouTube? אפשר לסגור יחד את הלשוניות של אותו אתר ולהשאיר את שאר האתרים פתוחים.",
+      "answer": "לאחר התקנת TabTools, לחצו באמצעות לחצן העכבר הימני על לשונית של האתר שתרצו לסגור בשורת הלשוניות של Chrome ובחרו סגירת לשוניות האתר. הפעולה סוגרת את הלשוניות התואמות בכל החלונות הרגילים של הדפדפן, כולל לשוניות פעילות ומוצמדות שתואמות לאתר.",
+      "sections": [
+        {
+          "id": "close-site-tabs-in-chrome",
+          "title": "סגירת לשוניות של אתר ב־Chrome",
+          "html": "<p>תפריט ההקשר של הלשונית מאפשר לבצע את הפעולה ישירות משורת הלשוניות של Chrome.</p>\n<ol>\n  <li><a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">התקנת TabTools מ־Chrome Web Store</a>.</li>\n  <li>מצאו לשונית של האתר שתרצו לסגור, למשל דף הבית של YouTube או עמוד תוצאות חיפוש.</li>\n  <li>לחצו באמצעות לחצן העכבר הימני על הלשונית בשורת הלשוניות של Chrome.</li>\n  <li>בחרו <strong>סגירת לשוניות האתר</strong>. לשוניות בעלות אותו שם מארח של אתר ייסגרו יחד.</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-01-tab-menu.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-01-tab-menu.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome עם שש לשוניות מעורבות והאפשרות סגירת לשוניות האתר (Close site tabs) מודגשת בתפריט ההקשר של לשונית YouTube.\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>לחצו באמצעות לחצן העכבר הימני על לשונית YouTube בשורת הלשוניות של Chrome ובחרו סגירת לשוניות האתר (Close site tabs).</figcaption>\n</figure>\n<p>בדוגמה זו, שלושה עמודים ב־ <code>youtube.com</code> נסגרים, בעוד ששתי לשוניות Wikipedia ו־Google נשארות פתוחות. אין צורך לרכז קודם את לשוניות YouTube זו לצד זו.</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-02-tabs-closed.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-02-tabs-closed.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome לאחר סגירת שלוש לשוניות YouTube, כששתי לשוניות Wikipedia ו־Google נשארו פתוחות.\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>לאחר הסגירה: נשארות רק שתי לשוניות Wikipedia ו־Google.</figcaption>\n</figure>\n<p>אם האפשרות <strong>סגירת לשוניות האתר</strong> אינה מופיעה בתפריט הלשונית, פתחו את הלשונית ולחצו באמצעות לחצן העכבר הימני בתוך העמוד, או השתמשו בחלונית TabTools כמוסבר בהמשך.</p>\n<p>האפשרות שימושית כשסיימתם להשתמש באתר כולו. אם עדיין דרוש לכם עמוד מסוים ממנו, שימו לב לפני הפעלת הפקודה: גם הלשונית שעליה לחצתם תיסגר.</p>"
+        },
+        {
+          "id": "use-the-popup",
+          "title": "סגירת אתר אחר דרך החלונית",
+          "html": "<p>אפשר גם לבחור אתר בלי לעבור לאחד העמודים שלו.</p>\n<ol>\n  <li>פתחו את TabTools מתפריט התוספים או מסרגל הכלים של הדפדפן.</li>\n  <li>מצאו את האתר בין ההצעות שמתחת לכיתוב <strong>לחיצה לסגירת לשוניות מהאתר</strong>. כל הצעה מציגה את מספר הלשוניות הפתוחות שלה.</li>\n  <li>בחרו באתר כדי לסגור את הלשוניות התואמות לו.</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-03-popup-suggestion.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-03-popup-suggestion.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools ב־Chrome, עם הסמן על הצעת YouTube המציגה 3 לשוניות פתוחות.\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>כאשר אותן שש לשוניות פתוחות, בחרו בהצעת YouTube כדי לסגור את שלוש הלשוניות שלו בלי לעזוב את Google.</figcaption>\n</figure>\n<p>אפשר גם להזין שם מארח ישירות, במיוחד אם האתר אינו מופיע בהצעות. הזינו את שם המארח, למשל <code>youtube.com</code>, בשדה <strong>סגירה לפי מילת מפתח (Enter)</strong>, ואז הקישו Enter או לחצו על <strong>סגירה</strong>. הזינו רק את שם המארח, ללא <code>https://</code> או נתיב של עמוד.</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-04-enter-hostname.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-04-enter-hostname.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"שדה מילת המפתח ב־TabTools מכיל youtube.com, והסמן נמצא על סגירה (Close).\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>אפשר גם להזין youtube.com וללחוץ על סגירה (Close) או להקיש Enter.</figcaption>\n</figure>\n<p>מילת מפתח רגילה, כגון <code>shopping</code> , פועלת אחרת: היא מחפשת בכותרות הלשוניות ובכתובות ה־URL. השתמשו בשם המארח המדויק כשברצונכם לסגור אתר מסוים אחד.</p>"
+        },
+        {
+          "id": "which-tabs-close",
+          "title": "אילו לשוניות נחשבות לאותו אתר?",
+          "html": "<p>סגירה לפי אתר משווה את שם המארח ומתעלמת מהקידומת <code>www.</code>. עמודים שונים באותו שם מארח תואמים גם אם הנתיבים או פרמטרי השאילתה שלהם שונים.</p>\n<table>\n  <thead><tr><th scope=\"col\">בעת סגירת example.com</th><th scope=\"col\">תוצאה</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/article-one</code></td><td>נסגר</td></tr>\n    <tr><td><code>www.example.com/article-two</code></td><td>נסגר</td></tr>\n    <tr><td><code>shop.example.com/product</code></td><td>נשאר פתוח: תת־דומיין אחר</td></tr>\n    <tr><td><code>another-site.com/example</code></td><td>נשאר פתוח</td></tr>\n  </tbody>\n</table>\n<p>הפקודה חלה על החלונות הרגילים בדפדפן שבו היא מופעלת. לשוניות מוצמדות ופעילות שתואמות לאתר נכללות; לשוניות פרטיות או במצב גלישה בסתר אינן נכללות. היא אינה מגיעה ללשוניות ביישום דפדפן אחר.</p>"
+        },
+        {
+          "id": "without-an-extension",
+          "title": "סגירה ידנית של לשוניות תואמות ב־Chrome",
+          "html": "<p>כשיש מעט לשוניות, חיפוש הלשוניות של Chrome מציע דרך ידנית.</p>\n<ol>\n  <li>פתחו את חיפוש הלשוניות באמצעות <strong>Ctrl + Shift + A</strong> ב־Windows או ב־Linux, או באמצעות <strong>Command + Shift + A</strong> ב־Mac.</li>\n  <li>חפשו את שם האתר או את שם המארח שלו.</li>\n  <li>בדקו את תוצאות הלשוניות הפתוחות והשתמשו בכפתור הסגירה של כל עמוד שתרצו להסיר.</li>\n</ol>\n<p>כך אפשר לשמור עמודים נבחרים מהאתר, אך צריך גם לבדוק ולסגור כל התאמה בנפרד. Google מתעדת את פקדי החיפוש והסגירה ב־ <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">מדריך הלשוניות של Chrome</a>.</p>"
+        },
+        {
+          "id": "firefox-and-edge",
+          "title": "אותו תהליך גם ב־Firefox וב־Edge",
+          "html": "<h3>Firefox</h3>\n<p><a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">התקינו את TabTools ל־Firefox</a>, לחצו באמצעות לחצן העכבר הימני על לשונית של אתר היעד בשורת הלשוניות ובחרו <strong>סגירת לשוניות האתר</strong>. אפשר גם ללחוץ באמצעות לחצן העכבר הימני בתוך העמוד או לבחור אתר מההצעות בחלונית.</p>\n<h3>Microsoft Edge</h3>\n<p><a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">התקינו את TabTools ל־Edge</a>, לחצו באמצעות לחצן העכבר הימני על לשונית של אתר היעד ובחרו <strong>סגירת לשוניות האתר</strong> אם האפשרות מופיעה בתפריט הלשונית בגרסת Edge שלכם. אחרת, פתחו את הלשונית ולחצו באמצעות לחצן העכבר הימני בתוך העמוד, או הזינו את שם המארח בחלונית. כללי ההתאמה וההיקף בין חלונות זהים לאלו שתוארו למעלה.</p>"
+        },
+        {
+          "id": "undo-and-next-steps",
+          "title": "פתיחה מחדש של לשוניות או ניקוי מצומצם יותר",
+          "html": "<p>לאחר סגירת לשוניות דרך החלונית, כפתור <strong>ביטול</strong> יכול לפתוח מחדש את הלשוניות מהניקוי האחרון בחלונית, כל עוד אותה חלונית נשארת פתוחה. הפעולה <strong>סגירת לשוניות האתר</strong> מתפריט הלחיצה הימנית אינה נרשמת בכפתור הביטול של החלונית.</p>\n<p>לאחר סגירה מתפריט ההקשר, חפשו בלשוניות שנסגרו לאחרונה או בהיסטוריית הדפדפן. אין לראות בפתיחה מחדש של URL שחזור של קלט טופס שלא נשמר או של כל פרט במצבו הקודם של העמוד.</p>\n<p>אם המטרה היא להשאיר עותק אחד מכל עמוד, עקבו אחר המדריך ל־ <a href=\"/guides/close-duplicate-tabs/\">סגירת לשוניות כפולות</a>. כדי לשמור את כל העמודים ולמצוא אותם בקלות רבה יותר, בחרו במקום זאת ב־ <a href=\"/guides/sort-tabs-by-website/\">מיון לשוניות לפי אתר</a> .</p>"
+        }
+      ]
+    },
+    {
+      "slug": "close-duplicate-tabs",
+      "title": "איך לסגור לשוניות כפולות ב־Chrome, ב־Firefox וב־Edge",
+      "shortTitle": "סגירת לשוניות כפולות",
+      "description": "הסירו לשוניות כפולות ב־Chrome, ב־Firefox וב־Edge. עקבו אחר השלבים של TabTools, השתמשו באפשרות המובנית ב־Firefox והבינו אילו עותקים נשארים.",
+      "category": "הסרת כפילויות",
+      "lede": "קל לפתוח שוב את אותו מסמך, חיפוש או סרטון. הסרת העותקים החוזרים מקלה על הניווט בשורת הלשוניות, בלי לסגור את כל העמודים של אתר מסוים.",
+      "answer": "פתחו את TabTools ולחצו על סגירת כפילויות כדי להסיר עמודים כפולים שאינם מוצמדים בכל החלונות הרגילים של הדפדפן. ב־Firefox יש גם פקודות מובנות לסגירת כפילויות של לשונית אחת או לניקוי לשוניות כפולות מתפריט סקירת הלשוניות.",
+      "sections": [
+        {
+          "id": "choose-a-method",
+          "title": "בחירת שיטה לדפדפן שלכם",
+          "html": "<table>\n  <thead><tr><th scope=\"col\">דפדפן</th><th scope=\"col\">השיטה המוסברת כאן</th></tr></thead>\n  <tbody>\n    <tr><td>Chrome</td><td>פתחו את TabTools ובחרו <strong>סגירת כפילויות</strong>.</td></tr>\n    <tr><td>Firefox</td><td>השתמשו בפקודות הכפילויות המובנות, או בחרו <strong>סגירת כפילויות</strong> ב־TabTools.</td></tr>\n    <tr><td>Microsoft Edge</td><td>פתחו את TabTools ובחרו <strong>סגירת כפילויות</strong>.</td></tr>\n  </tbody>\n</table>\n<p>לפני ניקוי גורף, סיימו ושמרו כל עבודה שלא נשמרה בעמודים הכפולים. שתי לשוניות יכולות להציג אותה כתובת URL אך להכיל טקסט שונה שהזנתם בטופס.</p>"
+        },
+        {
+          "id": "what-counts-as-a-duplicate",
+          "title": "מה נחשב ללשונית כפולה?",
+          "html": "<p>לשוניות כפולות הן עותקים חוזרים של אותו עמוד. שלושה עותקים של דף הבית של YouTube הם כפילויות; דף הבית ושני עמודי תוצאות חיפוש שונים ב־YouTube הם עמודים שונים מאותו אתר.</p>\n<p>TabTools מנתח כל כתובת URL של עמוד ומסיר את המקטע שלה: החלק שמתחיל ב־<code>#</code>. מנתח ה־URL מאחד את צורת האותיות הגדולות והקטנות בסכמה ובשם המארח. ההבדלים בין אותיות גדולות וקטנות בנתיבים ובמחרוזות השאילתה, וכן סדר פרמטרי השאילתה, עדיין משמעותיים בהשוואה.</p>\n<table>\n  <thead><tr><th scope=\"col\">כתובות URL לדוגמה</th><th scope=\"col\">הטיפול של TabTools</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/guide</code> פתוח פעמיים</td><td>כפילויות</td></tr>\n    <tr><td><code>example.com/guide#intro</code> ו־ <code>example.com/guide#steps</code></td><td>כפילויות: המקטעים אינם מובאים בחשבון</td></tr>\n    <tr><td><code>example.com/guide</code> ו־ <code>example.com/contact</code></td><td>עמודים שונים</td></tr>\n    <tr><td><code>example.com/search?q=tabs</code> ו־ <code>example.com/search?q=bookmarks</code></td><td>פרמטרי שאילתה שונים; שניהם נשארים</td></tr>\n  </tbody>\n</table>\n<p>יישומי רשת מסוימים משתמשים במקטעים כדי לזהות מסכים שונים, ולכן מסכים אלו עשויים להיחשב לכפילויות. מנגד, פרמטרי מעקב יכולים לגרום לעמודים דומים להיחשב לכתובות URL שונות. הפקודה משווה כתובות; היא אינה בודקת את תוכן העמודים כדי לקבוע אם משמעותם זהה.</p>"
+        },
+        {
+          "id": "chrome-and-edge",
+          "title": "סגירת לשוניות כפולות ב־Chrome או ב־Edge",
+          "html": "<p>החלונית של TabTools משתמשת באותה פקודה בשני הדפדפנים. צילומי המסך מראים את Chrome עם שמונה לשוניות, כולל שלושה עותקים של דף הבית של YouTube.</p>\n<ol>\n  <li>התקינו את TabTools עבור <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a> או <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Microsoft Edge</a>.</li>\n  <li>פתחו את התוסף מסרגל הכלים או מתפריט התוספים.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-01-open-tabtools.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-01-open-tabtools.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome עם שמונה לשוניות, כולל שלושה עותקים של דף הבית של YouTube, והסמן על סמל TabTools בסרגל הכלים.\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>פתחו את TabTools מסרגל הכלים של Chrome.</figcaption>\n</figure>\n  </li>\n  <li>לחצו על <strong>סגירת כפילויות</strong>.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-02-close-duplicates.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-02-close-duplicates.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"חלונית TabTools מציגה 8 לשוניות פתוחות, והסמן נמצא על סגירת כפילויות (Close duplicates).\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>לחצו על סגירת כפילויות (Close duplicates) כדי להסיר עותקים חוזרים.</figcaption>\n</figure>\n  </li>\n  <li>בדקו את הודעת המצב בחלונית. היא מציינת כמה כפילויות נסגרו, או מציגה <strong>אין כפילויות</strong> כשלא נמצאו התאמות.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-03-result-and-undo.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-03-result-and-undo.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools מדווח על סגירת 2 כפילויות (Closed 2 duplicates), מציג 6 לשוניות פתוחות ומאפשר להשתמש בכפתור ביטול (Undo).\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>שני עותקים כפולים נסגרים ונשארות שש לשוניות. השאירו את החלונית פתוחה אם תרצו להשתמש בביטול (Undo).</figcaption>\n</figure>\n  </li>\n</ol>\n<p>אין צורך לבחור קודם את הלשוניות הכפולות. הניקוי חל על החלונות הרגילים באותו דפדפן, ולכן שני עותקים של עמוד יכולים להתאים גם כשהם בחלונות שונים. לשוניות פרטיות או במצב גלישה בסתר אינן נכללות.</p>\n<p>הפעלת הפקודה ב־Chrome אינה משנה לשוניות של Edge, ולהפך. הפעילו אותה בכל דפדפן בנפרד אם יש כפילויות בשניהם.</p>"
+        },
+        {
+          "id": "firefox-native-option",
+          "title": "שימוש בפקודות המובנות של Firefox לכפילויות",
+          "html": "<p>Firefox מציע אפשרויות מובנות אם כל מה שצריך הוא הסרת כפילויות.</p>\n<ul>\n  <li><strong>לעותקים של עמוד אחד:</strong> לחצו באמצעות לחצן העכבר הימני על הלשונית שתרצו לשמור ובחרו <strong>סגירת לשוניות כפולות (Close Duplicate Tabs)</strong>.</li>\n  <li><strong>לניקוי בהיקף רחב יותר:</strong> פתחו את <strong>הצגת כל הלשוניות (List all tabs)</strong>, ואז בחרו בפקודת סגירת הכפילויות, שמוצגת בתור <strong>סגירת כל הלשוניות הכפולות (Close all duplicate tabs)</strong> או <strong>סגירת לשוניות כפולות (Close Duplicate Tabs)</strong> בהתאם לממשק.</li>\n</ul>\n<p>ב־Mozilla, <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">מדריך תפריט ההקשר של הלשוניות</a> מסביר את האפשרות הראשונה. בנוסף, <a href=\"https://support.mozilla.org/en-US/kb/tab-overview-menu\">מדריך תפריט סקירת הלשוניות</a> מתאר את הניקוי הרחב יותר ומציין שהוא משאיר מבין הכפילויות את הלשונית שהייתה פעילה לאחרונה.</p>\n<p>אם אתם כבר משתמשים ב־ <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">TabTools ל־Firefox</a>, פתחו את החלונית שלו ולחצו על <strong>סגירת כפילויות</strong>. כללי ההתאמה והשמירה שלו הם כללי TabTools המפורטים בהמשך; אין להניח שהם זהים לפקודה המובנית של Firefox.</p>"
+        },
+        {
+          "id": "which-copy-stays",
+          "title": "איזה עותק TabTools משאיר?",
+          "html": "<p>TabTools משאיר עותקים מוצמדים וסוגר לשוניות לא־מוצמדות שתואמות להם בכל החלונות הרגילים של הדפדפן. כשאין עותק מוצמד, הוא משאיר את העותק הלא־מוצמד הראשון שבו הוא נתקל ברשימת הלשוניות של הדפדפן וסוגר התאמות מאוחרות יותר.</p>\n<p>הוא אינו בוחר במכוון בלשונית הפעילה, בחדשה ביותר או בזו שבה השתמשתם לאחרונה. לכן העותק שנשאר עשוי להיות בחלון אחר. כשלעמוד יש לשונית מוצמדת אחת ושני עותקים שאינם מוצמדים, נשארת רק הלשונית המוצמדת.</p>\n<p>לשוניות מוצמדות לעולם אינן נסגרות על ידי <strong>סגירת כפילויות</strong>. אם לעמוד יש כמה עותקים מוצמדים, כולם נשארים, ולכן הפקודה אינה מבטיחה שתישאר בדיוק לשונית אחת לכל URL.</p>"
+        },
+        {
+          "id": "undo-and-organise",
+          "title": "ביטול ניקוי וארגון מה שנשאר",
+          "html": "<p>השאירו את החלונית פתוחה אחרי הניקוי אם תרצו לבדוק את התוצאה. <strong>ביטול</strong> יכול לפתוח מחדש את הלשוניות מפעולת הסגירה האחרונה בחלונית, כל עוד אותה חלונית פתוחה. הוא פותח עמודים לפי URL; אין הבטחה שתוכן שלא נשמר יחזור. לאחר סגירת החלונית, השתמשו בלשוניות שנסגרו לאחרונה או בהיסטוריית הדפדפן.</p>\n<p>לעמודים שונים שסיימתם להשתמש בהם, ראו <a href=\"/guides/close-tabs-from-same-website/\">איך לסגור את כל הלשוניות של אותו אתר</a>. לעמודים שתרצו לשמור, <a href=\"/guides/sort-tabs-by-website/\">מיון לשוניות לפי אתר</a> מרכז לשוניות קשורות בלי לסגור אותן.</p>"
+        }
+      ]
+    },
+    {
+      "slug": "sort-tabs-by-website",
+      "title": "איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge",
+      "shortTitle": "מיון לשוניות לפי אתר",
+      "description": "רכזו לשוניות קשורות ב־Chrome, ב־Firefox וב־Edge באמצעות TabTools. למדו כיצד מספר הלשוניות לכל אתר, לשוניות מוצמדות וקבוצות הלשוניות בדפדפן משפיעים על הבחירה.",
+      "category": "מיון לשוניות",
+      "lede": "כששורת הלשוניות מערבבת מסמכים, סרטונים ועמודי מחקר, מציאת הלשונית הבאה אורכת יותר מדי זמן. המיון מרכז עמודים של אותו אתר יחד ומשאיר אותם פתוחים.",
+      "answer": "פתחו את TabTools בחלון שתרצו לארגן ולחצו על מיון לשוניות. הפעולה מסדרת לשוניות שאינן מוצמדות לפי אתר, כשהאתרים עם מספר הלשוניות הפתוחות הגדול ביותר מופיעים ראשונים. לשוניות מוצמדות נשארות במקומן.",
+      "sections": [
+        {
+          "id": "sort-with-tabtools",
+          "title": "מיון הלשוניות בחלון הנוכחי",
+          "html": "<p>אותה פעולה בחלונית זמינה ב־Chrome, ב־Firefox וב־Microsoft Edge. דוגמת Chrome הזו מתחילה בשש לשוניות מעורבות של YouTube, של Wikipedia ושל Google.</p>\n<ol>\n  <li>התקינו את TabTools עבור <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a>, <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox</a> או <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge</a>.</li>\n  <li>עברו לחלון הדפדפן שאת לשוניותיו תרצו לסדר.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-01-before.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-01-before.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome עם שלוש לשוניות YouTube, שתי לשוניות Wikipedia ו־Google המשולבות זו בזו בשורת הלשוניות.\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>לפני המיון: שש לשוניות משלושה אתרים מעורבות זו בזו.</figcaption>\n</figure>\n  </li>\n  <li>פתחו את TabTools מסרגל הכלים או מתפריט התוספים.</li>\n  <li>לחצו על <strong>מיון לשוניות</strong>.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-02-sort-tabs.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-02-sort-tabs.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"חלונית TabTools ב־Chrome, כשהסמן על מיון לשוניות (Sort tabs).\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>לחצו על מיון לשוניות (Sort tabs) כדי לרכז יחד את העמודים של כל אתר.</figcaption>\n</figure>\n  </li>\n</ol>\n<p>לשוניות קשורות שאינן מוצמדות עוברות זו לצד זו. העמודים נשארים פתוחים, ולשוניות בחלונות אחרים אינן מועברות לחלון הזה. אם תרצו לארגן חלון אחר, עברו אליו והפעילו את הפקודה שוב.</p>\n<p>המיון הוא פעולה חד־פעמית. לשוניות חדשות נפתחות כרגיל לאחר מכן; TabTools אינו מסדר מחדש את שורת הלשוניות באופן רציף בזמן הגלישה. לחצו שוב על <strong>מיון לשוניות</strong> כשתרצו לסדר את המצב הנוכחי.</p>"
+        },
+        {
+          "id": "how-the-order-works",
+          "title": "איך TabTools קובע את הסדר",
+          "html": "<p>TabTools סופר את הלשוניות הפתוחות לכל אתר בחלון הנוכחי. אתרים עם מספר גדול יותר מופיעים ראשונים, מיד אחרי הלשוניות המוצמדות. הנה דוגמה פשוטה בלי לשוניות מוצמדות:</p>\n<table>\n  <thead><tr><th scope=\"col\">אתר</th><th scope=\"col\">לשוניות פתוחות</th><th scope=\"col\">מיקום לאחר המיון</th></tr></thead>\n  <tbody>\n    <tr><td><code>youtube.com</code></td><td>3</td><td>ראשון</td></tr>\n    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>שני</td></tr>\n    <tr><td><code>google.com</code></td><td>1</td><td>שלישי</td></tr>\n  </tbody>\n</table>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-03-after.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-03-after.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome לאחר מיון: שלוש לשוניות YouTube, אחריהן שתי לשוניות Wikipedia ואז Google; TabTools מדווח על סידור מחדש של 6 לשוניות (Reordered 6 tabs).\" />\n    <span class=\"guide-screenshot-zoom\">הצגה בגודל מלא <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (נפתח בלשונית חדשה)</span></span>\n  </a>\n  <figcaption>לאחר המיון: YouTube ×3, ‏Wikipedia ×2 ואז Google. כל שש הלשוניות נשארות פתוחות.</figcaption>\n</figure>\n<p>״הכי הרבה פתוחות״ פירושו המספר הגדול ביותר של לשוניות שפתוחות ברגע זה. אין הכוונה לאתר שבו ביקרתם הכי הרבה, להיסטוריית הגלישה או למספר הפעמים שפתחתם אתר בשבוע האחרון.</p>\n<p>אם לשני אתרים יש אותו מספר לשוניות, שמות המארח שלהם קובעים את הסדר לפי האלפבית. לשוניות עם אותו שם מארח שומרות על הסדר היחסי שלהן. למשל, שלושת עמודי YouTube שומרים על סדרם בתוך מקבץ YouTube; הם אינם ממוינים לפי כותרת העמוד.</p>"
+        },
+        {
+          "id": "pinned-tabs-and-subdomains",
+          "title": "לשוניות מוצמדות ותתי־דומיין",
+          "html": "<p>לשוניות מוצמדות נשארות במיקומים המוצמדים שלהן. הן עדיין נספרות כחלק ממספר הלשוניות של האתר כש־TabTools קובע את סדר הלשוניות שאינן מוצמדות.</p>\n<p>למשל, שתי לשוניות GitHub מוצמדות ושתי לשוניות GitHub שאינן מוצמדות נותנות ל־GitHub ספירה של ארבע. לכן הלשוניות הלא־מוצמדות שלו יופיעו לפני אתר עם שלוש לשוניות פתוחות, בעוד ששתי לשוניות GitHub המוצמדות נשארות במקומן.</p>\n<p>התאמת האתר משתמשת בשם המארח ומתעלמת מהקידומת <code>www.</code>. עמודים ב־ <code>example.com</code> וב־ <code>www.example.com</code> נחשבים יחד. עמודים ב־ <code>docs.example.com</code> יוצרים מקבץ נפרד מאלו שב־ <code>shop.example.com</code>.</p>\n<p>הדבר שימושי כששירותים שונים חולקים דומיין אב: התיעוד והחנות יכולים להישאר נפרדים בשורת הלשוניות הממוינת.</p>"
+        },
+        {
+          "id": "sorting-or-tab-groups",
+          "title": "בחירה בין מיון לקבוצות לשוניות",
+          "html": "<p>מיון שימושי כשהאתר עצמו הוא כלל הארגון. קבוצות לשוניות בדפדפן שימושיות כשהכלל הוא משימה, למשל חופשה, פרויקט בעבודה או רכישה הכרוכה בכמה אתרים.</p>\n<table>\n  <thead><tr><th scope=\"col\">המטרה שלכם</th><th scope=\"col\">אפשרות מתאימה</th></tr></thead>\n  <tbody>\n    <tr><td>הצבת העמודים של כל אתר זה לצד זה</td><td>TabTools <strong>מיון לשוניות</strong></td></tr>\n    <tr><td>בחירת הסדר המדויק של מספר קטן של לשוניות</td><td>גרירת לשוניות ידנית</td></tr>\n    <tr><td>ריכוז האתרים השונים של פרויקט תחת שם אחד</td><td>קבוצות לשוניות בעלות שם בדפדפן</td></tr>\n  </tbody>\n</table>\n<p>TabTools משנה את סדר הלשוניות; הוא אינו יוצר קבוצות דפדפן בעלות שם או צבע. אם סידרתם את הלשוניות במכוון לפי פרויקט, חשבו אם מיון לפי אתר מתאים לאותו חלון לפני שינוי הסדר.</p>"
+        },
+        {
+          "id": "native-browser-options",
+          "title": "ארגון לשוניות ללא תוסף",
+          "html": "<h3>Chrome</h3>\n<p>גררו לשוניות לאורך שורת הלשוניות כדי לקבוע את סדרן ידנית. אפשר גם להשתמש בקבוצות לשוניות בעלות שם כשעבודה קשורה משתרעת על כמה אתרים. אצל Google, <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">מדריך הלשוניות של Chrome</a> עוסק בסידור לשוניות ובקיבוצן.</p>\n<h3>Firefox</h3>\n<p>השתמשו בשורת הלשוניות כדי להזיז לשוניות בודדות, או באפשרויות הקיבוץ שבתפריט ההקשר של Firefox כדי ליצור אוסף בעל שם. אצל Mozilla, <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">מדריך תפריט ההקשר של הלשוניות</a> מתאר את פעולות הלשוניות הזמינות.</p>\n<h3>Microsoft Edge</h3>\n<p>Edge מציע קבוצות לשוניות בעלות שם וגם תכונת <strong>ארגון לשוניות (Organize tabs)</strong> שיכולה לקבץ לשוניות קשורות. הזמינות עשויה להשתנות. האפשרויות האלו מארגנות לפי הקבוצות שבחרתם או לפי רלוונטיות, בשונה ממיון לפי מספר הלשוניות הנוכחי לכל אתר. Microsoft מסבירה אותן ב־ <a href=\"https://www.microsoft.com/en-us/edge/features/tab-groups\">מדריך קבוצות הלשוניות של Edge</a>.</p>"
+        },
+        {
+          "id": "after-sorting",
+          "title": "מה אפשר לעשות לאחר המיון",
+          "html": "<p>ל־TabTools אין פעולת ביטול למיון. כפתור <strong>ביטול</strong> בחלונית מיועד לפעולת סגירת הלשוניות האחרונה, ולא לשחזור סדר הלשוניות הקודם. אם תרצו סידור אחר לאחר המיון, גררו את הלשוניות למקומן.</p>\n<p>המיון גם משאיר עותקים חוזרים של עמודים. אם הדבר מאריך את המקבצים הגדולים שלא לצורך, <a href=\"/guides/close-duplicate-tabs/\">סגרו לשוניות כפולות</a> ומיינו שוב לפי המספרים שנותרו.</p>\n<p>כשסיימתם להשתמש באתר שלם, השתמשו ב־ <a href=\"/guides/close-tabs-from-same-website/\">סגירת לשוניות האתר</a> כדי להסיר את עמודיו. מיון הוא האפשרות המתאימה ללשוניות שעדיין דרושות לכם: הוא מקל על מציאתן בלי להחליט אילו עמודים לסגור.</p>"
+        }
+      ]
+    }
+  ]
+}

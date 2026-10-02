@@ -5,7 +5,8 @@
     "test": "playwright test --config=regression.config.cjs",
     "test:localisation": "playwright test --config=localisation.config.cjs",
     "test:chromium": "playwright test --config=regression.config.cjs --project='chromium-*'",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "test:guides": "playwright test --config=guides.config.cjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0"

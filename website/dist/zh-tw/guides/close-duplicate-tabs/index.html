@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="zh-TW" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>如何在 Chrome、Firefox 和 Edge 中關閉重複分頁 | TabTools</title>
+    <meta name="description" content="在 Chrome、Firefox 和 Edge 中移除重複分頁。了解 TabTools 的操作步驟、Firefox 內建的選項，以及哪些副本會被保留。" />
+    <link rel="canonical" href="https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/close-duplicate-tabs/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="如何在 Chrome、Firefox 和 Edge 中關閉重複分頁" />
+    <meta property="og:description" content="在 Chrome、Firefox 和 Edge 中移除重複分頁。了解 TabTools 的操作步驟、Firefox 內建的選項，以及哪些副本會被保留。" />
+    <meta property="og:url" content="https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="如何在 Chrome、Firefox 和 Edge 中關閉重複分頁" />
+    <meta name="twitter:description" content="在 Chrome、Firefox 和 Edge 中移除重複分頁。了解 TabTools 的操作步驟、Firefox 內建的選項，以及哪些副本會被保留。" />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "如何在 Chrome、Firefox 和 Edge 中關閉重複分頁",
+      "description": "在 Chrome、Firefox 和 Edge 中移除重複分頁。了解 TabTools 的操作步驟、Firefox 內建的選項，以及哪些副本會被保留。",
+      "url": "https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/",
+      "mainEntityOfPage": "https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/",
+      "inLanguage": "zh-TW",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://tabtools.fyi/zh-tw/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "指南",
+          "item": "https://tabtools.fyi/zh-tw/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "關閉重複分頁",
+          "item": "https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "zh-TW",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/close-duplicate-tabs/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/close-duplicate-tabs/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/close-duplicate-tabs/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/close-duplicate-tabs/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/close-duplicate-tabs/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/close-duplicate-tabs/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/close-duplicate-tabs/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/close-duplicate-tabs/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/close-duplicate-tabs/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/close-duplicate-tabs/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/close-duplicate-tabs/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/close-duplicate-tabs/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/close-duplicate-tabs/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/close-duplicate-tabs/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/close-duplicate-tabs/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/close-duplicate-tabs/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/close-duplicate-tabs/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/close-duplicate-tabs/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/close-duplicate-tabs/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/close-duplicate-tabs/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/close-duplicate-tabs/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/close-duplicate-tabs/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/close-duplicate-tabs/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/close-duplicate-tabs/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/close-duplicate-tabs/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/close-duplicate-tabs/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/close-duplicate-tabs/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/close-duplicate-tabs/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/close-duplicate-tabs/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - 依網站關閉與排序分頁",
+    "extensionDescription": "關閉同一網站的分頁、依網站排序並移除重複分頁，讓瀏覽器保持整齊。",
+    "openTabTools": "開啟 TabTools",
+    "settings": "設定",
+    "suggestions": "建議",
+    "suggestCaption": "點選以關閉該網站的分頁",
+    "queryPlaceholder": "依關鍵字關閉（按 Enter 鍵）",
+    "close": "關閉",
+    "sortTabs": "排序分頁",
+    "closeDuplicates": "關閉重複項目",
+    "undo": "復原",
+    "undoTitle": "復原上次關閉",
+    "theme": "佈景主題",
+    "light": "淺色",
+    "dark": "深色",
+    "minTabs": "顯示網站建議所需的最少分頁數",
+    "inactiveAfter": "分頁視為閒置前的時間",
+    "minutes": "分鐘",
+    "closedCount": "已關閉：{count}",
+    "openCount": {
+      "other": "已開啟 {count} 個分頁"
+    },
+    "openCountShort": {
+      "other": "已開啟 {count}"
+    },
+    "closedCountShort": {
+      "other": "已關閉 {count}"
+    },
+    "closeFailed": "操作失敗",
+    "closedInactive": "已關閉的閒置分頁：{count}",
+    "noInactive": "沒有閒置分頁",
+    "closedDuplicates": "已關閉的重複分頁：{count}",
+    "noDuplicates": "沒有重複項目",
+    "nothingToUndo": "沒有可復原的操作",
+    "undoFailed": "復原失敗",
+    "restoredCount": "已還原：{count}",
+    "nothingToRestore": "沒有可還原的分頁",
+    "inactive": "閒置",
+    "loadingSuggestions": "正在載入建議…",
+    "suggestionsFailed": "無法載入建議",
+    "noSuggestions": "目前沒有建議",
+    "moreCount": "未顯示的其他建議：{count}",
+    "sortFailed": "排序失敗",
+    "sortedCount": "已重新排序的分頁：{count}",
+    "nothingToSort": "沒有需要排序的分頁",
+    "hide": "隱藏",
+    "show": "顯示",
+    "contextClose": "關閉此網站的分頁",
+    "contextSort": "排序分頁（分頁最多的網站優先）",
+    "closeSiteLabel": "關閉 {site} 的分頁",
+    "web_heroTitle": "關閉\u003cem>同一網站\u003c/em>的分頁。",
+    "web_featuresTitle": "依網站關閉。\u003cbr>\u003cem>排序保留的分頁。\u003c/em>",
+    "web_workflowTitle": "新增 TabTools。\u003cbr>\u003cem>選擇要關閉的分頁。\u003c/em>",
+    "web_privacyTitle": "分頁資料\u003cbr>留在你的瀏覽器中。",
+    "web_finalTitle": "關閉用完的分頁。\u003cbr>\u003cem>排序其餘分頁。\u003c/em>",
+    "web_siteBody": "開啟 TabTools，點選\u003cstrong>建議\u003c/strong>中的網站，或在網頁內按滑鼠右鍵並選擇\u003cstrong>關閉此網站的分頁\u003c/strong>。這會關閉所有一般視窗中符合條件的分頁，包括目前的分頁。",
+    "web_addTo": "新增至 {browser}",
+    "web_storeNote": "開啟 {store}。",
+    "web_storeAria": "{label} — 在新分頁中開啟 {store}",
+    "web_language": "語言",
+    "web_languageSuggestion": "以 {language} 閱讀此頁面",
+    "web_switchLight": "切換至淺色模式",
+    "web_lightMode": "淺色模式",
+    "web_structuredDescription": "免費的瀏覽器擴充功能，可依網站關閉與排序分頁、移除重複分頁，以及關閉閒置分頁。",
+    "web_close_tabs_from_the_same": "關閉同一網站的分頁、依網站排序並移除重複項目。TabTools 是適用於 Chrome、Firefox 和 Edge 的免費分頁管理工具。",
+    "web_tabtools_close_tabs_by_site": "TabTools — 依網站關閉與排序分頁",
+    "web_close_tabs_by_site_sort": "使用適用於 Chrome、Firefox 和 Edge 的免費開放原始碼擴充功能，依網站關閉分頁、整理分頁列並移除重複項目。",
+    "web_skip_to_content": "跳至主要內容",
+    "web_tabtools_home": "TabTools 首頁",
+    "web_main_navigation": "主要導覽",
+    "web_features": "功能",
+    "web_how_it_works": "使用方式",
+    "web_privacy": "隱私權",
+    "web_faq": "常見問題",
+    "web_switch_to_dark_mode": "切換至深色模式",
+    "web_dark_mode": "深色模式",
+    "web_free_browser_tab_manager": "免費的瀏覽器分頁管理工具",
+    "web_clear_a_website_s_tabs": "一次操作關閉某個網站的分頁，或依網站排列分頁列。TabTools 也能在 Chrome、Firefox 和 Edge 中移除重複分頁並關閉閒置分頁。",
+    "web_free_to_use_no_account": "免費使用，無須帳號。",
+    "web_viewing_on_a_phone_or": "正在使用手機或平板電腦？請在電腦上開啟此頁面以新增 TabTools。",
+    "web_tabtools_browser_stores": "TabTools 瀏覽器商店",
+    "web_choose_another_browser": "選擇其他瀏覽器：",
+    "web_tabtools_in_action": "TabTools 操作示範",
+    "web_full_demo": "完整示範",
+    "web_tabtools_full_demo": "TabTools 完整示範",
+    "web_see_tabtools_close_tabs_by": "看看 TabTools 如何依網站關閉分頁、移除重複項目、排序分頁，以及關閉閒置分頁。",
+    "web_tabtools_product_details": "TabTools 產品詳細資訊",
+    "web_close_tabs_by_site": "依網站關閉分頁",
+    "web_from_the_popup_or_right": "透過彈出視窗或右鍵選單",
+    "web_local_by_design": "在本機運作",
+    "web_your_tab_list_stays_in": "分頁清單留在你的瀏覽器中",
+    "web_open_source": "開放原始碼",
+    "web_inspect_the_code_on_github": "在 GitHub 上檢視程式碼",
+    "web_close_and_organise": "關閉與整理",
+    "web_clear_a_finished_task_bring": "關閉已完成工作所用的分頁，將同一網站的分頁排在一起，或清理重複及閒置的網頁。",
+    "web_01_site_cleanup": "01 / 依網站清理",
+    "web_close_a_site_s_tabs": "一起關閉某個網站的分頁",
+    "web_see_how_to_get_started": "瞭解如何開始使用",
+    "web_02_organise": "02 / 整理",
+    "web_sort_tabs_by_site": "依網站排序分頁",
+    "web_bring_tabs_from_the_same": "將目前視窗中同一網站的分頁排在一起，開啟分頁最多的網站排在最前面。",
+    "web_03_simplify": "03 / 精簡",
+    "web_remove_duplicate_tabs": "移除重複分頁",
+    "web_close_extra_copies_of_the": "按一下即可關閉同一網頁的多餘分頁。釘選的分頁會留在原位。",
+    "web_04_find": "04 / 尋找",
+    "web_search_by_keyword_or_domain": "依關鍵字或網域搜尋",
+    "web_type_a_word_to_match": "輸入字詞以比對分頁標題和 URL，或輸入 youtube.com 等確切網域，然後選擇關閉。",
+    "web_05_reset": "05 / 清理",
+    "web_clear_inactive_tabs": "關閉閒置分頁",
+    "web_choose_an_inactivity_threshold_in": "在設定中選擇閒置時間門檻，再點選閒置以關閉符合條件的分頁。使用中的分頁、釘選分頁及正在播放音訊的分頁會保持開啟。",
+    "web_more_tabtools_details": "更多 TabTools 資訊",
+    "web_undo_cleanup_from_the_popup": "從彈出視窗復原清理操作",
+    "web_light_and_dark_themes": "淺色與深色佈景主題",
+    "web_local_cleanup_statistics": "本機清理統計資料",
+    "web_start_with_one_busy_site": "先從分頁較多的網站開始。透過彈出視窗查看網站建議與排序，或透過右鍵選單快速關閉。",
+    "web_add_it_to_your_browser": "新增至瀏覽器",
+    "web_open_the_chrome_firefox_or": "開啟 Chrome、Firefox 或 Edge 的商店頁面，新增免費擴充功能。",
+    "web_click_the_tabtools_icon_in": "點選瀏覽器擴充功能選單中的 TabTools 圖示，即可查看網站建議與快速操作。",
+    "web_close_a_site_or_sort": "關閉網站的分頁或排序分頁",
+    "web_click_a_site_under_suggestions": "點選建議中的網站以關閉其分頁，或選擇排序分頁，將同一網站的分頁排在一起。",
+    "web_private_by_design": "重視隱私的設計",
+    "web_the_tabtools_extension_processes_tab": "TabTools 擴充功能在你的裝置上處理分頁資訊。設定與清理統計資料儲存在瀏覽器的本機儲存空間中。擴充功能沒有帳號、使用情形分析、廣告或外部資料庫。",
+    "web_read_the_privacy_policy": "閱讀隱私權政策",
+    "web_before_you_add_tabtools": "新增 TabTools 之前",
+    "web_common_questions": "常見問題。",
+    "web_browsers_cleanup_and_privacy": "關於瀏覽器、清理與隱私權。",
+    "web_is_tabtools_free": "TabTools 是免費的嗎？",
+    "web_yes_tabtools_is_free_to": "是的。TabTools 可免費使用，無須帳號。",
+    "web_which_browsers_can_i_use": "可以在哪些瀏覽器使用？",
+    "web_tabtools_is_available_for_chrome": "TabTools 適用於 Chrome、Firefox 和 Microsoft Edge。若要新增至電腦，請透過本頁的瀏覽器連結開啟對應商店。",
+    "web_how_do_i_close_tabs": "如何關閉同一網站的分頁？",
+    "web_right_click_within_a_web": "在網頁內按滑鼠右鍵並選擇「關閉此網站的分頁」，或開啟 TabTools 並點選建議中的網站。這會關閉所有一般視窗中該網站的分頁，包括目前的分頁。你也可以在彈出視窗中輸入關鍵字或確切網域。",
+    "web_can_i_remove_duplicates_or": "可以移除重複項目或關閉閒置分頁嗎？",
+    "web_yes_choose_close_duplicates_to": "可以。選擇關閉重複項目以移除重複網頁，或點選閒置以關閉符合條件的分頁。你可以在設定中變更閒置時間門檻；清理只會在你選擇操作時執行。",
+    "web_does_tabtools_collect_or_share": "TabTools 會蒐集或分享我的資料嗎？",
+    "web_the_extension_processes_tab_information": "擴充功能在本機處理分頁資訊，不會傳送給開發者或第三方。設定與清理統計資料保留在你的裝置上。本網站的示範由 YouTube 託管；嵌入式播放器及瀏覽器商店各有自己的隱私權政策。",
+    "web_can_i_undo_a_cleanup": "可以復原清理操作嗎？",
+    "web_use_undo_immediately_after_closing": "從 TabTools 彈出視窗關閉分頁後，請在視窗仍開啟時立即使用復原。也可以透過瀏覽器的最近關閉分頁清單重新開啟網頁。",
+    "web_free_for_chrome_firefox_and": "免費供 Chrome、Firefox 和 Edge 使用",
+    "web_other_browser_stores": "其他瀏覽器商店",
+    "web_close_tabs_by_site_sort_2": "依網站關閉分頁、整理分頁列並移除重複項目。",
+    "web_product": "產品",
+    "web_try_it": "試用",
+    "web_more": "更多",
+    "web_contact": "聯絡",
+    "web_free_and_open_source": "免費且開放原始碼。",
+    "web_view": "查看 {browser}",
+    "web_guides": "指南",
+    "web_readSiteGuide": "閱讀依網站關閉分頁的指南",
+    "web_readSortingGuide": "閱讀分頁排序指南",
+    "web_readDuplicateGuide": "閱讀移除重複分頁的指南",
+    "web_finalMobileNote": "請在電腦上開啟此頁面以新增 TabTools。你可以查看下方的商店詳細資訊頁面。",
+    "web_socialImageAlt": "示範分頁管理功能的 TabTools 瀏覽器擴充功能"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">跳至主要內容</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/zh-tw/#top" aria-label="TabTools 首頁">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="主要導覽">
+          <a href="/zh-tw/#features">功能</a>
+          <a href="/zh-tw/#how-it-works">使用方式</a>
+          <a href="/zh-tw/guides/" aria-current="page">指南</a>
+          <a href="/zh-tw/#privacy">隱私權</a>
+          <a href="/zh-tw/#faq">常見問題</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="新增至 Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">新增至 <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="切換至深色模式" title="切換至深色模式">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>深色模式</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="語言: Chinese (Traditional)" title="語言: Chinese (Traditional)" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Chinese (Traditional)</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="語言" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="true" tabindex="-1" href="/zh-tw/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="語言: Chinese (Traditional)"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">語言: Chinese (Traditional)</span></summary><nav class="language-fallback-menu" aria-label="語言"><a class="language-fallback-option" href="/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/close-duplicate-tabs/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="麵包屑導覽"><a href="/zh-tw/">首頁</a><span aria-hidden="true">/</span><a href="/zh-tw/guides/">指南</a><span aria-hidden="true">/</span><span aria-current="page">移除重複項目</span></nav>
+      <p class="eyebrow">移除重複項目 · 電腦版瀏覽器</p><h1>如何在 Chrome、Firefox 和 Edge 中關閉重複分頁</h1><p class="guides-lede">同一份文件、同一次搜尋或同一段影片很容易被反覆開啟。移除多餘副本可以讓分頁列更易於瀏覽，同時不必清空某個網站的所有網頁。</p>
+      <p class="guide-byline">作者：<a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>，TabTools 開發者 <span aria-hidden="true">·</span> 閱讀約需 4 分鐘 <span aria-hidden="true">·</span> 更新於 <time datetime="2026-10-01">2026年10月1日</time></p>
+      <p class="guide-screenshot-note">螢幕擷取畫面顯示的是英文介面；瀏覽器使用其他語言時，介面標籤可能不同。</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="本頁內容"><p class="eyebrow">本頁內容</p><ol><li><a href="#choose-a-method">選擇適合瀏覽器的方法</a></li><li><a href="#what-counts-as-a-duplicate">什麼算是重複分頁？</a></li><li><a href="#chrome-and-edge">在 Chrome 或 Edge 中關閉重複分頁</a></li><li><a href="#firefox-native-option">使用 Firefox 內建的重複分頁命令</a></li><li><a href="#which-copy-stays">TabTools 會保留哪個副本？</a></li><li><a href="#undo-and-organise">復原清理並整理剩餘分頁</a></li></ol></nav><a class="guide-back" href="/zh-tw/guides/">← 全部指南</a></aside>
+      <article class="guide-article" aria-label="如何在 Chrome、Firefox 和 Edge 中關閉重複分頁"><div class="guide-answer"><p class="eyebrow">快速解答</p><p>開啟 TabTools 並點選「關閉重複項目」，即可移除所有一般瀏覽器視窗中未釘選的重複網頁。Firefox 也提供內建命令，可關閉某一分頁的重複副本，或從分頁概覽選單清理重複分頁。</p></div>
+      <section id="choose-a-method"><h2>選擇適合瀏覽器的方法</h2><table>
+  <thead><tr><th scope="col">瀏覽器</th><th scope="col">本文介紹的方法</th></tr></thead>
+  <tbody>
+    <tr><td>Chrome</td><td>開啟 TabTools，然後選擇 <strong>關閉重複項目</strong>。</td></tr>
+    <tr><td>Firefox</td><td>使用瀏覽器內建的重複分頁命令，或選擇 <strong>關閉重複項目</strong> （位於 TabTools 中）。</td></tr>
+    <tr><td>Microsoft Edge</td><td>開啟 TabTools，然後選擇 <strong>關閉重複項目</strong>。</td></tr>
+  </tbody>
+</table>
+<p>批次清理前，請先完成並儲存重複網頁中的工作。兩個分頁即使顯示相同的 URL，表單中也可能儲存著你輸入的不同文字。</p></section>
+<section id="what-counts-as-a-duplicate"><h2>什麼算是重複分頁？</h2><p>重複分頁是同一網頁的多個副本。三個 YouTube 首頁互為重複項目；而 YouTube 首頁和兩個不同的 YouTube 搜尋結果則是同一網站的不同網頁。</p>
+<p>TabTools 會解析每個網頁的 URL，並移除其中的片段，也就是以 <code>#</code> 開頭的部分。URL 解析器會統一協定名稱和主機名稱中的字母大小寫。路徑和查詢字串中的字母大小寫，以及查詢參數的順序，仍會影響比對結果。</p>
+<table>
+  <thead><tr><th scope="col">URL 範例</th><th scope="col">TabTools 的處理方式</th></tr></thead>
+  <tbody>
+    <tr><td><code>example.com/guide</code> 開啟兩次</td><td>重複項目</td></tr>
+    <tr><td><code>example.com/guide#intro</code> 和 <code>example.com/guide#steps</code></td><td>重複項目：片段會被忽略</td></tr>
+    <tr><td><code>example.com/guide</code> 和 <code>example.com/contact</code></td><td>不同網頁</td></tr>
+    <tr><td><code>example.com/search?q=tabs</code> 和 <code>example.com/search?q=bookmarks</code></td><td>查詢參數不同；兩者都保留</td></tr>
+  </tbody>
+</table>
+<p>有些網頁應用程式使用片段標識不同介面，因此這些介面也可能被視為重複項目。反過來，追蹤參數也可能使原本相似的網頁被視為不同 URL。該命令比較的是網址，不會檢查網頁內容來判斷兩個網頁是否表達相同內容。</p></section><aside class="guide-install" aria-label="取得 TabTools">
+    <div><p class="eyebrow">免費瀏覽器擴充功能</p><h2>動手試一試。</h2><p>依網站關閉分頁、移除重複項目，再為保留的分頁排序。</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-duplicate-tabs" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>新增至 Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-duplicate-tabs" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>新增至 Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-duplicate-tabs" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>新增至 Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>正在使用手機或平板電腦？請在電腦上開啟此頁面以新增 TabTools。</p>
+  </aside>
+<section id="chrome-and-edge"><h2>在 Chrome 或 Edge 中關閉重複分頁</h2><p>TabTools 彈出視窗在這兩款瀏覽器中使用相同的命令。這些螢幕擷取畫面展示了開啟八個分頁的 Chrome，其中包括三個 YouTube 首頁副本。</p>
+<ol>
+  <li>安裝適用於以下瀏覽器的 TabTools： <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a> 或 <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>。</li>
+  <li>從工具列或擴充功能選單開啟擴充功能。
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-01-open-tabtools.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-01-open-tabtools.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome 中開啟了八個分頁，其中包括三個 YouTube 首頁副本，指針停在工具列的 TabTools 圖示上。" />
+    <span class="guide-screenshot-zoom">檢視原圖 <span aria-hidden="true">↗</span><span class="sr-only"> （在新分頁中開啟）</span></span>
+  </a>
+  <figcaption>從 Chrome 工具列開啟 TabTools。</figcaption>
+</figure>
+  </li>
+  <li>點選 <strong>關閉重複項目</strong>。
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-02-close-duplicates.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-02-close-duplicates.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools 彈出視窗顯示 8 個已開啟的分頁，指針停在「關閉重複項目」（Close duplicates）上。" />
+    <span class="guide-screenshot-zoom">檢視原圖 <span aria-hidden="true">↗</span><span class="sr-only"> （在新分頁中開啟）</span></span>
+  </a>
+  <figcaption>點選「關閉重複項目」（Close duplicates）以移除重複副本。</figcaption>
+</figure>
+  </li>
+  <li>檢視彈出視窗的狀態訊息。它會顯示已關閉的重複分頁數量；如果沒有符合條件的項目，則顯示 <strong>沒有重複項目</strong> 。
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-03-result-and-undo.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-03-result-and-undo.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools 顯示已關閉 2 個重複分頁（Closed 2 duplicates），剩餘 6 個已開啟的分頁，並提供可用的「復原」（Undo）按鈕。" />
+    <span class="guide-screenshot-zoom">檢視原圖 <span aria-hidden="true">↗</span><span class="sr-only"> （在新分頁中開啟）</span></span>
+  </a>
+  <figcaption>兩個重複副本關閉後，剩下六個分頁。如果想使用「復原」（Undo），請保持彈出視窗開啟。</figcaption>
+</figure>
+  </li>
+</ol>
+<p>你無需先選中重複分頁。清理範圍覆蓋該瀏覽器內的所有一般視窗，因此即使同一網頁的兩個副本位於不同視窗，也能被判定為重複項目。私密或無痕分頁不在範圍內。</p>
+<p>在 Chrome 中執行命令不會改變 Edge 的分頁，反之亦然。如果兩個瀏覽器中都有重複項目，請分別操作。</p></section>
+<section id="firefox-native-option"><h2>使用 Firefox 內建的重複分頁命令</h2><p>如果只需要移除重複項目，Firefox 提供了內建選項。</p>
+<ul>
+  <li><strong>清理同一網頁的副本：</strong> 以滑鼠右鍵點選要保留的分頁，然後選擇 <strong>關閉重複分頁（Close Duplicate Tabs）</strong>。</li>
+  <li><strong>清理更大範圍的重複項目：</strong> 開啟 <strong>列出所有分頁（List all tabs）</strong>，然後選擇關閉重複項目的命令。根據介面的不同，該命令可能顯示為 <strong>關閉所有重複分頁（Close all duplicate tabs）</strong> 或 <strong>關閉重複分頁（Close Duplicate Tabs）</strong> 。</li>
+</ul>
+<p>Mozilla 的 <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">分頁右鍵選單指南</a> 介紹了第一種選項。其 <a href="https://support.mozilla.org/en-US/kb/tab-overview-menu">分頁概覽選單指南</a> 介紹了範圍更廣的清理方式，並說明會保留重複項目中最近處於使用中狀態的分頁。</p>
+<p>如果你已經在使用 <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox 版 TabTools</a>，請開啟其彈出視窗並點選 <strong>關閉重複項目</strong>。它的比對和保留規則是下文介紹的 TabTools 規則，不應假定它們與 Firefox 內建命令的規則相同。</p></section>
+<section id="which-copy-stays"><h2>TabTools 會保留哪個副本？</h2><p>TabTools 會保留已釘選的副本，並關閉所有一般視窗中符合條件的未釘選分頁。如果沒有已釘選的副本，則會保留瀏覽器分頁清單中遇到的第一個未釘選副本，並關閉後續符合條件的項目。</p>
+<p>它不會刻意選擇目前使用中的分頁、最新開啟的分頁或你最近使用的分頁。因此，保留的副本可能位於另一個視窗。如果某個網頁有一個已釘選分頁和兩個未釘選副本，最後只會保留已釘選的分頁。</p>
+<p>已釘選的分頁絕不會被 <strong>關閉重複項目</strong> 關閉。如果某個網頁有多個已釘選副本，這些副本都會保留，因此該命令無法保證每個 URL 都恰好只剩一個分頁。</p></section>
+<section id="undo-and-organise"><h2>復原清理並整理剩餘分頁</h2><p>如果要檢查清理結果，請在清理後保持彈出視窗開啟。 <strong>復原</strong> 可以在本次彈出視窗工作階段內，重新開啟最近一次透過彈出視窗關閉的分頁。它按 URL 重新開啟網頁，無法保證還原未儲存的網頁內容。彈出視窗關閉後，請改用瀏覽器的最近關閉的分頁或歷史記錄。</p>
+<p>對於已經用完的不同網頁，請參閱 <a href="/zh-tw/guides/close-tabs-from-same-website/">如何關閉同一網站的所有分頁</a>。對於希望保留的網頁， <a href="/zh-tw/guides/sort-tabs-by-website/">依網站排序分頁</a> 可以將相關分頁排在一起，而不關閉它們。</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="相關指南"><p class="eyebrow">繼續探索</p><h2>更多分頁整理方法。</h2><div class="guide-cards"><a class="guide-card" href="/zh-tw/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">關閉網站分頁</span></div>
+    <h2>關閉同一網站的分頁</h2><p>使用 TabTools 在 Chrome 中關閉同一網站的分頁，了解手動操作的替代方案，以及 Firefox 和 Edge 的操作步驟。</p>
+    <span class="guide-card-bottom"><span>閱讀約需 4 分鐘</span><span class="guide-card-link">閱讀指南 <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/zh-tw/guides/sort-tabs-by-website/">
+    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">排序分頁</span></div>
+    <h2>依網站排序分頁</h2><p>使用 TabTools 在 Chrome、Firefox 和 Edge 中將相關分頁排在一起。了解網站分頁數量、釘選分頁和瀏覽器分頁群組如何影響你的選擇。</p>
+    <span class="guide-card-bottom"><span>閱讀約需 4 分鐘</span><span class="guide-card-link">閱讀指南 <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/zh-tw/#top" aria-label="TabTools 首頁"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>依網站關閉分頁、整理分頁列並移除重複項目。</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">產品</span><a href="/zh-tw/#features">功能</a><a href="/zh-tw/#how-it-works">使用方式</a><a href="/zh-tw/guides/">指南</a><a href="/zh-tw/#faq">常見問題</a></div>
+          <div><span class="footer-label">試用</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">更多</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">隱私權</a><a href="mailto:tabtools@michaelwester.com">聯絡</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>免費且開放原始碼。</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>
