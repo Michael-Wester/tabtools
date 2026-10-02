@@ -31,7 +31,7 @@ metadata, the sitemap, and browser-store listing text. Locale paths use the
 registry values (`/de/`, `/pt-br/`, `/zh-cn/`, and so on); the root page is the
 English fallback. The language selector preserves a visitor's choice and
 offers a browser-language suggestion without replacing an explicitly chosen
-URL. Website generation also regenerates the English guides after the landing
+URL. Website generation also regenerates all localized guides after the landing
 pages so they use the current shared header, footer and theme bootstrap.
 
 ## Guides
@@ -42,14 +42,31 @@ removing duplicates, and sorting tabs by website. Article content lives in
 sitemap, reusing the homepage's header, footer and early theme bootstrap.
 Layout styles live in `dist/guides.css`. The generated HTML is committed so the
 deployment remains a static upload and all articles work without JavaScript.
-The guide index and articles remain in English; the translated landing pages
-link to these English guides.
+Every supported locale has the same three complete guides and index. English
+keeps `/guides/` and `/guides/<slug>/`; other locales use their existing homepage
+prefix, for example `/zh-cn/guides/close-tabs-from-same-website/`. The homepage,
+related-guide links, breadcrumbs and guide language picker stay in the selected
+language. Switching language preserves the current guide, query and section
+anchor, including native modified-click links. Without JavaScript the picker
+still has equivalent article links, but cannot carry a fragment supplied only
+to the browser.
+
+English article copy remains in `guides-content.cjs`, shared guide chrome is in
+`guide-ui.cjs`, and complete translated catalogues are in `guide-locales/`.
+`guide-localisation.cjs` validates their keys, placeholders, anchors, structural
+markup, destinations and source fingerprint before any guide is generated.
+Missing, untranslated or stale catalogue fields fail the build rather than
+publishing English body copy at a translated URL. Review metadata describes AI
+translation and self-review; it does not claim native-speaker review. See
+[`GUIDE-LOCALISATION.md`](GUIDE-LOCALISATION.md) for maintenance and SEO checks.
 
 The ten Chrome screenshots live in `dist/assets/guides/` and are inserted with
 the `screenshot()` helper in `guides-content.cjs`. Keep the original 1280 × 800
 PNGs, descriptive alt text and captions aligned with each example. Images scale
 to the article width, reserve their aspect ratio, load lazily and link to the
-full-size PNG. Capture details are in `dist/assets/guides/README.md`.
+full-size PNG. The existing screenshots show English browser and extension UI;
+translated articles explicitly say this and translate the alt text and captions.
+Capture details are in `dist/assets/guides/README.md`.
 
 After editing article content, its template, or the homepage navigation/footer:
 
@@ -67,7 +84,7 @@ The deploy workflow generates both sets of pages before validating them and
 rejects uncommitted generated changes, broken internal links, missing assets
 and invalid security policy. Keep the article review date in `build-guides.cjs`
 aligned with a real content review. Review the extension's behaviour when its cleanup/sorting rules
-change; localisation does not translate or change the guide instructions.
+change; translation must preserve all cleanup, pinned/active-tab and Undo caveats.
 Store links use placement-specific attribution, including `guide_inline` and
 `guide_<slug>`. No analytics service or extra browser permissions are added.
 

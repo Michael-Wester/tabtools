@@ -117,7 +117,7 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
         id: "what-counts-as-a-duplicate",
         title: "What counts as a duplicate tab?",
         html: `<p>Duplicate tabs are repeated copies of a page. Three copies of the YouTube homepage are duplicates; the homepage and two different YouTube search results are different pages from the same website.</p>
-<p>TabTools compares page URLs after removing the fragment: the part beginning with <code>#</code>. Paths and query parameters remain part of the comparison.</p>
+<p>TabTools parses each page URL and removes its fragment: the part beginning with <code>#</code>. The URL parser normalizes letter case in the scheme and hostname. Letter case in paths and query strings, and the order of query parameters, remain significant.</p>
 <table>
   <thead><tr><th scope="col">Example URLs</th><th scope="col">TabTools treatment</th></tr></thead>
   <tbody>
@@ -162,9 +162,9 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
       {
         id: "which-copy-stays",
         title: "Which copy does TabTools keep?",
-        html: `<p>TabTools keeps the first unpinned copy encountered in the browser’s tab list and closes later matches. It does not deliberately choose the active tab, the newest tab or the tab you used most recently. A retained copy may therefore be in another window.</p>
-<p>Pinned tabs are skipped completely. They are neither closed nor counted as the copy to keep. If a page has one pinned tab and two unpinned copies, the pinned tab remains and one of the unpinned copies remains too.</p>
-<p>This makes pinning useful for keeping a page in place, but it means <strong>Close duplicates</strong> does not guarantee exactly one tab for every URL across pinned and unpinned tabs.</p>`,
+        html: `<p>TabTools keeps pinned copies and closes matching unpinned tabs across your normal windows. When no pinned copy exists, it keeps the first unpinned copy encountered in the browser’s tab list and closes later matches.</p>
+<p>It does not deliberately choose the active tab, the newest tab or the tab you used most recently. A retained copy may therefore be in another window. With one pinned tab and two unpinned copies of a page, only the pinned tab remains.</p>
+<p>Pinned tabs are never closed by <strong>Close duplicates</strong>. If a page has multiple pinned copies, those copies all remain, so the command does not guarantee exactly one tab for every URL.</p>`,
       },
       {
         id: "undo-and-organise",

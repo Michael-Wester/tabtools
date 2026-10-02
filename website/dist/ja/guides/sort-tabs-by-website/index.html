@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Chrome、Firefox、Edge でタブをサイト別に並べ替える方法 | TabTools</title>
+    <meta name="description" content="TabTools を使って Chrome、Firefox、Edge の関連するタブをまとめましょう。サイトごとのタブ数、固定タブ、ブラウザーのタブグループが選択肢にどう影響するかを説明します。" />
+    <link rel="canonical" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Chrome、Firefox、Edge でタブをサイト別に並べ替える方法" />
+    <meta property="og:description" content="TabTools を使って Chrome、Firefox、Edge の関連するタブをまとめましょう。サイトごとのタブ数、固定タブ、ブラウザーのタブグループが選択肢にどう影響するかを説明します。" />
+    <meta property="og:url" content="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Chrome、Firefox、Edge でタブをサイト別に並べ替える方法" />
+    <meta name="twitter:description" content="TabTools を使って Chrome、Firefox、Edge の関連するタブをまとめましょう。サイトごとのタブ数、固定タブ、ブラウザーのタブグループが選択肢にどう影響するかを説明します。" />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Chrome、Firefox、Edge でタブをサイト別に並べ替える方法",
+      "description": "TabTools を使って Chrome、Firefox、Edge の関連するタブをまとめましょう。サイトごとのタブ数、固定タブ、ブラウザーのタブグループが選択肢にどう影響するかを説明します。",
+      "url": "https://tabtools.fyi/ja/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/ja/guides/sort-tabs-by-website/",
+      "inLanguage": "ja",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://tabtools.fyi/ja/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ガイド",
+          "item": "https://tabtools.fyi/ja/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "タブをサイト別に並べ替える",
+          "item": "https://tabtools.fyi/ja/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "ja",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/sort-tabs-by-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/sort-tabs-by-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/sort-tabs-by-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/sort-tabs-by-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/sort-tabs-by-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/sort-tabs-by-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/sort-tabs-by-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/sort-tabs-by-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/sort-tabs-by-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/sort-tabs-by-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/sort-tabs-by-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/sort-tabs-by-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/sort-tabs-by-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/sort-tabs-by-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/sort-tabs-by-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/sort-tabs-by-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/sort-tabs-by-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/sort-tabs-by-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/sort-tabs-by-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/sort-tabs-by-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/sort-tabs-by-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/sort-tabs-by-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/sort-tabs-by-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/sort-tabs-by-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/sort-tabs-by-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - サイト別にタブを閉じる・並べ替える",
+    "extensionDescription": "同じサイトのタブを閉じたり、サイト別に並べ替えたり、重複を削除したりして、ブラウザーを整理できます。",
+    "openTabTools": "TabTools を開く",
+    "settings": "設定",
+    "suggestions": "候補",
+    "suggestCaption": "タップしてサイトのタブを閉じる",
+    "queryPlaceholder": "キーワードで閉じる（Enter キー）",
+    "close": "閉じる",
+    "sortTabs": "タブを並べ替え",
+    "closeDuplicates": "重複を閉じる",
+    "undo": "元に戻す",
+    "undoTitle": "直前に閉じたタブを元に戻す",
+    "theme": "テーマ",
+    "light": "ライト",
+    "dark": "ダーク",
+    "minTabs": "候補に表示するサイトごとの最小タブ数",
+    "inactiveAfter": "タブを非アクティブとみなすまでの時間",
+    "minutes": "分",
+    "closedCount": "閉じた数: {count}",
+    "openCount": {
+      "other": "開いているタブ: {count}"
+    },
+    "openCountShort": {
+      "other": "開いている {count}"
+    },
+    "closedCountShort": {
+      "other": "閉じた {count}"
+    },
+    "closeFailed": "失敗しました",
+    "closedInactive": "閉じた非アクティブなタブ: {count}",
+    "noInactive": "非アクティブなタブはありません",
+    "closedDuplicates": "閉じた重複タブ: {count}",
+    "noDuplicates": "重複はありません",
+    "nothingToUndo": "元に戻す操作はありません",
+    "undoFailed": "元に戻せませんでした",
+    "restoredCount": "復元した数: {count}",
+    "nothingToRestore": "復元するタブはありません",
+    "inactive": "非アクティブ",
+    "loadingSuggestions": "候補を読み込み中…",
+    "suggestionsFailed": "候補を読み込めませんでした",
+    "noSuggestions": "現在、候補はありません",
+    "moreCount": "表示されていない候補: {count}",
+    "sortFailed": "並べ替えに失敗しました",
+    "sortedCount": "並べ替えたタブ: {count}",
+    "nothingToSort": "並べ替えるタブはありません",
+    "hide": "非表示",
+    "show": "表示",
+    "contextClose": "このサイトのタブを閉じる",
+    "contextSort": "タブを並べ替え（多いサイト順）",
+    "closeSiteLabel": "{site} のタブを閉じる",
+    "web_heroTitle": "\u003cem>同じサイト\u003c/em>のタブを閉じる。",
+    "web_featuresTitle": "サイト別に閉じる。\u003cbr>\u003cem>残すタブを並べ替える。\u003c/em>",
+    "web_workflowTitle": "TabTools を追加。\u003cbr>\u003cem>閉じるタブを選ぶ。\u003c/em>",
+    "web_privacyTitle": "タブのデータは\u003cbr>ブラウザー内に保存されます。",
+    "web_finalTitle": "用が済んだタブを閉じる。\u003cbr>\u003cem>残りを並べ替える。\u003c/em>",
+    "web_siteBody": "TabTools を開いて\u003cstrong>候補\u003c/strong>からサイトをクリックするか、ウェブページ内で右クリックして\u003cstrong>このサイトのタブを閉じる\u003c/strong>を選びます。現在のタブを含め、通常のウィンドウ全体で一致するタブが閉じられます。",
+    "web_addTo": "{browser} に追加",
+    "web_storeNote": "{store} が開きます。",
+    "web_storeAria": "{label} — {store} を新しいタブで開きます",
+    "web_language": "言語",
+    "web_languageSuggestion": "このページを {language} で読む",
+    "web_switchLight": "ライトモードに切り替え",
+    "web_lightMode": "ライトモード",
+    "web_structuredDescription": "サイト別にタブを閉じる、タブを並べ替える、重複や非アクティブなタブを削除するための無料ブラウザー拡張機能。",
+    "web_close_tabs_from_the_same": "同じサイトのタブを閉じ、サイト別に並べ替え、重複を削除。TabTools は Chrome、Firefox、Edge 向けの無料タブ管理拡張機能です。",
+    "web_tabtools_close_tabs_by_site": "TabTools — サイト別にタブを閉じる・並べ替える",
+    "web_close_tabs_by_site_sort": "Chrome、Firefox、Edge 向けの無料でオープンソースの拡張機能で、サイト別にタブを閉じ、タブバーを並べ替え、重複を削除できます。",
+    "web_skip_to_content": "本文へ移動",
+    "web_tabtools_home": "TabTools ホーム",
+    "web_main_navigation": "メインナビゲーション",
+    "web_features": "機能",
+    "web_how_it_works": "使い方",
+    "web_privacy": "プライバシー",
+    "web_faq": "よくある質問",
+    "web_switch_to_dark_mode": "ダークモードに切り替え",
+    "web_dark_mode": "ダークモード",
+    "web_free_browser_tab_manager": "無料のブラウザータブ管理ツール",
+    "web_clear_a_website_s_tabs": "サイトのタブを一度の操作で閉じたり、タブバーをサイト別に並べ替えたりできます。TabTools は Chrome、Firefox、Edge で重複タブや非アクティブなタブも削除できます。",
+    "web_free_to_use_no_account": "無料で使えます。アカウントは不要です。",
+    "web_viewing_on_a_phone_or": "スマートフォンやタブレットで閲覧していますか？TabTools を追加するには、パソコンでこのページを開いてください。",
+    "web_tabtools_browser_stores": "TabTools のブラウザーストア",
+    "web_choose_another_browser": "別のブラウザーを選ぶ:",
+    "web_tabtools_in_action": "TabTools の動作を見る",
+    "web_full_demo": "デモ全編",
+    "web_tabtools_full_demo": "TabTools のデモ全編",
+    "web_see_tabtools_close_tabs_by": "TabTools でサイト別にタブを閉じ、重複を削除し、タブを並べ替え、非アクティブなタブを閉じる様子をご覧ください。",
+    "web_tabtools_product_details": "TabTools の製品情報",
+    "web_close_tabs_by_site": "サイト別にタブを閉じる",
+    "web_from_the_popup_or_right": "ポップアップまたは右クリックメニューから",
+    "web_local_by_design": "ローカルで動作",
+    "web_your_tab_list_stays_in": "タブ一覧はブラウザー内にとどまります",
+    "web_open_source": "オープンソース",
+    "web_inspect_the_code_on_github": "GitHub でコードを確認",
+    "web_close_and_organise": "閉じて整理する",
+    "web_clear_a_finished_task_bring": "終わった作業のタブを閉じたり、同じサイトのタブを隣に並べたり、重複ページや非アクティブなページを整理したりできます。",
+    "web_01_site_cleanup": "01 / サイトの整理",
+    "web_close_a_site_s_tabs": "サイトのタブをまとめて閉じる",
+    "web_see_how_to_get_started": "使い始める手順を見る",
+    "web_02_organise": "02 / 整理",
+    "web_sort_tabs_by_site": "サイト別にタブを並べ替え",
+    "web_bring_tabs_from_the_same": "現在のウィンドウで同じサイトのタブを隣に並べます。開いているタブ数が多いサイトから順に並びます。",
+    "web_03_simplify": "03 / 重複を減らす",
+    "web_remove_duplicate_tabs": "重複タブを削除",
+    "web_close_extra_copies_of_the": "同じページの余分なタブをワンクリックで閉じます。ピン留めされたタブはそのまま残ります。",
+    "web_04_find": "04 / 検索",
+    "web_search_by_keyword_or_domain": "キーワードやドメインで検索",
+    "web_type_a_word_to_match": "単語を入力してタブのタイトルと URL を検索するか、youtube.com のようにドメインを正確に入力します。その後、閉じるを選びます。",
+    "web_05_reset": "05 / 整頓",
+    "web_clear_inactive_tabs": "非アクティブなタブを閉じる",
+    "web_choose_an_inactivity_threshold_in": "設定で非アクティブとみなすまでの時間を指定し、非アクティブをクリックして対象のタブを閉じます。アクティブなタブ、ピン留めされたタブ、音声を再生中のタブは閉じません。",
+    "web_more_tabtools_details": "TabTools のその他の情報",
+    "web_undo_cleanup_from_the_popup": "ポップアップから閉じたタブを元に戻す",
+    "web_light_and_dark_themes": "ライトテーマとダークテーマ",
+    "web_local_cleanup_statistics": "ローカルに保存される整理の統計",
+    "web_start_with_one_busy_site": "まずはタブの多いサイトから。ポップアップでサイトの候補を選んだり並べ替えたり、右クリックメニューからすぐに閉じたりできます。",
+    "web_add_it_to_your_browser": "ブラウザーに追加",
+    "web_open_the_chrome_firefox_or": "Chrome、Firefox、Edge のストアページを開き、無料の拡張機能を追加します。",
+    "web_click_the_tabtools_icon_in": "ブラウザーの拡張機能メニューにある TabTools アイコンをクリックすると、サイトの候補とクイック操作が表示されます。",
+    "web_close_a_site_or_sort": "サイトのタブを閉じる・タブを並べ替える",
+    "web_click_a_site_under_suggestions": "候補からサイトをクリックすると、そのサイトのタブが閉じます。タブを並べ替えを選ぶと、同じサイトのタブが隣に並びます。",
+    "web_private_by_design": "プライバシーを考えた設計",
+    "web_the_tabtools_extension_processes_tab": "TabTools 拡張機能は、タブ情報をお使いの端末内で処理します。設定と整理の統計はブラウザーのローカルストレージに保存されます。拡張機能にはアカウント、アクセス解析、広告、外部データベースはありません。",
+    "web_read_the_privacy_policy": "プライバシーポリシーを読む",
+    "web_before_you_add_tabtools": "TabTools を追加する前に",
+    "web_common_questions": "よくある質問。",
+    "web_browsers_cleanup_and_privacy": "ブラウザー、タブの整理、プライバシーについて。",
+    "web_is_tabtools_free": "TabTools は無料ですか？",
+    "web_yes_tabtools_is_free_to": "はい。TabTools は無料で使えます。アカウントは不要です。",
+    "web_which_browsers_can_i_use": "どのブラウザーで使えますか？",
+    "web_tabtools_is_available_for_chrome": "TabTools は Chrome、Firefox、Microsoft Edge で利用できます。パソコンに追加するには、このページのブラウザー別リンクから該当するストアを開いてください。",
+    "web_how_do_i_close_tabs": "同じサイトのタブを閉じるには？",
+    "web_right_click_within_a_web": "ウェブページ内で右クリックして「このサイトのタブを閉じる」を選ぶか、TabTools を開いて候補からサイトをクリックします。現在のタブを含め、通常のウィンドウ全体でそのサイトのタブが閉じられます。ポップアップでキーワードや正確なドメインを入力することもできます。",
+    "web_can_i_remove_duplicates_or": "重複や非アクティブなタブを削除できますか？",
+    "web_yes_choose_close_duplicates_to": "はい。重複を閉じるで同じページの余分なタブを削除でき、非アクティブで対象のタブを閉じられます。設定で非アクティブとみなすまでの時間を変更できます。整理は操作を選んだときに実行されます。",
+    "web_does_tabtools_collect_or_share": "TabTools はデータを収集・共有しますか？",
+    "web_the_extension_processes_tab_information": "拡張機能はタブ情報をローカルで処理し、開発者や第三者に送信しません。設定と整理の統計は端末内に保存されます。このウェブサイトのデモは YouTube で配信されています。埋め込みプレーヤーとブラウザーストアには、それぞれ独自のプライバシーポリシーがあります。",
+    "web_can_i_undo_a_cleanup": "閉じたタブを元に戻せますか？",
+    "web_use_undo_immediately_after_closing": "TabTools のポップアップからタブを閉じた直後に、ポップアップを開いたまま元に戻すを使ってください。ブラウザーの最近閉じたタブからページを開き直すこともできます。",
+    "web_free_for_chrome_firefox_and": "Chrome、Firefox、Edge 向けに無料提供",
+    "web_other_browser_stores": "その他のブラウザーストア",
+    "web_close_tabs_by_site_sort_2": "サイト別にタブを閉じ、タブバーを並べ替え、重複を削除。",
+    "web_product": "製品",
+    "web_try_it": "試してみる",
+    "web_more": "その他",
+    "web_contact": "お問い合わせ",
+    "web_free_and_open_source": "無料・オープンソース。",
+    "web_view": "{browser} を見る",
+    "web_guides": "ガイド",
+    "web_readSiteGuide": "サイト別にタブを閉じるガイドを読む",
+    "web_readSortingGuide": "タブを並べ替えるガイドを読む",
+    "web_readDuplicateGuide": "重複タブを削除するガイドを読む",
+    "web_finalMobileNote": "TabTools を追加するには、パソコンでこのページを開いてください。ストアの掲載ページは以下から確認できます。",
+    "web_socialImageAlt": "タブ管理を実演するブラウザー拡張機能 TabTools"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/ja/#top" aria-label="TabTools ホーム">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="メインナビゲーション">
+          <a href="/ja/#features">機能</a>
+          <a href="/ja/#how-it-works">使い方</a>
+          <a href="/ja/guides/" aria-current="page">ガイド</a>
+          <a href="/ja/#privacy">プライバシー</a>
+          <a href="/ja/#faq">よくある質問</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Chrome に追加" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome"><span class="browser-button-name" data-browser-name>Chrome</span> に追加</span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="ダークモードに切り替え" title="ダークモードに切り替え">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>ダークモード</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="言語: Japanese" title="言語: Japanese" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Japanese</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="言語" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="true" tabindex="-1" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="言語: Japanese"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">言語: Japanese</span></summary><nav class="language-fallback-menu" aria-label="言語"><a class="language-fallback-option" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/sort-tabs-by-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="パンくずリスト"><a href="/ja/">ホーム</a><span aria-hidden="true">/</span><a href="/ja/guides/">ガイド</a><span aria-hidden="true">/</span><span aria-current="page">タブを並べ替える</span></nav>
+      <p class="eyebrow">タブを並べ替える · パソコン用ブラウザー</p><h1>Chrome、Firefox、Edge でタブをサイト別に並べ替える方法</h1><p class="guides-lede">タブバーに文書、動画、調査用のページが混在していると、次のタブを探すのに時間がかかります。並べ替えると、ページを開いたまま、同じサイトのタブを隣り合わせにできます。</p>
+      <p class="guide-byline">著者：<a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>（TabTools 開発者） <span aria-hidden="true">·</span> 約 4 分で読めます <span aria-hidden="true">·</span> 更新日：<time datetime="2026-10-01">2026年10月1日</time></p>
+      <p class="guide-screenshot-note">スクリーンショットは英語の画面です。ブラウザーの表示言語によって、項目名が異なる場合があります。</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="このページの内容"><p class="eyebrow">このページの内容</p><ol><li><a href="#sort-with-tabtools">現在のウィンドウのタブを並べ替える</a></li><li><a href="#how-the-order-works">TabTools が順番を決める仕組み</a></li><li><a href="#pinned-tabs-and-subdomains">固定タブとサブドメイン</a></li><li><a href="#sorting-or-tab-groups">並べ替えとタブグループを使い分ける</a></li><li><a href="#native-browser-options">拡張機能を使わずにタブを整理する</a></li><li><a href="#after-sorting">並べ替えた後にできること</a></li></ol></nav><a class="guide-back" href="/ja/guides/">← すべてのガイド</a></aside>
+      <article class="guide-article" aria-label="Chrome、Firefox、Edge でタブをサイト別に並べ替える方法"><div class="guide-answer"><p class="eyebrow">手短に知りたい方へ</p><p>整理したいウィンドウで TabTools を開き、「タブを並べ替え」をクリックします。固定されていないタブがサイト別に並び、現在開いているタブの数が多いサイトから先に配置されます。固定タブはそのままです。</p></div>
+      <section id="sort-with-tabtools"><h2>現在のウィンドウのタブを並べ替える</h2><p>Chrome、Firefox、Microsoft Edge で、同じポップアップ操作を使えます。この Chrome の例では、YouTube、Wikipedia、Google の6つのタブが混在した状態から始めます。</p>
+<ol>
+  <li>TabTools をインストールします。対象ブラウザー： <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>、 <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> または <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>。</li>
+  <li>並べ替えたいタブがあるブラウザーウィンドウに切り替えます。
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome のタブバーに、YouTube の3つのタブ、Wikipedia の2つのタブ、Google が入り交じっています。" />
+    <span class="guide-screenshot-zoom">原寸大で表示 <span aria-hidden="true">↗</span><span class="sr-only"> （新しいタブで開きます）</span></span>
+  </a>
+  <figcaption>並べ替え前：3つのサイトの6つのタブが混在しています。</figcaption>
+</figure>
+  </li>
+  <li>ツールバーまたは拡張機能メニューから TabTools を開きます。</li>
+  <li><strong>タブを並べ替え</strong>をクリックします。
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome の TabTools ポップアップ。「タブを並べ替え」（Sort tabs）にポインターが重なっています。" />
+    <span class="guide-screenshot-zoom">原寸大で表示 <span aria-hidden="true">↗</span><span class="sr-only"> （新しいタブで開きます）</span></span>
+  </a>
+  <figcaption>「タブを並べ替え」（Sort tabs）をクリックして、サイトごとにページをまとめます。</figcaption>
+</figure>
+  </li>
+</ol>
+<p>関連する未固定タブが隣り合わせに移動します。ページは開いたままで、ほかのウィンドウのタブがこのウィンドウに移されることはありません。別のウィンドウも整理したい場合は、そちらに切り替えて再実行してください。</p>
+<p>並べ替えは1回限りの操作です。その後に開くタブは通常どおり表示され、閲覧中に TabTools が自動で並べ替え続けることはありません。今の配置を整えたいときに、 <strong>タブを並べ替え</strong> をもう一度クリックしてください。</p></section>
+<section id="how-the-order-works"><h2>TabTools が順番を決める仕組み</h2><p>TabTools は、現在のウィンドウで開いているタブをサイト別に数えます。タブ数の多いサイトほど前に、固定タブのすぐ後ろから配置されます。固定タブがない簡単な例を見てみましょう。</p>
+<table>
+  <thead><tr><th scope="col">サイト</th><th scope="col">開いているタブ数</th><th scope="col">並べ替え後の位置</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>1番目</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>2番目</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>3番目</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="並べ替え後の Chrome。YouTube の3つのタブ、Wikipedia の2つのタブ、Google の順に並び、TabTools に「並べ替えたタブ: 6」（Reordered 6 tabs）と表示されています。" />
+    <span class="guide-screenshot-zoom">原寸大で表示 <span aria-hidden="true">↗</span><span class="sr-only"> （新しいタブで開きます）</span></span>
+  </a>
+  <figcaption>並べ替え後：YouTube ×3、Wikipedia ×2、最後に Google。6つすべてのタブが開いたままです。</figcaption>
+</figure>
+<p>「最も多く開いている」とは、今この時点で開いているタブ数が最も多いという意味です。よく訪れるサイトや閲覧履歴、過去1週間にサイトを開いた回数のことではありません。</p>
+<p>2つのサイトのタブ数が同じ場合は、ホスト名のアルファベット順で並びます。同じホスト名のタブは相対的な順序を保ちます。たとえば、3つの YouTube ページは YouTube のまとまりの中で元の順序を保ち、ページタイトル順には並びません。</p></section><aside class="guide-install" aria-label="TabTools を入手">
+    <div><p class="eyebrow">無料のブラウザー拡張機能</p><h2>実際に試してみよう。</h2><p>サイト別にタブを閉じ、重複を減らし、残したタブを並べ替えましょう。</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Chrome に追加</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Firefox に追加</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Edge に追加</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>スマートフォンやタブレットで閲覧していますか？TabTools を追加するには、パソコンでこのページを開いてください。</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>固定タブとサブドメイン</h2><p>固定タブは固定位置にとどまります。ただし、未固定タブの並び順を決める際のサイト別タブ数には、固定タブも含まれます。</p>
+<p>たとえば GitHub に固定タブが2つ、未固定タブが2つあれば、GitHub の数は4です。その未固定タブは、開いているタブが3つのサイトより前に並びますが、2つの固定タブは元の位置のままです。</p>
+<p>サイトの照合にはホスト名を使い、先頭の <code>www.</code>は無視します。 <code>example.com</code> と <code>www.example.com</code> のページはひとつにまとめられます。一方、 <code>docs.example.com</code> のページは、次のサイトとは別のまとまりになります： <code>shop.example.com</code>。</p>
+<p>これは、異なるサービスが同じ親ドメインを使う場合に便利です。ドキュメントとショップは、並べ替え後も別々にまとめられます。</p></section>
+<section id="sorting-or-tab-groups"><h2>並べ替えとタブグループを使い分ける</h2><p>サイト自体を整理の基準にしたいなら、並べ替えが便利です。旅行、仕事のプロジェクト、複数サイトを使った買い物など、作業を基準にまとめたいなら、ブラウザーのタブグループが向いています。</p>
+<table>
+  <thead><tr><th scope="col">目的</th><th scope="col">適した方法</th></tr></thead>
+  <tbody>
+    <tr><td>サイトごとのページを隣り合わせにする</td><td>TabTools <strong>タブを並べ替え</strong></td></tr>
+    <tr><td>少数のタブを好みの順番に並べる</td><td>タブを手動でドラッグ</td></tr>
+    <tr><td>プロジェクトに関わる複数のサイトを、名前を付けてまとめる</td><td>ブラウザーの名前付きタブグループ</td></tr>
+  </tbody>
+</table>
+<p>TabTools はタブの順序を変える機能であり、名前や色の付いたブラウザーグループは作成しません。すでにプロジェクト別に意図して並べている場合は、変更前に、そのウィンドウをサイト別に並べ替えてよいか確認してください。</p></section>
+<section id="native-browser-options"><h2>拡張機能を使わずにタブを整理する</h2><h3>Chrome</h3>
+<p>タブバー上でタブをドラッグすると、順序を手動で決められます。関連する作業が複数サイトにまたがる場合は、名前付きタブグループも使えます。Google の <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">Chrome のタブガイド</a> で、タブの配置とグループ化について説明しています。</p>
+<h3>Firefox</h3>
+<p>タブバーで個別のタブを動かすか、Firefox のタブの右クリックメニューにあるグループ化機能で、名前を付けてまとめられます。Mozilla の <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">タブのコンテキストメニューガイド</a> で、利用できるタブ操作を説明しています。</p>
+<h3>Microsoft Edge</h3>
+<p>Edge には名前付きタブグループのほか、関連タブをまとめる <strong>タブの整理（Organize tabs）</strong> 機能があります。利用できる機能は環境によって異なる場合があります。これらは指定したグループや関連性に基づいて整理するもので、現在のサイト別タブ数による並べ替えとは異なります。Microsoft の説明は、次のガイドをご覧ください： <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">Edge のタブグループガイド</a>。</p></section>
+<section id="after-sorting"><h2>並べ替えた後にできること</h2><p>TabTools には並べ替えを取り消す操作はありません。ポップアップの <strong>元に戻す</strong> ボタンは、最後にタブを閉じた操作のためのもので、元のタブ順序を復元するものではありません。並べ替えた後に別の配置にしたい場合は、タブをドラッグしてください。</p>
+<p>並べ替えても、同じページの重複は残ります。そのため大きなまとまりが長くなりすぎる場合は、 <a href="/ja/guides/close-duplicate-tabs/">重複タブを閉じて</a> から、残ったタブ数で再び並べ替えてください。</p>
+<p>サイト全体が不要になったら、 <a href="/ja/guides/close-tabs-from-same-website/">このサイトのタブを閉じる</a> でそのページを閉じられます。並べ替えは、まだ必要なタブのための操作です。どのページを閉じるか判断せずに、見つけやすくします。</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="関連ガイド"><p class="eyebrow">続けて読む</p><h2>タブを整理する、ほかの方法。</h2><div class="guide-cards"><a class="guide-card" href="/ja/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">サイトのタブを閉じる</span></div>
+    <h2>同じサイトのタブを閉じる</h2><p>Chrome で TabTools を使って同じサイトのタブを閉じる手順、手動での代替方法、Firefox と Edge での操作を紹介します。</p>
+    <span class="guide-card-bottom"><span>約 4 分で読めます</span><span class="guide-card-link">ガイドを読む <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/ja/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">重複を削除</span></div>
+    <h2>重複タブを閉じる</h2><p>Chrome、Firefox、Edge で重複タブを削除する方法を紹介します。TabTools の手順、Firefox の標準機能、どのタブが残るかを確認しましょう。</p>
+    <span class="guide-card-bottom"><span>約 4 分で読めます</span><span class="guide-card-link">ガイドを読む <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/ja/#top" aria-label="TabTools ホーム"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>サイト別にタブを閉じ、タブバーを並べ替え、重複を削除。</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">製品</span><a href="/ja/#features">機能</a><a href="/ja/#how-it-works">使い方</a><a href="/ja/guides/">ガイド</a><a href="/ja/#faq">よくある質問</a></div>
+          <div><span class="footer-label">試してみる</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">その他</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">プライバシー</a><a href="mailto:tabtools@michaelwester.com">お問い合わせ</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>無料・オープンソース。</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

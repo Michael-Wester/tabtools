@@ -1,0 +1,164 @@
+{
+  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "review": {
+    "status": "ai-reviewed",
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+  },
+  "ui": {
+    "indexTitle": "瀏覽器分頁使用指南",
+    "indexDescription": "實用的 TabTools 指南：在 Chrome、Firefox 和 Edge 中關閉同一網站的分頁、移除重複分頁，以及依網站排序分頁。",
+    "indexEyebrow": "TabTools 指南",
+    "indexHeading": "讓分頁列更清楚。",
+    "indexHeadingAccent": "一次處理一件事。",
+    "indexLede": "關閉某個網站的分頁、清理重複網頁，或將相關分頁排在一起。選擇一篇指南，按照步驟在瀏覽器中操作。",
+    "indexPlatforms": "適用於電腦版 Chrome、Firefox 和 Edge",
+    "startEyebrow": "初次使用 TabTools？",
+    "startHeading": "三種整理方式。",
+    "startBody": "依網站關閉會移除某個網站的網頁。清理重複項目會移除 URL 重複的網頁。排序則會保留分頁，只調整它們的順序。每篇指南都會結合範例和瀏覽器內建的替代方案，說明操作的具體效果。",
+    "explore": "了解 TabTools",
+    "browseGuides": "瀏覽指南",
+    "readGuide": "閱讀指南",
+    "readTime": "閱讀約需 {minutes} 分鐘",
+    "getTabTools": "取得 TabTools",
+    "installEyebrow": "免費瀏覽器擴充功能",
+    "installHeading": "動手試一試。",
+    "installBody": "依網站關閉分頁、移除重複項目，再為保留的分頁排序。",
+    "desktopBrowsers": "電腦版瀏覽器",
+    "byline": "作者：{author}，TabTools 開發者",
+    "updated": "更新於 {date}",
+    "onThisPage": "本頁內容",
+    "allGuides": "全部指南",
+    "quickAnswer": "快速解答",
+    "relatedGuides": "相關指南",
+    "relatedEyebrow": "繼續探索",
+    "relatedHeading": "更多分頁整理方法。",
+    "home": "首頁",
+    "breadcrumb": "麵包屑導覽",
+    "screenshotNote": "螢幕擷取畫面顯示的是英文介面；瀏覽器使用其他語言時，介面標籤可能不同。"
+  },
+  "guides": [
+    {
+      "slug": "close-tabs-from-same-website",
+      "title": "如何在 Chrome 中關閉同一網站的所有分頁",
+      "shortTitle": "關閉同一網站的分頁",
+      "description": "使用 TabTools 在 Chrome 中關閉同一網站的分頁，了解手動操作的替代方案，以及 Firefox 和 Edge 的操作步驟。",
+      "category": "關閉網站分頁",
+      "lede": "購物、深入查資料，或瀏覽一連串 YouTube 影片已經告一段落？你可以一次關閉該網站的分頁，同時保留其他網站。",
+      "answer": "安裝 TabTools 後，在 Chrome 分頁列中以滑鼠右鍵點選要關閉的網站的任意分頁，選擇「關閉此網站的分頁」。這會關閉所有一般瀏覽器視窗中符合條件的分頁，包括符合條件的目前使用中的分頁和已釘選分頁。",
+      "sections": [
+        {
+          "id": "close-site-tabs-in-chrome",
+          "title": "在 Chrome 中關閉某個網站的分頁",
+          "html": "<p>分頁的右鍵選單讓你可以直接從 Chrome 分頁列快速操作。</p>\n<ol>\n  <li><a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">從 Chrome Web Store 安裝 TabTools</a>。</li>\n  <li>找到要關閉的網站的任意分頁，例如 YouTube 首頁或搜尋結果頁。</li>\n  <li>在 Chrome 分頁列中以滑鼠右鍵點選該分頁。</li>\n  <li>選擇 <strong>關閉此網站的分頁</strong>。同一網站主機名稱下的分頁會一並關閉。</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-01-tab-menu.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-01-tab-menu.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中混合開啟了六個分頁，YouTube 分頁的右鍵選單中突出顯示了「關閉此網站的分頁」（Close site tabs）。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>在 Chrome 分頁列中以滑鼠右鍵點選一個 YouTube 分頁，然後選擇「關閉此網站的分頁」（Close site tabs）。</figcaption>\n</figure>\n<p>在此範例中， <code>youtube.com</code> 上的三個網頁會關閉，而兩個 Wikipedia 分頁和 Google 仍保持開啟。你無需事先將 YouTube 分頁排在一起。</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-02-tabs-closed.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-02-tabs-closed.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"關閉三個 YouTube 分頁後的 Chrome，僅剩兩個 Wikipedia 分頁和 Google。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>關閉後：只剩兩個 Wikipedia 分頁和 Google。</figcaption>\n</figure>\n<p>如果分頁選單中沒有 <strong>關閉此網站的分頁</strong> ，請開啟該分頁並在網頁內以滑鼠右鍵點選，或使用下文介紹的 TabTools 彈出視窗。</p>\n<p>這適合已不再需要整個網站的情況。如果你還需要該網站的某個網頁，請在使用命令前留意：你以滑鼠右鍵點選的分頁也會被關閉。</p>"
+        },
+        {
+          "id": "use-the-popup",
+          "title": "從彈出視窗關閉其他網站的分頁",
+          "html": "<p>你也可以直接選擇網站，而不必先切換到該網站的某個網頁。</p>\n<ol>\n  <li>從瀏覽器的擴充功能選單或工具列開啟 TabTools。</li>\n  <li>在以下提示下方的網站建議中找到目標網站： <strong>點選以關閉該網站的分頁</strong>。每條建議都會顯示該網站目前開啟的分頁數量。</li>\n  <li>選擇網站，即可關閉符合條件的分頁。</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-03-popup-suggestion.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-03-popup-suggestion.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中的 TabTools，指針停在 YouTube 建議上，該建議顯示有 3 個已開啟的分頁。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>同樣開啟著六個分頁時，選擇 YouTube 建議，即可在不離開 Google 的情況下關閉三個 YouTube 分頁。</figcaption>\n</figure>\n<p>你也可以直接輸入主機名稱；當網站未出現在「建議」中時，這尤其有用。例如，要輸入 <code>youtube.com</code>，可以使用 <strong>依關鍵字關閉（按 Enter 鍵）</strong>輸入框，然後按 Enter 鍵或點選 <strong>關閉</strong>。只需輸入主機名稱，不要包含 <code>https://</code> 或網頁路徑。</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-04-enter-hostname.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-04-enter-hostname.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 的關鍵字輸入框中填入 youtube.com，指針停在「關閉」（Close）上。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>也可以輸入 youtube.com，然後點選「關閉」（Close）或按 Enter 鍵。</figcaption>\n</figure>\n<p>一般關鍵字（例如 <code>shopping</code> ）的比對方式有所不同：它會搜尋分頁標題和 URL。如果你只想關閉某個特定網站，請使用準確的主機名稱。</p>"
+        },
+        {
+          "id": "which-tabs-close",
+          "title": "哪些分頁算是同一網站？",
+          "html": "<p>依網站關閉會比對主機名稱，並忽略開頭的 <code>www.</code>。同一主機名稱下的不同網頁即使路徑或查詢參數不同，也會符合條件。</p>\n<table>\n  <thead><tr><th scope=\"col\">關閉 example.com 時</th><th scope=\"col\">結果</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/article-one</code></td><td>關閉</td></tr>\n    <tr><td><code>www.example.com/article-two</code></td><td>關閉</td></tr>\n    <tr><td><code>shop.example.com/product</code></td><td>保持開啟：屬於其他子網域</td></tr>\n    <tr><td><code>another-site.com/example</code></td><td>保持開啟</td></tr>\n  </tbody>\n</table>\n<p>該命令作用於執行它的瀏覽器中的所有一般視窗。符合條件的已釘選分頁和目前使用中的分頁也會關閉；私密或無痕分頁不在範圍內。它不會影響其他瀏覽器應用程式中的分頁。</p>"
+        },
+        {
+          "id": "without-an-extension",
+          "title": "在 Chrome 中手動關閉符合條件的分頁",
+          "html": "<p>分頁數量較少時，可以透過 Chrome 的「搜尋分頁」手動操作。</p>\n<ol>\n  <li>要開啟「搜尋分頁」，可按 <strong>Ctrl + Shift + A</strong> （Windows 或 Linux），或按 <strong>Command + Shift + A</strong> （Mac）。</li>\n  <li>搜尋網站名稱或主機名稱。</li>\n  <li>檢視已開啟分頁的搜尋結果，對每個要移除的網頁使用關閉控制項。</li>\n</ol>\n<p>這樣可以保留該網站中你選定的網頁，但也需要逐一檢視並關閉符合條件的結果。Google 在以下指南中介紹了搜尋和關閉控制項： <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome 分頁指南</a>。</p>"
+        },
+        {
+          "id": "firefox-and-edge",
+          "title": "在 Firefox 和 Edge 中使用相同流程",
+          "html": "<h3>Firefox</h3>\n<p><a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">安裝 Firefox 版 TabTools</a>，然後在分頁列中以滑鼠右鍵點選目標網站的任意分頁，選擇 <strong>關閉此網站的分頁</strong>。你也可以在網頁內以滑鼠右鍵點選，或從彈出視窗的建議中選擇網站。</p>\n<h3>Microsoft Edge</h3>\n<p><a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">安裝 Edge 版 TabTools</a>，然後以滑鼠右鍵點選目標網站的任意分頁，選擇 <strong>關閉此網站的分頁</strong> （如果你的 Edge 版本在分頁選單中提供此選項）。否則，請開啟該分頁並在網頁內以滑鼠右鍵點選，或在彈出視窗中輸入主機名稱。比對規則和跨視窗作用範圍與上文相同。</p>"
+        },
+        {
+          "id": "undo-and-next-steps",
+          "title": "重新開啟分頁，或縮小清理範圍",
+          "html": "<p>透過彈出視窗關閉分頁後，只要該彈出視窗仍保持開啟，其中的 <strong>復原</strong> 按鈕就能重新開啟最近一次透過彈出視窗清理的分頁。右鍵選單中的 <strong>關閉此網站的分頁</strong> 操作不會被彈出視窗的「復原」按鈕記錄。</p>\n<p>透過右鍵選單關閉後，可以在瀏覽器的最近關閉的分頁或歷史記錄中尋找。重新開啟 URL 不代表能夠還原未儲存的表單輸入，也不代表能還原網頁先前狀態的所有細節。</p>\n<p>如果你的目標是每個網頁只保留一個副本，請參閱 <a href=\"/guides/close-duplicate-tabs/\">關閉重複分頁</a>指南。如果想保留所有網頁並讓它們更易於瀏覽，可以選擇 <a href=\"/guides/sort-tabs-by-website/\">依網站排序分頁</a> 。</p>"
+        }
+      ]
+    },
+    {
+      "slug": "close-duplicate-tabs",
+      "title": "如何在 Chrome、Firefox 和 Edge 中關閉重複分頁",
+      "shortTitle": "關閉重複分頁",
+      "description": "在 Chrome、Firefox 和 Edge 中移除重複分頁。了解 TabTools 的操作步驟、Firefox 內建的選項，以及哪些副本會被保留。",
+      "category": "移除重複項目",
+      "lede": "同一份文件、同一次搜尋或同一段影片很容易被反覆開啟。移除多餘副本可以讓分頁列更易於瀏覽，同時不必清空某個網站的所有網頁。",
+      "answer": "開啟 TabTools 並點選「關閉重複項目」，即可移除所有一般瀏覽器視窗中未釘選的重複網頁。Firefox 也提供內建命令，可關閉某一分頁的重複副本，或從分頁概覽選單清理重複分頁。",
+      "sections": [
+        {
+          "id": "choose-a-method",
+          "title": "選擇適合瀏覽器的方法",
+          "html": "<table>\n  <thead><tr><th scope=\"col\">瀏覽器</th><th scope=\"col\">本文介紹的方法</th></tr></thead>\n  <tbody>\n    <tr><td>Chrome</td><td>開啟 TabTools，然後選擇 <strong>關閉重複項目</strong>。</td></tr>\n    <tr><td>Firefox</td><td>使用瀏覽器內建的重複分頁命令，或選擇 <strong>關閉重複項目</strong> （位於 TabTools 中）。</td></tr>\n    <tr><td>Microsoft Edge</td><td>開啟 TabTools，然後選擇 <strong>關閉重複項目</strong>。</td></tr>\n  </tbody>\n</table>\n<p>批次清理前，請先完成並儲存重複網頁中的工作。兩個分頁即使顯示相同的 URL，表單中也可能儲存著你輸入的不同文字。</p>"
+        },
+        {
+          "id": "what-counts-as-a-duplicate",
+          "title": "什麼算是重複分頁？",
+          "html": "<p>重複分頁是同一網頁的多個副本。三個 YouTube 首頁互為重複項目；而 YouTube 首頁和兩個不同的 YouTube 搜尋結果則是同一網站的不同網頁。</p>\n<p>TabTools 會解析每個網頁的 URL，並移除其中的片段，也就是以 <code>#</code> 開頭的部分。URL 解析器會統一協定名稱和主機名稱中的字母大小寫。路徑和查詢字串中的字母大小寫，以及查詢參數的順序，仍會影響比對結果。</p>\n<table>\n  <thead><tr><th scope=\"col\">URL 範例</th><th scope=\"col\">TabTools 的處理方式</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/guide</code> 開啟兩次</td><td>重複項目</td></tr>\n    <tr><td><code>example.com/guide#intro</code> 和 <code>example.com/guide#steps</code></td><td>重複項目：片段會被忽略</td></tr>\n    <tr><td><code>example.com/guide</code> 和 <code>example.com/contact</code></td><td>不同網頁</td></tr>\n    <tr><td><code>example.com/search?q=tabs</code> 和 <code>example.com/search?q=bookmarks</code></td><td>查詢參數不同；兩者都保留</td></tr>\n  </tbody>\n</table>\n<p>有些網頁應用程式使用片段標識不同介面，因此這些介面也可能被視為重複項目。反過來，追蹤參數也可能使原本相似的網頁被視為不同 URL。該命令比較的是網址，不會檢查網頁內容來判斷兩個網頁是否表達相同內容。</p>"
+        },
+        {
+          "id": "chrome-and-edge",
+          "title": "在 Chrome 或 Edge 中關閉重複分頁",
+          "html": "<p>TabTools 彈出視窗在這兩款瀏覽器中使用相同的命令。這些螢幕擷取畫面展示了開啟八個分頁的 Chrome，其中包括三個 YouTube 首頁副本。</p>\n<ol>\n  <li>安裝適用於以下瀏覽器的 TabTools： <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a> 或 <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Microsoft Edge</a>。</li>\n  <li>從工具列或擴充功能選單開啟擴充功能。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-01-open-tabtools.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-01-open-tabtools.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中開啟了八個分頁，其中包括三個 YouTube 首頁副本，指針停在工具列的 TabTools 圖示上。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>從 Chrome 工具列開啟 TabTools。</figcaption>\n</figure>\n  </li>\n  <li>點選 <strong>關閉重複項目</strong>。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-02-close-duplicates.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-02-close-duplicates.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 彈出視窗顯示 8 個已開啟的分頁，指針停在「關閉重複項目」（Close duplicates）上。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>點選「關閉重複項目」（Close duplicates）以移除重複副本。</figcaption>\n</figure>\n  </li>\n  <li>檢視彈出視窗的狀態訊息。它會顯示已關閉的重複分頁數量；如果沒有符合條件的項目，則顯示 <strong>沒有重複項目</strong> 。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-03-result-and-undo.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-03-result-and-undo.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 顯示已關閉 2 個重複分頁（Closed 2 duplicates），剩餘 6 個已開啟的分頁，並提供可用的「復原」（Undo）按鈕。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>兩個重複副本關閉後，剩下六個分頁。如果想使用「復原」（Undo），請保持彈出視窗開啟。</figcaption>\n</figure>\n  </li>\n</ol>\n<p>你無需先選中重複分頁。清理範圍覆蓋該瀏覽器內的所有一般視窗，因此即使同一網頁的兩個副本位於不同視窗，也能被判定為重複項目。私密或無痕分頁不在範圍內。</p>\n<p>在 Chrome 中執行命令不會改變 Edge 的分頁，反之亦然。如果兩個瀏覽器中都有重複項目，請分別操作。</p>"
+        },
+        {
+          "id": "firefox-native-option",
+          "title": "使用 Firefox 內建的重複分頁命令",
+          "html": "<p>如果只需要移除重複項目，Firefox 提供了內建選項。</p>\n<ul>\n  <li><strong>清理同一網頁的副本：</strong> 以滑鼠右鍵點選要保留的分頁，然後選擇 <strong>關閉重複分頁（Close Duplicate Tabs）</strong>。</li>\n  <li><strong>清理更大範圍的重複項目：</strong> 開啟 <strong>列出所有分頁（List all tabs）</strong>，然後選擇關閉重複項目的命令。根據介面的不同，該命令可能顯示為 <strong>關閉所有重複分頁（Close all duplicate tabs）</strong> 或 <strong>關閉重複分頁（Close Duplicate Tabs）</strong> 。</li>\n</ul>\n<p>Mozilla 的 <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">分頁右鍵選單指南</a> 介紹了第一種選項。其 <a href=\"https://support.mozilla.org/en-US/kb/tab-overview-menu\">分頁概覽選單指南</a> 介紹了範圍更廣的清理方式，並說明會保留重複項目中最近處於使用中狀態的分頁。</p>\n<p>如果你已經在使用 <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox 版 TabTools</a>，請開啟其彈出視窗並點選 <strong>關閉重複項目</strong>。它的比對和保留規則是下文介紹的 TabTools 規則，不應假定它們與 Firefox 內建命令的規則相同。</p>"
+        },
+        {
+          "id": "which-copy-stays",
+          "title": "TabTools 會保留哪個副本？",
+          "html": "<p>TabTools 會保留已釘選的副本，並關閉所有一般視窗中符合條件的未釘選分頁。如果沒有已釘選的副本，則會保留瀏覽器分頁清單中遇到的第一個未釘選副本，並關閉後續符合條件的項目。</p>\n<p>它不會刻意選擇目前使用中的分頁、最新開啟的分頁或你最近使用的分頁。因此，保留的副本可能位於另一個視窗。如果某個網頁有一個已釘選分頁和兩個未釘選副本，最後只會保留已釘選的分頁。</p>\n<p>已釘選的分頁絕不會被 <strong>關閉重複項目</strong> 關閉。如果某個網頁有多個已釘選副本，這些副本都會保留，因此該命令無法保證每個 URL 都恰好只剩一個分頁。</p>"
+        },
+        {
+          "id": "undo-and-organise",
+          "title": "復原清理並整理剩餘分頁",
+          "html": "<p>如果要檢查清理結果，請在清理後保持彈出視窗開啟。 <strong>復原</strong> 可以在本次彈出視窗工作階段內，重新開啟最近一次透過彈出視窗關閉的分頁。它按 URL 重新開啟網頁，無法保證還原未儲存的網頁內容。彈出視窗關閉後，請改用瀏覽器的最近關閉的分頁或歷史記錄。</p>\n<p>對於已經用完的不同網頁，請參閱 <a href=\"/guides/close-tabs-from-same-website/\">如何關閉同一網站的所有分頁</a>。對於希望保留的網頁， <a href=\"/guides/sort-tabs-by-website/\">依網站排序分頁</a> 可以將相關分頁排在一起，而不關閉它們。</p>"
+        }
+      ]
+    },
+    {
+      "slug": "sort-tabs-by-website",
+      "title": "如何在 Chrome、Firefox 和 Edge 中依網站排序分頁",
+      "shortTitle": "依網站排序分頁",
+      "description": "使用 TabTools 在 Chrome、Firefox 和 Edge 中將相關分頁排在一起。了解網站分頁數量、釘選分頁和瀏覽器分頁群組如何影響你的選擇。",
+      "category": "排序分頁",
+      "lede": "當分頁列混雜著文件、影片和資料網頁時，尋找下一個分頁會花費更多時間。排序可以將同一網站的網頁排在一起，並保持它們開啟。",
+      "answer": "在要整理的視窗中開啟 TabTools，點選「排序分頁」。它會依網站排列未釘選的分頁，目前開啟分頁最多的網站優先。已釘選的分頁保持原位。",
+      "sections": [
+        {
+          "id": "sort-with-tabtools",
+          "title": "為目前視窗中的分頁排序",
+          "html": "<p>Chrome、Firefox 和 Microsoft Edge 都提供相同的彈出視窗操作。此 Chrome 範例開始時共有六個分頁，YouTube、Wikipedia 和 Google 的網頁交錯排列。</p>\n<ol>\n  <li>安裝適用於以下瀏覽器的 TabTools： <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a>、 <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox</a> 或 <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge</a>。</li>\n  <li>切換到要整理分頁的瀏覽器視窗。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-01-before.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-01-before.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 分頁列中交錯排列著三個 YouTube 分頁、兩個 Wikipedia 分頁和 Google。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>排序前：來自三個網站的六個分頁混在一起。</figcaption>\n</figure>\n  </li>\n  <li>從工具列或擴充功能選單開啟 TabTools。</li>\n  <li>點選 <strong>排序分頁</strong>。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-02-sort-tabs.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-02-sort-tabs.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中的 TabTools 彈出視窗，指針停在「排序分頁」（Sort tabs）上。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>點選「排序分頁」（Sort tabs），將各個網站的網頁排在一起。</figcaption>\n</figure>\n  </li>\n</ol>\n<p>相關的未釘選分頁會移到彼此旁邊。網頁保持開啟，其他視窗中的分頁不會被移入此視窗。如果要整理另一個視窗，請切換過去並再次執行命令。</p>\n<p>排序是一次性操作。之後的新分頁會照常開啟；TabTools 不會在你瀏覽時持續重新排列分頁列。當你想整理目前排列時，可以再次點選 <strong>排序分頁</strong> 。</p>"
+        },
+        {
+          "id": "how-the-order-works",
+          "title": "TabTools 如何決定排序順序",
+          "html": "<p>TabTools 會統計目前視窗中每個網站已開啟的分頁數量。數量較多的網站排在前面，緊接著已釘選的分頁。下面是一個沒有釘選分頁的簡單範例：</p>\n<table>\n  <thead><tr><th scope=\"col\">網站</th><th scope=\"col\">已開啟的分頁</th><th scope=\"col\">排序後的位置</th></tr></thead>\n  <tbody>\n    <tr><td><code>youtube.com</code></td><td>3</td><td>第一</td></tr>\n    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>第二</td></tr>\n    <tr><td><code>google.com</code></td><td>1</td><td>第三</td></tr>\n  </tbody>\n</table>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-03-after.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-03-after.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"排序後的 Chrome：三個 YouTube 分頁，接著是兩個 Wikipedia 分頁，最後是 Google；TabTools 顯示已重新排序 6 個分頁（Reordered 6 tabs）。\" />\n    <span class=\"guide-screenshot-zoom\">檢視原圖 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新分頁中開啟）</span></span>\n  </a>\n  <figcaption>排序後：YouTube ×3、Wikipedia ×2，最後是 Google。六個分頁全部保持開啟。</figcaption>\n</figure>\n<p>「開啟最多」指的是此刻已開啟的分頁數量最多，並不是你造訪最頻繁的網站、瀏覽歷史記錄，或過去一週開啟某個網站的次數。</p>\n<p>如果兩個網站的數量相同，就按主機名稱的字母順序排列。同一主機名稱下的分頁保留相對順序。例如，三個 YouTube 網頁在 YouTube 這一組內的順序不變，不會按網頁標題排序。</p>"
+        },
+        {
+          "id": "pinned-tabs-and-subdomains",
+          "title": "釘選分頁與子網域",
+          "html": "<p>已釘選的分頁保持在原來的釘選位置。TabTools 決定未釘選分頁的順序時，仍會將已釘選分頁計入該網站的數量。</p>\n<p>例如，兩個已釘選的 GitHub 分頁加上兩個未釘選的 GitHub 分頁，會使 GitHub 的數量為四。因此，未釘選的 GitHub 分頁會排在只有三個已開啟分頁的網站之前，而兩個已釘選的 GitHub 分頁仍留在原位。</p>\n<p>網站比對使用主機名稱，並忽略開頭的 <code>www.</code>。因此， <code>example.com</code> 和 <code>www.example.com</code> 下的網頁歸為一組。而 <code>docs.example.com</code> 下的網頁會單獨成組，不會與以下網站合併： <code>shop.example.com</code>。</p>\n<p>當不同服務共用一個主網域時，這很有用：文件網站和商店可以在排序後的分頁列中保持分開。</p>"
+        },
+        {
+          "id": "sorting-or-tab-groups",
+          "title": "選擇排序還是分頁群組",
+          "html": "<p>當網站本身就是整理依據時，排序很有用。如果整理依據是一項任務，例如假期計劃、工作專案或涉及多個網站的一次購物，則瀏覽器分頁群組更適合。</p>\n<table>\n  <thead><tr><th scope=\"col\">你的目標</th><th scope=\"col\">合適的選項</th></tr></thead>\n  <tbody>\n    <tr><td>將每個網站的網頁排在一起</td><td>TabTools <strong>排序分頁</strong></td></tr>\n    <tr><td>精確安排少量分頁的順序</td><td>手動拖動分頁</td></tr>\n    <tr><td>將專案涉及的不同網站放進同一個有名稱的組</td><td>瀏覽器的具名分頁群組</td></tr>\n  </tbody>\n</table>\n<p>TabTools 只會重新排列分頁，不會建立有名稱或顏色的瀏覽器分頁群組。如果你已經特意依專案排列了分頁，請在更改順序前考慮該視窗是否適合依網站排序。</p>"
+        },
+        {
+          "id": "native-browser-options",
+          "title": "不使用擴充功能整理分頁",
+          "html": "<h3>Chrome</h3>\n<p>沿分頁列拖動分頁，可以手動設定順序。如果相關工作涉及多個網站，也可以使用有名稱的分頁群組。Google 的 <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome 分頁指南</a> 介紹了分頁的排列和分組。</p>\n<h3>Firefox</h3>\n<p>在分頁列中移動單個分頁，或使用 Firefox 分頁右鍵選單中的分組選項，建立有名稱的集合。Mozilla 的 <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">分頁右鍵選單指南</a> 介紹了可用的分頁操作。</p>\n<h3>Microsoft Edge</h3>\n<p>Edge 提供有名稱的分頁群組，以及可以將相關分頁分組的 <strong>整理分頁（Organize tabs）</strong> 功能。具體可用情況可能有所不同。這些方式按照你選擇的分組或相關性來整理，與依網站目前分頁數量排序不同。Microsoft 在以下指南中提供了說明： <a href=\"https://www.microsoft.com/en-us/edge/features/tab-groups\">Edge 分頁群組指南</a>。</p>"
+        },
+        {
+          "id": "after-sorting",
+          "title": "排序之後可以做什麼",
+          "html": "<p>TabTools 不提供復原排序的操作。彈出視窗中的 <strong>復原</strong> 按鈕用於復原最近一次關閉分頁的操作，而不是還原之前的分頁順序。如果排序後想採用其他排列方式，請拖動分頁進行調整。</p>\n<p>排序也會保留網頁的重複副本。如果這讓較大的分頁集合顯得冗長，可以先 <a href=\"/guides/close-duplicate-tabs/\">關閉重複分頁</a> ，再根據剩餘數量重新排序。</p>\n<p>不再需要整個網站時，可以使用 <a href=\"/guides/close-tabs-from-same-website/\">關閉此網站的分頁</a> 來移除它的網頁。排序則適合你仍然需要的分頁：它讓網頁更容易找到，而不替你決定關閉哪些網頁。</p>"
+        }
+      ]
+    }
+  ]
+}

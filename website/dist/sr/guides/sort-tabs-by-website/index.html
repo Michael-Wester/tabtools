@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="sr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Како поређати картице по сајту у Chrome-у, Firefox-у и Edge-у | TabTools</title>
+    <meta name="description" content="Поставите сродне картице једну поред друге у Chrome-у, Firefox-у и Edge-у уз TabTools. Сазнајте како број картица сајта, закачене картице и групе картица прегледача утичу на ваше могућности." />
+    <link rel="canonical" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Како поређати картице по сајту у Chrome-у, Firefox-у и Edge-у" />
+    <meta property="og:description" content="Поставите сродне картице једну поред друге у Chrome-у, Firefox-у и Edge-у уз TabTools. Сазнајте како број картица сајта, закачене картице и групе картица прегледача утичу на ваше могућности." />
+    <meta property="og:url" content="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Како поређати картице по сајту у Chrome-у, Firefox-у и Edge-у" />
+    <meta name="twitter:description" content="Поставите сродне картице једну поред друге у Chrome-у, Firefox-у и Edge-у уз TabTools. Сазнајте како број картица сајта, закачене картице и групе картица прегледача утичу на ваше могућности." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Како поређати картице по сајту у Chrome-у, Firefox-у и Edge-у",
+      "description": "Поставите сродне картице једну поред друге у Chrome-у, Firefox-у и Edge-у уз TabTools. Сазнајте како број картица сајта, закачене картице и групе картица прегледача утичу на ваше могућности.",
+      "url": "https://tabtools.fyi/sr/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/sr/guides/sort-tabs-by-website/",
+      "inLanguage": "sr",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Почетна",
+          "item": "https://tabtools.fyi/sr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Водичи",
+          "item": "https://tabtools.fyi/sr/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ређање картица по сајту",
+          "item": "https://tabtools.fyi/sr/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "sr",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/sort-tabs-by-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/sort-tabs-by-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/sort-tabs-by-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/sort-tabs-by-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/sort-tabs-by-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/sort-tabs-by-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/sort-tabs-by-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/sort-tabs-by-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/sort-tabs-by-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/sort-tabs-by-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/sort-tabs-by-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/sort-tabs-by-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/sort-tabs-by-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/sort-tabs-by-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/sort-tabs-by-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/sort-tabs-by-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/sort-tabs-by-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/sort-tabs-by-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/sort-tabs-by-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/sort-tabs-by-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/sort-tabs-by-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/sort-tabs-by-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/sort-tabs-by-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/sort-tabs-by-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/sort-tabs-by-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Затвори и поређај картице по сајту",
+    "extensionDescription": "Затворите картице истог сајта, поређајте картице по сајту и уклоните дупликате да би прегледач остао уредан.",
+    "openTabTools": "Отвори TabTools",
+    "settings": "Подешавања",
+    "suggestions": "Предлози",
+    "suggestCaption": "Додирните да затворите картице сајта",
+    "queryPlaceholder": "Затвори по кључној речи (Enter)",
+    "close": "Затвори",
+    "sortTabs": "Поређај картице",
+    "closeDuplicates": "Затвори дупликате",
+    "undo": "Опозови",
+    "undoTitle": "Опозови последње затварање",
+    "theme": "Тема",
+    "light": "Светла",
+    "dark": "Тамна",
+    "minTabs": "Најмањи број картица сајта за предлоге",
+    "inactiveAfter": "Картице су неактивне после",
+    "minutes": "мин.",
+    "closedCount": "Затворено: {count}",
+    "openCount": {
+      "one": "{count} отворена картица",
+      "few": "{count} отворене картице",
+      "other": "{count} отворених картица"
+    },
+    "openCountShort": {
+      "one": "{count} отворена",
+      "few": "{count} отворене",
+      "other": "{count} отворених"
+    },
+    "closedCountShort": {
+      "one": "{count} затворена",
+      "few": "{count} затворене",
+      "other": "{count} затворених"
+    },
+    "closeFailed": "Радња није успела",
+    "closedInactive": "Затворено неактивних картица: {count}",
+    "noInactive": "Нема неактивних картица",
+    "closedDuplicates": "Затворено дупликата: {count}",
+    "noDuplicates": "Нема дупликата",
+    "nothingToUndo": "Нема радње за опозив",
+    "undoFailed": "Опозив није успео",
+    "restoredCount": "Враћено: {count}",
+    "nothingToRestore": "Нема картица за враћање",
+    "inactive": "Неактивне",
+    "loadingSuggestions": "Учитавање предлога…",
+    "suggestionsFailed": "Учитавање предлога није успело",
+    "noSuggestions": "Нема предлога",
+    "moreCount": "Неприказани предлози: {count}",
+    "sortFailed": "Ређање није успело",
+    "sortedCount": "Премештено картица: {count}",
+    "nothingToSort": "Нема картица за ређање",
+    "hide": "Сакриј",
+    "show": "Прикажи",
+    "contextClose": "Затвори картице сајта",
+    "contextSort": "Поређај картице (најзаступљенији сајтови први)",
+    "closeSiteLabel": "Затвори картице сајта {site}",
+    "web_heroTitle": "Затворите картице \u003cem>истог сајта.\u003c/em>",
+    "web_featuresTitle": "Затворите по сајту.\u003cbr>\u003cem>Поређајте преостале.\u003c/em>",
+    "web_workflowTitle": "Додајте TabTools.\u003cbr>\u003cem>Изаберите шта затварате.\u003c/em>",
+    "web_privacyTitle": "Подаци о картицама остају\u003cbr>у вашем прегледачу.",
+    "web_finalTitle": "Затворите завршене картице.\u003cbr>\u003cem>Поређајте преостале.\u003c/em>",
+    "web_siteBody": "Отворите TabTools и кликните на сајт у одељку \u003cstrong>Предлози\u003c/strong> или кликните десним тастером миша унутар веб-странице и изаберите \u003cstrong>Затвори картице сајта\u003c/strong>. То затвара картице тог сајта у свим обичним прозорима, укључујући тренутну картицу.",
+    "web_addTo": "Додај у {browser}",
+    "web_storeNote": "Отвара се {store}.",
+    "web_storeAria": "{label} — отвара {store} у новој картици",
+    "web_language": "Језик",
+    "web_languageSuggestion": "Читајте ову страницу на језику „{language}“",
+    "web_switchLight": "Укључи светлу тему",
+    "web_lightMode": "Светла тема",
+    "web_structuredDescription": "Бесплатно проширење прегледача за затварање картица по сајту, ређање картица, уклањање дупликата и затварање неактивних картица.",
+    "web_close_tabs_from_the_same": "Затварајте картице истог сајта, ређајте картице по сајту и уклањајте дупликате. TabTools је бесплатан алат за управљање картицама у Chrome, Firefox и Edge прегледачима.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Затварање и ређање картица по сајту",
+    "web_close_tabs_by_site_sort": "Затварајте картице по сајту, уредите траку са картицама и уклањајте дупликате уз бесплатно проширење отвореног кода за Chrome, Firefox и Edge.",
+    "web_skip_to_content": "Пређи на садржај",
+    "web_tabtools_home": "Почетна страница TabTools",
+    "web_main_navigation": "Главна навигација",
+    "web_features": "Могућности",
+    "web_how_it_works": "Како се користи",
+    "web_privacy": "Приватност",
+    "web_faq": "Честа питања",
+    "web_switch_to_dark_mode": "Укључи тамну тему",
+    "web_dark_mode": "Тамна тема",
+    "web_free_browser_tab_manager": "Бесплатан алат за картице прегледача",
+    "web_clear_a_website_s_tabs": "Затворите картице једног сајта једном радњом или поређајте траку са картицама по сајту. TabTools такође уклања дупликате и затвара неактивне картице у Chrome, Firefox и Edge прегледачима.",
+    "web_free_to_use_no_account": "Бесплатно. Без налога.",
+    "web_viewing_on_a_phone_or": "Гледате на телефону или таблету? Отворите ову страницу на рачунару да додате TabTools.",
+    "web_tabtools_browser_stores": "TabTools у продавницама проширења",
+    "web_choose_another_browser": "Изаберите други прегледач",
+    "web_tabtools_in_action": "TabTools на делу",
+    "web_full_demo": "Цео приказ рада",
+    "web_tabtools_full_demo": "Цео приказ рада TabTools",
+    "web_see_tabtools_close_tabs_by": "Погледајте како TabTools затвара картице по сајту, уклања дупликате, ређа картице и затвара неактивне картице.",
+    "web_tabtools_product_details": "Детаљи о TabTools",
+    "web_close_tabs_by_site": "Затварање картица по сајту",
+    "web_from_the_popup_or_right": "из искачућег прозора или менија десног клика",
+    "web_local_by_design": "Локална обрада података",
+    "web_your_tab_list_stays_in": "списак картица остаје у вашем прегледачу",
+    "web_open_source": "Отворен код",
+    "web_inspect_the_code_on_github": "Погледајте код на GitHub",
+    "web_close_and_organise": "Затворите и уредите",
+    "web_clear_a_finished_task_bring": "Затворите картице завршеног задатка, поставите картице истог сајта једну уз другу или уклоните поновљене и неактивне странице.",
+    "web_01_site_cleanup": "01 / Затварање по сајту",
+    "web_close_a_site_s_tabs": "Затворите картице сајта одједном",
+    "web_see_how_to_get_started": "Погледајте како да почнете",
+    "web_02_organise": "02 / Уређивање",
+    "web_sort_tabs_by_site": "Поређајте картице по сајту",
+    "web_bring_tabs_from_the_same": "Поставите картице истог сајта једну уз другу у тренутном прозору, тако да прво буду сајтови са највише отворених картица.",
+    "web_03_simplify": "03 / Без дупликата",
+    "web_remove_duplicate_tabs": "Уклоните дупликате картица",
+    "web_close_extra_copies_of_the": "Затворите сувишне копије исте странице једним кликом. Закачене картице остају на месту.",
+    "web_04_find": "04 / Претрага",
+    "web_search_by_keyword_or_domain": "Претражите по кључној речи или домену",
+    "web_type_a_word_to_match": "Унесите реч за претрагу наслова и URL адреса картица или тачан домен, као што је youtube.com. Затим изаберите Затвори.",
+    "web_05_reset": "05 / Сређивање",
+    "web_clear_inactive_tabs": "Затворите неактивне картице",
+    "web_choose_an_inactivity_threshold_in": "Изаберите временски праг неактивности у Подешавањима, па кликните Неактивне да затворите одговарајуће картице. Активне, закачене и картице које пуштају звук остају отворене.",
+    "web_more_tabtools_details": "Још детаља о TabTools",
+    "web_undo_cleanup_from_the_popup": "Опозив затварања из искачућег прозора",
+    "web_light_and_dark_themes": "Светла и тамна тема",
+    "web_local_cleanup_statistics": "Локална статистика затварања картица",
+    "web_start_with_one_busy_site": "Почните од једног сајта са много картица. Користите искачући прозор за предлоге и ређање, а мени десног клика за брзо затварање.",
+    "web_add_it_to_your_browser": "Додајте у прегледач",
+    "web_open_the_chrome_firefox_or": "Отворите страницу продавнице Chrome, Firefox или Edge и додајте бесплатно проширење.",
+    "web_click_the_tabtools_icon_in": "Кликните на икону TabTools у менију проширења прегледача да видите предлоге сајтова и брзе радње.",
+    "web_close_a_site_or_sort": "Затворите картице сајта или их поређајте",
+    "web_click_a_site_under_suggestions": "Кликните на сајт у одељку Предлози да затворите његове картице или изаберите Поређај картице да поставите картице истог сајта једну уз другу.",
+    "web_private_by_design": "Осмишљено за приватност",
+    "web_the_tabtools_extension_processes_tab": "Проширење TabTools обрађује податке о картицама на вашем уређају. Подешавања и статистика затварања остају у локалном складишту прегледача. Проширење нема налоге, аналитику, оглашавање ни спољну базу података.",
+    "web_read_the_privacy_policy": "Прочитајте политику приватности",
+    "web_before_you_add_tabtools": "Пре додавања TabTools",
+    "web_common_questions": "Честа питања",
+    "web_browsers_cleanup_and_privacy": "Прегледачи, затварање картица и приватност",
+    "web_is_tabtools_free": "Да ли је TabTools бесплатан?",
+    "web_yes_tabtools_is_free_to": "Да. TabTools је бесплатан за коришћење. Налог није потребан.",
+    "web_which_browsers_can_i_use": "Које прегледаче могу да користим?",
+    "web_tabtools_is_available_for_chrome": "TabTools је доступан за Chrome, Firefox и Microsoft Edge. Да бисте га додали на рачунару, отворите одговарајућу продавницу преко веза за прегледаче на овој страници.",
+    "web_how_do_i_close_tabs": "Како да затворим картице истог сајта?",
+    "web_right_click_within_a_web": "Кликните десним тастером миша унутар веб-странице и изаберите „Затвори картице сајта“ или отворите TabTools и кликните на сајт у одељку Предлози. То затвара картице тог сајта у свим обичним прозорима, укључујући тренутну картицу. У искачући прозор можете унети и кључну реч или тачан домен.",
+    "web_can_i_remove_duplicates_or": "Могу ли да уклоним дупликате или неактивне картице?",
+    "web_yes_choose_close_duplicates_to": "Да. Изаберите Затвори дупликате да уклоните поновљене странице или кликните Неактивне да затворите одговарајуће картице. Временски праг неактивности можете променити у Подешавањима; затварање се обавља када изаберете радњу.",
+    "web_does_tabtools_collect_or_share": "Да ли TabTools прикупља или дели податке о картицама?",
+    "web_the_extension_processes_tab_information": "Проширење обрађује податке о картицама локално и не шаље их програмеру ни трећим странама. Подешавања и статистика затварања остају на вашем уређају. Видео приказ на овом сајту налази се на YouTube; уграђени плејер и продавнице проширења имају своје политике приватности.",
+    "web_can_i_undo_a_cleanup": "Могу ли да опозовем затварање картица?",
+    "web_use_undo_immediately_after_closing": "Користите Опозови одмах након затварања картица из искачућег прозора TabTools, док је он још отворен. Странице можете поново отворити и преко недавно затворених картица у прегледачу.",
+    "web_free_for_chrome_firefox_and": "Бесплатно за Chrome, Firefox и Edge",
+    "web_other_browser_stores": "Друге продавнице проширења",
+    "web_close_tabs_by_site_sort_2": "Затварајте картице по сајту, уредите траку са картицама и уклањајте дупликате.",
+    "web_product": "Производ",
+    "web_try_it": "Испробајте",
+    "web_more": "Више",
+    "web_contact": "Контакт",
+    "web_free_and_open_source": "Бесплатно и отвореног кода",
+    "web_view": "Прикажи {browser}",
+    "web_guides": "Водичи",
+    "web_readSiteGuide": "Прочитајте водич за затварање картица истог сајта",
+    "web_readSortingGuide": "Прочитајте водич за ређање картица",
+    "web_readDuplicateGuide": "Прочитајте водич за уклањање дупликата картица",
+    "web_finalMobileNote": "Отворите ову страницу на рачунару да додате TabTools. Испод можете погледати странице проширења у продавницама.",
+    "web_socialImageAlt": "Проширење прегледача TabTools приказује управљање картицама"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Пређи на садржај</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/sr/#top" aria-label="Почетна страница TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Главна навигација">
+          <a href="/sr/#features">Могућности</a>
+          <a href="/sr/#how-it-works">Како се користи</a>
+          <a href="/sr/guides/" aria-current="page">Водичи</a>
+          <a href="/sr/#privacy">Приватност</a>
+          <a href="/sr/#faq">Честа питања</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Додај у Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Додај у <span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Укључи тамну тему" title="Укључи тамну тему">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Тамна тема</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Језик: Serbian" title="Језик: Serbian" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Serbian</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Језик" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="true" tabindex="-1" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Језик: Serbian"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Језик: Serbian</span></summary><nav class="language-fallback-menu" aria-label="Језик"><a class="language-fallback-option" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/sort-tabs-by-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Путања навигације"><a href="/sr/">Почетна</a><span aria-hidden="true">/</span><a href="/sr/guides/">Водичи</a><span aria-hidden="true">/</span><span aria-current="page">Поређај картице</span></nav>
+      <p class="eyebrow">Поређај картице · Прегледачи за рачунар</p><h1>Како поређати картице по сајту у Chrome-у, Firefox-у и Edge-у</h1><p class="guides-lede">Када трака картица меша документе, видео-снимке и странице за истраживање, проналажење следеће картице траје дуже него што би требало. Ређање поставља странице истог сајта заједно, остављајући их отвореним.</p>
+      <p class="guide-byline">Аутор: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, творац TabTools-а <span aria-hidden="true">·</span> 4 мин читања <span aria-hidden="true">·</span> Ажурирано <time datetime="2026-10-01">1. октобар 2026.</time></p>
+      <p class="guide-screenshot-note">Снимци екрана приказују интерфејс на енглеском; називи могу да се разликују на језику вашег прегледача.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="На овој страници"><p class="eyebrow">На овој страници</p><ol><li><a href="#sort-with-tabtools">Поређајте картице у тренутном прозору</a></li><li><a href="#how-the-order-works">Како TabTools бира редослед</a></li><li><a href="#pinned-tabs-and-subdomains">Закачене картице и поддомени</a></li><li><a href="#sorting-or-tab-groups">Изаберите између ређања и група картица</a></li><li><a href="#native-browser-options">Организујте картице без проширења</a></li><li><a href="#after-sorting">Шта урадити после ређања</a></li></ol></nav><a class="guide-back" href="/sr/guides/">← Сви водичи</a></aside>
+      <article class="guide-article" aria-label="Како поређати картице по сајту у Chrome-у, Firefox-у и Edge-у"><div class="guide-answer"><p class="eyebrow">Кратак одговор</p><p>Отворите TabTools у прозору који желите да организујете и кликните на Поређај картице. Незакачене картице се ређају по сајту, почевши од сајтова са највише тренутно отворених картица. Закачене картице остају на месту.</p></div>
+      <section id="sort-with-tabtools"><h2>Поређајте картице у тренутном прозору</h2><p>Иста радња из искачућег прозора доступна је у Chrome-у, Firefox-у и Microsoft Edge-у. Овај Chrome пример почиње са шест измешаних картица YouTube-а, Wikipedia-е и Google-а.</p>
+<ol>
+  <li>Инсталирајте TabTools за <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> или <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
+  <li>Пређите у прозор прегледача чије картице желите да поређате.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome са три YouTube картице, две Wikipedia картице и Google-ом измешаним у траци картица." />
+    <span class="guide-screenshot-zoom">Погледајте у пуној величини <span aria-hidden="true">↗</span><span class="sr-only"> (отвара се у новој картици)</span></span>
+  </a>
+  <figcaption>Пре ређања: шест картица са три сајта је измешано.</figcaption>
+</figure>
+  </li>
+  <li>Отворите TabTools из траке са алаткама или менија проширења.</li>
+  <li>Кликните на <strong>Поређај картице</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools искачући прозор у Chrome-у са показивачем на Поређај картице (Sort tabs)." />
+    <span class="guide-screenshot-zoom">Погледајте у пуној величини <span aria-hidden="true">↗</span><span class="sr-only"> (отвара се у новој картици)</span></span>
+  </a>
+  <figcaption>Кликните на Поређај картице (Sort tabs) да поставите странице сваког сајта заједно.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>Сродне незакачене картице померају се једна поред друге. Странице остају отворене, а картице из других прозора не преносе се у овај. Ако желите да организујете други прозор, пређите у њега и поново покрените команду.</p>
+<p>Ређање је једнократна радња. Нове картице се после тога отварају нормално; TabTools не мења непрекидно редослед док прегледате веб. Кликните поново на <strong>Поређај картице</strong> када желите да уредите тренутни распоред.</p></section>
+<section id="how-the-order-works"><h2>Како TabTools бира редослед</h2><p>TabTools броји отворене картице сваког сајта у тренутном прозору. Сајтови са већим бројем долазе први, одмах после закачених картица. Ево једноставног примера без закачених картица:</p>
+<table>
+  <thead><tr><th scope="col">Сајт</th><th scope="col">Отворене картице</th><th scope="col">Положај након ређања</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>Први</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>Други</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>Трећи</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome након ређања: три YouTube картице, затим две Wikipedia картице, па Google; TabTools пријављује 6 премештених картица (Reordered 6 tabs)." />
+    <span class="guide-screenshot-zoom">Погледајте у пуној величини <span aria-hidden="true">↗</span><span class="sr-only"> (отвара се у новој картици)</span></span>
+  </a>
+  <figcaption>Након ређања: YouTube ×3, Wikipedia ×2, па Google. Свих шест картица остаје отворено.</figcaption>
+</figure>
+<p>„Највише отворених“ значи највећи број картица отворених управо сада. Не означава најпосећенији сајт, историју прегледања или број отварања сајта током претходне недеље.</p>
+<p>Ако два сајта имају исти број, њихова имена хостова одређују абецедни редослед. Картице истог хоста задржавају међусобни редослед. На пример, три YouTube странице задржавају редослед унутар YouTube скупа; не ређају се по наслову странице.</p></section><aside class="guide-install" aria-label="Инсталирајте TabTools">
+    <div><p class="eyebrow">Бесплатно проширење прегледача</p><h2>Примените у пракси.</h2><p>Затворите картице по сајту, уклоните дупликате и поређајте преостале.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Додај у Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Додај у Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Додај у Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Гледате на телефону или таблету? Отворите ову страницу на рачунару да додате TabTools.</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>Закачене картице и поддомени</h2><p>Закачене картице остају на својим закаченим положајима. И даље улазе у број картица сајта када TabTools одређује редослед његових незакачених картица.</p>
+<p>На пример, две закачене GitHub картице и две незакачене дају GitHub-у укупан број четири. Његове незакачене картице зато долазе пре сајта са три отворене картице, док две закачене GitHub картице остају где јесу.</p>
+<p>Подударање сајтова користи име хоста и занемарује почетно <code>www.</code>. Странице на <code>example.com</code> и <code>www.example.com</code> припадају истом скупу. Странице на <code>docs.example.com</code> чине одвојен скуп од <code>shop.example.com</code>.</p>
+<p>Ово је корисно када различити сервиси деле надређени домен: документација и продавница могу остати одвојене у поређаној траци картица.</p></section>
+<section id="sorting-or-tab-groups"><h2>Изаберите између ређања и група картица</h2><p>Ређање је корисно када је сам сајт правило организовања. Групе картица прегледача корисне су када је правило задатак, попут одмора, пословног пројекта или куповине која обухвата више сајтова.</p>
+<table>
+  <thead><tr><th scope="col">Ваш циљ</th><th scope="col">Прикладна опција</th></tr></thead>
+  <tbody>
+    <tr><td>Поставити странице сваког сајта једну поред друге</td><td>TabTools <strong>Поређај картице</strong></td></tr>
+    <tr><td>Изабрати тачан редослед неколико картица</td><td>Ручно превући картице</td></tr>
+    <tr><td>Држати различите сајтове пројекта заједно под једним називом</td><td>Именоване групе картица прегледача</td></tr>
+  </tbody>
+</table>
+<p>TabTools премешта картице; не прави именоване или обојене групе прегледача. Ако сте намерно распоредили картице по пројекту, размислите да ли ређање по сајту одговара том прозору пре него што промените редослед.</p></section>
+<section id="native-browser-options"><h2>Организујте картице без проширења</h2><h3>Chrome</h3>
+<p>Превлачите картице дуж траке да ручно одредите редослед. Можете користити и именоване групе када повезани посао обухвата више сајтова. У Google-овом <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">водичу за Chrome картице</a> описани су распоређивање и груписање картица.</p>
+<h3>Firefox</h3>
+<p>Користите траку за премештање појединачних картица или опције груписања у Firefox контекстном менију картица за именовану збирку. <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">Водич за контекстни мени картица</a> који објављује Mozilla описује доступне радње над картицама.</p>
+<h3>Microsoft Edge</h3>
+<p>Edge нуди именоване групе картица и функцију <strong>Организуј картице</strong> која може груписати сродне картице. Доступност може да се разликује. Ове опције организују по изабраним групама или релевантности, што се разликује од ређања по тренутном броју картица сајта. Microsoft их објашњава у <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">водичу за групе картица у Edge-у</a>.</p></section>
+<section id="after-sorting"><h2>Шта урадити после ређања</h2><p>TabTools нема радњу за опозив ређања. Дугме <strong>Опозови</strong> у искачућем прозору служи за последњу радњу затварања картица, а не за претходни редослед. Ако после ређања желите другачији распоред, превуците картице на жељено место.</p>
+<p>Ређање такође задржава поновљене копије страница. Ако због тога највећи скупови постану непотребно дуги, <a href="/sr/guides/close-duplicate-tabs/">затворите дупликате картица</a> и поређајте поново према преосталим бројевима.</p>
+<p>Када завршите са целим сајтом, користите <a href="/sr/guides/close-tabs-from-same-website/">Затвори картице сајта</a> да уклоните његове странице. Ређање је опција за картице које су вам још потребне: олакшава њихово проналажење без одлучивања које странице треба затворити.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Сродни водичи"><p class="eyebrow">Наставите да истражујете</p><h2>Још начина да организујете картице.</h2><div class="guide-cards"><a class="guide-card" href="/sr/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Затвори картице сајта</span></div>
+    <h2>Затварање картица истог сајта</h2><p>Затворите картице истог сајта у Chrome-у помоћу TabTools-а, користите ручну алтернативу и пратите кораке за Firefox и Edge.</p>
+    <span class="guide-card-bottom"><span>4 мин читања</span><span class="guide-card-link">Прочитајте водич <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/sr/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Уклањање дупликата</span></div>
+    <h2>Затварање дупликата картица</h2><p>Уклоните дупликате картица у Chrome-у, Firefox-у и Edge-у. Пратите кораке за TabTools, користите уграђену опцију Firefox-а и сазнајте које копије остају.</p>
+    <span class="guide-card-bottom"><span>4 мин читања</span><span class="guide-card-link">Прочитајте водич <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/sr/#top" aria-label="Почетна страница TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Затварајте картице по сајту, уредите траку са картицама и уклањајте дупликате.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Производ</span><a href="/sr/#features">Могућности</a><a href="/sr/#how-it-works">Како се користи</a><a href="/sr/guides/">Водичи</a><a href="/sr/#faq">Честа питања</a></div>
+          <div><span class="footer-label">Испробајте</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Више</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Приватност</a><a href="mailto:tabtools@michaelwester.com">Контакт</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Бесплатно и отвореног кода</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

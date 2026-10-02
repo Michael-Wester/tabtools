@@ -7,7 +7,7 @@ const script = L.fs.readFileSync(L.path.join(L.root, 'website/src/script.js'), '
 
 // Run the real website script against a small DOM adapter. This checks event
 // behaviour, not rendering; actual browser verification is recorded separately.
-function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
+function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140', pageSuffix = '') {
   const storage = new Map(saved ? [['tabtools-site-language', saved]] : []);
   const element = () => ({dataset:{},children:[],events:{},hidden:true,_text:'',
     get textContent(){return this.children.length ? this.children.map(x=>x.textContent).join('') : this._text;},
@@ -29,13 +29,13 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140') {
   const options=L.presentationRegistry.map(l=>{
     const option=element();
     option.dataset={locale:l.locale};
-    option.href='/'+(l.website?l.website+'/':'');
+    option.href=l.path+pageSuffix;
     option.textContent=l.languageName;
     return option;
   });
   picker.contains=node=>node===trigger || node===menu || options.includes(node);
   menu.hidden=true;
-  const data={locale,registry:L.presentationRegistry.map(l=>({locale:l.locale,path:'/'+(l.website?l.website+'/':''),languageName:l.languageName,flagAsset:l.flagAsset})),messages:L.catalogue(locale)};
+  const data={locale,registry:L.presentationRegistry.map(l=>({locale:l.locale,path:l.path+pageSuffix,languageName:l.languageName,flagAsset:l.flagAsset})),messages:L.catalogue(locale)};
   const document={documentElement:{dataset:{},lang:locale},
     getElementById:()=>({textContent:JSON.stringify(data)}),
     querySelector:s=>({'[data-language-picker]':picker,'[data-language-trigger]':trigger,'[data-language-menu]':menu,'[data-language-suggestion]':note,'[data-theme-toggle]':toggle,'[data-theme-label]':label,'[data-store-note]':storeNote}[s]||null),
@@ -176,7 +176,7 @@ test('localized homepages retain main guide links, social previews and skip-link
   }
   for (const locale of L.registry) {
     const html = L.fs.readFileSync(L.path.join(L.root,'website/dist',locale.website,'index.html'),'utf8');
-    for (const route of guideRoutes) assert.ok(html.includes(`href="${route}"`), `${locale.locale}: ${route}`);
+    for (const route of guideRoutes) assert.ok(html.includes(`href="${locale.path}${route.slice(1)}"`), `${locale.locale}: ${route}`);
     assert.match(html, /<main id="main-content" tabindex="-1">/, locale.locale);
     assert.match(html, /<meta name="twitter:card" content="summary_large_image" \/>/, locale.locale);
     for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
@@ -292,4 +292,95 @@ test('English wording changes bind by key without changing the template', () => 
     delete catalogue.web_free_browser_tab_manager;
     assert.throws(()=>applyTranslations(template,L.localeInfo('en')),/Missing website message/);
   } finally {catalogue.web_free_browser_tab_manager=original;}
+});
+
+
+test('guide language choices preserve the index or article plus the current query and anchor', () => {
+  const guideSlugs = require('../website/guides-content.cjs').map(guide => guide.slug);
+  for (const current of ['en', 'zh-CN', 'zh-TW']) {
+    for (const slug of ['', ...guideSlugs]) {
+      const suffix = 'guides/' + (slug ? slug + '/' : '');
+      for (const target of L.registry) {
+        const p = pageRuntime(current, ['fr'], undefined, 'Chrome/140', suffix);
+        assert.deepEqual(p.navigation, [], 'Never redirect an explicitly opened guide');
+        p.location.hash = slug ? '#use-the-popup' : '#main-content';
+        p.windowEvents.hashchange();
+        const option = p.options.find(item => item.dataset.locale === target.locale);
+        const expected = target.path + suffix + '?campaign=test' + p.location.hash;
+        assert.equal(option.href, expected, 'Native modified-click href keeps the guide');
+        option.events.click({ preventDefault() {} });
+        assert.deepEqual(p.navigation, [expected]);
+        assert.equal(p.storage.get('tabtools-site-language'), target.locale);
+      }
+    }
+  }
+});
+
+test('fully translated guides retain canonical, alternate and native same-page language links', () => {
+  const G = require('../website/guide-localisation.cjs');
+  const slugs = ['', ...G.source.guides.map(guide => guide.slug)];
+  for (const locale of L.registry) {
+    const translated = G.catalogue(locale.locale);
+    assert.equal(translated.guides.length, G.source.guides.length);
+    for (const slug of slugs) {
+      const route = G.routeFor(locale, slug);
+      const html = L.fs.readFileSync(L.path.join(L.root, 'website/dist', route, 'index.html'), 'utf8');
+      assert.ok(html.includes(`<html lang="${locale.canonical}" dir="${locale.direction}">`));
+      assert.ok(html.includes(`<link rel="canonical" href="https://tabtools.fyi${route}" />`));
+      assert.ok(html.includes(`hreflang="x-default" href="https://tabtools.fyi${G.routeFor('en', slug)}"`));
+      const data = JSON.parse(html.match(/id="locale-data">([\s\S]*?)<\/script>/)[1]);
+      assert.equal(data.locale, locale.locale);
+      const languageLinks = [...html.matchAll(/class="language-option"[^>]*data-locale="([^"]+)"[^>]*href="([^"]+)"/g)];
+      assert.equal(languageLinks.length, L.registry.length);
+      for (const target of L.registry) {
+        const counterpart = G.routeFor(target, slug);
+        assert.ok(html.includes(`hreflang="${target.hreflang}" href="https://tabtools.fyi${counterpart}"`));
+        assert.equal(data.registry.find(item => item.locale === target.locale).path, counterpart);
+        assert.equal(languageLinks.find(match => match[1] === target.locale)?.[2], counterpart);
+        assert.ok(html.includes(`class="language-fallback-option" href="${counterpart}"`));
+      }
+      if (slug) {
+        const guide = translated.guides.find(item => item.slug === slug);
+        assert.ok(html.includes(`<h1>${L.escape(guide.title)}</h1>`));
+        assert.ok(html.includes(`<p>${L.escape(guide.answer)}</p>`));
+        for (const section of guide.sections) assert.ok(html.includes(`<section id="${section.id}"><h2>${L.escape(section.title)}</h2>`));
+        if (locale.locale !== 'en') assert.ok(html.includes(`<p class="guide-screenshot-note">${L.escape(translated.ui.screenshotNote)}</p>`));
+      }
+    }
+  }
+});
+
+test('guide translations reject stale, missing, untranslated or unsafe content before generation', () => {
+  const G = require('../website/guide-localisation.cjs');
+  const original = G.catalogue('zh-CN');
+  for (const [mutate, message] of [
+    [value => { value.sourceFingerprint = 'stale'; }, /stale English source/],
+    [value => { delete value.ui.readGuide; }, /UI keys differ/],
+    [value => { value.ui.readTime = 'no duration placeholder'; }, /placeholders/],
+    [value => { value.guides[0].sections.pop(); }, /missing section/],
+    [value => { value.guides[0].answer = G.source.guides[0].answer; }, /untranslated/],
+    [value => { value.guides[0].sections[0].id = 'different-anchor'; }, /changed section anchor/],
+    [value => { value.guides[0].sections[0].html += '<script>alert(1)</script>'; }, /altered HTML/],
+    [value => { value.guides[0].sections[0].html = value.guides[0].sections[0].html.replace('href=', 'onclick="alert(1)" href='); }, /altered HTML/]
+  ]) {
+    const value = structuredClone(original);
+    mutate(value);
+    assert.throws(() => G.validateTranslation(value, 'zh-CN'), message);
+  }
+});
+
+
+test('adding an untranslated English guide invalidates existing translation catalogues', () => {
+  const G = require('../website/guide-localisation.cjs');
+  const value = structuredClone(G.catalogue('zh-CN'));
+  const added = structuredClone(G.source.guides[0]);
+  added.slug = 'new-untranslated-guide';
+  G.source.guides.push(added);
+  try {
+    // Shape validation is an additional guard even if someone mistakenly
+    // copies the current fingerprint without translating the new article.
+    assert.throws(() => G.validateTranslation(value, 'zh-CN'), /missing guide/);
+  } finally {
+    G.source.guides.pop();
+  }
 });

@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>So schließt du doppelte Tabs in Chrome, Firefox und Edge | TabTools</title>
+    <meta name="description" content="Entferne doppelte Tabs in Chrome, Firefox und Edge. Folge den Schritten für TabTools, nutze die integrierte Firefox-Funktion und erfahre, welche Kopien erhalten bleiben." />
+    <link rel="canonical" href="https://tabtools.fyi/de/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/close-duplicate-tabs/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="So schließt du doppelte Tabs in Chrome, Firefox und Edge" />
+    <meta property="og:description" content="Entferne doppelte Tabs in Chrome, Firefox und Edge. Folge den Schritten für TabTools, nutze die integrierte Firefox-Funktion und erfahre, welche Kopien erhalten bleiben." />
+    <meta property="og:url" content="https://tabtools.fyi/de/guides/close-duplicate-tabs/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="So schließt du doppelte Tabs in Chrome, Firefox und Edge" />
+    <meta name="twitter:description" content="Entferne doppelte Tabs in Chrome, Firefox und Edge. Folge den Schritten für TabTools, nutze die integrierte Firefox-Funktion und erfahre, welche Kopien erhalten bleiben." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "So schließt du doppelte Tabs in Chrome, Firefox und Edge",
+      "description": "Entferne doppelte Tabs in Chrome, Firefox und Edge. Folge den Schritten für TabTools, nutze die integrierte Firefox-Funktion und erfahre, welche Kopien erhalten bleiben.",
+      "url": "https://tabtools.fyi/de/guides/close-duplicate-tabs/",
+      "mainEntityOfPage": "https://tabtools.fyi/de/guides/close-duplicate-tabs/",
+      "inLanguage": "de",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://tabtools.fyi/de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Anleitungen",
+          "item": "https://tabtools.fyi/de/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Doppelte Tabs schließen",
+          "item": "https://tabtools.fyi/de/guides/close-duplicate-tabs/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "de",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/close-duplicate-tabs/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/close-duplicate-tabs/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/close-duplicate-tabs/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/close-duplicate-tabs/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/close-duplicate-tabs/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/close-duplicate-tabs/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/close-duplicate-tabs/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/close-duplicate-tabs/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/close-duplicate-tabs/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/close-duplicate-tabs/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/close-duplicate-tabs/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/close-duplicate-tabs/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/close-duplicate-tabs/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/close-duplicate-tabs/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/close-duplicate-tabs/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/close-duplicate-tabs/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/close-duplicate-tabs/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/close-duplicate-tabs/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/close-duplicate-tabs/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/close-duplicate-tabs/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/close-duplicate-tabs/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/close-duplicate-tabs/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/close-duplicate-tabs/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/close-duplicate-tabs/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/close-duplicate-tabs/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/close-duplicate-tabs/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/close-duplicate-tabs/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/close-duplicate-tabs/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/close-duplicate-tabs/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Tabs nach Website schließen & sortieren",
+    "extensionDescription": "Tabs einer Website schließen, nach Website sortieren und Duplikate entfernen – für einen aufgeräumten Browser.",
+    "openTabTools": "TabTools öffnen",
+    "settings": "Einstellungen",
+    "suggestions": "Vorschläge",
+    "suggestCaption": "Antippen, um die Tabs einer Website zu schließen",
+    "queryPlaceholder": "Nach Stichwort schließen (Eingabetaste)",
+    "close": "Schließen",
+    "sortTabs": "Tabs sortieren",
+    "closeDuplicates": "Duplikate schließen",
+    "undo": "Rückgängig",
+    "undoTitle": "Letztes Schließen rückgängig machen",
+    "theme": "Design",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "minTabs": "Mindestzahl an Tabs je Website für Vorschläge",
+    "inactiveAfter": "Tabs gelten als inaktiv nach",
+    "minutes": "Minuten",
+    "closedCount": "Geschlossen: {count}",
+    "openCount": {
+      "one": "{count} offener Tab",
+      "other": "{count} offene Tabs"
+    },
+    "openCountShort": {
+      "one": "{count} offen",
+      "other": "{count} offen"
+    },
+    "closedCountShort": {
+      "one": "{count} geschlossen",
+      "other": "{count} geschlossen"
+    },
+    "closeFailed": "Fehlgeschlagen",
+    "closedInactive": "Geschlossene inaktive Tabs: {count}",
+    "noInactive": "Keine inaktiven Tabs",
+    "closedDuplicates": "Geschlossene doppelte Tabs: {count}",
+    "noDuplicates": "Keine Duplikate",
+    "nothingToUndo": "Nichts rückgängig zu machen",
+    "undoFailed": "Rückgängig machen fehlgeschlagen",
+    "restoredCount": "Wiederhergestellt: {count}",
+    "nothingToRestore": "Nichts wiederherzustellen",
+    "inactive": "Inaktiv",
+    "loadingSuggestions": "Vorschläge werden geladen …",
+    "suggestionsFailed": "Vorschläge konnten nicht geladen werden",
+    "noSuggestions": "Zurzeit keine Vorschläge",
+    "moreCount": "Weitere, nicht angezeigte Vorschläge: {count}",
+    "sortFailed": "Sortieren fehlgeschlagen",
+    "sortedCount": "Neu angeordnete Tabs: {count}",
+    "nothingToSort": "Nichts zu sortieren",
+    "hide": "Ausblenden",
+    "show": "Anzeigen",
+    "contextClose": "Tabs dieser Website schließen",
+    "contextSort": "Tabs sortieren (häufigste Websites zuerst)",
+    "closeSiteLabel": "Tabs von {site} schließen",
+    "web_heroTitle": "Tabs derselben \u003cem>Website schließen.\u003c/em>",
+    "web_featuresTitle": "Nach Website schließen.\u003cbr>\u003cem>Den Rest sortieren.\u003c/em>",
+    "web_workflowTitle": "TabTools hinzufügen.\u003cbr>\u003cem>Auswählen, was geschlossen wird.\u003c/em>",
+    "web_privacyTitle": "Deine Tab-Daten bleiben\u003cbr>in deinem Browser.",
+    "web_finalTitle": "Erledigte Tabs schließen.\u003cbr>\u003cem>Den Rest sortieren.\u003c/em>",
+    "web_siteBody": "Öffne TabTools und klicke unter \u003cstrong>Vorschläge\u003c/strong> auf eine Website. Oder klicke mit der rechten Maustaste auf eine Webseite und wähle \u003cstrong>Tabs dieser Website schließen\u003c/strong>. Dadurch werden die passenden Tabs in allen normalen Fenstern geschlossen, einschließlich des aktuellen Tabs.",
+    "web_addTo": "Zu {browser} hinzufügen",
+    "web_storeNote": "Öffnet den {store}.",
+    "web_storeAria": "{label} — öffnet den {store} in einem neuen Tab",
+    "web_language": "Sprache",
+    "web_languageSuggestion": "Diese Seite auf {language} lesen",
+    "web_switchLight": "Zum hellen Design wechseln",
+    "web_lightMode": "Helles Design",
+    "web_structuredDescription": "Eine kostenlose Browser-Erweiterung zum Schließen von Tabs nach Website, Sortieren von Tabs und Entfernen doppelter und inaktiver Tabs.",
+    "web_close_tabs_from_the_same": "Tabs derselben Website schließen, nach Website sortieren und Duplikate entfernen. TabTools ist eine kostenlose Tab-Verwaltung für Chrome, Firefox und Edge.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Tabs nach Website schließen und sortieren",
+    "web_close_tabs_by_site_sort": "Schließe Tabs nach Website, sortiere deine Tableiste und entferne Duplikate mit einer kostenlosen, quelloffenen Erweiterung für Chrome, Firefox und Edge.",
+    "web_skip_to_content": "Zum Inhalt springen",
+    "web_tabtools_home": "TabTools-Startseite",
+    "web_main_navigation": "Hauptnavigation",
+    "web_features": "Funktionen",
+    "web_how_it_works": "So funktioniert’s",
+    "web_privacy": "Datenschutz",
+    "web_faq": "Häufige Fragen",
+    "web_switch_to_dark_mode": "Zum dunklen Design wechseln",
+    "web_dark_mode": "Dunkles Design",
+    "web_free_browser_tab_manager": "Kostenlose Tab-Verwaltung für deinen Browser",
+    "web_clear_a_website_s_tabs": "Schließe die Tabs einer Website mit einer Aktion oder sortiere deine Tableiste nach Website. TabTools entfernt auch doppelte und inaktive Tabs in Chrome, Firefox und Edge.",
+    "web_free_to_use_no_account": "Kostenlos. Kein Konto erforderlich.",
+    "web_viewing_on_a_phone_or": "Du bist am Smartphone oder Tablet? Öffne diese Seite auf deinem Computer, um TabTools hinzuzufügen.",
+    "web_tabtools_browser_stores": "TabTools in den Browser-Stores",
+    "web_choose_another_browser": "Anderen Browser wählen:",
+    "web_tabtools_in_action": "TabTools im Einsatz",
+    "web_full_demo": "Vollständige Demo",
+    "web_tabtools_full_demo": "Vollständige TabTools-Demo",
+    "web_see_tabtools_close_tabs_by": "Sieh dir an, wie TabTools Tabs nach Website schließt, Duplikate entfernt, Tabs sortiert und inaktive Tabs schließt.",
+    "web_tabtools_product_details": "Produktdetails zu TabTools",
+    "web_close_tabs_by_site": "Tabs nach Website schließen",
+    "web_from_the_popup_or_right": "über das Popup oder das Kontextmenü",
+    "web_local_by_design": "Lokal konzipiert",
+    "web_your_tab_list_stays_in": "deine Tabliste bleibt in deinem Browser",
+    "web_open_source": "Quelloffen",
+    "web_inspect_the_code_on_github": "Code auf GitHub ansehen",
+    "web_close_and_organise": "Schließen und aufräumen",
+    "web_clear_a_finished_task_bring": "Schließe Tabs erledigter Aufgaben, ordne Tabs derselben Website nebeneinander an oder entferne doppelte und inaktive Seiten.",
+    "web_01_site_cleanup": "01 / Websites aufräumen",
+    "web_close_a_site_s_tabs": "Tabs einer Website gemeinsam schließen",
+    "web_see_how_to_get_started": "So startest du",
+    "web_02_organise": "02 / Ordnen",
+    "web_sort_tabs_by_site": "Tabs nach Website sortieren",
+    "web_bring_tabs_from_the_same": "Ordne Tabs derselben Website im aktuellen Fenster nebeneinander an. Websites mit den meisten offenen Tabs stehen zuerst.",
+    "web_03_simplify": "03 / Vereinfachen",
+    "web_remove_duplicate_tabs": "Doppelte Tabs entfernen",
+    "web_close_extra_copies_of_the": "Schließe zusätzliche Kopien derselben Seite mit einem Klick. Angeheftete Tabs bleiben erhalten.",
+    "web_04_find": "04 / Finden",
+    "web_search_by_keyword_or_domain": "Nach Stichwort oder Domain suchen",
+    "web_type_a_word_to_match": "Gib ein Wort ein, um Tab-Titel und URLs zu durchsuchen, oder eine genaue Domain wie youtube.com. Wähle dann Schließen.",
+    "web_05_reset": "05 / Aufräumen",
+    "web_clear_inactive_tabs": "Inaktive Tabs schließen",
+    "web_choose_an_inactivity_threshold_in": "Lege in den Einstellungen fest, ab wann Tabs als inaktiv gelten. Klicke dann auf Inaktiv, um passende Tabs zu schließen. Aktive, angeheftete und hörbare Tabs bleiben geöffnet.",
+    "web_more_tabtools_details": "Weitere Details zu TabTools",
+    "web_undo_cleanup_from_the_popup": "Aufräumen im Popup rückgängig machen",
+    "web_light_and_dark_themes": "Helles und dunkles Design",
+    "web_local_cleanup_statistics": "Lokale Aufräumstatistiken",
+    "web_start_with_one_busy_site": "Beginne mit einer Website mit vielen Tabs. Nutze das Popup für Website-Vorschläge und zum Sortieren oder das Kontextmenü zum schnellen Schließen.",
+    "web_add_it_to_your_browser": "Zum Browser hinzufügen",
+    "web_open_the_chrome_firefox_or": "Öffne die Store-Seite für Chrome, Firefox oder Edge und füge die kostenlose Erweiterung hinzu.",
+    "web_click_the_tabtools_icon_in": "Klicke im Erweiterungsmenü deines Browsers auf das TabTools-Symbol, um Website-Vorschläge und Schnellaktionen zu sehen.",
+    "web_close_a_site_or_sort": "Website-Tabs schließen oder Tabs sortieren",
+    "web_click_a_site_under_suggestions": "Klicke unter Vorschläge auf eine Website, um ihre Tabs zu schließen. Oder wähle Tabs sortieren, um Tabs derselben Website nebeneinander anzuordnen.",
+    "web_private_by_design": "Datenschutz von Anfang an",
+    "web_the_tabtools_extension_processes_tab": "Die TabTools-Erweiterung verarbeitet Tab-Informationen auf deinem Gerät. Einstellungen und Aufräumstatistiken bleiben im lokalen Speicher deines Browsers. Die Erweiterung verwendet keine Konten, Analysedienste, Werbung oder externe Datenbank.",
+    "web_read_the_privacy_policy": "Datenschutzerklärung lesen",
+    "web_before_you_add_tabtools": "Bevor du TabTools hinzufügst",
+    "web_common_questions": "Häufige Fragen.",
+    "web_browsers_cleanup_and_privacy": "Browser, Aufräumen und Datenschutz.",
+    "web_is_tabtools_free": "Ist TabTools kostenlos?",
+    "web_yes_tabtools_is_free_to": "Ja. TabTools ist kostenlos nutzbar. Du brauchst kein Konto.",
+    "web_which_browsers_can_i_use": "Mit welchen Browsern funktioniert es?",
+    "web_tabtools_is_available_for_chrome": "TabTools ist für Chrome, Firefox und Microsoft Edge verfügbar. Nutze die Browser-Links auf dieser Seite, um den passenden Store zu öffnen und die Erweiterung auf deinem Computer hinzuzufügen.",
+    "web_how_do_i_close_tabs": "Wie schließe ich Tabs derselben Website?",
+    "web_right_click_within_a_web": "Klicke mit der rechten Maustaste auf eine Webseite und wähle „Tabs dieser Website schließen“. Oder öffne TabTools und klicke unter Vorschläge auf die Website. Dadurch werden deren Tabs in allen normalen Fenstern geschlossen, einschließlich des aktuellen Tabs. Du kannst auch ein Stichwort oder eine genaue Domain im Popup eingeben.",
+    "web_can_i_remove_duplicates_or": "Kann ich Duplikate entfernen oder inaktive Tabs schließen?",
+    "web_yes_choose_close_duplicates_to": "Ja. Wähle Duplikate schließen, um wiederholte Seiten zu entfernen, oder klicke auf Inaktiv, um passende Tabs zu schließen. Den Zeitraum für Inaktivität kannst du in den Einstellungen ändern. Tabs werden erst geschlossen, wenn du die Aktion auswählst.",
+    "web_does_tabtools_collect_or_share": "Sammelt oder teilt TabTools meine Daten?",
+    "web_the_extension_processes_tab_information": "Die Erweiterung verarbeitet Tab-Informationen lokal und sendet sie weder an den Entwickler noch an Dritte. Einstellungen und Aufräumstatistiken bleiben auf deinem Gerät. Die Demo dieser Website wird von YouTube gehostet. Für den eingebetteten Player und die Browser-Stores gelten eigene Datenschutzerklärungen.",
+    "web_can_i_undo_a_cleanup": "Kann ich das Aufräumen rückgängig machen?",
+    "web_use_undo_immediately_after_closing": "Nutze Rückgängig direkt nach dem Schließen von Tabs im TabTools-Popup, solange es noch geöffnet ist. Über die zuletzt geschlossenen Tabs deines Browsers kannst du Seiten ebenfalls wieder öffnen.",
+    "web_free_for_chrome_firefox_and": "Kostenlos für Chrome, Firefox und Edge",
+    "web_other_browser_stores": "Weitere Browser-Stores",
+    "web_close_tabs_by_site_sort_2": "Tabs nach Website schließen, die Tableiste sortieren und Duplikate entfernen.",
+    "web_product": "Produkt",
+    "web_try_it": "Ausprobieren",
+    "web_more": "Mehr",
+    "web_contact": "Kontakt",
+    "web_free_and_open_source": "Kostenlos und quelloffen.",
+    "web_view": "{browser} ansehen",
+    "web_guides": "Anleitungen",
+    "web_readSiteGuide": "Anleitung zum Schließen von Tabs derselben Website lesen",
+    "web_readSortingGuide": "Anleitung zum Sortieren von Tabs lesen",
+    "web_readDuplicateGuide": "Anleitung zum Entfernen doppelter Tabs lesen",
+    "web_finalMobileNote": "Öffne diese Seite auf deinem Computer, um TabTools hinzuzufügen. Die Store-Einträge kannst du dir unten ansehen.",
+    "web_socialImageAlt": "Browser-Erweiterung TabTools demonstriert die Verwaltung von Tabs"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/de/#top" aria-label="TabTools-Startseite">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Hauptnavigation">
+          <a href="/de/#features">Funktionen</a>
+          <a href="/de/#how-it-works">So funktioniert’s</a>
+          <a href="/de/guides/" aria-current="page">Anleitungen</a>
+          <a href="/de/#privacy">Datenschutz</a>
+          <a href="/de/#faq">Häufige Fragen</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Zu Chrome hinzufügen" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">Zu <span class="browser-button-name" data-browser-name>Chrome</span> hinzufügen</span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Zum dunklen Design wechseln" title="Zum dunklen Design wechseln">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Dunkles Design</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Sprache: German" title="Sprache: German" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">German</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Sprache" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="true" tabindex="-1" href="/de/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Sprache: German"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Sprache: German</span></summary><nav class="language-fallback-menu" aria-label="Sprache"><a class="language-fallback-option" href="/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/close-duplicate-tabs/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/close-duplicate-tabs/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Navigationspfad"><a href="/de/">Startseite</a><span aria-hidden="true">/</span><a href="/de/guides/">Anleitungen</a><span aria-hidden="true">/</span><span aria-current="page">Duplikate entfernen</span></nav>
+      <p class="eyebrow">Duplikate entfernen · Browser auf dem Computer</p><h1>So schließt du doppelte Tabs in Chrome, Firefox und Edge</h1><p class="guides-lede">Dasselbe Dokument, dieselbe Suche oder dasselbe Video ist schnell erneut geöffnet. Wenn du zusätzliche Kopien entfernst, wird die Tableiste übersichtlicher, ohne dass alle Seiten einer Website geschlossen werden.</p>
+      <p class="guide-byline">Von <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, dem Entwickler von TabTools <span aria-hidden="true">·</span> 4 Min. Lesezeit <span aria-hidden="true">·</span> Aktualisiert am <time datetime="2026-10-01">1. Oktober 2026</time></p>
+      <p class="guide-screenshot-note">Die Screenshots zeigen die englische Benutzeroberfläche. Die Beschriftungen können in der Sprache deines Browsers abweichen.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Auf dieser Seite"><p class="eyebrow">Auf dieser Seite</p><ol><li><a href="#choose-a-method">Eine Methode für deinen Browser wählen</a></li><li><a href="#what-counts-as-a-duplicate">Was zählt als doppelter Tab?</a></li><li><a href="#chrome-and-edge">Doppelte Tabs in Chrome oder Edge schließen</a></li><li><a href="#firefox-native-option">Die integrierten Duplikatbefehle von Firefox nutzen</a></li><li><a href="#which-copy-stays">Welche Kopie behält TabTools?</a></li><li><a href="#undo-and-organise">Eine Bereinigung rückgängig machen und den Rest ordnen</a></li></ol></nav><a class="guide-back" href="/de/guides/">← Alle Anleitungen</a></aside>
+      <article class="guide-article" aria-label="So schließt du doppelte Tabs in Chrome, Firefox und Edge"><div class="guide-answer"><p class="eyebrow">Kurzantwort</p><p>Öffne TabTools und klicke auf „Duplikate schließen“, um mehrfach geöffnete, nicht angeheftete Seiten in allen normalen Browserfenstern zu entfernen. Firefox bietet außerdem integrierte Befehle, um Duplikate eines einzelnen Tabs oder doppelte Tabs über das Tab-Übersichtsmenü zu schließen.</p></div>
+      <section id="choose-a-method"><h2>Eine Methode für deinen Browser wählen</h2><table>
+  <thead><tr><th scope="col">Browser</th><th scope="col">Hier beschriebene Methode</th></tr></thead>
+  <tbody>
+    <tr><td>Chrome</td><td>Öffne TabTools und wähle <strong>Duplikate schließen</strong>.</td></tr>
+    <tr><td>Firefox</td><td>Nutze die integrierten Duplikatbefehle oder wähle <strong>Duplikate schließen</strong> in TabTools.</td></tr>
+    <tr><td>Microsoft Edge</td><td>Öffne TabTools und wähle <strong>Duplikate schließen</strong>.</td></tr>
+  </tbody>
+</table>
+<p>Sichere vor einer größeren Bereinigung alle ungespeicherten Arbeiten in mehrfach geöffneten Seiten. Zwei Tabs können dieselbe URL anzeigen und dennoch unterschiedliche Texte enthalten, die du in ein Formular eingegeben hast.</p></section>
+<section id="what-counts-as-a-duplicate"><h2>Was zählt als doppelter Tab?</h2><p>Doppelte Tabs sind mehrfach geöffnete Kopien einer Seite. Drei Kopien der YouTube-Startseite sind Duplikate; die Startseite und zwei unterschiedliche YouTube-Suchergebnisse sind verschiedene Seiten derselben Website.</p>
+<p>TabTools parst jede Seiten-URL und entfernt ihr Fragment, also den Teil, der mit <code>#</code> beginnt. Der URL-Parser vereinheitlicht die Groß- und Kleinschreibung im Schema und im Hostnamen. Groß- und Kleinschreibung in Pfaden und Abfragezeichenfolgen sowie die Reihenfolge der Abfrageparameter bleiben für den Vergleich relevant.</p>
+<table>
+  <thead><tr><th scope="col">Beispiel-URLs</th><th scope="col">Behandlung durch TabTools</th></tr></thead>
+  <tbody>
+    <tr><td><code>example.com/guide</code> zweimal geöffnet</td><td>Duplikate</td></tr>
+    <tr><td><code>example.com/guide#intro</code> und <code>example.com/guide#steps</code></td><td>Duplikate: Fragmente werden ignoriert</td></tr>
+    <tr><td><code>example.com/guide</code> und <code>example.com/contact</code></td><td>Unterschiedliche Seiten</td></tr>
+    <tr><td><code>example.com/search?q=tabs</code> und <code>example.com/search?q=bookmarks</code></td><td>Unterschiedliche Suchparameter; beide bleiben geöffnet</td></tr>
+  </tbody>
+</table>
+<p>Manche Web-Apps verwenden Fragmente, um verschiedene Ansichten zu unterscheiden. Diese Ansichten können deshalb als Duplikate gelten. Umgekehrt können Tracking-Parameter dazu führen, dass ansonsten ähnliche Seiten als unterschiedliche URLs gelten. Der Befehl vergleicht Adressen; er prüft nicht den Seiteninhalt, um festzustellen, ob zwei Seiten dasselbe bedeuten.</p></section><aside class="guide-install" aria-label="TabTools herunterladen">
+    <div><p class="eyebrow">Kostenlose Browser-Erweiterung</p><h2>Setze es in die Praxis um.</h2><p>Schließe Tabs nach Website, entferne Duplikate und sortiere den Rest.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-duplicate-tabs" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Zu Chrome hinzufügen</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-duplicate-tabs" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Zu Firefox hinzufügen</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-duplicate-tabs" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-duplicate-tabs_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Zu Edge hinzufügen</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Du bist am Smartphone oder Tablet? Öffne diese Seite auf deinem Computer, um TabTools hinzuzufügen.</p>
+  </aside>
+<section id="chrome-and-edge"><h2>Doppelte Tabs in Chrome oder Edge schließen</h2><p>Das TabTools-Popup verwendet in beiden Browsern denselben Befehl. Diese Screenshots zeigen Chrome mit acht Tabs, darunter drei Kopien der YouTube-Startseite.</p>
+<ol>
+  <li>Installiere TabTools für <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a> oder <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Microsoft Edge</a>.</li>
+  <li>Öffne die Erweiterung über die Symbolleiste oder das Erweiterungsmenü.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-01-open-tabtools.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-01-open-tabtools.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome mit acht Tabs, darunter drei Kopien der YouTube-Startseite, und dem Mauszeiger auf dem TabTools-Symbol in der Symbolleiste." />
+    <span class="guide-screenshot-zoom">In voller Größe ansehen <span aria-hidden="true">↗</span><span class="sr-only"> (öffnet sich in einem neuen Tab)</span></span>
+  </a>
+  <figcaption>Öffne TabTools über die Symbolleiste von Chrome.</figcaption>
+</figure>
+  </li>
+  <li>Klicke auf <strong>Duplikate schließen</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-02-close-duplicates.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-02-close-duplicates.png" width="1280" height="800" loading="lazy" decoding="async" alt="Das TabTools-Popup zeigt 8 offene Tabs an; der Mauszeiger befindet sich auf „Duplikate schließen“ (Close duplicates)." />
+    <span class="guide-screenshot-zoom">In voller Größe ansehen <span aria-hidden="true">↗</span><span class="sr-only"> (öffnet sich in einem neuen Tab)</span></span>
+  </a>
+  <figcaption>Klicke auf „Duplikate schließen“ (Close duplicates), um zusätzliche Kopien zu entfernen.</figcaption>
+</figure>
+  </li>
+  <li>Prüfe die Statusmeldung im Popup. Sie zeigt an, wie viele Duplikate geschlossen wurden, oder <strong>Keine Duplikate</strong>, wenn keine passenden Tabs gefunden wurden.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/duplicates-03-result-and-undo.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/duplicates-03-result-and-undo.png" width="1280" height="800" loading="lazy" decoding="async" alt="TabTools meldet „Geschlossene doppelte Tabs: 2“ (Closed 2 duplicates), zeigt 6 offene Tabs an und bietet eine aktive Schaltfläche „Rückgängig“ (Undo)." />
+    <span class="guide-screenshot-zoom">In voller Größe ansehen <span aria-hidden="true">↗</span><span class="sr-only"> (öffnet sich in einem neuen Tab)</span></span>
+  </a>
+  <figcaption>Zwei doppelte Kopien werden geschlossen, sechs Tabs bleiben geöffnet. Lass das Popup geöffnet, wenn du „Rückgängig“ (Undo) verwenden möchtest.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>Du musst die doppelten Tabs vorher nicht auswählen. Die Bereinigung umfasst normale Fenster innerhalb dieses Browsers. Zwei Kopien einer Seite werden deshalb auch dann erkannt, wenn sie in unterschiedlichen Fenstern liegen. Private oder Inkognito-Tabs sind ausgeschlossen.</p>
+<p>Das Ausführen des Befehls in Chrome verändert keine Edge-Tabs und umgekehrt. Nutze ihn in jedem Browser einzeln, wenn du in beiden Duplikate hast.</p></section>
+<section id="firefox-native-option"><h2>Die integrierten Duplikatbefehle von Firefox nutzen</h2><p>Firefox bietet eigene Funktionen, wenn du nur Duplikate entfernen möchtest.</p>
+<ul>
+  <li><strong>Für Kopien einer einzelnen Seite:</strong> Klicke mit der rechten Maustaste auf den Tab, den du behalten möchtest, und wähle <strong>Doppelte Tabs schließen (Close Duplicate Tabs)</strong>.</li>
+  <li><strong>Für eine umfassendere Bereinigung:</strong> Öffne <strong>Alle Tabs auflisten (List all tabs)</strong> und wähle den Befehl zum Schließen von Duplikaten. Er erscheint als <strong>Alle doppelten Tabs schließen (Close all duplicate tabs)</strong> oder <strong>Doppelte Tabs schließen (Close Duplicate Tabs)</strong>, abhängig von der Benutzeroberfläche.</li>
+</ul>
+<p>Mozillas <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">Anleitung zum Tab-Kontextmenü</a> erklärt die erste Möglichkeit. Die <a href="https://support.mozilla.org/en-US/kb/tab-overview-menu">Anleitung zum Tab-Übersichtsmenü</a> beschreibt die umfassendere Bereinigung und erklärt, dass dabei der zuletzt aktive Tab unter den Duplikaten erhalten bleibt.</p>
+<p>Wenn du bereits <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">TabTools für Firefox</a> nutzt, öffne das Popup und klicke auf <strong>Duplikate schließen</strong>. Dabei gelten die unten beschriebenen TabTools-Regeln für die Erkennung und das Behalten von Kopien; gehe nicht davon aus, dass sie mit dem integrierten Firefox-Befehl übereinstimmen.</p></section>
+<section id="which-copy-stays"><h2>Welche Kopie behält TabTools?</h2><p>TabTools behält angeheftete Kopien und schließt passende, nicht angeheftete Tabs in allen normalen Browserfenstern. Gibt es keine angeheftete Kopie, behält es die erste nicht angeheftete Kopie, die in der Tabliste des Browsers gefunden wird, und schließt spätere Treffer.</p>
+<p>Es wählt nicht gezielt den aktiven, den neuesten oder den zuletzt verwendeten Tab aus. Die behaltene Kopie kann deshalb in einem anderen Fenster liegen. Gibt es für eine Seite einen angehefteten Tab und zwei nicht angeheftete Kopien, bleibt nur der angeheftete Tab erhalten.</p>
+<p>Der Befehl <strong>Duplikate schließen</strong> schließt niemals angeheftete Tabs. Gibt es für eine Seite mehrere angeheftete Kopien, bleiben alle erhalten. Der Befehl garantiert daher nicht genau einen Tab für jede URL.</p></section>
+<section id="undo-and-organise"><h2>Eine Bereinigung rückgängig machen und den Rest ordnen</h2><p>Lass das Popup nach der Bereinigung geöffnet, wenn du das Ergebnis prüfen möchtest. <strong>Rückgängig</strong> kann während derselben Popup-Sitzung die Tabs der letzten Schließaktion im Popup erneut öffnen. Seiten werden anhand ihrer URL geöffnet; ungespeicherte Seiteninhalte werden nicht unbedingt wiederhergestellt. Sobald das Popup geschlossen ist, nutze stattdessen die zuletzt geschlossenen Tabs oder den Verlauf deines Browsers.</p>
+<p>Für unterschiedliche Seiten, mit denen du fertig bist, erfährst du hier, <a href="/de/guides/close-tabs-from-same-website/">wie du alle Tabs derselben Website schließt</a>. Bei Seiten, die du behalten möchtest, bringt das <a href="/de/guides/sort-tabs-by-website/">Sortieren nach Website</a> zusammengehörige Tabs nebeneinander, ohne sie zu schließen.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="Ähnliche Anleitungen"><p class="eyebrow">Weiter geht’s</p><h2>Weitere Möglichkeiten, deine Tabs zu ordnen.</h2><div class="guide-cards"><a class="guide-card" href="/de/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Tabs dieser Website schließen</span></div>
+    <h2>Tabs derselben Website schließen</h2><p>Schließe mit TabTools Tabs derselben Website in Chrome, nutze eine manuelle Alternative und folge den Schritten für Firefox und Edge.</p>
+    <span class="guide-card-bottom"><span>4 Min. Lesezeit</span><span class="guide-card-link">Anleitung lesen <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/de/guides/sort-tabs-by-website/">
+    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Tabs sortieren</span></div>
+    <h2>Tabs nach Website sortieren</h2><p>Ordne mit TabTools zusammengehörige Tabs in Chrome, Firefox und Edge nebeneinander an. Erfahre, wie die Tab-Anzahl pro Website, angeheftete Tabs und Browser-Tabgruppen deine Möglichkeiten beeinflussen.</p>
+    <span class="guide-card-bottom"><span>4 Min. Lesezeit</span><span class="guide-card-link">Anleitung lesen <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/de/#top" aria-label="TabTools-Startseite"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Tabs nach Website schließen, die Tableiste sortieren und Duplikate entfernen.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Produkt</span><a href="/de/#features">Funktionen</a><a href="/de/#how-it-works">So funktioniert’s</a><a href="/de/guides/">Anleitungen</a><a href="/de/#faq">Häufige Fragen</a></div>
+          <div><span class="footer-label">Ausprobieren</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Mehr</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Datenschutz</a><a href="mailto:tabtools@michaelwester.com">Kontakt</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Kostenlos und quelloffen.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

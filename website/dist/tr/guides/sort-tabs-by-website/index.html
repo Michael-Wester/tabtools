@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>Chrome, Firefox ve Edge’de Sekmeler Siteye Göre Nasıl Sıralanır? | TabTools</title>
+    <meta name="description" content="Chrome, Firefox ve Edge’de ilgili sekmeleri TabTools ile yan yana getirin. Site başına sekme sayısının, sabitlenmiş sekmelerin ve tarayıcı sekme gruplarının seçeneklerinizi nasıl etkilediğini öğrenin." />
+    <link rel="canonical" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="Chrome, Firefox ve Edge’de Sekmeler Siteye Göre Nasıl Sıralanır?" />
+    <meta property="og:description" content="Chrome, Firefox ve Edge’de ilgili sekmeleri TabTools ile yan yana getirin. Site başına sekme sayısının, sabitlenmiş sekmelerin ve tarayıcı sekme gruplarının seçeneklerinizi nasıl etkilediğini öğrenin." />
+    <meta property="og:url" content="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Chrome, Firefox ve Edge’de Sekmeler Siteye Göre Nasıl Sıralanır?" />
+    <meta name="twitter:description" content="Chrome, Firefox ve Edge’de ilgili sekmeleri TabTools ile yan yana getirin. Site başına sekme sayısının, sabitlenmiş sekmelerin ve tarayıcı sekme gruplarının seçeneklerinizi nasıl etkilediğini öğrenin." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Chrome, Firefox ve Edge’de Sekmeler Siteye Göre Nasıl Sıralanır?",
+      "description": "Chrome, Firefox ve Edge’de ilgili sekmeleri TabTools ile yan yana getirin. Site başına sekme sayısının, sabitlenmiş sekmelerin ve tarayıcı sekme gruplarının seçeneklerinizi nasıl etkilediğini öğrenin.",
+      "url": "https://tabtools.fyi/tr/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/tr/guides/sort-tabs-by-website/",
+      "inLanguage": "tr",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana sayfa",
+          "item": "https://tabtools.fyi/tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Kılavuzlar",
+          "item": "https://tabtools.fyi/tr/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sekmeleri siteye göre sıralayın",
+          "item": "https://tabtools.fyi/tr/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "tr",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/sort-tabs-by-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/sort-tabs-by-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/sort-tabs-by-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/sort-tabs-by-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/sort-tabs-by-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/sort-tabs-by-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/sort-tabs-by-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/sort-tabs-by-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/sort-tabs-by-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/sort-tabs-by-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/sort-tabs-by-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/sort-tabs-by-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/sort-tabs-by-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/sort-tabs-by-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/sort-tabs-by-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/sort-tabs-by-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/sort-tabs-by-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/sort-tabs-by-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/sort-tabs-by-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/sort-tabs-by-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/sort-tabs-by-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/sort-tabs-by-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/sort-tabs-by-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/sort-tabs-by-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/sort-tabs-by-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - Sekmeleri siteye göre kapat ve sırala",
+    "extensionDescription": "Aynı sitenin sekmelerini kapatın, sekmeleri siteye göre sıralayın ve yinelenenleri kaldırarak tarayıcınızı düzenleyin.",
+    "openTabTools": "TabTools'u aç",
+    "settings": "Ayarlar",
+    "suggestions": "Öneriler",
+    "suggestCaption": "Sitenin sekmelerini kapatmak için dokunun",
+    "queryPlaceholder": "Anahtar sözcükle kapat (Enter)",
+    "close": "Kapat",
+    "sortTabs": "Sekmeleri sırala",
+    "closeDuplicates": "Yinelenenleri kapat",
+    "undo": "Geri al",
+    "undoTitle": "Son kapatma işlemini geri al",
+    "theme": "Tema",
+    "light": "Açık",
+    "dark": "Koyu",
+    "minTabs": "Öneriler için site başına en az sekme sayısı",
+    "inactiveAfter": "Sekmelerin etkin sayılmadığı süre",
+    "minutes": "dakika",
+    "closedCount": "Kapatılan: {count}",
+    "openCount": {
+      "one": "{count} açık sekme",
+      "other": "{count} açık sekme"
+    },
+    "openCountShort": {
+      "one": "{count} açık",
+      "other": "{count} açık"
+    },
+    "closedCountShort": {
+      "one": "{count} kapalı",
+      "other": "{count} kapalı"
+    },
+    "closeFailed": "İşlem başarısız",
+    "closedInactive": "Kapatılan etkin olmayan sekmeler: {count}",
+    "noInactive": "Etkin olmayan sekme yok",
+    "closedDuplicates": "Kapatılan yinelenen sekmeler: {count}",
+    "noDuplicates": "Yinelenen sekme yok",
+    "nothingToUndo": "Geri alınacak işlem yok",
+    "undoFailed": "İşlem geri alınamadı",
+    "restoredCount": "Geri yüklenen: {count}",
+    "nothingToRestore": "Geri yüklenecek sekme yok",
+    "inactive": "Etkin olmayanlar",
+    "loadingSuggestions": "Öneriler yükleniyor…",
+    "suggestionsFailed": "Öneriler yüklenemedi",
+    "noSuggestions": "Öneri yok",
+    "moreCount": "Gösterilmeyen diğer öneriler: {count}",
+    "sortFailed": "Sıralama başarısız",
+    "sortedCount": "Yeri değiştirilen sekmeler: {count}",
+    "nothingToSort": "Sıralanacak sekme yok",
+    "hide": "Gizle",
+    "show": "Göster",
+    "contextClose": "Sitenin sekmelerini kapat",
+    "contextSort": "Sekmeleri sırala (en çok açılanlar önce)",
+    "closeSiteLabel": "{site} sitesinin sekmelerini kapat",
+    "web_heroTitle": "\u003cem>Aynı sitenin\u003c/em> sekmelerini kapatın.",
+    "web_featuresTitle": "Siteye göre kapatın.\u003cbr>\u003cem>Kalanları sıralayın.\u003c/em>",
+    "web_workflowTitle": "TabTools'u ekleyin.\u003cbr>\u003cem>Kapatılacakları seçin.\u003c/em>",
+    "web_privacyTitle": "Sekme verileriniz\u003cbr>tarayıcınızda kalır.",
+    "web_finalTitle": "İşiniz biten sekmeleri kapatın.\u003cbr>\u003cem>Kalanları sıralayın.\u003c/em>",
+    "web_siteBody": "TabTools'u açıp \u003cstrong>Öneriler\u003c/strong> altındaki bir siteye tıklayın veya bir web sayfasında sağ tıklayıp \u003cstrong>Sitenin sekmelerini kapat\u003c/strong> seçeneğini seçin. Geçerli sekme de dahil olmak üzere tüm normal pencerelerdeki eşleşen sekmeler kapanır.",
+    "web_addTo": "{browser} tarayıcısına ekle",
+    "web_storeNote": "{store} açılır.",
+    "web_storeAria": "{label} — {store} yeni sekmede açılır",
+    "web_language": "Dil",
+    "web_languageSuggestion": "Bu sayfayı {language} dilinde okuyun",
+    "web_switchLight": "Açık moda geç",
+    "web_lightMode": "Açık mod",
+    "web_structuredDescription": "Sekmeleri siteye göre kapatmak, sıralamak, yinelenenleri kaldırmak ve etkin olmayanları temizlemek için ücretsiz bir tarayıcı uzantısı.",
+    "web_close_tabs_from_the_same": "Aynı sitenin sekmelerini kapatın, sekmeleri siteye göre sıralayın ve yinelenenleri kaldırın. TabTools; Chrome, Firefox ve Edge için ücretsiz bir sekme yöneticisidir.",
+    "web_tabtools_close_tabs_by_site": "TabTools — Sekmeleri siteye göre kapatın ve sıralayın",
+    "web_close_tabs_by_site_sort": "Chrome, Firefox ve Edge için ücretsiz, açık kaynaklı uzantıyla sekmeleri siteye göre kapatın, sekme çubuğunu sıralayın ve yinelenenleri temizleyin.",
+    "web_skip_to_content": "İçeriğe geç",
+    "web_tabtools_home": "TabTools ana sayfası",
+    "web_main_navigation": "Ana gezinme",
+    "web_features": "Özellikler",
+    "web_how_it_works": "Nasıl kullanılır?",
+    "web_privacy": "Gizlilik",
+    "web_faq": "SSS",
+    "web_switch_to_dark_mode": "Koyu moda geç",
+    "web_dark_mode": "Koyu mod",
+    "web_free_browser_tab_manager": "Ücretsiz tarayıcı sekme yöneticisi",
+    "web_clear_a_website_s_tabs": "Bir sitenin sekmelerini tek işlemle kapatın veya sekme çubuğunu siteye göre sıralayın. TabTools ayrıca Chrome, Firefox ve Edge'de yinelenen ve etkin olmayan sekmeleri temizler.",
+    "web_free_to_use_no_account": "Ücretsiz. Hesap gerekmez.",
+    "web_viewing_on_a_phone_or": "Telefon veya tabletten mi bakıyorsunuz? TabTools'u eklemek için bu sayfayı bilgisayarınızda açın.",
+    "web_tabtools_browser_stores": "TabTools tarayıcı mağazaları",
+    "web_choose_another_browser": "Başka bir tarayıcı seçin",
+    "web_tabtools_in_action": "TabTools iş başında",
+    "web_full_demo": "Tam tanıtım",
+    "web_tabtools_full_demo": "TabTools tam tanıtımı",
+    "web_see_tabtools_close_tabs_by": "TabTools'un sekmeleri siteye göre nasıl kapattığını, yinelenenleri nasıl kaldırdığını, sekmeleri nasıl sıraladığını ve etkin olmayanları nasıl temizlediğini görün.",
+    "web_tabtools_product_details": "TabTools ürün ayrıntıları",
+    "web_close_tabs_by_site": "Sekmeleri siteye göre kapatın",
+    "web_from_the_popup_or_right": "açılır pencereden veya sağ tık menüsünden",
+    "web_local_by_design": "Yerel işleme için tasarlandı",
+    "web_your_tab_list_stays_in": "sekme listeniz tarayıcınızda kalır",
+    "web_open_source": "Açık kaynak",
+    "web_inspect_the_code_on_github": "Kodu GitHub'da inceleyin",
+    "web_close_and_organise": "Kapatın ve düzenleyin",
+    "web_clear_a_finished_task_bring": "Biten bir işin sekmelerini kapatın, aynı sitenin sekmelerini yan yana getirin veya yinelenen ve etkin olmayan sayfaları temizleyin.",
+    "web_01_site_cleanup": "01 / Siteye göre temizlik",
+    "web_close_a_site_s_tabs": "Bir sitenin sekmelerini birlikte kapatın",
+    "web_see_how_to_get_started": "Nasıl başlayacağınızı görün",
+    "web_02_organise": "02 / Düzenleme",
+    "web_sort_tabs_by_site": "Sekmeleri siteye göre sıralayın",
+    "web_bring_tabs_from_the_same": "Geçerli pencerede aynı sitenin sekmelerini yan yana getirin. En çok açık sekmesi olan siteler başa yerleşir.",
+    "web_03_simplify": "03 / Sadeleştirme",
+    "web_remove_duplicate_tabs": "Yinelenen sekmeleri kaldırın",
+    "web_close_extra_copies_of_the": "Aynı sayfanın fazladan kopyalarını tek tıklamayla kapatın. Sabitlenmiş sekmeler yerinde kalır.",
+    "web_04_find": "04 / Bulma",
+    "web_search_by_keyword_or_domain": "Anahtar sözcük veya alan adıyla arayın",
+    "web_type_a_word_to_match": "Sekme başlıklarında ve URL'lerde eşleşecek bir sözcük ya da youtube.com gibi tam bir alan adı yazın. Ardından Kapat'ı seçin.",
+    "web_05_reset": "05 / Temizlik",
+    "web_clear_inactive_tabs": "Etkin olmayan sekmeleri temizleyin",
+    "web_choose_an_inactivity_threshold_in": "Ayarlar'da bir etkin olmama süresi belirleyin, ardından uygun sekmeleri kapatmak için Etkin olmayanlar'a tıklayın. Etkin, sabitlenmiş ve ses çalan sekmeler açık kalır.",
+    "web_more_tabtools_details": "TabTools hakkında daha fazlası",
+    "web_undo_cleanup_from_the_popup": "Açılır pencereden kapatma işlemini geri alın",
+    "web_light_and_dark_themes": "Açık ve koyu temalar",
+    "web_local_cleanup_statistics": "Yerel sekme temizleme istatistikleri",
+    "web_start_with_one_busy_site": "Çok sekmesi olan bir siteyle başlayın. Site önerileri ve sıralama için açılır pencereyi, hızlı kapatma için sağ tık menüsünü kullanın.",
+    "web_add_it_to_your_browser": "Tarayıcınıza ekleyin",
+    "web_open_the_chrome_firefox_or": "Chrome, Firefox veya Edge mağaza sayfasını açıp ücretsiz uzantıyı ekleyin.",
+    "web_click_the_tabtools_icon_in": "Site önerilerini ve hızlı işlemleri görmek için tarayıcınızın uzantılar menüsündeki TabTools simgesine tıklayın.",
+    "web_close_a_site_or_sort": "Bir sitenin sekmelerini kapatın veya sıralayın",
+    "web_click_a_site_under_suggestions": "Sekmelerini kapatmak için Öneriler altındaki bir siteye tıklayın veya aynı sitenin sekmelerini yan yana getirmek için Sekmeleri sırala'yı seçin.",
+    "web_private_by_design": "Gizlilik gözetilerek tasarlandı",
+    "web_the_tabtools_extension_processes_tab": "TabTools uzantısı sekme bilgilerini cihazınızda işler. Ayarlar ve temizleme istatistikleri tarayıcınızın yerel depolamasında kalır. Uzantıda hesap, analiz, reklam veya harici veritabanı bulunmaz.",
+    "web_read_the_privacy_policy": "Gizlilik politikasını okuyun",
+    "web_before_you_add_tabtools": "TabTools'u eklemeden önce",
+    "web_common_questions": "Sık sorulan sorular",
+    "web_browsers_cleanup_and_privacy": "Tarayıcılar, sekme temizliği ve gizlilik",
+    "web_is_tabtools_free": "TabTools ücretsiz mi?",
+    "web_yes_tabtools_is_free_to": "Evet. TabTools ücretsizdir. Hesap gerekmez.",
+    "web_which_browsers_can_i_use": "Hangi tarayıcıları kullanabilirim?",
+    "web_tabtools_is_available_for_chrome": "TabTools; Chrome, Firefox ve Microsoft Edge için kullanılabilir. Bilgisayarınıza eklemek için bu sayfadaki tarayıcı bağlantılarından ilgili mağazayı açın.",
+    "web_how_do_i_close_tabs": "Aynı sitenin sekmelerini nasıl kapatırım?",
+    "web_right_click_within_a_web": "Bir web sayfasında sağ tıklayıp ‘Sitenin sekmelerini kapat’ seçeneğini seçin veya TabTools'u açıp Öneriler altındaki siteye tıklayın. Geçerli sekme de dahil olmak üzere tüm normal pencerelerde o sitenin sekmeleri kapanır. Açılır pencereye anahtar sözcük veya tam alan adı da girebilirsiniz.",
+    "web_can_i_remove_duplicates_or": "Yinelenen veya etkin olmayan sekmeleri kaldırabilir miyim?",
+    "web_yes_choose_close_duplicates_to": "Evet. Tekrarlanan sayfaları kaldırmak için Yinelenenleri kapat'ı seçin veya uygun sekmeleri kapatmak için Etkin olmayanlar'a tıklayın. Etkin olmama süresini Ayarlar'da değiştirebilirsiniz; temizlik yalnızca işlemi seçtiğinizde gerçekleşir.",
+    "web_does_tabtools_collect_or_share": "TabTools sekme bilgilerini toplar veya paylaşır mı?",
+    "web_the_extension_processes_tab_information": "Uzantı sekme bilgilerini yerel olarak işler; geliştiriciye veya üçüncü taraflara göndermez. Ayarlar ve temizleme istatistikleri cihazınızda kalır. Bu sitedeki tanıtım YouTube'da barındırılır; gömülü oynatıcının ve tarayıcı mağazalarının kendi gizlilik politikaları vardır.",
+    "web_can_i_undo_a_cleanup": "Bir temizleme işlemini geri alabilir miyim?",
+    "web_use_undo_immediately_after_closing": "TabTools açılır penceresinden sekmeleri kapattıktan hemen sonra, pencere hâlâ açıkken Geri al'ı kullanın. Sayfaları yeniden açmak için tarayıcınızın son kapatılan sekmelerini de kullanabilirsiniz.",
+    "web_free_for_chrome_firefox_and": "Chrome, Firefox ve Edge için ücretsiz",
+    "web_other_browser_stores": "Diğer tarayıcı mağazaları",
+    "web_close_tabs_by_site_sort_2": "Sekmeleri siteye göre kapatın, sekme çubuğunu sıralayın ve yinelenenleri temizleyin.",
+    "web_product": "Ürün",
+    "web_try_it": "Deneyin",
+    "web_more": "Diğer",
+    "web_contact": "İletişim",
+    "web_free_and_open_source": "Ücretsiz ve açık kaynak",
+    "web_view": "{browser} sayfasını görüntüle",
+    "web_guides": "Kılavuzlar",
+    "web_readSiteGuide": "Aynı sitenin sekmelerini kapatma kılavuzunu okuyun",
+    "web_readSortingGuide": "Sekmeleri sıralama kılavuzunu okuyun",
+    "web_readDuplicateGuide": "Yinelenen sekmeleri kaldırma kılavuzunu okuyun",
+    "web_finalMobileNote": "TabTools'u eklemek için bu sayfayı bilgisayarınızda açın. Aşağıdaki mağaza sayfalarını görüntüleyebilirsiniz.",
+    "web_socialImageAlt": "Sekme yönetimini gösteren TabTools tarayıcı uzantısı"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">İçeriğe geç</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/tr/#top" aria-label="TabTools ana sayfası">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="Ana gezinme">
+          <a href="/tr/#features">Özellikler</a>
+          <a href="/tr/#how-it-works">Nasıl kullanılır?</a>
+          <a href="/tr/guides/" aria-current="page">Kılavuzlar</a>
+          <a href="/tr/#privacy">Gizlilik</a>
+          <a href="/tr/#faq">SSS</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="Chrome tarayıcısına ekle" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome"><span class="browser-button-name" data-browser-name>Chrome</span> tarayıcısına ekle</span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Koyu moda geç" title="Koyu moda geç">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>Koyu mod</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Dil: Turkish" title="Dil: Turkish" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Turkish</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Dil" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="true" tabindex="-1" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Dil: Turkish"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Dil: Turkish</span></summary><nav class="language-fallback-menu" aria-label="Dil"><a class="language-fallback-option" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/sort-tabs-by-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Gezinti yolu"><a href="/tr/">Ana sayfa</a><span aria-hidden="true">/</span><a href="/tr/guides/">Kılavuzlar</a><span aria-hidden="true">/</span><span aria-current="page">Sekmeleri sıralayın</span></nav>
+      <p class="eyebrow">Sekmeleri sıralayın · Bilgisayar tarayıcıları</p><h1>Chrome, Firefox ve Edge’de Sekmeler Siteye Göre Nasıl Sıralanır?</h1><p class="guides-lede">Sekme çubuğunuzda belgeler, videolar ve araştırma sayfaları karışık duruyorsa sıradaki sekmeyi bulmak gereğinden uzun sürer. Sıralama, aynı sitenin sayfalarını açık tutarak yan yana getirir.</p>
+      <p class="guide-byline">Yazan: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, TabTools geliştiricisi <span aria-hidden="true">·</span> 4 dakikalık okuma <span aria-hidden="true">·</span> Güncelleme: <time datetime="2026-10-01">1 Ekim 2026</time></p>
+      <p class="guide-screenshot-note">Ekran görüntüleri İngilizce arayüzü gösterir; etiketler tarayıcınızın diline göre farklı olabilir.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Bu sayfada"><p class="eyebrow">Bu sayfada</p><ol><li><a href="#sort-with-tabtools">Geçerli penceredeki sekmeleri sıralayın</a></li><li><a href="#how-the-order-works">TabTools sırayı nasıl belirler?</a></li><li><a href="#pinned-tabs-and-subdomains">Sabitlenmiş sekmeler ve alt alan adları</a></li><li><a href="#sorting-or-tab-groups">Sıralama ile sekme grupları arasında seçim yapın</a></li><li><a href="#native-browser-options">Uzantı olmadan sekmeleri düzenleyin</a></li><li><a href="#after-sorting">Sıralamadan sonra yapılabilecekler</a></li></ol></nav><a class="guide-back" href="/tr/guides/">← Tüm rehberler</a></aside>
+      <article class="guide-article" aria-label="Chrome, Firefox ve Edge’de Sekmeler Siteye Göre Nasıl Sıralanır?"><div class="guide-answer"><p class="eyebrow">Kısa yanıt</p><p>Düzenlemek istediğiniz pencerede TabTools’u açıp Sekmeleri sırala düğmesine tıklayın. Sabitlenmemiş sekmeleri siteye göre düzenler ve o anda en fazla açık sekmesi olan siteleri öne alır. Sabitlenmiş sekmeler yerlerinde kalır.</p></div>
+      <section id="sort-with-tabtools"><h2>Geçerli penceredeki sekmeleri sıralayın</h2><p>Aynı açılır pencere işlemi Chrome, Firefox ve Microsoft Edge’de kullanılabilir. Bu Chrome örneğinde başlangıçta YouTube, Wikipedia ve Google’dan altı sekme karışık durur.</p>
+<ol>
+  <li>TabTools’u şu tarayıcı için yükleyin: <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> veya <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
+  <li>Sekmelerini düzenlemek istediğiniz tarayıcı penceresine geçin.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome’un sekme çubuğunda üç YouTube sekmesi, iki Wikipedia sekmesi ve Google karışık duruyor." />
+    <span class="guide-screenshot-zoom">Tam boyutta görüntüle <span aria-hidden="true">↗</span><span class="sr-only"> (yeni sekmede açılır)</span></span>
+  </a>
+  <figcaption>Sıralamadan önce: üç siteden altı sekme karışık durumdadır.</figcaption>
+</figure>
+  </li>
+  <li>TabTools’u araç çubuğundan veya uzantılar menüsünden açın.</li>
+  <li><strong>Sekmeleri sırala</strong> düğmesine tıklayın.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome’daki TabTools açılır penceresinde işaretçi Sekmeleri sırala (Sort tabs) düğmesinin üzerinde." />
+    <span class="guide-screenshot-zoom">Tam boyutta görüntüle <span aria-hidden="true">↗</span><span class="sr-only"> (yeni sekmede açılır)</span></span>
+  </a>
+  <figcaption>Her sitenin sayfalarını yan yana getirmek için Sekmeleri sırala (Sort tabs) düğmesine tıklayın.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>İlgili sabitlenmemiş sekmeler yan yana taşınır. Sayfalar açık kalır ve diğer pencerelerdeki sekmeler bu pencereye getirilmez. Başka bir pencereyi düzenlemek istiyorsanız ona geçip komutu yeniden çalıştırın.</p>
+<p>Sıralama tek seferlik bir işlemdir. Sonrasında yeni sekmeler normal şekilde açılır; TabTools gezinirken sekme çubuğunu sürekli yeniden düzenlemez. Geçerli düzeni toparlamak istediğinizde <strong>Sekmeleri sırala</strong> düğmesine tekrar tıklayın.</p></section>
+<section id="how-the-order-works"><h2>TabTools sırayı nasıl belirler?</h2><p>TabTools, geçerli pencerede her site için açık sekmeleri sayar. Daha çok sekmesi olan siteler, sabitlenmiş sekmelerin hemen ardından başlayarak öne gelir. Sabitlenmiş sekmesi olmayan basit bir örnek:</p>
+<table>
+  <thead><tr><th scope="col">Site</th><th scope="col">Açık sekmeler</th><th scope="col">Sıralama sonrası konum</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>Birinci</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>İkinci</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>Üçüncü</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Sıralama sonrası Chrome: üç YouTube sekmesi, ardından iki Wikipedia sekmesi ve Google; TabTools 6 sekmenin yeniden sıralandığını (Reordered 6 tabs) bildiriyor." />
+    <span class="guide-screenshot-zoom">Tam boyutta görüntüle <span aria-hidden="true">↗</span><span class="sr-only"> (yeni sekmede açılır)</span></span>
+  </a>
+  <figcaption>Sıralamadan sonra: YouTube ×3, Wikipedia ×2, ardından Google. Altı sekmenin tümü açık kalır.</figcaption>
+</figure>
+<p>“En çok açık” ifadesi, o anda açık olan sekme sayısının en fazla olması demektir. En sık ziyaret ettiğiniz siteyi, tarama geçmişinizi veya geçen hafta bir siteyi kaç kez açtığınızı ifade etmez.</p>
+<p>İki sitenin sayısı aynıysa sıra, ana makine adlarının alfabetik düzenine göre belirlenir. Aynı ana makine adına ait sekmeler kendi aralarındaki sırayı korur. Örneğin üç YouTube sayfası YouTube kümesi içindeki sırasını korur; sayfa başlığına göre sıralanmaz.</p></section><aside class="guide-install" aria-label="TabTools&#39;u edinin">
+    <div><p class="eyebrow">Ücretsiz tarayıcı uzantısı</p><h2>Uygulamaya geçin.</h2><p>Sekmeleri siteye göre kapatın, yinelenenleri kaldırın ve kalanları sıralayın.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Chrome tarayıcısına ekle</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Firefox tarayıcısına ekle</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Edge tarayıcısına ekle</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>Telefon veya tabletten mi bakıyorsunuz? TabTools&#39;u eklemek için bu sayfayı bilgisayarınızda açın.</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>Sabitlenmiş sekmeler ve alt alan adları</h2><p>Sabitlenmiş sekmeler sabitlendikleri konumlarda kalır. TabTools, sabitlenmemiş sekmelerin sırasını belirlerken bu sekmeleri yine de sitenin toplamına dahil eder.</p>
+<p>Örneğin iki sabitlenmiş ve iki sabitlenmemiş GitHub sekmesi, GitHub için dört sayılır. Böylece sabitlenmemiş GitHub sekmeleri, üç açık sekmesi olan bir sitenin önüne gelirken iki sabitlenmiş GitHub sekmesi yerinde kalır.</p>
+<p>Site eşleştirmesi ana makine adını kullanır ve baştaki <code>www.</code> kısmını yok sayar. <code>example.com</code> ve <code>www.example.com</code> sayfaları birlikte değerlendirilir. Buna karşılık, <code>docs.example.com</code> üzerindeki sayfalar şu siteden ayrı bir küme oluşturur: <code>shop.example.com</code>.</p>
+<p>Bu, farklı hizmetler aynı üst alan adını paylaştığında yararlıdır: belgeler ve mağaza, sıralanmış sekme çubuğunda ayrı kalabilir.</p></section>
+<section id="sorting-or-tab-groups"><h2>Sıralama ile sekme grupları arasında seçim yapın</h2><p>Düzenleme ölçütü sitenin kendisiyse sıralama yararlıdır. Ölçüt bir tatil, iş projesi veya birden çok siteyi kapsayan alışveriş gibi bir görevse tarayıcı sekme grupları yararlıdır.</p>
+<table>
+  <thead><tr><th scope="col">Hedefiniz</th><th scope="col">Uygun seçenek</th></tr></thead>
+  <tbody>
+    <tr><td>Her sitenin sayfalarını yan yana koymak</td><td>TabTools <strong>Sekmeleri sırala</strong></td></tr>
+    <tr><td>Birkaç sekmenin sırasını tam olarak belirlemek</td><td>Sekmeleri elle sürükleyin</td></tr>
+    <tr><td>Bir projenin farklı sitelerini tek bir ad altında toplamak</td><td>Tarayıcınızın adlandırılmış sekme grupları</td></tr>
+  </tbody>
+</table>
+<p>TabTools sekmeleri yeniden düzenler; adlandırılmış veya renkli tarayıcı grupları oluşturmaz. Sekmeleri bilinçli olarak projeye göre düzenlediyseniz sıralamayı değiştirmeden önce siteye göre sıralamanın o pencereye uygun olup olmadığını düşünün.</p></section>
+<section id="native-browser-options"><h2>Uzantı olmadan sekmeleri düzenleyin</h2><h3>Chrome</h3>
+<p>Sırayı elle belirlemek için sekmeleri sekme çubuğunda sürükleyin. İlgili işler birden çok siteye yayılıyorsa adlandırılmış sekme gruplarını da kullanabilirsiniz. Google’ın <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">Chrome sekmeleri rehberi</a> , sekmeleri düzenlemeyi ve gruplamayı açıklar.</p>
+<h3>Firefox</h3>
+<p>Tek tek sekmeleri taşımak için sekme çubuğunu veya adlandırılmış bir koleksiyon oluşturmak için Firefox’un sekme bağlam menüsündeki gruplama seçeneklerini kullanın. Mozilla’nın <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">sekme bağlam menüsü rehberi</a> kullanılabilir sekme işlemlerini açıklar.</p>
+<h3>Microsoft Edge</h3>
+<p>Edge, adlandırılmış sekme grupları ile ilgili sekmeleri gruplayabilen <strong>Sekmeleri düzenle (Organize tabs)</strong> özelliğini sunar. Kullanılabilirlik değişebilir. Bunlar seçtiğiniz gruplara veya ilgililiğe göre düzenler; bu da geçerli site başına sekme sayısına göre sıralamadan farklıdır. Microsoft bunları şu rehberde açıklar: <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">Edge sekme grupları rehberi</a>.</p></section>
+<section id="after-sorting"><h2>Sıralamadan sonra yapılabilecekler</h2><p>TabTools’ta sıralamayı geri alma işlemi yoktur. Açılır pencerenin <strong>Geri al</strong> düğmesi, önceki sekme sırası için değil, son sekme kapatma işlemi içindir. Sıralamadan sonra farklı bir düzen istiyorsanız sekmeleri istediğiniz konumlara sürükleyin.</p>
+<p>Sıralama, sayfaların tekrarlanan kopyalarını da tutar. Bu yüzden en büyük kümeler gereksiz yere uzuyorsa <a href="/tr/guides/close-duplicate-tabs/">yinelenen sekmeleri kapatın</a> ve kalan sayılara göre yeniden sıralayın.</p>
+<p>Bir sitenin tamamıyla işiniz bittiğinde <a href="/tr/guides/close-tabs-from-same-website/">Sitenin sekmelerini kapat</a> seçeneğiyle sayfalarını kaldırın. Sıralama ise hâlâ ihtiyacınız olan sekmeler içindir: hangi sayfaları kapatacağınıza karar vermeden onları daha kolay bulmanızı sağlar.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="İlgili rehberler"><p class="eyebrow">Devam edin</p><h2>Sekmelerinizi düzenlemenin diğer yolları.</h2><div class="guide-cards"><a class="guide-card" href="/tr/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Site sekmelerini kapatın</span></div>
+    <h2>Aynı sitenin sekmelerini kapatın</h2><p>Chrome’da aynı sitenin sekmelerini TabTools ile kapatın, elle uygulanan alternatifi öğrenin ve Firefox ile Edge için adımları izleyin.</p>
+    <span class="guide-card-bottom"><span>4 dakikalık okuma</span><span class="guide-card-link">Rehberi okuyun <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/tr/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Yinelenenleri kaldırın</span></div>
+    <h2>Yinelenen sekmeleri kapatın</h2><p>Chrome, Firefox ve Edge’de yinelenen sekmeleri kaldırın. TabTools adımlarını izleyin, Firefox’un yerleşik seçeneğini kullanın ve hangi kopyaların kaldığını öğrenin.</p>
+    <span class="guide-card-bottom"><span>4 dakikalık okuma</span><span class="guide-card-link">Rehberi okuyun <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/tr/#top" aria-label="TabTools ana sayfası"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>Sekmeleri siteye göre kapatın, sekme çubuğunu sıralayın ve yinelenenleri temizleyin.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">Ürün</span><a href="/tr/#features">Özellikler</a><a href="/tr/#how-it-works">Nasıl kullanılır?</a><a href="/tr/guides/">Kılavuzlar</a><a href="/tr/#faq">SSS</a></div>
+          <div><span class="footer-label">Deneyin</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">Diğer</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">Gizlilik</a><a href="mailto:tabtools@michaelwester.com">İletişim</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>Ücretsiz ve açık kaynak</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

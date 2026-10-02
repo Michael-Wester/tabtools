@@ -1,0 +1,164 @@
+{
+  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "review": {
+    "status": "ai-reviewed",
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+  },
+  "ui": {
+    "indexTitle": "ブラウザーのタブ活用ガイド",
+    "indexDescription": "Chrome、Firefox、Edge で同じサイトのタブを閉じる方法、重複タブを削除する方法、サイト別にタブを並べ替える方法を紹介する、実用的な TabTools ガイドです。",
+    "indexEyebrow": "TabTools ガイド",
+    "indexHeading": "タブバーをすっきりと。",
+    "indexHeadingAccent": "ひとつずつ整理しよう。",
+    "indexLede": "ひとつのサイトのタブを閉じたり、重複したページを減らしたり、関連するタブをまとめたり。ガイドを選んで、お使いのブラウザーで手順を試してみましょう。",
+    "indexPlatforms": "パソコン版 Chrome、Firefox、Edge 向け",
+    "startEyebrow": "TabTools は初めてですか？",
+    "startHeading": "タブを整理する3つの方法。",
+    "startBody": "サイト別に閉じると、そのサイトのページが閉じます。重複の整理では同じ URL のページを減らします。並べ替えではタブを開いたまま順番だけを変えます。各ガイドで、具体例やブラウザー標準機能による代替方法とともに、操作の結果を説明します。",
+    "explore": "TabTools について見る",
+    "browseGuides": "ガイドを探す",
+    "readGuide": "ガイドを読む",
+    "readTime": "約 {minutes} 分で読めます",
+    "getTabTools": "TabTools を入手",
+    "installEyebrow": "無料のブラウザー拡張機能",
+    "installHeading": "実際に試してみよう。",
+    "installBody": "サイト別にタブを閉じ、重複を減らし、残したタブを並べ替えましょう。",
+    "desktopBrowsers": "パソコン用ブラウザー",
+    "byline": "著者：{author}（TabTools 開発者）",
+    "updated": "更新日：{date}",
+    "onThisPage": "このページの内容",
+    "allGuides": "すべてのガイド",
+    "quickAnswer": "手短に知りたい方へ",
+    "relatedGuides": "関連ガイド",
+    "relatedEyebrow": "続けて読む",
+    "relatedHeading": "タブを整理する、ほかの方法。",
+    "home": "ホーム",
+    "breadcrumb": "パンくずリスト",
+    "screenshotNote": "スクリーンショットは英語の画面です。ブラウザーの表示言語によって、項目名が異なる場合があります。"
+  },
+  "guides": [
+    {
+      "slug": "close-tabs-from-same-website",
+      "title": "Chrome で同じサイトのタブをすべて閉じる方法",
+      "shortTitle": "同じサイトのタブを閉じる",
+      "description": "Chrome で TabTools を使って同じサイトのタブを閉じる手順、手動での代替方法、Firefox と Edge での操作を紹介します。",
+      "category": "サイトのタブを閉じる",
+      "lede": "買い物や調べもの、たくさん開いた YouTube 動画の閲覧が終わりましたか？ほかのサイトは開いたまま、そのサイトのタブをまとめて閉じられます。",
+      "answer": "TabTools をインストールしたら、Chrome のタブバーで閉じたいサイトのタブを右クリックし、「このサイトのタブを閉じる」を選びます。通常ウィンドウ全体で一致するタブが閉じます。一致するアクティブなタブや固定タブも対象です。",
+      "sections": [
+        {
+          "id": "close-site-tabs-in-chrome",
+          "title": "Chrome でサイトのタブを閉じる",
+          "html": "<p>タブの右クリックメニューを使うと、Chrome のタブバーから直接操作できます。</p>\n<ol>\n  <li><a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome Web Store から TabTools をインストール</a>。</li>\n  <li>閉じたいサイトのタブを探します。たとえば YouTube のホームページや検索結果のページです。</li>\n  <li>Chrome のタブバーで、そのタブを右クリックします。</li>\n  <li><strong>このサイトのタブを閉じる</strong>を選びます。同じホスト名のサイトのタブがまとめて閉じます。</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-01-tab-menu.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-01-tab-menu.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"6つのタブが混在した Chrome。YouTube タブの右クリックメニューで「このサイトのタブを閉じる」（Close site tabs）が強調表示されています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>Chrome のタブバーで YouTube のタブを右クリックし、「このサイトのタブを閉じる」（Close site tabs）を選びます。</figcaption>\n</figure>\n<p>この例では、 <code>youtube.com</code> の3ページが閉じ、Wikipedia の2つのタブと Google は開いたまま残ります。事前に YouTube のタブを隣り合わせにする必要はありません。</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-02-tabs-closed.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-02-tabs-closed.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"YouTube の3つのタブを閉じた後の Chrome。Wikipedia の2つのタブと Google が残っています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>閉じた後：Wikipedia の2つのタブと Google だけが残ります。</figcaption>\n</figure>\n<p>タブのメニューに <strong>このサイトのタブを閉じる</strong> がない場合は、そのタブを開いてウェブページ内を右クリックするか、以下の TabTools ポップアップを使ってください。</p>\n<p>これは、そのサイト全体が不要になったときに便利です。まだ必要なページがある場合は、実行前に注意してください。右クリックしたタブ自体も閉じます。</p>"
+        },
+        {
+          "id": "use-the-popup",
+          "title": "ポップアップから別のサイトのタブを閉じる",
+          "html": "<p>そのサイトのページに切り替えずに、対象のサイトを選ぶこともできます。</p>\n<ol>\n  <li>ブラウザーの拡張機能メニューまたはツールバーから TabTools を開きます。</li>\n  <li>次の案内の下にある候補から、対象のサイトを探します： <strong>タップしてサイトのタブを閉じる</strong>。各候補には、開いているタブの数が表示されます。</li>\n  <li>サイトを選ぶと、一致するタブが閉じます。</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-03-popup-suggestion.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-03-popup-suggestion.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome の TabTools。開いているタブが3つと表示された YouTube の候補にポインターが重なっています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>同じ6つのタブを開いた状態で YouTube の候補を選ぶと、Google から離れずに YouTube の3つのタブを閉じられます。</figcaption>\n</figure>\n<p>ホスト名を直接入力することもできます。サイトが「候補」に表示されないときに便利です。たとえば <code>youtube.com</code>などのホスト名を入力するには、 <strong>キーワードで閉じる（Enter キー）</strong>の欄を使い、Enter キーを押すか、<strong>閉じる</strong>をクリックします。ホスト名だけを入力し、 <code>https://</code> やページのパスは含めないでください。</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-04-enter-hostname.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-04-enter-hostname.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools のキーワード欄に youtube.com が入力され、「閉じる」（Close）にポインターが重なっています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>youtube.com と入力して「閉じる」（Close）をクリックするか、Enter キーを押しても閉じられます。</figcaption>\n</figure>\n<p>通常のキーワード（たとえば <code>shopping</code> ）は動作が異なり、タブのタイトルと URL を検索します。特定のサイトだけを閉じたい場合は、正確なホスト名を使ってください。</p>"
+        },
+        {
+          "id": "which-tabs-close",
+          "title": "どのタブが同じサイトとみなされる？",
+          "html": "<p>サイト別のタブ閉じはホスト名で照合し、先頭の <code>www.</code>は無視します。同じホスト名のページは、パスやクエリパラメーターが違っても一致します。</p>\n<table>\n  <thead><tr><th scope=\"col\">example.com を閉じる場合</th><th scope=\"col\">結果</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/article-one</code></td><td>閉じる</td></tr>\n    <tr><td><code>www.example.com/article-two</code></td><td>閉じる</td></tr>\n    <tr><td><code>shop.example.com/product</code></td><td>開いたまま：異なるサブドメイン</td></tr>\n    <tr><td><code>another-site.com/example</code></td><td>開いたまま</td></tr>\n  </tbody>\n</table>\n<p>実行したブラウザーの通常ウィンドウ全体が対象です。一致する固定タブやアクティブなタブも閉じますが、プライベートまたはシークレットのタブは対象外です。別のブラウザーアプリのタブには影響しません。</p>"
+        },
+        {
+          "id": "without-an-extension",
+          "title": "Chrome で一致するタブを手動で閉じる",
+          "html": "<p>タブが少ない場合は、Chrome の「タブを検索」で手動操作できます。</p>\n<ol>\n  <li>「タブを検索」を開くショートカットは、 <strong>Ctrl + Shift + A</strong> （Windows または Linux）、または <strong>Command + Shift + A</strong> （Mac）です。</li>\n  <li>サイト名またはホスト名を検索します。</li>\n  <li>開いているタブの検索結果を確認し、不要なページをそれぞれ閉じるボタンで閉じます。</li>\n</ol>\n<p>この方法なら、そのサイトの中でも必要なページを残せます。一方で、一致するタブを1つずつ確認して閉じる必要があります。検索と閉じる操作は、Google の次のガイドで説明されています： <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome のタブガイド</a>。</p>"
+        },
+        {
+          "id": "firefox-and-edge",
+          "title": "Firefox と Edge でも同じ手順を使う",
+          "html": "<h3>Firefox</h3>\n<p><a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox 版 TabTools をインストール</a>し、タブバーで対象サイトのタブを右クリックして、<strong>このサイトのタブを閉じる</strong>を選びます。ウェブページ内を右クリックしたり、ポップアップの候補からサイトを選んだりすることもできます。</p>\n<h3>Microsoft Edge</h3>\n<p><a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge 版 TabTools をインストール</a>し、対象サイトのタブを右クリックして、次の項目を選びます： <strong>このサイトのタブを閉じる</strong> 。ただし、お使いの Edge のバージョンでタブのメニューに表示される場合に限ります。表示されなければ、タブを開いてウェブページ内を右クリックするか、ポップアップにホスト名を入力してください。照合ルールとウィンドウをまたぐ対象範囲は、上記と同じです。</p>"
+        },
+        {
+          "id": "undo-and-next-steps",
+          "title": "タブを開き直す、または整理の範囲を絞る",
+          "html": "<p>ポップアップからタブを閉じた後は、そのポップアップを開いたままにしておけば、 <strong>元に戻す</strong> ボタンで、ポップアップから最後に閉じたタブを開き直せます。右クリックの <strong>このサイトのタブを閉じる</strong> 操作は、ポップアップの「元に戻す」ボタンには記録されません。</p>\n<p>右クリックメニューから閉じた場合は、ブラウザーの最近閉じたタブや履歴を確認してください。URL を開き直しても、未保存のフォーム入力やページの以前の状態の細部まで復元されるとは限りません。</p>\n<p>各ページを1つずつ残すことが目的なら、 <a href=\"/guides/close-duplicate-tabs/\">重複タブを閉じる方法</a>をご覧ください。すべてのページを残しつつ見つけやすくしたい場合は、 <a href=\"/guides/sort-tabs-by-website/\">タブをサイト別に並べ替える方法</a> が適しています。</p>"
+        }
+      ]
+    },
+    {
+      "slug": "close-duplicate-tabs",
+      "title": "Chrome、Firefox、Edge で重複タブを閉じる方法",
+      "shortTitle": "重複タブを閉じる",
+      "description": "Chrome、Firefox、Edge で重複タブを削除する方法を紹介します。TabTools の手順、Firefox の標準機能、どのタブが残るかを確認しましょう。",
+      "category": "重複を削除",
+      "lede": "同じ文書や検索結果、動画を何度も開いてしまうことはよくあります。重複したタブを減らすと、サイトの全ページを閉じずに、タブバーを使いやすくできます。",
+      "answer": "TabTools を開いて「重複を閉じる」をクリックすると、通常ウィンドウ全体の固定されていない重複ページが閉じます。Firefox には、特定のタブの重複を閉じる標準コマンドと、タブ一覧メニューから重複タブをまとめて整理する標準コマンドもあります。",
+      "sections": [
+        {
+          "id": "choose-a-method",
+          "title": "ブラウザーに合った方法を選ぶ",
+          "html": "<table>\n  <thead><tr><th scope=\"col\">ブラウザー</th><th scope=\"col\">このガイドで扱う方法</th></tr></thead>\n  <tbody>\n    <tr><td>Chrome</td><td>TabTools を開き、<strong>重複を閉じる</strong>を選びます。</td></tr>\n    <tr><td>Firefox</td><td>ブラウザー標準の重複タブ操作を使うか、 <strong>重複を閉じる</strong> を TabTools で選びます。</td></tr>\n    <tr><td>Microsoft Edge</td><td>TabTools を開き、<strong>重複を閉じる</strong>を選びます。</td></tr>\n  </tbody>\n</table>\n<p>まとめて整理する前に、重複したページでの作業を終えて保存してください。2つのタブが同じ URL を表示していても、フォームに入力した内容が異なることがあります。</p>"
+        },
+        {
+          "id": "what-counts-as-a-duplicate",
+          "title": "重複タブとみなされるのは？",
+          "html": "<p>重複タブとは、同じページを繰り返し開いたものです。YouTube のホームページを3つ開けば重複ですが、ホームページと2種類の YouTube 検索結果は、同じサイトの別々のページです。</p>\n<p>TabTools は各ページの URL を解析し、フラグメント（<code>#</code> で始まる部分）を取り除きます。URL パーサーはスキームとホスト名の大文字・小文字を正規化します。パスとクエリ文字列の大文字・小文字、およびクエリパラメーターの順序は、比較時に区別されます。</p>\n<table>\n  <thead><tr><th scope=\"col\">URL の例</th><th scope=\"col\">TabTools での扱い</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/guide</code> を2回開く</td><td>重複</td></tr>\n    <tr><td><code>example.com/guide#intro</code> と <code>example.com/guide#steps</code></td><td>重複：フラグメントは無視</td></tr>\n    <tr><td><code>example.com/guide</code> と <code>example.com/contact</code></td><td>別のページ</td></tr>\n    <tr><td><code>example.com/search?q=tabs</code> と <code>example.com/search?q=bookmarks</code></td><td>クエリパラメーターが異なるため、両方残る</td></tr>\n  </tbody>\n</table>\n<p>フラグメントで画面を識別するウェブアプリもあるため、そうした画面は重複とみなされる場合があります。逆に、トラッキングパラメーターによって、よく似たページでも別の URL とみなされる場合があります。この操作が比較するのはアドレスです。ページの内容を調べて、同じ意味のページかどうかを判断するものではありません。</p>"
+        },
+        {
+          "id": "chrome-and-edge",
+          "title": "Chrome または Edge で重複タブを閉じる",
+          "html": "<p>TabTools のポップアップでは、どちらのブラウザーでも同じ操作を使います。スクリーンショットは、YouTube のホームページ3つを含む8つのタブが開いた Chrome です。</p>\n<ol>\n  <li>TabTools をインストールします。対象ブラウザー： <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a> または <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Microsoft Edge</a>。</li>\n  <li>ツールバーまたは拡張機能メニューから拡張機能を開きます。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-01-open-tabtools.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-01-open-tabtools.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"YouTube のホームページ3つを含む8つのタブが開いた Chrome。ツールバーの TabTools アイコンにポインターが重なっています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>Chrome のツールバーから TabTools を開きます。</figcaption>\n</figure>\n  </li>\n  <li><strong>重複を閉じる</strong>をクリックします。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-02-close-duplicates.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-02-close-duplicates.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools のポップアップに開いているタブ数が8と表示され、「重複を閉じる」（Close duplicates）にポインターが重なっています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>「重複を閉じる」（Close duplicates）をクリックして、余分なコピーを削除します。</figcaption>\n</figure>\n  </li>\n  <li>ポップアップのステータスメッセージを確認します。閉じた重複タブの数が表示され、一致するものがなければ <strong>重複はありません</strong> と表示されます。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-03-result-and-undo.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-03-result-and-undo.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools に「閉じた重複タブ: 2」（Closed 2 duplicates）と表示され、開いているタブが6つになり、「元に戻す」（Undo）ボタンが使える状態です。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>重複した2つが閉じ、6つのタブが残ります。「元に戻す」（Undo）を使いたい場合は、ポップアップを開いたままにしてください。</figcaption>\n</figure>\n  </li>\n</ol>\n<p>重複タブを先に選択する必要はありません。そのブラウザーの通常ウィンドウ全体が対象になるため、同じページが別々のウィンドウにあっても照合できます。プライベートまたはシークレットのタブは対象外です。</p>\n<p>Chrome で実行しても Edge のタブは変わりません。逆も同様です。両方のブラウザーに重複がある場合は、それぞれで実行してください。</p>"
+        },
+        {
+          "id": "firefox-native-option",
+          "title": "Firefox 標準の重複タブ操作を使う",
+          "html": "<p>重複の削除だけが必要なら、Firefox の標準機能を使えます。</p>\n<ul>\n  <li><strong>1つのページの重複を閉じる場合：</strong> 残したいタブを右クリックし、<strong>重複タブを閉じる（Close Duplicate Tabs）</strong>を選びます。</li>\n  <li><strong>より広い範囲を整理する場合：</strong> <strong>すべてのタブを一覧表示（List all tabs）</strong>を開きます。続いて、重複を閉じる操作を選びます。画面によって、 <strong>すべての重複タブを閉じる（Close all duplicate tabs）</strong> または <strong>重複タブを閉じる（Close Duplicate Tabs）</strong> と表示されます。</li>\n</ul>\n<p>Mozilla の <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">タブのコンテキストメニューガイド</a> で最初の方法を説明しています。また、 <a href=\"https://support.mozilla.org/en-US/kb/tab-overview-menu\">タブ一覧メニューガイド</a> では、より広い範囲の整理について説明し、重複の中で最後にアクティブだったタブを残すとしています。</p>\n<p>すでに <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox 版 TabTools</a>を使っている場合は、ポップアップを開き、<strong>重複を閉じる</strong>をクリックします。この場合の照合と保持のルールは、以下で説明する TabTools のルールです。Firefox 標準の操作と同じだとは考えないでください。</p>"
+        },
+        {
+          "id": "which-copy-stays",
+          "title": "TabTools はどのタブを残す？",
+          "html": "<p>TabTools は固定されたコピーを残し、通常ウィンドウ全体で一致する未固定タブを閉じます。固定されたコピーがない場合は、ブラウザーのタブ一覧で最初に見つかった未固定のコピーを残し、それ以降の一致するタブを閉じます。</p>\n<p>アクティブなタブ、最も新しいタブ、最後に使ったタブを意図的に選ぶわけではありません。そのため、残るコピーが別のウィンドウにある場合もあります。同じページに固定タブが1つ、未固定のコピーが2つある場合、固定タブだけが残ります。</p>\n<p>固定タブは <strong>重複を閉じる</strong> では閉じません。同じページに固定されたコピーが複数ある場合は、すべて残るため、この操作を使っても各 URL が必ず1つだけになるとは限りません。</p>"
+        },
+        {
+          "id": "undo-and-organise",
+          "title": "整理を元に戻す、残ったタブを整理する",
+          "html": "<p>結果を確認したい場合は、整理した後もポップアップを開いたままにしてください。 <strong>元に戻す</strong> を使うと、そのポップアップを開いている間に限り、最後にポップアップから閉じたタブを開き直せます。URL を使ってページを開き直すため、未保存の内容が復元される保証はありません。ポップアップを閉じた後は、ブラウザーの最近閉じたタブや履歴を使ってください。</p>\n<p>不要になった別々のページについては、 <a href=\"/guides/close-tabs-from-same-website/\">同じサイトのタブをすべて閉じる方法</a>をご覧ください。残したいページは、 <a href=\"/guides/sort-tabs-by-website/\">サイト別にタブを並べ替える</a> ことで、閉じずに関連するタブをまとめられます。</p>"
+        }
+      ]
+    },
+    {
+      "slug": "sort-tabs-by-website",
+      "title": "Chrome、Firefox、Edge でタブをサイト別に並べ替える方法",
+      "shortTitle": "タブをサイト別に並べ替える",
+      "description": "TabTools を使って Chrome、Firefox、Edge の関連するタブをまとめましょう。サイトごとのタブ数、固定タブ、ブラウザーのタブグループが選択肢にどう影響するかを説明します。",
+      "category": "タブを並べ替える",
+      "lede": "タブバーに文書、動画、調査用のページが混在していると、次のタブを探すのに時間がかかります。並べ替えると、ページを開いたまま、同じサイトのタブを隣り合わせにできます。",
+      "answer": "整理したいウィンドウで TabTools を開き、「タブを並べ替え」をクリックします。固定されていないタブがサイト別に並び、現在開いているタブの数が多いサイトから先に配置されます。固定タブはそのままです。",
+      "sections": [
+        {
+          "id": "sort-with-tabtools",
+          "title": "現在のウィンドウのタブを並べ替える",
+          "html": "<p>Chrome、Firefox、Microsoft Edge で、同じポップアップ操作を使えます。この Chrome の例では、YouTube、Wikipedia、Google の6つのタブが混在した状態から始めます。</p>\n<ol>\n  <li>TabTools をインストールします。対象ブラウザー： <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a>、 <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox</a> または <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge</a>。</li>\n  <li>並べ替えたいタブがあるブラウザーウィンドウに切り替えます。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-01-before.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-01-before.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome のタブバーに、YouTube の3つのタブ、Wikipedia の2つのタブ、Google が入り交じっています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>並べ替え前：3つのサイトの6つのタブが混在しています。</figcaption>\n</figure>\n  </li>\n  <li>ツールバーまたは拡張機能メニューから TabTools を開きます。</li>\n  <li><strong>タブを並べ替え</strong>をクリックします。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-02-sort-tabs.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-02-sort-tabs.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome の TabTools ポップアップ。「タブを並べ替え」（Sort tabs）にポインターが重なっています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>「タブを並べ替え」（Sort tabs）をクリックして、サイトごとにページをまとめます。</figcaption>\n</figure>\n  </li>\n</ol>\n<p>関連する未固定タブが隣り合わせに移動します。ページは開いたままで、ほかのウィンドウのタブがこのウィンドウに移されることはありません。別のウィンドウも整理したい場合は、そちらに切り替えて再実行してください。</p>\n<p>並べ替えは1回限りの操作です。その後に開くタブは通常どおり表示され、閲覧中に TabTools が自動で並べ替え続けることはありません。今の配置を整えたいときに、 <strong>タブを並べ替え</strong> をもう一度クリックしてください。</p>"
+        },
+        {
+          "id": "how-the-order-works",
+          "title": "TabTools が順番を決める仕組み",
+          "html": "<p>TabTools は、現在のウィンドウで開いているタブをサイト別に数えます。タブ数の多いサイトほど前に、固定タブのすぐ後ろから配置されます。固定タブがない簡単な例を見てみましょう。</p>\n<table>\n  <thead><tr><th scope=\"col\">サイト</th><th scope=\"col\">開いているタブ数</th><th scope=\"col\">並べ替え後の位置</th></tr></thead>\n  <tbody>\n    <tr><td><code>youtube.com</code></td><td>3</td><td>1番目</td></tr>\n    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>2番目</td></tr>\n    <tr><td><code>google.com</code></td><td>1</td><td>3番目</td></tr>\n  </tbody>\n</table>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-03-after.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-03-after.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"並べ替え後の Chrome。YouTube の3つのタブ、Wikipedia の2つのタブ、Google の順に並び、TabTools に「並べ替えたタブ: 6」（Reordered 6 tabs）と表示されています。\" />\n    <span class=\"guide-screenshot-zoom\">原寸大で表示 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （新しいタブで開きます）</span></span>\n  </a>\n  <figcaption>並べ替え後：YouTube ×3、Wikipedia ×2、最後に Google。6つすべてのタブが開いたままです。</figcaption>\n</figure>\n<p>「最も多く開いている」とは、今この時点で開いているタブ数が最も多いという意味です。よく訪れるサイトや閲覧履歴、過去1週間にサイトを開いた回数のことではありません。</p>\n<p>2つのサイトのタブ数が同じ場合は、ホスト名のアルファベット順で並びます。同じホスト名のタブは相対的な順序を保ちます。たとえば、3つの YouTube ページは YouTube のまとまりの中で元の順序を保ち、ページタイトル順には並びません。</p>"
+        },
+        {
+          "id": "pinned-tabs-and-subdomains",
+          "title": "固定タブとサブドメイン",
+          "html": "<p>固定タブは固定位置にとどまります。ただし、未固定タブの並び順を決める際のサイト別タブ数には、固定タブも含まれます。</p>\n<p>たとえば GitHub に固定タブが2つ、未固定タブが2つあれば、GitHub の数は4です。その未固定タブは、開いているタブが3つのサイトより前に並びますが、2つの固定タブは元の位置のままです。</p>\n<p>サイトの照合にはホスト名を使い、先頭の <code>www.</code>は無視します。 <code>example.com</code> と <code>www.example.com</code> のページはひとつにまとめられます。一方、 <code>docs.example.com</code> のページは、次のサイトとは別のまとまりになります： <code>shop.example.com</code>。</p>\n<p>これは、異なるサービスが同じ親ドメインを使う場合に便利です。ドキュメントとショップは、並べ替え後も別々にまとめられます。</p>"
+        },
+        {
+          "id": "sorting-or-tab-groups",
+          "title": "並べ替えとタブグループを使い分ける",
+          "html": "<p>サイト自体を整理の基準にしたいなら、並べ替えが便利です。旅行、仕事のプロジェクト、複数サイトを使った買い物など、作業を基準にまとめたいなら、ブラウザーのタブグループが向いています。</p>\n<table>\n  <thead><tr><th scope=\"col\">目的</th><th scope=\"col\">適した方法</th></tr></thead>\n  <tbody>\n    <tr><td>サイトごとのページを隣り合わせにする</td><td>TabTools <strong>タブを並べ替え</strong></td></tr>\n    <tr><td>少数のタブを好みの順番に並べる</td><td>タブを手動でドラッグ</td></tr>\n    <tr><td>プロジェクトに関わる複数のサイトを、名前を付けてまとめる</td><td>ブラウザーの名前付きタブグループ</td></tr>\n  </tbody>\n</table>\n<p>TabTools はタブの順序を変える機能であり、名前や色の付いたブラウザーグループは作成しません。すでにプロジェクト別に意図して並べている場合は、変更前に、そのウィンドウをサイト別に並べ替えてよいか確認してください。</p>"
+        },
+        {
+          "id": "native-browser-options",
+          "title": "拡張機能を使わずにタブを整理する",
+          "html": "<h3>Chrome</h3>\n<p>タブバー上でタブをドラッグすると、順序を手動で決められます。関連する作業が複数サイトにまたがる場合は、名前付きタブグループも使えます。Google の <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome のタブガイド</a> で、タブの配置とグループ化について説明しています。</p>\n<h3>Firefox</h3>\n<p>タブバーで個別のタブを動かすか、Firefox のタブの右クリックメニューにあるグループ化機能で、名前を付けてまとめられます。Mozilla の <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">タブのコンテキストメニューガイド</a> で、利用できるタブ操作を説明しています。</p>\n<h3>Microsoft Edge</h3>\n<p>Edge には名前付きタブグループのほか、関連タブをまとめる <strong>タブの整理（Organize tabs）</strong> 機能があります。利用できる機能は環境によって異なる場合があります。これらは指定したグループや関連性に基づいて整理するもので、現在のサイト別タブ数による並べ替えとは異なります。Microsoft の説明は、次のガイドをご覧ください： <a href=\"https://www.microsoft.com/en-us/edge/features/tab-groups\">Edge のタブグループガイド</a>。</p>"
+        },
+        {
+          "id": "after-sorting",
+          "title": "並べ替えた後にできること",
+          "html": "<p>TabTools には並べ替えを取り消す操作はありません。ポップアップの <strong>元に戻す</strong> ボタンは、最後にタブを閉じた操作のためのもので、元のタブ順序を復元するものではありません。並べ替えた後に別の配置にしたい場合は、タブをドラッグしてください。</p>\n<p>並べ替えても、同じページの重複は残ります。そのため大きなまとまりが長くなりすぎる場合は、 <a href=\"/guides/close-duplicate-tabs/\">重複タブを閉じて</a> から、残ったタブ数で再び並べ替えてください。</p>\n<p>サイト全体が不要になったら、 <a href=\"/guides/close-tabs-from-same-website/\">このサイトのタブを閉じる</a> でそのページを閉じられます。並べ替えは、まだ必要なタブのための操作です。どのページを閉じるか判断せずに、見つけやすくします。</p>"
+        }
+      ]
+    }
+  ]
+}

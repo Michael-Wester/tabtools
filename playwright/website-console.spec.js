@@ -157,3 +157,26 @@ test.describe('Firefox website console smoke', () => {
     expect(() => assertNoDiagnostics(injected)).toThrow(/smoke check injected/);
   });
 });
+
+for (const locale of ['zh-CN', 'zh-TW']) {
+  test(`Firefox guide language switch to ${locale} retains the article and anchor`, async ({ page }) => {
+    const route = '/guides/close-tabs-from-same-website/';
+    const suffix = '?review=guide-language#use-the-popup';
+    const diagnostics = await openLocale(page, route + suffix);
+    await page.locator('[data-language-trigger]').click();
+    await page.locator(`[data-language-option][data-locale="${locale}"]`).click();
+    const prefix = locale === 'zh-CN' ? '/zh-cn' : '/zh-tw';
+    await expect(page).toHaveURL(prefix + route + suffix);
+    await expect(page.locator('html')).toHaveAttribute('lang', locale);
+    await expect(page.locator('#use-the-popup h2')).toBeInViewport();
+    await page.reload();
+    await expect(page).toHaveURL(prefix + route + suffix);
+    await page.goBack();
+    await expect(page).toHaveURL(route + suffix);
+    await page.goForward();
+    await expect(page).toHaveURL(prefix + route + suffix);
+    await page.locator(`.main-nav a[href="${prefix}/guides/"]`).click();
+    await expect(page).toHaveURL(prefix + '/guides/');
+    assertNoDiagnostics(diagnostics);
+  });
+}

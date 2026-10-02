@@ -2,35 +2,147 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tabtools.fyi/</loc></url>
   <url><loc>https://tabtools.fyi/cs/</loc></url>
+  <url><loc>https://tabtools.fyi/cs/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/cs/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/cs/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/cs/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/de/</loc></url>
+  <url><loc>https://tabtools.fyi/de/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/de/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/de/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/de/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/el/</loc></url>
+  <url><loc>https://tabtools.fyi/el/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/el/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/el/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/el/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/es/</loc></url>
+  <url><loc>https://tabtools.fyi/es/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/es/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/es/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/es/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/fi/</loc></url>
+  <url><loc>https://tabtools.fyi/fi/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/fi/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/fi/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/fi/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/fr/</loc></url>
+  <url><loc>https://tabtools.fyi/fr/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/fr/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/fr/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/fr/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/guides/</loc></url>
   <url><loc>https://tabtools.fyi/guides/close-duplicate-tabs/</loc></url>
   <url><loc>https://tabtools.fyi/guides/close-tabs-from-same-website/</loc></url>
   <url><loc>https://tabtools.fyi/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/he/</loc></url>
+  <url><loc>https://tabtools.fyi/he/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/he/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/he/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/he/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/hr/</loc></url>
+  <url><loc>https://tabtools.fyi/hr/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/hr/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/hr/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/hr/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/hu/</loc></url>
+  <url><loc>https://tabtools.fyi/hu/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/hu/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/hu/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/hu/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/it/</loc></url>
+  <url><loc>https://tabtools.fyi/it/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/it/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/it/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/it/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/ja/</loc></url>
+  <url><loc>https://tabtools.fyi/ja/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/ja/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/ja/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/ja/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/ko/</loc></url>
+  <url><loc>https://tabtools.fyi/ko/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/ko/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/ko/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/ko/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/nb/</loc></url>
+  <url><loc>https://tabtools.fyi/nb/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/nb/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/nb/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/nb/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/nl/</loc></url>
+  <url><loc>https://tabtools.fyi/nl/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/nl/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/nl/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/nl/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/pl/</loc></url>
+  <url><loc>https://tabtools.fyi/pl/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/pl/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/pl/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/pl/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/pt-br/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-br/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-br/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-br/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/pt-pt/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-pt/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-pt/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-pt/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/ro/</loc></url>
+  <url><loc>https://tabtools.fyi/ro/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/ro/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/ro/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/ro/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/ru/</loc></url>
+  <url><loc>https://tabtools.fyi/ru/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/ru/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/ru/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/ru/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/sk/</loc></url>
+  <url><loc>https://tabtools.fyi/sk/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/sk/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/sk/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/sk/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/sl/</loc></url>
+  <url><loc>https://tabtools.fyi/sl/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/sl/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/sl/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/sl/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/sr/</loc></url>
+  <url><loc>https://tabtools.fyi/sr/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/sr/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/sr/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/sr/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/sv/</loc></url>
+  <url><loc>https://tabtools.fyi/sv/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/sv/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/sv/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/sv/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/tr/</loc></url>
+  <url><loc>https://tabtools.fyi/tr/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/tr/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/tr/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/tr/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/uk/</loc></url>
+  <url><loc>https://tabtools.fyi/uk/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/uk/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/uk/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/uk/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/vi/</loc></url>
+  <url><loc>https://tabtools.fyi/vi/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/vi/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/vi/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/vi/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/zh-cn/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-cn/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-cn/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-cn/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/</loc></url>
   <url><loc>https://tabtools.fyi/zh-tw/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-tw/guides/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-tw/guides/close-duplicate-tabs/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-tw/guides/close-tabs-from-same-website/</loc></url>
+  <url><loc>https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/</loc></url>
 </urlset>

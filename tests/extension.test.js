@@ -300,6 +300,35 @@ test('duplicate cleanup keeps pinned copies and removes their unpinned duplicate
   assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [2, 3, 4]);
 });
 
+test('duplicate cleanup follows the guide pinned-copy examples without closing pinned copies', async () => {
+  for (const pinnedCount of [1, 2]) {
+    const pinned = Array.from({ length: pinnedCount }, (_, i) => ({ id: i + 3, url: 'https://example.com/page#pinned', pinned: true, windowId: 2 }));
+    const runtime = extension({ tabs: [
+      { id: 1, url: 'https://example.com/page#first', active: true, windowId: 1 },
+      { id: 2, url: 'https://example.com/page#second', windowId: 1 },
+      ...pinned
+    ] });
+    const result = await runtime.send({ type: 'pc:closeDuplicates' });
+    assert.equal(result.closedCount, 2);
+    assert.deepEqual(runtime.state.removed, [1, 2]);
+    assert.deepEqual(runtime.state.tabs.map(tab => tab.id), pinned.map(tab => tab.id));
+  }
+});
+
+test('duplicate URL matching normalizes scheme/host case and fragments but preserves path/query case and order', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'HTTPS://EXAMPLE.COM/Guide?a=1&b=2#intro' },
+    { id: 2, url: 'https://example.com/Guide?a=1&b=2#steps', active: true },
+    { id: 3, url: 'https://example.com/guide?a=1&b=2' },
+    { id: 4, url: 'https://example.com/Guide?A=1&b=2' },
+    { id: 5, url: 'https://example.com/Guide?b=2&a=1' },
+  ] });
+  const result = await runtime.send({ type: 'pc:closeDuplicates' });
+  assert.equal(result.closedCount, 1);
+  assert.deepEqual(runtime.state.removed, [2]);
+  assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [1, 3, 4, 5]);
+});
+
 test('inactive suggestions agree with cleanup and preserve active, pinned, audible and private tabs', async () => {
   const old = Date.now() - 3 * 60 * 60 * 1000;
   const runtime = extension({ tabs: [

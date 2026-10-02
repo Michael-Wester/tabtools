@@ -1,0 +1,164 @@
+{
+  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "review": {
+    "status": "ai-reviewed",
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+  },
+  "ui": {
+    "indexTitle": "브라우저 탭 가이드",
+    "indexDescription": "Chrome, Firefox, Edge에서 같은 사이트의 탭을 닫고, 중복 탭을 제거하고, 사이트별로 탭을 정렬하는 실용적인 TabTools 가이드입니다.",
+    "indexEyebrow": "TabTools 가이드",
+    "indexHeading": "더 깔끔한 탭 표시줄.",
+    "indexHeadingAccent": "한 번에 하나씩 정리하세요.",
+    "indexLede": "한 사이트의 탭을 닫거나, 반복된 페이지를 줄이거나, 관련 탭을 모아 보세요. 가이드를 고르고 사용하는 브라우저에서 순서대로 따라 해 보세요.",
+    "indexPlatforms": "컴퓨터용 Chrome, Firefox, Edge 지원",
+    "startEyebrow": "TabTools가 처음인가요?",
+    "startHeading": "탭을 정리하는 세 가지 방법.",
+    "startBody": "사이트별로 닫으면 해당 사이트의 페이지가 닫힙니다. 중복 정리는 같은 URL이 반복된 페이지를 제거합니다. 정렬은 탭을 열어 둔 채 순서만 바꿉니다. 각 가이드에서 예시와 브라우저 기본 기능을 이용한 대안을 통해 실제 동작을 설명합니다.",
+    "explore": "TabTools 알아보기",
+    "browseGuides": "가이드 둘러보기",
+    "readGuide": "가이드 읽기",
+    "readTime": "읽는 데 {minutes}분",
+    "getTabTools": "TabTools 설치",
+    "installEyebrow": "무료 브라우저 확장 프로그램",
+    "installHeading": "직접 해 보세요.",
+    "installBody": "사이트별로 탭을 닫고, 중복을 제거하고, 남은 탭을 정렬하세요.",
+    "desktopBrowsers": "컴퓨터용 브라우저",
+    "byline": "작성자: {author}, TabTools 개발자",
+    "updated": "업데이트: {date}",
+    "onThisPage": "이 페이지의 내용",
+    "allGuides": "모든 가이드",
+    "quickAnswer": "빠른 답변",
+    "relatedGuides": "관련 가이드",
+    "relatedEyebrow": "계속 살펴보기",
+    "relatedHeading": "탭을 정리하는 더 많은 방법.",
+    "home": "홈",
+    "breadcrumb": "탐색 경로",
+    "screenshotNote": "스크린샷은 영어 인터페이스를 보여 줍니다. 브라우저의 표시 언어에 따라 항목 이름이 다를 수 있습니다."
+  },
+  "guides": [
+    {
+      "slug": "close-tabs-from-same-website",
+      "title": "Chrome에서 같은 사이트의 탭을 모두 닫는 방법",
+      "shortTitle": "같은 사이트의 탭 닫기",
+      "description": "TabTools로 Chrome에서 같은 사이트의 탭을 닫는 방법, 수동으로 처리하는 대안, Firefox와 Edge에서의 사용 방법을 알아보세요.",
+      "category": "사이트 탭 닫기",
+      "lede": "쇼핑을 마쳤거나, 자료를 한참 찾아봤거나, 잔뜩 열어 둔 YouTube 영상을 다 봤나요? 다른 사이트는 그대로 열어 둔 채 해당 사이트의 탭만 한꺼번에 닫을 수 있습니다.",
+      "answer": "TabTools를 설치한 뒤 Chrome 탭 표시줄에서 닫으려는 사이트의 탭을 마우스 오른쪽 버튼으로 클릭하고 ‘이 사이트의 탭 닫기’를 선택하세요. 모든 일반 브라우저 창에서 일치하는 탭이 닫히며, 일치하는 활성 탭과 고정 탭도 포함됩니다.",
+      "sections": [
+        {
+          "id": "close-site-tabs-in-chrome",
+          "title": "Chrome에서 한 사이트의 탭 닫기",
+          "html": "<p>탭의 마우스 오른쪽 버튼 메뉴를 이용하면 Chrome 탭 표시줄에서 바로 실행할 수 있습니다.</p>\n<ol>\n  <li><a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome Web Store에서 TabTools 설치</a>.</li>\n  <li>닫으려는 사이트의 탭을 찾으세요. 예를 들어 YouTube 홈페이지나 검색 결과 페이지를 고를 수 있습니다.</li>\n  <li>Chrome 탭 표시줄에서 해당 탭을 마우스 오른쪽 버튼으로 클릭하세요.</li>\n  <li><strong>이 사이트의 탭 닫기</strong>를 선택하세요. 사이트의 호스트 이름이 같은 탭이 함께 닫힙니다.</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-01-tab-menu.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-01-tab-menu.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"서로 다른 탭 6개가 열린 Chrome. YouTube 탭의 마우스 오른쪽 버튼 메뉴에서 ‘이 사이트의 탭 닫기’(Close site tabs)가 강조 표시되어 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>Chrome 탭 표시줄에서 YouTube 탭을 마우스 오른쪽 버튼으로 클릭하고 ‘이 사이트의 탭 닫기’(Close site tabs)를 선택하세요.</figcaption>\n</figure>\n<p>이 예에서는 <code>youtube.com</code>의 페이지 3개가 닫히고 Wikipedia 탭 2개와 Google은 열린 상태로 남습니다. 먼저 YouTube 탭을 서로 나란히 모을 필요는 없습니다.</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-02-tabs-closed.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-02-tabs-closed.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"YouTube 탭 3개를 닫은 뒤의 Chrome. Wikipedia 탭 2개와 Google이 남아 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>닫은 뒤: Wikipedia 탭 2개와 Google만 남습니다.</figcaption>\n</figure>\n<p>탭 메뉴에 <strong>이 사이트의 탭 닫기</strong>가 없다면 해당 탭을 열고 웹페이지 안에서 마우스 오른쪽 버튼을 클릭하거나, 아래에서 설명하는 TabTools 팝업을 사용하세요.</p>\n<p>이 방법은 해당 사이트를 더 이상 사용할 필요가 없을 때 유용합니다. 아직 필요한 페이지가 있다면 실행 전에 주의하세요. 마우스 오른쪽 버튼으로 클릭한 탭도 닫힙니다.</p>"
+        },
+        {
+          "id": "use-the-popup",
+          "title": "팝업에서 다른 사이트의 탭 닫기",
+          "html": "<p>사이트의 페이지로 이동하지 않고도 닫을 사이트를 선택할 수 있습니다.</p>\n<ol>\n  <li>브라우저의 확장 프로그램 메뉴나 도구 모음에서 TabTools를 여세요.</li>\n  <li>다음 안내 아래의 추천 사이트에서 원하는 사이트를 찾으세요: <strong>탭을 닫으려면 사이트를 누르세요</strong>. 각 추천 항목에는 열린 탭 수가 표시됩니다.</li>\n  <li>사이트를 선택하면 일치하는 탭이 닫힙니다.</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-03-popup-suggestion.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-03-popup-suggestion.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome의 TabTools. 열린 탭 3개가 표시된 YouTube 추천 항목 위에 포인터가 놓여 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>같은 탭 6개가 열린 상태에서 YouTube 추천 항목을 선택하면 Google을 떠나지 않고 YouTube 탭 3개를 닫을 수 있습니다.</figcaption>\n</figure>\n<p>호스트 이름을 직접 입력할 수도 있습니다. ‘추천 사이트’에 원하는 사이트가 없을 때 유용합니다. 예를 들어 <code>youtube.com</code> 같은 호스트 이름을 입력하려면 <strong>키워드로 닫기 (Enter 키)</strong> 입력란을 사용한 뒤 Enter 키를 누르거나 <strong>닫기</strong>를 클릭하세요. 호스트 이름만 입력하고 <code>https://</code>나 페이지 경로는 포함하지 마세요.</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-04-enter-hostname.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-04-enter-hostname.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools의 키워드 입력란에 youtube.com이 입력되어 있고, 포인터가 ‘닫기’(Close) 위에 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>youtube.com을 입력하고 ‘닫기’(Close)를 클릭하거나 Enter 키를 눌러도 됩니다.</figcaption>\n</figure>\n<p>일반 키워드(예: <code>shopping</code> )는 다르게 동작하며 탭 제목과 URL을 검색합니다. 특정 사이트 하나를 닫으려면 정확한 호스트 이름을 사용하세요.</p>"
+        },
+        {
+          "id": "which-tabs-close",
+          "title": "어떤 탭이 같은 사이트로 분류되나요?",
+          "html": "<p>사이트별 닫기는 호스트 이름을 비교하며 맨 앞의 <code>www.</code>는 무시합니다. 같은 호스트 이름의 페이지라면 경로나 쿼리 매개변수가 달라도 일치합니다.</p>\n<table>\n  <thead><tr><th scope=\"col\">example.com을 닫을 때</th><th scope=\"col\">결과</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/article-one</code></td><td>닫힘</td></tr>\n    <tr><td><code>www.example.com/article-two</code></td><td>닫힘</td></tr>\n    <tr><td><code>shop.example.com/product</code></td><td>열린 상태 유지: 다른 하위 도메인</td></tr>\n    <tr><td><code>another-site.com/example</code></td><td>열린 상태 유지</td></tr>\n  </tbody>\n</table>\n<p>이 명령은 실행한 브라우저의 모든 일반 창에 적용됩니다. 일치하는 고정 탭과 활성 탭도 포함되지만, 사생활 보호 또는 시크릿 탭은 제외됩니다. 다른 브라우저 앱의 탭에는 영향을 주지 않습니다.</p>"
+        },
+        {
+          "id": "without-an-extension",
+          "title": "Chrome에서 일치하는 탭을 수동으로 닫기",
+          "html": "<p>탭 수가 적다면 Chrome의 탭 검색으로 수동 처리할 수 있습니다.</p>\n<ol>\n  <li>탭 검색을 여는 단축키는 <strong>Ctrl + Shift + A</strong> (Windows 또는 Linux) 또는 <strong>Command + Shift + A</strong> (Mac)입니다.</li>\n  <li>사이트 이름이나 호스트 이름을 검색하세요.</li>\n  <li>열린 탭 검색 결과를 확인하고 제거하려는 페이지마다 닫기 버튼을 사용하세요.</li>\n</ol>\n<p>이렇게 하면 해당 사이트에서 필요한 페이지를 골라 남길 수 있습니다. 대신 일치하는 탭을 하나씩 확인하고 닫아야 합니다. Google은 다음 가이드에서 검색과 닫기 기능을 설명합니다: <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome 탭 가이드</a>.</p>"
+        },
+        {
+          "id": "firefox-and-edge",
+          "title": "Firefox와 Edge에서도 같은 방식으로 사용하기",
+          "html": "<h3>Firefox</h3>\n<p><a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox용 TabTools 설치</a> 후 탭 표시줄에서 대상 사이트의 탭을 마우스 오른쪽 버튼으로 클릭하고 <strong>이 사이트의 탭 닫기</strong>를 선택하세요. 웹페이지 안에서 마우스 오른쪽 버튼을 클릭하거나 팝업의 추천 사이트에서 선택할 수도 있습니다.</p>\n<h3>Microsoft Edge</h3>\n<p><a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge용 TabTools 설치</a> 후 대상 사이트의 탭을 마우스 오른쪽 버튼으로 클릭하고 다음 항목을 선택하세요: <strong>이 사이트의 탭 닫기</strong> . 단, 사용하는 Edge 버전의 탭 메뉴에 이 항목이 표시되는 경우에 해당합니다. 없다면 탭을 열고 웹페이지 안에서 마우스 오른쪽 버튼을 클릭하거나 팝업에 호스트 이름을 입력하세요. 일치 기준과 여러 창에 적용되는 범위는 위의 설명과 같습니다.</p>"
+        },
+        {
+          "id": "undo-and-next-steps",
+          "title": "탭을 다시 열거나 정리 범위를 줄이기",
+          "html": "<p>팝업을 통해 탭을 닫은 뒤에는, 해당 팝업이 계속 열려 있는 동안 <strong>실행 취소</strong> 버튼으로 마지막 팝업 정리에서 닫은 탭을 다시 열 수 있습니다. 마우스 오른쪽 버튼 메뉴의 <strong>이 사이트의 탭 닫기</strong> 작업은 팝업의 실행 취소 버튼에 기록되지 않습니다.</p>\n<p>마우스 오른쪽 버튼 메뉴에서 닫았다면 브라우저의 최근에 닫은 탭이나 방문 기록을 확인하세요. URL을 다시 연다고 저장하지 않은 양식 입력이나 페이지의 이전 상태가 모든 세부 사항까지 복원되는 것은 아닙니다.</p>\n<p>페이지마다 하나씩만 남기려는 경우에는 <a href=\"/guides/close-duplicate-tabs/\">중복 탭 닫기</a> 가이드를 따르세요. 모든 페이지를 유지하면서 더 쉽게 살펴보려면 <a href=\"/guides/sort-tabs-by-website/\">사이트별로 탭 정렬</a> 방법을 사용하세요.</p>"
+        }
+      ]
+    },
+    {
+      "slug": "close-duplicate-tabs",
+      "title": "Chrome, Firefox, Edge에서 중복 탭을 닫는 방법",
+      "shortTitle": "중복 탭 닫기",
+      "description": "Chrome, Firefox, Edge에서 중복 탭을 제거하세요. TabTools 사용 단계와 Firefox 기본 기능을 살펴보고 어떤 탭이 남는지 알아보세요.",
+      "category": "중복 제거",
+      "lede": "같은 문서나 검색 결과, 동영상을 여러 번 여는 일은 흔합니다. 반복된 탭을 제거하면 한 사이트의 페이지를 전부 닫지 않고도 탭 표시줄을 더 편하게 탐색할 수 있습니다.",
+      "answer": "TabTools를 열고 ‘중복 탭 닫기’를 클릭하면 모든 일반 브라우저 창에서 고정되지 않은 중복 페이지가 제거됩니다. Firefox에는 한 탭의 중복을 닫는 기본 명령과 탭 전체 보기 메뉴에서 중복 탭을 정리하는 기본 명령도 있습니다.",
+      "sections": [
+        {
+          "id": "choose-a-method",
+          "title": "브라우저에 맞는 방법 고르기",
+          "html": "<table>\n  <thead><tr><th scope=\"col\">브라우저</th><th scope=\"col\">이 가이드에서 다루는 방법</th></tr></thead>\n  <tbody>\n    <tr><td>Chrome</td><td>TabTools를 열고 <strong>중복 탭 닫기</strong>를 선택하세요.</td></tr>\n    <tr><td>Firefox</td><td>브라우저의 기본 중복 탭 명령을 사용하거나, <strong>중복 탭 닫기</strong>를 TabTools에서 선택하세요.</td></tr>\n    <tr><td>Microsoft Edge</td><td>TabTools를 열고 <strong>중복 탭 닫기</strong>를 선택하세요.</td></tr>\n  </tbody>\n</table>\n<p>한꺼번에 정리하기 전에 중복된 페이지에서 하던 작업을 마치고 저장하세요. 두 탭에 같은 URL이 표시되더라도 양식에 입력한 내용은 서로 다를 수 있습니다.</p>"
+        },
+        {
+          "id": "what-counts-as-a-duplicate",
+          "title": "어떤 탭이 중복인가요?",
+          "html": "<p>중복 탭은 같은 페이지를 여러 번 연 것입니다. YouTube 홈페이지를 3개 열었다면 중복이지만, 홈페이지와 서로 다른 YouTube 검색 결과 2개는 같은 사이트의 다른 페이지입니다.</p>\n<p>TabTools는 각 페이지의 URL을 분석하고 <code>#</code>으로 시작하는 부분인 프래그먼트를 제거합니다. URL 파서는 스킴과 호스트 이름의 대소문자를 정규화합니다. 경로와 쿼리 문자열의 대소문자, 쿼리 매개변수의 순서는 비교할 때 구분합니다.</p>\n<table>\n  <thead><tr><th scope=\"col\">URL 예시</th><th scope=\"col\">TabTools의 처리</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/guide</code>를 두 번 열기</td><td>중복</td></tr>\n    <tr><td><code>example.com/guide#intro</code> 및 <code>example.com/guide#steps</code></td><td>중복: 프래그먼트는 무시됨</td></tr>\n    <tr><td><code>example.com/guide</code> 및 <code>example.com/contact</code></td><td>서로 다른 페이지</td></tr>\n    <tr><td><code>example.com/search?q=tabs</code> 및 <code>example.com/search?q=bookmarks</code></td><td>쿼리 매개변수가 달라 둘 다 유지</td></tr>\n  </tbody>\n</table>\n<p>일부 웹 앱은 프래그먼트로 화면을 구분하므로 그런 화면도 중복으로 간주될 수 있습니다. 반대로 추적 매개변수 때문에 비슷한 페이지가 서로 다른 URL로 처리될 수도 있습니다. 이 명령은 주소를 비교합니다. 페이지 내용을 검사해 두 페이지가 같은 의미인지 판단하지는 않습니다.</p>"
+        },
+        {
+          "id": "chrome-and-edge",
+          "title": "Chrome 또는 Edge에서 중복 탭 닫기",
+          "html": "<p>TabTools 팝업에서는 두 브라우저 모두 같은 명령을 사용합니다. 이 스크린샷은 YouTube 홈페이지 3개를 포함해 탭 8개가 열린 Chrome을 보여 줍니다.</p>\n<ol>\n  <li>TabTools를 설치하세요. 지원 브라우저: <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a> 또는 <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Microsoft Edge</a>.</li>\n  <li>도구 모음이나 확장 프로그램 메뉴에서 확장 프로그램을 여세요.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-01-open-tabtools.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-01-open-tabtools.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"YouTube 홈페이지 3개를 포함한 탭 8개가 열린 Chrome. 포인터가 도구 모음의 TabTools 아이콘 위에 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>Chrome 도구 모음에서 TabTools를 여세요.</figcaption>\n</figure>\n  </li>\n  <li><strong>중복 탭 닫기</strong>를 클릭하세요.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-02-close-duplicates.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-02-close-duplicates.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 팝업에 열린 탭 8개가 표시되고 포인터는 ‘중복 탭 닫기’(Close duplicates) 위에 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>‘중복 탭 닫기’(Close duplicates)를 클릭해 반복된 탭을 제거하세요.</figcaption>\n</figure>\n  </li>\n  <li>팝업의 상태 메시지를 확인하세요. 닫힌 중복 탭 수가 표시되며, 일치하는 탭이 없으면 <strong>중복 탭이 없습니다</strong>라고 표시됩니다.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-03-result-and-undo.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-03-result-and-undo.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools에 중복 탭 2개를 닫았다는 메시지(Closed 2 duplicates)와 열린 탭 6개가 표시되고, ‘실행 취소’(Undo) 버튼이 활성화되어 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>중복 탭 2개가 닫혀 탭 6개가 남습니다. ‘실행 취소’(Undo)를 사용하려면 팝업을 열어 두세요.</figcaption>\n</figure>\n  </li>\n</ol>\n<p>먼저 중복 탭을 선택할 필요는 없습니다. 정리는 해당 브라우저의 모든 일반 창에 적용되므로 같은 페이지가 서로 다른 창에 있어도 일치하는 탭으로 찾을 수 있습니다. 사생활 보호 또는 시크릿 탭은 제외됩니다.</p>\n<p>Chrome에서 명령을 실행해도 Edge의 탭은 바뀌지 않으며, 반대도 마찬가지입니다. 두 브라우저 모두에 중복이 있다면 각각 실행하세요.</p>"
+        },
+        {
+          "id": "firefox-native-option",
+          "title": "Firefox의 기본 중복 탭 명령 사용하기",
+          "html": "<p>중복 제거만 필요하다면 Firefox의 기본 기능을 사용할 수 있습니다.</p>\n<ul>\n  <li><strong>한 페이지의 중복을 닫으려면:</strong> 남길 탭을 마우스 오른쪽 버튼으로 클릭하고 <strong>중복 탭 닫기(Close Duplicate Tabs)</strong>를 선택하세요.</li>\n  <li><strong>더 넓은 범위를 정리하려면:</strong> <strong>모든 탭 목록 보기(List all tabs)</strong>를 여세요. 그런 다음 중복 닫기 명령을 선택하세요. 인터페이스에 따라 <strong>모든 중복 탭 닫기(Close all duplicate tabs)</strong> 또는 <strong>중복 탭 닫기(Close Duplicate Tabs)</strong>로 표시됩니다.</li>\n</ul>\n<p>Mozilla의 <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">탭 컨텍스트 메뉴 가이드</a>는 첫 번째 방법을 설명합니다. 또한 <a href=\"https://support.mozilla.org/en-US/kb/tab-overview-menu\">탭 전체 보기 메뉴 가이드</a>에서는 더 넓은 범위의 정리 방법을 설명하며, 중복 탭 중 마지막으로 활성 상태였던 탭을 남긴다고 안내합니다.</p>\n<p>이미 <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox용 TabTools</a>를 사용 중이라면 팝업을 열고 <strong>중복 탭 닫기</strong>를 클릭하세요. 이때 적용되는 일치 기준과 유지 규칙은 아래의 TabTools 규칙입니다. Firefox 기본 명령과 같다고 가정하지 마세요.</p>"
+        },
+        {
+          "id": "which-copy-stays",
+          "title": "TabTools는 어떤 탭을 남기나요?",
+          "html": "<p>TabTools는 고정된 탭을 남기고 모든 일반 창에서 일치하는 고정되지 않은 탭을 닫습니다. 같은 페이지의 고정된 탭이 없다면 브라우저의 탭 목록에서 처음 만난 고정되지 않은 탭을 남기고 이후의 일치 항목을 닫습니다.</p>\n<p>활성 탭이나 가장 새로 연 탭, 가장 최근에 사용한 탭을 의도적으로 고르지는 않습니다. 따라서 남는 탭이 다른 창에 있을 수도 있습니다. 한 페이지에 고정 탭 1개와 고정되지 않은 탭 2개가 있다면 고정 탭만 남습니다.</p>\n<p>고정 탭은 <strong>중복 탭 닫기</strong>로 닫히지 않습니다. 한 페이지에 고정된 탭이 여러 개라면 모두 남으므로 이 명령을 실행해도 URL마다 정확히 하나만 남는 것은 아닙니다.</p>"
+        },
+        {
+          "id": "undo-and-organise",
+          "title": "정리를 취소하고 남은 탭 정리하기",
+          "html": "<p>정리 결과를 확인하려면 정리 후에도 팝업을 열어 두세요. <strong>실행 취소</strong>는 해당 팝업이 열려 있는 동안 마지막 팝업 닫기 작업에서 닫은 탭을 다시 열 수 있습니다. URL로 페이지를 다시 여는 것이므로 저장하지 않은 페이지 내용은 복원되지 않을 수 있습니다. 팝업을 닫은 뒤에는 브라우저의 최근에 닫은 탭이나 방문 기록을 사용하세요.</p>\n<p>다 쓴 서로 다른 페이지를 닫으려면 <a href=\"/guides/close-tabs-from-same-website/\">같은 사이트의 탭을 모두 닫는 방법</a>을 참고하세요. 남기고 싶은 페이지는 <a href=\"/guides/sort-tabs-by-website/\">사이트별로 탭 정렬</a> 기능으로 닫지 않고 관련 탭을 한데 모을 수 있습니다.</p>"
+        }
+      ]
+    },
+    {
+      "slug": "sort-tabs-by-website",
+      "title": "Chrome, Firefox, Edge에서 사이트별로 탭을 정렬하는 방법",
+      "shortTitle": "사이트별로 탭 정렬",
+      "description": "TabTools로 Chrome, Firefox, Edge의 관련 탭을 한데 모으세요. 사이트별 탭 수, 고정 탭, 브라우저 탭 그룹이 선택에 어떤 영향을 미치는지 알아보세요.",
+      "category": "탭 정렬",
+      "lede": "탭 표시줄에 문서, 동영상, 조사용 페이지가 뒤섞여 있으면 다음 탭을 찾는 데 시간이 더 걸립니다. 정렬하면 같은 사이트의 페이지를 열어 둔 채 나란히 모을 수 있습니다.",
+      "answer": "정리하려는 창에서 TabTools를 열고 ‘탭 정렬’을 클릭하세요. 고정되지 않은 탭을 사이트별로 배치하고, 현재 열린 탭이 가장 많은 사이트를 앞에 놓습니다. 고정 탭은 원래 위치에 유지됩니다.",
+      "sections": [
+        {
+          "id": "sort-with-tabtools",
+          "title": "현재 창의 탭 정렬하기",
+          "html": "<p>Chrome, Firefox, Microsoft Edge에서 같은 팝업 작업을 사용할 수 있습니다. 이 Chrome 예시는 YouTube, Wikipedia, Google의 탭 6개가 섞여 있는 상태에서 시작합니다.</p>\n<ol>\n  <li>TabTools를 설치하세요. 지원 브라우저: <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a>, <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox</a> 또는 <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge</a>.</li>\n  <li>정렬하려는 탭이 있는 브라우저 창으로 전환하세요.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-01-before.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-01-before.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 탭 표시줄에 YouTube 탭 3개, Wikipedia 탭 2개, Google이 뒤섞여 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>정렬 전: 세 사이트의 탭 6개가 뒤섞여 있습니다.</figcaption>\n</figure>\n  </li>\n  <li>도구 모음이나 확장 프로그램 메뉴에서 TabTools를 여세요.</li>\n  <li><strong>탭 정렬</strong>을 클릭하세요.\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-02-sort-tabs.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-02-sort-tabs.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome의 TabTools 팝업에서 포인터가 ‘탭 정렬’(Sort tabs) 위에 있습니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>‘탭 정렬’(Sort tabs)을 클릭해 각 사이트의 페이지를 한데 모으세요.</figcaption>\n</figure>\n  </li>\n</ol>\n<p>관련된 고정되지 않은 탭이 서로 나란히 이동합니다. 페이지는 열린 상태로 유지되며 다른 창의 탭이 이 창으로 옮겨 오지는 않습니다. 다른 창을 정리하려면 그 창으로 전환한 뒤 명령을 다시 실행하세요.</p>\n<p>정렬은 한 번만 수행되는 작업입니다. 이후 새 탭은 평소처럼 열리며, 탐색하는 동안 TabTools가 계속 탭 표시줄을 재배치하지는 않습니다. 현재 배치를 다시 정리하고 싶다면 <strong>탭 정렬</strong>을 다시 클릭하세요.</p>"
+        },
+        {
+          "id": "how-the-order-works",
+          "title": "TabTools가 순서를 정하는 방법",
+          "html": "<p>TabTools는 현재 창에서 사이트별로 열린 탭 수를 셉니다. 탭 수가 많은 사이트가 고정 탭 바로 뒤부터 앞쪽에 배치됩니다. 고정 탭이 없는 간단한 예를 보겠습니다.</p>\n<table>\n  <thead><tr><th scope=\"col\">사이트</th><th scope=\"col\">열린 탭 수</th><th scope=\"col\">정렬 후 위치</th></tr></thead>\n  <tbody>\n    <tr><td><code>youtube.com</code></td><td>3</td><td>첫 번째</td></tr>\n    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>두 번째</td></tr>\n    <tr><td><code>google.com</code></td><td>1</td><td>세 번째</td></tr>\n  </tbody>\n</table>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-03-after.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-03-after.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"정렬 후 Chrome: YouTube 탭 3개, Wikipedia 탭 2개, Google 순서로 배치되어 있으며, TabTools는 탭 6개를 재정렬했다는 메시지(Reordered 6 tabs)를 표시합니다.\" />\n    <span class=\"guide-screenshot-zoom\">원본 크기로 보기 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> (새 탭에서 열림)</span></span>\n  </a>\n  <figcaption>정렬 후: YouTube ×3, Wikipedia ×2, 마지막으로 Google. 탭 6개는 모두 열린 상태로 유지됩니다.</figcaption>\n</figure>\n<p>‘가장 많이 열린’은 바로 지금 열려 있는 탭 수가 가장 많다는 뜻입니다. 가장 자주 방문한 사이트나 방문 기록, 지난 일주일 동안 사이트를 연 횟수를 뜻하지 않습니다.</p>\n<p>두 사이트의 탭 수가 같으면 호스트 이름의 알파벳순으로 정렬합니다. 같은 호스트 이름의 탭끼리는 상대적인 순서를 유지합니다. 예를 들어 YouTube 페이지 3개는 YouTube 묶음 안에서 기존 순서를 유지하며 페이지 제목순으로 정렬되지 않습니다.</p>"
+        },
+        {
+          "id": "pinned-tabs-and-subdomains",
+          "title": "고정 탭과 하위 도메인",
+          "html": "<p>고정 탭은 고정된 위치에 그대로 남습니다. 다만 TabTools가 고정되지 않은 탭의 순서를 정할 때는 고정 탭도 해당 사이트의 탭 수에 포함됩니다.</p>\n<p>예를 들어 고정된 GitHub 탭 2개와 고정되지 않은 GitHub 탭 2개가 있으면 GitHub의 탭 수는 4개입니다. 따라서 고정되지 않은 GitHub 탭은 열린 탭이 3개인 사이트보다 앞에 놓이고, 고정된 GitHub 탭 2개는 원래 위치에 유지됩니다.</p>\n<p>사이트 일치 여부는 호스트 이름으로 판단하며 맨 앞의 <code>www.</code>는 무시합니다. <code>example.com</code>과 <code>www.example.com</code>의 페이지는 같은 묶음이 됩니다. 반면 <code>docs.example.com</code>의 페이지는 다음 사이트와 별개의 묶음이 됩니다: <code>shop.example.com</code>.</p>\n<p>이는 서로 다른 서비스가 같은 상위 도메인을 공유할 때 유용합니다. 문서 사이트와 쇼핑몰을 정렬된 탭 표시줄에서도 서로 분리해 둘 수 있습니다.</p>"
+        },
+        {
+          "id": "sorting-or-tab-groups",
+          "title": "정렬과 탭 그룹 중에서 선택하기",
+          "html": "<p>사이트 자체가 정리 기준이라면 정렬이 유용합니다. 휴가 계획이나 업무 프로젝트, 여러 사이트를 이용하는 구매처럼 하나의 일을 기준으로 묶고 싶다면 브라우저의 탭 그룹이 유용합니다.</p>\n<table>\n  <thead><tr><th scope=\"col\">목표</th><th scope=\"col\">적합한 방법</th></tr></thead>\n  <tbody>\n    <tr><td>각 사이트의 페이지를 서로 나란히 놓기</td><td>TabTools <strong>탭 정렬</strong></td></tr>\n    <tr><td>적은 수의 탭을 정확히 원하는 순서로 배치하기</td><td>탭을 직접 드래그</td></tr>\n    <tr><td>프로젝트의 여러 사이트를 하나의 이름 아래 모으기</td><td>브라우저의 이름 있는 탭 그룹</td></tr>\n  </tbody>\n</table>\n<p>TabTools는 탭 순서를 바꾸며, 이름이나 색이 있는 브라우저 그룹을 만들지는 않습니다. 이미 프로젝트별로 의도해서 탭을 배치했다면 순서를 바꾸기 전에 해당 창을 사이트별로 정렬하는 것이 적합한지 생각해 보세요.</p>"
+        },
+        {
+          "id": "native-browser-options",
+          "title": "확장 프로그램 없이 탭 정리하기",
+          "html": "<h3>Chrome</h3>\n<p>탭 표시줄에서 탭을 드래그해 순서를 직접 정할 수 있습니다. 관련 작업이 여러 사이트에 걸쳐 있다면 이름 있는 탭 그룹을 사용할 수도 있습니다. Google의 <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome 탭 가이드</a>는 탭 배치와 그룹화를 다룹니다.</p>\n<h3>Firefox</h3>\n<p>탭 표시줄에서 개별 탭을 이동하거나, Firefox 탭의 마우스 오른쪽 버튼 메뉴에 있는 그룹 옵션을 이용해 이름 있는 묶음을 만들 수 있습니다. Mozilla의 <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">탭 컨텍스트 메뉴 가이드</a>는 사용할 수 있는 탭 작업을 설명합니다.</p>\n<h3>Microsoft Edge</h3>\n<p>Edge는 이름 있는 탭 그룹과 함께 관련 탭을 묶어 주는 <strong>탭 구성(Organize tabs)</strong> 기능을 제공합니다. 사용 가능 여부는 다를 수 있습니다. 이 기능들은 사용자가 고른 그룹이나 관련성을 기준으로 정리하므로, 현재 사이트별 탭 수에 따른 정렬과는 다릅니다. Microsoft는 다음 가이드에서 설명합니다: <a href=\"https://www.microsoft.com/en-us/edge/features/tab-groups\">Edge 탭 그룹 가이드</a>.</p>"
+        },
+        {
+          "id": "after-sorting",
+          "title": "정렬한 뒤 할 수 있는 일",
+          "html": "<p>TabTools에는 정렬을 되돌리는 기능이 없습니다. 팝업의 <strong>실행 취소</strong> 버튼은 마지막 탭 닫기 작업을 위한 것이며 이전 탭 순서를 복원하지는 않습니다. 정렬 후 다른 배치를 원한다면 탭을 원하는 위치로 드래그하세요.</p>\n<p>정렬은 페이지의 중복 탭도 그대로 남깁니다. 이 때문에 큰 묶음이 불필요하게 길어진다면 <a href=\"/guides/close-duplicate-tabs/\">중복 탭을 닫고</a> 남은 탭 수를 기준으로 다시 정렬하세요.</p>\n<p>사이트 전체를 다 사용했다면 <a href=\"/guides/close-tabs-from-same-website/\">이 사이트의 탭 닫기</a>로 해당 페이지들을 제거하세요. 정렬은 여전히 필요한 탭을 위한 방법입니다. 어떤 페이지를 닫을지 정하지 않고도 더 쉽게 찾을 수 있게 해 줍니다.</p>"
+        }
+      ]
+    }
+  ]
+}

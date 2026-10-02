@@ -1,0 +1,164 @@
+{
+  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "review": {
+    "status": "ai-reviewed",
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+  },
+  "ui": {
+    "indexTitle": "浏览器标签页使用指南",
+    "indexDescription": "实用的 TabTools 指南：在 Chrome、Firefox 和 Edge 中关闭同一网站的标签页、移除重复标签页，以及按网站排序标签页。",
+    "indexEyebrow": "TabTools 指南",
+    "indexHeading": "让标签栏更清晰。",
+    "indexHeadingAccent": "一次解决一件事。",
+    "indexLede": "关闭某个网站的标签页、清理重复页面，或将相关标签页排在一起。选择一篇指南，按照步骤在浏览器中操作。",
+    "indexPlatforms": "适用于桌面版 Chrome、Firefox 和 Edge",
+    "startEyebrow": "初次使用 TabTools？",
+    "startHeading": "三种整理方式。",
+    "startBody": "按网站关闭会移除某个网站的页面。清理重复项会移除 URL 重复的页面。排序则会保留标签页，只调整它们的顺序。每篇指南都会结合示例和浏览器自带的替代方案，说明操作的具体效果。",
+    "explore": "了解 TabTools",
+    "browseGuides": "浏览指南",
+    "readGuide": "阅读指南",
+    "readTime": "阅读约需 {minutes} 分钟",
+    "getTabTools": "获取 TabTools",
+    "installEyebrow": "免费浏览器扩展",
+    "installHeading": "动手试一试。",
+    "installBody": "按网站关闭标签页、移除重复项，再为保留的标签页排序。",
+    "desktopBrowsers": "桌面浏览器",
+    "byline": "作者：{author}，TabTools 开发者",
+    "updated": "更新于 {date}",
+    "onThisPage": "本页内容",
+    "allGuides": "全部指南",
+    "quickAnswer": "快速解答",
+    "relatedGuides": "相关指南",
+    "relatedEyebrow": "继续探索",
+    "relatedHeading": "更多标签页整理方法。",
+    "home": "首页",
+    "breadcrumb": "面包屑导航",
+    "screenshotNote": "截图显示的是英文界面；浏览器使用其他语言时，界面标签可能不同。"
+  },
+  "guides": [
+    {
+      "slug": "close-tabs-from-same-website",
+      "title": "如何在 Chrome 中关闭同一网站的所有标签页",
+      "shortTitle": "关闭同一网站的标签页",
+      "description": "使用 TabTools 在 Chrome 中关闭同一网站的标签页，了解手动操作的替代方案，以及 Firefox 和 Edge 的操作步骤。",
+      "category": "关闭网站标签页",
+      "lede": "购物、深入查资料，或浏览一连串 YouTube 视频已经告一段落？你可以一次关闭该网站的标签页，同时保留其他网站。",
+      "answer": "安装 TabTools 后，在 Chrome 标签栏中右键点击要关闭的网站的任意标签页，选择“关闭此网站的标签页”。这会关闭所有普通浏览器窗口中匹配的标签页，包括匹配的当前激活标签页和已固定标签页。",
+      "sections": [
+        {
+          "id": "close-site-tabs-in-chrome",
+          "title": "在 Chrome 中关闭某个网站的标签页",
+          "html": "<p>标签页的右键菜单让你可以直接从 Chrome 标签栏快速操作。</p>\n<ol>\n  <li><a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">从 Chrome Web Store 安装 TabTools</a>。</li>\n  <li>找到要关闭的网站的任意标签页，例如 YouTube 首页或搜索结果页。</li>\n  <li>在 Chrome 标签栏中右键点击该标签页。</li>\n  <li>选择 <strong>关闭此网站的标签页</strong>。同一网站主机名下的标签页会一并关闭。</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-01-tab-menu.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-01-tab-menu.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中混合打开了六个标签页，YouTube 标签页的右键菜单中突出显示了“关闭此网站的标签页”（Close site tabs）。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>在 Chrome 标签栏中右键点击一个 YouTube 标签页，然后选择“关闭此网站的标签页”（Close site tabs）。</figcaption>\n</figure>\n<p>在此示例中， <code>youtube.com</code> 上的三个页面会关闭，而两个 Wikipedia 标签页和 Google 仍保持打开。你无需事先将 YouTube 标签页排在一起。</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-02-tabs-closed.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-02-tabs-closed.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"关闭三个 YouTube 标签页后的 Chrome，仅剩两个 Wikipedia 标签页和 Google。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>关闭后：只剩两个 Wikipedia 标签页和 Google。</figcaption>\n</figure>\n<p>如果标签页菜单中没有 <strong>关闭此网站的标签页</strong> ，请打开该标签页并在网页内右键点击，或使用下文介绍的 TabTools 弹出窗口。</p>\n<p>这适合已不再需要整个网站的情况。如果你还需要该网站的某个页面，请在使用命令前留意：你右键点击的标签页也会被关闭。</p>"
+        },
+        {
+          "id": "use-the-popup",
+          "title": "从弹出窗口关闭其他网站的标签页",
+          "html": "<p>你也可以直接选择网站，而不必先切换到该网站的某个页面。</p>\n<ol>\n  <li>从浏览器的扩展菜单或工具栏打开 TabTools。</li>\n  <li>在以下提示下方的网站建议中找到目标网站： <strong>点击以关闭该网站的标签页</strong>。每条建议都会显示该网站当前打开的标签页数量。</li>\n  <li>选择网站，即可关闭匹配的标签页。</li>\n</ol>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-03-popup-suggestion.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-03-popup-suggestion.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中的 TabTools，指针停在 YouTube 建议上，该建议显示有 3 个已打开的标签页。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>同样打开着六个标签页时，选择 YouTube 建议，即可在不离开 Google 的情况下关闭三个 YouTube 标签页。</figcaption>\n</figure>\n<p>你也可以直接输入主机名；当网站未出现在“建议”中时，这尤其有用。例如，要输入 <code>youtube.com</code>，可以使用 <strong>按关键词关闭（按 Enter 键）</strong>输入框，然后按 Enter 键或点击 <strong>关闭</strong>。只需输入主机名，不要包含 <code>https://</code> 或页面路径。</p>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/close-site-04-enter-hostname.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/close-site-04-enter-hostname.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 的关键词输入框中填有 youtube.com，指针停在“关闭”（Close）上。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>也可以输入 youtube.com，然后点击“关闭”（Close）或按 Enter 键。</figcaption>\n</figure>\n<p>普通关键词（例如 <code>shopping</code> ）的匹配方式有所不同：它会搜索标签页标题和 URL。如果你只想关闭某个特定网站，请使用准确的主机名。</p>"
+        },
+        {
+          "id": "which-tabs-close",
+          "title": "哪些标签页算是同一网站？",
+          "html": "<p>按网站关闭会匹配主机名，并忽略开头的 <code>www.</code>。同一主机名下的不同页面即使路径或查询参数不同，也会匹配。</p>\n<table>\n  <thead><tr><th scope=\"col\">关闭 example.com 时</th><th scope=\"col\">结果</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/article-one</code></td><td>关闭</td></tr>\n    <tr><td><code>www.example.com/article-two</code></td><td>关闭</td></tr>\n    <tr><td><code>shop.example.com/product</code></td><td>保持打开：属于其他子域名</td></tr>\n    <tr><td><code>another-site.com/example</code></td><td>保持打开</td></tr>\n  </tbody>\n</table>\n<p>该命令作用于运行它的浏览器中的所有普通窗口。匹配的已固定标签页和当前激活标签页也会关闭；隐私或无痕标签页不在范围内。它不会影响其他浏览器应用中的标签页。</p>"
+        },
+        {
+          "id": "without-an-extension",
+          "title": "在 Chrome 中手动关闭匹配的标签页",
+          "html": "<p>标签页数量较少时，可以通过 Chrome 的“搜索标签页”手动操作。</p>\n<ol>\n  <li>要打开“搜索标签页”，可按 <strong>Ctrl + Shift + A</strong> （Windows 或 Linux），或按 <strong>Command + Shift + A</strong> （Mac）。</li>\n  <li>搜索网站名称或主机名。</li>\n  <li>查看已打开标签页的搜索结果，对每个要移除的页面使用关闭控件。</li>\n</ol>\n<p>这样可以保留该网站中你选定的页面，但也需要逐一查看并关闭匹配结果。Google 在以下指南中介绍了搜索和关闭控件： <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome 标签页指南</a>。</p>"
+        },
+        {
+          "id": "firefox-and-edge",
+          "title": "在 Firefox 和 Edge 中使用相同流程",
+          "html": "<h3>Firefox</h3>\n<p><a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">安装 Firefox 版 TabTools</a>，然后在标签栏中右键点击目标网站的任意标签页，选择 <strong>关闭此网站的标签页</strong>。你也可以在网页内右键点击，或从弹出窗口的建议中选择网站。</p>\n<h3>Microsoft Edge</h3>\n<p><a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">安装 Edge 版 TabTools</a>，然后右键点击目标网站的任意标签页，选择 <strong>关闭此网站的标签页</strong> （如果你的 Edge 版本在标签页菜单中提供此选项）。否则，请打开该标签页并在网页内右键点击，或在弹出窗口中输入主机名。匹配规则和跨窗口作用范围与上文相同。</p>"
+        },
+        {
+          "id": "undo-and-next-steps",
+          "title": "重新打开标签页，或缩小清理范围",
+          "html": "<p>通过弹出窗口关闭标签页后，只要该弹出窗口仍保持打开，其中的 <strong>撤销</strong> 按钮就能重新打开最近一次通过弹出窗口清理的标签页。右键菜单中的 <strong>关闭此网站的标签页</strong> 操作不会被弹出窗口的“撤销”按钮记录。</p>\n<p>通过右键菜单关闭后，可以在浏览器的最近关闭的标签页或历史记录中查找。重新打开 URL 不代表能够恢复未保存的表单输入，也不代表能恢复页面先前状态的所有细节。</p>\n<p>如果你的目标是每个页面只保留一个副本，请参阅 <a href=\"/guides/close-duplicate-tabs/\">关闭重复标签页</a>指南。如果想保留所有页面并让它们更易于浏览，可以选择 <a href=\"/guides/sort-tabs-by-website/\">按网站排序标签页</a> 。</p>"
+        }
+      ]
+    },
+    {
+      "slug": "close-duplicate-tabs",
+      "title": "如何在 Chrome、Firefox 和 Edge 中关闭重复标签页",
+      "shortTitle": "关闭重复标签页",
+      "description": "在 Chrome、Firefox 和 Edge 中移除重复标签页。了解 TabTools 的操作步骤、Firefox 自带的选项，以及哪些副本会被保留。",
+      "category": "移除重复项",
+      "lede": "同一份文档、同一次搜索或同一段视频很容易被反复打开。移除多余副本可以让标签栏更易于浏览，同时不必清空某个网站的所有页面。",
+      "answer": "打开 TabTools 并点击“关闭重复项”，即可移除所有普通浏览器窗口中未固定的重复页面。Firefox 也提供内置命令，可关闭某一标签页的重复副本，或从标签页概览菜单清理重复标签页。",
+      "sections": [
+        {
+          "id": "choose-a-method",
+          "title": "选择适合浏览器的方法",
+          "html": "<table>\n  <thead><tr><th scope=\"col\">浏览器</th><th scope=\"col\">本文介绍的方法</th></tr></thead>\n  <tbody>\n    <tr><td>Chrome</td><td>打开 TabTools，然后选择 <strong>关闭重复项</strong>。</td></tr>\n    <tr><td>Firefox</td><td>使用浏览器自带的重复标签页命令，或选择 <strong>关闭重复项</strong> （位于 TabTools 中）。</td></tr>\n    <tr><td>Microsoft Edge</td><td>打开 TabTools，然后选择 <strong>关闭重复项</strong>。</td></tr>\n  </tbody>\n</table>\n<p>批量清理前，请先完成并保存重复页面中的工作。两个标签页即使显示相同的 URL，表单中也可能保存着你输入的不同文字。</p>"
+        },
+        {
+          "id": "what-counts-as-a-duplicate",
+          "title": "什么算是重复标签页？",
+          "html": "<p>重复标签页是同一页面的多个副本。三个 YouTube 首页互为重复项；而 YouTube 首页和两个不同的 YouTube 搜索结果则是同一网站的不同页面。</p>\n<p>TabTools 会解析每个页面的 URL，并移除其中的片段，即以 <code>#</code> 开头的部分。URL 解析器会统一协议名称和主机名中的字母大小写。路径和查询字符串中的字母大小写，以及查询参数的顺序，仍会影响比较结果。</p>\n<table>\n  <thead><tr><th scope=\"col\">URL 示例</th><th scope=\"col\">TabTools 的处理方式</th></tr></thead>\n  <tbody>\n    <tr><td><code>example.com/guide</code> 打开两次</td><td>重复项</td></tr>\n    <tr><td><code>example.com/guide#intro</code> 和 <code>example.com/guide#steps</code></td><td>重复项：片段会被忽略</td></tr>\n    <tr><td><code>example.com/guide</code> 和 <code>example.com/contact</code></td><td>不同页面</td></tr>\n    <tr><td><code>example.com/search?q=tabs</code> 和 <code>example.com/search?q=bookmarks</code></td><td>查询参数不同；两者都保留</td></tr>\n  </tbody>\n</table>\n<p>有些网页应用使用片段标识不同界面，因此这些界面也可能被视为重复项。反过来，跟踪参数也可能使原本相似的页面被视为不同 URL。该命令比较的是地址，不会检查页面内容来判断两个页面是否表达相同内容。</p>"
+        },
+        {
+          "id": "chrome-and-edge",
+          "title": "在 Chrome 或 Edge 中关闭重复标签页",
+          "html": "<p>TabTools 弹出窗口在这两款浏览器中使用相同的命令。这些截图展示了打开八个标签页的 Chrome，其中包括三个 YouTube 首页副本。</p>\n<ol>\n  <li>安装适用于以下浏览器的 TabTools： <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a> 或 <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Microsoft Edge</a>。</li>\n  <li>从工具栏或扩展菜单打开扩展。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-01-open-tabtools.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-01-open-tabtools.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中打开了八个标签页，其中包括三个 YouTube 首页副本，指针停在工具栏的 TabTools 图标上。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>从 Chrome 工具栏打开 TabTools。</figcaption>\n</figure>\n  </li>\n  <li>点击 <strong>关闭重复项</strong>。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-02-close-duplicates.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-02-close-duplicates.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 弹出窗口显示 8 个已打开的标签页，指针停在“关闭重复项”（Close duplicates）上。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>点击“关闭重复项”（Close duplicates）以移除重复副本。</figcaption>\n</figure>\n  </li>\n  <li>查看弹出窗口的状态消息。它会显示已关闭的重复标签页数量；如果没有匹配项，则显示 <strong>没有重复项</strong> 。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/duplicates-03-result-and-undo.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/duplicates-03-result-and-undo.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"TabTools 显示已关闭 2 个重复标签页（Closed 2 duplicates），剩余 6 个已打开的标签页，并提供可用的“撤销”（Undo）按钮。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>两个重复副本关闭后，剩下六个标签页。如果想使用“撤销”（Undo），请保持弹出窗口打开。</figcaption>\n</figure>\n  </li>\n</ol>\n<p>你无需先选中重复标签页。清理范围覆盖该浏览器内的所有普通窗口，因此即使同一页面的两个副本位于不同窗口，也能匹配。隐私或无痕标签页不在范围内。</p>\n<p>在 Chrome 中运行命令不会改变 Edge 的标签页，反之亦然。如果两个浏览器中都有重复项，请分别操作。</p>"
+        },
+        {
+          "id": "firefox-native-option",
+          "title": "使用 Firefox 自带的重复标签页命令",
+          "html": "<p>如果只需要移除重复项，Firefox 提供了内置选项。</p>\n<ul>\n  <li><strong>清理同一页面的副本：</strong> 右键点击要保留的标签页，然后选择 <strong>关闭重复标签页（Close Duplicate Tabs）</strong>。</li>\n  <li><strong>清理更大范围的重复项：</strong> 打开 <strong>列出所有标签页（List all tabs）</strong>，然后选择关闭重复项的命令。根据界面的不同，该命令可能显示为 <strong>关闭所有重复标签页（Close all duplicate tabs）</strong> 或 <strong>关闭重复标签页（Close Duplicate Tabs）</strong> 。</li>\n</ul>\n<p>Mozilla 的 <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">标签页右键菜单指南</a> 介绍了第一种选项。其 <a href=\"https://support.mozilla.org/en-US/kb/tab-overview-menu\">标签页概览菜单指南</a> 介绍了范围更广的清理方式，并说明会保留重复项中最近处于激活状态的标签页。</p>\n<p>如果你已经在使用 <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox 版 TabTools</a>，请打开其弹出窗口并点击 <strong>关闭重复项</strong>。它的匹配和保留规则是下文介绍的 TabTools 规则，不应假定它们与 Firefox 自带命令的规则相同。</p>"
+        },
+        {
+          "id": "which-copy-stays",
+          "title": "TabTools 会保留哪个副本？",
+          "html": "<p>TabTools 会保留已固定的副本，并关闭所有普通窗口中匹配的未固定标签页。如果没有已固定的副本，则会保留浏览器标签页列表中遇到的第一个未固定副本，并关闭后续匹配项。</p>\n<p>它不会刻意选择当前激活的标签页、最新打开的标签页或你最近使用的标签页。因此，保留的副本可能位于另一个窗口。如果某个页面有一个已固定标签页和两个未固定副本，最终只会保留已固定的标签页。</p>\n<p>已固定的标签页绝不会被 <strong>关闭重复项</strong> 关闭。如果某个页面有多个已固定副本，这些副本都会保留，因此该命令无法保证每个 URL 都恰好只剩一个标签页。</p>"
+        },
+        {
+          "id": "undo-and-organise",
+          "title": "撤销清理并整理剩余标签页",
+          "html": "<p>如果要检查清理结果，请在清理后保持弹出窗口打开。 <strong>撤销</strong> 可以在本次弹出窗口会话内，重新打开最近一次通过弹出窗口关闭的标签页。它按 URL 重新打开页面，无法保证恢复未保存的页面内容。弹出窗口关闭后，请改用浏览器的最近关闭的标签页或历史记录。</p>\n<p>对于已经用完的不同页面，请参阅 <a href=\"/guides/close-tabs-from-same-website/\">如何关闭同一网站的所有标签页</a>。对于希望保留的页面， <a href=\"/guides/sort-tabs-by-website/\">按网站排序标签页</a> 可以将相关标签页排在一起，而不关闭它们。</p>"
+        }
+      ]
+    },
+    {
+      "slug": "sort-tabs-by-website",
+      "title": "如何在 Chrome、Firefox 和 Edge 中按网站排序标签页",
+      "shortTitle": "按网站排序标签页",
+      "description": "使用 TabTools 在 Chrome、Firefox 和 Edge 中将相关标签页排在一起。了解网站标签页数量、固定标签页和浏览器标签页组如何影响你的选择。",
+      "category": "排序标签页",
+      "lede": "当标签栏混杂着文档、视频和资料页面时，查找下一个标签页会花费更多时间。排序可以将同一网站的页面排在一起，并保持它们打开。",
+      "answer": "在要整理的窗口中打开 TabTools，点击“排序标签页”。它会按网站排列未固定的标签页，当前打开标签页最多的网站优先。已固定的标签页保持原位。",
+      "sections": [
+        {
+          "id": "sort-with-tabtools",
+          "title": "为当前窗口中的标签页排序",
+          "html": "<p>Chrome、Firefox 和 Microsoft Edge 都提供相同的弹出窗口操作。此 Chrome 示例开始时共有六个标签页，YouTube、Wikipedia 和 Google 的页面交错排列。</p>\n<ol>\n  <li>安装适用于以下浏览器的 TabTools： <a href=\"https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome\" target=\"_blank\" rel=\"noopener\" data-store=\"chrome\" data-utm-placement=\"guide_inline\">Chrome</a>、 <a href=\"https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox\" target=\"_blank\" rel=\"noopener\" data-store=\"firefox\" data-utm-placement=\"guide_inline\">Firefox</a> 或 <a href=\"https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge\" target=\"_blank\" rel=\"noopener\" data-store=\"edge\" data-utm-placement=\"guide_inline\">Edge</a>。</li>\n  <li>切换到要整理标签页的浏览器窗口。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-01-before.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-01-before.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 标签栏中交错排列着三个 YouTube 标签页、两个 Wikipedia 标签页和 Google。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>排序前：来自三个网站的六个标签页混在一起。</figcaption>\n</figure>\n  </li>\n  <li>从工具栏或扩展菜单打开 TabTools。</li>\n  <li>点击 <strong>排序标签页</strong>。\n    <figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-02-sort-tabs.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-02-sort-tabs.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"Chrome 中的 TabTools 弹出窗口，指针停在“排序标签页”（Sort tabs）上。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>点击“排序标签页”（Sort tabs），将各个网站的页面排在一起。</figcaption>\n</figure>\n  </li>\n</ol>\n<p>相关的未固定标签页会移到彼此旁边。页面保持打开，其他窗口中的标签页不会被移入此窗口。如果要整理另一个窗口，请切换过去并再次运行命令。</p>\n<p>排序是一次性操作。之后的新标签页会照常打开；TabTools 不会在你浏览时持续重新排列标签栏。当你想整理当前排列时，可以再次点击 <strong>排序标签页</strong> 。</p>"
+        },
+        {
+          "id": "how-the-order-works",
+          "title": "TabTools 如何决定排序顺序",
+          "html": "<p>TabTools 会统计当前窗口中每个网站已打开的标签页数量。数量较多的网站排在前面，紧接着已固定的标签页。下面是一个没有固定标签页的简单示例：</p>\n<table>\n  <thead><tr><th scope=\"col\">网站</th><th scope=\"col\">已打开的标签页</th><th scope=\"col\">排序后的位置</th></tr></thead>\n  <tbody>\n    <tr><td><code>youtube.com</code></td><td>3</td><td>第一</td></tr>\n    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>第二</td></tr>\n    <tr><td><code>google.com</code></td><td>1</td><td>第三</td></tr>\n  </tbody>\n</table>\n<figure class=\"guide-screenshot\">\n  <a class=\"guide-screenshot-link\" href=\"/assets/guides/sort-03-after.png\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"/assets/guides/sort-03-after.png\" width=\"1280\" height=\"800\" loading=\"lazy\" decoding=\"async\" alt=\"排序后的 Chrome：三个 YouTube 标签页，接着是两个 Wikipedia 标签页，最后是 Google；TabTools 显示已重新排序 6 个标签页（Reordered 6 tabs）。\" />\n    <span class=\"guide-screenshot-zoom\">查看原图 <span aria-hidden=\"true\">↗</span><span class=\"sr-only\"> （在新标签页中打开）</span></span>\n  </a>\n  <figcaption>排序后：YouTube ×3、Wikipedia ×2，最后是 Google。六个标签页全部保持打开。</figcaption>\n</figure>\n<p>“打开最多”指的是此刻已打开的标签页数量最多，并不是你访问最频繁的网站、浏览历史记录，或过去一周打开某个网站的次数。</p>\n<p>如果两个网站的数量相同，就按主机名的字母顺序排列。同一主机名下的标签页保留相对顺序。例如，三个 YouTube 页面在 YouTube 这一组内的顺序不变，不会按页面标题排序。</p>"
+        },
+        {
+          "id": "pinned-tabs-and-subdomains",
+          "title": "固定标签页与子域名",
+          "html": "<p>已固定的标签页保持在原来的固定位置。TabTools 决定未固定标签页的顺序时，仍会将已固定标签页计入该网站的数量。</p>\n<p>例如，两个已固定的 GitHub 标签页加上两个未固定的 GitHub 标签页，会使 GitHub 的数量为四。因此，未固定的 GitHub 标签页会排在只有三个已打开标签页的网站之前，而两个已固定的 GitHub 标签页仍留在原位。</p>\n<p>网站匹配使用主机名，并忽略开头的 <code>www.</code>。因此， <code>example.com</code> 和 <code>www.example.com</code> 下的页面归为一组。而 <code>docs.example.com</code> 下的页面会单独成组，不会与以下网站合并： <code>shop.example.com</code>。</p>\n<p>当不同服务共用一个主域名时，这很有用：文档网站和商店可以在排序后的标签栏中保持分开。</p>"
+        },
+        {
+          "id": "sorting-or-tab-groups",
+          "title": "选择排序还是标签页组",
+          "html": "<p>当网站本身就是整理依据时，排序很有用。如果整理依据是一项任务，例如假期计划、工作项目或涉及多个网站的一次购物，则浏览器标签页组更适合。</p>\n<table>\n  <thead><tr><th scope=\"col\">你的目标</th><th scope=\"col\">合适的选项</th></tr></thead>\n  <tbody>\n    <tr><td>将每个网站的页面排在一起</td><td>TabTools <strong>排序标签页</strong></td></tr>\n    <tr><td>精确安排少量标签页的顺序</td><td>手动拖动标签页</td></tr>\n    <tr><td>将项目涉及的不同网站放进同一个有名称的组</td><td>浏览器的命名标签页组</td></tr>\n  </tbody>\n</table>\n<p>TabTools 只会重新排列标签页，不会创建有名称或颜色的浏览器标签页组。如果你已经特意按项目排列了标签页，请在更改顺序前考虑该窗口是否适合按网站排序。</p>"
+        },
+        {
+          "id": "native-browser-options",
+          "title": "不使用扩展整理标签页",
+          "html": "<h3>Chrome</h3>\n<p>沿标签栏拖动标签页，可以手动设置顺序。如果相关工作涉及多个网站，也可以使用有名称的标签页组。Google 的 <a href=\"https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop\">Chrome 标签页指南</a> 介绍了标签页的排列和分组。</p>\n<h3>Firefox</h3>\n<p>在标签栏中移动单个标签页，或使用 Firefox 标签页右键菜单中的分组选项，创建有名称的集合。Mozilla 的 <a href=\"https://support.mozilla.org/en-US/kb/tab-context-menu\">标签页右键菜单指南</a> 介绍了可用的标签页操作。</p>\n<h3>Microsoft Edge</h3>\n<p>Edge 提供有名称的标签页组，以及可以将相关标签页分组的 <strong>整理标签页（Organize tabs）</strong> 功能。具体可用情况可能有所不同。这些方式按照你选择的分组或相关性来整理，与按网站当前标签页数量排序不同。Microsoft 在以下指南中提供了说明： <a href=\"https://www.microsoft.com/en-us/edge/features/tab-groups\">Edge 标签页组指南</a>。</p>"
+        },
+        {
+          "id": "after-sorting",
+          "title": "排序之后可以做什么",
+          "html": "<p>TabTools 不提供撤销排序的操作。弹出窗口中的 <strong>撤销</strong> 按钮用于撤销最近一次关闭标签页的操作，而不是恢复之前的标签页顺序。如果排序后想采用其他排列方式，请拖动标签页进行调整。</p>\n<p>排序也会保留页面的重复副本。如果这让较大的标签页集合显得冗长，可以先 <a href=\"/guides/close-duplicate-tabs/\">关闭重复标签页</a> ，再根据剩余数量重新排序。</p>\n<p>不再需要整个网站时，可以使用 <a href=\"/guides/close-tabs-from-same-website/\">关闭此网站的标签页</a> 来移除它的页面。排序则适合你仍然需要的标签页：它让页面更容易找到，而不替你决定关闭哪些页面。</p>"
+        }
+      ]
+    }
+  ]
+}

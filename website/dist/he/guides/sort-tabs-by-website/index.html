@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f4" />
+    <title>איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge | TabTools</title>
+    <meta name="description" content="רכזו לשוניות קשורות ב־Chrome, ב־Firefox וב־Edge באמצעות TabTools. למדו כיצד מספר הלשוניות לכל אתר, לשוניות מוצמדות וקבוצות הלשוניות בדפדפן משפיעים על הבחירה." />
+    <link rel="canonical" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="en" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="cs" href="https://tabtools.fyi/cs/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="de" href="https://tabtools.fyi/de/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="el" href="https://tabtools.fyi/el/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="es-ES" href="https://tabtools.fyi/es/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fi" href="https://tabtools.fyi/fi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="fr" href="https://tabtools.fyi/fr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="he" href="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hr" href="https://tabtools.fyi/hr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="hu" href="https://tabtools.fyi/hu/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="it" href="https://tabtools.fyi/it/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ja" href="https://tabtools.fyi/ja/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ko" href="https://tabtools.fyi/ko/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nb" href="https://tabtools.fyi/nb/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="nl" href="https://tabtools.fyi/nl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pl" href="https://tabtools.fyi/pl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://tabtools.fyi/pt-br/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://tabtools.fyi/pt-pt/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ro" href="https://tabtools.fyi/ro/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="ru" href="https://tabtools.fyi/ru/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sk" href="https://tabtools.fyi/sk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sl" href="https://tabtools.fyi/sl/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sr" href="https://tabtools.fyi/sr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="sv" href="https://tabtools.fyi/sv/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="tr" href="https://tabtools.fyi/tr/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="uk" href="https://tabtools.fyi/uk/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="vi" href="https://tabtools.fyi/vi/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://tabtools.fyi/zh-cn/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://tabtools.fyi/zh-tw/guides/sort-tabs-by-website/" />
+    <link rel="alternate" hreflang="x-default" href="https://tabtools.fyi/guides/sort-tabs-by-website/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TabTools" />
+    <meta property="og:title" content="איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge" />
+    <meta property="og:description" content="רכזו לשוניות קשורות ב־Chrome, ב־Firefox וב־Edge באמצעות TabTools. למדו כיצד מספר הלשוניות לכל אתר, לשוניות מוצמדות וקבוצות הלשוניות בדפדפן משפיעים על הבחירה." />
+    <meta property="og:url" content="https://tabtools.fyi/he/guides/sort-tabs-by-website/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge" />
+    <meta name="twitter:description" content="רכזו לשוניות קשורות ב־Chrome, ב־Firefox וב־Edge באמצעות TabTools. למדו כיצד מספר הלשוניות לכל אתר, לשוניות מוצמדות וקבוצות הלשוניות בדפדפן משפיעים על הבחירה." />
+    <link rel="icon" href="/assets/tabtools-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <noscript><link rel="stylesheet" href="/no-script.css" /></noscript>
+    <link rel="stylesheet" href="/guides.css" />
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge",
+      "description": "רכזו לשוניות קשורות ב־Chrome, ב־Firefox וב־Edge באמצעות TabTools. למדו כיצד מספר הלשוניות לכל אתר, לשוניות מוצמדות וקבוצות הלשוניות בדפדפן משפיעים על הבחירה.",
+      "url": "https://tabtools.fyi/he/guides/sort-tabs-by-website/",
+      "mainEntityOfPage": "https://tabtools.fyi/he/guides/sort-tabs-by-website/",
+      "inLanguage": "he",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Wester",
+        "url": "https://github.com/Michael-Wester"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TabTools",
+        "url": "https://tabtools.fyi/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "דף הבית",
+          "item": "https://tabtools.fyi/he/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "מדריכים",
+          "item": "https://tabtools.fyi/he/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "מיון לשוניות לפי אתר",
+          "item": "https://tabtools.fyi/he/guides/sort-tabs-by-website/"
+        }
+      ]
+    }
+  ]
+}</script>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('tabtools-site-theme');
+          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+        } catch (_) {}
+      })();
+    </script>
+    <script type="application/json" id="locale-data">{
+  "locale": "he",
+  "registry": [
+    {
+      "locale": "en",
+      "canonical": "en",
+      "path": "/guides/sort-tabs-by-website/",
+      "languageName": "English",
+      "flagAsset": "en.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Simplified)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/sort-tabs-by-website/",
+      "languageName": "Chinese (Traditional)",
+      "flagAsset": "zh-TW.svg"
+    },
+    {
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/sort-tabs-by-website/",
+      "languageName": "Croatian",
+      "flagAsset": "hr.svg"
+    },
+    {
+      "locale": "cs",
+      "canonical": "cs",
+      "path": "/cs/guides/sort-tabs-by-website/",
+      "languageName": "Czech",
+      "flagAsset": "cs.svg"
+    },
+    {
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/sort-tabs-by-website/",
+      "languageName": "Dutch",
+      "flagAsset": "nl.svg"
+    },
+    {
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/sort-tabs-by-website/",
+      "languageName": "Finnish",
+      "flagAsset": "fi.svg"
+    },
+    {
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/sort-tabs-by-website/",
+      "languageName": "French",
+      "flagAsset": "fr.svg"
+    },
+    {
+      "locale": "de",
+      "canonical": "de",
+      "path": "/de/guides/sort-tabs-by-website/",
+      "languageName": "German",
+      "flagAsset": "de.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/sort-tabs-by-website/",
+      "languageName": "Greek",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/sort-tabs-by-website/",
+      "languageName": "Hebrew",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/sort-tabs-by-website/",
+      "languageName": "Hungarian",
+      "flagAsset": "hu.svg"
+    },
+    {
+      "locale": "it",
+      "canonical": "it",
+      "path": "/it/guides/sort-tabs-by-website/",
+      "languageName": "Italian",
+      "flagAsset": "it.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/sort-tabs-by-website/",
+      "languageName": "Japanese",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/sort-tabs-by-website/",
+      "languageName": "Korean",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "nb",
+      "canonical": "nb",
+      "path": "/nb/guides/sort-tabs-by-website/",
+      "languageName": "Norwegian (Bokmal)",
+      "flagAsset": "nb.svg"
+    },
+    {
+      "locale": "pl",
+      "canonical": "pl",
+      "path": "/pl/guides/sort-tabs-by-website/",
+      "languageName": "Polish",
+      "flagAsset": "pl.svg"
+    },
+    {
+      "locale": "pt-BR",
+      "canonical": "pt-BR",
+      "path": "/pt-br/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Brazil)",
+      "flagAsset": "pt-BR.svg"
+    },
+    {
+      "locale": "pt-PT",
+      "canonical": "pt-PT",
+      "path": "/pt-pt/guides/sort-tabs-by-website/",
+      "languageName": "Portuguese (Portugal)",
+      "flagAsset": "pt-PT.svg"
+    },
+    {
+      "locale": "ro",
+      "canonical": "ro",
+      "path": "/ro/guides/sort-tabs-by-website/",
+      "languageName": "Romanian",
+      "flagAsset": "ro.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/sort-tabs-by-website/",
+      "languageName": "Russian",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/sort-tabs-by-website/",
+      "languageName": "Serbian",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "sk",
+      "canonical": "sk",
+      "path": "/sk/guides/sort-tabs-by-website/",
+      "languageName": "Slovak",
+      "flagAsset": "sk.svg"
+    },
+    {
+      "locale": "sl",
+      "canonical": "sl",
+      "path": "/sl/guides/sort-tabs-by-website/",
+      "languageName": "Slovenian",
+      "flagAsset": "sl.svg"
+    },
+    {
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/sort-tabs-by-website/",
+      "languageName": "Spanish (Spain)",
+      "flagAsset": "es.svg"
+    },
+    {
+      "locale": "sv",
+      "canonical": "sv",
+      "path": "/sv/guides/sort-tabs-by-website/",
+      "languageName": "Swedish",
+      "flagAsset": "sv.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/sort-tabs-by-website/",
+      "languageName": "Turkish",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/sort-tabs-by-website/",
+      "languageName": "Ukrainian",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "vi",
+      "canonical": "vi",
+      "path": "/vi/guides/sort-tabs-by-website/",
+      "languageName": "Vietnamese",
+      "flagAsset": "vi.svg"
+    }
+  ],
+  "messages": {
+    "extensionName": "TabTools - סגירה ומיון של לשוניות לפי אתר",
+    "extensionDescription": "סגירת לשוניות מאותו אתר, מיון לפי אתר והסרת כפילויות כדי לשמור על הדפדפן מסודר.",
+    "openTabTools": "פתיחת TabTools",
+    "settings": "הגדרות",
+    "suggestions": "הצעות",
+    "suggestCaption": "לחיצה לסגירת לשוניות מהאתר",
+    "queryPlaceholder": "סגירה לפי מילת מפתח (Enter)",
+    "close": "סגירה",
+    "sortTabs": "מיון לשוניות",
+    "closeDuplicates": "סגירת כפילויות",
+    "undo": "ביטול",
+    "undoTitle": "ביטול הסגירה האחרונה",
+    "theme": "ערכת נושא",
+    "light": "בהירה",
+    "dark": "כהה",
+    "minTabs": "מספר לשוניות מזערי לאתר להצגת הצעה",
+    "inactiveAfter": "לשוניות נחשבות ללא פעילות אחרי",
+    "minutes": "דקות",
+    "closedCount": "נסגרו: {count}",
+    "openCount": {
+      "one": "{count} לשונית פתוחה",
+      "two": "{count} לשוניות פתוחות",
+      "other": "{count} לשוניות פתוחות"
+    },
+    "openCountShort": {
+      "one": "{count} פתוחה",
+      "two": "{count} פתוחות",
+      "other": "{count} פתוחות"
+    },
+    "closedCountShort": {
+      "one": "{count} סגורה",
+      "two": "{count} סגורות",
+      "other": "{count} סגורות"
+    },
+    "closeFailed": "הפעולה נכשלה",
+    "closedInactive": "לשוניות לא פעילות שנסגרו: {count}",
+    "noInactive": "אין לשוניות לא פעילות",
+    "closedDuplicates": "לשוניות כפולות שנסגרו: {count}",
+    "noDuplicates": "אין כפילויות",
+    "nothingToUndo": "אין פעולה לביטול",
+    "undoFailed": "הביטול נכשל",
+    "restoredCount": "שוחזרו: {count}",
+    "nothingToRestore": "אין מה לשחזר",
+    "inactive": "לא פעילות",
+    "loadingSuggestions": "ההצעות נטענות…",
+    "suggestionsFailed": "לא ניתן לטעון את ההצעות",
+    "noSuggestions": "אין הצעות כרגע",
+    "moreCount": "הצעות נוספות שאינן מוצגות: {count}",
+    "sortFailed": "המיון נכשל",
+    "sortedCount": "לשוניות שסודרו מחדש: {count}",
+    "nothingToSort": "אין מה למיין",
+    "hide": "הסתרה",
+    "show": "הצגה",
+    "contextClose": "סגירת לשוניות האתר",
+    "contextSort": "מיון לשוניות (האתרים עם הכי הרבה לשוניות תחילה)",
+    "closeSiteLabel": "סגירת לשוניות של {site}",
+    "web_heroTitle": "סגירת לשוניות \u003cem>מאותו אתר.\u003c/em>",
+    "web_featuresTitle": "סוגרים לפי אתר.\u003cbr>\u003cem>ממיינים את מה שנשאר.\u003c/em>",
+    "web_workflowTitle": "מוסיפים את TabTools.\u003cbr>\u003cem>בוחרים מה לסגור.\u003c/em>",
+    "web_privacyTitle": "נתוני הלשוניות נשארים\u003cbr>בדפדפן שלך.",
+    "web_finalTitle": "סוגרים לשוניות שסיימת איתן.\u003cbr>\u003cem>ממיינים את השאר.\u003c/em>",
+    "web_siteBody": "פותחים את TabTools ולוחצים על אתר תחת \u003cstrong>הצעות\u003c/strong>, או לוחצים לחיצה ימנית בתוך דף ובוחרים \u003cstrong>סגירת לשוניות האתר\u003c/strong>. הפעולה סוגרת את הלשוניות התואמות בכל החלונות הרגילים, כולל הלשונית הנוכחית.",
+    "web_addTo": "הוספה ל־{browser}",
+    "web_storeNote": "פותח את {store}.",
+    "web_storeAria": "{label} — פותח את {store} בלשונית חדשה",
+    "web_language": "שפה",
+    "web_languageSuggestion": "קריאת הדף בשפה {language}",
+    "web_switchLight": "מעבר למצב בהיר",
+    "web_lightMode": "מצב בהיר",
+    "web_structuredDescription": "תוסף חינמי לדפדפן לסגירת לשוניות לפי אתר, מיון לשוניות והסרת לשוניות כפולות ולא פעילות.",
+    "web_close_tabs_from_the_same": "סגירת לשוניות מאותו אתר, מיון לפי אתר והסרת כפילויות. TabTools הוא מנהל לשוניות חינמי ל־Chrome, Firefox ו־Edge.",
+    "web_tabtools_close_tabs_by_site": "TabTools — סגירה ומיון של לשוניות לפי אתר",
+    "web_close_tabs_by_site_sort": "סגירת לשוניות לפי אתר, סידור שורת הלשוניות והסרת כפילויות בעזרת תוסף חינמי בקוד פתוח ל־Chrome, Firefox ו־Edge.",
+    "web_skip_to_content": "דילוג לתוכן",
+    "web_tabtools_home": "דף הבית של TabTools",
+    "web_main_navigation": "ניווט ראשי",
+    "web_features": "תכונות",
+    "web_how_it_works": "איך זה עובד",
+    "web_privacy": "פרטיות",
+    "web_faq": "שאלות נפוצות",
+    "web_switch_to_dark_mode": "מעבר למצב כהה",
+    "web_dark_mode": "מצב כהה",
+    "web_free_browser_tab_manager": "מנהל לשוניות חינמי לדפדפן",
+    "web_clear_a_website_s_tabs": "סגירת לשוניות של אתר בפעולה אחת, או מיון שורת הלשוניות לפי אתר. TabTools גם מסיר כפילויות וסוגר לשוניות לא פעילות ב־Chrome, Firefox ו־Edge.",
+    "web_free_to_use_no_account": "חינם לשימוש. אין צורך בחשבון.",
+    "web_viewing_on_a_phone_or": "הדף פתוח בטלפון או בטאבלט? כדי להוסיף את TabTools, יש לפתוח את הדף במחשב.",
+    "web_tabtools_browser_stores": "TabTools בחנויות הדפדפנים",
+    "web_choose_another_browser": "בחירת דפדפן אחר:",
+    "web_tabtools_in_action": "TabTools בפעולה",
+    "web_full_demo": "הדגמה מלאה",
+    "web_tabtools_full_demo": "הדגמה מלאה של TabTools",
+    "web_see_tabtools_close_tabs_by": "אפשר לראות איך TabTools סוגר לשוניות לפי אתר, מסיר כפילויות, ממיין לשוניות וסוגר לשוניות לא פעילות.",
+    "web_tabtools_product_details": "פרטי המוצר TabTools",
+    "web_close_tabs_by_site": "סגירת לשוניות לפי אתר",
+    "web_from_the_popup_or_right": "מהחלונית או מתפריט הלחיצה הימנית",
+    "web_local_by_design": "פועל מקומית",
+    "web_your_tab_list_stays_in": "רשימת הלשוניות נשארת בדפדפן שלך",
+    "web_open_source": "קוד פתוח",
+    "web_inspect_the_code_on_github": "עיון בקוד ב־GitHub",
+    "web_close_and_organise": "סוגרים ומסדרים",
+    "web_clear_a_finished_task_bring": "סגירת לשוניות של משימה שהסתיימה, סידור לשוניות מאותו אתר זו לצד זו, או ניקוי דפים כפולים ולא פעילים.",
+    "web_01_site_cleanup": "01 / ניקוי לפי אתר",
+    "web_close_a_site_s_tabs": "סגירת כל לשוניות האתר יחד",
+    "web_see_how_to_get_started": "איך מתחילים",
+    "web_02_organise": "02 / סידור",
+    "web_sort_tabs_by_site": "מיון לשוניות לפי אתר",
+    "web_bring_tabs_from_the_same": "סידור לשוניות מאותו אתר זו לצד זו בחלון הנוכחי, כשהאתרים עם מספר הלשוניות הפתוחות הגדול ביותר מופיעים תחילה.",
+    "web_03_simplify": "03 / פישוט",
+    "web_remove_duplicate_tabs": "הסרת לשוניות כפולות",
+    "web_close_extra_copies_of_the": "סגירת עותקים נוספים של אותו דף בלחיצה אחת. לשוניות נעוצות נשארות במקומן.",
+    "web_04_find": "04 / חיפוש",
+    "web_search_by_keyword_or_domain": "חיפוש לפי מילת מפתח או דומיין",
+    "web_type_a_word_to_match": "מקלידים מילה לחיפוש בכותרות הלשוניות ובכתובות URL, או דומיין מדויק כמו youtube.com. לאחר מכן בוחרים סגירה.",
+    "web_05_reset": "05 / ניקוי",
+    "web_clear_inactive_tabs": "סגירת לשוניות לא פעילות",
+    "web_choose_an_inactivity_threshold_in": "בוחרים בהגדרות כמה זמן צריך לעבור עד שלשונית נחשבת ללא פעילה, ואז לוחצים על לא פעילות כדי לסגור את הלשוניות המתאימות. לשוניות פעילות, נעוצות וכאלה שמשמיעות קול נשארות פתוחות.",
+    "web_more_tabtools_details": "פרטים נוספים על TabTools",
+    "web_undo_cleanup_from_the_popup": "ביטול הניקוי מתוך החלונית",
+    "web_light_and_dark_themes": "ערכות נושא בהירה וכהה",
+    "web_local_cleanup_statistics": "נתוני ניקוי מקומיים",
+    "web_start_with_one_busy_site": "מתחילים באתר אחד עם הרבה לשוניות. משתמשים בחלונית להצעות אתרים ולמיון, או בתפריט הלחיצה הימנית לסגירה מהירה.",
+    "web_add_it_to_your_browser": "הוספה לדפדפן",
+    "web_open_the_chrome_firefox_or": "פותחים את דף החנות של Chrome, Firefox או Edge ומוסיפים את התוסף החינמי.",
+    "web_click_the_tabtools_icon_in": "לוחצים על הסמל של TabTools בתפריט התוספים של הדפדפן כדי לראות הצעות אתרים ופעולות מהירות.",
+    "web_close_a_site_or_sort": "סגירת לשוניות אתר או מיון הלשוניות",
+    "web_click_a_site_under_suggestions": "לוחצים על אתר תחת הצעות כדי לסגור את הלשוניות שלו, או בוחרים מיון לשוניות כדי לסדר לשוניות מאותו אתר זו לצד זו.",
+    "web_private_by_design": "תוכנן לשמירה על הפרטיות",
+    "web_the_tabtools_extension_processes_tab": "התוסף TabTools מעבד מידע על לשוניות במכשיר שלך. ההגדרות ונתוני הניקוי נשמרים באחסון המקומי של הדפדפן. התוסף אינו משתמש בחשבונות, בכלי ניתוח שימוש, בפרסומות או במסד נתונים חיצוני.",
+    "web_read_the_privacy_policy": "קריאת מדיניות הפרטיות",
+    "web_before_you_add_tabtools": "לפני שמוסיפים את TabTools",
+    "web_common_questions": "שאלות נפוצות.",
+    "web_browsers_cleanup_and_privacy": "דפדפנים, ניקוי ופרטיות.",
+    "web_is_tabtools_free": "האם TabTools חינמי?",
+    "web_yes_tabtools_is_free_to": "כן. השימוש ב־TabTools חינמי. אין צורך בחשבון.",
+    "web_which_browsers_can_i_use": "באילו דפדפנים אפשר להשתמש בו?",
+    "web_tabtools_is_available_for_chrome": "TabTools זמין ל־Chrome, Firefox ו־Microsoft Edge. כדי להוסיף אותו למחשב, משתמשים בקישורי הדפדפנים בדף הזה לפתיחת החנות המתאימה.",
+    "web_how_do_i_close_tabs": "איך סוגרים לשוניות מאותו אתר?",
+    "web_right_click_within_a_web": "לוחצים לחיצה ימנית בתוך דף ובוחרים ״סגירת לשוניות האתר״, או פותחים את TabTools ולוחצים על האתר תחת הצעות. הפעולה סוגרת את לשוניות האתר בכל החלונות הרגילים, כולל הלשונית הנוכחית. אפשר גם להזין מילת מפתח או דומיין מדויק בחלונית.",
+    "web_can_i_remove_duplicates_or": "אפשר להסיר כפילויות או לסגור לשוניות לא פעילות?",
+    "web_yes_choose_close_duplicates_to": "כן. בוחרים סגירת כפילויות להסרת דפים חוזרים, או לוחצים על לא פעילות לסגירת הלשוניות המתאימות. אפשר לשנות בהגדרות את משך הזמן לחוסר פעילות. הניקוי מתבצע כשבוחרים בפעולה.",
+    "web_does_tabtools_collect_or_share": "האם TabTools אוסף או משתף את הנתונים שלי?",
+    "web_the_extension_processes_tab_information": "התוסף מעבד מידע על לשוניות מקומית ואינו שולח אותו למפתח או לצדדים שלישיים. ההגדרות ונתוני הניקוי נשארים במכשיר שלך. ההדגמה באתר הזה מתארחת ב־YouTube; לנגן המוטמע ולחנויות הדפדפנים יש מדיניות פרטיות משלהם.",
+    "web_can_i_undo_a_cleanup": "אפשר לבטל ניקוי?",
+    "web_use_undo_immediately_after_closing": "משתמשים בביטול מיד לאחר סגירת לשוניות מתוך החלונית של TabTools, כל עוד היא עדיין פתוחה. אפשר גם לפתוח דפים מחדש דרך רשימת הלשוניות שנסגרו לאחרונה בדפדפן.",
+    "web_free_for_chrome_firefox_and": "חינם ל־Chrome, Firefox ו־Edge",
+    "web_other_browser_stores": "חנויות דפדפנים נוספות",
+    "web_close_tabs_by_site_sort_2": "סגירת לשוניות לפי אתר, מיון שורת הלשוניות והסרת כפילויות.",
+    "web_product": "המוצר",
+    "web_try_it": "לנסות",
+    "web_more": "עוד",
+    "web_contact": "יצירת קשר",
+    "web_free_and_open_source": "חינמי ובקוד פתוח.",
+    "web_view": "הצגת {browser}",
+    "web_guides": "מדריכים",
+    "web_readSiteGuide": "קריאת המדריך לסגירת לשוניות מאותו אתר",
+    "web_readSortingGuide": "קריאת המדריך למיון לשוניות",
+    "web_readDuplicateGuide": "קריאת המדריך להסרת לשוניות כפולות",
+    "web_finalMobileNote": "כדי להוסיף את TabTools, יש לפתוח את הדף הזה במחשב. ניתן לצפות בדפי התוסף בחנויות למטה.",
+    "web_socialImageAlt": "תוסף הדפדפן TabTools מדגים ניהול לשוניות"
+  }
+}</script>
+  </head>
+  <body class="guides-page">
+    <a class="skip-link" href="#main-content">דילוג לתוכן</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="brand" href="/he/#top" aria-label="דף הבית של TabTools">
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <span>TabTools</span>
+        </a>
+        <nav class="main-nav" aria-label="ניווט ראשי">
+          <a href="/he/#features">תכונות</a>
+          <a href="/he/#how-it-works">איך זה עובד</a>
+          <a href="/he/guides/" aria-current="page">מדריכים</a>
+          <a href="/he/#privacy">פרטיות</a>
+          <a href="/he/#faq">שאלות נפוצות</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button browser-button button-primary browser-button-compact" aria-label="הוספה ל־Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
+            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <span class="browser-button-copy" data-browser-copy="Chrome">הוספה ל־<span class="browser-button-name" data-browser-name>Chrome</span></span>
+            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
+          </a>
+          <div class="nav-utilities">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="מעבר למצב כהה" title="מעבר למצב כהה">
+            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+            </svg>
+            <span class="sr-only" data-theme-label>מצב כהה</span>
+          </button>
+          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="שפה: Hebrew" title="שפה: Hebrew" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Hebrew</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="שפה" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="true" tabindex="-1" href="/he/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="שפה: Hebrew"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">שפה: Hebrew</span></summary><nav class="language-fallback-menu" aria-label="שפה"><a class="language-fallback-option" href="/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/sort-tabs-by-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/sort-tabs-by-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="נתיב ניווט"><a href="/he/">דף הבית</a><span aria-hidden="true">/</span><a href="/he/guides/">מדריכים</a><span aria-hidden="true">/</span><span aria-current="page">מיון לשוניות</span></nav>
+      <p class="eyebrow">מיון לשוניות · דפדפנים למחשב</p><h1>איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge</h1><p class="guides-lede">כששורת הלשוניות מערבבת מסמכים, סרטונים ועמודי מחקר, מציאת הלשונית הבאה אורכת יותר מדי זמן. המיון מרכז עמודים של אותו אתר יחד ומשאיר אותם פתוחים.</p>
+      <p class="guide-byline">מאת <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, יוצר TabTools <span aria-hidden="true">·</span> 4 דקות קריאה <span aria-hidden="true">·</span> עודכן ב־<time datetime="2026-10-01">1 באוקטובר 2026</time></p>
+      <p class="guide-screenshot-note">צילומי המסך מציגים את הממשק באנגלית; שמות הפקדים עשויים להשתנות בהתאם לשפת הדפדפן.</p></div>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="בעמוד זה"><p class="eyebrow">בעמוד זה</p><ol><li><a href="#sort-with-tabtools">מיון הלשוניות בחלון הנוכחי</a></li><li><a href="#how-the-order-works">איך TabTools קובע את הסדר</a></li><li><a href="#pinned-tabs-and-subdomains">לשוניות מוצמדות ותתי־דומיין</a></li><li><a href="#sorting-or-tab-groups">בחירה בין מיון לקבוצות לשוניות</a></li><li><a href="#native-browser-options">ארגון לשוניות ללא תוסף</a></li><li><a href="#after-sorting">מה אפשר לעשות לאחר המיון</a></li></ol></nav><a class="guide-back" href="/he/guides/">→ כל המדריכים</a></aside>
+      <article class="guide-article" aria-label="איך למיין לשוניות לפי אתר ב־Chrome, ב־Firefox וב־Edge"><div class="guide-answer"><p class="eyebrow">תשובה מהירה</p><p>פתחו את TabTools בחלון שתרצו לארגן ולחצו על מיון לשוניות. הפעולה מסדרת לשוניות שאינן מוצמדות לפי אתר, כשהאתרים עם מספר הלשוניות הפתוחות הגדול ביותר מופיעים ראשונים. לשוניות מוצמדות נשארות במקומן.</p></div>
+      <section id="sort-with-tabtools"><h2>מיון הלשוניות בחלון הנוכחי</h2><p>אותה פעולה בחלונית זמינה ב־Chrome, ב־Firefox וב־Microsoft Edge. דוגמת Chrome הזו מתחילה בשש לשוניות מעורבות של YouTube, של Wikipedia ושל Google.</p>
+<ol>
+  <li>התקינו את TabTools עבור <a href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_chrome" target="_blank" rel="noopener" data-store="chrome" data-utm-placement="guide_inline">Chrome</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_firefox" target="_blank" rel="noopener" data-store="firefox" data-utm-placement="guide_inline">Firefox</a> או <a href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_inline_edge" target="_blank" rel="noopener" data-store="edge" data-utm-placement="guide_inline">Edge</a>.</li>
+  <li>עברו לחלון הדפדפן שאת לשוניותיו תרצו לסדר.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-01-before.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-01-before.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome עם שלוש לשוניות YouTube, שתי לשוניות Wikipedia ו־Google המשולבות זו בזו בשורת הלשוניות." />
+    <span class="guide-screenshot-zoom">הצגה בגודל מלא <span aria-hidden="true">↗</span><span class="sr-only"> (נפתח בלשונית חדשה)</span></span>
+  </a>
+  <figcaption>לפני המיון: שש לשוניות משלושה אתרים מעורבות זו בזו.</figcaption>
+</figure>
+  </li>
+  <li>פתחו את TabTools מסרגל הכלים או מתפריט התוספים.</li>
+  <li>לחצו על <strong>מיון לשוניות</strong>.
+    <figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-02-sort-tabs.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-02-sort-tabs.png" width="1280" height="800" loading="lazy" decoding="async" alt="חלונית TabTools ב־Chrome, כשהסמן על מיון לשוניות (Sort tabs)." />
+    <span class="guide-screenshot-zoom">הצגה בגודל מלא <span aria-hidden="true">↗</span><span class="sr-only"> (נפתח בלשונית חדשה)</span></span>
+  </a>
+  <figcaption>לחצו על מיון לשוניות (Sort tabs) כדי לרכז יחד את העמודים של כל אתר.</figcaption>
+</figure>
+  </li>
+</ol>
+<p>לשוניות קשורות שאינן מוצמדות עוברות זו לצד זו. העמודים נשארים פתוחים, ולשוניות בחלונות אחרים אינן מועברות לחלון הזה. אם תרצו לארגן חלון אחר, עברו אליו והפעילו את הפקודה שוב.</p>
+<p>המיון הוא פעולה חד־פעמית. לשוניות חדשות נפתחות כרגיל לאחר מכן; TabTools אינו מסדר מחדש את שורת הלשוניות באופן רציף בזמן הגלישה. לחצו שוב על <strong>מיון לשוניות</strong> כשתרצו לסדר את המצב הנוכחי.</p></section>
+<section id="how-the-order-works"><h2>איך TabTools קובע את הסדר</h2><p>TabTools סופר את הלשוניות הפתוחות לכל אתר בחלון הנוכחי. אתרים עם מספר גדול יותר מופיעים ראשונים, מיד אחרי הלשוניות המוצמדות. הנה דוגמה פשוטה בלי לשוניות מוצמדות:</p>
+<table>
+  <thead><tr><th scope="col">אתר</th><th scope="col">לשוניות פתוחות</th><th scope="col">מיקום לאחר המיון</th></tr></thead>
+  <tbody>
+    <tr><td><code>youtube.com</code></td><td>3</td><td>ראשון</td></tr>
+    <tr><td><code>en.wikipedia.org</code></td><td>2</td><td>שני</td></tr>
+    <tr><td><code>google.com</code></td><td>1</td><td>שלישי</td></tr>
+  </tbody>
+</table>
+<figure class="guide-screenshot">
+  <a class="guide-screenshot-link" href="/assets/guides/sort-03-after.png" target="_blank" rel="noopener">
+    <img src="/assets/guides/sort-03-after.png" width="1280" height="800" loading="lazy" decoding="async" alt="Chrome לאחר מיון: שלוש לשוניות YouTube, אחריהן שתי לשוניות Wikipedia ואז Google; TabTools מדווח על סידור מחדש של 6 לשוניות (Reordered 6 tabs)." />
+    <span class="guide-screenshot-zoom">הצגה בגודל מלא <span aria-hidden="true">↗</span><span class="sr-only"> (נפתח בלשונית חדשה)</span></span>
+  </a>
+  <figcaption>לאחר המיון: YouTube ×3, ‏Wikipedia ×2 ואז Google. כל שש הלשוניות נשארות פתוחות.</figcaption>
+</figure>
+<p>״הכי הרבה פתוחות״ פירושו המספר הגדול ביותר של לשוניות שפתוחות ברגע זה. אין הכוונה לאתר שבו ביקרתם הכי הרבה, להיסטוריית הגלישה או למספר הפעמים שפתחתם אתר בשבוע האחרון.</p>
+<p>אם לשני אתרים יש אותו מספר לשוניות, שמות המארח שלהם קובעים את הסדר לפי האלפבית. לשוניות עם אותו שם מארח שומרות על הסדר היחסי שלהן. למשל, שלושת עמודי YouTube שומרים על סדרם בתוך מקבץ YouTube; הם אינם ממוינים לפי כותרת העמוד.</p></section><aside class="guide-install" aria-label="קבלת TabTools">
+    <div><p class="eyebrow">תוסף חינמי לדפדפן</p><h2>נסו בעצמכם.</h2><p>סגרו לשוניות לפי אתר, הסירו כפילויות ומיינו את מה שנשאר.</p></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_sort-tabs-by-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>הוספה ל־Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_sort-tabs-by-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>הוספה ל־Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_sort-tabs-by-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_sort-tabs-by-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>הוספה ל־Edge</span></a></div>
+    <p class="mobile-note" data-mobile-note hidden>הדף פתוח בטלפון או בטאבלט? כדי להוסיף את TabTools, יש לפתוח את הדף במחשב.</p>
+  </aside>
+<section id="pinned-tabs-and-subdomains"><h2>לשוניות מוצמדות ותתי־דומיין</h2><p>לשוניות מוצמדות נשארות במיקומים המוצמדים שלהן. הן עדיין נספרות כחלק ממספר הלשוניות של האתר כש־TabTools קובע את סדר הלשוניות שאינן מוצמדות.</p>
+<p>למשל, שתי לשוניות GitHub מוצמדות ושתי לשוניות GitHub שאינן מוצמדות נותנות ל־GitHub ספירה של ארבע. לכן הלשוניות הלא־מוצמדות שלו יופיעו לפני אתר עם שלוש לשוניות פתוחות, בעוד ששתי לשוניות GitHub המוצמדות נשארות במקומן.</p>
+<p>התאמת האתר משתמשת בשם המארח ומתעלמת מהקידומת <code>www.</code>. עמודים ב־ <code>example.com</code> וב־ <code>www.example.com</code> נחשבים יחד. עמודים ב־ <code>docs.example.com</code> יוצרים מקבץ נפרד מאלו שב־ <code>shop.example.com</code>.</p>
+<p>הדבר שימושי כששירותים שונים חולקים דומיין אב: התיעוד והחנות יכולים להישאר נפרדים בשורת הלשוניות הממוינת.</p></section>
+<section id="sorting-or-tab-groups"><h2>בחירה בין מיון לקבוצות לשוניות</h2><p>מיון שימושי כשהאתר עצמו הוא כלל הארגון. קבוצות לשוניות בדפדפן שימושיות כשהכלל הוא משימה, למשל חופשה, פרויקט בעבודה או רכישה הכרוכה בכמה אתרים.</p>
+<table>
+  <thead><tr><th scope="col">המטרה שלכם</th><th scope="col">אפשרות מתאימה</th></tr></thead>
+  <tbody>
+    <tr><td>הצבת העמודים של כל אתר זה לצד זה</td><td>TabTools <strong>מיון לשוניות</strong></td></tr>
+    <tr><td>בחירת הסדר המדויק של מספר קטן של לשוניות</td><td>גרירת לשוניות ידנית</td></tr>
+    <tr><td>ריכוז האתרים השונים של פרויקט תחת שם אחד</td><td>קבוצות לשוניות בעלות שם בדפדפן</td></tr>
+  </tbody>
+</table>
+<p>TabTools משנה את סדר הלשוניות; הוא אינו יוצר קבוצות דפדפן בעלות שם או צבע. אם סידרתם את הלשוניות במכוון לפי פרויקט, חשבו אם מיון לפי אתר מתאים לאותו חלון לפני שינוי הסדר.</p></section>
+<section id="native-browser-options"><h2>ארגון לשוניות ללא תוסף</h2><h3>Chrome</h3>
+<p>גררו לשוניות לאורך שורת הלשוניות כדי לקבוע את סדרן ידנית. אפשר גם להשתמש בקבוצות לשוניות בעלות שם כשעבודה קשורה משתרעת על כמה אתרים. אצל Google, <a href="https://support.google.com/chrome/answer/2391819?hl=en&amp;co=GENIE.Platform%3DDesktop">מדריך הלשוניות של Chrome</a> עוסק בסידור לשוניות ובקיבוצן.</p>
+<h3>Firefox</h3>
+<p>השתמשו בשורת הלשוניות כדי להזיז לשוניות בודדות, או באפשרויות הקיבוץ שבתפריט ההקשר של Firefox כדי ליצור אוסף בעל שם. אצל Mozilla, <a href="https://support.mozilla.org/en-US/kb/tab-context-menu">מדריך תפריט ההקשר של הלשוניות</a> מתאר את פעולות הלשוניות הזמינות.</p>
+<h3>Microsoft Edge</h3>
+<p>Edge מציע קבוצות לשוניות בעלות שם וגם תכונת <strong>ארגון לשוניות (Organize tabs)</strong> שיכולה לקבץ לשוניות קשורות. הזמינות עשויה להשתנות. האפשרויות האלו מארגנות לפי הקבוצות שבחרתם או לפי רלוונטיות, בשונה ממיון לפי מספר הלשוניות הנוכחי לכל אתר. Microsoft מסבירה אותן ב־ <a href="https://www.microsoft.com/en-us/edge/features/tab-groups">מדריך קבוצות הלשוניות של Edge</a>.</p></section>
+<section id="after-sorting"><h2>מה אפשר לעשות לאחר המיון</h2><p>ל־TabTools אין פעולת ביטול למיון. כפתור <strong>ביטול</strong> בחלונית מיועד לפעולת סגירת הלשוניות האחרונה, ולא לשחזור סדר הלשוניות הקודם. אם תרצו סידור אחר לאחר המיון, גררו את הלשוניות למקומן.</p>
+<p>המיון גם משאיר עותקים חוזרים של עמודים. אם הדבר מאריך את המקבצים הגדולים שלא לצורך, <a href="/he/guides/close-duplicate-tabs/">סגרו לשוניות כפולות</a> ומיינו שוב לפי המספרים שנותרו.</p>
+<p>כשסיימתם להשתמש באתר שלם, השתמשו ב־ <a href="/he/guides/close-tabs-from-same-website/">סגירת לשוניות האתר</a> כדי להסיר את עמודיו. מיון הוא האפשרות המתאימה ללשוניות שעדיין דרושות לכם: הוא מקל על מציאתן בלי להחליט אילו עמודים לסגור.</p></section>
+      </article></div>
+      <section class="shell related-guides" aria-label="מדריכים קשורים"><p class="eyebrow">ממשיכים הלאה</p><h2>דרכים נוספות לארגן את הלשוניות.</h2><div class="guide-cards"><a class="guide-card" href="/he/guides/close-tabs-from-same-website/">
+    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">סגירת לשוניות אתר</span></div>
+    <h2>סגירת לשוניות של אותו אתר</h2><p>סגרו לשוניות של אותו אתר ב־Chrome באמצעות TabTools, הכירו חלופה ידנית ובצעו את השלבים גם ב־Firefox וב־Edge.</p>
+    <span class="guide-card-bottom"><span>4 דקות קריאה</span><span class="guide-card-link">קריאת המדריך <span aria-hidden="true">↗</span></span></span>
+  </a><a class="guide-card" href="/he/guides/close-duplicate-tabs/">
+    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">הסרת כפילויות</span></div>
+    <h2>סגירת לשוניות כפולות</h2><p>הסירו לשוניות כפולות ב־Chrome, ב־Firefox וב־Edge. עקבו אחר השלבים של TabTools, השתמשו באפשרות המובנית ב־Firefox והבינו אילו עותקים נשארים.</p>
+    <span class="guide-card-bottom"><span>4 דקות קריאה</span><span class="guide-card-link">קריאת המדריך <span aria-hidden="true">↗</span></span></span>
+  </a></div></section></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/he/#top" aria-label="דף הבית של TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <p>סגירת לשוניות לפי אתר, מיון שורת הלשוניות והסרת כפילויות.</p>
+        </div>
+        <div class="footer-links">
+          <div><span class="footer-label">המוצר</span><a href="/he/#features">תכונות</a><a href="/he/#how-it-works">איך זה עובד</a><a href="/he/guides/">מדריכים</a><a href="/he/#faq">שאלות נפוצות</a></div>
+          <div><span class="footer-label">לנסות</span><a data-utm-placement="footer" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_chrome" target="_blank" rel="noopener">Chrome Web Store</a><a data-utm-placement="footer" data-store="firefox" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_firefox" target="_blank" rel="noopener">Firefox Add-ons</a><a data-utm-placement="footer" data-store="edge" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=footer_edge" target="_blank" rel="noopener">Edge Add-ons</a></div>
+          <div><span class="footer-label">עוד</span><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/Michael-Wester/tabtools/blob/main/PRIVACY.md" target="_blank" rel="noopener">פרטיות</a><a href="mailto:tabtools@michaelwester.com">יצירת קשר</a></div>
+        </div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 TabTools</span><span>חינמי ובקוד פתוח.</span></div>
+    </footer>
+    <script src="/script.js" defer></script>
+  </body>
+</html>
