@@ -12,7 +12,10 @@ module.exports = defineConfig({
   reporter: 'line',
   use: {
     baseURL: 'http://127.0.0.1:4173',
-    trace: 'retain-on-failure'
+    // Firefox's DOM trace snapshotter reads layout during document navigation,
+    // producing its own forced-layout warnings. Keep screenshots and trace
+    // events without DOM snapshots so diagnostics describe the authored site.
+    trace: { mode: 'retain-on-failure', snapshots: false, screenshots: true }
   },
   projects: [
     {
