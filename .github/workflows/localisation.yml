@@ -20,24 +20,8 @@ on:
       - 'playwright.extension.config.js'
       - 'extension-playwright/**'
       - '.github/workflows/localisation.yml'
+  # Required checks must also run for documentation-only pull requests.
   pull_request:
-    paths:
-      - 'src/**'
-      - 'build.js'
-      - 'build.ps1'
-      - 'website/src/**'
-      - 'website/dist/**'
-      - 'localisation/**'
-      - 'marketing/**'
-      - 'scripts/**'
-      - 'tests/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'playwright.config.js'
-      - 'playwright/**'
-      - 'playwright.extension.config.js'
-      - 'extension-playwright/**'
-      - '.github/workflows/localisation.yml'
 
 permissions:
   contents: read
