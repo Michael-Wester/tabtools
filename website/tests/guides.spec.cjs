@@ -27,6 +27,8 @@ test.afterEach(async ({ page }) => {
 });
 
 async function checkLayout(page) {
+  // WebKit can commit the new URL before the document body has been parsed.
+  await page.waitForLoadState('domcontentloaded');
   const dimensions = await page.evaluate(() => ({
     width: document.documentElement.clientWidth,
     content: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth)
