@@ -1,10 +1,8 @@
 name: Website mobile checks
 
 on:
+  # Required checks must also run for documentation-only pull requests.
   pull_request:
-    paths:
-      - 'website/**'
-      - '.github/workflows/website-mobile.yml'
   push:
     branches: [main]
     paths:
