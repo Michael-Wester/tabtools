@@ -40,7 +40,8 @@
   let lastOpenTabCount = null;
   let lastSuggestionsKey = null;
   let lastSuggestionsCount = null;
-  const MAX_SUGGESTIONS = 12;
+  // Two columns, at most seven rows; Inactive consumes one visible slot.
+  const MAX_SUGGESTIONS = 14;
 
   function fitPopupWidth() {
     const header = byId("pc-header");
@@ -60,30 +61,6 @@
     const width = Math.min(maximum, Math.max(380, bodyWidth, needed));
     root.style.setProperty("--popup-width", width + "px");
     root.classList.toggle("popup-width-limited", needed > maximum);
-    fitSuggestionChips();
-  }
-
-  function fitSuggestionChips() {
-    const chips = Array.from(document.querySelectorAll("#pc-suggest-chips .chip"));
-    // Reset before measuring so larger headers can restore the compact grid.
-    chips.forEach((chip) => chip.classList.remove("wide"));
-    // A spanning chip occupies otherwise collapsed auto-fit tracks. Recheck
-    // the other chips after widening, since those tracks can make them smaller.
-    // Every pass adds at least one wide chip, so the chip count bounds the loop.
-    for (let pass = 0; pass < chips.length; pass += 1) {
-      const wide = chips.filter((chip) => {
-        if (chip.classList.contains("wide")) return false;
-        const label = chip.querySelector(".label");
-        if (!label) return false;
-        // Integer scroll/client widths can hide a fractional overflow, which
-        // still replaces the hostname's ending with an ellipsis in Firefox.
-        const text = document.createRange();
-        text.selectNodeContents(label);
-        return text.getBoundingClientRect().width > label.getBoundingClientRect().width;
-      });
-      if (!wide.length) break;
-      wide.forEach((chip) => chip.classList.add("wide"));
-    }
   }
 
   function setStatus(text, delay = 1400) {
@@ -529,7 +506,6 @@
     limited.forEach((item) =>
       chipsWrap.appendChild(renderSuggestionChip(item))
     );
-    fitSuggestionChips();
     if (suggestions.length > MAX_SUGGESTIONS) {
       more.textContent = t("moreCount", { count: suggestions.length - MAX_SUGGESTIONS });
     }
@@ -591,8 +567,6 @@
 
     if (showSettings) {
       renderSettingsStats();
-    } else {
-      fitSuggestionChips();
     }
   }
 

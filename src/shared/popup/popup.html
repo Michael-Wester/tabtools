@@ -461,7 +461,7 @@
       }
       .chips {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
       }
       .chips-more {
@@ -545,16 +545,6 @@
         white-space: nowrap;
         min-width: 0;
         flex: 1;
-      }
-      /* Keep short sites in Main's compact grid. Longer names get their own
-         row, and even a hostname longer than that row remains readable. */
-      .chip.wide {
-        grid-column: 1 / -1;
-      }
-      .chip.wide .label {
-        white-space: normal;
-        overflow-wrap: anywhere;
-        text-overflow: clip;
       }
       .chip .label {
         text-align: start;
