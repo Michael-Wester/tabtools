@@ -507,6 +507,27 @@
         background: transparent center / contain no-repeat
           url("../icons/sleep/outline-64.png");
       }
+      .chip .internal-icon {
+        border: 0;
+        border-radius: 0;
+        background: currentColor;
+        mask: var(--internal-icon) center / contain no-repeat;
+      }
+      .internal-icon[data-internal-icon="settings"] {
+        --internal-icon: url("../icons/internal/settings.svg");
+      }
+      .internal-icon[data-internal-icon="extensions"] {
+        --internal-icon: url("../icons/internal/extensions.svg");
+      }
+      .internal-icon[data-internal-icon="downloads"] {
+        --internal-icon: url("../icons/internal/downloads.svg");
+      }
+      .internal-icon[data-internal-icon="history"] {
+        --internal-icon: url("../icons/internal/history.svg");
+      }
+      .internal-icon[data-internal-icon="bookmarks"] {
+        --internal-icon: url("../icons/internal/bookmarks.svg");
+      }
       .chip:hover .inactive-icon {
         background-image: url("../icons/sleep/filled-64.png");
       }

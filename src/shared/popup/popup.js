@@ -419,7 +419,13 @@
       label.style.unicodeBidi = "isolate";
       const iconUrl =
         typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
-      if (iconUrl) {
+      if (["settings", "extensions", "downloads", "history", "bookmarks"].includes(item.internalIcon)) {
+        const icon = document.createElement("span");
+        icon.className = "favicon internal-icon";
+        icon.dataset.internalIcon = item.internalIcon;
+        icon.setAttribute("aria-hidden", "true");
+        main.appendChild(icon);
+      } else if (iconUrl) {
         const icon = document.createElement("img");
         icon.className = "favicon";
         icon.alt = "";

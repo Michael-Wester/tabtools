@@ -547,3 +547,45 @@ test('popup caps excessive width and enables wrapping without resizing Settings'
     assert.equal(elements.root.style['--popup-width'], width);
   }
 });
+
+test('built-in Chrome icons follow URL schemes and subpages without changing grouping or counts', async () => {
+  const names = ['settings', 'extensions', 'downloads', 'history', 'bookmarks'];
+  for (const firefox of [false, true]) {
+    const runtime = extension({ firefox, tabs: names.flatMap((name, index) => [
+      { id: index * 2 + 1, url: `chrome://${name}/` },
+      { id: index * 2 + 2, pendingUrl: `chrome://${name}/subpage?query=yes#section` },
+    ]) });
+    const { suggestions } = await runtime.send({ type: 'pc:getSuggestions' });
+    assert.deepEqual(Array.from(suggestions, item => [item.domain, item.openCount, item.internalIcon]), names.map(name => [name, 2, name]));
+    const elements = await popup(runtime);
+    for (const chip of elements['pc-suggest-chips'].children) {
+      const icon = chip.children[0].children[0];
+      assert.equal(icon.dataset.internalIcon, chip.dataset.domain);
+      assert.equal(icon.getAttribute('aria-hidden'), 'true');
+      assert.ok(chip.getAttribute('aria-label').includes(chip.dataset.domain));
+    }
+  }
+});
+
+test('ordinary, unknown and other-browser URLs keep favicon fallback, including mixed hostname groups', async () => {
+  for (const urls of [
+    ['https://settings/'], ['http://extensions/'], ['edge://settings/'],
+    ['chrome-extension://settings/page.html'], ['chrome://unknown/'],
+    ['chrome://settings:99/'], ['chrome://user@settings/'],
+    ['chrome://settings/', 'https://settings/'], ['https://settings/', 'chrome://settings/'],
+    ['chrome://settings/', 'https://settings/', 'chrome://settings/subpage'],
+  ]) {
+    const runtime = extension({ tabs: urls.map((url, id) => ({ id: id + 1, url, favIconUrl: 'https://example.test/icon.png' })) });
+    const { suggestions } = await runtime.send({ type: 'pc:getSuggestions' });
+    assert.equal(suggestions.length, 1);
+    assert.equal(suggestions[0].internalIcon, null, urls.join(', '));
+    assert.equal(suggestions[0].favIconUrl, 'https://example.test/icon.png');
+    const elements = await popup(runtime);
+    const icon = elements['pc-suggest-chips'].children[0].children[0].children[0];
+    assert.equal(icon.src, 'https://example.test/icon.png');
+    await icon.dispatch('error');
+    assert.equal(icon.hidden, true);
+  }
+  const runtime = extension({ tabs: [{ id: 1, url: 'about:preferences' }, { id: 2, url: 'not a URL' }] });
+  assert.equal((await runtime.send({ type: 'pc:getSuggestions' })).suggestions.length, 0);
+});
