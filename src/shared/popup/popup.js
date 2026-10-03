@@ -65,10 +65,10 @@
 
   function fitSuggestionChips() {
     const chips = Array.from(document.querySelectorAll("#pc-suggest-chips .chip"));
-    // Reset before measuring so larger headers can restore the compact grid.
+    // Reset before measuring so larger headers can restore compact rows.
     chips.forEach((chip) => chip.classList.remove("wide"));
-    // A spanning chip occupies otherwise collapsed auto-fit tracks. Recheck
-    // the other chips after widening, since those tracks can make them smaller.
+    // Full-width chips change where following chips wrap. Recheck the other
+    // chips after widening so each label fits its final row allocation.
     // Every pass adds at least one wide chip, so the chip count bounds the loop.
     for (let pass = 0; pass < chips.length; pass += 1) {
       const wide = chips.filter((chip) => {

@@ -460,8 +460,8 @@
         font-size: 14px;
       }
       .chips {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
         gap: 8px;
       }
       .chips-more {
@@ -482,7 +482,7 @@
         font-size: 13px;
         transition: background 0.15s ease, border-color 0.15s ease,
           transform 0.1s ease;
-        width: 100%;
+        flex: 1 1 140px;
         justify-content: space-between;
         min-width: 0;
       }
@@ -525,10 +525,10 @@
         min-width: 0;
         flex: 1;
       }
-      /* Keep short sites in Main's compact grid. Longer names get their own
-         row, and even a hostname longer than that row remains readable. */
+      /* Keep ranking and keyboard order intact. A short chip at the end of a
+         row grows into spare space before the next full-width hostname. */
       .chip.wide {
-        grid-column: 1 / -1;
+        flex-basis: 100%;
       }
       .chip.wide .label {
         white-space: normal;

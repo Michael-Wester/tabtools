@@ -320,3 +320,78 @@ for (const locale of ['es', 'he', 'ja']) {
     } finally { await browser.close(); }
   });
 }
+
+for (const locale of ['en', 'de', 'he']) {
+  test(`native ${locale}: ranked suggestions fill rows without gaps or reordering`, async ({}, testInfo) => {
+    const browser = await launchExtension(testInfo, locale);
+    try {
+      const ranked = [['github.com', 4], ['chatgpt.com', 3], ['chromewebstore.google.test', 2], ['fe6b245e.tabtools-website.pages.dev', 1], ['supabase.com', 1], ['fly.io', 1]];
+      const tabs = await createTabs(browser, ranked.flatMap(([domain, count]) => Array.from({ length: count }, (_, i) => ({ url: `https://${domain}/fixture-${i}` }))));
+      // Age controlled tabs without waiting two hours; the active blank tab is
+      // still excluded. No live sites or user browsing state are involved.
+      await browser.worker.evaluate(() => {
+        const current = Date.now();
+        Date.now = () => current + 3 * 60 * 60 * 1000;
+        return chrome.storage.local.set({ 'pc.stats': { totalTabsEaten: 2549, startedAt: current } });
+      });
+      const popup = await nativePopup(browser);
+      await expect.poll(() => popup.evaluate('document.querySelectorAll(".chip").length')).toBe(7);
+      const naturalWidth = await popup.evaluate('document.body.getBoundingClientRect().width');
+      for (const width of [naturalWidth, 500]) {
+        await popup.evaluate(`document.documentElement.style.setProperty('--popup-width', '${width}px')`);
+        await click(popup, '#pc-settings-toggle');
+        await click(popup, '#pc-settings-toggle');
+        const rows = await popup.evaluate(`(() => {
+          const wrap = document.querySelector('#pc-suggest-chips').getBoundingClientRect();
+          return { left: wrap.left, right: wrap.right, chips: [...document.querySelectorAll('.chip')].map(chip => {
+            const r = chip.getBoundingClientRect();
+            return { domain: chip.dataset.domain || 'inactive', top: r.top, left: r.left, right: r.right };
+          }) };
+        })()`);
+        expect(rows.chips.map(chip => chip.domain)).toEqual(['inactive', ...ranked.map(([domain]) => domain)]);
+        // A short chip before a full-row hostname must expand into the spare
+        // space, not leave a half-row hole or backfill with a lower-ranked site.
+        for (const top of new Set(rows.chips.map(chip => chip.top))) {
+          const row = rows.chips.filter(chip => chip.top === top);
+          expect(Math.min(...row.map(chip => chip.left))).toBeCloseTo(rows.left, 0);
+          expect(Math.max(...row.map(chip => chip.right))).toBeCloseTo(rows.right, 0);
+        }
+        for (let i = 1; i < rows.chips.length; i++) expect(rows.chips[i].top).toBeGreaterThanOrEqual(rows.chips[i - 1].top);
+        const metrics = await layout(popup);
+        expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
+        expect(metrics.outside).toEqual([]);
+        for (const label of metrics.labels) expect(label.textWidth).toBeLessThanOrEqual(label.width + 0.01);
+        const screenshot = await popup.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+        const file = testInfo.outputPath(`${locale}-ranked-${width}.png`);
+        fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+        await testInfo.attach(`${locale}-ranked-${width}`, { path: file, contentType: 'image/png' });
+      }
+      // Keyboard traversal must retain the same ranking as the visual list.
+      await popup.evaluate("document.querySelector('.chip').focus()");
+      for (const domain of ranked.map(([domain]) => domain)) {
+        await popup.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+        await popup.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+        expect(await popup.evaluate('document.activeElement.dataset.domain')).toBe(domain);
+      }
+      const before = await popup.message('pc:getSuggestions');
+      expect(before.suggestions[0].inactiveCount).toBe(12);
+      const openBefore = (await queryTabs(browser.worker)).length;
+      // Eligibility can change while open-tab and lifetime-close totals stay
+      // constant: pinned tabs are not eligible for inactive cleanup.
+      await browser.worker.evaluate(ids => Promise.all(ids.map(id => chrome.tabs.update(id, { pinned: true }))), tabs.slice(0, 6).map(tab => tab.id));
+      const after = await popup.message('pc:getSuggestions');
+      expect(after.suggestions[0].inactiveCount).toBe(6);
+      expect((await queryTabs(browser.worker)).length).toBe(openBefore);
+      expect((await popup.message('pc:getStats')).stats.totalTabsEaten).toBe(2549);
+      await popup.close();
+      const reopened = await nativePopup(browser);
+      await expect.poll(() => reopened.evaluate(`document.querySelector('.chip[data-kind="inactive"] .count').textContent`)).toBe('6');
+      const screenshot = await reopened.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+      const file = testInfo.outputPath(`${locale}-ranked-inactive-6.png`);
+      fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+      await testInfo.attach(`${locale}-ranked-inactive-6`, { path: file, contentType: 'image/png' });
+      expect(reopened.diagnostics).toEqual([]);
+      expect(popup.diagnostics).toEqual([]);
+    } finally { await browser.close(); }
+  });
+}
