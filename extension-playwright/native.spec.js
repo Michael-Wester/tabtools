@@ -320,3 +320,57 @@ for (const locale of ['es', 'he', 'ja']) {
     } finally { await browser.close(); }
   });
 }
+
+for (const locale of ['en', 'he']) {
+  test(`native ${locale}: built-in Chrome icons render in light and dark themes`, async ({}, testInfo) => {
+    const browser = await launchExtension(testInfo, locale);
+    try {
+      const names = ['settings', 'extensions', 'downloads', 'history', 'bookmarks'];
+      // Real browser-owned pages, including a Settings subpage. Do not emulate
+      // their favicon URLs: the shipped fallback must win over those URLs.
+      for (const name of names) {
+        await browser.worker.evaluate(url => chrome.tabs.create({ url, active: false }), `chrome://${name}/`);
+      }
+      await browser.worker.evaluate(() => chrome.tabs.create({ url: 'chrome://settings/privacy', active: false }));
+      const popup = await nativePopup(browser);
+      await expect.poll(() => popup.evaluate('document.querySelectorAll(".internal-icon").length')).toBe(5);
+      for (const theme of ['light', 'dark']) {
+        await click(popup, '#pc-settings-toggle');
+        await click(popup, `[data-theme-value="${theme}"]`);
+        await expect.poll(() => popup.evaluate('document.documentElement.dataset.theme')).toBe(theme);
+        await click(popup, '#pc-settings-toggle');
+        const icons = await popup.evaluate(`Array.from(document.querySelectorAll('.internal-icon'), icon => {
+          const style = getComputedStyle(icon), chip = icon.closest('.chip');
+          return { name: icon.dataset.internalIcon, mask: style.maskImage, color: style.backgroundColor,
+            textColor: getComputedStyle(chip).color, width: icon.getBoundingClientRect().width,
+            height: icon.getBoundingClientRect().height, hidden: icon.getAttribute('aria-hidden'),
+            label: chip.getAttribute('aria-label'), title: chip.title, count: chip.querySelector('.count').textContent };
+        })`);
+        expect(icons.map(icon => icon.name).sort()).toEqual([...names].sort());
+        for (const icon of icons) {
+          expect(icon.mask).toContain(`/icons/internal/${icon.name}.svg`);
+          expect(icon.color).toBe(icon.textColor);
+          expect(icon.width).toBe(16);
+          expect(icon.height).toBe(16);
+          expect(icon.hidden).toBe('true');
+          expect(icon.label).toContain(icon.name);
+          expect(icon.title).toContain(icon.name);
+          expect(icon.count).toBe(icon.name === 'settings' ? '2' : '1');
+        }
+        const loaded = await popup.evaluate(`Promise.all(${JSON.stringify(names)}.map(name => new Promise(resolve => {
+          const image = new Image(); image.onload = () => resolve(true); image.onerror = () => resolve(false);
+          image.src = '../icons/internal/' + name + '.svg';
+        })))`);
+        expect(loaded).toEqual(names.map(() => true));
+        const metrics = await layout(popup);
+        expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
+        expect(metrics.outside).toEqual([]);
+        const screenshot = await popup.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+        const file = testInfo.outputPath(`${locale}-chrome-internal-${theme}.png`);
+        fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+        await testInfo.attach(`${locale}-chrome-internal-${theme}`, { path: file, contentType: 'image/png' });
+      }
+      expect(popup.diagnostics).toEqual([]);
+    } finally { await browser.close(); }
+  });
+}
