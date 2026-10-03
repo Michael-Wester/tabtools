@@ -61,7 +61,7 @@ This is store media metadata; it does not change the website's existing embed.
 ## Release checklist
 
 1. Build from the reviewed commit and verify browser-specific manifest versions:
-   Chrome and Firefox 4.0.3, Edge 4.0.2
+   Chrome, Firefox and Edge 4.0.3
 2. Confirm that the intended store detects the packaged `_locales` directories
 3. Check the dashboard's current field limits and locale choices; use the matching
    store text and locale identifiers
