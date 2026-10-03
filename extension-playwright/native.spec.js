@@ -136,17 +136,32 @@ async function layout(popup) {
       const rect = element.getBoundingClientRect();
       return rect.left < body.left - 1 || rect.right > body.right + 1;
     }).map(element => element.id || element.className);
-    const labels = [...document.querySelectorAll('.chip[data-domain] .label')].map(element => {
+    const labels = [...document.querySelectorAll('.chip[data-domain] .label')].filter(element => element.getClientRects().length).map(element => {
       const range = document.createRange();
       range.selectNodeContents(element);
-      return { text: element.textContent, width: element.getBoundingClientRect().width, textWidth: range.getBoundingClientRect().width };
+      const style = getComputedStyle(element);
+      const chip = element.closest('.chip');
+      return { text: element.textContent, width: element.getBoundingClientRect().width, textWidth: range.getBoundingClientRect().width, overflow: style.overflow, ellipsis: style.textOverflow, whiteSpace: style.whiteSpace, title: chip.title, accessibleName: chip.getAttribute('aria-label') };
     });
     return { width: body.width, viewport: innerWidth, horizontalOverflow: document.documentElement.scrollWidth - innerWidth, outside, labels };
   })()`);
 }
 
+function expectAccessibleLabels(labels) {
+  for (const label of labels) {
+    expect(label.width, label.text).toBeGreaterThan(0);
+    expect(label.title).toContain(label.text);
+    expect(label.accessibleName).toContain(label.text);
+    if (label.textWidth > label.width) {
+      expect(label.overflow).toBe('hidden');
+      expect(label.ellipsis).toBe('ellipsis');
+      expect(label.whiteSpace).toBe('nowrap');
+    }
+  }
+}
+
 for (const entry of registry) {
-  test(`native popup ${entry.locale}: catalogue, readable sites, counters and settings`, async ({}, testInfo) => {
+  test(`native popup ${entry.locale}: catalogue, accessible sites, counters and settings`, async ({}, testInfo) => {
     const browser = await launchExtension(testInfo, entry.extension.replaceAll('_', '-'));
     try {
       await createTabs(browser, [
@@ -171,7 +186,7 @@ for (const entry of registry) {
       expect(actions.width).toBeLessThanOrEqual(actions.viewport);
       expect(actions.horizontalOverflow).toBeLessThanOrEqual(1);
       expect(actions.outside).toEqual([]);
-      for (const label of actions.labels) expect(label.textWidth, `${entry.locale}: ${label.text} must stay readable`).toBeLessThanOrEqual(label.width + 0.01);
+      expectAccessibleLabels(actions.labels);
       await click(popup, '#pc-settings-toggle');
       expect(await popup.evaluate('document.querySelector("#pc-tab-settings").getAttribute("aria-hidden")')).toBe('false');
       const settings = await layout(popup);
@@ -269,7 +284,7 @@ test('native actions: close, undo, pinned duplicate retention, sorting, inactive
   } finally { await browser.close(); }
 });
 
-test('native Spanish: a long hostname keeps neighboring sites readable at 500px', async ({}, testInfo) => {
+test('native Spanish: long hostnames truncate accessibly in two columns at 500px', async ({}, testInfo) => {
   const browser = await launchExtension(testInfo, 'es');
   try {
     const domain = ['a'.repeat(63), 'b'.repeat(63), 'c'.repeat(63), 'test'].join('.');
@@ -277,7 +292,7 @@ test('native Spanish: a long hostname keeps neighboring sites readable at 500px'
     const popup = await nativePopup(browser);
     await expect.poll(() => popup.evaluate('document.querySelectorAll(".chip[data-domain]").length')).toBe(2);
     // Translated headers can grow the real popup to this supported width. A
-    // long site spanning the grid must leave its neighboring site readable.
+    // two-column grid must retain both labels and their accessible full names.
     await popup.evaluate('document.documentElement.style.setProperty("--popup-width", "500px")');
     await expect.poll(() => popup.evaluate('innerWidth')).toBe(500);
     await click(popup, '#pc-settings-toggle');
@@ -288,7 +303,7 @@ test('native Spanish: a long hostname keeps neighboring sites readable at 500px'
     expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
     expect(metrics.outside).toEqual([]);
     expect(metrics.labels.map(label => label.text).sort()).toEqual([domain, 'developer.mozilla.org'].sort());
-    for (const label of metrics.labels) expect(label.textWidth, label.text).toBeLessThanOrEqual(label.width + 0.01);
+    expectAccessibleLabels(metrics.labels);
     expect(popup.diagnostics).toEqual([]);
   } finally { await browser.close(); }
 });
@@ -307,7 +322,7 @@ for (const locale of ['es', 'he', 'ja']) {
         expect(metrics.width).toBeLessThanOrEqual(800);
         expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
         expect(metrics.outside).toEqual([]);
-        for (const label of metrics.labels) expect(label.textWidth, `${locale}: ${label.text}`).toBeLessThanOrEqual(label.width + 0.01);
+        expectAccessibleLabels(metrics.labels);
         return metrics.width;
       };
       const originalWidth = await assertFits();
@@ -322,7 +337,7 @@ for (const locale of ['es', 'he', 'ja']) {
 }
 
 for (const locale of ['en', 'de', 'he']) {
-  test(`native ${locale}: ranked suggestions fill rows without gaps or reordering`, async ({}, testInfo) => {
+  test(`native ${locale}: ranked suggestions use two equal columns with accessible ellipsis`, async ({}, testInfo) => {
     const browser = await launchExtension(testInfo, locale);
     try {
       const ranked = [['github.com', 4], ['chatgpt.com', 3], ['chromewebstore.google.test', 2], ['fe6b245e.tabtools-website.pages.dev', 1], ['supabase.com', 1], ['fly.io', 1]];
@@ -343,24 +358,26 @@ for (const locale of ['en', 'de', 'he']) {
         await click(popup, '#pc-settings-toggle');
         const rows = await popup.evaluate(`(() => {
           const wrap = document.querySelector('#pc-suggest-chips').getBoundingClientRect();
-          return { left: wrap.left, right: wrap.right, chips: [...document.querySelectorAll('.chip')].map(chip => {
+          return { left: wrap.left, right: wrap.right, width: wrap.width, gap: parseFloat(getComputedStyle(document.querySelector('#pc-suggest-chips')).columnGap), chips: [...document.querySelectorAll('.chip')].map(chip => {
             const r = chip.getBoundingClientRect();
             return { domain: chip.dataset.domain || 'inactive', top: r.top, left: r.left, right: r.right };
           }) };
         })()`);
         expect(rows.chips.map(chip => chip.domain)).toEqual(['inactive', ...ranked.map(([domain]) => domain)]);
-        // A short chip before a full-row hostname must expand into the spare
-        // space, not leave a half-row hole or backfill with a lower-ranked site.
-        for (const top of new Set(rows.chips.map(chip => chip.top))) {
-          const row = rows.chips.filter(chip => chip.top === top);
-          expect(Math.min(...row.map(chip => chip.left))).toBeCloseTo(rows.left, 0);
-          expect(Math.max(...row.map(chip => chip.right))).toBeCloseTo(rows.right, 0);
+        // Exactly two equal columns in DOM order, including an unfilled final
+        // cell for odd counts. Long labels never promote a chip to a full row.
+        const columnWidth = (rows.width - rows.gap) / 2;
+        for (let i = 0; i < rows.chips.length; i++) {
+          const chip = rows.chips[i];
+          expect(chip.right - chip.left).toBeCloseTo(columnWidth, 0);
+          if (i % 2) expect(chip.top).toBeCloseTo(rows.chips[i - 1].top, 0);
+          else if (i) expect(chip.top).toBeGreaterThan(rows.chips[i - 1].top);
         }
-        for (let i = 1; i < rows.chips.length; i++) expect(rows.chips[i].top).toBeGreaterThanOrEqual(rows.chips[i - 1].top);
         const metrics = await layout(popup);
         expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
         expect(metrics.outside).toEqual([]);
-        for (const label of metrics.labels) expect(label.textWidth).toBeLessThanOrEqual(label.width + 0.01);
+        expectAccessibleLabels(metrics.labels);
+        expect(metrics.labels.some(label => label.textWidth > label.width)).toBe(true);
         const screenshot = await popup.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
         const file = testInfo.outputPath(`${locale}-ranked-${width}.png`);
         fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
@@ -390,8 +407,69 @@ for (const locale of ['en', 'de', 'he']) {
       const file = testInfo.outputPath(`${locale}-ranked-inactive-6.png`);
       fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
       await testInfo.attach(`${locale}-ranked-inactive-6`, { path: file, contentType: 'image/png' });
+      await click(reopened, '#pc-settings-toggle');
+      await click(reopened, '[data-theme-value="dark"]');
+      await expect.poll(() => reopened.evaluate('document.documentElement.dataset.theme')).toBe('dark');
+      await click(reopened, '#pc-settings-toggle');
+      const dark = await layout(reopened);
+      expect(dark.horizontalOverflow).toBeLessThanOrEqual(1);
+      expect(dark.outside).toEqual([]);
+      expectAccessibleLabels(dark.labels);
+      const darkShot = await reopened.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+      const darkFile = testInfo.outputPath(`${locale}-ranked-dark.png`);
+      fs.writeFileSync(darkFile, Buffer.from(darkShot.data, 'base64'));
+      await testInfo.attach(`${locale}-ranked-dark`, { path: darkFile, contentType: 'image/png' });
       expect(reopened.diagnostics).toEqual([]);
       expect(popup.diagnostics).toEqual([]);
+    } finally { await browser.close(); }
+  });
+}
+
+for (const locale of ['en', 'de', 'he']) {
+  test(`native ${locale}: suggestions stop at seven rows with or without Inactive`, async ({}, testInfo) => {
+    const browser = await launchExtension(testInfo, locale);
+    try {
+      const domains = Array.from({ length: 16 }, (_, i) => `group${String(i).padStart(2, '0')}-long-hostname.example.test`);
+      await createTabs(browser, domains.map(domain => ({ url: `https://${domain}/fixture` })));
+      await browser.worker.evaluate(() => {
+        const current = Date.now();
+        Date.now = () => current + 3 * 60 * 60 * 1000;
+      });
+      for (const theme of ['light', 'dark']) {
+        for (const inactive of [true, false]) {
+          await browser.worker.evaluate(({ enableInactiveSuggestion, theme }) => chrome.storage.local.set({ 'pc.settings': { enableInactiveSuggestion, theme } }), { enableInactiveSuggestion: inactive, theme });
+          const popup = await nativePopup(browser);
+          await expect.poll(() => popup.evaluate('document.querySelectorAll(".chip").length')).toBe(14);
+          const chips = await popup.evaluate(`Array.from(document.querySelectorAll('.chip'), chip => {
+            const r = chip.getBoundingClientRect();
+            const count = chip.querySelector('.count');
+            const range = document.createRange(); range.selectNodeContents(count);
+            return { domain: chip.dataset.domain || 'inactive', top: r.top, width: r.width, count: count.textContent, countWidth: count.getBoundingClientRect().width, textWidth: range.getBoundingClientRect().width };
+          })`);
+          expect(chips.map(chip => chip.domain)).toEqual(inactive ? ['inactive', ...domains.slice(0, 13)] : domains.slice(0, 14));
+          expect(new Set(chips.map(chip => chip.top)).size).toBe(7);
+          for (let i = 0; i < chips.length; i += 2) {
+            expect(chips[i].top).toBeCloseTo(chips[i + 1].top, 0);
+            expect(chips[i].width).toBeCloseTo(chips[i + 1].width, 0);
+          }
+          for (const chip of chips) {
+            expect(chip.count).toBe(chip.domain === 'inactive' ? '16' : '1');
+            expect(chip.textWidth).toBeLessThanOrEqual(chip.countWidth + 0.01);
+          }
+          expect(await popup.evaluate('document.querySelector("#pc-suggest-more").textContent')).toBe(catalogue(locale).moreCount.replace('{count}', inactive ? '3' : '2'));
+          const metrics = await layout(popup);
+          expect(metrics.horizontalOverflow).toBeLessThanOrEqual(1);
+          expect(metrics.outside).toEqual([]);
+          expectAccessibleLabels(metrics.labels);
+          expect(metrics.labels.every(label => label.textWidth > label.width)).toBe(true);
+          const screenshot = await popup.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+          const file = testInfo.outputPath(`${locale}-seven-rows-${inactive ? 'with' : 'without'}-inactive-${theme}.png`);
+          fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+          await testInfo.attach(`${locale}-seven-rows-${inactive}-${theme}`, { path: file, contentType: 'image/png' });
+          expect(popup.diagnostics).toEqual([]);
+          await popup.close();
+        }
+      }
     } finally { await browser.close(); }
   });
 }
