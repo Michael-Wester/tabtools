@@ -142,7 +142,7 @@
   "web_does_tabtools_collect_or_share": "TabTools raccoglie o condivide i miei dati?",
   "web_the_extension_processes_tab_information": "L’estensione elabora le informazioni sulle schede in locale e non le invia allo sviluppatore o a terzi. Impostazioni e statistiche restano sul dispositivo. La demo di questo sito è ospitata da YouTube; il lettore incorporato e gli store dei browser hanno le proprie informative sulla privacy.",
   "web_can_i_undo_a_cleanup": "Posso annullare una pulizia?",
-  "web_use_undo_immediately_after_closing": "Usa Annulla subito dopo aver chiuso le schede dal popup di TabTools, mentre è ancora aperto. Puoi anche riaprire le pagine dall’elenco delle schede chiuse di recente del browser.",
+  "web_use_undo_immediately_after_closing": "Usa Annulla subito dopo aver chiuso le schede dal popup di TabTools, mentre è ancora aperto. Puoi anche riaprire le pagine dall’elenco delle schede chiuse di recente del browser. Dopo aver chiuso il popup, prova Ctrl+Shift+T su Windows/Linux o Command+Shift+T su macOS per riaprire le schede chiuse di recente. Ripeti se necessario: viene usata la cronologia delle schede chiuse del browser, non il gruppo esatto chiuso da TabTools. Il recupero dipende da ciò che il browser ha conservato; non farci affidamento nella navigazione privata.",
   "web_free_for_chrome_firefox_and": "Gratuito per Chrome, Firefox ed Edge",
   "web_other_browser_stores": "Altri store dei browser",
   "web_close_tabs_by_site_sort_2": "Chiudi le schede per sito, ordina la barra delle schede ed elimina i duplicati.",

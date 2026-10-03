@@ -449,7 +449,7 @@
     "web_does_tabtools_collect_or_share": "TabTools 会收集或分享我的数据吗？",
     "web_the_extension_processes_tab_information": "扩展在本地处理标签页信息，不会将其发送给开发者或第三方。设置和清理统计保留在你的设备上。本网站的演示由 YouTube 托管；嵌入式播放器和浏览器商店各有其隐私政策。",
     "web_can_i_undo_a_cleanup": "可以撤销清理吗？",
-    "web_use_undo_immediately_after_closing": "从 TabTools 弹出窗口关闭标签页后，请在窗口仍打开时立即使用撤销。也可以通过浏览器的最近关闭的标签页重新打开页面。",
+    "web_use_undo_immediately_after_closing": "从 TabTools 弹出窗口关闭标签页后，请在窗口仍打开时立即使用撤销。也可以通过浏览器的最近关闭的标签页重新打开页面。 关闭弹出窗口后，可尝试在 Windows/Linux 上按 Ctrl+Shift+T，或在 macOS 上按 Command+Shift+T，重新打开最近关闭的标签页。可按需重复操作：此功能使用浏览器的最近关闭记录，并非精确恢复 TabTools 关闭的那一批标签页。能否恢复取决于浏览器保留的记录；请勿在隐私浏览模式下依赖此方法。",
     "web_free_for_chrome_firefox_and": "免费用于 Chrome、Firefox 和 Edge",
     "web_other_browser_stores": "其他浏览器商店",
     "web_close_tabs_by_site_sort_2": "按网站关闭标签页，整理标签栏并移除重复项。",
@@ -507,7 +507,7 @@
     </header>
     <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="面包屑导航"><a href="/zh-cn/">首页</a><span aria-hidden="true">/</span><a href="/zh-cn/guides/">指南</a><span aria-hidden="true">/</span><span aria-current="page">移除重复项</span></nav>
       <p class="eyebrow">移除重复项 · 桌面浏览器</p><h1>如何在 Chrome、Firefox 和 Edge 中关闭重复标签页</h1><p class="guides-lede">同一份文档、同一次搜索或同一段视频很容易被反复打开。移除多余副本可以让标签栏更易于浏览，同时不必清空某个网站的所有页面。</p>
-      <p class="guide-byline">作者：<a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>，TabTools 开发者 <span aria-hidden="true">·</span> 阅读约需 4 分钟 <span aria-hidden="true">·</span> 更新于 <time datetime="2026-10-01">2026年10月1日</time></p>
+      <p class="guide-byline">作者：<a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>，TabTools 开发者 <span aria-hidden="true">·</span> 阅读约需 5 分钟 <span aria-hidden="true">·</span> 更新于 <time datetime="2026-10-01">2026年10月1日</time></p>
       <p class="guide-screenshot-note">截图显示的是英文界面；浏览器使用其他语言时，界面标签可能不同。</p></div>
       <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="本页内容"><p class="eyebrow">本页内容</p><ol><li><a href="#choose-a-method">选择适合浏览器的方法</a></li><li><a href="#what-counts-as-a-duplicate">什么算是重复标签页？</a></li><li><a href="#chrome-and-edge">在 Chrome 或 Edge 中关闭重复标签页</a></li><li><a href="#firefox-native-option">使用 Firefox 自带的重复标签页命令</a></li><li><a href="#which-copy-stays">TabTools 会保留哪个副本？</a></li><li><a href="#undo-and-organise">撤销清理并整理剩余标签页</a></li></ol></nav><a class="guide-back" href="/zh-cn/guides/">← 全部指南</a></aside>
       <article class="guide-article" aria-label="如何在 Chrome、Firefox 和 Edge 中关闭重复标签页"><div class="guide-answer"><p class="eyebrow">快速解答</p><p>打开 TabTools 并点击“关闭重复项”，即可移除所有普通浏览器窗口中未固定的重复页面。Firefox 也提供内置命令，可关闭某一标签页的重复副本，或从标签页概览菜单清理重复标签页。</p></div>
@@ -580,12 +580,13 @@
 <p>它不会刻意选择当前激活的标签页、最新打开的标签页或你最近使用的标签页。因此，保留的副本可能位于另一个窗口。如果某个页面有一个已固定标签页和两个未固定副本，最终只会保留已固定的标签页。</p>
 <p>已固定的标签页绝不会被 <strong>关闭重复项</strong> 关闭。如果某个页面有多个已固定副本，这些副本都会保留，因此该命令无法保证每个 URL 都恰好只剩一个标签页。</p></section>
 <section id="undo-and-organise"><h2>撤销清理并整理剩余标签页</h2><p>如果要检查清理结果，请在清理后保持弹出窗口打开。 <strong>撤销</strong> 可以在本次弹出窗口会话内，重新打开最近一次通过弹出窗口关闭的标签页。它按 URL 重新打开页面，无法保证恢复未保存的页面内容。弹出窗口关闭后，请改用浏览器的最近关闭的标签页或历史记录。</p>
+    <p>关闭弹出窗口后，可尝试在 Windows/Linux 上按 Ctrl+Shift+T，或在 macOS 上按 Command+Shift+T，重新打开最近关闭的标签页。可按需重复操作：此功能使用浏览器的最近关闭记录，并非精确恢复 TabTools 关闭的那一批标签页。能否恢复取决于浏览器保留的记录；请勿在隐私浏览模式下依赖此方法。</p>
 <p>对于已经用完的不同页面，请参阅 <a href="/zh-cn/guides/close-tabs-from-same-website/">如何关闭同一网站的所有标签页</a>。对于希望保留的页面， <a href="/zh-cn/guides/sort-tabs-by-website/">按网站排序标签页</a> 可以将相关标签页排在一起，而不关闭它们。</p></section>
       </article></div>
       <section class="shell related-guides" aria-label="相关指南"><p class="eyebrow">继续探索</p><h2>更多标签页整理方法。</h2><div class="guide-cards"><a class="guide-card" href="/zh-cn/guides/close-tabs-from-same-website/">
     <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">关闭网站标签页</span></div>
     <h2>关闭同一网站的标签页</h2><p>使用 TabTools 在 Chrome 中关闭同一网站的标签页，了解手动操作的替代方案，以及 Firefox 和 Edge 的操作步骤。</p>
-    <span class="guide-card-bottom"><span>阅读约需 4 分钟</span><span class="guide-card-link">阅读指南 <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-card-bottom"><span>阅读约需 5 分钟</span><span class="guide-card-link">阅读指南 <span aria-hidden="true">↗</span></span></span>
   </a><a class="guide-card" href="/zh-cn/guides/sort-tabs-by-website/">
     <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">排序标签页</span></div>
     <h2>按网站排序标签页</h2><p>使用 TabTools 在 Chrome、Firefox 和 Edge 中将相关标签页排在一起。了解网站标签页数量、固定标签页和浏览器标签页组如何影响你的选择。</p>

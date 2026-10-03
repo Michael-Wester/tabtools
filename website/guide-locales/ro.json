@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Ghiduri despre filele browserului",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Redeschide filele sau alege o curățare mai restrânsă",
-          "html": "<p>După ce închizi file din fereastra extensiei, butonul <strong>Anulează</strong> poate redeschide filele din ultima curățare făcută din această fereastră, cât timp ea rămâne deschisă. Acțiunea din meniul contextual <strong>Închide filele site-ului</strong> nu este înregistrată de butonul Anulează din fereastra extensiei.</p>\n<p>După o închidere din meniul contextual, consultă filele închise recent sau istoricul browserului. Redeschiderea unui URL nu trebuie considerată o restaurare a datelor nesalvate din formulare sau a tuturor detaliilor stării anterioare a paginii.</p>\n<p>Dacă vrei să păstrezi o copie a fiecărei pagini, urmează ghidul pentru <a href=\"/guides/close-duplicate-tabs/\">închiderea filelor duplicate</a>. Pentru a păstra toate paginile și a le găsi mai ușor, <a href=\"/guides/sort-tabs-by-website/\">sortează filele după site</a> ca alternativă.</p>"
+          "html": "<p>După ce închizi file din fereastra extensiei, butonul <strong>Anulează</strong> poate redeschide filele din ultima curățare făcută din această fereastră, cât timp ea rămâne deschisă. Acțiunea din meniul contextual <strong>Închide filele site-ului</strong> nu este înregistrată de butonul Anulează din fereastra extensiei.</p>\n    <p>După închiderea ferestrei pop-up, încercați Ctrl+Shift+T pe Windows/Linux sau Command+Shift+T pe macOS pentru a redeschide filele închise recent. Repetați după nevoie: se folosește istoricul filelor închise al browserului, nu grupul exact închis de TabTools. Recuperarea depinde de ce a păstrat browserul; nu vă bazați pe ea în navigarea privată.</p>\n<p>După o închidere din meniul contextual, consultă filele închise recent sau istoricul browserului. Redeschiderea unui URL nu trebuie considerată o restaurare a datelor nesalvate din formulare sau a tuturor detaliilor stării anterioare a paginii.</p>\n<p>Dacă vrei să păstrezi o copie a fiecărei pagini, urmează ghidul pentru <a href=\"/guides/close-duplicate-tabs/\">închiderea filelor duplicate</a>. Pentru a păstra toate paginile și a le găsi mai ușor, <a href=\"/guides/sort-tabs-by-website/\">sortează filele după site</a> ca alternativă.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Anulează o curățare și organizează ce rămâne",
-          "html": "<p>Păstrează fereastra extensiei deschisă după curățare dacă vrei să verifici rezultatul. <strong>Anulează</strong> poate redeschide filele din ultima acțiune de închidere efectuată din acea fereastră în timpul sesiunii curente. Paginile sunt redeschise după URL; recuperarea conținutului nesalvat nu este garantată. După închiderea ferestrei extensiei, folosește filele închise recent sau istoricul browserului.</p>\n<p>Pentru pagini diferite de care nu mai ai nevoie, vezi <a href=\"/guides/close-tabs-from-same-website/\">cum închizi toate filele aceluiași site</a>. Pentru paginile pe care vrei să le păstrezi, <a href=\"/guides/sort-tabs-by-website/\">sortarea filelor după site</a> așază alături filele asociate fără să le închidă.</p>"
+          "html": "<p>Păstrează fereastra extensiei deschisă după curățare dacă vrei să verifici rezultatul. <strong>Anulează</strong> poate redeschide filele din ultima acțiune de închidere efectuată din acea fereastră în timpul sesiunii curente. Paginile sunt redeschise după URL; recuperarea conținutului nesalvat nu este garantată. După închiderea ferestrei extensiei, folosește filele închise recent sau istoricul browserului.</p>\n    <p>După închiderea ferestrei pop-up, încercați Ctrl+Shift+T pe Windows/Linux sau Command+Shift+T pe macOS pentru a redeschide filele închise recent. Repetați după nevoie: se folosește istoricul filelor închise al browserului, nu grupul exact închis de TabTools. Recuperarea depinde de ce a păstrat browserul; nu vă bazați pe ea în navigarea privată.</p>\n<p>Pentru pagini diferite de care nu mai ai nevoie, vezi <a href=\"/guides/close-tabs-from-same-website/\">cum închizi toate filele aceluiași site</a>. Pentru paginile pe care vrei să le păstrezi, <a href=\"/guides/sort-tabs-by-website/\">sortarea filelor după site</a> așază alături filele asociate fără să le închidă.</p>"
         }
       ]
     },

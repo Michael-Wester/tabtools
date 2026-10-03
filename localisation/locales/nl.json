@@ -139,7 +139,7 @@
   "web_does_tabtools_collect_or_share": "Verzamelt of deelt TabTools mijn gegevens?",
   "web_the_extension_processes_tab_information": "De extensie verwerkt tabinformatie lokaal en stuurt die niet naar de ontwikkelaar of derden. Instellingen en statistieken blijven op je apparaat. De demo op deze website wordt gehost door YouTube; de ingebedde speler en browserwinkels hebben hun eigen privacybeleid.",
   "web_can_i_undo_a_cleanup": "Kan ik opruimen ongedaan maken?",
-  "web_use_undo_immediately_after_closing": "Gebruik Ongedaan maken direct nadat je tabs vanuit de TabTools-pop-up hebt gesloten, zolang de pop-up nog open is. Je kunt pagina’s ook opnieuw openen via de onlangs gesloten tabs van je browser.",
+  "web_use_undo_immediately_after_closing": "Gebruik Ongedaan maken direct nadat je tabs vanuit de TabTools-pop-up hebt gesloten, zolang de pop-up nog open is. Je kunt pagina’s ook opnieuw openen via de onlangs gesloten tabs van je browser. Probeer na het sluiten van de pop-up Ctrl+Shift+T op Windows/Linux of Command+Shift+T op macOS om onlangs gesloten tabbladen opnieuw te openen. Herhaal indien nodig: dit gebruikt de geschiedenis van gesloten tabbladen van de browser, niet precies de groep die TabTools sloot. Herstel hangt af van wat de browser heeft bewaard; vertrouw hier niet op bij privé browsen.",
   "web_free_for_chrome_firefox_and": "Gratis voor Chrome, Firefox en Edge",
   "web_other_browser_stores": "Andere browserwinkels",
   "web_close_tabs_by_site_sort_2": "Sluit tabs per site, sorteer je tabbladbalk en verwijder duplicaten.",

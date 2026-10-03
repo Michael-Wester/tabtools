@@ -779,11 +779,11 @@
     "date": "2026-09-17"
   },
   "web_use_undo_immediately_after_closing": {
-    "source": "0eff9b5fef778418b95ef56b22ea2c06d08b5378eb363e876d53687d1e120f4e",
-    "translation": "47f255c8266f958243c4b6b5dd7ec960db3fb13ce7538a008f26da5c95e0bfe2",
-    "review": "AI self-review",
-    "date": "2026-09-30",
-    "note": "Compared popup references with English; uses vyskakovacie okno for the extension popup and keeps the separate right-click menu distinction. AI self-review only; no native-speaker review."
+    "source": "9e61c2c34292e8ecb286b1a14f99367d3966c202a607aa73f48abd6730896c0a",
+    "translation": "1f5e2ba733cf816adcb0d75960c4b5fe567389c59c520911067dc4ac3e0cfbca",
+    "review": "AI self-review; no native-speaker review",
+    "date": "2026-10-03",
+    "note": "Reviewed added browser shortcut guidance: Ctrl/Command platform mapping, repeated use, browser history versus exact TabTools batch, retained-history and private-browsing limitations."
   },
   "web_free_for_chrome_firefox_and": {
     "source": "4954bb0fac64f3f06a3704c91de0d11ae1484db78d1039563b75fed3a0eef2ce",

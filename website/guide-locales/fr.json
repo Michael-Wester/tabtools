@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Guides sur les onglets du navigateur",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Rouvrir des onglets ou choisir un nettoyage plus limité",
-          "html": "<p>Après une fermeture depuis la fenêtre de l’extension, le bouton <strong>Annuler</strong> peut rouvrir les onglets du dernier nettoyage effectué depuis cette fenêtre, tant qu’elle reste ouverte. L’action du menu contextuel <strong>Fermer les onglets du site</strong> n’est pas enregistrée par le bouton Annuler de la fenêtre de l’extension.</p>\n<p>Après une fermeture depuis le menu contextuel, consultez les onglets récemment fermés ou l’historique de votre navigateur. Rouvrir une URL ne signifie pas restaurer les données non enregistrées d’un formulaire ni tous les détails de l’état précédent d’une page.</p>\n<p>Pour conserver un exemplaire de chaque page, suivez le guide consacré à la <a href=\"/guides/close-duplicate-tabs/\">fermeture des onglets en double</a>. Pour garder toutes vos pages et les repérer plus facilement, <a href=\"/guides/sort-tabs-by-website/\">triez les onglets par site</a> à la place.</p>"
+          "html": "<p>Après une fermeture depuis la fenêtre de l’extension, le bouton <strong>Annuler</strong> peut rouvrir les onglets du dernier nettoyage effectué depuis cette fenêtre, tant qu’elle reste ouverte. L’action du menu contextuel <strong>Fermer les onglets du site</strong> n’est pas enregistrée par le bouton Annuler de la fenêtre de l’extension.</p>\n    <p>Après la fermeture de la fenêtre contextuelle, essayez Ctrl+Shift+T sous Windows/Linux ou Command+Shift+T sous macOS pour rouvrir les onglets récemment fermés. Répétez si nécessaire : le navigateur utilise son historique des onglets fermés, pas le lot exact de TabTools. La récupération dépend des données conservées par le navigateur ; ne comptez pas dessus en navigation privée.</p>\n<p>Après une fermeture depuis le menu contextuel, consultez les onglets récemment fermés ou l’historique de votre navigateur. Rouvrir une URL ne signifie pas restaurer les données non enregistrées d’un formulaire ni tous les détails de l’état précédent d’une page.</p>\n<p>Pour conserver un exemplaire de chaque page, suivez le guide consacré à la <a href=\"/guides/close-duplicate-tabs/\">fermeture des onglets en double</a>. Pour garder toutes vos pages et les repérer plus facilement, <a href=\"/guides/sort-tabs-by-website/\">triez les onglets par site</a> à la place.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Annuler un nettoyage et organiser ce qui reste",
-          "html": "<p>Gardez la fenêtre de l’extension ouverte après le nettoyage pour vérifier le résultat. <strong>Annuler</strong> permet de rouvrir les onglets de la dernière fermeture effectuée depuis cette fenêtre pendant sa session d’ouverture. Les pages sont rouvertes à partir de leur URL ; le contenu non enregistré n’est pas garanti d’être restauré. Une fois la fenêtre fermée, utilisez plutôt les onglets récemment fermés ou l’historique du navigateur.</p>\n<p>Pour les différentes pages dont vous n’avez plus besoin, découvrez <a href=\"/guides/close-tabs-from-same-website/\">comment fermer tous les onglets d’un même site</a>. Pour les pages à conserver, <a href=\"/guides/sort-tabs-by-website/\">le tri des onglets par site</a> rapproche les onglets associés sans les fermer.</p>"
+          "html": "<p>Gardez la fenêtre de l’extension ouverte après le nettoyage pour vérifier le résultat. <strong>Annuler</strong> permet de rouvrir les onglets de la dernière fermeture effectuée depuis cette fenêtre pendant sa session d’ouverture. Les pages sont rouvertes à partir de leur URL ; le contenu non enregistré n’est pas garanti d’être restauré. Une fois la fenêtre fermée, utilisez plutôt les onglets récemment fermés ou l’historique du navigateur.</p>\n    <p>Après la fermeture de la fenêtre contextuelle, essayez Ctrl+Shift+T sous Windows/Linux ou Command+Shift+T sous macOS pour rouvrir les onglets récemment fermés. Répétez si nécessaire : le navigateur utilise son historique des onglets fermés, pas le lot exact de TabTools. La récupération dépend des données conservées par le navigateur ; ne comptez pas dessus en navigation privée.</p>\n<p>Pour les différentes pages dont vous n’avez plus besoin, découvrez <a href=\"/guides/close-tabs-from-same-website/\">comment fermer tous les onglets d’un même site</a>. Pour les pages à conserver, <a href=\"/guides/sort-tabs-by-website/\">le tri des onglets par site</a> rapproche les onglets associés sans les fermer.</p>"
         }
       ]
     },

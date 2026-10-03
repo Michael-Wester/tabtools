@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Anleitungen für Browser-Tabs",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Tabs erneut öffnen oder gezielter aufräumen",
-          "html": "<p>Nach dem Schließen von Tabs über das Popup kann die Schaltfläche <strong>Rückgängig</strong> die Tabs der letzten Bereinigung im Popup erneut öffnen, solange dieses Popup geöffnet bleibt. Der per Rechtsklick ausgeführte Befehl <strong>Tabs dieser Website schließen</strong> wird von der Rückgängig-Schaltfläche des Popups nicht erfasst.</p>\n<p>Nach dem Schließen über das Kontextmenü findest du die Seiten unter den zuletzt geschlossenen Tabs oder im Verlauf deines Browsers. Das erneute Öffnen einer URL bedeutet nicht, dass ungespeicherte Formulareingaben oder sämtliche Details des vorherigen Seitenzustands wiederhergestellt werden.</p>\n<p>Wenn du eine Kopie jeder Seite behalten möchtest, lies die Anleitung zum <a href=\"/guides/close-duplicate-tabs/\">Schließen doppelter Tabs</a>. Wenn du alle Seiten behalten und übersichtlicher anordnen möchtest, kannst du stattdessen <a href=\"/guides/sort-tabs-by-website/\">Tabs nach Website sortieren</a> lassen.</p>"
+          "html": "<p>Nach dem Schließen von Tabs über das Popup kann die Schaltfläche <strong>Rückgängig</strong> die Tabs der letzten Bereinigung im Popup erneut öffnen, solange dieses Popup geöffnet bleibt. Der per Rechtsklick ausgeführte Befehl <strong>Tabs dieser Website schließen</strong> wird von der Rückgängig-Schaltfläche des Popups nicht erfasst.</p>\n    <p>Nach dem Schließen des Popups kannst du mit Ctrl+Shift+T unter Windows/Linux oder Command+Shift+T unter macOS kürzlich geschlossene Tabs wieder öffnen. Wiederhole dies bei Bedarf: Der Browser nutzt seine Liste zuletzt geschlossener Tabs, nicht genau die von TabTools geschlossene Gruppe. Die Wiederherstellung hängt davon ab, was der Browser gespeichert hat; verlasse dich im privaten Modus nicht darauf.</p>\n<p>Nach dem Schließen über das Kontextmenü findest du die Seiten unter den zuletzt geschlossenen Tabs oder im Verlauf deines Browsers. Das erneute Öffnen einer URL bedeutet nicht, dass ungespeicherte Formulareingaben oder sämtliche Details des vorherigen Seitenzustands wiederhergestellt werden.</p>\n<p>Wenn du eine Kopie jeder Seite behalten möchtest, lies die Anleitung zum <a href=\"/guides/close-duplicate-tabs/\">Schließen doppelter Tabs</a>. Wenn du alle Seiten behalten und übersichtlicher anordnen möchtest, kannst du stattdessen <a href=\"/guides/sort-tabs-by-website/\">Tabs nach Website sortieren</a> lassen.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Eine Bereinigung rückgängig machen und den Rest ordnen",
-          "html": "<p>Lass das Popup nach der Bereinigung geöffnet, wenn du das Ergebnis prüfen möchtest. <strong>Rückgängig</strong> kann während derselben Popup-Sitzung die Tabs der letzten Schließaktion im Popup erneut öffnen. Seiten werden anhand ihrer URL geöffnet; ungespeicherte Seiteninhalte werden nicht unbedingt wiederhergestellt. Sobald das Popup geschlossen ist, nutze stattdessen die zuletzt geschlossenen Tabs oder den Verlauf deines Browsers.</p>\n<p>Für unterschiedliche Seiten, mit denen du fertig bist, erfährst du hier, <a href=\"/guides/close-tabs-from-same-website/\">wie du alle Tabs derselben Website schließt</a>. Bei Seiten, die du behalten möchtest, bringt das <a href=\"/guides/sort-tabs-by-website/\">Sortieren nach Website</a> zusammengehörige Tabs nebeneinander, ohne sie zu schließen.</p>"
+          "html": "<p>Lass das Popup nach der Bereinigung geöffnet, wenn du das Ergebnis prüfen möchtest. <strong>Rückgängig</strong> kann während derselben Popup-Sitzung die Tabs der letzten Schließaktion im Popup erneut öffnen. Seiten werden anhand ihrer URL geöffnet; ungespeicherte Seiteninhalte werden nicht unbedingt wiederhergestellt. Sobald das Popup geschlossen ist, nutze stattdessen die zuletzt geschlossenen Tabs oder den Verlauf deines Browsers.</p>\n    <p>Nach dem Schließen des Popups kannst du mit Ctrl+Shift+T unter Windows/Linux oder Command+Shift+T unter macOS kürzlich geschlossene Tabs wieder öffnen. Wiederhole dies bei Bedarf: Der Browser nutzt seine Liste zuletzt geschlossener Tabs, nicht genau die von TabTools geschlossene Gruppe. Die Wiederherstellung hängt davon ab, was der Browser gespeichert hat; verlasse dich im privaten Modus nicht darauf.</p>\n<p>Für unterschiedliche Seiten, mit denen du fertig bist, erfährst du hier, <a href=\"/guides/close-tabs-from-same-website/\">wie du alle Tabs derselben Website schließt</a>. Bei Seiten, die du behalten möchtest, bringt das <a href=\"/guides/sort-tabs-by-website/\">Sortieren nach Website</a> zusammengehörige Tabs nebeneinander, ohne sie zu schließen.</p>"
         }
       ]
     },

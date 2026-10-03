@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Tarayıcı sekmesi rehberleri",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Sekmeleri yeniden açın veya daha sınırlı bir temizlik seçin",
-          "html": "<p>Açılır pencereden sekmeleri kapattıktan sonra, aynı pencere açık kaldığı sürece <strong>Geri al</strong> düğmesi açılır penceredeki son temizliğinizde kapanan sekmeleri yeniden açabilir. Sağ tıklama menüsündeki <strong>Sitenin sekmelerini kapat</strong> işlemi, açılır pencerenin Geri al düğmesine kaydedilmez.</p>\n<p>Bağlam menüsünden kapattıktan sonra tarayıcınızın yakın zamanda kapatılan sekmelerine veya geçmişine bakın. Bir URL’yi yeniden açmak, kaydedilmemiş form girdilerini veya sayfanın önceki durumundaki her ayrıntıyı geri yüklemek anlamına gelmez.</p>\n<p>Amacınız her sayfadan bir kopya tutmaksa <a href=\"/guides/close-duplicate-tabs/\">yinelenen sekmeleri kapatma</a> rehberini izleyin. Tüm sayfalarınızı tutup daha kolay gözden geçirmek için <a href=\"/guides/sort-tabs-by-website/\">sekmeleri siteye göre sıralama</a> yöntemini kullanın.</p>"
+          "html": "<p>Açılır pencereden sekmeleri kapattıktan sonra, aynı pencere açık kaldığı sürece <strong>Geri al</strong> düğmesi açılır penceredeki son temizliğinizde kapanan sekmeleri yeniden açabilir. Sağ tıklama menüsündeki <strong>Sitenin sekmelerini kapat</strong> işlemi, açılır pencerenin Geri al düğmesine kaydedilmez.</p>\n    <p>Açılır pencere kapandıktan sonra, yakın zamanda kapatılan sekmeleri yeniden açmak için Windows/Linux'ta Ctrl+Shift+T veya macOS'te Command+Shift+T tuşlarını deneyin. Gerektiğinde tekrarlayın: bu işlem, TabTools'un kapattığı sekme grubunu birebir geri getirmek yerine tarayıcının kapatılan sekmeler geçmişini kullanır. Kurtarma, tarayıcının sakladığı bilgilere bağlıdır; özel gezinmede buna güvenmeyin.</p>\n<p>Bağlam menüsünden kapattıktan sonra tarayıcınızın yakın zamanda kapatılan sekmelerine veya geçmişine bakın. Bir URL’yi yeniden açmak, kaydedilmemiş form girdilerini veya sayfanın önceki durumundaki her ayrıntıyı geri yüklemek anlamına gelmez.</p>\n<p>Amacınız her sayfadan bir kopya tutmaksa <a href=\"/guides/close-duplicate-tabs/\">yinelenen sekmeleri kapatma</a> rehberini izleyin. Tüm sayfalarınızı tutup daha kolay gözden geçirmek için <a href=\"/guides/sort-tabs-by-website/\">sekmeleri siteye göre sıralama</a> yöntemini kullanın.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Temizliği geri alın ve kalanları düzenleyin",
-          "html": "<p>Sonucu kontrol etmek istiyorsanız temizlikten sonra açılır pencereyi açık tutun. <strong>Geri al</strong> , aynı açılır pencere oturumu boyunca oradaki son kapatma işleminde kapanan sekmeleri yeniden açabilir. Sayfaları URL ile açar; kaydedilmemiş sayfa içeriğinin geri gelmesi garanti değildir. Açılır pencere kapandıktan sonra tarayıcının yakın zamanda kapatılan sekmelerini veya geçmişini kullanın.</p>\n<p>İşinizin bittiği farklı sayfalar için <a href=\"/guides/close-tabs-from-same-website/\">aynı sitenin tüm sekmelerini kapatma</a> rehberine bakın. Tutmak istediğiniz sayfalarda ise <a href=\"/guides/sort-tabs-by-website/\">sekmeleri siteye göre sıralama</a> işlemi, ilgili sekmeleri kapatmadan yan yana getirir.</p>"
+          "html": "<p>Sonucu kontrol etmek istiyorsanız temizlikten sonra açılır pencereyi açık tutun. <strong>Geri al</strong> , aynı açılır pencere oturumu boyunca oradaki son kapatma işleminde kapanan sekmeleri yeniden açabilir. Sayfaları URL ile açar; kaydedilmemiş sayfa içeriğinin geri gelmesi garanti değildir. Açılır pencere kapandıktan sonra tarayıcının yakın zamanda kapatılan sekmelerini veya geçmişini kullanın.</p>\n    <p>Açılır pencere kapandıktan sonra, yakın zamanda kapatılan sekmeleri yeniden açmak için Windows/Linux'ta Ctrl+Shift+T veya macOS'te Command+Shift+T tuşlarını deneyin. Gerektiğinde tekrarlayın: bu işlem, TabTools'un kapattığı sekme grubunu birebir geri getirmek yerine tarayıcının kapatılan sekmeler geçmişini kullanır. Kurtarma, tarayıcının sakladığı bilgilere bağlıdır; özel gezinmede buna güvenmeyin.</p>\n<p>İşinizin bittiği farklı sayfalar için <a href=\"/guides/close-tabs-from-same-website/\">aynı sitenin tüm sekmelerini kapatma</a> rehberine bakın. Tutmak istediğiniz sayfalarda ise <a href=\"/guides/sort-tabs-by-website/\">sekmeleri siteye göre sıralama</a> işlemi, ilgili sekmeleri kapatmadan yan yana getirir.</p>"
         }
       ]
     },

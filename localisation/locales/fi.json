@@ -139,7 +139,7 @@
   "web_does_tabtools_collect_or_share": "Kerääkö tai jakaako TabTools tietojani?",
   "web_the_extension_processes_tab_information": "Laajennus käsittelee välilehtien tiedot paikallisesti eikä lähetä niitä kehittäjälle tai kolmansille osapuolille. Asetukset ja tilastot pysyvät laitteellasi. Sivuston esittelyvideo on YouTubessa; upotetulla soittimella ja selainten kaupoilla on omat tietosuojakäytäntönsä.",
   "web_can_i_undo_a_cleanup": "Voinko kumota siivouksen?",
-  "web_use_undo_immediately_after_closing": "Käytä Kumoa-toimintoa heti suljettuasi välilehtiä TabToolsin ponnahdusikkunasta, kun se on vielä auki. Voit avata sivuja uudelleen myös selaimen äskettäin suljettujen välilehtien luettelosta.",
+  "web_use_undo_immediately_after_closing": "Käytä Kumoa-toimintoa heti suljettuasi välilehtiä TabToolsin ponnahdusikkunasta, kun se on vielä auki. Voit avata sivuja uudelleen myös selaimen äskettäin suljettujen välilehtien luettelosta. Kun ponnahdusikkuna on suljettu, kokeile Ctrl+Shift+T Windowsissa/Linuxissa tai Command+Shift+T macOS:ssä avataksesi äskettäin suljettuja välilehtiä. Toista tarvittaessa: toiminto käyttää selaimen suljettujen välilehtien historiaa, ei täsmälleen TabToolsin sulkemaa joukkoa. Palautus riippuu selaimen säilyttämistä tiedoista; älä luota siihen yksityisessä selaustilassa.",
   "web_free_for_chrome_firefox_and": "Ilmainen Chromeen, Firefoxiin ja Edgeen",
   "web_other_browser_stores": "Muut selainkaupat",
   "web_close_tabs_by_site_sort_2": "Sulje välilehdet sivustoittain, järjestä välilehtipalkki ja poista kaksoiskappaleet.",

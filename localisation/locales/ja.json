@@ -136,7 +136,7 @@
   "web_does_tabtools_collect_or_share": "TabTools はデータを収集・共有しますか？",
   "web_the_extension_processes_tab_information": "拡張機能はタブ情報をローカルで処理し、開発者や第三者に送信しません。設定と整理の統計は端末内に保存されます。このウェブサイトのデモは YouTube で配信されています。埋め込みプレーヤーとブラウザーストアには、それぞれ独自のプライバシーポリシーがあります。",
   "web_can_i_undo_a_cleanup": "閉じたタブを元に戻せますか？",
-  "web_use_undo_immediately_after_closing": "TabTools のポップアップからタブを閉じた直後に、ポップアップを開いたまま元に戻すを使ってください。ブラウザーの最近閉じたタブからページを開き直すこともできます。",
+  "web_use_undo_immediately_after_closing": "TabTools のポップアップからタブを閉じた直後に、ポップアップを開いたまま元に戻すを使ってください。ブラウザーの最近閉じたタブからページを開き直すこともできます。 ポップアップを閉じた後は、Windows/LinuxではCtrl+Shift+T、macOSではCommand+Shift+Tで、最近閉じたタブを開き直せます。必要に応じて繰り返してください。ブラウザーが保持する最近閉じたタブの履歴を使うため、TabToolsで閉じた一連のタブだけを正確に復元するものではありません。復元できるかどうかはブラウザーに残っている情報によります。プライベートブラウジングでは、この方法に頼らないでください。",
   "web_free_for_chrome_firefox_and": "Chrome、Firefox、Edge 向けに無料提供",
   "web_other_browser_stores": "その他のブラウザーストア",
   "web_close_tabs_by_site_sort_2": "サイト別にタブを閉じ、タブバーを並べ替え、重複を削除。",

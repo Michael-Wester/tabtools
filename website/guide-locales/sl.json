@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Vodniki za zavihke brskalnika",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Znova odprite zavihke ali izberite manjši obseg čiščenja",
-          "html": "<p>Po zapiranju zavihkov prek pojavnega okna lahko gumb <strong>Razveljavi</strong> znova odpre zavihke zadnjega čiščenja v tem oknu, dokler ostane odprto. Dejanje iz priročnega menija <strong>Zapri zavihke spletišča</strong> ni zabeleženo za gumb Razveljavi v pojavnem oknu.</p>\n<p>Po zapiranju iz priročnega menija preverite nedavno zaprte zavihke ali zgodovino brskalnika. Ponovnega odpiranja URL-ja ne smete razumeti kot obnovitev neshranjenih podatkov obrazcev ali vseh podrobnosti prejšnjega stanja strani.</p>\n<p>Če želite ohraniti eno kopijo vsake strani, sledite vodniku za <a href=\"/guides/close-duplicate-tabs/\">zapiranje podvojenih zavihkov</a>. Če želite ohraniti vse strani in jih lažje pregledovati, <a href=\"/guides/sort-tabs-by-website/\">razvrstite zavihke po spletišču</a> namesto tega.</p>"
+          "html": "<p>Po zapiranju zavihkov prek pojavnega okna lahko gumb <strong>Razveljavi</strong> znova odpre zavihke zadnjega čiščenja v tem oknu, dokler ostane odprto. Dejanje iz priročnega menija <strong>Zapri zavihke spletišča</strong> ni zabeleženo za gumb Razveljavi v pojavnem oknu.</p>\n    <p>Po zaprtju pojavnega okna poskusite Ctrl+Shift+T v sistemu Windows/Linux ali Command+Shift+T v macOS, da znova odprete nedavno zaprte zavihke. Po potrebi ponovite: uporablja se zgodovina zaprtih zavihkov brskalnika, ne natančno skupina, ki jo je zaprl TabTools. Obnovitev je odvisna od podatkov, ki jih je brskalnik ohranil; pri zasebnem brskanju se nanjo ne zanašajte.</p>\n<p>Po zapiranju iz priročnega menija preverite nedavno zaprte zavihke ali zgodovino brskalnika. Ponovnega odpiranja URL-ja ne smete razumeti kot obnovitev neshranjenih podatkov obrazcev ali vseh podrobnosti prejšnjega stanja strani.</p>\n<p>Če želite ohraniti eno kopijo vsake strani, sledite vodniku za <a href=\"/guides/close-duplicate-tabs/\">zapiranje podvojenih zavihkov</a>. Če želite ohraniti vse strani in jih lažje pregledovati, <a href=\"/guides/sort-tabs-by-website/\">razvrstite zavihke po spletišču</a> namesto tega.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Razveljavite čiščenje in uredite preostale zavihke",
-          "html": "<p>Po čiščenju pustite pojavno okno odprto, če želite preveriti rezultat. <strong>Razveljavi</strong> lahko znova odpre zavihke zadnjega dejanja zapiranja v pojavnem oknu med to sejo. Strani znova odpre po URL-ju; obnovitev neshranjene vsebine ni zagotovljena. Ko se pojavno okno zapre, uporabite nedavno zaprte zavihke ali zgodovino brskalnika.</p>\n<p>Za različne strani, ki jih ne potrebujete več, preberite, <a href=\"/guides/close-tabs-from-same-website/\">kako zapreti vse zavihke istega spletišča</a>. Za strani, ki jih želite ohraniti, <a href=\"/guides/sort-tabs-by-website/\">razvrščanje zavihkov po spletišču</a> postavi povezane zavihke skupaj, ne da bi jih zaprlo.</p>"
+          "html": "<p>Po čiščenju pustite pojavno okno odprto, če želite preveriti rezultat. <strong>Razveljavi</strong> lahko znova odpre zavihke zadnjega dejanja zapiranja v pojavnem oknu med to sejo. Strani znova odpre po URL-ju; obnovitev neshranjene vsebine ni zagotovljena. Ko se pojavno okno zapre, uporabite nedavno zaprte zavihke ali zgodovino brskalnika.</p>\n    <p>Po zaprtju pojavnega okna poskusite Ctrl+Shift+T v sistemu Windows/Linux ali Command+Shift+T v macOS, da znova odprete nedavno zaprte zavihke. Po potrebi ponovite: uporablja se zgodovina zaprtih zavihkov brskalnika, ne natančno skupina, ki jo je zaprl TabTools. Obnovitev je odvisna od podatkov, ki jih je brskalnik ohranil; pri zasebnem brskanju se nanjo ne zanašajte.</p>\n<p>Za različne strani, ki jih ne potrebujete več, preberite, <a href=\"/guides/close-tabs-from-same-website/\">kako zapreti vse zavihke istega spletišča</a>. Za strani, ki jih želite ohraniti, <a href=\"/guides/sort-tabs-by-website/\">razvrščanje zavihkov po spletišču</a> postavi povezane zavihke skupaj, ne da bi jih zaprlo.</p>"
         }
       ]
     },

@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Guias sobre separadores do navegador",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Reabrir separadores ou escolher uma limpeza mais limitada",
-          "html": "<p>Depois de fechar separadores a partir da janela do suplemento, o botão <strong>Anular</strong> pode reabrir os separadores da última limpeza realizada nessa janela enquanto esta permanecer aberta. A ação do menu de contexto <strong>Fechar separadores do site</strong> não fica registada no botão Anular da janela do suplemento.</p>\n<p>Após um fecho pelo menu de contexto, consulte os separadores fechados recentemente ou o histórico do navegador. Reabrir um URL não equivale a restaurar dados de formulários não guardados nem todos os detalhes do estado anterior de uma página.</p>\n<p>Se pretende manter uma cópia de cada página, siga o guia para <a href=\"/guides/close-duplicate-tabs/\">fechar separadores duplicados</a>. Para manter todas as páginas e encontrá-las mais facilmente, <a href=\"/guides/sort-tabs-by-website/\">ordene os separadores por site</a> em alternativa.</p>"
+          "html": "<p>Depois de fechar separadores a partir da janela do suplemento, o botão <strong>Anular</strong> pode reabrir os separadores da última limpeza realizada nessa janela enquanto esta permanecer aberta. A ação do menu de contexto <strong>Fechar separadores do site</strong> não fica registada no botão Anular da janela do suplemento.</p>\n    <p>Depois de fechar a janela emergente, experimente Ctrl+Shift+T no Windows/Linux ou Command+Shift+T no macOS para reabrir separadores fechados recentemente. Repita conforme necessário: é utilizado o histórico de separadores fechados do navegador, não o grupo exato fechado pelo TabTools. A recuperação depende do que o navegador guardou; não conte com ela na navegação privada.</p>\n<p>Após um fecho pelo menu de contexto, consulte os separadores fechados recentemente ou o histórico do navegador. Reabrir um URL não equivale a restaurar dados de formulários não guardados nem todos os detalhes do estado anterior de uma página.</p>\n<p>Se pretende manter uma cópia de cada página, siga o guia para <a href=\"/guides/close-duplicate-tabs/\">fechar separadores duplicados</a>. Para manter todas as páginas e encontrá-las mais facilmente, <a href=\"/guides/sort-tabs-by-website/\">ordene os separadores por site</a> em alternativa.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Anular uma limpeza e organizar o que fica",
-          "html": "<p>Mantenha a janela do suplemento aberta após a limpeza se pretender verificar o resultado. <strong>Anular</strong> pode reabrir os separadores da última ação de fecho realizada a partir da janela do suplemento durante essa sessão. As páginas são reabertas pelo URL; a recuperação de conteúdo não guardado não é garantida. Depois de fechar a janela do suplemento, utilize os separadores fechados recentemente ou o histórico do navegador.</p>\n<p>Para páginas diferentes de que já não precisa, veja <a href=\"/guides/close-tabs-from-same-website/\">como fechar todos os separadores do mesmo site</a>. Para as páginas que pretende manter, <a href=\"/guides/sort-tabs-by-website/\">a ordenação de separadores por site</a> junta os separadores relacionados sem os fechar.</p>"
+          "html": "<p>Mantenha a janela do suplemento aberta após a limpeza se pretender verificar o resultado. <strong>Anular</strong> pode reabrir os separadores da última ação de fecho realizada a partir da janela do suplemento durante essa sessão. As páginas são reabertas pelo URL; a recuperação de conteúdo não guardado não é garantida. Depois de fechar a janela do suplemento, utilize os separadores fechados recentemente ou o histórico do navegador.</p>\n    <p>Depois de fechar a janela emergente, experimente Ctrl+Shift+T no Windows/Linux ou Command+Shift+T no macOS para reabrir separadores fechados recentemente. Repita conforme necessário: é utilizado o histórico de separadores fechados do navegador, não o grupo exato fechado pelo TabTools. A recuperação depende do que o navegador guardou; não conte com ela na navegação privada.</p>\n<p>Para páginas diferentes de que já não precisa, veja <a href=\"/guides/close-tabs-from-same-website/\">como fechar todos os separadores do mesmo site</a>. Para as páginas que pretende manter, <a href=\"/guides/sort-tabs-by-website/\">a ordenação de separadores por site</a> junta os separadores relacionados sem os fechar.</p>"
         }
       ]
     },

@@ -139,7 +139,7 @@
   "web_does_tabtools_collect_or_share": "TabTools sekme bilgilerini toplar veya paylaşır mı?",
   "web_the_extension_processes_tab_information": "Uzantı sekme bilgilerini yerel olarak işler; geliştiriciye veya üçüncü taraflara göndermez. Ayarlar ve temizleme istatistikleri cihazınızda kalır. Bu sitedeki tanıtım YouTube'da barındırılır; gömülü oynatıcının ve tarayıcı mağazalarının kendi gizlilik politikaları vardır.",
   "web_can_i_undo_a_cleanup": "Bir temizleme işlemini geri alabilir miyim?",
-  "web_use_undo_immediately_after_closing": "TabTools açılır penceresinden sekmeleri kapattıktan hemen sonra, pencere hâlâ açıkken Geri al'ı kullanın. Sayfaları yeniden açmak için tarayıcınızın son kapatılan sekmelerini de kullanabilirsiniz.",
+  "web_use_undo_immediately_after_closing": "TabTools açılır penceresinden sekmeleri kapattıktan hemen sonra, pencere hâlâ açıkken Geri al'ı kullanın. Sayfaları yeniden açmak için tarayıcınızın son kapatılan sekmelerini de kullanabilirsiniz. Açılır pencere kapandıktan sonra, yakın zamanda kapatılan sekmeleri yeniden açmak için Windows/Linux'ta Ctrl+Shift+T veya macOS'te Command+Shift+T tuşlarını deneyin. Gerektiğinde tekrarlayın: bu işlem, TabTools'un kapattığı sekme grubunu birebir geri getirmek yerine tarayıcının kapatılan sekmeler geçmişini kullanır. Kurtarma, tarayıcının sakladığı bilgilere bağlıdır; özel gezinmede buna güvenmeyin.",
   "web_free_for_chrome_firefox_and": "Chrome, Firefox ve Edge için ücretsiz",
   "web_other_browser_stores": "Diğer tarayıcı mağazaları",
   "web_close_tabs_by_site_sort_2": "Sekmeleri siteye göre kapatın, sekme çubuğunu sıralayın ve yinelenenleri temizleyin.",

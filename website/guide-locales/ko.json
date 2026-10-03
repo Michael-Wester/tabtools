@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "브라우저 탭 가이드",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "탭을 다시 열거나 정리 범위를 줄이기",
-          "html": "<p>팝업을 통해 탭을 닫은 뒤에는, 해당 팝업이 계속 열려 있는 동안 <strong>실행 취소</strong> 버튼으로 마지막 팝업 정리에서 닫은 탭을 다시 열 수 있습니다. 마우스 오른쪽 버튼 메뉴의 <strong>이 사이트의 탭 닫기</strong> 작업은 팝업의 실행 취소 버튼에 기록되지 않습니다.</p>\n<p>마우스 오른쪽 버튼 메뉴에서 닫았다면 브라우저의 최근에 닫은 탭이나 방문 기록을 확인하세요. URL을 다시 연다고 저장하지 않은 양식 입력이나 페이지의 이전 상태가 모든 세부 사항까지 복원되는 것은 아닙니다.</p>\n<p>페이지마다 하나씩만 남기려는 경우에는 <a href=\"/guides/close-duplicate-tabs/\">중복 탭 닫기</a> 가이드를 따르세요. 모든 페이지를 유지하면서 더 쉽게 살펴보려면 <a href=\"/guides/sort-tabs-by-website/\">사이트별로 탭 정렬</a> 방법을 사용하세요.</p>"
+          "html": "<p>팝업을 통해 탭을 닫은 뒤에는, 해당 팝업이 계속 열려 있는 동안 <strong>실행 취소</strong> 버튼으로 마지막 팝업 정리에서 닫은 탭을 다시 열 수 있습니다. 마우스 오른쪽 버튼 메뉴의 <strong>이 사이트의 탭 닫기</strong> 작업은 팝업의 실행 취소 버튼에 기록되지 않습니다.</p>\n    <p>팝업을 닫은 뒤에는 Windows/Linux에서 Ctrl+Shift+T, macOS에서 Command+Shift+T를 눌러 최근에 닫은 탭을 다시 열어 보세요. 필요하면 반복하세요. 이 기능은 브라우저의 최근에 닫은 탭 기록을 사용하며 TabTools가 닫은 탭 묶음을 정확히 복원하는 것은 아닙니다. 복구 가능 여부는 브라우저에 남아 있는 기록에 따라 달라지므로 비공개 탐색에서는 이 방법에 의존하지 마세요.</p>\n<p>마우스 오른쪽 버튼 메뉴에서 닫았다면 브라우저의 최근에 닫은 탭이나 방문 기록을 확인하세요. URL을 다시 연다고 저장하지 않은 양식 입력이나 페이지의 이전 상태가 모든 세부 사항까지 복원되는 것은 아닙니다.</p>\n<p>페이지마다 하나씩만 남기려는 경우에는 <a href=\"/guides/close-duplicate-tabs/\">중복 탭 닫기</a> 가이드를 따르세요. 모든 페이지를 유지하면서 더 쉽게 살펴보려면 <a href=\"/guides/sort-tabs-by-website/\">사이트별로 탭 정렬</a> 방법을 사용하세요.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "정리를 취소하고 남은 탭 정리하기",
-          "html": "<p>정리 결과를 확인하려면 정리 후에도 팝업을 열어 두세요. <strong>실행 취소</strong>는 해당 팝업이 열려 있는 동안 마지막 팝업 닫기 작업에서 닫은 탭을 다시 열 수 있습니다. URL로 페이지를 다시 여는 것이므로 저장하지 않은 페이지 내용은 복원되지 않을 수 있습니다. 팝업을 닫은 뒤에는 브라우저의 최근에 닫은 탭이나 방문 기록을 사용하세요.</p>\n<p>다 쓴 서로 다른 페이지를 닫으려면 <a href=\"/guides/close-tabs-from-same-website/\">같은 사이트의 탭을 모두 닫는 방법</a>을 참고하세요. 남기고 싶은 페이지는 <a href=\"/guides/sort-tabs-by-website/\">사이트별로 탭 정렬</a> 기능으로 닫지 않고 관련 탭을 한데 모을 수 있습니다.</p>"
+          "html": "<p>정리 결과를 확인하려면 정리 후에도 팝업을 열어 두세요. <strong>실행 취소</strong>는 해당 팝업이 열려 있는 동안 마지막 팝업 닫기 작업에서 닫은 탭을 다시 열 수 있습니다. URL로 페이지를 다시 여는 것이므로 저장하지 않은 페이지 내용은 복원되지 않을 수 있습니다. 팝업을 닫은 뒤에는 브라우저의 최근에 닫은 탭이나 방문 기록을 사용하세요.</p>\n    <p>팝업을 닫은 뒤에는 Windows/Linux에서 Ctrl+Shift+T, macOS에서 Command+Shift+T를 눌러 최근에 닫은 탭을 다시 열어 보세요. 필요하면 반복하세요. 이 기능은 브라우저의 최근에 닫은 탭 기록을 사용하며 TabTools가 닫은 탭 묶음을 정확히 복원하는 것은 아닙니다. 복구 가능 여부는 브라우저에 남아 있는 기록에 따라 달라지므로 비공개 탐색에서는 이 방법에 의존하지 마세요.</p>\n<p>다 쓴 서로 다른 페이지를 닫으려면 <a href=\"/guides/close-tabs-from-same-website/\">같은 사이트의 탭을 모두 닫는 방법</a>을 참고하세요. 남기고 싶은 페이지는 <a href=\"/guides/sort-tabs-by-website/\">사이트별로 탭 정렬</a> 기능으로 닫지 않고 관련 탭을 한데 모을 수 있습니다.</p>"
         }
       ]
     },

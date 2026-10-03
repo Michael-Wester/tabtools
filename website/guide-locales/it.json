@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Guide alle schede del browser",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Riaprire le schede o scegliere una pulizia più limitata",
-          "html": "<p>Dopo aver chiuso schede dal popup, il pulsante <strong>Annulla</strong> può riaprire le schede dell’ultima pulizia effettuata dal popup, finché questo rimane aperto. L’azione del menu contestuale <strong>Chiudi le schede del sito</strong> non viene registrata dal pulsante Annulla del popup.</p>\n<p>Dopo una chiusura dal menu contestuale, consulta le schede chiuse di recente o la cronologia del browser. Riaprire un URL non equivale a ripristinare dati non salvati nei moduli o ogni dettaglio dello stato precedente di una pagina.</p>\n<p>Per conservare una copia di ogni pagina, segui la guida per <a href=\"/guides/close-duplicate-tabs/\">chiudere le schede duplicate</a>. Per mantenere tutte le pagine e renderle più facili da individuare, <a href=\"/guides/sort-tabs-by-website/\">ordina le schede per sito</a> in alternativa.</p>"
+          "html": "<p>Dopo aver chiuso schede dal popup, il pulsante <strong>Annulla</strong> può riaprire le schede dell’ultima pulizia effettuata dal popup, finché questo rimane aperto. L’azione del menu contestuale <strong>Chiudi le schede del sito</strong> non viene registrata dal pulsante Annulla del popup.</p>\n    <p>Dopo aver chiuso il popup, prova Ctrl+Shift+T su Windows/Linux o Command+Shift+T su macOS per riaprire le schede chiuse di recente. Ripeti se necessario: viene usata la cronologia delle schede chiuse del browser, non il gruppo esatto chiuso da TabTools. Il recupero dipende da ciò che il browser ha conservato; non farci affidamento nella navigazione privata.</p>\n<p>Dopo una chiusura dal menu contestuale, consulta le schede chiuse di recente o la cronologia del browser. Riaprire un URL non equivale a ripristinare dati non salvati nei moduli o ogni dettaglio dello stato precedente di una pagina.</p>\n<p>Per conservare una copia di ogni pagina, segui la guida per <a href=\"/guides/close-duplicate-tabs/\">chiudere le schede duplicate</a>. Per mantenere tutte le pagine e renderle più facili da individuare, <a href=\"/guides/sort-tabs-by-website/\">ordina le schede per sito</a> in alternativa.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Annullare una pulizia e organizzare ciò che rimane",
-          "html": "<p>Tieni aperto il popup dopo la pulizia se vuoi controllare il risultato. <strong>Annulla</strong> può riaprire le schede dell’ultima azione di chiusura effettuata dal popup durante quella sessione. Riapre le pagine tramite URL; il recupero dei contenuti non salvati non è garantito. Una volta chiuso il popup, usa le schede chiuse di recente o la cronologia del browser.</p>\n<p>Per le diverse pagine che non ti servono più, scopri <a href=\"/guides/close-tabs-from-same-website/\">come chiudere tutte le schede dello stesso sito</a>. Per le pagine da conservare, <a href=\"/guides/sort-tabs-by-website/\">l’ordinamento delle schede per sito</a> avvicina le schede correlate senza chiuderle.</p>"
+          "html": "<p>Tieni aperto il popup dopo la pulizia se vuoi controllare il risultato. <strong>Annulla</strong> può riaprire le schede dell’ultima azione di chiusura effettuata dal popup durante quella sessione. Riapre le pagine tramite URL; il recupero dei contenuti non salvati non è garantito. Una volta chiuso il popup, usa le schede chiuse di recente o la cronologia del browser.</p>\n    <p>Dopo aver chiuso il popup, prova Ctrl+Shift+T su Windows/Linux o Command+Shift+T su macOS per riaprire le schede chiuse di recente. Ripeti se necessario: viene usata la cronologia delle schede chiuse del browser, non il gruppo esatto chiuso da TabTools. Il recupero dipende da ciò che il browser ha conservato; non farci affidamento nella navigazione privata.</p>\n<p>Per le diverse pagine che non ti servono più, scopri <a href=\"/guides/close-tabs-from-same-website/\">come chiudere tutte le schede dello stesso sito</a>. Per le pagine da conservare, <a href=\"/guides/sort-tabs-by-website/\">l’ordinamento delle schede per sito</a> avvicina le schede correlate senza chiuderle.</p>"
         }
       ]
     },

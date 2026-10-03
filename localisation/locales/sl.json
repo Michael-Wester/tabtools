@@ -145,7 +145,7 @@
   "web_does_tabtools_collect_or_share": "Ali TabTools zbira ali deli moje podatke?",
   "web_the_extension_processes_tab_information": "Razširitev obdeluje podatke o zavihkih lokalno in jih ne pošilja razvijalcu ali tretjim osebam. Nastavitve in statistika ostanejo v napravi. Predstavitev na tej strani gostuje na platformi YouTube; vdelani predvajalnik in trgovine brskalnikov imajo svoje pravilnike o zasebnosti.",
   "web_can_i_undo_a_cleanup": "Ali lahko razveljavim čiščenje?",
-  "web_use_undo_immediately_after_closing": "Uporabite Razveljavi takoj po zapiranju zavihkov iz pojavnega okna TabTools, dokler je še odprto. Strani lahko znova odprete tudi prek nedavno zaprtih zavihkov brskalnika.",
+  "web_use_undo_immediately_after_closing": "Uporabite Razveljavi takoj po zapiranju zavihkov iz pojavnega okna TabTools, dokler je še odprto. Strani lahko znova odprete tudi prek nedavno zaprtih zavihkov brskalnika. Po zaprtju pojavnega okna poskusite Ctrl+Shift+T v sistemu Windows/Linux ali Command+Shift+T v macOS, da znova odprete nedavno zaprte zavihke. Po potrebi ponovite: uporablja se zgodovina zaprtih zavihkov brskalnika, ne natančno skupina, ki jo je zaprl TabTools. Obnovitev je odvisna od podatkov, ki jih je brskalnik ohranil; pri zasebnem brskanju se nanjo ne zanašajte.",
   "web_free_for_chrome_firefox_and": "Brezplačno za Chrome, Firefox in Edge",
   "web_other_browser_stores": "Druge trgovine brskalnikov",
   "web_close_tabs_by_site_sort_2": "Zaprite zavihke po spletišču, uredite vrstico zavihkov in odstranite dvojnike.",

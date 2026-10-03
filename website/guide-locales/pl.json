@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Poradniki dotyczące kart przeglądarki",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Ponowne otwieranie kart lub mniejsze porządki",
-          "html": "<p>Po zamknięciu kart przez okno podręczne przycisk <strong>Cofnij</strong> może ponownie otworzyć karty z ostatniego sprzątania w tym oknie, dopóki pozostaje ono otwarte. Czynność z menu prawego przycisku myszy <strong>Zamknij karty witryny</strong> nie jest rejestrowana przez przycisk Cofnij w oknie podręcznym.</p>\n<p>Po zamknięciu przez menu kontekstowe zajrzyj do ostatnio zamkniętych kart lub historii przeglądarki. Ponownego otwarcia adresu URL nie należy traktować jako przywrócenia niezapisanych danych formularza ani wszystkich szczegółów poprzedniego stanu strony.</p>\n<p>Jeśli chcesz zachować jedną kopię każdej strony, skorzystaj z poradnika o <a href=\"/guides/close-duplicate-tabs/\">zamykaniu duplikatów kart</a>. Aby zachować wszystkie strony i łatwiej je przeglądać, możesz zamiast tego <a href=\"/guides/sort-tabs-by-website/\">posortować karty według witryn</a> i uporządkować pasek kart.</p>"
+          "html": "<p>Po zamknięciu kart przez okno podręczne przycisk <strong>Cofnij</strong> może ponownie otworzyć karty z ostatniego sprzątania w tym oknie, dopóki pozostaje ono otwarte. Czynność z menu prawego przycisku myszy <strong>Zamknij karty witryny</strong> nie jest rejestrowana przez przycisk Cofnij w oknie podręcznym.</p>\n    <p>Po zamknięciu okienka wypróbuj Ctrl+Shift+T w Windows/Linux lub Command+Shift+T w macOS, aby ponownie otworzyć ostatnio zamknięte karty. Powtórz w razie potrzeby: ta funkcja korzysta z historii zamkniętych kart przeglądarki, a nie z dokładnej grupy zamkniętej przez TabTools. Przywracanie zależy od danych zachowanych przez przeglądarkę; nie polegaj na nim w trybie prywatnym.</p>\n<p>Po zamknięciu przez menu kontekstowe zajrzyj do ostatnio zamkniętych kart lub historii przeglądarki. Ponownego otwarcia adresu URL nie należy traktować jako przywrócenia niezapisanych danych formularza ani wszystkich szczegółów poprzedniego stanu strony.</p>\n<p>Jeśli chcesz zachować jedną kopię każdej strony, skorzystaj z poradnika o <a href=\"/guides/close-duplicate-tabs/\">zamykaniu duplikatów kart</a>. Aby zachować wszystkie strony i łatwiej je przeglądać, możesz zamiast tego <a href=\"/guides/sort-tabs-by-website/\">posortować karty według witryn</a> i uporządkować pasek kart.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Cofanie porządków i organizowanie pozostałych kart",
-          "html": "<p>Po porządkowaniu pozostaw okno podręczne otwarte, jeśli chcesz sprawdzić wynik. <strong>Cofnij</strong> może ponownie otworzyć karty z ostatniej czynności zamykania w oknie podręcznym w trakcie tej samej sesji okna. Strony otwierają się na podstawie adresów URL; przywrócenie niezapisanej zawartości nie jest gwarantowane. Gdy zamkniesz okno podręczne, użyj zamiast tego ostatnio zamkniętych kart lub historii przeglądarki.</p>\n<p>W przypadku różnych stron, których już nie potrzebujesz, zobacz, <a href=\"/guides/close-tabs-from-same-website/\">jak zamknąć wszystkie karty tej samej witryny</a>. W przypadku stron, które chcesz zachować, <a href=\"/guides/sort-tabs-by-website/\">sortowanie kart według witryn</a> ustawia powiązane karty obok siebie bez ich zamykania.</p>"
+          "html": "<p>Po porządkowaniu pozostaw okno podręczne otwarte, jeśli chcesz sprawdzić wynik. <strong>Cofnij</strong> może ponownie otworzyć karty z ostatniej czynności zamykania w oknie podręcznym w trakcie tej samej sesji okna. Strony otwierają się na podstawie adresów URL; przywrócenie niezapisanej zawartości nie jest gwarantowane. Gdy zamkniesz okno podręczne, użyj zamiast tego ostatnio zamkniętych kart lub historii przeglądarki.</p>\n    <p>Po zamknięciu okienka wypróbuj Ctrl+Shift+T w Windows/Linux lub Command+Shift+T w macOS, aby ponownie otworzyć ostatnio zamknięte karty. Powtórz w razie potrzeby: ta funkcja korzysta z historii zamkniętych kart przeglądarki, a nie z dokładnej grupy zamkniętej przez TabTools. Przywracanie zależy od danych zachowanych przez przeglądarkę; nie polegaj na nim w trybie prywatnym.</p>\n<p>W przypadku różnych stron, których już nie potrzebujesz, zobacz, <a href=\"/guides/close-tabs-from-same-website/\">jak zamknąć wszystkie karty tej samej witryny</a>. W przypadku stron, które chcesz zachować, <a href=\"/guides/sort-tabs-by-website/\">sortowanie kart według witryn</a> ustawia powiązane karty obok siebie bez ich zamykania.</p>"
         }
       ]
     },
