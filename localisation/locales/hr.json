@@ -142,7 +142,7 @@
   "web_does_tabtools_collect_or_share": "Prikuplja li ili dijeli TabTools moje podatke?",
   "web_the_extension_processes_tab_information": "Proširenje obrađuje podatke o karticama lokalno i ne šalje ih razvojnom programeru ni trećim stranama. Postavke i statistika ostaju na uređaju. Demonstracija na ovoj stranici smještena je na YouTubeu; ugrađeni reproduktor i trgovine preglednika imaju vlastita pravila privatnosti.",
   "web_can_i_undo_a_cleanup": "Mogu li poništiti čišćenje?",
-  "web_use_undo_immediately_after_closing": "Koristite Poništi odmah nakon zatvaranja kartica iz skočnog prozora TabToolsa, dok je još otvoren. Stranice možete ponovno otvoriti i putem nedavno zatvorenih kartica preglednika.",
+  "web_use_undo_immediately_after_closing": "Koristite Poništi odmah nakon zatvaranja kartica iz skočnog prozora TabToolsa, dok je još otvoren. Stranice možete ponovno otvoriti i putem nedavno zatvorenih kartica preglednika. Nakon zatvaranja skočnog prozora pokušajte Ctrl+Shift+T u sustavu Windows/Linux ili Command+Shift+T u sustavu macOS za ponovno otvaranje nedavno zatvorenih kartica. Ponovite po potrebi: koristi se povijest zatvorenih kartica preglednika, a ne točna skupina koju je zatvorio TabTools. Vraćanje ovisi o tome što je preglednik sačuvao; ne oslanjajte se na njega u privatnom pregledavanju.",
   "web_free_for_chrome_firefox_and": "Besplatno za Chrome, Firefox i Edge",
   "web_other_browser_stores": "Ostale trgovine preglednika",
   "web_close_tabs_by_site_sort_2": "Zatvorite kartice po web-mjestu, uredite traku kartica i uklonite duplikate.",

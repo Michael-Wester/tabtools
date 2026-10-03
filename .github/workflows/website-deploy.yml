@@ -55,6 +55,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - name: Check deployment credential
+        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
@@ -96,6 +97,8 @@ jobs:
             echo 'branch=manual-preview' >> "$GITHUB_OUTPUT"
           fi
       - name: Deploy authored static files
+        # Draft PRs run validation without publishing a preview.
+        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -86,6 +86,7 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
         id: "undo-and-next-steps",
         title: "Reopen tabs or choose a smaller cleanup",
         html: `<p>After closing tabs through the popup, its <strong>Undo</strong> button can reopen the tabs from your latest popup cleanup while that popup remains open. The right-click <strong>Close site tabs</strong> action is not recorded by the popup’s Undo button.</p>
+    <p>After the popup closes, try Ctrl+Shift+T on Windows/Linux or Command+Shift+T on macOS to reopen recently closed tabs. Repeat as needed: this uses the browser’s recently closed history, not the exact TabTools batch. Recovery depends on what the browser retained; do not rely on it in private browsing.</p>
 <p>After a context-menu close, look in your browser’s recently closed tabs or history. Reopening a URL should not be treated as restoring unsaved form input or every detail of a page’s previous state.</p>
 <p>If your goal is to retain one copy of each page, follow the guide to <a href="/guides/close-duplicate-tabs/">closing duplicate tabs</a>. To keep all your pages and make them easier to scan, <a href="/guides/sort-tabs-by-website/">sort tabs by website</a> instead.</p>`,
       },
@@ -170,6 +171,7 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
         id: "undo-and-organise",
         title: "Undo a cleanup and organise what remains",
         html: `<p>Keep the popup open after cleanup if you want to check the result. <strong>Undo</strong> can reopen the tabs from the latest popup close action during that popup session. It reopens pages by URL; unsaved page content is not guaranteed to return. Once the popup is closed, use your browser’s recently closed tabs or history instead.</p>
+    <p>After the popup closes, try Ctrl+Shift+T on Windows/Linux or Command+Shift+T on macOS to reopen recently closed tabs. Repeat as needed: this uses the browser’s recently closed history, not the exact TabTools batch. Recovery depends on what the browser retained; do not rely on it in private browsing.</p>
 <p>For different pages you have finished with, see <a href="/guides/close-tabs-from-same-website/">how to close all tabs from the same website</a>. For pages you want to keep, <a href="/guides/sort-tabs-by-website/">sorting tabs by website</a> brings related tabs together without closing them.</p>`,
       },
     ],

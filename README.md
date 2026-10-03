@@ -36,6 +36,8 @@ Bring tabs from the same website together with **Sort tabs**.
 - Use quick actions to sort tabs, close duplicates, or undo the last close.
 - Adjust the minimum tab count for suggestions and the inactive threshold in Settings.
 
+TabTools Undo restores the latest popup cleanup while that popup remains open. After the popup closes, try Ctrl+Shift+T on Windows/Linux or Command+Shift+T on macOS to reopen recently closed tabs. Repeat as needed: this uses the browser’s recently closed history, not the exact TabTools batch. Recovery depends on what the browser retained; do not rely on it in private browsing.
+
 ## Build
 
 PowerShell (no Node needed):

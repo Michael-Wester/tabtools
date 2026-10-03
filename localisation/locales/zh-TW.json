@@ -136,7 +136,7 @@
   "web_does_tabtools_collect_or_share": "TabTools 會蒐集或分享我的資料嗎？",
   "web_the_extension_processes_tab_information": "擴充功能在本機處理分頁資訊，不會傳送給開發者或第三方。設定與清理統計資料保留在你的裝置上。本網站的示範由 YouTube 託管；嵌入式播放器及瀏覽器商店各有自己的隱私權政策。",
   "web_can_i_undo_a_cleanup": "可以復原清理操作嗎？",
-  "web_use_undo_immediately_after_closing": "從 TabTools 彈出視窗關閉分頁後，請在視窗仍開啟時立即使用復原。也可以透過瀏覽器的最近關閉分頁清單重新開啟網頁。",
+  "web_use_undo_immediately_after_closing": "從 TabTools 彈出視窗關閉分頁後，請在視窗仍開啟時立即使用復原。也可以透過瀏覽器的最近關閉分頁清單重新開啟網頁。 關閉彈出視窗後，可嘗試在 Windows/Linux 上按 Ctrl+Shift+T，或在 macOS 上按 Command+Shift+T，重新開啟最近關閉的分頁。可視需要重複操作：此功能使用瀏覽器的最近關閉記錄，並非精確還原 TabTools 關閉的那一批分頁。能否還原取決於瀏覽器保留的記錄；請勿在私密瀏覽模式下依賴此方法。",
   "web_free_for_chrome_firefox_and": "免費供 Chrome、Firefox 和 Edge 使用",
   "web_other_browser_stores": "其他瀏覽器商店",
   "web_close_tabs_by_site_sort_2": "依網站關閉分頁、整理分頁列並移除重複項目。",

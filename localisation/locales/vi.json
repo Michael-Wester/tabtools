@@ -136,7 +136,7 @@
   "web_does_tabtools_collect_or_share": "TabTools có thu thập hoặc chia sẻ thông tin thẻ không?",
   "web_the_extension_processes_tab_information": "Tiện ích xử lý thông tin thẻ cục bộ và không gửi thông tin đó cho nhà phát triển hay bên thứ ba. Cài đặt và thống kê dọn thẻ ở lại trên thiết bị của bạn. Video minh họa trên trang này do YouTube lưu trữ; trình phát nhúng và các cửa hàng tiện ích có chính sách quyền riêng tư riêng.",
   "web_can_i_undo_a_cleanup": "Tôi có thể hoàn tác việc dọn thẻ không?",
-  "web_use_undo_immediately_after_closing": "Dùng Hoàn tác ngay sau khi đóng thẻ từ cửa sổ bật lên của TabTools, khi cửa sổ đó vẫn mở. Bạn cũng có thể dùng danh sách thẻ đã đóng gần đây của trình duyệt để mở lại trang.",
+  "web_use_undo_immediately_after_closing": "Dùng Hoàn tác ngay sau khi đóng thẻ từ cửa sổ bật lên của TabTools, khi cửa sổ đó vẫn mở. Bạn cũng có thể dùng danh sách thẻ đã đóng gần đây của trình duyệt để mở lại trang. Sau khi đóng cửa sổ bật lên, hãy thử Ctrl+Shift+T trên Windows/Linux hoặc Command+Shift+T trên macOS để mở lại các thẻ vừa đóng. Lặp lại nếu cần: thao tác này dùng lịch sử thẻ đã đóng của trình duyệt, không khôi phục chính xác nhóm thẻ mà TabTools đã đóng. Khả năng khôi phục tùy thuộc vào dữ liệu trình duyệt còn lưu; đừng dựa vào cách này khi duyệt web riêng tư.",
   "web_free_for_chrome_firefox_and": "Miễn phí cho Chrome, Firefox và Edge",
   "web_other_browser_stores": "Các cửa hàng trình duyệt khác",
   "web_close_tabs_by_site_sort_2": "Đóng thẻ theo trang web, sắp xếp thanh thẻ và dọn thẻ trùng lặp.",

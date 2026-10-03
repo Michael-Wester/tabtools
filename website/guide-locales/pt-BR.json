@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Guias sobre abas do navegador",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Reabrir abas ou escolher uma limpeza menor",
-          "html": "<p>Depois de fechar abas pelo popup, o botão <strong>Desfazer</strong> pode reabrir as abas da última limpeza feita por ele enquanto o popup continuar aberto. A ação do menu de contexto <strong>Fechar abas do site</strong> não é registrada pelo botão Desfazer do popup.</p>\n<p>Depois de um fechamento pelo menu de contexto, consulte as abas fechadas recentemente ou o histórico do navegador. Reabrir um URL não deve ser entendido como restaurar dados de formulários não salvos nem todos os detalhes do estado anterior de uma página.</p>\n<p>Se a intenção for manter uma cópia de cada página, siga o guia para <a href=\"/guides/close-duplicate-tabs/\">fechar abas duplicadas</a>. Para manter todas as páginas e encontrá-las com mais facilidade, <a href=\"/guides/sort-tabs-by-website/\">ordene as abas por site</a> como alternativa.</p>"
+          "html": "<p>Depois de fechar abas pelo popup, o botão <strong>Desfazer</strong> pode reabrir as abas da última limpeza feita por ele enquanto o popup continuar aberto. A ação do menu de contexto <strong>Fechar abas do site</strong> não é registrada pelo botão Desfazer do popup.</p>\n    <p>Após fechar o popup, tente Ctrl+Shift+T no Windows/Linux ou Command+Shift+T no macOS para reabrir abas fechadas recentemente. Repita conforme necessário: isso usa o histórico de abas fechadas do navegador, não o grupo exato fechado pelo TabTools. A recuperação depende do que o navegador manteve; não conte com ela na navegação privada.</p>\n<p>Depois de um fechamento pelo menu de contexto, consulte as abas fechadas recentemente ou o histórico do navegador. Reabrir um URL não deve ser entendido como restaurar dados de formulários não salvos nem todos os detalhes do estado anterior de uma página.</p>\n<p>Se a intenção for manter uma cópia de cada página, siga o guia para <a href=\"/guides/close-duplicate-tabs/\">fechar abas duplicadas</a>. Para manter todas as páginas e encontrá-las com mais facilidade, <a href=\"/guides/sort-tabs-by-website/\">ordene as abas por site</a> como alternativa.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Desfazer uma limpeza e organizar o que resta",
-          "html": "<p>Mantenha o popup aberto após a limpeza se quiser conferir o resultado. <strong>Desfazer</strong> pode reabrir as abas da última ação de fechamento feita pelo popup durante aquela sessão. As páginas são reabertas pelo URL; não há garantia de recuperar conteúdo não salvo. Depois de fechar o popup, use as abas fechadas recentemente ou o histórico do navegador.</p>\n<p>Para páginas diferentes que você não precisa mais, veja <a href=\"/guides/close-tabs-from-same-website/\">como fechar todas as abas do mesmo site</a>. Para as páginas que quer manter, <a href=\"/guides/sort-tabs-by-website/\">a ordenação de abas por site</a> reúne as abas relacionadas sem fechá-las.</p>"
+          "html": "<p>Mantenha o popup aberto após a limpeza se quiser conferir o resultado. <strong>Desfazer</strong> pode reabrir as abas da última ação de fechamento feita pelo popup durante aquela sessão. As páginas são reabertas pelo URL; não há garantia de recuperar conteúdo não salvo. Depois de fechar o popup, use as abas fechadas recentemente ou o histórico do navegador.</p>\n    <p>Após fechar o popup, tente Ctrl+Shift+T no Windows/Linux ou Command+Shift+T no macOS para reabrir abas fechadas recentemente. Repita conforme necessário: isso usa o histórico de abas fechadas do navegador, não o grupo exato fechado pelo TabTools. A recuperação depende do que o navegador manteve; não conte com ela na navegação privada.</p>\n<p>Para páginas diferentes que você não precisa mais, veja <a href=\"/guides/close-tabs-from-same-website/\">como fechar todas as abas do mesmo site</a>. Para as páginas que quer manter, <a href=\"/guides/sort-tabs-by-website/\">a ordenação de abas por site</a> reúne as abas relacionadas sem fechá-las.</p>"
         }
       ]
     },

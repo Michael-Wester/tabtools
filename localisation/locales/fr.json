@@ -142,7 +142,7 @@
   "web_does_tabtools_collect_or_share": "TabTools collecte-t-il ou partage-t-il mes données ?",
   "web_the_extension_processes_tab_information": "L’extension traite les informations des onglets localement et ne les envoie ni au développeur ni à des tiers. Les paramètres et les statistiques restent sur votre appareil. La démo de ce site est hébergée par YouTube ; le lecteur intégré et les boutiques de navigateurs ont leurs propres politiques de confidentialité.",
   "web_can_i_undo_a_cleanup": "Puis-je annuler un nettoyage ?",
-  "web_use_undo_immediately_after_closing": "Utilisez Annuler juste après avoir fermé des onglets depuis la fenêtre de TabTools, tant qu’elle est encore ouverte. Vous pouvez aussi rouvrir des pages depuis les onglets récemment fermés de votre navigateur.",
+  "web_use_undo_immediately_after_closing": "Utilisez Annuler juste après avoir fermé des onglets depuis la fenêtre de TabTools, tant qu’elle est encore ouverte. Vous pouvez aussi rouvrir des pages depuis les onglets récemment fermés de votre navigateur. Après la fermeture de la fenêtre contextuelle, essayez Ctrl+Shift+T sous Windows/Linux ou Command+Shift+T sous macOS pour rouvrir les onglets récemment fermés. Répétez si nécessaire : le navigateur utilise son historique des onglets fermés, pas le lot exact de TabTools. La récupération dépend des données conservées par le navigateur ; ne comptez pas dessus en navigation privée.",
   "web_free_for_chrome_firefox_and": "Gratuit pour Chrome, Firefox et Edge",
   "web_other_browser_stores": "Autres boutiques de navigateurs",
   "web_close_tabs_by_site_sort_2": "Fermez les onglets par site, triez votre barre d’onglets et supprimez les doublons.",

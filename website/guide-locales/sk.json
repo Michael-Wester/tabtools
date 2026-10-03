@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Návody na karty prehliadača",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Opätovné otvorenie kariet alebo menšie upratanie",
-          "html": "<p>Po zatvorení kariet prostredníctvom vyskakovacieho okna môže jeho tlačidlo <strong>Späť</strong> znovu otvoriť karty z posledného upratania v tomto okne, kým zostáva otvorené. Akciu z ponuky pravého tlačidla <strong>Zatvoriť karty webu</strong> tlačidlo Späť vo vyskakovacom okne nezaznamenáva.</p>\n<p>Po zatvorení cez kontextovú ponuku sa pozrite do nedávno zatvorených kariet alebo histórie prehliadača. Opätovné otvorenie adresy URL nemožno považovať za obnovenie neuložených údajov vo formulári ani všetkých podrobností predchádzajúceho stavu stránky.</p>\n<p>Ak chcete zachovať jednu kópiu každej stránky, postupujte podľa návodu na <a href=\"/guides/close-duplicate-tabs/\">zatváranie duplicitných kariet</a>. Ak chcete zachovať všetky stránky a sprehľadniť ich, môžete namiesto toho <a href=\"/guides/sort-tabs-by-website/\">zoradiť karty podľa webu</a> a uľahčiť si ich prezeranie.</p>"
+          "html": "<p>Po zatvorení kariet prostredníctvom vyskakovacieho okna môže jeho tlačidlo <strong>Späť</strong> znovu otvoriť karty z posledného upratania v tomto okne, kým zostáva otvorené. Akciu z ponuky pravého tlačidla <strong>Zatvoriť karty webu</strong> tlačidlo Späť vo vyskakovacom okne nezaznamenáva.</p>\n    <p>Po zatvorení kontextového okna skúste Ctrl+Shift+T vo Windows/Linux alebo Command+Shift+T v macOS na opätovné otvorenie nedávno zatvorených kariet. Podľa potreby opakujte: používa sa história zatvorených kariet prehliadača, nie presná skupina zatvorená nástrojom TabTools. Obnovenie závisí od toho, čo prehliadač uchoval; pri súkromnom prehliadaní sa naň nespoliehajte.</p>\n<p>Po zatvorení cez kontextovú ponuku sa pozrite do nedávno zatvorených kariet alebo histórie prehliadača. Opätovné otvorenie adresy URL nemožno považovať za obnovenie neuložených údajov vo formulári ani všetkých podrobností predchádzajúceho stavu stránky.</p>\n<p>Ak chcete zachovať jednu kópiu každej stránky, postupujte podľa návodu na <a href=\"/guides/close-duplicate-tabs/\">zatváranie duplicitných kariet</a>. Ak chcete zachovať všetky stránky a sprehľadniť ich, môžete namiesto toho <a href=\"/guides/sort-tabs-by-website/\">zoradiť karty podľa webu</a> a uľahčiť si ich prezeranie.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Vrátenie upratania a usporiadanie zostávajúcich kariet",
-          "html": "<p>Ak chcete skontrolovať výsledok, nechajte vyskakovacie okno po uprataní otvorené. <strong>Späť</strong> môže počas tej istej relácie vyskakovacieho okna znova otvoriť karty z poslednej akcie zatvorenia v tomto okne. Stránky znovu otvára podľa adresy URL; obnovenie neuloženého obsahu nie je zaručené. Po zatvorení vyskakovacieho okna použite namiesto toho nedávno zatvorené karty alebo históriu prehliadača.</p>\n<p>Pri rôznych stránkach, ktoré už nepotrebujete, sa pozrite, <a href=\"/guides/close-tabs-from-same-website/\">ako zatvoriť všetky karty rovnakého webu</a>. Pri stránkach, ktoré chcete zachovať, <a href=\"/guides/sort-tabs-by-website/\">zoraďovanie kariet podľa webu</a> presunie súvisiace karty k sebe bez toho, aby ich zatvorilo.</p>"
+          "html": "<p>Ak chcete skontrolovať výsledok, nechajte vyskakovacie okno po uprataní otvorené. <strong>Späť</strong> môže počas tej istej relácie vyskakovacieho okna znova otvoriť karty z poslednej akcie zatvorenia v tomto okne. Stránky znovu otvára podľa adresy URL; obnovenie neuloženého obsahu nie je zaručené. Po zatvorení vyskakovacieho okna použite namiesto toho nedávno zatvorené karty alebo históriu prehliadača.</p>\n    <p>Po zatvorení kontextového okna skúste Ctrl+Shift+T vo Windows/Linux alebo Command+Shift+T v macOS na opätovné otvorenie nedávno zatvorených kariet. Podľa potreby opakujte: používa sa história zatvorených kariet prehliadača, nie presná skupina zatvorená nástrojom TabTools. Obnovenie závisí od toho, čo prehliadač uchoval; pri súkromnom prehliadaní sa naň nespoliehajte.</p>\n<p>Pri rôznych stránkach, ktoré už nepotrebujete, sa pozrite, <a href=\"/guides/close-tabs-from-same-website/\">ako zatvoriť všetky karty rovnakého webu</a>. Pri stránkach, ktoré chcete zachovať, <a href=\"/guides/sort-tabs-by-website/\">zoraďovanie kariet podľa webu</a> presunie súvisiace karty k sebe bez toho, aby ich zatvorilo.</p>"
         }
       ]
     },

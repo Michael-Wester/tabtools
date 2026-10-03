@@ -449,7 +449,7 @@
     "web_does_tabtools_collect_or_share": "TabTools 會蒐集或分享我的資料嗎？",
     "web_the_extension_processes_tab_information": "擴充功能在本機處理分頁資訊，不會傳送給開發者或第三方。設定與清理統計資料保留在你的裝置上。本網站的示範由 YouTube 託管；嵌入式播放器及瀏覽器商店各有自己的隱私權政策。",
     "web_can_i_undo_a_cleanup": "可以復原清理操作嗎？",
-    "web_use_undo_immediately_after_closing": "從 TabTools 彈出視窗關閉分頁後，請在視窗仍開啟時立即使用復原。也可以透過瀏覽器的最近關閉分頁清單重新開啟網頁。",
+    "web_use_undo_immediately_after_closing": "從 TabTools 彈出視窗關閉分頁後，請在視窗仍開啟時立即使用復原。也可以透過瀏覽器的最近關閉分頁清單重新開啟網頁。 關閉彈出視窗後，可嘗試在 Windows/Linux 上按 Ctrl+Shift+T，或在 macOS 上按 Command+Shift+T，重新開啟最近關閉的分頁。可視需要重複操作：此功能使用瀏覽器的最近關閉記錄，並非精確還原 TabTools 關閉的那一批分頁。能否還原取決於瀏覽器保留的記錄；請勿在私密瀏覽模式下依賴此方法。",
     "web_free_for_chrome_firefox_and": "免費供 Chrome、Firefox 和 Edge 使用",
     "web_other_browser_stores": "其他瀏覽器商店",
     "web_close_tabs_by_site_sort_2": "依網站關閉分頁、整理分頁列並移除重複項目。",
@@ -507,7 +507,7 @@
     </header>
     <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="麵包屑導覽"><a href="/zh-tw/">首頁</a><span aria-hidden="true">/</span><a href="/zh-tw/guides/">指南</a><span aria-hidden="true">/</span><span aria-current="page">移除重複項目</span></nav>
       <p class="eyebrow">移除重複項目 · 電腦版瀏覽器</p><h1>如何在 Chrome、Firefox 和 Edge 中關閉重複分頁</h1><p class="guides-lede">同一份文件、同一次搜尋或同一段影片很容易被反覆開啟。移除多餘副本可以讓分頁列更易於瀏覽，同時不必清空某個網站的所有網頁。</p>
-      <p class="guide-byline">作者：<a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>，TabTools 開發者 <span aria-hidden="true">·</span> 閱讀約需 4 分鐘 <span aria-hidden="true">·</span> 更新於 <time datetime="2026-10-01">2026年10月1日</time></p>
+      <p class="guide-byline">作者：<a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>，TabTools 開發者 <span aria-hidden="true">·</span> 閱讀約需 5 分鐘 <span aria-hidden="true">·</span> 更新於 <time datetime="2026-10-01">2026年10月1日</time></p>
       <p class="guide-screenshot-note">螢幕擷取畫面顯示的是英文介面；瀏覽器使用其他語言時，介面標籤可能不同。</p></div>
       <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="本頁內容"><p class="eyebrow">本頁內容</p><ol><li><a href="#choose-a-method">選擇適合瀏覽器的方法</a></li><li><a href="#what-counts-as-a-duplicate">什麼算是重複分頁？</a></li><li><a href="#chrome-and-edge">在 Chrome 或 Edge 中關閉重複分頁</a></li><li><a href="#firefox-native-option">使用 Firefox 內建的重複分頁命令</a></li><li><a href="#which-copy-stays">TabTools 會保留哪個副本？</a></li><li><a href="#undo-and-organise">復原清理並整理剩餘分頁</a></li></ol></nav><a class="guide-back" href="/zh-tw/guides/">← 全部指南</a></aside>
       <article class="guide-article" aria-label="如何在 Chrome、Firefox 和 Edge 中關閉重複分頁"><div class="guide-answer"><p class="eyebrow">快速解答</p><p>開啟 TabTools 並點選「關閉重複項目」，即可移除所有一般瀏覽器視窗中未釘選的重複網頁。Firefox 也提供內建命令，可關閉某一分頁的重複副本，或從分頁概覽選單清理重複分頁。</p></div>
@@ -580,12 +580,13 @@
 <p>它不會刻意選擇目前使用中的分頁、最新開啟的分頁或你最近使用的分頁。因此，保留的副本可能位於另一個視窗。如果某個網頁有一個已釘選分頁和兩個未釘選副本，最後只會保留已釘選的分頁。</p>
 <p>已釘選的分頁絕不會被 <strong>關閉重複項目</strong> 關閉。如果某個網頁有多個已釘選副本，這些副本都會保留，因此該命令無法保證每個 URL 都恰好只剩一個分頁。</p></section>
 <section id="undo-and-organise"><h2>復原清理並整理剩餘分頁</h2><p>如果要檢查清理結果，請在清理後保持彈出視窗開啟。 <strong>復原</strong> 可以在本次彈出視窗工作階段內，重新開啟最近一次透過彈出視窗關閉的分頁。它按 URL 重新開啟網頁，無法保證還原未儲存的網頁內容。彈出視窗關閉後，請改用瀏覽器的最近關閉的分頁或歷史記錄。</p>
+    <p>關閉彈出視窗後，可嘗試在 Windows/Linux 上按 Ctrl+Shift+T，或在 macOS 上按 Command+Shift+T，重新開啟最近關閉的分頁。可視需要重複操作：此功能使用瀏覽器的最近關閉記錄，並非精確還原 TabTools 關閉的那一批分頁。能否還原取決於瀏覽器保留的記錄；請勿在私密瀏覽模式下依賴此方法。</p>
 <p>對於已經用完的不同網頁，請參閱 <a href="/zh-tw/guides/close-tabs-from-same-website/">如何關閉同一網站的所有分頁</a>。對於希望保留的網頁， <a href="/zh-tw/guides/sort-tabs-by-website/">依網站排序分頁</a> 可以將相關分頁排在一起，而不關閉它們。</p></section>
       </article></div>
       <section class="shell related-guides" aria-label="相關指南"><p class="eyebrow">繼續探索</p><h2>更多分頁整理方法。</h2><div class="guide-cards"><a class="guide-card" href="/zh-tw/guides/close-tabs-from-same-website/">
     <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">關閉網站分頁</span></div>
     <h2>關閉同一網站的分頁</h2><p>使用 TabTools 在 Chrome 中關閉同一網站的分頁，了解手動操作的替代方案，以及 Firefox 和 Edge 的操作步驟。</p>
-    <span class="guide-card-bottom"><span>閱讀約需 4 分鐘</span><span class="guide-card-link">閱讀指南 <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-card-bottom"><span>閱讀約需 5 分鐘</span><span class="guide-card-link">閱讀指南 <span aria-hidden="true">↗</span></span></span>
   </a><a class="guide-card" href="/zh-tw/guides/sort-tabs-by-website/">
     <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">排序分頁</span></div>
     <h2>依網站排序分頁</h2><p>使用 TabTools 在 Chrome、Firefox 和 Edge 中將相關分頁排在一起。了解網站分頁數量、釘選分頁和瀏覽器分頁群組如何影響你的選擇。</p>

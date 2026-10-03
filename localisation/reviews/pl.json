@@ -774,10 +774,11 @@
     "date": "2026-09-17"
   },
   "web_use_undo_immediately_after_closing": {
-    "source": "0eff9b5fef778418b95ef56b22ea2c06d08b5378eb363e876d53687d1e120f4e",
-    "translation": "6c5306b8287fa10e86d19295575a3e74c613f789890bc7122ccea772fc1a80d0",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
+    "source": "9e61c2c34292e8ecb286b1a14f99367d3966c202a607aa73f48abd6730896c0a",
+    "translation": "d3dce5e9b0df9758dd85cc084c50a2c4a579c9824adb94db7961095ad8c8c0d3",
+    "review": "AI self-review; no native-speaker review",
+    "date": "2026-10-03",
+    "note": "Reviewed added browser shortcut guidance: Ctrl/Command platform mapping, repeated use, browser history versus exact TabTools batch, retained-history and private-browsing limitations."
   },
   "web_free_for_chrome_firefox_and": {
     "source": "4954bb0fac64f3f06a3704c91de0d11ae1484db78d1039563b75fed3a0eef2ce",

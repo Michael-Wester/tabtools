@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed."
+    "note": "AI-translated and self-reviewed against the English source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "Útmutatók a böngészőlapokhoz",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "Lapok újranyitása vagy szűkebb körű tisztítás",
-          "html": "<p>Ha a felugró ablakból zár be lapokat, a <strong>Visszavonás</strong> gomb újranyithatja az ott végzett legutóbbi tisztítás lapjait, amíg a felugró ablak nyitva marad. A jobb gombos menü <strong>Webhely lapjainak bezárása</strong> műveletét a felugró ablak Visszavonás gombja nem rögzíti.</p>\n<p>A helyi menüből végzett bezárás után keresse a böngésző nemrég bezárt lapjait vagy előzményeit. Egy URL újranyitása nem jelenti a nem mentett űrlapadatok vagy az oldal korábbi állapota minden részletének visszaállítását.</p>\n<p>Ha minden oldalból egy példányt szeretne megtartani, kövesse ezt az útmutatót: <a href=\"/guides/close-duplicate-tabs/\">duplikált lapok bezárása</a>. Ha minden oldalt meg szeretne tartani, és könnyebben áttekinthetővé tenni őket, <a href=\"/guides/sort-tabs-by-website/\">rendezze a lapokat webhely szerint</a> helyette.</p>"
+          "html": "<p>Ha a felugró ablakból zár be lapokat, a <strong>Visszavonás</strong> gomb újranyithatja az ott végzett legutóbbi tisztítás lapjait, amíg a felugró ablak nyitva marad. A jobb gombos menü <strong>Webhely lapjainak bezárása</strong> műveletét a felugró ablak Visszavonás gombja nem rögzíti.</p>\n    <p>A felugró ablak bezárása után a Ctrl+Shift+T (Windows/Linux) vagy a Command+Shift+T (macOS) billentyűkombinációval próbálhatja újranyitni a nemrég bezárt lapokat. Szükség szerint ismételje meg: ez a böngésző bezárt lapjainak előzményeit használja, nem pontosan a TabTools által bezárt csoportot állítja vissza. A helyreállítás a böngésző által megőrzött adatoktól függ; privát böngészésben ne hagyatkozzon rá.</p>\n<p>A helyi menüből végzett bezárás után keresse a böngésző nemrég bezárt lapjait vagy előzményeit. Egy URL újranyitása nem jelenti a nem mentett űrlapadatok vagy az oldal korábbi állapota minden részletének visszaállítását.</p>\n<p>Ha minden oldalból egy példányt szeretne megtartani, kövesse ezt az útmutatót: <a href=\"/guides/close-duplicate-tabs/\">duplikált lapok bezárása</a>. Ha minden oldalt meg szeretne tartani, és könnyebben áttekinthetővé tenni őket, <a href=\"/guides/sort-tabs-by-website/\">rendezze a lapokat webhely szerint</a> helyette.</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "Tisztítás visszavonása és a megmaradt lapok rendezése",
-          "html": "<p>Hagyja nyitva a felugró ablakot a tisztítás után, ha ellenőrizni szeretné az eredményt. <strong>Visszavonás</strong> segítségével újranyithatja a felugró ablakban az adott munkamenet során végzett legutóbbi bezárás lapjait. A funkció URL alapján nyitja újra az oldalakat; a nem mentett tartalom visszaállítása nem garantált. A felugró ablak bezárása után használja a böngésző nemrég bezárt lapjait vagy előzményeit.</p>\n<p>A különböző, már nem szükséges oldalakhoz olvassa el ezt: <a href=\"/guides/close-tabs-from-same-website/\">egy webhely összes lapjának bezárása</a>. A megtartani kívánt oldalak esetén a <a href=\"/guides/sort-tabs-by-website/\">lapok webhely szerinti rendezése</a> bezárás nélkül helyezi egymás mellé az összetartozó lapokat.</p>"
+          "html": "<p>Hagyja nyitva a felugró ablakot a tisztítás után, ha ellenőrizni szeretné az eredményt. <strong>Visszavonás</strong> segítségével újranyithatja a felugró ablakban az adott munkamenet során végzett legutóbbi bezárás lapjait. A funkció URL alapján nyitja újra az oldalakat; a nem mentett tartalom visszaállítása nem garantált. A felugró ablak bezárása után használja a böngésző nemrég bezárt lapjait vagy előzményeit.</p>\n    <p>A felugró ablak bezárása után a Ctrl+Shift+T (Windows/Linux) vagy a Command+Shift+T (macOS) billentyűkombinációval próbálhatja újranyitni a nemrég bezárt lapokat. Szükség szerint ismételje meg: ez a böngésző bezárt lapjainak előzményeit használja, nem pontosan a TabTools által bezárt csoportot állítja vissza. A helyreállítás a böngésző által megőrzött adatoktól függ; privát böngészésben ne hagyatkozzon rá.</p>\n<p>A különböző, már nem szükséges oldalakhoz olvassa el ezt: <a href=\"/guides/close-tabs-from-same-website/\">egy webhely összes lapjának bezárása</a>. A megtartani kívánt oldalak esetén a <a href=\"/guides/sort-tabs-by-website/\">lapok webhely szerinti rendezése</a> bezárás nélkül helyezi egymás mellé az összetartozó lapokat.</p>"
         }
       ]
     },

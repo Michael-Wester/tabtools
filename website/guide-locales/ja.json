@@ -1,8 +1,8 @@
 {
-  "sourceFingerprint": "3ae315e6c9673932099259617d279b24677c256a6f5d972758c5d467c0a465a8",
+  "sourceFingerprint": "df33a80f586cf7585d35170200cd85442b294fc37918775ffd9eaafd3f47688f",
   "review": {
     "status": "ai-reviewed",
-    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed."
+    "note": "AI translated and self-reviewed against the English guide source; not native-speaker reviewed. Browser reopen guidance translated and AI self-reviewed: platform keys, repeat behavior, retained history, exact-batch distinction and private-browsing caveat; no native-speaker review."
   },
   "ui": {
     "indexTitle": "ブラウザーのタブ活用ガイド",
@@ -74,7 +74,7 @@
         {
           "id": "undo-and-next-steps",
           "title": "タブを開き直す、または整理の範囲を絞る",
-          "html": "<p>ポップアップからタブを閉じた後は、そのポップアップを開いたままにしておけば、 <strong>元に戻す</strong> ボタンで、ポップアップから最後に閉じたタブを開き直せます。右クリックの <strong>このサイトのタブを閉じる</strong> 操作は、ポップアップの「元に戻す」ボタンには記録されません。</p>\n<p>右クリックメニューから閉じた場合は、ブラウザーの最近閉じたタブや履歴を確認してください。URL を開き直しても、未保存のフォーム入力やページの以前の状態の細部まで復元されるとは限りません。</p>\n<p>各ページを1つずつ残すことが目的なら、 <a href=\"/guides/close-duplicate-tabs/\">重複タブを閉じる方法</a>をご覧ください。すべてのページを残しつつ見つけやすくしたい場合は、 <a href=\"/guides/sort-tabs-by-website/\">タブをサイト別に並べ替える方法</a> が適しています。</p>"
+          "html": "<p>ポップアップからタブを閉じた後は、そのポップアップを開いたままにしておけば、 <strong>元に戻す</strong> ボタンで、ポップアップから最後に閉じたタブを開き直せます。右クリックの <strong>このサイトのタブを閉じる</strong> 操作は、ポップアップの「元に戻す」ボタンには記録されません。</p>\n    <p>ポップアップを閉じた後は、Windows/LinuxではCtrl+Shift+T、macOSではCommand+Shift+Tで、最近閉じたタブを開き直せます。必要に応じて繰り返してください。ブラウザーが保持する最近閉じたタブの履歴を使うため、TabToolsで閉じた一連のタブだけを正確に復元するものではありません。復元できるかどうかはブラウザーに残っている情報によります。プライベートブラウジングでは、この方法に頼らないでください。</p>\n<p>右クリックメニューから閉じた場合は、ブラウザーの最近閉じたタブや履歴を確認してください。URL を開き直しても、未保存のフォーム入力やページの以前の状態の細部まで復元されるとは限りません。</p>\n<p>各ページを1つずつ残すことが目的なら、 <a href=\"/guides/close-duplicate-tabs/\">重複タブを閉じる方法</a>をご覧ください。すべてのページを残しつつ見つけやすくしたい場合は、 <a href=\"/guides/sort-tabs-by-website/\">タブをサイト別に並べ替える方法</a> が適しています。</p>"
         }
       ]
     },
@@ -115,7 +115,7 @@
         {
           "id": "undo-and-organise",
           "title": "整理を元に戻す、残ったタブを整理する",
-          "html": "<p>結果を確認したい場合は、整理した後もポップアップを開いたままにしてください。 <strong>元に戻す</strong> を使うと、そのポップアップを開いている間に限り、最後にポップアップから閉じたタブを開き直せます。URL を使ってページを開き直すため、未保存の内容が復元される保証はありません。ポップアップを閉じた後は、ブラウザーの最近閉じたタブや履歴を使ってください。</p>\n<p>不要になった別々のページについては、 <a href=\"/guides/close-tabs-from-same-website/\">同じサイトのタブをすべて閉じる方法</a>をご覧ください。残したいページは、 <a href=\"/guides/sort-tabs-by-website/\">サイト別にタブを並べ替える</a> ことで、閉じずに関連するタブをまとめられます。</p>"
+          "html": "<p>結果を確認したい場合は、整理した後もポップアップを開いたままにしてください。 <strong>元に戻す</strong> を使うと、そのポップアップを開いている間に限り、最後にポップアップから閉じたタブを開き直せます。URL を使ってページを開き直すため、未保存の内容が復元される保証はありません。ポップアップを閉じた後は、ブラウザーの最近閉じたタブや履歴を使ってください。</p>\n    <p>ポップアップを閉じた後は、Windows/LinuxではCtrl+Shift+T、macOSではCommand+Shift+Tで、最近閉じたタブを開き直せます。必要に応じて繰り返してください。ブラウザーが保持する最近閉じたタブの履歴を使うため、TabToolsで閉じた一連のタブだけを正確に復元するものではありません。復元できるかどうかはブラウザーに残っている情報によります。プライベートブラウジングでは、この方法に頼らないでください。</p>\n<p>不要になった別々のページについては、 <a href=\"/guides/close-tabs-from-same-website/\">同じサイトのタブをすべて閉じる方法</a>をご覧ください。残したいページは、 <a href=\"/guides/sort-tabs-by-website/\">サイト別にタブを並べ替える</a> ことで、閉じずに関連するタブをまとめられます。</p>"
         }
       ]
     },

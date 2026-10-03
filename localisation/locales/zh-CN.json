@@ -136,7 +136,7 @@
   "web_does_tabtools_collect_or_share": "TabTools 会收集或分享我的数据吗？",
   "web_the_extension_processes_tab_information": "扩展在本地处理标签页信息，不会将其发送给开发者或第三方。设置和清理统计保留在你的设备上。本网站的演示由 YouTube 托管；嵌入式播放器和浏览器商店各有其隐私政策。",
   "web_can_i_undo_a_cleanup": "可以撤销清理吗？",
-  "web_use_undo_immediately_after_closing": "从 TabTools 弹出窗口关闭标签页后，请在窗口仍打开时立即使用撤销。也可以通过浏览器的最近关闭的标签页重新打开页面。",
+  "web_use_undo_immediately_after_closing": "从 TabTools 弹出窗口关闭标签页后，请在窗口仍打开时立即使用撤销。也可以通过浏览器的最近关闭的标签页重新打开页面。 关闭弹出窗口后，可尝试在 Windows/Linux 上按 Ctrl+Shift+T，或在 macOS 上按 Command+Shift+T，重新打开最近关闭的标签页。可按需重复操作：此功能使用浏览器的最近关闭记录，并非精确恢复 TabTools 关闭的那一批标签页。能否恢复取决于浏览器保留的记录；请勿在隐私浏览模式下依赖此方法。",
   "web_free_for_chrome_firefox_and": "免费用于 Chrome、Firefox 和 Edge",
   "web_other_browser_stores": "其他浏览器商店",
   "web_close_tabs_by_site_sort_2": "按网站关闭标签页，整理标签栏并移除重复项。",

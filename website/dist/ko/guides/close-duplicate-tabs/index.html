@@ -449,7 +449,7 @@
     "web_does_tabtools_collect_or_share": "TabTools가 탭 정보를 수집하거나 공유하나요?",
     "web_the_extension_processes_tab_information": "확장 프로그램은 탭 정보를 기기에서 처리하며 개발자나 제3자에게 보내지 않습니다. 설정과 정리 통계도 기기에 보관됩니다. 이 웹사이트의 시연 영상은 YouTube에서 호스팅하며, 내장 플레이어와 브라우저 스토어에는 각각의 개인정보 처리방침이 적용됩니다.",
     "web_can_i_undo_a_cleanup": "탭 정리를 취소할 수 있나요?",
-    "web_use_undo_immediately_after_closing": "TabTools 팝업에서 탭을 닫은 직후, 팝업이 열려 있는 동안 실행 취소를 사용하세요. 브라우저의 최근에 닫은 탭 기능으로 페이지를 다시 열 수도 있습니다.",
+    "web_use_undo_immediately_after_closing": "TabTools 팝업에서 탭을 닫은 직후, 팝업이 열려 있는 동안 실행 취소를 사용하세요. 브라우저의 최근에 닫은 탭 기능으로 페이지를 다시 열 수도 있습니다. 팝업을 닫은 뒤에는 Windows/Linux에서 Ctrl+Shift+T, macOS에서 Command+Shift+T를 눌러 최근에 닫은 탭을 다시 열어 보세요. 필요하면 반복하세요. 이 기능은 브라우저의 최근에 닫은 탭 기록을 사용하며 TabTools가 닫은 탭 묶음을 정확히 복원하는 것은 아닙니다. 복구 가능 여부는 브라우저에 남아 있는 기록에 따라 달라지므로 비공개 탐색에서는 이 방법에 의존하지 마세요.",
     "web_free_for_chrome_firefox_and": "Chrome, Firefox, Edge에서 무료",
     "web_other_browser_stores": "다른 브라우저 스토어",
     "web_close_tabs_by_site_sort_2": "사이트별로 탭을 닫고, 탭 표시줄을 정렬하고, 중복 탭을 정리하세요.",
@@ -507,7 +507,7 @@
     </header>
     <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="탐색 경로"><a href="/ko/">홈</a><span aria-hidden="true">/</span><a href="/ko/guides/">가이드</a><span aria-hidden="true">/</span><span aria-current="page">중복 제거</span></nav>
       <p class="eyebrow">중복 제거 · 컴퓨터용 브라우저</p><h1>Chrome, Firefox, Edge에서 중복 탭을 닫는 방법</h1><p class="guides-lede">같은 문서나 검색 결과, 동영상을 여러 번 여는 일은 흔합니다. 반복된 탭을 제거하면 한 사이트의 페이지를 전부 닫지 않고도 탭 표시줄을 더 편하게 탐색할 수 있습니다.</p>
-      <p class="guide-byline">작성자: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, TabTools 개발자 <span aria-hidden="true">·</span> 읽는 데 4분 <span aria-hidden="true">·</span> 업데이트: <time datetime="2026-10-01">2026년 10월 1일</time></p>
+      <p class="guide-byline">작성자: <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, TabTools 개발자 <span aria-hidden="true">·</span> 읽는 데 5분 <span aria-hidden="true">·</span> 업데이트: <time datetime="2026-10-01">2026년 10월 1일</time></p>
       <p class="guide-screenshot-note">스크린샷은 영어 인터페이스를 보여 줍니다. 브라우저의 표시 언어에 따라 항목 이름이 다를 수 있습니다.</p></div>
       <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="이 페이지의 내용"><p class="eyebrow">이 페이지의 내용</p><ol><li><a href="#choose-a-method">브라우저에 맞는 방법 고르기</a></li><li><a href="#what-counts-as-a-duplicate">어떤 탭이 중복인가요?</a></li><li><a href="#chrome-and-edge">Chrome 또는 Edge에서 중복 탭 닫기</a></li><li><a href="#firefox-native-option">Firefox의 기본 중복 탭 명령 사용하기</a></li><li><a href="#which-copy-stays">TabTools는 어떤 탭을 남기나요?</a></li><li><a href="#undo-and-organise">정리를 취소하고 남은 탭 정리하기</a></li></ol></nav><a class="guide-back" href="/ko/guides/">← 모든 가이드</a></aside>
       <article class="guide-article" aria-label="Chrome, Firefox, Edge에서 중복 탭을 닫는 방법"><div class="guide-answer"><p class="eyebrow">빠른 답변</p><p>TabTools를 열고 ‘중복 탭 닫기’를 클릭하면 모든 일반 브라우저 창에서 고정되지 않은 중복 페이지가 제거됩니다. Firefox에는 한 탭의 중복을 닫는 기본 명령과 탭 전체 보기 메뉴에서 중복 탭을 정리하는 기본 명령도 있습니다.</p></div>
@@ -580,12 +580,13 @@
 <p>활성 탭이나 가장 새로 연 탭, 가장 최근에 사용한 탭을 의도적으로 고르지는 않습니다. 따라서 남는 탭이 다른 창에 있을 수도 있습니다. 한 페이지에 고정 탭 1개와 고정되지 않은 탭 2개가 있다면 고정 탭만 남습니다.</p>
 <p>고정 탭은 <strong>중복 탭 닫기</strong>로 닫히지 않습니다. 한 페이지에 고정된 탭이 여러 개라면 모두 남으므로 이 명령을 실행해도 URL마다 정확히 하나만 남는 것은 아닙니다.</p></section>
 <section id="undo-and-organise"><h2>정리를 취소하고 남은 탭 정리하기</h2><p>정리 결과를 확인하려면 정리 후에도 팝업을 열어 두세요. <strong>실행 취소</strong>는 해당 팝업이 열려 있는 동안 마지막 팝업 닫기 작업에서 닫은 탭을 다시 열 수 있습니다. URL로 페이지를 다시 여는 것이므로 저장하지 않은 페이지 내용은 복원되지 않을 수 있습니다. 팝업을 닫은 뒤에는 브라우저의 최근에 닫은 탭이나 방문 기록을 사용하세요.</p>
+    <p>팝업을 닫은 뒤에는 Windows/Linux에서 Ctrl+Shift+T, macOS에서 Command+Shift+T를 눌러 최근에 닫은 탭을 다시 열어 보세요. 필요하면 반복하세요. 이 기능은 브라우저의 최근에 닫은 탭 기록을 사용하며 TabTools가 닫은 탭 묶음을 정확히 복원하는 것은 아닙니다. 복구 가능 여부는 브라우저에 남아 있는 기록에 따라 달라지므로 비공개 탐색에서는 이 방법에 의존하지 마세요.</p>
 <p>다 쓴 서로 다른 페이지를 닫으려면 <a href="/ko/guides/close-tabs-from-same-website/">같은 사이트의 탭을 모두 닫는 방법</a>을 참고하세요. 남기고 싶은 페이지는 <a href="/ko/guides/sort-tabs-by-website/">사이트별로 탭 정렬</a> 기능으로 닫지 않고 관련 탭을 한데 모을 수 있습니다.</p></section>
       </article></div>
       <section class="shell related-guides" aria-label="관련 가이드"><p class="eyebrow">계속 살펴보기</p><h2>탭을 정리하는 더 많은 방법.</h2><div class="guide-cards"><a class="guide-card" href="/ko/guides/close-tabs-from-same-website/">
     <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">사이트 탭 닫기</span></div>
     <h2>같은 사이트의 탭 닫기</h2><p>TabTools로 Chrome에서 같은 사이트의 탭을 닫는 방법, 수동으로 처리하는 대안, Firefox와 Edge에서의 사용 방법을 알아보세요.</p>
-    <span class="guide-card-bottom"><span>읽는 데 4분</span><span class="guide-card-link">가이드 읽기 <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-card-bottom"><span>읽는 데 5분</span><span class="guide-card-link">가이드 읽기 <span aria-hidden="true">↗</span></span></span>
   </a><a class="guide-card" href="/ko/guides/sort-tabs-by-website/">
     <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">탭 정렬</span></div>
     <h2>사이트별로 탭 정렬</h2><p>TabTools로 Chrome, Firefox, Edge의 관련 탭을 한데 모으세요. 사이트별 탭 수, 고정 탭, 브라우저 탭 그룹이 선택에 어떤 영향을 미치는지 알아보세요.</p>

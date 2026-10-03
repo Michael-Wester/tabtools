@@ -139,7 +139,7 @@
   "web_does_tabtools_collect_or_share": "Does TabTools collect or share my data?",
   "web_the_extension_processes_tab_information": "The extension processes tab information locally and does not send it to the developer or third parties. Settings and cleanup statistics stay on your device. This website’s demo is hosted by YouTube; the embedded player and browser stores have their own privacy policies.",
   "web_can_i_undo_a_cleanup": "Can I undo a cleanup?",
-  "web_use_undo_immediately_after_closing": "Use Undo immediately after closing tabs from the TabTools popup, while the popup is still open. You can also use your browser’s recently closed tabs to reopen pages.",
+  "web_use_undo_immediately_after_closing": "Use Undo immediately after closing tabs from the TabTools popup, while the popup is still open. You can also use your browser’s recently closed tabs to reopen pages. After the popup closes, try Ctrl+Shift+T on Windows/Linux or Command+Shift+T on macOS to reopen recently closed tabs. Repeat as needed: this uses the browser’s recently closed history, not the exact TabTools batch. Recovery depends on what the browser retained; do not rely on it in private browsing.",
   "web_free_for_chrome_firefox_and": "Free for Chrome, Firefox, and Edge",
   "web_other_browser_stores": "Other browser stores",
   "web_close_tabs_by_site_sort_2": "Close tabs by site, sort your tab bar, and clear duplicates.",

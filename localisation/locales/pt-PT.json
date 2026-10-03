@@ -142,7 +142,7 @@
   "web_does_tabtools_collect_or_share": "O TabTools recolhe ou partilha os meus dados?",
   "web_the_extension_processes_tab_information": "A extensão processa as informações dos separadores localmente e não as envia ao programador nem a terceiros. As definições e estatísticas ficam no seu dispositivo. A demonstração deste site está alojada no YouTube; o leitor incorporado e as lojas dos navegadores têm políticas de privacidade próprias.",
   "web_can_i_undo_a_cleanup": "Posso anular uma limpeza?",
-  "web_use_undo_immediately_after_closing": "Use Anular logo após fechar separadores na janela do TabTools, enquanto esta ainda estiver aberta. Também pode reabrir páginas através da lista de separadores fechados recentemente do navegador.",
+  "web_use_undo_immediately_after_closing": "Use Anular logo após fechar separadores na janela do TabTools, enquanto esta ainda estiver aberta. Também pode reabrir páginas através da lista de separadores fechados recentemente do navegador. Depois de fechar a janela emergente, experimente Ctrl+Shift+T no Windows/Linux ou Command+Shift+T no macOS para reabrir separadores fechados recentemente. Repita conforme necessário: é utilizado o histórico de separadores fechados do navegador, não o grupo exato fechado pelo TabTools. A recuperação depende do que o navegador guardou; não conte com ela na navegação privada.",
   "web_free_for_chrome_firefox_and": "Gratuito para Chrome, Firefox e Edge",
   "web_other_browser_stores": "Outras lojas de navegadores",
   "web_close_tabs_by_site_sort_2": "Feche separadores por site, ordene a barra de separadores e remova duplicados.",
