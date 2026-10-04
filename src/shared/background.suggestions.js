@@ -32,6 +32,18 @@
       return null;
     }
   };
+  const internalPages = new Set(["settings", "extensions", "downloads", "history", "bookmarks", "newtab"]);
+  function internalIconFromUrl(value) {
+    try {
+      const url = new URL(value);
+      // Match the scheme as well as the host: https://settings is a website.
+      // Paths, queries and fragments still belong to the same built-in page.
+      return url.protocol === "chrome:" && !url.username && !url.password && !url.port && internalPages.has(url.hostname)
+        ? url.hostname : null;
+    } catch {
+      return null;
+    }
+  }
   const getStore = (k) =>
     new Promise((resolve, reject) => chrome.storage.local.get(k, (value) => {
       const err = chrome.runtime.lastError;
@@ -77,7 +89,9 @@
       if (t.incognito) continue;
       const d = domainFromUrl(t.url || t.pendingUrl);
       if (!d) continue;
-      const existing = openByDomain.get(d) || { openCount: 0, favIconUrl: "" };
+      const internalIcon = internalIconFromUrl(t.url || t.pendingUrl);
+      const previous = openByDomain.get(d);
+      const existing = previous || { openCount: 0, favIconUrl: "" };
       const tabIcon =
         typeof t.favIconUrl === "string" && t.favIconUrl.trim()
           ? t.favIconUrl.trim()
@@ -86,6 +100,9 @@
       openByDomain.set(d, {
         openCount: existing.openCount + 1,
         favIconUrl,
+        // Existing grouping is hostname-based. Mixed browser/web groups must
+        // not acquire a browser-page icon from just one of their tabs.
+        internalIcon: previous && previous.internalIcon !== internalIcon ? null : internalIcon,
       });
     }
 
@@ -120,6 +137,7 @@
         domain,
         openCount: info.openCount,
         favIconUrl: info.favIconUrl || null,
+        internalIcon: info.internalIcon,
       }));
 
     const suggestions = [];
