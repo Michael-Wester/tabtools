@@ -488,7 +488,7 @@ for (const locale of ['en', 'he']) {
   test(`native ${locale}: built-in Chrome icons render in light and dark themes`, async ({}, testInfo) => {
     const browser = await launchExtension(testInfo, locale);
     try {
-      const names = ['settings', 'extensions', 'downloads', 'history', 'bookmarks'];
+      const names = ['settings', 'extensions', 'downloads', 'history', 'bookmarks', 'newtab'];
       // Real browser-owned pages, including a Settings subpage. Do not emulate
       // their favicon URLs: the shipped fallback must win over those URLs.
       for (const name of names) {
@@ -496,7 +496,7 @@ for (const locale of ['en', 'he']) {
       }
       await browser.worker.evaluate(() => chrome.tabs.create({ url: 'chrome://settings/privacy', active: false }));
       const popup = await nativePopup(browser);
-      await expect.poll(() => popup.evaluate('document.querySelectorAll(".internal-icon").length')).toBe(5);
+      await expect.poll(() => popup.evaluate('document.querySelectorAll(".internal-icon").length')).toBe(names.length);
       for (const theme of ['light', 'dark']) {
         await click(popup, '#pc-settings-toggle');
         await click(popup, `[data-theme-value="${theme}"]`);

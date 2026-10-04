@@ -419,7 +419,7 @@
       label.style.unicodeBidi = "isolate";
       const iconUrl =
         typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
-      if (["settings", "extensions", "downloads", "history", "bookmarks"].includes(item.internalIcon)) {
+      if (["settings", "extensions", "downloads", "history", "bookmarks", "newtab"].includes(item.internalIcon)) {
         const icon = document.createElement("span");
         icon.className = "favicon internal-icon";
         icon.dataset.internalIcon = item.internalIcon;

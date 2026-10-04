@@ -32,7 +32,7 @@
       return null;
     }
   };
-  const internalPages = new Set(["settings", "extensions", "downloads", "history", "bookmarks"]);
+  const internalPages = new Set(["settings", "extensions", "downloads", "history", "bookmarks", "newtab"]);
   function internalIconFromUrl(value) {
     try {
       const url = new URL(value);

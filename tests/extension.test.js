@@ -549,7 +549,7 @@ test('popup caps excessive width and enables wrapping without resizing Settings'
 });
 
 test('built-in Chrome icons follow URL schemes and subpages without changing grouping or counts', async () => {
-  const names = ['settings', 'extensions', 'downloads', 'history', 'bookmarks'];
+  const names = ['settings', 'extensions', 'downloads', 'history', 'bookmarks', 'newtab'];
   for (const firefox of [false, true]) {
     const runtime = extension({ firefox, tabs: names.flatMap((name, index) => [
       { id: index * 2 + 1, url: `chrome://${name}/` },
@@ -570,10 +570,12 @@ test('built-in Chrome icons follow URL schemes and subpages without changing gro
 test('ordinary, unknown and other-browser URLs keep favicon fallback, including mixed hostname groups', async () => {
   for (const urls of [
     ['https://settings/'], ['http://extensions/'], ['edge://settings/'],
+    ['https://newtab/'], ['edge://newtab/'],
     ['chrome-extension://settings/page.html'], ['chrome://unknown/'],
     ['chrome://settings:99/'], ['chrome://user@settings/'],
     ['chrome://settings/', 'https://settings/'], ['https://settings/', 'chrome://settings/'],
     ['chrome://settings/', 'https://settings/', 'chrome://settings/subpage'],
+    ['chrome://newtab/', 'https://newtab/'], ['https://newtab/', 'chrome://newtab/'],
   ]) {
     const runtime = extension({ tabs: urls.map((url, id) => ({ id: id + 1, url, favIconUrl: 'https://example.test/icon.png' })) });
     const { suggestions } = await runtime.send({ type: 'pc:getSuggestions' });
