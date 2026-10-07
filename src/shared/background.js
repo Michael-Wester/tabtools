@@ -16,7 +16,9 @@ const DEFAULTS = {
   decayDays: 14,
   maxHistory: 100000,
   showQuickActions: true,
-  theme: "light",
+  keepPinnedTabs: true,
+  theme: "system",
+  accent: "purple",
 };
 
 function normalizeSettings(raw) {
@@ -79,6 +81,65 @@ function tabLooksInactive(tab, thresholdMs, nowTs) {
   if (last) return nowTs - last >= thresholdMs;
   return tab.discarded === true;
 }
+
+// Which tabs an action would close. Previews, counts and the closes themselves
+// all go through these, so what the popup lists is what a click removes.
+function selectByKeyword(tabs, keyword, { exactDomain = false, keepPinned = true } = {}) {
+  if (typeof keyword !== "string" || !keyword.trim()) return [];
+  const kw = keyword.trim();
+  const open = tabs.filter(tab => !tab.incognito && !(keepPinned && tab.pinned));
+  if (exactDomain || kw.includes(".")) {
+    // Site rows and the context menu name one exact host. A domain typed into
+    // the field also covers its subdomains.
+    const wanted = kw.toLowerCase().replace(/^www\./, "");
+    return open.filter(tab => {
+      const domain = domainFromUrl(tab.url || tab.pendingUrl);
+      return domain === wanted || (!exactDomain && !!domain && domain.endsWith("." + wanted));
+    });
+  }
+  const rx = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
+  return open.filter(tab => (tab.title && rx.test(tab.title)) || rx.test(tab.url || tab.pendingUrl || ""));
+}
+
+function selectInactive(tabs, thresholdMinutes, nowTs = Date.now()) {
+  const thresholdMs = Math.max(1, Number(thresholdMinutes) || 30) * 60000;
+  return tabs.filter(tab => tabLooksInactive(tab, thresholdMs, nowTs));
+}
+
+function selectDuplicates(tabs) {
+  // Seed from every pinned tab first: query order can place an unpinned copy
+  // in an earlier window before the pinned copy we must keep.
+  const seen = new Set(tabs.filter(tab => tab.pinned && !tab.incognito)
+    .map(tab => normalizeUrlForDedup(tab.url || tab.pendingUrl || "")).filter(Boolean));
+  const duplicates = [];
+  for (const tab of tabs) {
+    if (tab.incognito || tab.pinned) continue;
+    const key = normalizeUrlForDedup(tab.url || tab.pendingUrl || "");
+    if (!key) continue;
+    if (seen.has(key)) duplicates.push(tab);
+    else seen.add(key);
+  }
+  return duplicates;
+}
+
+// The popup sends the ids it listed; close only tabs that are both listed and
+// still selected by the rule, so nothing unseen and nothing stale is removed.
+function onlyListed(tabs, tabIds) {
+  return Array.isArray(tabIds) ? tabs.filter(tab => tabIds.includes(tab.id)) : tabs;
+}
+
+function previewTab(tab, nowTs) {
+  const url = tab.url || tab.pendingUrl || "";
+  return {
+    id: tab.id,
+    title: tab.title || "",
+    url,
+    domain: domainFromUrl(url) || "",
+    favIconUrl: typeof tab.favIconUrl === "string" ? tab.favIconUrl.trim() : "",
+    idleMinutes: tab.lastAccessed ? Math.max(0, Math.floor((nowTs - tab.lastAccessed) / 60000)) : null,
+  };
+}
+
 function tabsQuery(q) {
   return new Promise((resolve, reject) => chrome.tabs.query(q || {}, (tabs) => {
     const err = getRuntimeLastError();
@@ -391,47 +452,40 @@ async function closeTabs(tabs) {
   };
 }
 
-async function closeByKeyword(keyword, exactDomain = false) {
-  if (typeof keyword !== "string" || !keyword.trim()) return closeTabs([]);
-
-  const kw = keyword.trim();
-  const tabs = await tabsQuery({});
-  const toClose = [];
-
-  const looksLikeDomain = exactDomain || /\./.test(kw);
-  if (looksLikeDomain) {
-    const wanted = kw.toLowerCase().replace(/^www\./, "");
-    for (const t of tabs) {
-      if (t.incognito) continue;
-      const d = domainFromUrl(t.url || t.pendingUrl);
-      if (d === wanted) {
-        toClose.push(t);
-      }
-    }
-  } else {
-    const rx = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
-    for (const t of tabs) {
-      if (t.incognito) continue;
-      if ((t.title && rx.test(t.title)) || rx.test(t.url || t.pendingUrl || "")) {
-        toClose.push(t);
-      }
-    }
-  }
-
-  return closeTabs(toClose);
+async function findKeywordTabs(keyword, exactDomain = false) {
+  if (typeof keyword !== "string" || !keyword.trim()) return [];
+  const settings = await getSettings();
+  return selectByKeyword(await tabsQuery({}), keyword, {
+    exactDomain,
+    keepPinned: settings.keepPinnedTabs !== false,
+  });
 }
 
-async function closeInactiveTabs() {
-  const settings = await getSettings();
-  const thresholdMinutes = Math.max(
-    1,
-    Number(settings.inactiveThresholdMinutes) || 30
-  );
-  const thresholdMs = thresholdMinutes * 60000;
-  const nowTs = Date.now();
+async function closeByKeyword(keyword, exactDomain = false, tabIds) {
+  return closeTabs(onlyListed(await findKeywordTabs(keyword, exactDomain), tabIds));
+}
 
-  const tabs = await tabsQuery({});
-  return closeTabs(tabs.filter(tab => tabLooksInactive(tab, thresholdMs, nowTs)));
+async function previewKeyword(keyword) {
+  const nowTs = Date.now();
+  return { tabs: (await findKeywordTabs(keyword)).map(tab => previewTab(tab, nowTs)) };
+}
+
+async function findInactiveTabs() {
+  const settings = await getSettings();
+  return selectInactive(await tabsQuery({}), settings.inactiveThresholdMinutes);
+}
+
+async function closeInactiveTabs(tabIds) {
+  return closeTabs(onlyListed(await findInactiveTabs(), tabIds));
+}
+
+async function previewInactive() {
+  const nowTs = Date.now();
+  const tabs = await findInactiveTabs();
+  // Longest unused first. Tabs with no timestamp (listed because the browser
+  // discarded them) go last.
+  tabs.sort((a, b) => (a.lastAccessed || Infinity) - (b.lastAccessed || Infinity));
+  return { tabs: tabs.map(tab => previewTab(tab, nowTs)) };
 }
 
 function normalizeUrlForDedup(url) {
@@ -445,25 +499,7 @@ function normalizeUrlForDedup(url) {
 }
 
 async function closeDuplicateTabs() {
-  const tabs = await tabsQuery({});
-  // Seed from every pinned tab first: query order can place an unpinned copy
-  // in an earlier window before the pinned copy we must keep.
-  const seen = new Set(tabs.filter(tab => tab.pinned && !tab.incognito)
-    .map(tab => normalizeUrlForDedup(tab.url || tab.pendingUrl || "")).filter(Boolean));
-  const toClose = [];
-
-  for (const tab of tabs) {
-    if (tab.incognito || tab.pinned) continue;
-    const key = normalizeUrlForDedup(tab.url || tab.pendingUrl || "");
-    if (!key) continue;
-    if (seen.has(key)) {
-      toClose.push(tab);
-    } else {
-      seen.add(key);
-    }
-  }
-
-  return closeTabs(toClose);
+  return closeTabs(selectDuplicates(await tabsQuery({})));
 }
 
 async function restoreTabs(tabs) {
@@ -614,9 +650,11 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (!msg || !msg.type) return;
   let action;
   switch (msg.type) {
-    case "pc:closeByKeyword": action = () => closeByKeyword(msg.query); break;
+    case "pc:closeByKeyword": action = () => closeByKeyword(msg.query, false, msg.tabIds); break;
     case "pc:closeByDomain": action = () => closeByKeyword(msg.query, true); break;
-    case "pc:closeInactive": action = closeInactiveTabs; break;
+    case "pc:closeInactive": action = () => closeInactiveTabs(msg.tabIds); break;
+    case "pc:previewKeyword": action = () => previewKeyword(msg.query); break;
+    case "pc:previewInactive": action = previewInactive; break;
     case "pc:closeDuplicates": action = closeDuplicateTabs; break;
     case "pc:sortTabsByOpenCount": action = sortTabsByOpenCount; break;
     case "pc:restoreTabs": action = () => restoreTabs(msg.tabs); break;

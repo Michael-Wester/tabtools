@@ -15,7 +15,9 @@
     decayDays: 14,
     maxHistory: 200,
     showQuickActions: true,
-    theme: "light",
+    keepPinnedTabs: true,
+    theme: "system",
+    accent: "purple",
   };
 
   const normalizeSettings = (raw) => {
@@ -72,11 +74,19 @@
       if (err) reject(err);
       else resolve(value);
     }));
+    // With "Keep pinned tabs open" on, a site row counts only the tabs a click
+    // on it would close. The overview counts everything that is open.
+    const keepPinned = cfg.keepPinnedTabs !== false;
     const openByDomain = new Map();
+    const sites = new Set();
+    let openTabs = 0;
     for (const t of tabs) {
       if (t.incognito) continue;
+      openTabs += 1;
       const d = domainFromUrl(t.url || t.pendingUrl);
       if (!d) continue;
+      sites.add(d);
+      if (keepPinned && t.pinned) continue;
       const existing = openByDomain.get(d) || { openCount: 0, favIconUrl: "" };
       const tabIcon =
         typeof t.favIconUrl === "string" && t.favIconUrl.trim()
@@ -89,32 +99,12 @@
       });
     }
 
-    const thresholdMinutes = Math.max(
-      1,
-      Number(cfg.inactiveThresholdMinutes) || 30
-    );
-    const thresholdMs = thresholdMinutes * 60000;
-    const nowTs = now();
-
-    let inactiveCount = 0;
-    if (cfg.enableInactiveSuggestion) {
-      const inactiveTabs = tabs.filter((t) => {
-        if (t.incognito) return false;
-        if (t.pinned || t.audible) return false;
-        if (t.active) return false;
-        const last = t.lastAccessed || 0;
-        if (last) return nowTs - last >= thresholdMs;
-        return t.discarded === true;
-      });
-      inactiveCount = inactiveTabs.length;
-    }
+    const inactiveCount = cfg.enableInactiveSuggestion
+      ? root.selectInactive(tabs, cfg.inactiveThresholdMinutes, now()).length
+      : 0;
 
     const domains = Array.from(openByDomain.entries())
-      .filter(
-        ([, info]) => info.openCount >= cfg.suggestMinOpenTabsPerDomain
-      )
       .sort((a, b) => b[1].openCount - a[1].openCount)
-      .slice(0, 30)
       .map(([domain, info]) => ({
         kind: "domain",
         domain,
@@ -130,7 +120,15 @@
       });
     }
     suggestions.push(...domains);
-    return suggestions;
+    return {
+      suggestions,
+      overview: {
+        openTabs,
+        sites: sites.size,
+        inactive: inactiveCount,
+        duplicates: root.selectDuplicates(tabs).length,
+      },
+    };
   }
 
   async function getStats() {
@@ -173,7 +171,7 @@
         } else if (msg.type === "pc:updateSettings") {
           sendResponse({ ok: true, settings: await updateSettings(msg.payload || {}) });
         } else if (msg.type === "pc:getSuggestions") {
-          sendResponse({ ok: true, suggestions: await pcGetSuggestions() });
+          sendResponse({ ok: true, ...(await pcGetSuggestions()) });
         } else if (msg.type === "pc:getStats") {
           sendResponse({ ok: true, stats: await getStats() });
         } else if (msg.type === "pc:resetStats") {
