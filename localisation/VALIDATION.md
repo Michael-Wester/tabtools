@@ -12,13 +12,38 @@ node scripts/check-packages.js
 node website/build.js
 node website/check-guides.cjs
 node website/check-security.cjs
-node scripts/validate-localisation.js --report
-git diff --exit-code
+node scripts/validate-localisation.js
+git add --all --intent-to-add . && git diff --exit-code
 ```
 
 CI runs on Linux and Windows with Node 22. Windows additionally runs `./build.ps1`
 and checks its packages. Generated locale files, pages and store text are committed;
-generation must leave them unchanged. Review fingerprints are never updated by generation.
+generation must leave them unchanged, and a generated file that was never committed
+fails the last command. Review fingerprints are never updated by generation.
+
+`node scripts/check-packages.js` compares each built manifest, apart from its
+version, with `scripts/approved-manifests/<browser>.json`. A manifest change is
+therefore two edits in one pull request: the manifest and its approved copy.
+
+### Release branches and pending translations
+
+`main` always needs every language complete and current. A release branch can
+take English changes first and their translations in a later pull request:
+
+```sh
+TABTOOLS_PENDING_TRANSLATIONS=1 npm test
+```
+
+With that variable set to `1`, validation reports, without failing, a string that a
+language has not translated yet and a string whose English changed after its
+translation was reviewed. Until it is translated the browser shows the English
+string. Unknown strings, changed placeholders, unsafe markup, stale packages and
+every other check fail in both modes, and `COVERAGE.md` is identical in both.
+
+CI sets the variable for pull requests whose base is not `main`. The
+`translations-complete` job never sets it, so it is red on a release branch
+until the translations are merged and must be green before that branch is
+merged into `main`.
 
 ## Installed Chromium extension regression
 

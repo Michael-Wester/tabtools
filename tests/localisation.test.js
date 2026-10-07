@@ -26,6 +26,108 @@ test('extension messages preserve interpolation and plural categories', () => {
   assert.ok(messages.openCount_other);
 });
 
+test('generation leaves out strings English has retired or reshaped instead of stopping', () => {
+  const english = structuredClone(L.catalogue('en'));
+  const czech = structuredClone(L.catalogue('cs'));
+  delete english.openCount;                        // a retired plural string
+  delete english.settings;                         // a retired plain string
+  english.closedCount = { one: '{count} closed', other: '{count} closed' };   // now plural in English only
+  const messages = L.toWebExtensionMessages('cs', english, czech);
+  assert.equal(Object.keys(messages).some(key => key.startsWith('openCount_')), false);
+  assert.equal('settings' in messages, false);
+  assert.equal(Object.keys(messages).some(key => key === 'closedCount' || key.startsWith('closedCount_')), false);
+  assert.ok(messages.sortTabs.message);
+  delete czech.sortTabs;                           // not translated yet: absent, so the browser shows English
+  assert.equal('sortTabs' in L.toWebExtensionMessages('cs', english, czech), false);
+});
+
+function validationSandbox(run) {
+  const os = require('node:os');
+  const { spawnSync } = require('node:child_process');
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tabtools-validate-'));
+  const wanted = /^(scripts|localisation|marketing[\\/](sources|listings|INDEX\.md)|src[\\/](overrides|shared[\\/](_locales|i18n-fallback\.js))|website[\\/]dist[\\/]([^\\/]+[\\/]index\.html|index\.html|sitemap\.xml))([\\/]|$)/;
+  const ancestors = /^(marketing|src|src[\\/]shared|website|website[\\/]dist|website[\\/]dist[\\/][^\\/]+)$/;
+  try {
+    fs.cpSync(L.root, directory, { recursive: true, filter: source => {
+      const relative = path.relative(L.root, source);
+      return relative === '' || wanted.test(relative) || ancestors.test(relative);
+    } });
+    const file = name => path.join(directory, 'localisation', name);
+    const edit = (name, change) => {
+      const data = JSON.parse(fs.readFileSync(file(name), 'utf8'));
+      fs.writeFileSync(file(name), JSON.stringify(change(data) || data, null, 2) + '\n');
+    };
+    const node = (script, pendingAllowed) => spawnSync(process.execPath, [script], {
+      cwd: directory, encoding: 'utf8',
+      env: { ...process.env, TABTOOLS_PENDING_TRANSLATIONS: pendingAllowed ? '1' : '' },
+    });
+    const validate = pendingAllowed => {
+      const result = node('scripts/validate-localisation.js', pendingAllowed);
+      return { ...result, text: result.stdout + result.stderr, coverage: fs.readFileSync(file('COVERAGE.md'), 'utf8') };
+    };
+    const generate = () => {
+      const result = node('scripts/generate-extension-locales.js', false);
+      assert.equal(result.status, 0, result.stderr);
+    };
+    return run({ edit, validate, generate });
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+test('a release branch may hold untranslated and reworded English strings only when pending translations are allowed', () => {
+  validationSandbox(({ edit, validate, generate }) => {
+    assert.equal(validate(false).status, 0);
+    edit('locales/en.json', english => {
+      const withNew = {};
+      for (const [key, value] of Object.entries(english)) {
+        withNew[key] = key === 'sortTabs' ? 'Sort tabs by site' : value;                     // reworded
+        if (key === 'closeSiteLabel') {
+          withNew.keepPinned = 'Keep pinned tabs open';                                      // new
+          withNew.siteCount = { one: '{count} site', other: '{count} sites' };               // new plural
+        }
+      }
+      return withNew;
+    });
+    generate();
+    const strict = validate(false);
+    assert.equal(strict.status, 1);
+    for (const report of ['de: missing source keys: keepPinned, siteCount', 'de: keepPinned: expected nonempty text',
+      'de: siteCount: expected plural forms', 'de: missing review metadata for keepPinned', 'de: stale source fingerprint for sortTabs']) {
+      assert.ok(strict.text.includes(report), report);
+    }
+    const tolerant = validate(true);
+    assert.equal(tolerant.status, 0, tolerant.text);
+    assert.match(tolerant.text, /Translations pending: \d+ reports above/);
+    assert.ok(tolerant.text.includes('de: missing source keys: keepPinned, siteCount'));
+    // The coverage table is committed, so it must not depend on the mode.
+    assert.equal(tolerant.coverage, strict.coverage);
+    assert.match(tolerant.coverage, /\| de \| 44\/46 \| .*\| STALE \(3 keys\) \| FAIL \(\d+\) \|/);
+  });
+});
+
+test('pending translations never excuse retired strings, broken placeholders or stale packages', () => {
+  validationSandbox(({ edit, validate, generate }) => {
+    edit('locales/en.json', english => { delete english.openCountShort; delete english.hide; });
+    generate();                                    // used to stop with a TypeError on the plural string
+    let result = validate(true);
+    assert.equal(result.status, 1);
+    assert.ok(result.text.includes('de: openCountShort: unknown key'));
+    assert.ok(result.text.includes('de: hide: unknown key'));
+  });
+  validationSandbox(({ edit, validate, generate }) => {
+    edit('locales/de.json', german => { german.closeSiteLabel = 'Tabs dieser Website schließen'; });
+    let result = validate(true);
+    assert.equal(result.status, 1);
+    assert.ok(result.text.includes('de: closeSiteLabel: changed placeholders'));
+    assert.ok(result.text.includes('de: packaged messages are out of date'));
+    generate();
+    result = validate(true);
+    assert.equal(result.status, 1);
+    assert.ok(result.text.includes('de: review translation fingerprint mismatch for closeSiteLabel'));
+  });
+});
+
 test('store locale codes match the recorded Chrome and AMO evidence', () => {
   const { validateStoreCodes } = require('../scripts/catalogue-validation');
   const evidence = require('../localisation/support-evidence.json');
