@@ -223,5 +223,62 @@
         "example": "example.com"
       }
     }
+  },
+  "system": {
+    "message": "System"
+  },
+  "clear": {
+    "message": "Clear"
+  },
+  "noMatches": {
+    "message": "No tabs match"
+  },
+  "keepPinned": {
+    "message": "Keep pinned tabs open"
+  },
+  "keepNote": {
+    "message": "Pinned, playing and current tabs stay open."
+  },
+  "reset": {
+    "message": "Reset"
+  },
+  "siteCount_one": {
+    "message": "$count$ site",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "siteCount_other": {
+    "message": "$count$ sites",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "accentColour": {
+    "message": "Accent colour"
+  },
+  "accentPurple": {
+    "message": "Purple"
+  },
+  "accentBlue": {
+    "message": "Blue"
+  },
+  "accentGreen": {
+    "message": "Green"
+  },
+  "accentOrange": {
+    "message": "Orange"
+  },
+  "accentPink": {
+    "message": "Pink"
+  },
+  "accentGraphite": {
+    "message": "Graphite"
   }
 }
