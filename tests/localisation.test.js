@@ -136,6 +136,13 @@ test('built packages preserve metadata and contain each browser locale', () => {
     const stale = spawnSync(process.execPath, ['scripts/check-packages.js'], { cwd: L.root, encoding: 'utf8' });
     assert.notEqual(stale.status, 0);
     assert.match(stale.stderr, /packaged version differs from source/);
+    // Any manifest key outside the approved copy fails, not only the permissions list.
+    for (const [key, value] of [['host_permissions', ['<all_urls>']], ['content_scripts', [{ matches: ['<all_urls>'], js: ['background.js'] }]], ['incognito', 'split']]) {
+      fs.writeFileSync(manifestFile, JSON.stringify({ ...JSON.parse(original), [key]: value }));
+      const widened = spawnSync(process.execPath, ['scripts/check-packages.js'], { cwd: L.root, encoding: 'utf8' });
+      assert.notEqual(widened.status, 0, key);
+      assert.match(widened.stderr, /packaged manifest differs from scripts\/approved-manifests\/chrome\.json/, key);
+    }
   } finally {
     fs.writeFileSync(manifestFile, original);
   }
