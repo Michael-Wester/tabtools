@@ -33,17 +33,33 @@ async function launchExtension(testInfo, locale = 'en', privateAccess = false) {
         `--lang=${locale}`, `--accept-lang=${locale}`, '--no-sandbox'
       ]
     });
-    const worker = context.serviceWorkers()[0] || await context.waitForEvent('serviceworker');
+    // The worker occasionally fails to attach; a bounded wait lets the caller relaunch
+    // instead of spending the whole test timeout here.
+    const worker = context.serviceWorkers()[0] ||
+      await context.waitForEvent('serviceworker', { timeout: 10_000 }).catch(() => null);
+    if (!worker) {
+      await context.close();
+      return null;
+    }
+    // Playwright can hand over the worker before Chromium has attached the extension APIs.
+    await expect.poll(() => worker.evaluate(() => typeof chrome === 'object' && Boolean(chrome.tabs?.query && chrome.action?.openPopup))).toBe(true);
     return { context, worker, id: new URL(worker.url()).hostname };
   };
-  let browser = await launch();
+  const launchReliably = async () => {
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
+      const launched = await launch();
+      if (launched) return launched;
+    }
+    throw new Error('The extension service worker did not start in three launches');
+  };
+  let browser = await launchReliably();
   if (privateAccess) {
     const id = browser.id;
     await browser.context.close();
     const saved = JSON.parse(fs.readFileSync(preferenceFile, 'utf8'));
     saved.extensions.settings[id].incognito = true;
     fs.writeFileSync(preferenceFile, JSON.stringify(saved));
-    browser = await launch();
+    browser = await launchReliably();
     expect(await browser.worker.evaluate(() => new Promise(resolve => chrome.extension.isAllowedIncognitoAccess(resolve)))).toBe(true);
   }
   // Fulfill controlled regular-tab pages locally; separate windows use
@@ -82,11 +98,14 @@ async function queryTabs(worker) {
 }
 
 async function nativePopup({ context, worker, id }) {
-  await worker.evaluate(() => chrome.action.openPopup());
   const cdp = await context.browser().newBrowserCDPSession();
-  const { targetInfos } = await cdp.send('Target.getTargets');
-  const target = targetInfos.find(item => item.url === `chrome-extension://${id}/popup/popup.html`);
-  expect(target, 'the real browser action popup must be present').toBeTruthy();
+  const popupTarget = async () => (await cdp.send('Target.getTargets')).targetInfos
+    .find(item => item.url === `chrome-extension://${id}/popup/popup.html`);
+  // openPopup rejects while a previous popup is still closing, so wait for that and retry.
+  await expect.poll(async () => Boolean(await popupTarget()), { message: 'the previous popup must have closed' }).toBe(false);
+  await expect.poll(() => worker.evaluate(() => chrome.action.openPopup()).then(() => 'opened', error => error.message)).toBe('opened');
+  await expect.poll(async () => Boolean(await popupTarget()), { message: 'the real browser action popup must be present' }).toBe(true);
+  const target = await popupTarget();
   const { sessionId } = await cdp.send('Target.attachToTarget', { targetId: target.targetId, flatten: false });
   const pending = new Map();
   const diagnostics = [];
@@ -119,9 +138,14 @@ async function nativePopup({ context, worker, id }) {
   };
   await send('Runtime.enable');
   await evaluate('document.fonts.ready.then(() => true)');
-  await expect.poll(() => evaluate('Boolean(document.querySelector("#pc-open-count").textContent)')).toBe(true);
+  // The popup document may still be loading when the session attaches.
+  await expect.poll(() => evaluate('Boolean(document.querySelector("#pc-open-count")?.textContent)')).toBe(true);
   const message = (type, payload = {}) => evaluate(`new Promise(resolve => chrome.runtime.sendMessage(${JSON.stringify({ type, ...payload })}, resolve))`);
-  return { evaluate, message, diagnostics, send, close: () => cdp.send('Target.closeTarget', { targetId: target.targetId }) };
+  const close = async () => {
+    await cdp.send('Target.closeTarget', { targetId: target.targetId });
+    await expect.poll(async () => Boolean(await popupTarget()), { message: 'the popup must close' }).toBe(false);
+  };
+  return { evaluate, message, diagnostics, send, close };
 }
 
 async function click(popup, selector) {
@@ -402,7 +426,7 @@ for (const locale of ['en', 'de', 'he']) {
       expect((await popup.message('pc:getStats')).stats.totalTabsEaten).toBe(2549);
       await popup.close();
       const reopened = await nativePopup(browser);
-      await expect.poll(() => reopened.evaluate(`document.querySelector('.chip[data-kind="inactive"] .count').textContent`)).toBe('6');
+      await expect.poll(() => reopened.evaluate(`document.querySelector('.chip[data-kind="inactive"] .count')?.textContent`)).toBe('6');
       const screenshot = await reopened.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
       const file = testInfo.outputPath(`${locale}-ranked-inactive-6.png`);
       fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
