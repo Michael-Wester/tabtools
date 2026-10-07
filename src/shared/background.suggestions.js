@@ -8,32 +8,11 @@
     STATS: "pc.stats",
   };
 
-  const DEFAULTS = {
-    enableInactiveSuggestion: true,
-    inactiveThresholdMinutes: 120,
-    suggestMinOpenTabsPerDomain: 1,
-    decayDays: 14,
-    maxHistory: 200,
-    showQuickActions: true,
-    keepPinnedTabs: true,
-    theme: "system",
-    accent: "purple",
-  };
-
-  const normalizeSettings = (raw) => {
-    const settings = { ...DEFAULTS, ...(raw || {}) };
-    delete settings.enableSuggestions;
-    return settings;
-  };
+  // The defaults, the selectors and the record of when tabs were left all live
+  // in background.js, which is loaded first in every browser.
+  const { normalizeSettings, domainFromUrl } = root;
 
   const now = () => Date.now();
-  const domainFromUrl = (url) => {
-    try {
-      return new URL(url).hostname.replace(/^www\./, "").toLowerCase();
-    } catch {
-      return null;
-    }
-  };
   const getStore = (k) =>
     new Promise((resolve, reject) => chrome.storage.local.get(k, (value) => {
       const err = chrome.runtime.lastError;
@@ -100,7 +79,7 @@
     }
 
     const inactiveCount = cfg.enableInactiveSuggestion
-      ? root.selectInactive(tabs, cfg.inactiveThresholdMinutes, now()).length
+      ? root.selectInactive(tabs, cfg.inactiveThresholdMinutes, now(), await root.leftTimes(tabs)).length
       : 0;
 
     const domains = Array.from(openByDomain.entries())

@@ -60,6 +60,12 @@
   function normalizeSettings(raw) {
     const settings = { ...DEFAULTS, ...(raw || {}) };
     delete settings.enableSuggestions;
+    // The background applies the same floor: a shorter time saved by an older
+    // version is raised to the first step the stepper offers.
+    settings.inactiveThresholdMinutes = Math.max(
+      THRESHOLDS[0],
+      Number(settings.inactiveThresholdMinutes) || DEFAULTS.inactiveThresholdMinutes
+    );
     return settings;
   }
 
@@ -234,7 +240,7 @@
   }
 
   function thresholdOf(settings) {
-    return Math.max(1, Number(settings.inactiveThresholdMinutes) || DEFAULTS.inactiveThresholdMinutes);
+    return Math.max(THRESHOLDS[0], Number(settings.inactiveThresholdMinutes) || DEFAULTS.inactiveThresholdMinutes);
   }
 
   // The next choice below or above the saved value. A value saved by an older

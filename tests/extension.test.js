@@ -8,12 +8,15 @@ const L = require('../scripts/localisation');
 
 // Run the shipped scripts with callback-based browser API fixtures. These tests
 // exercise the message boundary and stored results, not an installed browser.
-function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
+// `session` is the browser-session storage: pass a previous runtime's
+// state.session to stand for a service worker that woke again, or false for a
+// browser without it.
+function extension({ tabs = [], locale = 'en', firefox = false, session = {} } = {}) {
   const event = () => ({ listeners: [], addListener(fn) { this.listeners.push(fn); } });
   const state = {
     tabs: tabs.map((tab, index) => ({ windowId: 1, index, active: false, pinned: false, incognito: false, ...tab })),
-    store: {}, menus: [], removed: [], created: [], moves: [], errors: [],
-    failRemove: new Set(), failCreate: new Set(), missingWindows: new Set(),
+    store: {}, session, menus: [], menuInstalls: 0, removed: [], created: [], moves: [], errors: [],
+    failRemove: new Set(), failCreate: new Set(), failMove: new Set(), missingWindows: new Set(),
     failQuery: false, failMessage: false, failStorageGet: false, failStorageSet: false,
     delayCreatedNavigation: false, queryCount: 0,
   };
@@ -37,6 +40,10 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
       if (!failure) {
         state.removed.push(...list);
         state.tabs = state.tabs.filter(tab => !list.includes(tab.id));
+        // The tabs behind a closed one move up, as in a browser.
+        for (const windowId of new Set(state.tabs.map(tab => tab.windowId))) {
+          state.tabs.filter(tab => tab.windowId === windowId).sort((a, b) => a.index - b.index).forEach((tab, position) => { tab.index = position; });
+        }
       }
       callback(cb, undefined, failure ? 'Tabs cannot be edited right now' : null);
     },
@@ -52,9 +59,22 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
       callback(cb, structuredClone(tab));
     },
     move(id, { index }, cb) {
-      const tab = state.tabs.find(item => item.id === id);
       state.moves.push({ id, index });
-      callback(cb, tab);
+      if (state.failMove.has(id)) {
+        callback(cb, undefined, 'Tabs cannot be edited right now');
+        return;
+      }
+      // Reorder the tab's window as a browser does. A moved tab joins a tab
+      // group only when it lands between two tabs of that group; anywhere
+      // else it ends up outside every group.
+      const tab = state.tabs.find(item => item.id === id);
+      const row = state.tabs.filter(item => item.windowId === tab.windowId && item !== tab).sort((a, b) => a.index - b.index);
+      row.splice(index, 0, tab);
+      row.forEach((item, position) => { item.index = position; });
+      const groupOf = item => (item && typeof item.groupId === 'number' ? item.groupId : -1);
+      const [left, right] = [groupOf(row[index - 1]), groupOf(row[index + 1])];
+      if ('groupId' in tab || left !== -1 || right !== -1) tab.groupId = left !== -1 && left === right ? left : -1;
+      callback(cb, structuredClone(tab));
     },
     onCreated: event(), onRemoved: event(), onActivated: event(), onUpdated: event(), onReplaced: event(),
   };
@@ -69,9 +89,16 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
       callback(cb, undefined, state.failStorageSet ? 'Storage write failed' : null);
     },
   }, onChanged: event() };
+  if (session) api.storage.session = {
+    get(keys, cb) {
+      const names = typeof keys === 'string' ? [keys] : keys;
+      callback(cb, structuredClone(Object.fromEntries(names.filter(key => key in state.session).map(key => [key, state.session[key]]))));
+    },
+    set(values, cb) { Object.assign(state.session, structuredClone(values)); callback(cb); },
+  };
   api.contextMenus = {
     onClicked: event(),
-    create(properties, cb) { state.menus.push(structuredClone(properties)); callback(cb); return properties.id; },
+    create(properties, cb) { state.menus.push(structuredClone(properties)); state.menuInstalls += 1; callback(cb); return properties.id; },
     removeAll(cb) { state.menus = []; callback(cb); },
   };
   api[firefox ? 'browserAction' : 'action'] = { setIcon() {} };
@@ -99,14 +126,29 @@ function extension({ tabs = [], locale = 'en', firefox = false } = {}) {
     if (state.failMessage) callback(cb, undefined, 'Receiving end does not exist');
     else send(message).then(value => callback(cb, value));
   };
-  const context = vm.createContext({ chrome: api, URL, Intl, Date, setTimeout: () => 1,
+  // A clock the tests can move: runtime.context.Date.advance(minutes).
+  let clockOffset = 0;
+  class TestDate extends Date { static now() { return Date.now() + clockOffset; } static advance(minutes) { clockOffset += minutes * 60000; } }
+  const context = vm.createContext({ chrome: api, URL, Intl, Date: TestDate, setTimeout: () => 1,
     console: { error: (...args) => state.errors.push(args), warn: (...args) => state.errors.push(args) } });
   if (firefox) context.browser = api;
   const run = file => vm.runInContext(fs.readFileSync(path.join(L.root, 'src/shared', file), 'utf8'), context, { filename: file });
   const manifest = JSON.parse(fs.readFileSync(path.join(L.root, 'src/overrides', firefox ? 'firefox' : 'chrome', 'manifest.json')));
   if (firefox) manifest.background.scripts.forEach(run);
   else { context.importScripts = (...files) => files.forEach(run); run(manifest.background.service_worker); }
-  return { state, api, context, send };
+  // Lets the start-of-session work (menu item, active tabs) finish.
+  const settle = () => new Promise(resolve => setImmediate(resolve));
+  // The user switches to a tab: the browser updates `active` and tells the background.
+  async function activate(tabId, { withPrevious = firefox } = {}) {
+    const tab = state.tabs.find(item => item.id === tabId);
+    const previous = state.tabs.find(item => item.windowId === tab.windowId && item.active);
+    if (previous) previous.active = false;
+    tab.active = true;
+    tab.lastAccessed = context.Date.now();
+    const info = { tabId, windowId: tab.windowId, ...(withPrevious && previous ? { previousTabId: previous.id } : {}) };
+    await Promise.all(api.tabs.onActivated.listeners.map(listener => listener(info)));
+  }
+  return { state, api, context, send, settle, activate };
 }
 
 // A small stand-in for the popup document, built from the real popup.html so
@@ -197,12 +239,75 @@ function popupTimers() {
 test('Chrome worker and Firefox background register translated, stable context-menu actions', async () => {
   for (const firefox of [false, true]) for (const locale of L.registry) {
     const runtime = extension({ locale: locale.locale, firefox });
-    await Promise.resolve();
+    await runtime.settle();
     const entry = runtime.state.menus.find(menu => menu.id === 'tabTools-close-site-tabs-page');
     assert.equal(entry.title, L.catalogue(locale.locale).contextClose, locale.locale);
+    assert.equal(entry.contexts.includes('tab'), firefox, 'the tab-strip menu is offered where the browser has it');
     assert.equal(runtime.api.contextMenus.onClicked.listeners.length, 1);
     assert.equal(typeof runtime.context.pcStatsEat, 'function');
   }
+});
+
+test('a Chrome worker creates the menu item once per browser session, not on every wake', async () => {
+  const first = extension();
+  await first.settle();
+  assert.equal(first.state.menuInstalls, 1);
+  // The worker stops and a later event wakes it: same session storage, fresh script.
+  const woken = extension({ session: first.state.session });
+  await woken.settle();
+  assert.equal(woken.state.menuInstalls, 0);
+  assert.equal(woken.api.contextMenus.onClicked.listeners.length, 1, 'a click must still reach the new worker');
+  // Install and browser-start events arriving during a wake do not repeat the work.
+  for (const listener of [...woken.api.runtime.onInstalled.listeners, ...woken.api.runtime.onStartup.listeners]) await listener();
+  await woken.settle();
+  assert.equal(woken.state.menuInstalls, 0);
+  // A new browser session starts with empty session storage.
+  const restarted = extension();
+  await restarted.settle();
+  assert.equal(restarted.state.menuInstalls, 1);
+  // Without session storage nothing can remember, so the item is created on each wake as before.
+  const old = extension({ session: false });
+  await old.settle();
+  assert.equal(old.state.menuInstalls, 1);
+});
+
+test('the background listens for tab switches only, and never for other tab events', async () => {
+  for (const firefox of [false, true]) {
+    const runtime = extension({ firefox });
+    await runtime.settle();
+    assert.equal(runtime.api.tabs.onActivated.listeners.length, 1);
+    for (const name of ['onCreated', 'onRemoved', 'onUpdated', 'onReplaced']) {
+      assert.equal(runtime.api.tabs[name].listeners.length, 0, name);
+    }
+    assert.equal(runtime.api.storage.onChanged.listeners.length, 0);
+  }
+});
+
+test('the right-click action in a private tab closes nothing', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://example.com/normal' },
+    { id: 2, url: 'https://example.com/private', incognito: true },
+  ] });
+  const [click] = runtime.api.contextMenus.onClicked.listeners;
+  await click({ menuItemId: 'tabTools-close-site-tabs-page', pageUrl: 'https://example.com/private' }, runtime.state.tabs[1]);
+  await runtime.context.handleContextMenuClick({ pageUrl: 'https://example.com/private' }, runtime.state.tabs[1]);
+  assert.deepEqual(runtime.state.removed, []);
+  await runtime.context.handleContextMenuClick({ pageUrl: 'https://example.com/normal' }, runtime.state.tabs[0]);
+  assert.deepEqual(runtime.state.removed, [1]);
+});
+
+test('the right-click handler acts only on its own menu item and on the tab that was clicked', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://page.test/article' }, { id: 2, url: 'https://link.test/target' },
+  ] });
+  const [click] = runtime.api.contextMenus.onClicked.listeners;
+  await click({ menuItemId: 'some-other-item', pageUrl: 'https://page.test/article' }, runtime.state.tabs[0]);
+  await runtime.settle();
+  assert.deepEqual(runtime.state.removed, []);
+  // Right-clicking a link acts on the page the link is on, not on the link's site.
+  await click({ menuItemId: 'tabTools-close-site-tabs-page', pageUrl: 'https://page.test/article', linkUrl: 'https://link.test/target' }, runtime.state.tabs[0]);
+  await runtime.settle();
+  assert.deepEqual(runtime.state.removed, [1]);
 });
 
 test('exact-domain and keyword cleanup preserve unrelated and private tabs', async () => {
@@ -265,7 +370,7 @@ test('concurrent cleanups do not overwrite each other’s stored statistics', as
 
 test('concurrent settings patches preserve each control and recover after a failed write', async () => {
   const runtime = extension();
-  const patches = [{ suggestMinOpenTabsPerDomain: 3 }, { inactiveThresholdMinutes: 45 }, { theme: 'dark' }];
+  const patches = [{ keepPinnedTabs: false }, { inactiveThresholdMinutes: 45 }, { theme: 'dark' }];
   const replies = await Promise.all(patches.map(payload => runtime.send({ type: 'pc:updateSettings', payload })));
   assert.ok(replies.every(reply => reply.ok));
   const saved = runtime.state.store['pc.settings'];
@@ -314,9 +419,9 @@ test('tab-query failures return errors to close and suggestion requests', async 
 
 test('duplicate cleanup keeps pinned copies and removes their unpinned duplicates in other windows', async () => {
   const runtime = extension({ tabs: [
-    { id: 1, url: 'https://example.com/page#first', windowId: 1 },
-    { id: 2, url: 'https://example.com/page#second', pinned: true, windowId: 2 },
-    { id: 3, url: 'https://example.com/page#private', incognito: true },
+    { id: 1, url: 'https://example.com/page', windowId: 1 },
+    { id: 2, url: 'https://example.com/page', pinned: true, windowId: 2 },
+    { id: 3, url: 'https://example.com/page', incognito: true },
     { id: 4, url: 'https://different.example/' },
   ] });
   const result = await runtime.send({ type: 'pc:closeDuplicates' });
@@ -325,12 +430,12 @@ test('duplicate cleanup keeps pinned copies and removes their unpinned duplicate
   assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [2, 3, 4]);
 });
 
-test('duplicate cleanup follows the guide pinned-copy examples without closing pinned copies', async () => {
+test('duplicate cleanup never closes a pinned copy, however many there are', async () => {
   for (const pinnedCount of [1, 2]) {
-    const pinned = Array.from({ length: pinnedCount }, (_, i) => ({ id: i + 3, url: 'https://example.com/page#pinned', pinned: true, windowId: 2 }));
+    const pinned = Array.from({ length: pinnedCount }, (_, i) => ({ id: i + 3, url: 'https://example.com/page', pinned: true, windowId: 2 }));
     const runtime = extension({ tabs: [
-      { id: 1, url: 'https://example.com/page#first', active: true, windowId: 1 },
-      { id: 2, url: 'https://example.com/page#second', windowId: 1 },
+      { id: 1, url: 'https://example.com/page', windowId: 1 },
+      { id: 2, url: 'https://example.com/page', windowId: 1 },
       ...pinned
     ] });
     const result = await runtime.send({ type: 'pc:closeDuplicates' });
@@ -340,18 +445,58 @@ test('duplicate cleanup follows the guide pinned-copy examples without closing p
   }
 });
 
-test('duplicate URL matching normalizes scheme/host case and fragments but preserves path/query case and order', async () => {
+test('pages that differ only after # are not duplicates', async () => {
   const runtime = extension({ tabs: [
-    { id: 1, url: 'HTTPS://EXAMPLE.COM/Guide?a=1&b=2#intro' },
-    { id: 2, url: 'https://example.com/Guide?a=1&b=2#steps', active: true },
-    { id: 3, url: 'https://example.com/guide?a=1&b=2' },
-    { id: 4, url: 'https://example.com/Guide?A=1&b=2' },
-    { id: 5, url: 'https://example.com/Guide?b=2&a=1' },
+    { id: 1, url: 'https://mail.google.com/mail/u/0/#inbox' },
+    { id: 2, url: 'https://mail.google.com/mail/u/0/#inbox/FMfcgzQXKabc', title: 'Conversation A' },
+    { id: 3, url: 'https://mail.google.com/mail/u/0/#sent/FMfcgzQXKdef', title: 'Conversation B', active: true },
+    { id: 4, url: 'https://app.example/#/projects/1' },
+    { id: 5, url: 'https://app.example/#/projects/2/settings' },
+    { id: 6, url: 'https://docs.example/guide#intro' },
+    { id: 7, url: 'https://docs.example/guide#steps' },
+  ] });
+  assert.equal((await runtime.send({ type: 'pc:getSuggestions' })).overview.duplicates, 0);
+  const result = await runtime.send({ type: 'pc:closeDuplicates' });
+  assert.equal(result.closedCount, 0);
+  assert.deepEqual(runtime.state.removed, []);
+});
+
+test('duplicate matching ignores letter case in scheme and host, an empty #, and text-highlight links only', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'HTTPS://EXAMPLE.COM/Guide?a=1&b=2' },
+    { id: 2, url: 'https://example.com/Guide?a=1&b=2' },                       // same page: closed
+    { id: 3, url: 'https://example.com/Guide?a=1&b=2#' },                      // same page: closed
+    { id: 4, url: 'https://example.com/Guide?a=1&b=2#:~:text=second%20step' }, // same page: closed
+    { id: 5, url: 'https://example.com/guide?a=1&b=2' },                       // path case differs
+    { id: 6, url: 'https://example.com/Guide?A=1&b=2' },                       // query case differs
+    { id: 7, url: 'https://example.com/Guide?b=2&a=1' },                       // query order differs
+    { id: 8, url: 'https://example.com/Guide?a=1&b=2#steps' },                 // a different place
+    { id: 9, url: 'https://example.com/Guide?a=1&b=2#steps:~:text=second' },   // the same place as 8: closed
   ] });
   const result = await runtime.send({ type: 'pc:closeDuplicates' });
-  assert.equal(result.closedCount, 1);
-  assert.deepEqual(runtime.state.removed, [2]);
-  assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [1, 3, 4, 5]);
+  assert.deepEqual(runtime.state.removed, [2, 3, 4, 9]);
+  assert.equal(result.closedCount, 4);
+  assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [1, 5, 6, 7, 8]);
+});
+
+test('duplicate cleanup keeps the copy in view and a copy playing sound, and otherwise the first', async () => {
+  const page = 'https://video.example/watch?v=1';
+  const cases = [
+    // [tabs, ids closed]
+    [[{ id: 1 }, { id: 2 }, { id: 3 }], [2, 3]],                                   // nothing special: first stays
+    [[{ id: 1 }, { id: 2, active: true }, { id: 3 }], [1, 3]],                     // the tab in view stays
+    [[{ id: 1 }, { id: 2, audible: true }, { id: 3 }], [1, 3]],                    // the tab playing sound stays
+    [[{ id: 1, windowId: 2, discarded: true }, { id: 2, active: true, audible: true }], [1]],
+    [[{ id: 1, active: true }, { id: 2, active: true, windowId: 2 }, { id: 3 }], [3]],   // in view in two windows: both stay
+    [[{ id: 1, pinned: true }, { id: 2, active: true }, { id: 3 }], [3]],          // pinned and in view both stay
+    [[{ id: 1, incognito: true }, { id: 2 }], []],                                 // a private copy is not a copy
+  ];
+  for (const [tabs, closed] of cases) {
+    const runtime = extension({ tabs: [...tabs.map(tab => ({ url: page, ...tab })), { id: 9, url: 'https://other.example/' }] });
+    assert.equal((await runtime.send({ type: 'pc:getSuggestions' })).overview.duplicates, closed.length, JSON.stringify(tabs));
+    await runtime.send({ type: 'pc:closeDuplicates' });
+    assert.deepEqual(runtime.state.removed, closed, JSON.stringify(tabs));
+  }
 });
 
 test('inactive suggestions agree with cleanup and preserve active, pinned, audible and private tabs', async () => {
@@ -369,14 +514,92 @@ test('inactive suggestions agree with cleanup and preserve active, pinned, audib
   assert.deepEqual(runtime.state.removed, [1, 6]);
 });
 
-test('sorting stays in the current window and leaves pinned tabs in place', async () => {
+const windowOrder = (runtime, windowId = 1) => runtime.state.tabs.filter(tab => tab.windowId === windowId)
+  .sort((a, b) => a.index - b.index).map(tab => tab.id);
+
+test('sorting stays in the current window, leaves pinned tabs in place and moves only what is out of place', async () => {
   const runtime = extension({ tabs: [
     { id: 1, url: 'https://pinned.test', pinned: true },
     { id: 2, url: 'https://a.test' }, { id: 3, url: 'https://b.test/one' },
     { id: 4, url: 'https://b.test/two' }, { id: 5, url: 'https://a.test/other', windowId: 2 },
   ] });
-  assert.equal((await runtime.send({ type: 'pc:sortTabsByOpenCount' })).ok, true);
-  assert.deepEqual(runtime.state.moves, [{ id: 3, index: 1 }, { id: 4, index: 2 }, { id: 2, index: 3 }]);
+  const first = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
+  assert.equal(first.ok, true);
+  assert.equal(first.sortedCount, 3);
+  assert.deepEqual(runtime.state.moves, [{ id: 3, index: 1 }, { id: 4, index: 2 }]);
+  assert.deepEqual(windowOrder(runtime), [1, 3, 4, 2]);
+  assert.deepEqual(windowOrder(runtime, 2), [5]);
+  // Sorting a sorted window moves nothing and says so.
+  const again = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
+  assert.equal(again.sortedCount, 0);
+  assert.equal(runtime.state.moves.length, 2);
+});
+
+test('sorting orders sites by tab count, then by name, with pinned tabs counting towards their site', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://zeta.test/pinned', pinned: true },
+    { id: 2, url: 'about:blank' },
+    { id: 3, url: 'https://beta.test/1' },
+    { id: 4, url: 'https://zeta.test/1' },
+    { id: 5, url: 'https://alpha.test/1' },
+    { id: 6, url: 'https://beta.test/2' },
+    { id: 7, url: 'https://alpha.test/2' },
+  ] });
+  const result = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
+  // alpha and beta have two tabs each and zeta has two with its pinned tab, so the
+  // three tie on count and sort by name; the tab without a site goes last.
+  assert.deepEqual(windowOrder(runtime), [1, 5, 7, 3, 6, 4, 2]);
+  assert.equal(result.sortedCount, 6);
+});
+
+test('sorting leaves every tab group where it is and with the same tabs', async () => {
+  const layouts = [
+    // one group in the middle
+    [['a', -1], ['x', 7], ['y', 7], ['b', -1], ['a', -1], ['b', -1], ['b', -1]],
+    // groups at both ends and two side by side
+    [['x', 1], ['y', 1], ['c', -1], ['a', -1], ['x', 2], ['z', 2], ['y', 3], ['a', -1], ['c', -1], ['a', -1], ['q', 4], ['r', 4]],
+    // loose tabs alternating with single-tab groups
+    [['b', -1], ['x', 1], ['a', -1], ['y', 2], ['a', -1], ['z', 3], ['b', -1], ['a', -1]],
+    // a pinned tab, then a group right behind it
+    [['p', -1, true], ['x', 5], ['y', 5], ['b', -1], ['a', -1], ['a', -1]],
+  ];
+  for (const layout of layouts) {
+    const tabs = layout.map(([site, groupId, pinned], i) => ({ id: i + 1, url: `https://${site}.test/${i}`, groupId, pinned: !!pinned }));
+    const runtime = extension({ tabs });
+    const before = runtime.state.tabs.map(tab => ({ id: tab.id, index: tab.index, groupId: tab.groupId }));
+    const result = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
+    assert.equal(result.ok, true);
+    const after = new Map(runtime.state.tabs.map(tab => [tab.id, tab]));
+    const loose = [];
+    for (const tab of before) {
+      const now = after.get(tab.id);
+      assert.equal(now.groupId, tab.groupId, `tab ${tab.id} changed group in ${JSON.stringify(layout)}`);
+      if (tab.groupId !== -1 || tabs[tab.id - 1].pinned) assert.equal(now.index, tab.index, `grouped or pinned tab ${tab.id} moved`);
+      else loose.push(now);
+    }
+    // The loose tabs hold the same positions as before, now in site order.
+    assert.deepEqual(loose.map(tab => tab.index).sort((a, b) => a - b), before.filter(tab => tab.groupId === -1 && !tabs[tab.id - 1].pinned).map(tab => tab.index));
+    const sites = loose.sort((a, b) => a.index - b.index).map(tab => new URL(tab.url).hostname);
+    const counts = Object.fromEntries([...new Set(tabs.map(tab => new URL(tab.url).hostname))].map(host => [host, tabs.filter(tab => new URL(tab.url).hostname === host).length]));
+    const expected = [...sites].sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+    assert.deepEqual(sites, expected, JSON.stringify(layout));
+    assert.equal(result.sortedCount, before.filter(tab => after.get(tab.id).index !== tab.index).length);
+    // A second click finds nothing to do.
+    const moves = runtime.state.moves.length;
+    assert.equal((await runtime.send({ type: 'pc:sortTabsByOpenCount' })).sortedCount, 0);
+    assert.equal(runtime.state.moves.length, moves);
+  }
+});
+
+test('sorting stops at the first tab the browser will not move and reports the failure', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://c.test/' }, { id: 2, url: 'https://b.test/1' }, { id: 3, url: 'https://b.test/2' },
+    { id: 4, url: 'https://a.test/1' }, { id: 5, url: 'https://a.test/2' }, { id: 6, url: 'https://a.test/3' },
+  ] });
+  runtime.state.failMove.add(5);
+  const result = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
+  assert.equal(result.ok, false);
+  assert.deepEqual(runtime.state.moves.map(move => move.id), [4, 5], 'no move is attempted after the failed one');
 });
 
 test('a typed domain also closes its subdomains; site rows and the context menu stay exact', async () => {
@@ -454,6 +677,114 @@ test('inactive preview lists the longest-unused tabs first and matches cleanup',
   const result = await runtime.send({ type: 'pc:closeInactive' });
   assert.deepEqual(runtime.state.removed.sort(), [1, 2, 3]);
   assert.equal(result.closedCount, 3);
+});
+
+const hoursAgo = count => Date.now() - count * 60 * 60 * 1000;
+const inactiveIds = async runtime => (await runtime.send({ type: 'pc:previewInactive' })).tabs.map(tab => tab.id);
+
+test('a tab counts as inactive from when it was left, not from when it was opened', async () => {
+  for (const firefox of [false, true]) {
+    const runtime = extension({ firefox, tabs: [
+      { id: 1, url: 'https://doc.test/draft', title: 'Draft', active: true, lastAccessed: hoursAgo(5) },   // opened five hours ago, in use since
+      { id: 2, url: 'https://look.test/up', lastAccessed: hoursAgo(4) },
+      { id: 3, url: 'https://old.test/', lastAccessed: hoursAgo(6) },
+    ] });
+    await runtime.settle();
+    await runtime.activate(2);                 // the user looks something up
+    // Listing a keyword's matches looks at a few tabs only; it must not forget the others.
+    const matched = await runtime.send({ type: 'pc:previewKeyword', query: 'old.test' });
+    assert.deepEqual(matched.tabs.map(tab => [tab.id, tab.idleMinutes]), [[3, 360]]);
+    await runtime.settle();
+    assert.deepEqual(await inactiveIds(runtime), [3], 'the draft was in use a moment ago');
+    assert.equal((await runtime.send({ type: 'pc:getSuggestions' })).overview.inactive, 1);
+    runtime.context.Date.advance(30);
+    await runtime.activate(1);                 // back to the draft
+    runtime.context.Date.advance(125);
+    // Tab 2 was opened four hours ago, used for half an hour and left 125 minutes ago.
+    const preview = await runtime.send({ type: 'pc:previewInactive' });
+    assert.deepEqual(preview.tabs.map(tab => [tab.id, tab.idleMinutes]), [[3, 6 * 60 + 155], [2, 125]]);
+    const result = await runtime.send({ type: 'pc:closeInactive' });
+    assert.deepEqual(runtime.state.removed.sort(), [2, 3]);
+    assert.equal(result.closedCount, 2);
+    // Records of closed tabs are dropped the next time the tabs are looked at.
+    assert.deepEqual(Object.keys(runtime.state.session['pc.left'].at).sort(), ['1', '2']);
+    await inactiveIds(runtime);
+    await runtime.settle();
+    assert.deepEqual(Object.keys(runtime.state.session['pc.left'].at), ['1']);
+  }
+});
+
+test('the record of when tabs were left survives a service worker restart', async () => {
+  const tabs = [
+    { id: 1, url: 'https://doc.test/draft', active: true, lastAccessed: hoursAgo(5) },
+    { id: 2, url: 'https://look.test/up', lastAccessed: hoursAgo(4) },
+  ];
+  const first = extension({ tabs });
+  await first.settle();
+  await first.activate(2);
+  const woken = extension({ session: first.state.session, tabs: tabs.map(tab => ({ ...tab, active: tab.id === 2 })) });
+  await woken.settle();
+  assert.deepEqual(await inactiveIds(woken), [], 'the draft was left a moment ago');
+  woken.context.Date.advance(121);
+  assert.deepEqual(await inactiveIds(woken), [1]);
+  // The worker also still knows which tab is active, so the next switch is recorded.
+  await woken.activate(1);
+  woken.context.Date.advance(121);
+  assert.deepEqual(await inactiveIds(woken), [2]);
+});
+
+test('without session storage a worker falls back to the browser’s own time and a background page keeps its record', async () => {
+  const tabs = () => [
+    { id: 1, url: 'https://doc.test/draft', active: true, lastAccessed: hoursAgo(5) },
+    { id: 2, url: 'https://look.test/up', lastAccessed: hoursAgo(1) },
+  ];
+  const worker = extension({ session: false, tabs: tabs() });
+  await worker.settle();
+  await worker.activate(2);
+  assert.deepEqual(await inactiveIds(worker), [1], 'as in 4.0.4: nothing remembers the switch');
+  const page = extension({ firefox: true, session: false, tabs: tabs() });
+  await page.settle();
+  await page.activate(2);
+  assert.deepEqual(await inactiveIds(page), []);
+});
+
+test('an inactivity time shorter than the popup offers is raised to 30 minutes', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://a.test/', lastAccessed: Date.now() - 10 * 60000 },
+    { id: 2, url: 'https://b.test/', lastAccessed: Date.now() - 40 * 60000 },
+    { id: 3, url: 'https://c.test/', active: true },
+  ] });
+  // 4.0.4 stored 1 when its field was emptied.
+  for (const saved of [1, -30, 0.2, 29]) {
+    runtime.state.store['pc.settings'] = { inactiveThresholdMinutes: saved };
+    assert.equal((await runtime.send({ type: 'pc:getSettings' })).settings.inactiveThresholdMinutes, 30, String(saved));
+    assert.deepEqual(await inactiveIds(runtime), [2], String(saved));
+  }
+  // Nothing usable saved: the default of two hours.
+  for (const saved of [0, 'soon', null]) {
+    runtime.state.store['pc.settings'] = { inactiveThresholdMinutes: saved };
+    assert.equal((await runtime.send({ type: 'pc:getSettings' })).settings.inactiveThresholdMinutes, 120, String(saved));
+  }
+  runtime.state.store['pc.settings'] = {};
+  const elements = await popup(runtime);
+  runtime.state.store['pc.settings'] = { inactiveThresholdMinutes: 1 };
+  const reopened = await popup(runtime);
+  assert.equal(reopened.threshold.textContent, '30 minutes');
+  assert.equal(reopened['pc-inactive-hint'].textContent, '30 min+');
+  assert.equal(reopened.less.disabled, true);
+  assert.equal(elements.threshold.textContent, '2 hours');
+});
+
+test('settings saved by this version carry no unused values and leave older ones alone', async () => {
+  const runtime = extension();
+  const fresh = (await runtime.send({ type: 'pc:updateSettings', payload: { theme: 'dark' } })).settings;
+  assert.deepEqual(Object.keys(fresh).sort(), ['accent', 'enableInactiveSuggestion', 'inactiveThresholdMinutes', 'keepPinnedTabs', 'theme']);
+  runtime.state.store['pc.settings'] = { suggestMinOpenTabsPerDomain: 3, maxHistory: 200, theme: 'light', inactiveThresholdMinutes: 45 };
+  const upgraded = (await runtime.send({ type: 'pc:updateSettings', payload: { keepPinnedTabs: false } })).settings;
+  assert.equal(upgraded.suggestMinOpenTabsPerDomain, 3);
+  assert.equal(upgraded.theme, 'light');
+  assert.equal(upgraded.inactiveThresholdMinutes, 45);
+  assert.equal(upgraded.keepPinnedTabs, false);
 });
 
 test('suggestions list every site, count only tabs a click would close, and report an overview', async () => {
@@ -806,7 +1137,7 @@ test('popup views swap whole blocks and move focus with them', async () => {
 });
 
 test('popup result bar lasts seven seconds and sorting reports without Undo', async () => {
-  const runtime = extension({ tabs: [{ id: 1, url: 'https://b.test/' }, { id: 2, url: 'https://a.test/1' }, { id: 3, url: 'https://a.test/2' }] });
+  const runtime = extension({ tabs: [{ id: 1, url: 'https://b.test/' }, { id: 2, url: 'https://c.test/' }, { id: 3, url: 'https://a.test/1' }, { id: 4, url: 'https://a.test/2' }] });
   const delays = [];
   const elements = await popup(runtime, { timers: { setTimeout: (_, delay) => { delays.push(delay); return delays.length; }, clearTimeout() {} } });
   await siteRow(elements, 'b.test').click();
@@ -814,10 +1145,18 @@ test('popup result bar lasts seven seconds and sorting reports without Undo', as
   assert.equal(elements['pc-toast'].classList.contains('is-open'), true);
   assert.equal(elements['pc-undo-close'].hidden, false);
   await elements['pc-sort-tabs-quick'].click();
-  assert.equal(elements['pc-status'].textContent, 'Tabs reordered: 2');
+  assert.equal(elements['pc-status'].textContent, 'Tabs reordered: 3');
   assert.equal(elements['pc-undo-close'].hidden, true);
   await elements['pc-undo-close'].dispatch('click');
   assert.deepEqual(runtime.state.created, [], 'a later message ends the earlier Undo');
+  // Nothing is out of place now, and the popup says so instead of repeating a count.
+  await elements['pc-sort-tabs-quick'].click();
+  assert.equal(elements['pc-status'].textContent, 'Nothing to sort');
+  // The user drags the single c.test tab to the front, then the browser refuses a move.
+  await new Promise(resolve => runtime.api.tabs.move(2, { index: 0 }, resolve));
+  runtime.state.failMove.add(3);
+  await elements['pc-sort-tabs-quick'].click();
+  assert.equal(elements['pc-status'].textContent, 'Sort failed');
 });
 
 test('popup applies an accent preset for the active theme and clears it for purple', async () => {
