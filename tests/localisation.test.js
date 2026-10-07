@@ -77,14 +77,19 @@ function validationSandbox(run) {
 
 test('a release branch may hold untranslated and reworded English strings only when pending translations are allowed', () => {
   validationSandbox(({ edit, validate, generate }) => {
-    assert.equal(validate(false).status, 0);
+    // The repository itself may be waiting for translations, so compare with its own starting point.
+    const germanRow = text => text.split('\n').find(line => line.startsWith('| de |')).split('|').map(cell => cell.trim());
+    const stale = cell => Number((cell.match(/STALE \((\d+) keys\)/) || [0, 0])[1]);
+    const start = validate(true);
+    assert.equal(start.status, 0, start.text);
+    const [, , extensionBefore, , , freshnessBefore] = germanRow(start.coverage);
     edit('locales/en.json', english => {
       const withNew = {};
       for (const [key, value] of Object.entries(english)) {
         withNew[key] = key === 'sortTabs' ? 'Sort tabs by site' : value;                     // reworded
         if (key === 'closeSiteLabel') {
-          withNew.keepPinned = 'Keep pinned tabs open';                                      // new
-          withNew.siteCount = { one: '{count} site', other: '{count} sites' };               // new plural
+          withNew.exampleNew = 'A new string';                                               // new
+          withNew.examplePlural = { one: '{count} example', other: '{count} examples' };     // new plural
         }
       }
       return withNew;
@@ -92,28 +97,33 @@ test('a release branch may hold untranslated and reworded English strings only w
     generate();
     const strict = validate(false);
     assert.equal(strict.status, 1);
-    for (const report of ['de: missing source keys: keepPinned, siteCount', 'de: keepPinned: expected nonempty text',
-      'de: siteCount: expected plural forms', 'de: missing review metadata for keepPinned', 'de: stale source fingerprint for sortTabs']) {
+    for (const report of ['de: exampleNew: expected nonempty text', 'de: examplePlural: expected plural forms',
+      'de: missing review metadata for exampleNew', 'de: stale source fingerprint for sortTabs']) {
       assert.ok(strict.text.includes(report), report);
     }
+    assert.match(strict.text, /de: missing source keys: [^\n]*exampleNew[^\n]*examplePlural/);
     const tolerant = validate(true);
     assert.equal(tolerant.status, 0, tolerant.text);
     assert.match(tolerant.text, /Translations pending: \d+ reports above/);
-    assert.ok(tolerant.text.includes('de: missing source keys: keepPinned, siteCount'));
+    assert.ok(tolerant.text.includes('de: stale source fingerprint for sortTabs'));
     // The coverage table is committed, so it must not depend on the mode.
     assert.equal(tolerant.coverage, strict.coverage);
-    assert.match(tolerant.coverage, /\| de \| 44\/46 \| .*\| STALE \(3 keys\) \| FAIL \(\d+\) \|/);
+    const [, , extensionAfter, , , freshnessAfter, technical] = germanRow(tolerant.coverage);
+    const [had, total] = extensionBefore.split('/').map(Number);
+    assert.equal(extensionAfter, had + '/' + (total + 2));
+    assert.equal(stale(freshnessAfter), stale(freshnessBefore) + 3);
+    assert.match(technical, /^FAIL \(\d+\)$/);
   });
 });
 
 test('pending translations never excuse retired strings, broken placeholders or stale packages', () => {
   validationSandbox(({ edit, validate, generate }) => {
-    edit('locales/en.json', english => { delete english.openCountShort; delete english.hide; });
+    edit('locales/en.json', english => { delete english.openCount; delete english.settings; });
     generate();                                    // used to stop with a TypeError on the plural string
     let result = validate(true);
     assert.equal(result.status, 1);
-    assert.ok(result.text.includes('de: openCountShort: unknown key'));
-    assert.ok(result.text.includes('de: hide: unknown key'));
+    assert.ok(result.text.includes('de: openCount: unknown key'));
+    assert.ok(result.text.includes('de: settings: unknown key'));
   });
   validationSandbox(({ edit, validate, generate }) => {
     edit('locales/de.json', german => { german.closeSiteLabel = 'Tabs dieser Website schließen'; });
@@ -315,7 +325,9 @@ test('placeholder positions are stable across repetition and translation order',
 test('catalogue validation rejects missing placeholders, plural forms, markup and brands',()=>{
   const {validateCatalogue}=require('../scripts/catalogue-validation');
   const source=L.catalogue('en');
-  const fresh=()=>structuredClone(L.catalogue('de'));
+  // German, with any string it has not translated yet taken from English, so
+  // this test does not depend on whether translations are pending.
+  const fresh=()=>({...structuredClone(source),...structuredClone(L.catalogue('de'))});
   assert.deepEqual(validateCatalogue(source,fresh(),'de'),[]);
   let c=fresh();c.closedCount='Geschlossen';
   assert.ok(validateCatalogue(source,c,'de').some(error=>error.includes('changed placeholders')));
