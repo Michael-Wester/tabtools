@@ -6,12 +6,14 @@ TabTools is a browser extension for organizing and closing open tabs. It process
 
 ## Information processed locally
 
-To provide its tab-management features, TabTools processes information supplied by the browser about open tabs, including tab URLs, titles, domains, favicons, activity status, and whether a tab is pinned, audible, or discarded. This information is used only on the user's device to generate site suggestions, identify inactive or duplicate tabs, sort tabs, close selected tabs, and restore recently closed tabs.
+To provide its tab-management features, TabTools processes information supplied by the browser about open tabs, including tab URLs, titles, domains, favicons, activity status, and whether a tab is pinned, grouped, audible, or discarded. This information is used only on the user's device to generate site suggestions, identify inactive or duplicate tabs, sort tabs, close selected tabs, and restore recently closed tabs.
 
 TabTools stores the following information locally using the browser's extension storage:
 
-- User preferences, including theme and suggestion thresholds.
+- User preferences, including theme, accent colour and the inactivity time.
 - Local statistics, such as the number of tabs closed with TabTools.
+
+While the browser is running, TabTools also notes when each tab was last left, so that a tab in recent use is not treated as inactive. The note holds the browser's tab numbers and times, not addresses or titles. It is kept in the browser's session storage for extensions, or in memory where the browser has none, and is discarded when the browser closes.
 
 Recently closed tab information used by the undo feature is held temporarily within the extension and is not transmitted externally.
 
