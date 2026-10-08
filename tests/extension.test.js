@@ -1149,7 +1149,7 @@ test('popup keeps counts and site rows current when regular tabs are created and
   for (const listener of runtime.api.tabs.onCreated.listeners) await listener(created);
   await timers.flushRefreshes();
   assert.deepEqual(sitesIn(elements), ['new.example']);
-  assert.equal(elements['pc-open-count'].textContent, '1 open tab');
+  assert.equal(elements['pc-open-count'].textContent, '1 tab');
   assert.equal(elements['pc-site-count'].textContent, '1 site');
   assert.equal(elements['pc-suggest-empty'].hidden, true);
 
@@ -1157,7 +1157,7 @@ test('popup keeps counts and site rows current when regular tabs are created and
   for (const listener of runtime.api.tabs.onRemoved.listeners) await listener(created.id, { windowId: 1, isWindowClosing: false });
   await timers.flushRefreshes();
   assert.deepEqual(sitesIn(elements), []);
-  assert.equal(elements['pc-open-count'].textContent, '0 open tabs');
+  assert.equal(elements['pc-open-count'].textContent, '0 tabs');
 });
 
 test('popup handles an unavailable background with its translated error state', async () => {
@@ -1304,7 +1304,7 @@ test('popup counts: open tabs and sites in the header, lifetime total with digit
   const elements = await popup(runtime);
   // The header counts everything that is open, including a site with no row
   // because its only tab is pinned.
-  assert.equal(elements['pc-open-count'].textContent, '15 open tabs');
+  assert.equal(elements['pc-open-count'].textContent, '15 tabs');
   assert.equal(elements['pc-site-count'].textContent, '2 sites');
   assert.deepEqual(sitesIn(elements), ['example.com']);
   assert.equal(elements['pc-closed-count'].textContent, '2,479 closed');

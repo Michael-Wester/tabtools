@@ -209,6 +209,24 @@
       }
     }
   },
+  "tabCount_one": {
+    "message": "$count$ tab",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "tabCount_other": {
+    "message": "$count$ tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "accentColour": {
     "message": "Accent colour"
   },

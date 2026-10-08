@@ -390,7 +390,7 @@ for (const entry of registry) {
 
       // Main view: the summary, the two actions and one row per site.
       const openTabs = (await queryTabs(worker)).filter(tab => !tab.incognito).length;
-      expect(await text(popup, '#pc-open-count')).toBe(await say('openCount', openTabs));
+      expect(await text(popup, '#pc-open-count')).toBe(await say('tabCount', openTabs));
       expect(await text(popup, '#pc-site-count')).toBe(await say('siteCount', 2));
       expect(await text(popup, '#pc-closed-count')).toBe(await say('closedCountShort', 999999));
       expect(await text(popup, '#pc-inactive-count')).toBe(await number(4));
@@ -486,7 +486,7 @@ test('native actions: typed site, Undo, duplicates, right-click, private windows
     // The summary and every count leave the private window out.
     const regular = (await queryTabs(worker)).filter(tab => !tab.incognito);
     expect((await queryTabs(worker)).filter(tab => tab.incognito).length).toBe(1);
-    expect(await text(popup, '#pc-open-count')).toBe(await say('openCount', regular.length));
+    expect(await text(popup, '#pc-open-count')).toBe(await say('tabCount', regular.length));
     expect((await siteRows(popup)).find(row => row.domain === 'private.test')).toEqual({ domain: 'private.test', count: '1' });
 
     // A typed site covers its subdomains in every window, but not a pinned tab
@@ -596,7 +596,7 @@ test('native empty: a new profile has nothing to suggest and nothing to do', asy
   const browser = await launchExtension(testInfo, 'en');
   try {
     const popup = await nativePopup(browser);
-    expect(await text(popup, '#pc-open-count')).toBe('1 open tab');
+    expect(await text(popup, '#pc-open-count')).toBe('1 tab');
     expect(await text(popup, '#pc-site-count')).toBe('0 sites');
     expect(await text(popup, '#pc-closed-count')).toBe('0 closed');
     expect(await siteRows(popup)).toEqual([]);
@@ -627,7 +627,7 @@ test('native live: an open popup follows tabs that open, load and close behind i
     await expect.poll(() => siteRows(popup)).toEqual([
       { domain: 'first.test', count: '2' }, { domain: 'second.test', count: '2' }, { domain: 'spare.test', count: '1' }
     ]);
-    await expect.poll(() => text(popup, '#pc-open-count')).toBe('6 open tabs');
+    await expect.poll(() => text(popup, '#pc-open-count')).toBe('6 tabs');
     expect(await text(popup, '#pc-site-count')).toBe('3 sites');
     await expect.poll(() => text(popup, '#pc-duplicates-count')).toBe('1');
 
@@ -648,7 +648,7 @@ test('native live: an open popup follows tabs that open, load and close behind i
     const first = (await queryTabs(worker)).filter(tab => addressOf(tab).includes('first.test')).map(tab => tab.id);
     await worker.evaluate(ids => chrome.tabs.remove(ids), first);
     await expect.poll(() => siteRows(popup)).toEqual([{ domain: 'second.test', count: '2' }, { domain: 'icon.test', count: '1' }]);
-    await expect.poll(() => text(popup, '#pc-open-count')).toBe('4 open tabs');
+    await expect.poll(() => text(popup, '#pc-open-count')).toBe('4 tabs');
     await expectFits(popup, 'after the changes');
     expect(popup.diagnostics).toEqual([]);
   } finally { await browser.close(); }
@@ -1046,7 +1046,7 @@ for (const locale of ['en', 'de', 'he']) {
       let popup = await nativePopup(browser);
       const number = value => formatted(popup, locale, value);
       expect(await siteRows(popup)).toEqual(await Promise.all(ranked.map(async ([domain, count]) => ({ domain, count: await number(count) }))));
-      expect(await text(popup, '#pc-open-count')).toBe(await counted(popup, locale, 'openCount', 13));
+      expect(await text(popup, '#pc-open-count')).toBe(await counted(popup, locale, 'tabCount', 13));
       expect(await text(popup, '#pc-site-count')).toBe(await counted(popup, locale, 'siteCount', 6));
       expect(await text(popup, '#pc-inactive-count')).toBe(await number(12));
 
@@ -1099,7 +1099,7 @@ for (const locale of ['en', 'de', 'he']) {
       expect((await siteRows(reopened)).map(row => `${row.domain} ${row.count}`)).toEqual([
         'chromewebstore.google.test 2', 'chatgpt.com 1', 'fe6b245e.tabtools-website.pages.dev 1', 'supabase.com 1', 'fly.io 1'
       ]);
-      expect(await text(reopened, '#pc-open-count')).toBe(await counted(reopened, locale, 'openCount', 13));
+      expect(await text(reopened, '#pc-open-count')).toBe(await counted(reopened, locale, 'tabCount', 13));
       expect(await text(reopened, '#pc-site-count')).toBe(await counted(reopened, locale, 'siteCount', 6));
       await click(reopened, '#pc-settings-toggle');
       await click(reopened, '[data-theme-value="dark"]');

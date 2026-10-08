@@ -339,7 +339,7 @@ test('popup counters use each language’s plural forms and number format', () =
   for (const locale of L.registry) {
     const context = extensionRuntime(locale.locale);
     const translated = L.catalogue(locale.locale);
-    for (const key of ['openCount', 'siteCount', 'closedCountShort']) {
+    for (const key of ['openCount', 'tabCount', 'siteCount', 'closedCountShort']) {
       // A string still waiting for its translation is shown in English; see the end of this test.
       if (!(key in translated)) continue;
       for (const count of [0, 1, 2, 5, 14, 21, 2479, 123456]) {

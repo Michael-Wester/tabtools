@@ -356,7 +356,7 @@
   /* ---------- Rendering ---------- */
 
   function renderHeader() {
-    byId("pc-open-count").textContent = overview ? t("openCount", { count: overview.openTabs }) : "";
+    byId("pc-open-count").textContent = overview ? t("tabCount", { count: overview.openTabs }) : "";
     byId("pc-site-count").textContent = overview ? t("siteCount", { count: overview.sites }) : "";
   }
 

@@ -21,6 +21,7 @@ by site and sort tabs by site. Do not add performance promises or new features.
 | Pinned, playing and current tabs stay open. | The note above the inactive list. Playing means playing sound; current means the tab in view in each window. |
 | Clear / Reset | Clear empties the keyword field. Reset sets the count of closed tabs back to zero; it closes and restores nothing. |
 | No tabs match | Shown when no open tab matches the typed keyword. |
+| {count} tabs | How many tabs are open, in the popup header. Kept short to fit a small pill; "{count} open tabs" is the longer form used for matches and screen readers. |
 | {count} sites | How many different sites have an open tab; shown beside the open-tab count. |
 | `{count}`, `{site}`, `{browser}`, `{store}`, `{label}`, `{language}` | Preserve names and occurrence counts. Move whole-message placeholders naturally. User values are literal text. |
 | Chrome, Firefox, Edge, Microsoft Edge, GitHub, YouTube | Preserve brands. Keep URLs and `youtube.com` exactly unchanged. |
