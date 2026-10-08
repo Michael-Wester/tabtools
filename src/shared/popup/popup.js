@@ -33,7 +33,10 @@
   };
   // The inactivity choices, in minutes: 30 minutes to 1 week.
   const THRESHOLDS = [30, 60, 120, 240, 480, 1440, 4320, 10080];
+  // How long a result shows. It takes the footer's place, so one without Undo
+  // gives the footer back sooner.
   const TOAST_MS = 7000;
+  const NOTE_MS = 4000;
   // Tick marks: one per open tab in a 64px track.
   const TICK_TRACK = 64;
 
@@ -155,16 +158,26 @@
   /* ---------- Result bar ---------- */
 
   let toastTimer = null;
+  let toastMs = TOAST_MS;
+  let coveredFocus = null;      // [footer, button]: a footer button that had focus when a result covered it
 
   function armToast() {
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(hideToast, TOAST_MS);
+    toastTimer = setTimeout(hideToast, toastMs);
   }
 
+  // The result takes the footer's place while it shows, so it never covers a
+  // row the user may want to close next.
   function showToast(text, { undo = false } = {}) {
     if (!undo) lastClosedTabs = [];
+    const offersUndo = undo && lastClosedTabs.length > 0;
     byId("pc-status").textContent = text || "";
-    byId("pc-undo-close").hidden = !(undo && lastClosedTabs.length);
+    byId("pc-undo-close").hidden = !offersUndo;
+    toastMs = offersUndo ? TOAST_MS : NOTE_MS;
+    const covered = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"]]
+      .find(([, id]) => byId(id) === document.activeElement);
+    if (covered) coveredFocus = covered;
+    byId("pc-bottom").classList.toggle("has-result", true);
     byId("pc-toast").classList.toggle("is-open", true);
     armToast();
   }
@@ -174,8 +187,15 @@
     toastTimer = null;
     lastClosedTabs = [];
     byId("pc-toast").classList.toggle("is-open", false);
+    byId("pc-bottom").classList.toggle("has-result", false);
     byId("pc-undo-close").hidden = true;
     byId("pc-status").textContent = "";
+    // A keyboard user whose button the result covered gets it back, if its
+    // footer is still the one showing and focus has not gone elsewhere.
+    const covered = coveredFocus;
+    coveredFocus = null;
+    const focusLost = !document.activeElement || document.activeElement === document.body;
+    if (covered && focusLost && !byId(covered[0]).hidden) focusOn(covered[1]);
   }
 
   function closeStatus(key, result) {

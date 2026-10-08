@@ -494,25 +494,29 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
 /* ---------- Bottom: result bar and footers ---------- */
 .bottom { position: relative; flex: none; }
 
+/* What an action did, with Undo when it can be undone. While it shows it takes
+   the footer's place, so it never covers a row of the list. Only text too long
+   for its line makes it taller, upward. */
 .toast {
   position: absolute;
-  inset-inline: 8px;
-  bottom: calc(100% + 8px);
+  inset-inline: var(--gutter);
+  bottom: 4px;
+  min-height: calc(100% - 8px);
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 40px;
-  padding-block: 6px;
-  padding-inline: 14px 6px;
-  border-radius: 10px;
+  padding-block: 4px;
+  padding-inline: 12px 4px;
+  border-radius: 9px;
   background: var(--toast);
   color: var(--toast-ink);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
   /* Stays in the tree while closed so the status text is announced when it changes. */
   opacity: 0;
   pointer-events: none;
 }
 .toast.is-open { opacity: 1; pointer-events: auto; animation: rise .18s ease-out; }
+/* The footer under an open result is out of sight and out of the tab order. */
+.bottom.has-result > footer { visibility: hidden; }
 .toast-text { flex: 1; min-width: 0; font-weight: 500; }
 .toast-btn {
   flex: none;
@@ -734,7 +738,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
 </div>
 
 <!-- ===== Bottom: result bar, then one footer per view ===== -->
-<div class="bottom">
+<div id="pc-bottom" class="bottom">
   <div id="pc-toast" class="toast">
     <span id="pc-status" class="toast-text" role="status" aria-live="polite"></span>
     <button id="pc-undo-close" class="toast-btn" type="button" hidden><span data-i18n="undo">Undo</span><svg class="flip" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 3.5l-3 3 3 3"></path><path d="M3 6.5h6.2a3.3 3.3 0 0 1 0 6.6H8"></path></svg></button>

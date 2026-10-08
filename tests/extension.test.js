@@ -1439,6 +1439,39 @@ test('popup result bar lasts seven seconds and sorting reports without Undo', as
   assert.equal(elements['pc-status'].textContent, 'Sort failed');
 });
 
+test('popup results take the footer’s place, and give it and its focus back', async () => {
+  const runtime = extension({ tabs: [{ id: 1, url: 'https://b.test/' }, { id: 2, url: 'https://a.test/1' }, { id: 3, url: 'https://a.test/2' }] });
+  const timers = new Map();
+  let next = 0;
+  const elements = await popup(runtime, { timers: {
+    setTimeout: (fn, delay) => { timers.set(++next, { fn, delay }); return next; },
+    clearTimeout: id => timers.delete(id),
+  } });
+  const expire = delay => { for (const [id, timer] of timers) if (timer.delay === delay) { timers.delete(id); timer.fn(); } };
+  const covered = () => elements['pc-bottom'].classList.contains('has-result');
+  // A keyboard user sorts. The result, with nothing to undo, covers the footer
+  // for four seconds and then hands the Sort button back.
+  elements['pc-sort-tabs-quick'].focus();
+  await elements['pc-sort-tabs-quick'].click();
+  assert.equal(elements['pc-status'].textContent, 'Tabs reordered: 3');
+  assert.equal(covered(), true);
+  assert.equal(elements['pc-undo-close'].hidden, true);
+  elements.document.activeElement = elements.document.body;      // the hidden button lost focus
+  expire(4000);
+  assert.equal(covered(), false);
+  assert.equal(elements['pc-toast'].classList.contains('is-open'), false);
+  assert.equal(elements.document.activeElement, elements['pc-sort-tabs-quick']);
+  // A close can be undone, so its result stays seven seconds.
+  await siteRow(elements, 'b.test').click();
+  assert.equal(covered(), true);
+  assert.equal(elements['pc-undo-close'].hidden, false);
+  expire(4000);
+  assert.equal(covered(), true);
+  expire(7000);
+  assert.equal(covered(), false);
+  assert.equal(elements['pc-undo-close'].hidden, true);
+});
+
 test('popup applies an accent preset for the active theme and clears it for purple', async () => {
   const runtime = extension();
   runtime.state.store['pc.settings'] = { accent: 'blue', theme: 'dark' };

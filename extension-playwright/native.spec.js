@@ -207,16 +207,16 @@ async function nativePopup({ context, worker, id }) {
 
 // Clicks a control the way a person can: only once it is shown and enabled, and
 // with focus moving to it as it does under a real pointer in Chromium.
-async function click(popup, selector) {
+async function click(popup, selector, { timeout } = {}) {
   await expect.poll(() => popup.evaluate(`(() => {
     const element = document.querySelector(${JSON.stringify(selector)});
     if (!element) return 'missing';
-    if (!element.getClientRects().length) return 'hidden';
+    if (!element.getClientRects().length || getComputedStyle(element).visibility === 'hidden') return 'hidden';
     if (element.disabled) return 'disabled';
     element.focus();
     element.click();
     return 'clicked';
-  })()`), { message: `${selector} must be there to click` }).toBe('clicked');
+  })()`), { message: `${selector} must be there to click`, timeout }).toBe('clicked');
 }
 
 // Replaces the text in the keyword field with real key presses, one character
@@ -724,8 +724,10 @@ test('native inactive review: recent use counts, longest unused first, and nothi
     await expectView(popup, 'inactive');
     expect((await queryTabs(worker)).map(tab => tab.id)).not.toContain(older.id);
 
-    // Close removes what is listed, returns to the suggestions and offers Undo.
-    await click(popup, '#pc-inactive-close');
+    // The result of that close took the footer's place, so Close comes back when
+    // it goes, seven seconds later. Close removes what is listed, returns to the
+    // suggestions and offers Undo.
+    await click(popup, '#pc-inactive-close', { timeout: 12_000 });
     await expect.poll(() => text(popup, '#pc-status')).toBe('Inactive tabs closed: 1');
     await expectView(popup, 'main');
     expect((await queryTabs(worker)).map(tab => tab.id).sort()).toEqual([neutral.id, reading.id, pinned.id].sort());
@@ -785,7 +787,8 @@ test('native sort: loose tabs are ranked by site while pinned tabs and tab group
     // The count is the tabs that are now somewhere else, not all tabs.
     await expect.poll(() => text(popup, '#pc-status')).toBe('Tabs reordered: 6');
     expect(await windowOrder(second.id)).toEqual(otherWindow);
-    await click(popup, '#pc-sort-tabs-quick');
+    // That result, with nothing to undo, gives the footer back after four seconds.
+    await click(popup, '#pc-sort-tabs-quick', { timeout: 10_000 });
     await expect.poll(() => text(popup, '#pc-status')).toBe('Nothing to sort');
     expect(await windowOrder(primary)).toEqual(sorted);
     expect(popup.diagnostics).toEqual([]);
