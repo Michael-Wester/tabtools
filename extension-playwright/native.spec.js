@@ -1058,10 +1058,15 @@ for (const locale of ['en', 'de', 'he']) {
           icon: icon.tagName === 'IMG' ? (icon.complete && icon.naturalWidth > 0 ? 'icon' : 'broken icon') : icon.textContent
         };
       })`);
-      const listWidth = await popup.evaluate('document.querySelector("#pc-suggest-list").clientWidth');
+      // The rows fill the list between its side margins.
+      const listWidth = await popup.evaluate(`(() => {
+        const list = document.querySelector('#pc-suggest-list');
+        const style = getComputedStyle(list);
+        return list.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      })()`);
       for (const [index, row] of rows.entries()) {
         expect(row.left).toBe(rows[0].left);
-        expect(row.width).toBe(listWidth - 12);
+        expect(row.width).toBe(listWidth);
         if (index) expect(row.top).toBe(rows[index - 1].top + 32);
         // Four pixels a tab, less the gap after the last mark.
         expect(row.ticks).toBe(ranked[index][1] * 4 - 1);

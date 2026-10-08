@@ -71,6 +71,10 @@ html[data-theme="dark"] {
   }
 }
 
+/* Spacing: from the popup's edge to fields, row backgrounds and buttons
+   (gutter), and to text (inset, which lines up with the text in rows). */
+:root { --gutter: 12px; --inset: 20px; }
+
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; }
@@ -100,9 +104,10 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   flex: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-block: 12px 6px;
-  padding-inline: 6px 8px;
+  gap: 12px;
+  padding-block: 14px 12px;
+  padding-inline: var(--gutter);
+  border-bottom: 1px solid var(--line);
 }
 .head-row { display: flex; align-items: center; gap: 8px; }
 .mark { flex: none; width: 26px; height: 26px; }
@@ -208,7 +213,8 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   align-items: center;
   gap: 4px;
   height: 50px;
-  padding-inline: 6px 14px;
+  padding-inline: var(--gutter) var(--inset);
+  border-bottom: 1px solid var(--line);
 }
 .sub-title { flex: 1; min-width: 0; margin: 0; font-size: 14px; font-weight: 600; }
 .sub-meta { flex: none; color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
@@ -220,7 +226,7 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding: 4px 14px 6px;
+  padding: 10px var(--inset) 6px;
   color: var(--ink-2);
   font-size: 12px;
 }
@@ -233,7 +239,7 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 0 6px;
+  padding: 0 var(--gutter);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--line-2) transparent;
@@ -296,7 +302,7 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
 html[dir="rtl"] .host, html[dir="rtl"] .tab-host { text-align: right; }
 
 /* Tick marks: one per tab. Set --n on the row, --u and --g on the list. */
-.ticks { display: flex; align-items: center; height: 8px; }
+.ticks { display: flex; align-items: center; justify-content: center; height: 8px; }   /* centred: busiest site on top, an upside-down pyramid */
 .bar {
   width: calc(var(--n, 0) * var(--u, 4px) - var(--g, 0px));
   height: 8px;
@@ -356,7 +362,7 @@ html[dir="rtl"] .bar { transform: scaleX(-1); }
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 2px 14px 12px;
+  padding: 12px var(--inset);
   border-bottom: 1px solid var(--line);
 }
 .control-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; }
@@ -396,7 +402,7 @@ html[dir="rtl"] .bar { transform: scaleX(-1); }
 }
 
 /* ---------- Settings ---------- */
-.settings { flex: none; display: flex; flex-direction: column; padding: 0 14px 6px; }
+.settings { flex: none; display: flex; flex-direction: column; padding: 4px var(--inset) 8px; }
 .setting {
   display: flex;
   align-items: center;
@@ -534,12 +540,12 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   justify-content: space-between;
   gap: 12px;
   padding-block: 8px;
-  padding-inline: 8px 14px;
+  padding-inline: var(--gutter) var(--inset);
   border-top: 1px solid var(--line);
 }
 .foot-count { color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; text-align: end; }
 
-.foot-action { display: flex; padding: 8px; border-top: 1px solid var(--line); }
+.foot-action { display: flex; padding: 8px var(--gutter); border-top: 1px solid var(--line); }
 .primary {
   flex: 1;
   display: flex;
@@ -574,7 +580,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 14px;
+  padding: 12px var(--inset);
   border-top: 1px solid var(--line);
   color: var(--ink-2);
   font-size: 12px;
