@@ -10,13 +10,13 @@ const L = require('../scripts/localisation');
 // exercise the message boundary and stored results, not an installed browser.
 // `session` is the browser-session storage: pass a previous runtime's
 // state.session to stand for a service worker that woke again, or false for a
-// browser without it.
-function extension({ tabs = [], locale = 'en', firefox = false, session = {} } = {}) {
+// browser without it. `tabContext` is a Chrome that offers its menu on tabs too.
+function extension({ tabs = [], locale = 'en', firefox = false, session = {}, tabContext = false } = {}) {
   const event = () => ({ listeners: [], addListener(fn) { this.listeners.push(fn); } });
   const state = {
     tabs: tabs.map((tab, index) => ({ windowId: 1, index, active: false, pinned: false, incognito: false, ...tab })),
     store: {}, session, menus: [], menuInstalls: 0, removed: [], created: [], moves: [], errors: [],
-    failRemove: new Set(), failCreate: new Set(), failMove: new Set(), missingWindows: new Set(),
+    failRemove: new Set(), failCreate: new Set(), failMove: new Set(), misplaceMove: new Set(), missingWindows: new Set(),
     failQuery: false, failMessage: false, failStorageGet: false, failStorageSet: false,
     delayCreatedNavigation: false, queryCount: 0,
   };
@@ -69,6 +69,8 @@ function extension({ tabs = [], locale = 'en', firefox = false, session = {} } =
       // else it ends up outside every group.
       const tab = state.tabs.find(item => item.id === id);
       const row = state.tabs.filter(item => item.windowId === tab.windowId && item !== tab).sort((a, b) => a.index - b.index);
+      // `misplaceMove` stands for a browser that puts the tab one place further on.
+      if (state.misplaceMove.has(id)) index += 1;
       row.splice(index, 0, tab);
       row.forEach((item, position) => { item.index = position; });
       const groupOf = item => (item && typeof item.groupId === 'number' ? item.groupId : -1);
@@ -101,6 +103,7 @@ function extension({ tabs = [], locale = 'en', firefox = false, session = {} } =
     create(properties, cb) { state.menus.push(structuredClone(properties)); state.menuInstalls += 1; callback(cb); return properties.id; },
     removeAll(cb) { state.menus = []; callback(cb); },
   };
+  if (tabContext) api.contextMenus.ContextType = { PAGE: 'page', TAB: 'tab' };
   api[firefox ? 'browserAction' : 'action'] = { setIcon() {} };
   const messages = L.toWebExtensionMessages(locale);
   api.i18n = { getMessage(key, args = []) {
@@ -246,10 +249,19 @@ test('Chrome worker and Firefox background register translated, stable context-m
     assert.equal(runtime.api.contextMenus.onClicked.listeners.length, 1);
     assert.equal(typeof runtime.context.pcStatsEat, 'function');
   }
+  // A Chrome that offers the menu on tabs gets the item there as well.
+  const newer = extension({ tabContext: true });
+  await newer.settle();
+  assert.equal(newer.state.menus[0].contexts.includes('tab'), true);
 });
 
 test('a Chrome worker creates the menu item once per browser session, not on every wake', async () => {
   const first = extension();
+  // Chrome wakes the worker for an install or a browser start, and delivers
+  // that event while the first run is still finding out what the session knows.
+  assert.equal(first.api.runtime.onInstalled.listeners.length, 1);
+  assert.equal(first.api.runtime.onStartup.listeners.length, 1);
+  for (const listener of [...first.api.runtime.onInstalled.listeners, ...first.api.runtime.onStartup.listeners]) listener();
   await first.settle();
   assert.equal(first.state.menuInstalls, 1);
   // The worker stops and a later event wakes it: same session storage, fresh script.
@@ -479,6 +491,16 @@ test('duplicate matching ignores letter case in scheme and host, an empty #, and
   assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [1, 5, 6, 7, 8]);
 });
 
+test('tabs without a usable address are never copies of each other', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1 }, { id: 2 }, { id: 3, url: '' }, { id: 4, url: 'not an address' }, { id: 5, url: 'not an address' },
+    { id: 6, url: 'https://example.com/' },
+  ] });
+  assert.equal((await runtime.send({ type: 'pc:getSuggestions' })).overview.duplicates, 0);
+  assert.equal((await runtime.send({ type: 'pc:closeDuplicates' })).closedCount, 0);
+  assert.deepEqual(runtime.state.removed, []);
+});
+
 test('duplicate cleanup keeps the copy in view and a copy playing sound, and otherwise the first', async () => {
   const page = 'https://video.example/watch?v=1';
   const cases = [
@@ -544,12 +566,15 @@ test('sorting orders sites by tab count, then by name, with pinned tabs counting
     { id: 5, url: 'https://alpha.test/1' },
     { id: 6, url: 'https://beta.test/2' },
     { id: 7, url: 'https://alpha.test/2' },
+    { id: 8, url: 'https://solo.test/' },
+    { id: 9, url: 'about:blank#second' },
   ] });
   const result = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
   // alpha and beta have two tabs each and zeta has two with its pinned tab, so the
-  // three tie on count and sort by name; the tab without a site goes last.
-  assert.deepEqual(windowOrder(runtime), [1, 5, 7, 3, 6, 4, 2]);
-  assert.equal(result.sortedCount, 6);
+  // three tie on count and sort by name. The two tabs without a site also number
+  // two; they go after the sites they tie with and before the site with one tab.
+  assert.deepEqual(windowOrder(runtime), [1, 5, 7, 3, 6, 4, 2, 9, 8]);
+  assert.equal(result.sortedCount, 8);
 });
 
 test('sorting leaves every tab group where it is and with the same tabs', async () => {
@@ -600,6 +625,11 @@ test('sorting stops at the first tab the browser will not move and reports the f
   const result = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
   assert.equal(result.ok, false);
   assert.deepEqual(runtime.state.moves.map(move => move.id), [4, 5], 'no move is attempted after the failed one');
+  // The same when a tab is moved but not to the place asked for.
+  const misplaced = extension({ tabs: runtime.state.tabs.map(tab => ({ id: tab.id, url: tab.url })).sort((a, b) => a.id - b.id) });
+  misplaced.state.misplaceMove.add(5);
+  assert.equal((await misplaced.send({ type: 'pc:sortTabsByOpenCount' })).ok, false);
+  assert.deepEqual(misplaced.state.moves.map(move => move.id), [4, 5], 'no move is attempted after the misplaced one');
 });
 
 test('a typed domain also closes its subdomains; site rows and the context menu stay exact', async () => {
@@ -793,14 +823,18 @@ test('suggestions list every site, count only tabs a click would close, and repo
     { id: 1, url: 'https://example.com/a', pinned: true }, { id: 2, url: 'https://example.com/a' },
     { id: 3, url: 'https://example.com/b' }, { id: 4, url: 'https://pinned-only.test/', pinned: true },
     { id: 5, url: 'https://example.com/private', incognito: true }, { id: 6, url: 'about:blank' }, ...sites,
+    { id: 60, url: 'https://site7.test/b' }, { id: 61, url: 'https://site7.test/c' }, { id: 62, url: 'https://site3.test/b' },
   ] });
   await runtime.send({ type: 'pc:updateSettings', payload: { suggestMinOpenTabsPerDomain: 5 } });
   let result = await runtime.send({ type: 'pc:getSuggestions' });
   const domains = result.suggestions.filter(item => item.kind === 'domain');
   assert.equal(domains.length, 41);
-  assert.deepEqual(domains[0], { kind: 'domain', domain: 'example.com', openCount: 2, favIconUrl: null });
+  // Most tabs first; sites with as many tabs as each other keep their tab order.
+  assert.deepEqual(domains.slice(0, 5).map(item => `${item.domain} ${item.openCount}`),
+    ['site7.test 3', 'example.com 2', 'site3.test 2', 'site0.test 1', 'site1.test 1']);
+  assert.deepEqual(domains[1], { kind: 'domain', domain: 'example.com', openCount: 2, favIconUrl: null });
   assert.equal(domains.some(item => item.domain === 'pinned-only.test'), false);
-  assert.deepEqual(result.overview, { openTabs: 45, sites: 42, inactive: 0, duplicates: 1 });
+  assert.deepEqual(result.overview, { openTabs: 48, sites: 42, inactive: 0, duplicates: 1 });
   await runtime.send({ type: 'pc:updateSettings', payload: { keepPinnedTabs: false } });
   result = await runtime.send({ type: 'pc:getSuggestions' });
   assert.equal(result.suggestions.find(item => item.domain === 'example.com').openCount, 3);
@@ -827,6 +861,13 @@ test('popup lists keyword matches as you type and closes exactly the listed tabs
 
   await elements['pc-query'].type('example.com');
   assert.deepEqual(elements['pc-match-rows'].children.map(row => row.dataset.tabId), ['1', '2']);
+  // Only Enter closes. Any other key is left to the field.
+  for (const key of ['a', ' ', 'Tab', 'Escape', 'ArrowDown', 'Backspace']) {
+    const event = { key, prevented: false, preventDefault() { this.prevented = true; } };
+    await elements['pc-query'].dispatch('keydown', event);
+    assert.equal(event.prevented, false, key);
+  }
+  assert.deepEqual(runtime.state.removed, []);
   // A tab that opens after the list was shown is not closed by Enter.
   runtime.state.tabs.push({ id: 9, url: 'https://example.com/late', windowId: 1, index: 9, incognito: false, pinned: false });
   await elements['pc-query'].enter();
@@ -842,8 +883,12 @@ test('popup lists keyword matches as you type and closes exactly the listed tabs
   assert.equal(elements['pc-match-empty'].hidden, false);
   assert.equal(elements['pc-close'].hidden, true);
   assert.equal(elements['pc-undo-close'].hidden, true, 'typing ends the result bar and its Undo');
+  // Enter with nothing listed does nothing at all: the text stays and nothing is reported.
   await elements['pc-query'].enter();
   assert.deepEqual(runtime.state.removed, [1, 2]);
+  assert.equal(elements['pc-query'].value, 'zzz');
+  assert.equal(elements['pc-status'].textContent, '');
+  assert.equal(elements['pc-match-list'].hidden, false);
   await elements['pc-query'].type('   ');
   assert.equal(elements['pc-suggest-list'].hidden, false);
   assert.equal(elements['pc-query-clear'].hidden, false);
@@ -861,6 +906,28 @@ test('popup Enter waits for the list of the text just typed', async () => {
   await Promise.all([typing, entering]);
   assert.deepEqual(runtime.state.removed, [1]);
   assert.equal(elements['pc-status'].textContent, 'Closed: 1');
+});
+
+test('popup ignores a list that arrives late for text typed earlier', async () => {
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://slow.test/', title: 'Slow' }, { id: 2, url: 'https://quick.test/', title: 'Quick' },
+  ] });
+  const elements = await popup(runtime);
+  // Hold back the answer for "slow" until the answer for "quick" has been shown.
+  const deliver = runtime.api.runtime.sendMessage;
+  let release;
+  runtime.api.runtime.sendMessage = (message, cb) => {
+    if (message.type === 'pc:previewKeyword' && message.query === 'slow') deliver(message, value => { release = () => cb(value); });
+    else deliver(message, cb);
+  };
+  const first = elements['pc-query'].type('slow');
+  await elements['pc-query'].type('quick');
+  assert.deepEqual(elements['pc-match-rows'].children.map(row => row.dataset.tabId), ['2']);
+  release();
+  await first;
+  assert.deepEqual(elements['pc-match-rows'].children.map(row => row.dataset.tabId), ['2']);
+  assert.equal(elements['pc-match-query'].textContent, 'quick');
+  assert.equal(elements['pc-close-count'].textContent, '1');
 });
 
 test('popup closes one listed tab from its row and keeps the list', async () => {
@@ -909,6 +976,13 @@ test('Undo reopens tabs in their window and place, pinned as before, and brings 
   const again = await later.send({ type: 'pc:restoreTabs', tabs: closed.closedTabs });
   assert.equal(again.restoredCount, 3);
   assert.deepEqual(later.state.created.at(-1), { url: 'https://site.test/c', active: false, pinned: true });
+  // And tabs that were not pinned come back unpinned when their window is gone.
+  const gone = fixture();
+  gone.state.missingWindows.add(1);
+  assert.equal((await gone.send({ type: 'pc:restoreTabs', tabs: closed.closedTabs })).restoredCount, 3);
+  assert.deepEqual(gone.state.created.slice(0, 2), [
+    { url: 'https://site.test/a', active: true }, { url: 'https://site.test/b', active: false },
+  ]);
 });
 
 test('each popup control sends its own request and no other', async () => {
@@ -976,6 +1050,19 @@ test('popup retains failed undo entries for retry without recreating successful 
   await elements['pc-undo-close'].click();
   assert.deepEqual(runtime.state.created.map(tab => tab.url), ['https://example.com/1', 'https://example.com/2']);
   assert.equal(elements['pc-undo-close'].hidden, true);
+
+  // The background cannot be reached at all: Undo says so and can be tried again.
+  await elements['pc-query'].type('example.com');
+  await elements['pc-close'].click();
+  runtime.state.failMessage = true;
+  await elements['pc-undo-close'].click();
+  assert.equal(elements['pc-status'].textContent, 'Undo failed');
+  assert.equal(elements['pc-undo-close'].hidden, false);
+  assert.equal(runtime.state.created.length, 2);
+  runtime.state.failMessage = false;
+  await elements['pc-undo-close'].click();
+  assert.equal(elements['pc-status'].textContent, 'Restored: 2');
+  assert.equal(runtime.state.created.length, 4);
 });
 
 test('popup blocks another cleanup while Undo is restoring its snapshot', async () => {
@@ -1059,9 +1146,27 @@ test('popup handles an unavailable background with its translated error state', 
   assert.equal(elements['pc-close'].disabled, false);
 });
 
+test('popup still starts when its saved settings cannot be read', async () => {
+  const runtime = extension({ tabs: [{ id: 1, url: 'https://example.com/' }] });
+  runtime.state.failStorageGet = true;
+  const elements = await popup(runtime);
+  assert.equal(elements['pc-status'].textContent, 'Failed');
+  assert.equal(elements.root.getAttribute('data-theme'), 'system');
+  assert.equal(elements['pc-suggest-empty'].textContent, "Couldn't load suggestions");
+  // Its controls are wired all the same and work once storage answers again.
+  runtime.state.failStorageGet = false;
+  await elements['pc-query'].type('example');
+  assert.deepEqual(elements['pc-match-rows'].children.map(row => row.dataset.tabId), ['1']);
+});
+
 test('popup settings persist when a translated popup is reopened', async () => {
   const runtime = extension({ locale: 'de' });
   const elements = await popup(runtime);
+  // Starting the popup puts the document's fixed words into the browser's language.
+  assert.equal(elements.root.lang, 'de');
+  assert.equal(elements['pc-inactive-empty'].textContent, L.catalogue('de').noInactive);
+  assert.equal(elements['pc-query'].placeholder, L.catalogue('de').queryPlaceholder);
+  assert.equal(elements['pc-settings-toggle'].getAttribute('aria-label'), L.catalogue('de').settings);
   assert.equal(elements.root.getAttribute('data-theme'), 'system');
   assert.equal(elements.themes.system.getAttribute('aria-pressed'), 'true');
   assert.equal(elements.threshold.textContent, '2 Stunden');
@@ -1077,6 +1182,21 @@ test('popup settings persist when a translated popup is reopened', async () => {
   assert.equal(reopened['pc-keep-pinned'].getAttribute('aria-checked'), 'false');
   assert.equal(runtime.state.store['pc.settings'].inactiveThresholdMinutes, 480);
   assert.equal(runtime.state.store['pc.settings'].keepPinnedTabs, false);
+});
+
+test('popup takes up settings saved from another window and ignores unrelated storage changes', async () => {
+  const runtime = extension();
+  const elements = await popup(runtime);
+  const changed = (changes, area) => Promise.all(runtime.api.storage.onChanged.listeners.map(listener => listener(changes, area)));
+  await changed({ 'pc.settings': { newValue: { theme: 'dark', accent: 'pink', inactiveThresholdMinutes: 480 } } }, 'local');
+  assert.equal(elements.root.getAttribute('data-theme'), 'dark');
+  assert.equal(elements.accents.pink.getAttribute('aria-pressed'), 'true');
+  assert.equal(elements.threshold.textContent, '8 hours');
+  // The closed count being saved, or anything in another storage area, changes no setting.
+  await changed({ 'pc.stats': { newValue: { totalTabsEaten: 5 } } }, 'local');
+  await changed({ 'pc.settings': { newValue: { theme: 'light' } } }, 'session');
+  assert.equal(elements.root.getAttribute('data-theme'), 'dark');
+  assert.equal(elements.threshold.textContent, '8 hours');
 });
 
 test('popup settings changes arriving together retain every saved value', async () => {
@@ -1139,14 +1259,26 @@ test('popup site rows use exact host matching and report partial close failures'
   assert.deepEqual(runtime.state.removed, [1]);
   assert.equal(elements['pc-status'].textContent, 'Closed: 1 · Failed');
   assert.equal(elements['pc-undo-close'].hidden, false);
+  // The background cannot be reached at all: nothing closed, nothing to undo.
+  runtime.state.failMessage = true;
+  await siteRow(elements, 'docs.example').click();
+  assert.deepEqual(runtime.state.removed, [1]);
+  assert.equal(elements['pc-status'].textContent, 'Failed');
+  assert.equal(elements['pc-undo-close'].hidden, true);
 });
 
 test('popup counts: open tabs and sites in the header, lifetime total with digit grouping below', async () => {
-  const runtime = extension({ tabs: Array.from({ length: 14 }, (_, index) => ({ id: index + 1, url: 'https://example.com/' + index })) });
+  const runtime = extension({ tabs: [
+    ...Array.from({ length: 14 }, (_, index) => ({ id: index + 1, url: 'https://example.com/' + index })),
+    { id: 20, url: 'https://pinned-only.test/', pinned: true },
+  ] });
   runtime.state.store['pc.stats'] = { totalTabsEaten: 2479 };
   const elements = await popup(runtime);
-  assert.equal(elements['pc-open-count'].textContent, '14 open tabs');
-  assert.equal(elements['pc-site-count'].textContent, '1 site');
+  // The header counts everything that is open, including a site with no row
+  // because its only tab is pinned.
+  assert.equal(elements['pc-open-count'].textContent, '15 open tabs');
+  assert.equal(elements['pc-site-count'].textContent, '2 sites');
+  assert.deepEqual(sitesIn(elements), ['example.com']);
   assert.equal(elements['pc-closed-count'].textContent, '2,479 closed');
   assert.equal(elements['pc-settings-closed'].textContent, '2,479 closed');
   assert.equal(elements['pc-duplicates-count'].textContent, '0');
@@ -1202,6 +1334,29 @@ test('popup inactive review lists tabs before closing them and returns to sugges
   assert.deepEqual(runtime.state.tabs.map(tab => tab.id), [4, 5]);
 });
 
+test('popup reports what Close duplicates closed, or that there was nothing after all', async () => {
+  const tabs = [{ id: 1, url: 'https://twice.test/page' }, { id: 2, url: 'https://twice.test/page' }, { id: 3, url: 'https://once.test/' }];
+  const runtime = extension({ tabs });
+  const elements = await popup(runtime);
+  assert.equal(elements['pc-duplicates-count'].textContent, '1');
+  assert.equal(elements['pc-close-duplicates'].getAttribute('aria-label'), 'Close duplicates · 1 open tab');
+  await elements['pc-close-duplicates'].click();
+  assert.deepEqual(runtime.state.removed, [2]);
+  assert.equal(elements['pc-status'].textContent, 'Duplicate tabs closed: 1');
+  assert.equal(elements['pc-undo-close'].hidden, false);
+  assert.equal(elements['pc-duplicates-count'].textContent, '0');
+  assert.equal(elements['pc-close-duplicates'].disabled, true);
+  // The count on show can be out of date: here the copy was closed some other way.
+  const stale = extension({ tabs });
+  const second = await popup(stale);
+  stale.state.tabs = stale.state.tabs.filter(tab => tab.id !== 2);
+  await second['pc-close-duplicates'].click();
+  assert.deepEqual(stale.state.removed, []);
+  assert.equal(second['pc-status'].textContent, 'No duplicates');
+  assert.equal(second['pc-undo-close'].hidden, true);
+  assert.equal(second['pc-close-duplicates'].disabled, true);
+});
+
 test('popup hides the Inactive row when the saved setting turns it off', async () => {
   const runtime = extension({ tabs: [{ id: 1, url: 'https://example.com/', lastAccessed: 1 }] });
   runtime.state.store['pc.settings'] = { enableInactiveSuggestion: false };
@@ -1220,6 +1375,17 @@ test('popup views swap whole blocks and move focus with them', async () => {
   assert.deepEqual(shown(), ['pc-header', 'pc-suggest-list', 'pc-foot-main']);
   assert.equal(elements.document.activeElement, elements['pc-settings-toggle']);
   assert.equal(elements['pc-version'].textContent, 'TabTools');
+
+  // Back from a review whose last tab was closed: the Inactive row is now
+  // disabled and cannot take focus, so the keyword field does.
+  const review = await popup(extension({ tabs: [
+    { id: 1, url: 'https://idle.test/', lastAccessed: Date.now() - 3 * 60 * 60 * 1000 }, { id: 2, url: 'https://in-view.test/', active: true },
+  ] }));
+  await review['pc-inactive-row'].click();
+  await lastOf(review['pc-inactive-rows'].children[0]).click();
+  await review['pc-inactive-back'].click();
+  assert.equal(review['pc-inactive-row'].disabled, true);
+  assert.equal(review.document.activeElement, review['pc-query']);
 });
 
 test('popup result bar lasts seven seconds and sorting reports without Undo', async () => {
