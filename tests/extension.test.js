@@ -17,7 +17,7 @@ function extension({ tabs = [], locale = 'en', firefox = false, session = {}, ta
     tabs: tabs.map((tab, index) => ({ windowId: 1, index, active: false, pinned: false, incognito: false, ...tab })),
     store: {}, session, menus: [], menuInstalls: 0, removed: [], created: [], moves: [], errors: [],
     failRemove: new Set(), failCreate: new Set(), failMove: new Set(), misplaceMove: new Set(), missingWindows: new Set(),
-    failQuery: false, failMessage: false, failStorageGet: false, failStorageSet: false,
+    failQuery: false, failMessage: false, failStorageGet: false, failStorageSet: false, groupsTakeNeighbours: false,
     delayCreatedNavigation: false, queryCount: 0,
   };
   let nextId = Math.max(0, ...tabs.map(tab => tab.id)) + 1;
@@ -66,7 +66,8 @@ function extension({ tabs = [], locale = 'en', firefox = false, session = {}, ta
       }
       // Reorder the tab's window as a browser does. A moved tab joins a tab
       // group only when it lands between two tabs of that group; anywhere
-      // else it ends up outside every group.
+      // else it ends up outside every group. `groupsTakeNeighbours` stands
+      // for a browser that also takes in a tab placed right beside a group.
       const tab = state.tabs.find(item => item.id === id);
       const row = state.tabs.filter(item => item.windowId === tab.windowId && item !== tab).sort((a, b) => a.index - b.index);
       // `misplaceMove` stands for a browser that puts the tab one place further on.
@@ -76,6 +77,7 @@ function extension({ tabs = [], locale = 'en', firefox = false, session = {}, ta
       const groupOf = item => (item && typeof item.groupId === 'number' ? item.groupId : -1);
       const [left, right] = [groupOf(row[index - 1]), groupOf(row[index + 1])];
       if ('groupId' in tab || left !== -1 || right !== -1) tab.groupId = left !== -1 && left === right ? left : -1;
+      if (state.groupsTakeNeighbours && (left !== -1 || right !== -1)) tab.groupId = left !== -1 ? left : right;
       callback(cb, structuredClone(tab));
     },
     onCreated: event(), onRemoved: event(), onActivated: event(), onUpdated: event(), onReplaced: event(),
@@ -630,6 +632,25 @@ test('sorting stops at the first tab the browser will not move and reports the f
   misplaced.state.misplaceMove.add(5);
   assert.equal((await misplaced.send({ type: 'pc:sortTabsByOpenCount' })).ok, false);
   assert.deepEqual(misplaced.state.moves.map(move => move.id), [4, 5], 'no move is attempted after the misplaced one');
+});
+
+test('sorting stops if the browser takes a moved tab into a tab group', async () => {
+  const tabs = [
+    { id: 1, url: 'https://grouped.test/1', groupId: 7 }, { id: 2, url: 'https://grouped.test/2', groupId: 7 },
+    { id: 3, url: 'https://single.test/', groupId: -1 },
+    { id: 4, url: 'https://pair.test/1', groupId: -1 }, { id: 5, url: 'https://pair.test/2', groupId: -1 },
+  ];
+  // As Chrome behaves: the pair moves up beside the group and stays out of it.
+  let runtime = extension({ tabs });
+  assert.equal((await runtime.send({ type: 'pc:sortTabsByOpenCount' })).sortedCount, 3);
+  assert.deepEqual(windowOrder(runtime), [1, 2, 4, 5, 3]);
+  assert.deepEqual(runtime.state.tabs.filter(tab => tab.groupId === 7).map(tab => tab.id), [1, 2]);
+  // A browser that takes the first moved tab into the group: nothing else is moved.
+  runtime = extension({ tabs });
+  runtime.state.groupsTakeNeighbours = true;
+  const result = await runtime.send({ type: 'pc:sortTabsByOpenCount' });
+  assert.equal(result.ok, false);
+  assert.deepEqual(runtime.state.moves, [{ id: 4, index: 2 }]);
 });
 
 test('a typed domain also closes its subdomains; site rows and the context menu stay exact', async () => {

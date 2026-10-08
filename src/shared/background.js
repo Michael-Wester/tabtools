@@ -660,6 +660,11 @@ async function sortTabsByOpenCount() {
     if (moved && typeof moved.index === "number" && moved.index !== move.index) {
       throw new Error("TabTools: a tab did not move to its place; sorting stopped");
     }
+    // Only loose tabs are moved, each to a place beside loose tabs. One that
+    // comes back in a tab group was taken into it by the browser.
+    if (moved && typeof moved.groupId === "number" && moved.groupId !== -1) {
+      throw new Error("TabTools: a moved tab ended up in a tab group; sorting stopped");
+    }
   }
   return { sortedCount: changed };
 }
