@@ -179,6 +179,9 @@
   "clear": {
     "message": "Clear"
   },
+  "dismiss": {
+    "message": "Dismiss"
+  },
   "noMatches": {
     "message": "No tabs match"
   },

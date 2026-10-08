@@ -14,6 +14,7 @@ by site and sort tabs by site. Do not add performance promises or new features.
 | Inactive | Eligible tabs not used for longer than the chosen time. The row opens a list to review; nothing closes until Close or a row's own button is pressed, and there is no automatic scheduled cleanup. Active, pinned and audible tabs stay open. |
 | Duplicates | Tabs with exactly the same address, including the part after `#`. Extra copies close; a pinned copy, a copy playing sound and a copy in view stay. |
 | Undo | Restore the latest popup cleanup while that popup stays open. Do not promise a persistent history. |
+| Dismiss | Closes the message about the last action (and its Undo) without doing anything else. Screen readers and the tooltip only; use the usual word for closing a notification. |
 | Local | On the user's device/browser storage. Extension privacy claims do not apply to YouTube or browser stores. |
 | Settings / system / light / dark | Keep labels consistent between controls and explanatory instructions. System is the theme that follows the browser's light or dark setting. |
 | Accent colour | The colour of the popup's buttons, switches and highlights. Purple, Blue, Green, Orange, Pink and Graphite name its six presets; Graphite is a dark grey. |

@@ -178,6 +178,7 @@ async function popup(runtime, options = {}) {
     replaceChildren(...children) { this.children = children; }
     replaceWith() {}
     focus() { document.activeElement = this; }
+    blur() { if (document.activeElement === this) document.activeElement = document.body; }
     async dispatch(name, event = {}) { for (const fn of this.listeners[name] || []) await fn(event); }
     async click() { if (!this.disabled) await this.dispatch('click'); }
     async type(text) { this.value = text; await this.dispatch('input'); }
@@ -1470,6 +1471,37 @@ test('popup results take the footer’s place, and give it and its focus back', 
   expire(7000);
   assert.equal(covered(), false);
   assert.equal(elements['pc-undo-close'].hidden, true);
+  assert.equal(elements['pc-toast-dismiss'].hidden, true);
+});
+
+test('popup results can be dismissed with × or Escape, and focus goes to the footer', async () => {
+  const runtime = extension({ tabs: [{ id: 1, url: 'https://b.test/' }, { id: 2, url: 'https://a.test/1' }, { id: 3, url: 'https://c.test/' }] });
+  const elements = await popup(runtime, { timers: { setTimeout: () => 1, clearTimeout() {} } });
+  const open = () => elements['pc-toast'].classList.contains('is-open');
+  assert.equal(elements['pc-toast-dismiss'].hidden, true);         // out of the tab order while closed
+  assert.equal(elements['pc-toast-dismiss'].getAttribute('aria-label'), 'Dismiss');
+  // Pointer: × closes the result and gives the footer back; Undo is no longer offered.
+  await siteRow(elements, 'b.test').click();
+  assert.equal(open(), true);
+  assert.equal(elements['pc-toast-dismiss'].hidden, false);
+  await elements['pc-toast-dismiss'].click();
+  assert.equal(open(), false);
+  assert.equal(elements['pc-bottom'].classList.contains('has-result'), false);
+  assert.equal(elements['pc-undo-close'].hidden, true);
+  assert.equal(elements['pc-status'].textContent, '');
+  // Keyboard: Escape on the result closes it without closing the popup, and
+  // focus lands on the footer's Sort button instead of being lost.
+  await siteRow(elements, 'c.test').click();
+  elements['pc-undo-close'].focus();
+  let prevented = false;
+  await elements['pc-toast'].dispatch('keydown', { key: 'Escape', preventDefault() { prevented = true; } });
+  assert.equal(prevented, true);
+  assert.equal(open(), false);
+  assert.equal(elements.document.activeElement, elements['pc-sort-tabs-quick']);
+  // Other keys are left alone.
+  await siteRow(elements, 'a.test').click();
+  await elements['pc-toast'].dispatch('keydown', { key: 'Tab', preventDefault() { assert.fail('Tab was blocked'); } });
+  assert.equal(open(), true);
 });
 
 test('popup applies an accent preset for the active theme and clears it for purple', async () => {

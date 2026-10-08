@@ -173,6 +173,7 @@
     const offersUndo = undo && lastClosedTabs.length > 0;
     byId("pc-status").textContent = text || "";
     byId("pc-undo-close").hidden = !offersUndo;
+    byId("pc-toast-dismiss").hidden = false;
     toastMs = offersUndo ? TOAST_MS : NOTE_MS;
     const covered = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"]]
       .find(([, id]) => byId(id) === document.activeElement);
@@ -182,6 +183,18 @@
     armToast();
   }
 
+  // Closed by the user (× or Escape) rather than timed out. If focus was on
+  // the result, it moves to the footer the result gives back.
+  function dismissToast() {
+    const hadFocus = ["pc-toast-dismiss", "pc-undo-close"].some((id) => byId(id) === document.activeElement);
+    if (hadFocus) document.activeElement.blur();
+    hideToast();                 // hands focus back to a footer button it covered, if any
+    if (!hadFocus || (document.activeElement && document.activeElement !== document.body)) return;
+    const footer = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"]]
+      .find(([id]) => !byId(id).hidden);
+    if (footer) focusOn(footer[1]);
+  }
+
   function hideToast() {
     clearTimeout(toastTimer);
     toastTimer = null;
@@ -189,6 +202,7 @@
     byId("pc-toast").classList.toggle("is-open", false);
     byId("pc-bottom").classList.toggle("has-result", false);
     byId("pc-undo-close").hidden = true;
+    byId("pc-toast-dismiss").hidden = true;
     byId("pc-status").textContent = "";
     // A keyboard user whose button the result covered gets it back, if its
     // footer is still the one showing and focus has not gone elsewhere.
@@ -748,6 +762,7 @@
     byId("pc-close-duplicates").addEventListener("click", () => runCleanup(closeDuplicates));
     byId("pc-inactive-close").addEventListener("click", () => runCleanup(closeInactiveListed));
     byId("pc-undo-close").addEventListener("click", () => runCleanup(restoreLastClose));
+    byId("pc-toast-dismiss").addEventListener("click", dismissToast);
     byId("pc-sort-tabs-quick").addEventListener("click", sortTabs);
 
     // The result bar stays while it is pointed at or holds focus.
@@ -756,6 +771,11 @@
     for (const name of ["mouseleave", "focusout"]) {
       toast.addEventListener(name, () => { if (toastTimer !== null) armToast(); });
     }
+    toast.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();      // Escape would otherwise close the whole popup
+      dismissToast();
+    });
 
     all("[data-theme-value]").forEach((button) => {
       button.addEventListener("click", () => writeSettings({ theme: button.dataset.themeValue }));

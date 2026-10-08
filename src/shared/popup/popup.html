@@ -547,6 +547,23 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   cursor: pointer;
 }
 .toast-btn:hover { background: var(--toast-ink); color: var(--toast); }
+/* Dismiss: a plain ×, quieter than Undo. */
+.toast-x {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--toast-ink);
+  opacity: .7;
+  cursor: pointer;
+}
+.toast-x:hover { opacity: 1; background: var(--toast-btn); }
+.toast-x:focus-visible { opacity: 1; outline-color: var(--toast-ink); }
 .toast-btn:focus-visible { outline-color: var(--toast-ink); }
 @keyframes rise { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .toast.is-open { animation: none; } }
@@ -755,6 +772,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   <div id="pc-toast" class="toast">
     <span id="pc-status" class="toast-text" role="status" aria-live="polite"></span>
     <button id="pc-undo-close" class="toast-btn" type="button" hidden><span data-i18n="undo">Undo</span><svg class="flip" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 3.5l-3 3 3 3"></path><path d="M3 6.5h6.2a3.3 3.3 0 0 1 0 6.6H8"></path></svg></button>
+    <button id="pc-toast-dismiss" class="toast-x" type="button" data-i18n-aria="dismiss" data-i18n-title="dismiss" aria-label="Dismiss" title="Dismiss" hidden><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"></path></svg></button>
   </div>
   <footer id="pc-foot-main" class="foot">
     <button id="pc-sort-tabs-quick" class="btn sort" type="button" data-i18n-title="contextSort" title="Sort tabs (most opened first)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h11M2.5 8h7.5M2.5 12h4"></path></svg><span data-i18n="sortTabs">Sort tabs</span></button>

@@ -528,6 +528,13 @@ test('native actions: typed site, Undo, duplicates, right-click, private windows
       .toEqual([{ id: second.tabs[0].id, active: true }]);
     expect(afterDuplicates.filter(tab => tab.url === 'http://copies.test/page').map(tab => tab.id)).toEqual([tabFor('http://copies.test/page', primary).id]);
     expect(afterDuplicates.filter(tab => tab.url.startsWith('http://mail.test/')).length).toBe(2);
+    // × dismisses the result at once and gives the footer back.
+    const footerShows = () => popup.evaluate(`getComputedStyle(document.querySelector('#pc-foot-main')).visibility`);
+    expect(await footerShows()).toBe('hidden');
+    await click(popup, '#pc-toast-dismiss');
+    await expect.poll(() => popup.evaluate('document.querySelector("#pc-toast").classList.contains("is-open")')).toBe(false);
+    expect(await footerShows()).toBe('visible');
+    expect(await popup.evaluate('document.querySelector("#pc-toast-dismiss").hidden')).toBe(true);
     await expect.poll(() => text(popup, '#pc-duplicates-count')).toBe('0');
     expect(await popup.evaluate('document.querySelector("#pc-close-duplicates").disabled')).toBe(true);
 
