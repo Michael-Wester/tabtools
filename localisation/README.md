@@ -6,7 +6,7 @@ English fallback. The locale registry in
 `registry.json` maps canonical language tags to the WebExtensions directory,
 website URL, hreflang value, and each store's listing code.
 
-The current browser manifest versions are Chrome, Firefox and Edge 4.0.3. The 2026-09-18 baseline is commit
+The current browser manifest versions are Chrome, Firefox and Edge 5.0.0. The 2026-09-18 baseline is commit
 `519007f3dd06c0b2ab52d57519ed7a0d145b9c79`. The imported translations carry
 per-key review metadata in `reviews/<locale>.json`; a review's `source`
 value is `sha256(JSON.stringify(EnglishValue))`. A source edit therefore
