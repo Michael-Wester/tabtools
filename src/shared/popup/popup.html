@@ -465,7 +465,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
 .btn.sort { display: flex; align-items: center; gap: 7px; height: auto; min-height: 28px; padding: 3px 10px; text-align: start; }
 .btn.sort > svg { flex: none; }
 
-/* Accent presets (last step of the handoff). popup.js sets --sw on each swatch. */
+/* Accent presets. popup.js sets --sw on each swatch. */
 .swatches { flex: none; display: flex; align-items: center; gap: 8px; padding-inline: 4px; }
 .swatch {
   display: grid;
@@ -694,7 +694,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
     </div>
   </div>
   <hr class="divider">
-  <!-- Accent presets: the last step of the handoff. Until then, leave this row and the divider under it out. -->
+  <!-- Accent presets: purple is the stylesheet's own; popup.js applies the others. -->
   <div id="pc-accent-setting" class="setting">
     <span class="setting-label" data-i18n="accentColour">Accent colour</span>
     <div id="pc-accent" class="swatches" role="group" data-i18n-aria="accentColour" aria-label="Accent colour">

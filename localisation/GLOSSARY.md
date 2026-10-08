@@ -9,13 +9,19 @@ by site and sort tabs by site. Do not add performance promises or new features.
 | Tab | A browser tab, not a page section or UI tab control. Use the ordinary local browser term. |
 | Site / website | Website/domain associated with a tab. Closing a site closes its matching tabs across regular windows, including the current tab. Never imply “other tabs only”. |
 | Close site tabs | Same action label in the native menu, website instructions and store copy. |
-| Sort tabs | Reorder tabs within the current window by site frequency, with the most represented sites first. Does not create browser tab groups. |
-| Suggestions | Sites selected by open-tab counts, subject to the minimum setting. Not AI recommendations. |
-| Inactive | Eligible tabs past the chosen inactivity threshold. The action runs when clicked; no automatic scheduled cleanup. Active, pinned and audible tabs stay open. |
-| Duplicates | Repeated pages; extra copies close while pinned tabs remain. |
+| Sort tabs | Reorder tabs within the current window by site frequency, with the most represented sites first. Pinned tabs and tabs in a tab group stay where they are. Does not create browser tab groups. |
+| Suggestions | The popup's main list: Inactive, Close duplicates, then every site with open tabs, most tabs first. Not AI recommendations. |
+| Inactive | Eligible tabs not used for longer than the chosen time. The row opens a list to review; nothing closes until Close or a row's own button is pressed, and there is no automatic scheduled cleanup. Active, pinned and audible tabs stay open. |
+| Duplicates | Tabs with exactly the same address, including the part after `#`. Extra copies close; a pinned copy, a copy playing sound and a copy in view stay. |
 | Undo | Restore the latest popup cleanup while that popup stays open. Do not promise a persistent history. |
 | Local | On the user's device/browser storage. Extension privacy claims do not apply to YouTube or browser stores. |
-| Settings / light / dark | Keep labels consistent between controls and explanatory instructions. |
+| Settings / system / light / dark | Keep labels consistent between controls and explanatory instructions. System is the theme that follows the browser's light or dark setting. |
+| Accent colour | The colour of the popup's buttons, switches and highlights. Purple, Blue, Green, Orange, Pink and Graphite name its six presets; Graphite is a dark grey. |
+| Keep pinned tabs open | A switch. When on, closing a site or a keyword leaves pinned tabs alone. |
+| Pinned, playing and current tabs stay open. | The note above the inactive list. Playing means playing sound; current means the tab in view in each window. |
+| Clear / Reset | Clear empties the keyword field. Reset sets the count of closed tabs back to zero; it closes and restores nothing. |
+| No tabs match | Shown when no open tab matches the typed keyword. |
+| {count} sites | How many different sites have an open tab; shown beside the open-tab count. |
 | `{count}`, `{site}`, `{browser}`, `{store}`, `{label}`, `{language}` | Preserve names and occurrence counts. Move whole-message placeholders naturally. User values are literal text. |
 | Chrome, Firefox, Edge, Microsoft Edge, GitHub, YouTube | Preserve brands. Keep URLs and `youtube.com` exactly unchanged. |
 
@@ -34,11 +40,12 @@ number phrases and RTL punctuation, and Portuguese/Chinese regional conventions.
 These are review priorities, not asserted known mistranslations.
 
 The single English source keeps the existing British-spelled English copy.
-French `Suggestions`, `minutes`, `Open source`, `Contact`; Italian `Privacy`;
+French `Suggestions`, `Open source`, `Contact`; Italian `Privacy`;
 Dutch `open tab(s)`, `Privacy`, `Product`, `Contact`; and Romanian `Inactive`,
 `Contact` are intentional shared spellings, with per-key reasons in the reviews.
 Do not remove the English-leftover check to accommodate additional matches.
 
-Counters use whole translated messages. Open-tab counts have explicit CLDR plural
-forms; result counters use a count label to avoid an English singular/plural
-fragment. Numeric settings retain their stored values and input behaviour.
+Counters use whole translated messages. Open-tab and site counts have explicit CLDR
+plural forms; result counters use a count label to avoid an English singular/plural
+fragment. Durations such as “2 hours” and “3 hr” are not in the catalogues: the popup
+takes them from the browser's own formatting for the language.
