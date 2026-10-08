@@ -120,9 +120,11 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
 }
 .brand { flex: none; font-size: 20px; font-weight: 700; letter-spacing: -0.015em; }
 .stats {
+  flex: 1 0 auto;             /* grows to centre the pills between the name and the settings button; wraps when they do not fit */
   min-width: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   overflow: hidden;
   /* Proportional digits here: in a fixed-width cell a leading "1" ("18 sites")
