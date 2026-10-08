@@ -120,31 +120,24 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
 }
 .brand { flex: none; font-size: 20px; font-weight: 700; letter-spacing: -0.015em; }
 .stats {
-  flex: 1 0 auto;             /* grows to centre the pills between the name and the settings button; wraps when they do not fit */
+  flex: 1 0 auto;             /* grows to centre the counts between the name and the settings button; wraps when they do not fit */
   min-width: 0;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
   overflow: hidden;
+  color: var(--ink-2);
+  font-size: 13px;
   /* Proportional digits here: in a fixed-width cell a leading "1" ("18 sites")
      looks set apart from its word. */
   font-variant-numeric: proportional-nums;
   white-space: nowrap;
 }
-/* The two counts are pills: open tabs tinted in the accent, sites outlined. */
-.pill {
-  display: inline-flex;
-  align-items: center;
-  height: 22px;
-  padding: 0 8px;
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
-  color: var(--ink-2);
-  font-size: 12px;
-}
-.pill.strong { border-color: var(--bar); background: var(--hit); color: var(--ink); }
-.pill:empty { display: none; }
+/* "31 tabs · 12 sites": the dot shows only when both counts do. */
+.stats .dot { color: var(--ink-3); }
+.stats :empty + .dot { display: none; }
+.stats .dot:has(+ :empty) { display: none; }   /* separate rule: browsers without :has drop only this one */
 
 .icon-btn {
   flex: none;
@@ -616,7 +609,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
     <svg class="mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg>
     <div class="head-text">
       <strong class="brand">TabTools</strong>
-      <span class="stats"><span id="pc-open-count" class="pill strong"></span><span id="pc-site-count" class="pill"></span></span>
+      <span class="stats"><span id="pc-open-count"></span><span class="dot" aria-hidden="true">·</span><span id="pc-site-count"></span></span>
     </div>
     <button id="pc-settings-toggle" class="icon-btn" type="button" data-i18n-aria="settings" data-i18n-title="settings" aria-label="Settings" title="Settings"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 5h5.5M12.5 5H14M2 11h1.5M8.5 11H14"></path><circle cx="10" cy="5" r="2"></circle><circle cx="6" cy="11" r="2"></circle></svg></button>
   </div>
