@@ -125,7 +125,7 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 6px;
+  gap: 7px;
   overflow: hidden;
   color: var(--ink-2);
   font-size: 13px;
@@ -135,7 +135,15 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   white-space: nowrap;
 }
 /* "31 tabs · 12 sites": the dot shows only when both counts do. */
-.stats .dot { color: var(--ink-3); }
+.stats .dot {               /* drawn, so its size and height do not depend on the font */
+  flex: none;
+  align-self: center;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ink-3);
+  font-size: 0;               /* the "·" inside only keeps it from matching :empty */
+}
 .stats :empty + .dot { display: none; }
 .stats .dot:has(+ :empty) { display: none; }   /* separate rule: browsers without :has drop only this one */
 
