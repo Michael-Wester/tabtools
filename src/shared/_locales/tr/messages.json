@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Öneriler"
   },
-  "suggestCaption": {
-    "message": "Sitenin sekmelerini kapatmak için dokunun"
-  },
   "queryPlaceholder": {
     "message": "Anahtar sözcükle kapat (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Geri al"
   },
-  "undoTitle": {
-    "message": "Son kapatma işlemini geri al"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Koyu"
   },
-  "minTabs": {
-    "message": "Öneriler için site başına en az sekme sayısı"
-  },
   "inactiveAfter": {
     "message": "Sekmelerin etkin sayılmadığı süre"
-  },
-  "minutes": {
-    "message": "dakika"
   },
   "closedCount": {
     "message": "Kapatılan: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ açık sekme",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ açık",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ açık",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Yinelenen sekme yok"
   },
-  "nothingToUndo": {
-    "message": "Geri alınacak işlem yok"
-  },
   "undoFailed": {
     "message": "İşlem geri alınamadı"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Etkin olmayanlar"
   },
-  "loadingSuggestions": {
-    "message": "Öneriler yükleniyor…"
-  },
   "suggestionsFailed": {
     "message": "Öneriler yüklenemedi"
   },
   "noSuggestions": {
     "message": "Öneri yok"
-  },
-  "moreCount": {
-    "message": "Gösterilmeyen diğer öneriler: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sıralama başarısız"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Sıralanacak sekme yok"
-  },
-  "hide": {
-    "message": "Gizle"
-  },
-  "show": {
-    "message": "Göster"
   },
   "contextClose": {
     "message": "Sitenin sekmelerini kapat"

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Suggestions"
   },
-  "suggestCaption": {
-    "message": "Tap to close tabs from site"
-  },
   "queryPlaceholder": {
     "message": "Close by keyword (press Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Undo"
   },
-  "undoTitle": {
-    "message": "Undo last close"
-  },
   "theme": {
     "message": "Theme"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Dark"
   },
-  "minTabs": {
-    "message": "Suggestions min tab count by site"
-  },
   "inactiveAfter": {
     "message": "Tabs inactive after"
-  },
-  "minutes": {
-    "message": "minutes"
   },
   "closedCount": {
     "message": "Closed: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ open tabs",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ open",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ open",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "No duplicates"
   },
-  "nothingToUndo": {
-    "message": "Nothing to undo"
-  },
   "undoFailed": {
     "message": "Undo failed"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Inactive"
   },
-  "loadingSuggestions": {
-    "message": "Loading suggestion chips..."
-  },
   "suggestionsFailed": {
     "message": "Couldn't load suggestions"
   },
   "noSuggestions": {
     "message": "No suggestions right now"
-  },
-  "moreCount": {
-    "message": "More suggestions not shown: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sort failed"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Nothing to sort"
-  },
-  "hide": {
-    "message": "Hide"
-  },
-  "show": {
-    "message": "Show"
   },
   "contextClose": {
     "message": "Close site tabs"

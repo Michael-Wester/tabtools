@@ -300,19 +300,51 @@ test('plural counts, formatted numbers and missing-message fallback remain reada
   assert.equal(english.ttMessage('closeSiteLabel',{site:'<test>.example'}),'Close tabs from <test>.example');
 });
 
-test('compact popup counters use translated plural forms and unformatted digits in every locale', () => {
+test('popup counters use each language’s plural forms and number format', () => {
   for (const locale of L.registry) {
     const context = extensionRuntime(locale.locale);
-    for (const key of ['openCountShort', 'closedCountShort']) {
+    const translated = L.catalogue(locale.locale);
+    for (const key of ['openCount', 'siteCount', 'closedCountShort']) {
+      // A string still waiting for its translation is shown in English; see the end of this test.
+      if (!(key in translated)) continue;
       for (const count of [0, 1, 2, 5, 14, 21, 2479, 123456]) {
         const category = new Intl.PluralRules(locale.locale).select(count);
-        const expected = L.catalogue(locale.locale)[key][category].replace('{count}', String(count));
-        assert.equal(context.ttMessage(key, { count }, { formatNumbers: false }), expected, locale.locale + '/' + key + '/' + count);
+        const expected = translated[key][category].replace('{count}', new Intl.NumberFormat(locale.locale).format(count));
+        assert.equal(context.ttMessage(key, { count }), expected, locale.locale + '/' + key + '/' + count);
       }
     }
   }
-  const fallback = extensionRuntime('he', 'he', ['closedCountShort_other']);
-  assert.equal(fallback.ttMessage('closedCountShort', { count: 2479 }, { formatNumbers: false }), '2479 closed');
+  const english = extensionRuntime('en');
+  assert.equal(english.ttMessage('closedCountShort', { count: 2479 }), '2,479 closed');
+  assert.equal(english.ttMessage('siteCount', { count: 1 }), '1 site');
+  assert.equal(english.ttMessage('siteCount', { count: 18 }), '18 sites');
+  const fallback = extensionRuntime('he', 'he', ['closedCountShort_other', 'siteCount_one', 'siteCount_two', 'siteCount_other']);
+  assert.equal(fallback.ttMessage('closedCountShort', { count: 2479 }), '2,479 closed');
+  assert.equal(fallback.ttMessage('siteCount', { count: 1 }), '1 site');
+  assert.equal(fallback.ttMessage('siteCount', { count: 2 }), '2 sites');
+});
+
+test('times are worded by the browser in every language, for each step and for values saved by older versions', () => {
+  const steps = [30, 60, 120, 240, 480, 1440, 4320, 10080];
+  for (const locale of L.registry) {
+    const context = extensionRuntime(locale.locale);
+    for (const display of ['long', 'short']) {
+      const labels = steps.map(minutes => context.ttDuration(minutes, display));
+      assert.equal(new Set(labels).size, steps.length, locale.locale + ': each step reads differently');
+      // A unit name is always present. A number is not: Hebrew writes two hours as one word.
+      for (const label of labels) assert.match(label, /\p{L}/u, locale.locale + ': ' + label);
+    }
+    for (const minutes of [0, 59, 60, 1439, 1440, 100000]) assert.match(context.ttAge(minutes), /\p{L}/u, locale.locale);
+  }
+  const english = extensionRuntime('en');
+  assert.deepEqual(steps.map(minutes => english.ttDuration(minutes)),
+    ['30 minutes', '1 hour', '2 hours', '4 hours', '8 hours', '1 day', '3 days', '1 week']);
+  assert.deepEqual(steps.map(minutes => english.ttDuration(minutes, 'short')),
+    ['30 min', '1 hr', '2 hr', '4 hr', '8 hr', '1 day', '3 days', '1 wk']);
+  // A time that is not a whole number of a larger unit is never rounded to one.
+  assert.deepEqual([45, 90, 100, 1500].map(minutes => english.ttDuration(minutes)), ['45 minutes', '90 minutes', '100 minutes', '25 hours']);
+  assert.deepEqual([0, 59, 60, 125, 1439, 1440, 4000].map(minutes => english.ttAge(minutes)),
+    ['0 min', '59 min', '1 hr', '2 hr', '23 hr', '1 day', '2 days']);
 });
 
 test('placeholder positions are stable across repetition and translation order',()=>{

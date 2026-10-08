@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Suggestions"
   },
-  "suggestCaption": {
-    "message": "Touchez pour fermer les onglets du site"
-  },
   "queryPlaceholder": {
     "message": "Fermer par mot-clé (touche Entrée)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Annuler"
   },
-  "undoTitle": {
-    "message": "Annuler la dernière fermeture"
-  },
   "theme": {
     "message": "Thème"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Sombre"
   },
-  "minTabs": {
-    "message": "Nombre minimal d’onglets par site pour les suggestions"
-  },
   "inactiveAfter": {
     "message": "Onglets inactifs après"
-  },
-  "minutes": {
-    "message": "minutes"
   },
   "closedCount": {
     "message": "Fermés : $count$",
@@ -88,33 +76,6 @@
   },
   "openCount_other": {
     "message": "$count$ onglets ouverts",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ ouvert",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ ouverts",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ ouverts",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -176,9 +137,6 @@
   "noDuplicates": {
     "message": "Aucun doublon"
   },
-  "nothingToUndo": {
-    "message": "Rien à annuler"
-  },
   "undoFailed": {
     "message": "Échec de l’annulation"
   },
@@ -197,23 +155,11 @@
   "inactive": {
     "message": "Inactifs"
   },
-  "loadingSuggestions": {
-    "message": "Chargement des suggestions…"
-  },
   "suggestionsFailed": {
     "message": "Impossible de charger les suggestions"
   },
   "noSuggestions": {
     "message": "Aucune suggestion pour le moment"
-  },
-  "moreCount": {
-    "message": "Autres suggestions non affichées : $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Échec du tri"
@@ -229,12 +175,6 @@
   },
   "nothingToSort": {
     "message": "Rien à trier"
-  },
-  "hide": {
-    "message": "Masquer"
-  },
-  "show": {
-    "message": "Afficher"
   },
   "contextClose": {
     "message": "Fermer les onglets du site"

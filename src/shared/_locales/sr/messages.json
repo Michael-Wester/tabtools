@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Предлози"
   },
-  "suggestCaption": {
-    "message": "Додирните да затворите картице сајта"
-  },
   "queryPlaceholder": {
     "message": "Затвори по кључној речи (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Опозови"
   },
-  "undoTitle": {
-    "message": "Опозови последње затварање"
-  },
   "theme": {
     "message": "Тема"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Тамна"
   },
-  "minTabs": {
-    "message": "Најмањи број картица сајта за предлоге"
-  },
   "inactiveAfter": {
     "message": "Картице су неактивне после"
-  },
-  "minutes": {
-    "message": "мин."
   },
   "closedCount": {
     "message": "Затворено: $count$",
@@ -88,33 +76,6 @@
   },
   "openCount_other": {
     "message": "$count$ отворених картица",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ отворена",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_few": {
-    "message": "$count$ отворене",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ отворених",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -176,9 +137,6 @@
   "noDuplicates": {
     "message": "Нема дупликата"
   },
-  "nothingToUndo": {
-    "message": "Нема радње за опозив"
-  },
   "undoFailed": {
     "message": "Опозив није успео"
   },
@@ -197,23 +155,11 @@
   "inactive": {
     "message": "Неактивне"
   },
-  "loadingSuggestions": {
-    "message": "Учитавање предлога…"
-  },
   "suggestionsFailed": {
     "message": "Учитавање предлога није успело"
   },
   "noSuggestions": {
     "message": "Нема предлога"
-  },
-  "moreCount": {
-    "message": "Неприказани предлози: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Ређање није успело"
@@ -229,12 +175,6 @@
   },
   "nothingToSort": {
     "message": "Нема картица за ређање"
-  },
-  "hide": {
-    "message": "Сакриј"
-  },
-  "show": {
-    "message": "Прикажи"
   },
   "contextClose": {
     "message": "Затвори картице сајта"

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Predlogi"
   },
-  "suggestCaption": {
-    "message": "Tapnite za zapiranje zavihkov spletišča"
-  },
   "queryPlaceholder": {
     "message": "Zapri po ključni besedi (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Razveljavi"
   },
-  "undoTitle": {
-    "message": "Razveljavi zadnje zapiranje"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Temna"
   },
-  "minTabs": {
-    "message": "Najmanjše število zavihkov spletišča za predloge"
-  },
   "inactiveAfter": {
     "message": "Zavihki nedejavni po"
-  },
-  "minutes": {
-    "message": "minutah"
   },
   "closedCount": {
     "message": "Zaprto: $count$",
@@ -97,42 +85,6 @@
   },
   "openCount_other": {
     "message": "$count$ odprtih zavihkov",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ odprt",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_two": {
-    "message": "$count$ odprta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_few": {
-    "message": "$count$ odprti",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ odprtih",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -203,9 +155,6 @@
   "noDuplicates": {
     "message": "Ni dvojnikov"
   },
-  "nothingToUndo": {
-    "message": "Ničesar ni mogoče razveljaviti"
-  },
   "undoFailed": {
     "message": "Razveljavitev ni uspela"
   },
@@ -224,23 +173,11 @@
   "inactive": {
     "message": "Nedejavni"
   },
-  "loadingSuggestions": {
-    "message": "Nalaganje predlogov …"
-  },
   "suggestionsFailed": {
     "message": "Predlogov ni bilo mogoče naložiti"
   },
   "noSuggestions": {
     "message": "Trenutno ni predlogov"
-  },
-  "moreCount": {
-    "message": "Drugi neprikazani predlogi: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Razvrščanje ni uspelo"
@@ -256,12 +193,6 @@
   },
   "nothingToSort": {
     "message": "Ni zavihkov za razvrščanje"
-  },
-  "hide": {
-    "message": "Skrij"
-  },
-  "show": {
-    "message": "Pokaži"
   },
   "contextClose": {
     "message": "Zapri zavihke spletišča"

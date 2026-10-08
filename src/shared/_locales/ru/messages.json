@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Предложения"
   },
-  "suggestCaption": {
-    "message": "Нажмите, чтобы закрыть вкладки сайта"
-  },
   "queryPlaceholder": {
     "message": "Закрыть по ключевому слову (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Отменить"
   },
-  "undoTitle": {
-    "message": "Отменить последнее закрытие"
-  },
   "theme": {
     "message": "Тема"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Тёмная"
   },
-  "minTabs": {
-    "message": "Минимум вкладок сайта для предложений"
-  },
   "inactiveAfter": {
     "message": "Считать вкладки неактивными через"
-  },
-  "minutes": {
-    "message": "мин."
   },
   "closedCount": {
     "message": "Закрыто: $count$",
@@ -97,42 +85,6 @@
   },
   "openCount_other": {
     "message": "$count$ открытой вкладки",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ открыта",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_few": {
-    "message": "$count$ открыты",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ открыто",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ открыто",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -203,9 +155,6 @@
   "noDuplicates": {
     "message": "Нет дубликатов"
   },
-  "nothingToUndo": {
-    "message": "Нечего отменять"
-  },
   "undoFailed": {
     "message": "Не удалось отменить действие"
   },
@@ -224,23 +173,11 @@
   "inactive": {
     "message": "Неактивные"
   },
-  "loadingSuggestions": {
-    "message": "Загрузка предложений…"
-  },
   "suggestionsFailed": {
     "message": "Не удалось загрузить предложения"
   },
   "noSuggestions": {
     "message": "Нет предложений"
-  },
-  "moreCount": {
-    "message": "Не показано предложений: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Не удалось отсортировать вкладки"
@@ -256,12 +193,6 @@
   },
   "nothingToSort": {
     "message": "Нечего сортировать"
-  },
-  "hide": {
-    "message": "Скрыть"
-  },
-  "show": {
-    "message": "Показать"
   },
   "contextClose": {
     "message": "Закрыть вкладки сайта"

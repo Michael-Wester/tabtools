@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Vorschläge"
   },
-  "suggestCaption": {
-    "message": "Antippen, um die Tabs einer Website zu schließen"
-  },
   "queryPlaceholder": {
     "message": "Nach Stichwort schließen (Eingabetaste)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Rückgängig"
   },
-  "undoTitle": {
-    "message": "Letztes Schließen rückgängig machen"
-  },
   "theme": {
     "message": "Design"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Dunkel"
   },
-  "minTabs": {
-    "message": "Mindestzahl an Tabs je Website für Vorschläge"
-  },
   "inactiveAfter": {
     "message": "Tabs gelten als inaktiv nach"
-  },
-  "minutes": {
-    "message": "Minuten"
   },
   "closedCount": {
     "message": "Geschlossen: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ offene Tabs",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ offen",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ offen",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Keine Duplikate"
   },
-  "nothingToUndo": {
-    "message": "Nichts rückgängig zu machen"
-  },
   "undoFailed": {
     "message": "Rückgängig machen fehlgeschlagen"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Inaktiv"
   },
-  "loadingSuggestions": {
-    "message": "Vorschläge werden geladen …"
-  },
   "suggestionsFailed": {
     "message": "Vorschläge konnten nicht geladen werden"
   },
   "noSuggestions": {
     "message": "Zurzeit keine Vorschläge"
-  },
-  "moreCount": {
-    "message": "Weitere, nicht angezeigte Vorschläge: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sortieren fehlgeschlagen"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Nichts zu sortieren"
-  },
-  "hide": {
-    "message": "Ausblenden"
-  },
-  "show": {
-    "message": "Anzeigen"
   },
   "contextClose": {
     "message": "Tabs dieser Website schließen"
