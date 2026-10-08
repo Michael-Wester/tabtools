@@ -55,12 +55,27 @@ npm run test:extension
 ```
 
 The native-extension job installs `dist/chrome` in disposable profiles and opens
-the actual browser action popup. It checks every supported catalogue, long site
-labels, counters, Main/Settings layout and theme changes. Native API checks cover
-multi-window cleanup and Undo, private-tab exclusions, pinned duplicate retention,
-sorting, inactive exceptions, concurrent settings patches and offline operation.
-Web pages for the controlled tabs are fulfilled locally. This is Chromium coverage;
-it does not establish native Firefox or Microsoft Edge behavior.
+the actual browser action popup. For each of the 29 languages it compares every
+fixed word, count and duration with the catalogue and with the browser's own
+formatting, and checks in the main view, the Inactive review and Settings that the
+popup is 380 px wide, as tall as its content, and that nothing is pushed out or cut
+off. Until a language has a new string, the expected text is the English one the
+browser falls back to.
+
+The other tests cover a new profile and tabs changing behind an open popup; typed
+keywords and sites; closing and Undo across two windows; duplicates; private
+windows; the Keep pinned tabs switch; sorting around pinned tabs and real tab
+groups; the Inactive review; themes and accent colours; settings saved by 4.0.4;
+very long hostnames and counts; and a list of sixteen sites. Web pages for the
+controlled tabs are fulfilled locally and the actions test runs offline. Each
+test leaves pictures of the popup in `test-results/native-extension/`, which CI
+uploads.
+
+Two things are stood in for. Chromium cannot choose a context-menu item under
+automation, so the suite calls the installed handler with the tab Chromium
+reports. And to make tabs old, it moves the background's clock forward while
+Chromium's own tab times stay real. This is Chromium coverage; it does not
+establish native Firefox or Microsoft Edge behavior.
 
 The same suite can check an installed official Edge executable and the Edge
 package on Linux:
@@ -126,20 +141,28 @@ Japanese (CJK), Hebrew (RTL), Russian/Polish (plurals), then remaining locales f
 1. Load the built package in each browser. Confirm translated manifest names, toolbar
    tooltip, popup, settings, native context menus and unsupported-language English fallback.
 2. Close a site across two regular windows; confirm matching current tabs close and
-   unrelated/private tabs remain. Check exact-domain and keyword matching.
-3. Check site-frequency sorting in the current window, duplicate removal with pinned
-   duplicates, and inactive cleanup with active/pinned/audible exceptions.
-4. Check immediate Undo while the popup is open, settings persistence, and offline operation.
+   unrelated/private tabs remain. Type a keyword and a site name: the list should
+   show exactly what Close and Enter then close, and a row's own button should
+   close that one tab. Right-click in a private window and confirm nothing closes.
+3. Sort a window that has pinned tabs and a tab group: both should stay where they
+   are and the group should keep its tabs. Check duplicate removal with a pinned
+   copy, a copy playing sound, the copy in view, and two tabs that differ only after
+   `#`, such as two Gmail conversations. Open the Inactive review: opening it should
+   close nothing, a tab used until a moment ago should not be listed, and active,
+   pinned and audible tabs should stay open.
+4. Check immediate Undo while the popup is open, settings persistence, and offline
+   operation. Try each accent colour in both themes, and the System theme while
+   switching the browser between light and dark.
 5. Inspect 0/1/2/5/21 counts, large numbers, long domains, both themes and Hebrew direction.
-   Header counters should read `14 open` / `2479 closed` in English, with compact
-   equivalents and ungrouped digits in other locales. Confirm the original 380 px
-   body width (including padding), 10 px body padding and 12 px vertical margins
-   before testing expansion. The body must have an explicit pixel width; sizing
-   only the root element can undersize Firefox's native popup and clip its contents.
-   Longer header text should widen the popup while Main and Settings retain the
-   same width in both directions. Check right-edge visibility of every card and
-   control in both panels, including after reopening the popup, and the wrapping
-   fallback at the maximum popup width. Height should continue to follow content.
+   The header should read `TabTools`, `14 open tabs`, `3 sites` in English and the
+   footer `2,479 closed`, with each language's own digit grouping. The popup is
+   380 px wide in every language and view. Confirm that no text is cut off, that a
+   long summary drops under the name instead of widening the popup, and that the
+   right edge of every control is visible in all three views, including after
+   reopening the popup. The body must have an explicit pixel width; sizing only
+   the root element can undersize Firefox's native popup and clip its contents.
+   Height should follow content until the list reaches its fixed height; from
+   there the list scrolls and fades at its end while the footer stays in view.
 
 For the website, serve `website/dist` locally or use the existing PR preview. Check
 320/390 px and desktop layouts, both themes, English/Hebrew and long regional names.
