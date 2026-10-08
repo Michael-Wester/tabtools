@@ -14,9 +14,6 @@ test.beforeEach(async ({ page }, testInfo) => {
   await page.route('**/*', route => {
     const url = new URL(route.request().url());
     if (url.origin === 'http://127.0.0.1:4173') return route.continue();
-    if (url.hostname === 'www.youtube-nocookie.com') {
-      return route.fulfill({ contentType: 'text/html', body: '<html><body>Demo</body></html>' });
-    }
     return route.abort();
   });
 });
@@ -30,7 +27,7 @@ test.afterEach(async ({ page }) => {
 async function checkGeometry(page) {
   const result = await page.evaluate(() => {
     const width = document.documentElement.clientWidth;
-    const elements = document.querySelectorAll('.site-header, .shell, .feature-card, .privacy-card, .language-menu, .language-fallback-menu');
+    const elements = document.querySelectorAll('.site-header, .shell, .feature, .specimen, .demo, .pp, .privacy-card, .final-cta-inner, .language-menu, .language-fallback-menu');
     return {
       width,
       content: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
@@ -128,6 +125,14 @@ for (const locale of L.registry) {
     await expect(selected).toBeFocused();
     await expect(selected).toBeInViewport();
     await expect(page.locator('[data-language-option]')).toHaveCount(L.registry.length);
+    // Each language goes by its own name, whatever the page's language.
+    await expect(selected.locator('.language-option-name')).toHaveText(locale.nativeName);
+    await expect(page.locator('[data-language-option][data-locale="ja"] .language-option-name')).toHaveText('日本語');
+    await expect(trigger).toHaveAttribute('aria-label', catalogue.web_language + ': ' + locale.nativeName);
+    // The working popup shows this language's words wherever the extension has them.
+    await expect(page.locator('[data-demo] .pp-list-title').first()).toHaveText(catalogue.suggestions);
+    await expect(page.locator('[data-demo] [data-pp-sort]')).toHaveText(catalogue.sortTabs);
+    await expect(page.locator('[data-demo] [data-pp-site]')).toHaveCount(8);
     await checkGeometry(page);
     await page.keyboard.press('Escape');
     await expect(page.locator('[data-language-menu]')).toBeHidden();
@@ -183,7 +188,8 @@ for (const localeCode of ['de', 'es', 'ja', 'he', 'zh-TW']) {
 
     const featureBox = await page.locator('#features').boundingBox();
     const headerBox = await page.locator('.site-header').boundingBox();
-    expect(featureBox.y, 'Translated anchor clears the actual wrapped sticky header').toBeGreaterThanOrEqual(headerBox.height - 1);
+    // The header stays put on wide windows and scrolls away on phones; either way it must not cover the section.
+    expect(featureBox.y, 'Translated anchor clears the header').toBeGreaterThanOrEqual(headerBox.y + headerBox.height - 1);
     await page.locator('.main-nav a[href="#privacy"]').tap();
     await expect(page.locator('#privacy')).toBeFocused();
     await expect(page.locator('#privacy h2')).toBeInViewport();

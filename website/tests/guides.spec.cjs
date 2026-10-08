@@ -18,7 +18,6 @@ test.beforeEach(async ({ page }, testInfo) => {
   await page.route('**/*', route => {
     const url = new URL(route.request().url());
     if (url.origin === 'http://127.0.0.1:4173') return route.continue();
-    if (url.hostname === 'www.youtube-nocookie.com') return route.fulfill({ contentType: 'text/html', body: '<html><body>Demo</body></html>' });
     return route.abort();
   });
 });
@@ -26,7 +25,7 @@ test.afterEach(async ({ page }) => {
   if (failures.has(page)) expect(failures.get(page), 'Guide navigation has no uncaught errors or missing local assets').toEqual([]);
 });
 
-async function checkLayout(page) {
+async function checkLayout(page, { scripts = true } = {}) {
   // WebKit can commit the new URL before the document body has been parsed.
   await page.waitForLoadState('domcontentloaded');
   const dimensions = await page.evaluate(() => ({
@@ -36,7 +35,19 @@ async function checkLayout(page) {
   expect(dimensions.content, 'Translated guide content fits the viewport').toBeLessThanOrEqual(dimensions.width + 1);
   for (const link of await page.locator('.main-nav a').all()) {
     await expect(link).toBeInViewport();
-    await link.click({ trial: true });
+    if (scripts) {
+      await link.click({ trial: true });
+      continue;
+    }
+    // With scripts off, a trial click in WebKit followed the link: the next
+    // link was then looked for on the home page. The old pinned header hid
+    // that. Check that nothing covers the link without touching it.
+    const reachable = await link.evaluate(element => {
+      const box = element.getBoundingClientRect();
+      const onTop = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+      return Boolean(onTop && element.contains(onTop));
+    });
+    expect(reachable, 'Nothing covers the navigation link').toBe(true);
   }
 }
 
@@ -80,7 +91,8 @@ for (const [index, locale] of L.registry.entries()) {
       await expect(heading).toBeInViewport();
       const header = await page.locator('.site-header').boundingBox();
       const headingBox = await heading.boundingBox();
-      expect(headingBox.y, 'Guide anchor clears the wrapped localized header').toBeGreaterThanOrEqual(header.height - 1);
+      // On a phone the header scrolls away with the page, so it covers nothing.
+      expect(headingBox.y, 'Guide anchor clears the localized header').toBeGreaterThanOrEqual(header.y + header.height - 1);
 
       // Direct deep links and reloading must preserve the explicit language,
       // even after a different preference was saved earlier in this session.
@@ -126,7 +138,7 @@ test.describe('Guides without JavaScript', () => {
         await expect(page).toHaveURL(G.routeFor(locale, slug));
         await expect(page.locator('html')).toHaveAttribute('lang', locale.canonical);
         await expect(page.locator('h1')).toBeVisible();
-        await checkLayout(page);
+        await checkLayout(page, { scripts: false });
       }
     });
   }

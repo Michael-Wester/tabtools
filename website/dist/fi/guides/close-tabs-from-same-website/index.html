@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1b21" media="(prefers-color-scheme: dark)" />
     <title>Näin suljet kaikki saman sivuston välilehdet Chromessa | TabTools</title>
     <meta name="description" content="Sulje saman sivuston välilehdet Chromessa TabToolsilla, käytä manuaalista vaihtoehtoa ja seuraa Firefoxin ja Edgen ohjeita." />
     <link rel="canonical" href="https://tabtools.fyi/fi/guides/close-tabs-from-same-website/" />
@@ -59,7 +60,7 @@
       "url": "https://tabtools.fyi/fi/guides/close-tabs-from-same-website/",
       "mainEntityOfPage": "https://tabtools.fyi/fi/guides/close-tabs-from-same-website/",
       "inLanguage": "fi",
-      "dateModified": "2026-10-01",
+      "dateModified": "2026-10-09",
       "author": {
         "@type": "Person",
         "name": "Michael Wester",
@@ -99,8 +100,11 @@
     <script>
       (() => {
         try {
-          const saved = localStorage.getItem('tabtools-site-theme');
-          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+          const root = document.documentElement;
+          const theme = localStorage.getItem('tabtools-site-theme');
+          if (theme === 'dark' || theme === 'light') root.dataset.theme = theme;
+          const accent = localStorage.getItem('tabtools-site-accent');
+          if (/^(blue|green|orange|pink|graphite)$/.test(accent)) root.dataset.accent = accent;
         } catch (_) {}
       })();
     </script>
@@ -111,350 +115,215 @@
       "locale": "en",
       "canonical": "en",
       "path": "/guides/close-tabs-from-same-website/",
-      "languageName": "English",
+      "nativeName": "English",
       "flagAsset": "en.svg"
-    },
-    {
-      "locale": "zh-CN",
-      "canonical": "zh-CN",
-      "path": "/zh-cn/guides/close-tabs-from-same-website/",
-      "languageName": "Chinese (Simplified)",
-      "flagAsset": "zh-CN.svg"
-    },
-    {
-      "locale": "zh-TW",
-      "canonical": "zh-TW",
-      "path": "/zh-tw/guides/close-tabs-from-same-website/",
-      "languageName": "Chinese (Traditional)",
-      "flagAsset": "zh-TW.svg"
-    },
-    {
-      "locale": "hr",
-      "canonical": "hr",
-      "path": "/hr/guides/close-tabs-from-same-website/",
-      "languageName": "Croatian",
-      "flagAsset": "hr.svg"
     },
     {
       "locale": "cs",
       "canonical": "cs",
       "path": "/cs/guides/close-tabs-from-same-website/",
-      "languageName": "Czech",
+      "nativeName": "Čeština",
       "flagAsset": "cs.svg"
-    },
-    {
-      "locale": "nl",
-      "canonical": "nl",
-      "path": "/nl/guides/close-tabs-from-same-website/",
-      "languageName": "Dutch",
-      "flagAsset": "nl.svg"
-    },
-    {
-      "locale": "fi",
-      "canonical": "fi",
-      "path": "/fi/guides/close-tabs-from-same-website/",
-      "languageName": "Finnish",
-      "flagAsset": "fi.svg"
-    },
-    {
-      "locale": "fr",
-      "canonical": "fr",
-      "path": "/fr/guides/close-tabs-from-same-website/",
-      "languageName": "French",
-      "flagAsset": "fr.svg"
     },
     {
       "locale": "de",
       "canonical": "de",
       "path": "/de/guides/close-tabs-from-same-website/",
-      "languageName": "German",
+      "nativeName": "Deutsch",
       "flagAsset": "de.svg"
     },
     {
-      "locale": "el",
-      "canonical": "el",
-      "path": "/el/guides/close-tabs-from-same-website/",
-      "languageName": "Greek",
-      "flagAsset": "el.svg"
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/close-tabs-from-same-website/",
+      "nativeName": "Español (de España)",
+      "flagAsset": "es.svg"
     },
     {
-      "locale": "he",
-      "canonical": "he",
-      "path": "/he/guides/close-tabs-from-same-website/",
-      "languageName": "Hebrew",
-      "flagAsset": "he.svg"
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/close-tabs-from-same-website/",
+      "nativeName": "Français",
+      "flagAsset": "fr.svg"
     },
     {
-      "locale": "hu",
-      "canonical": "hu",
-      "path": "/hu/guides/close-tabs-from-same-website/",
-      "languageName": "Hungarian",
-      "flagAsset": "hu.svg"
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/close-tabs-from-same-website/",
+      "nativeName": "Hrvatski",
+      "flagAsset": "hr.svg"
     },
     {
       "locale": "it",
       "canonical": "it",
       "path": "/it/guides/close-tabs-from-same-website/",
-      "languageName": "Italian",
+      "nativeName": "Italiano",
       "flagAsset": "it.svg"
     },
     {
-      "locale": "ja",
-      "canonical": "ja",
-      "path": "/ja/guides/close-tabs-from-same-website/",
-      "languageName": "Japanese",
-      "flagAsset": "ja.svg"
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/close-tabs-from-same-website/",
+      "nativeName": "magyar",
+      "flagAsset": "hu.svg"
     },
     {
-      "locale": "ko",
-      "canonical": "ko",
-      "path": "/ko/guides/close-tabs-from-same-website/",
-      "languageName": "Korean",
-      "flagAsset": "ko.svg"
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/close-tabs-from-same-website/",
+      "nativeName": "Nederlands",
+      "flagAsset": "nl.svg"
     },
     {
       "locale": "nb",
       "canonical": "nb",
       "path": "/nb/guides/close-tabs-from-same-website/",
-      "languageName": "Norwegian (Bokmal)",
+      "nativeName": "Norsk bokmål",
       "flagAsset": "nb.svg"
     },
     {
       "locale": "pl",
       "canonical": "pl",
       "path": "/pl/guides/close-tabs-from-same-website/",
-      "languageName": "Polish",
+      "nativeName": "Polski",
       "flagAsset": "pl.svg"
     },
     {
       "locale": "pt-BR",
       "canonical": "pt-BR",
       "path": "/pt-br/guides/close-tabs-from-same-website/",
-      "languageName": "Portuguese (Brazil)",
+      "nativeName": "Português (do Brasil)",
       "flagAsset": "pt-BR.svg"
     },
     {
       "locale": "pt-PT",
       "canonical": "pt-PT",
       "path": "/pt-pt/guides/close-tabs-from-same-website/",
-      "languageName": "Portuguese (Portugal)",
+      "nativeName": "Português (Europeu)",
       "flagAsset": "pt-PT.svg"
     },
     {
       "locale": "ro",
       "canonical": "ro",
       "path": "/ro/guides/close-tabs-from-same-website/",
-      "languageName": "Romanian",
+      "nativeName": "Română",
       "flagAsset": "ro.svg"
-    },
-    {
-      "locale": "ru",
-      "canonical": "ru",
-      "path": "/ru/guides/close-tabs-from-same-website/",
-      "languageName": "Russian",
-      "flagAsset": "ru.svg"
-    },
-    {
-      "locale": "sr",
-      "canonical": "sr",
-      "path": "/sr/guides/close-tabs-from-same-website/",
-      "languageName": "Serbian",
-      "flagAsset": "sr.svg"
     },
     {
       "locale": "sk",
       "canonical": "sk",
       "path": "/sk/guides/close-tabs-from-same-website/",
-      "languageName": "Slovak",
+      "nativeName": "slovenčina",
       "flagAsset": "sk.svg"
     },
     {
       "locale": "sl",
       "canonical": "sl",
       "path": "/sl/guides/close-tabs-from-same-website/",
-      "languageName": "Slovenian",
+      "nativeName": "Slovenščina",
       "flagAsset": "sl.svg"
     },
     {
-      "locale": "es",
-      "canonical": "es-ES",
-      "path": "/es/guides/close-tabs-from-same-website/",
-      "languageName": "Spanish (Spain)",
-      "flagAsset": "es.svg"
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/close-tabs-from-same-website/",
+      "nativeName": "suomi",
+      "flagAsset": "fi.svg"
     },
     {
       "locale": "sv",
       "canonical": "sv",
       "path": "/sv/guides/close-tabs-from-same-website/",
-      "languageName": "Swedish",
+      "nativeName": "Svenska",
       "flagAsset": "sv.svg"
-    },
-    {
-      "locale": "tr",
-      "canonical": "tr",
-      "path": "/tr/guides/close-tabs-from-same-website/",
-      "languageName": "Turkish",
-      "flagAsset": "tr.svg"
-    },
-    {
-      "locale": "uk",
-      "canonical": "uk",
-      "path": "/uk/guides/close-tabs-from-same-website/",
-      "languageName": "Ukrainian",
-      "flagAsset": "uk.svg"
     },
     {
       "locale": "vi",
       "canonical": "vi",
       "path": "/vi/guides/close-tabs-from-same-website/",
-      "languageName": "Vietnamese",
+      "nativeName": "Tiếng Việt",
       "flagAsset": "vi.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/close-tabs-from-same-website/",
+      "nativeName": "Türkçe",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/close-tabs-from-same-website/",
+      "nativeName": "Ελληνικά",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/close-tabs-from-same-website/",
+      "nativeName": "Русский",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/close-tabs-from-same-website/",
+      "nativeName": "Српски",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/close-tabs-from-same-website/",
+      "nativeName": "Українська",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/close-tabs-from-same-website/",
+      "nativeName": "עברית",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/close-tabs-from-same-website/",
+      "nativeName": "한국어",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/close-tabs-from-same-website/",
+      "nativeName": "中文 (简体)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/close-tabs-from-same-website/",
+      "nativeName": "日本語",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/close-tabs-from-same-website/",
+      "nativeName": "正體中文 (繁體)",
+      "flagAsset": "zh-TW.svg"
     }
   ],
   "messages": {
-    "extensionName": "TabTools: Sulje ja lajittele välilehdet sivuittain",
-    "extensionDescription": "Sulje saman sivuston välilehdet, lajittele ne sivustoittain ja poista kaksoiskappaleet pitääksesi selaimen järjestyksessä.",
-    "openTabTools": "Avaa TabTools",
-    "settings": "Asetukset",
-    "suggestions": "Ehdotukset",
-    "queryPlaceholder": "Sulje hakusanalla (paina Enter)",
-    "close": "Sulje",
-    "sortTabs": "Lajittele välilehdet",
-    "closeDuplicates": "Sulje kaksoiskappaleet",
-    "undo": "Kumoa",
-    "theme": "Teema",
-    "light": "Vaalea",
-    "dark": "Tumma",
-    "inactiveAfter": "Välilehti on käyttämätön, kun aikaa on kulunut",
-    "closedCount": "Suljettu: {count}",
-    "openCount": {
-      "one": "{count} avoin välilehti",
-      "other": "{count} avointa välilehteä"
-    },
-    "closedCountShort": {
-      "one": "{count} suljettu",
-      "other": "{count} suljettua"
-    },
-    "closeFailed": "Toiminto epäonnistui",
-    "closedInactive": "Suljettuja käyttämättömiä välilehtiä: {count}",
-    "noInactive": "Ei käyttämättömiä välilehtiä",
-    "closedDuplicates": "Suljettuja kaksoiskappaleita: {count}",
-    "noDuplicates": "Ei kaksoiskappaleita",
-    "undoFailed": "Kumoaminen epäonnistui",
-    "restoredCount": "Palautettu: {count}",
-    "nothingToRestore": "Ei palautettavaa",
-    "inactive": "Käyttämättömät",
-    "suggestionsFailed": "Ehdotuksia ei voitu ladata",
-    "noSuggestions": "Ei ehdotuksia juuri nyt",
-    "sortFailed": "Lajittelu epäonnistui",
-    "sortedCount": "Uudelleen järjestettyjä välilehtiä: {count}",
-    "nothingToSort": "Ei lajiteltavaa",
-    "contextClose": "Sulje sivuston välilehdet",
-    "contextSort": "Lajittele välilehdet (eniten välilehtiä ensin)",
-    "closeSiteLabel": "Sulje sivuston {site} välilehdet",
-    "web_heroTitle": "Sulje \u003cem>saman sivuston\u003c/em> välilehdet.",
-    "web_featuresTitle": "Sulje sivustoittain.\u003cbr>\u003cem>Lajittele jäljelle jäävät.\u003c/em>",
-    "web_workflowTitle": "Lisää TabTools.\u003cbr>\u003cem>Valitse, mitä suljet.\u003c/em>",
-    "web_privacyTitle": "Välilehtiesi tiedot pysyvät\u003cbr>selaimessasi.",
-    "web_finalTitle": "Sulje tarpeettomat välilehdet.\u003cbr>\u003cem>Lajittele loput.\u003c/em>",
-    "web_siteBody": "Avaa TabTools ja napsauta sivustoa kohdassa \u003cstrong>Ehdotukset\u003c/strong>, tai napsauta verkkosivua hiiren kakkospainikkeella ja valitse \u003cstrong>Sulje sivuston välilehdet\u003c/strong>. Tämä sulkee vastaavat välilehdet kaikista tavallisista ikkunoista, myös nykyisen välilehden.",
     "web_addTo": "Lisää selaimeen {browser}",
-    "web_storeNote": "Avaa kaupan {store}.",
+    "web_view": "Näytä {browser}",
     "web_storeAria": "{label} — avaa kaupan {store} uudessa välilehdessä",
+    "web_storeNote": "Avaa kaupan {store}.",
     "web_language": "Kieli",
     "web_languageSuggestion": "Lue sivu kielellä {language}",
     "web_switchLight": "Vaihda vaaleaan tilaan",
-    "web_lightMode": "Vaalea tila",
-    "web_structuredDescription": "Ilmainen selainlaajennus välilehtien sulkemiseen sivustoittain, lajitteluun sekä kaksoiskappaleiden ja käyttämättömien välilehtien poistamiseen.",
-    "web_close_tabs_from_the_same": "Sulje saman sivuston välilehdet, lajittele sivustoittain ja poista kaksoiskappaleet. TabTools on ilmainen välilehtien hallintatyökalu Chromeen, Firefoxiin ja Edgeen.",
-    "web_tabtools_close_tabs_by_site": "TabTools — Sulje ja lajittele välilehdet sivustoittain",
-    "web_close_tabs_by_site_sort": "Sulje välilehtiä sivustoittain, järjestä välilehtipalkki ja poista kaksoiskappaleet ilmaisella avoimen lähdekoodin laajennuksella Chromessa, Firefoxissa ja Edgessä.",
-    "web_skip_to_content": "Siirry sisältöön",
-    "web_tabtools_home": "TabToolsin etusivu",
-    "web_main_navigation": "Päänavigointi",
-    "web_features": "Ominaisuudet",
-    "web_how_it_works": "Näin se toimii",
-    "web_privacy": "Tietosuoja",
-    "web_faq": "Usein kysytyt kysymykset",
-    "web_switch_to_dark_mode": "Vaihda tummaan tilaan",
-    "web_dark_mode": "Tumma tila",
-    "web_free_browser_tab_manager": "Ilmainen välilehtien hallintatyökalu",
-    "web_clear_a_website_s_tabs": "Sulje sivuston välilehdet yhdellä toiminnolla tai lajittele välilehtipalkki sivustoittain. TabTools poistaa myös kaksoiskappaleet ja sulkee käyttämättömät välilehdet Chromessa, Firefoxissa ja Edgessä.",
-    "web_free_to_use_no_account": "Ilmainen käyttää. Tiliä ei tarvita.",
-    "web_viewing_on_a_phone_or": "Käytätkö puhelinta tai tablettia? Avaa tämä sivu tietokoneella lisätäksesi TabToolsin.",
-    "web_tabtools_browser_stores": "TabTools selainten laajennuskaupoissa",
-    "web_choose_another_browser": "Valitse toinen selain:",
-    "web_tabtools_in_action": "TabTools käytössä",
-    "web_full_demo": "Koko esittely",
-    "web_tabtools_full_demo": "TabToolsin koko esittely",
-    "web_see_tabtools_close_tabs_by": "Katso, miten TabTools sulkee välilehtiä sivustoittain, poistaa kaksoiskappaleet, lajittelee välilehdet ja sulkee käyttämättömät välilehdet.",
-    "web_tabtools_product_details": "TabToolsin tuotetiedot",
-    "web_close_tabs_by_site": "Sulje välilehdet sivustoittain",
-    "web_from_the_popup_or_right": "ponnahdusikkunasta tai hiiren kakkospainikkeen valikosta",
-    "web_local_by_design": "Toimii paikallisesti",
-    "web_your_tab_list_stays_in": "välilehtiluettelosi pysyy selaimessasi",
-    "web_open_source": "Avoin lähdekoodi",
-    "web_inspect_the_code_on_github": "Tutustu koodiin GitHubissa",
-    "web_close_and_organise": "Sulje ja järjestä",
-    "web_clear_a_finished_task_bring": "Sulje valmiin tehtävän välilehdet, sijoita saman sivuston välilehdet vierekkäin tai siivoa toistuvat ja käyttämättömät sivut.",
-    "web_01_site_cleanup": "01 / Siivoa sivustoittain",
-    "web_close_a_site_s_tabs": "Sulje sivuston välilehdet kerralla",
-    "web_see_how_to_get_started": "Katso aloitusohjeet",
-    "web_02_organise": "02 / Järjestä",
-    "web_sort_tabs_by_site": "Lajittele välilehdet sivustoittain",
-    "web_bring_tabs_from_the_same": "Sijoita saman sivuston välilehdet vierekkäin nykyisessä ikkunassa. Sivustot, joilla on eniten avoimia välilehtiä, tulevat ensin.",
-    "web_03_simplify": "03 / Karsi",
-    "web_remove_duplicate_tabs": "Poista päällekkäiset välilehdet",
-    "web_close_extra_copies_of_the": "Sulje saman sivun ylimääräiset kopiot yhdellä napsautuksella. Kiinnitetyt välilehdet pysyvät paikoillaan.",
-    "web_04_find": "04 / Etsi",
-    "web_search_by_keyword_or_domain": "Hae hakusanalla tai verkkotunnuksella",
-    "web_type_a_word_to_match": "Kirjoita sana hakeaksesi välilehtien otsikoista ja URL-osoitteista tai anna tarkka verkkotunnus, kuten youtube.com. Valitse sitten Sulje.",
-    "web_05_reset": "05 / Siivoa",
-    "web_clear_inactive_tabs": "Sulje käyttämättömät välilehdet",
-    "web_choose_an_inactivity_threshold_in": "Valitse käyttämättömyyden aikaraja Asetuksissa ja sulje ehdot täyttävät välilehdet napsauttamalla Käyttämättömät. Aktiiviset, kiinnitetyt ja ääntä toistavat välilehdet jäävät auki.",
-    "web_more_tabtools_details": "Lisätietoja TabToolsista",
-    "web_undo_cleanup_from_the_popup": "Kumoa siivous ponnahdusikkunasta",
-    "web_light_and_dark_themes": "Vaalea ja tumma teema",
-    "web_local_cleanup_statistics": "Paikalliset siivoustilastot",
-    "web_start_with_one_busy_site": "Aloita sivustosta, jolla on monta välilehteä. Käytä ponnahdusikkunaa sivustoehdotuksiin ja lajitteluun tai hiiren kakkospainikkeen valikkoa nopeaan sulkemiseen.",
-    "web_add_it_to_your_browser": "Lisää selaimeesi",
-    "web_open_the_chrome_firefox_or": "Avaa Chromen, Firefoxin tai Edgen kauppasivu ja lisää ilmainen laajennus.",
-    "web_click_the_tabtools_icon_in": "Napsauta selaimen laajennusvalikossa TabTools-kuvaketta nähdäksesi sivustoehdotukset ja pikatoiminnot.",
-    "web_close_a_site_or_sort": "Sulje sivuston välilehdet tai lajittele välilehtiä",
-    "web_click_a_site_under_suggestions": "Napsauta sivustoa kohdassa Ehdotukset sulkeaksesi sen välilehdet tai valitse Lajittele välilehdet sijoittaaksesi saman sivuston välilehdet vierekkäin.",
-    "web_private_by_design": "Tietosuoja huomioitu alusta asti",
-    "web_the_tabtools_extension_processes_tab": "TabTools-laajennus käsittelee välilehtien tiedot laitteellasi. Asetukset ja siivoustilastot pysyvät selaimen paikallisessa tallennustilassa. Laajennuksessa ei ole tilejä, käytön analytiikkaa, mainontaa tai ulkoista tietokantaa.",
-    "web_read_the_privacy_policy": "Lue tietosuojakäytäntö",
-    "web_before_you_add_tabtools": "Ennen TabToolsin lisäämistä",
-    "web_common_questions": "Usein kysytyt kysymykset.",
-    "web_browsers_cleanup_and_privacy": "Selaimet, siivous ja tietosuoja.",
-    "web_is_tabtools_free": "Onko TabTools ilmainen?",
-    "web_yes_tabtools_is_free_to": "Kyllä. TabTools on ilmainen käyttää. Tiliä ei tarvita.",
-    "web_which_browsers_can_i_use": "Missä selaimissa sitä voi käyttää?",
-    "web_tabtools_is_available_for_chrome": "TabTools on saatavilla Chromeen, Firefoxiin ja Microsoft Edgeen. Lisää se tietokoneellesi avaamalla oikea kauppa tämän sivun selainlinkeistä.",
-    "web_how_do_i_close_tabs": "Miten suljen saman sivuston välilehdet?",
-    "web_right_click_within_a_web": "Napsauta verkkosivua hiiren kakkospainikkeella ja valitse ”Sulje sivuston välilehdet”, tai avaa TabTools ja napsauta sivustoa kohdassa Ehdotukset. Tämä sulkee sivuston välilehdet kaikista tavallisista ikkunoista, myös nykyisen välilehden. Voit myös kirjoittaa hakusanan tai tarkan verkkotunnuksen ponnahdusikkunaan.",
-    "web_can_i_remove_duplicates_or": "Voinko poistaa kaksoiskappaleita tai sulkea käyttämättömiä välilehtiä?",
-    "web_yes_choose_close_duplicates_to": "Kyllä. Valitse Sulje kaksoiskappaleet poistaaksesi toistuvat sivut tai napsauta Käyttämättömät sulkeaksesi ehdot täyttävät välilehdet. Voit muuttaa aikarajaa Asetuksissa. Siivous tapahtuu valitessasi toiminnon.",
-    "web_does_tabtools_collect_or_share": "Kerääkö tai jakaako TabTools tietojani?",
-    "web_the_extension_processes_tab_information": "Laajennus käsittelee välilehtien tiedot paikallisesti eikä lähetä niitä kehittäjälle tai kolmansille osapuolille. Asetukset ja tilastot pysyvät laitteellasi. Sivuston esittelyvideo on YouTubessa; upotetulla soittimella ja selainten kaupoilla on omat tietosuojakäytäntönsä.",
-    "web_can_i_undo_a_cleanup": "Voinko kumota siivouksen?",
-    "web_use_undo_immediately_after_closing": "Käytä Kumoa-toimintoa heti suljettuasi välilehtiä TabToolsin ponnahdusikkunasta, kun se on vielä auki. Voit avata sivuja uudelleen myös selaimen äskettäin suljettujen välilehtien luettelosta.",
-    "web_free_for_chrome_firefox_and": "Ilmainen Chromeen, Firefoxiin ja Edgeen",
-    "web_other_browser_stores": "Muut selainkaupat",
-    "web_close_tabs_by_site_sort_2": "Sulje välilehdet sivustoittain, järjestä välilehtipalkki ja poista kaksoiskappaleet.",
-    "web_product": "Tuote",
-    "web_try_it": "Kokeile",
-    "web_more": "Lisää",
-    "web_contact": "Yhteystiedot",
-    "web_free_and_open_source": "Ilmainen ja avointa lähdekoodia.",
-    "web_view": "Näytä {browser}",
-    "web_guides": "Oppaat",
-    "web_readSiteGuide": "Lue opas saman sivuston välilehtien sulkemiseen",
-    "web_readSortingGuide": "Lue välilehtien lajitteluopas",
-    "web_readDuplicateGuide": "Lue välilehtien kaksoiskappaleiden poistamisopas",
-    "web_finalMobileNote": "Avaa tämä sivu tietokoneella lisätäksesi TabToolsin. Voit katsella alla olevia kauppasivuja.",
-    "web_socialImageAlt": "TabTools-selainlaajennus esittelee välilehtien hallintaa"
+    "web_switch_to_dark_mode": "Vaihda tummaan tilaan"
   }
 }</script>
   </head>
@@ -463,7 +332,7 @@
     <header class="site-header">
       <div class="shell nav-shell">
         <a class="brand" href="/fi/#top" aria-label="TabToolsin etusivu">
-          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <svg class="brand-mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg>
           <span>TabTools</span>
         </a>
         <nav class="main-nav" aria-label="Päänavigointi">
@@ -475,31 +344,29 @@
         </nav>
         <div class="nav-actions">
           <a class="button browser-button button-primary browser-button-compact" aria-label="Lisää selaimeen Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
-            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="24" height="24" alt="" />
             <span class="browser-button-copy" data-browser-copy="Chrome">Lisää selaimeen <span class="browser-button-name" data-browser-name>Chrome</span></span>
-            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
           </a>
           <div class="nav-utilities">
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Vaihda tummaan tilaan" title="Vaihda tummaan tilaan">
-            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
-            </svg>
-            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
-            </svg>
-            <span class="sr-only" data-theme-label>Tumma tila</span>
-          </button>
-          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Kieli: Finnish" title="Kieli: Finnish" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Finnish</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Kieli" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="true" tabindex="-1" href="/fi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Kieli: Finnish"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Kieli: Finnish</span></summary><nav class="language-fallback-menu" aria-label="Kieli"><a class="language-fallback-option" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/close-tabs-from-same-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Vaihda tummaan tilaan" title="Vaihda tummaan tilaan">
+              <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+              </svg>
+              <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+              </svg>
+            </button>
+            <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Kieli: suomi" title="Kieli: suomi" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-name" data-language-name lang="fi" dir="ltr">suomi</span><svg class="language-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5"></path></svg></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Kieli" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="cs" dir="ltr">Čeština</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="de" dir="ltr">Deutsch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="es-ES" dir="ltr">Español (de España)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="fr" dir="ltr">Français</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="hr" dir="ltr">Hrvatski</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="it" dir="ltr">Italiano</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="hu" dir="ltr">magyar</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="nl" dir="ltr">Nederlands</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="nb" dir="ltr">Norsk bokmål</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="pl" dir="ltr">Polski</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="pt-BR" dir="ltr">Português (do Brasil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="pt-PT" dir="ltr">Português (Europeu)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="false" tabindex="-1" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ro" dir="ltr">Română</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sk" dir="ltr">slovenčina</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sl" dir="ltr">Slovenščina</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="true" tabindex="-1" href="/fi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="fi" dir="ltr">suomi</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sv" dir="ltr">Svenska</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="vi" dir="ltr">Tiếng Việt</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="tr" dir="ltr">Türkçe</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="el" dir="ltr">Ελληνικά</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ru" dir="ltr">Русский</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sr" dir="ltr">Српски</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="uk" dir="ltr">Українська</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="he" dir="rtl">עברית</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ko" dir="ltr">한국어</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="zh-CN" dir="ltr">中文 (简体)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ja" dir="ltr">日本語</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="zh-TW" dir="ltr">正體中文 (繁體)</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Kieli: suomi"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="sr-only">Kieli: suomi</span></summary><nav class="language-fallback-menu" aria-label="Kieli"><a class="language-fallback-option" href="/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/cs/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="cs" dir="ltr">Čeština</span></a><a class="language-fallback-option" href="/de/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="de" dir="ltr">Deutsch</span></a><a class="language-fallback-option" href="/es/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="es-ES" dir="ltr">Español (de España)</span></a><a class="language-fallback-option" href="/fr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="fr" dir="ltr">Français</span></a><a class="language-fallback-option" href="/hr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="hr" dir="ltr">Hrvatski</span></a><a class="language-fallback-option" href="/it/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="it" dir="ltr">Italiano</span></a><a class="language-fallback-option" href="/hu/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="hu" dir="ltr">magyar</span></a><a class="language-fallback-option" href="/nl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="nl" dir="ltr">Nederlands</span></a><a class="language-fallback-option" href="/nb/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="nb" dir="ltr">Norsk bokmål</span></a><a class="language-fallback-option" href="/pl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="pl" dir="ltr">Polski</span></a><a class="language-fallback-option" href="/pt-br/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="pt-BR" dir="ltr">Português (do Brasil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="pt-PT" dir="ltr">Português (Europeu)</span></a><a class="language-fallback-option" href="/ro/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="ro" dir="ltr">Română</span></a><a class="language-fallback-option" href="/sk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="sk" dir="ltr">slovenčina</span></a><a class="language-fallback-option" href="/sl/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="sl" dir="ltr">Slovenščina</span></a><a class="language-fallback-option" href="/fi/guides/close-tabs-from-same-website/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="fi" dir="ltr">suomi</span></a><a class="language-fallback-option" href="/sv/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="sv" dir="ltr">Svenska</span></a><a class="language-fallback-option" href="/vi/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="vi" dir="ltr">Tiếng Việt</span></a><a class="language-fallback-option" href="/tr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="tr" dir="ltr">Türkçe</span></a><a class="language-fallback-option" href="/el/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="el" dir="ltr">Ελληνικά</span></a><a class="language-fallback-option" href="/ru/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="ru" dir="ltr">Русский</span></a><a class="language-fallback-option" href="/sr/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="sr" dir="ltr">Српски</span></a><a class="language-fallback-option" href="/uk/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="uk" dir="ltr">Українська</span></a><a class="language-fallback-option" href="/he/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="he" dir="rtl">עברית</span></a><a class="language-fallback-option" href="/ko/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="ko" dir="ltr">한국어</span></a><a class="language-fallback-option" href="/zh-cn/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="zh-CN" dir="ltr">中文 (简体)</span></a><a class="language-fallback-option" href="/ja/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="ja" dir="ltr">日本語</span></a><a class="language-fallback-option" href="/zh-tw/guides/close-tabs-from-same-website/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="zh-TW" dir="ltr">正體中文 (繁體)</span></a></nav></details></noscript>
           </div>
         </div>
       </div>
     </header>
     <main id="main-content" tabindex="-1"><div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="Murupolku"><a href="/fi/">Etusivu</a><span aria-hidden="true">/</span><a href="/fi/guides/">Oppaat</a><span aria-hidden="true">/</span><span aria-current="page">Sulje sivuston välilehdet</span></nav>
-      <p class="eyebrow">Sulje sivuston välilehdet · Tietokoneen selaimet</p><h1>Näin suljet kaikki saman sivuston välilehdet Chromessa</h1><p class="guides-lede">Oletko saanut ostokset, perusteellisen tiedonhaun tai YouTube-videoiden katselun valmiiksi? Voit sulkea kyseisen sivuston välilehdet kerralla ja jättää muut sivustot auki.</p>
-      <p class="guide-byline">Kirjoittaja <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, TabToolsin kehittäjä <span aria-hidden="true">·</span> Lukuaika 4 min <span aria-hidden="true">·</span> Päivitetty <time datetime="2026-10-01">1. lokakuuta 2026</time></p>
+      <p class="eyebrow guide-kind"><span>Sulje sivuston välilehdet</span><span>Tietokoneen selaimet</span></p><h1>Näin suljet kaikki saman sivuston välilehdet Chromessa</h1><p class="guides-lede">Oletko saanut ostokset, perusteellisen tiedonhaun tai YouTube-videoiden katselun valmiiksi? Voit sulkea kyseisen sivuston välilehdet kerralla ja jättää muut sivustot auki.</p>
+      <p class="guide-byline">Kirjoittaja <a href="https://github.com/Michael-Wester" target="_blank" rel="noopener">Michael Wester</a>, TabToolsin kehittäjä <span aria-hidden="true">·</span> Lukuaika 5 min <span aria-hidden="true">·</span> Päivitetty <time datetime="2026-10-09">9. lokakuuta 2026</time></p>
       <p class="guide-screenshot-note">Kuvakaappauksissa on englanninkielinen käyttöliittymä. Tekstit voivat poiketa selaimesi kieliversion teksteistä.</p></div>
-      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Tällä sivulla"><p class="eyebrow">Tällä sivulla</p><ol><li><a href="#close-site-tabs-in-chrome">Sulje sivuston välilehdet Chromessa</a></li><li><a href="#use-the-popup">Sulje toinen sivusto ponnahdusikkunasta</a></li><li><a href="#which-tabs-close">Mitkä välilehdet lasketaan samaksi sivustoksi?</a></li><li><a href="#without-an-extension">Sulje vastaavat välilehdet Chromessa manuaalisesti</a></li><li><a href="#firefox-and-edge">Käytä samaa toimintatapaa Firefoxissa ja Edgessä</a></li><li><a href="#undo-and-next-steps">Avaa välilehdet uudelleen tai siivoa valikoivammin</a></li></ol></nav><a class="guide-back" href="/fi/guides/">← Kaikki oppaat</a></aside>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="Tällä sivulla"><p class="eyebrow">Tällä sivulla</p><ol><li><a href="#close-site-tabs-in-chrome">Sulje sivuston välilehdet Chromessa</a></li><li><a href="#use-the-popup">Sulje toinen sivusto ponnahdusikkunasta</a></li><li><a href="#which-tabs-close">Mitkä välilehdet lasketaan samaksi sivustoksi?</a></li><li><a href="#without-an-extension">Sulje vastaavat välilehdet Chromessa manuaalisesti</a></li><li><a href="#firefox-and-edge">Käytä samaa toimintatapaa Firefoxissa ja Edgessä</a></li><li><a href="#undo-and-next-steps">Avaa välilehdet uudelleen tai siivoa valikoivammin</a></li></ol></nav><a class="guide-back" href="/fi/guides/"><svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg> Kaikki oppaat</a></aside>
       <article class="guide-article" aria-label="Näin suljet kaikki saman sivuston välilehdet Chromessa"><div class="guide-answer"><p class="eyebrow">Lyhyt vastaus</p><p>Kun TabTools on asennettu, napsauta Chromen välilehtipalkissa suljettavan sivuston välilehteä hiiren kakkospainikkeella ja valitse Sulje sivuston välilehdet. Tämä sulkee vastaavat välilehdet kaikista tavallisista selainikkunoista, myös vastaavat aktiiviset ja kiinnitetyt välilehdet.</p></div>
       <section id="close-site-tabs-in-chrome"><h2>Sulje sivuston välilehdet Chromessa</h2><p>Välilehden pikavalikosta pääset toimintoon suoraan Chromen välilehtipalkista.</p>
 <ol>
@@ -548,7 +415,7 @@
 </figure>
 <p>Tavallinen hakusana, kuten <code>shopping</code>, toimii eri tavalla: se hakee välilehtien otsikoista ja URL-osoitteista. Käytä tarkkaa isäntänimeä, kun haluat sulkea yhden tietyn sivuston.</p></section><aside class="guide-install" aria-label="Hanki TabTools">
     <div><p class="eyebrow">Ilmainen selainlaajennus</p><h2>Kokeile käytännössä.</h2><p>Sulje välilehdet sivustoittain, poista kaksoiskappaleet ja lajittele jäljelle jäävät.</p></div>
-    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-tabs-from-same-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_chrome" target="_blank" rel="noopener"><img src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Lisää selaimeen Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-tabs-from-same-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_firefox" target="_blank" rel="noopener"><img src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Lisää selaimeen Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-tabs-from-same-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_edge" target="_blank" rel="noopener"><img src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Lisää selaimeen Edge</span></a></div>
+    <div class="guide-store-links"><a class="button button-secondary" data-store="chrome" data-utm-placement="guide_close-tabs-from-same-website" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_chrome" target="_blank" rel="noopener"><img class="browser-icon" src="/assets/browsers/chrome.svg" width="24" height="24" alt="" /><span data-browser-copy>Lisää selaimeen Chrome</span></a><a class="button button-secondary" data-store="firefox" data-utm-placement="guide_close-tabs-from-same-website" href="https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_firefox" target="_blank" rel="noopener"><img class="browser-icon" src="/assets/browsers/firefox.svg" width="24" height="24" alt="" /><span data-browser-copy>Lisää selaimeen Firefox</span></a><a class="button button-secondary" data-store="edge" data-utm-placement="guide_close-tabs-from-same-website" href="https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=guide_close-tabs-from-same-website_edge" target="_blank" rel="noopener"><img class="browser-icon" src="/assets/browsers/edge.svg" width="24" height="24" alt="" /><span data-browser-copy>Lisää selaimeen Edge</span></a></div>
     <p class="mobile-note" data-mobile-note hidden>Käytätkö puhelinta tai tablettia? Avaa tämä sivu tietokoneella lisätäksesi TabToolsin.</p>
   </aside>
 <section id="which-tabs-close"><h2>Mitkä välilehdet lasketaan samaksi sivustoksi?</h2><p>Sivuston sulkeminen vertaa isäntänimeä ja ohittaa sen alussa olevan etuliitteen <code>www.</code>. Saman isäntänimen eri sivut vastaavat toisiaan, vaikka niiden polut tai kyselyparametrit eroaisivat.</p>
@@ -578,18 +445,18 @@
 <p>Jos haluat säilyttää yhden kopion jokaisesta sivusta, lue opas aiheesta <a href="/fi/guides/close-duplicate-tabs/">välilehtien kaksoiskappaleiden sulkeminen</a>. Jos haluat pitää kaikki sivut auki ja helpottaa niiden selaamista, voit <a href="/fi/guides/sort-tabs-by-website/">lajitella välilehdet sivustoittain</a> sen sijaan.</p></section>
       </article></div>
       <section class="shell related-guides" aria-label="Aiheeseen liittyvät oppaat"><p class="eyebrow">Jatka tästä</p><h2>Lisää tapoja järjestää välilehtesi.</h2><div class="guide-cards"><a class="guide-card" href="/fi/guides/close-duplicate-tabs/">
-    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Poista kaksoiskappaleet</span></div>
-    <h2>Sulje välilehtien kaksoiskappaleet</h2><p>Poista välilehtien kaksoiskappaleet Chromessa, Firefoxissa ja Edgessä. Seuraa TabToolsin ohjeita, käytä Firefoxin omaa toimintoa ja selvitä, mitkä kopiot jäävät auki.</p>
-    <span class="guide-card-bottom"><span>Lukuaika 4 min</span><span class="guide-card-link">Lue opas <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-icon"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="2"></rect><path d="M10.5 3.5v-.3A1.2 1.2 0 0 0 9.3 2H3.2A1.2 1.2 0 0 0 2 3.2v6.1a1.2 1.2 0 0 0 1.2 1.2h.3"></path><path d="M7.7 9.5h3.6"></path></svg></span>
+    <div class="guide-card-text"><p class="guide-category">Poista kaksoiskappaleet</p><h2>Sulje välilehtien kaksoiskappaleet</h2><p>Poista välilehtien kaksoiskappaleet Chromessa, Firefoxissa ja Edgessä. Seuraa TabToolsin ohjeita, käytä Firefoxin omaa toimintoa ja selvitä, mitkä kopiot jäävät auki.</p></div>
+    <span class="guide-card-bottom"><span>Lukuaika 5 min</span><span class="guide-card-link">Lue opas <svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg></span></span>
   </a><a class="guide-card" href="/fi/guides/sort-tabs-by-website/">
-    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Lajittele välilehdet</span></div>
-    <h2>Lajittele välilehdet sivustoittain</h2><p>Kokoa yhteen liittyvät välilehdet vierekkäin Chromessa, Firefoxissa ja Edgessä TabToolsilla. Selvitä, miten sivustojen välilehtimäärät, kiinnitetyt välilehdet ja selaimen välilehtiryhmät vaikuttavat vaihtoehtoihisi.</p>
-    <span class="guide-card-bottom"><span>Lukuaika 4 min</span><span class="guide-card-link">Lue opas <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-icon"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4h11M2.5 8h7.5M2.5 12h4"></path></svg></span>
+    <div class="guide-card-text"><p class="guide-category">Lajittele välilehdet</p><h2>Lajittele välilehdet sivustoittain</h2><p>Kokoa yhteen liittyvät välilehdet vierekkäin Chromessa, Firefoxissa ja Edgessä TabToolsilla. Selvitä, miten sivustojen välilehtimäärät, kiinnitetyt välilehdet ja selaimen välilehtiryhmät vaikuttavat vaihtoehtoihisi.</p></div>
+    <span class="guide-card-bottom"><span>Lukuaika 5 min</span><span class="guide-card-link">Lue opas <svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg></span></span>
   </a></div></section></main>
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="/fi/#top" aria-label="TabToolsin etusivu"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <a class="brand" href="/fi/#top" aria-label="TabToolsin etusivu"><svg class="brand-mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg><span>TabTools</span></a>
           <p>Sulje välilehdet sivustoittain, järjestä välilehtipalkki ja poista kaksoiskappaleet.</p>
         </div>
         <div class="footer-links">

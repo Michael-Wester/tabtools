@@ -16,9 +16,13 @@ test('desktop guide keyboard selection and native new-tab links preserve article
   await trigger.focus();
   await page.keyboard.press('ArrowDown');
   await expect(page.locator('[data-language-option][data-locale="en"]')).toBeFocused();
+  // The menu lists English first, then each language under its own name.
+  const next = L.presentationRegistry[1];
   await page.keyboard.press('ArrowDown');
+  await expect(page.locator(`[data-language-option][data-locale="${next.locale}"]`)).toBeFocused();
+  await expect(page.locator(`[data-language-option][data-locale="${next.locale}"]`)).toHaveAttribute('href', G.routeFor(next.locale, slug) + suffix);
+  await expect(page.locator(`[data-language-option][data-locale="${next.locale}"] .language-option-name`)).toHaveText(next.nativeName);
   const chinese = page.locator('[data-language-option][data-locale="zh-CN"]');
-  await expect(chinese).toBeFocused();
   await expect(chinese).toHaveAttribute('href', G.routeFor('zh-CN', slug) + suffix);
   await page.keyboard.press('Escape');
   await expect(page.locator('[data-language-menu]')).toBeHidden();

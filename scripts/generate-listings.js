@@ -103,7 +103,11 @@ function listing(locale, store) {
     '- Full-description source fingerprint: ' + L.fingerprint(sourceDescription),
     ...(store.key === 'chrome' ? [
       '- Full-description source: marketing/sources/chrome-descriptions.json#locales.' + locale.locale,
-      '- Description snapshot: ' + chromeDescriptions.capturedOn + '; Chrome ' + chromeDescriptions.extensionVersion,
+      // English is written first for a release; the captured dashboard text of
+      // the other languages stands until they are translated from it.
+      chromeDescriptions.locales[locale.locale].proposedFor
+        ? '- Description: proposed for Chrome ' + chromeDescriptions.locales[locale.locale].proposedFor + '; not entered in the publisher dashboard'
+        : '- Description snapshot: ' + chromeDescriptions.capturedOn + '; Chrome ' + chromeDescriptions.extensionVersion,
       '- Description fingerprint: ' + L.fingerprint(description),
     ] : ['- Full-description source keys: ' + descriptionKeys.join(', ')]),
     '- Linguistic review: AI self-review only; no native-speaker review claimed',
@@ -115,7 +119,7 @@ function listingIndex() {
   return [
     '# Store-text index',
     '',
-    'Chrome descriptions preserve the final 4.0.3 dashboard copy captured on 1 October 2026. Firefox and Edge remain proposed next-release text. Generation does not publish listings. See [maintenance and release checklist](README.md).',
+    'All English text is proposed for 5.0.0. In the other languages, Chrome descriptions are the 4.0.3 dashboard copy captured on 1 October 2026, and Firefox and Edge descriptions are translations of the earlier English, until the 5.0.0 translations are merged. Generation does not publish listings. See [maintenance and release checklist](README.md).',
     '',
     '| Locale | Chrome | Firefox | Edge |',
     '|---|---|---|---|',

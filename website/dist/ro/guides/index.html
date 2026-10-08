@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1b21" media="(prefers-color-scheme: dark)" />
     <title>Ghiduri despre filele browserului | TabTools</title>
     <meta name="description" content="Ghiduri practice TabTools pentru închiderea filelor unui site, eliminarea duplicatelor și sortarea filelor după site în Chrome, Firefox și Edge." />
     <link rel="canonical" href="https://tabtools.fyi/ro/guides/" />
@@ -83,8 +84,11 @@
     <script>
       (() => {
         try {
-          const saved = localStorage.getItem('tabtools-site-theme');
-          if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+          const root = document.documentElement;
+          const theme = localStorage.getItem('tabtools-site-theme');
+          if (theme === 'dark' || theme === 'light') root.dataset.theme = theme;
+          const accent = localStorage.getItem('tabtools-site-accent');
+          if (/^(blue|green|orange|pink|graphite)$/.test(accent)) root.dataset.accent = accent;
         } catch (_) {}
       })();
     </script>
@@ -95,352 +99,215 @@
       "locale": "en",
       "canonical": "en",
       "path": "/guides/",
-      "languageName": "English",
+      "nativeName": "English",
       "flagAsset": "en.svg"
-    },
-    {
-      "locale": "zh-CN",
-      "canonical": "zh-CN",
-      "path": "/zh-cn/guides/",
-      "languageName": "Chinese (Simplified)",
-      "flagAsset": "zh-CN.svg"
-    },
-    {
-      "locale": "zh-TW",
-      "canonical": "zh-TW",
-      "path": "/zh-tw/guides/",
-      "languageName": "Chinese (Traditional)",
-      "flagAsset": "zh-TW.svg"
-    },
-    {
-      "locale": "hr",
-      "canonical": "hr",
-      "path": "/hr/guides/",
-      "languageName": "Croatian",
-      "flagAsset": "hr.svg"
     },
     {
       "locale": "cs",
       "canonical": "cs",
       "path": "/cs/guides/",
-      "languageName": "Czech",
+      "nativeName": "Čeština",
       "flagAsset": "cs.svg"
-    },
-    {
-      "locale": "nl",
-      "canonical": "nl",
-      "path": "/nl/guides/",
-      "languageName": "Dutch",
-      "flagAsset": "nl.svg"
-    },
-    {
-      "locale": "fi",
-      "canonical": "fi",
-      "path": "/fi/guides/",
-      "languageName": "Finnish",
-      "flagAsset": "fi.svg"
-    },
-    {
-      "locale": "fr",
-      "canonical": "fr",
-      "path": "/fr/guides/",
-      "languageName": "French",
-      "flagAsset": "fr.svg"
     },
     {
       "locale": "de",
       "canonical": "de",
       "path": "/de/guides/",
-      "languageName": "German",
+      "nativeName": "Deutsch",
       "flagAsset": "de.svg"
     },
     {
-      "locale": "el",
-      "canonical": "el",
-      "path": "/el/guides/",
-      "languageName": "Greek",
-      "flagAsset": "el.svg"
+      "locale": "es",
+      "canonical": "es-ES",
+      "path": "/es/guides/",
+      "nativeName": "Español (de España)",
+      "flagAsset": "es.svg"
     },
     {
-      "locale": "he",
-      "canonical": "he",
-      "path": "/he/guides/",
-      "languageName": "Hebrew",
-      "flagAsset": "he.svg"
+      "locale": "fr",
+      "canonical": "fr",
+      "path": "/fr/guides/",
+      "nativeName": "Français",
+      "flagAsset": "fr.svg"
     },
     {
-      "locale": "hu",
-      "canonical": "hu",
-      "path": "/hu/guides/",
-      "languageName": "Hungarian",
-      "flagAsset": "hu.svg"
+      "locale": "hr",
+      "canonical": "hr",
+      "path": "/hr/guides/",
+      "nativeName": "Hrvatski",
+      "flagAsset": "hr.svg"
     },
     {
       "locale": "it",
       "canonical": "it",
       "path": "/it/guides/",
-      "languageName": "Italian",
+      "nativeName": "Italiano",
       "flagAsset": "it.svg"
     },
     {
-      "locale": "ja",
-      "canonical": "ja",
-      "path": "/ja/guides/",
-      "languageName": "Japanese",
-      "flagAsset": "ja.svg"
+      "locale": "hu",
+      "canonical": "hu",
+      "path": "/hu/guides/",
+      "nativeName": "magyar",
+      "flagAsset": "hu.svg"
     },
     {
-      "locale": "ko",
-      "canonical": "ko",
-      "path": "/ko/guides/",
-      "languageName": "Korean",
-      "flagAsset": "ko.svg"
+      "locale": "nl",
+      "canonical": "nl",
+      "path": "/nl/guides/",
+      "nativeName": "Nederlands",
+      "flagAsset": "nl.svg"
     },
     {
       "locale": "nb",
       "canonical": "nb",
       "path": "/nb/guides/",
-      "languageName": "Norwegian (Bokmal)",
+      "nativeName": "Norsk bokmål",
       "flagAsset": "nb.svg"
     },
     {
       "locale": "pl",
       "canonical": "pl",
       "path": "/pl/guides/",
-      "languageName": "Polish",
+      "nativeName": "Polski",
       "flagAsset": "pl.svg"
     },
     {
       "locale": "pt-BR",
       "canonical": "pt-BR",
       "path": "/pt-br/guides/",
-      "languageName": "Portuguese (Brazil)",
+      "nativeName": "Português (do Brasil)",
       "flagAsset": "pt-BR.svg"
     },
     {
       "locale": "pt-PT",
       "canonical": "pt-PT",
       "path": "/pt-pt/guides/",
-      "languageName": "Portuguese (Portugal)",
+      "nativeName": "Português (Europeu)",
       "flagAsset": "pt-PT.svg"
     },
     {
       "locale": "ro",
       "canonical": "ro",
       "path": "/ro/guides/",
-      "languageName": "Romanian",
+      "nativeName": "Română",
       "flagAsset": "ro.svg"
-    },
-    {
-      "locale": "ru",
-      "canonical": "ru",
-      "path": "/ru/guides/",
-      "languageName": "Russian",
-      "flagAsset": "ru.svg"
-    },
-    {
-      "locale": "sr",
-      "canonical": "sr",
-      "path": "/sr/guides/",
-      "languageName": "Serbian",
-      "flagAsset": "sr.svg"
     },
     {
       "locale": "sk",
       "canonical": "sk",
       "path": "/sk/guides/",
-      "languageName": "Slovak",
+      "nativeName": "slovenčina",
       "flagAsset": "sk.svg"
     },
     {
       "locale": "sl",
       "canonical": "sl",
       "path": "/sl/guides/",
-      "languageName": "Slovenian",
+      "nativeName": "Slovenščina",
       "flagAsset": "sl.svg"
     },
     {
-      "locale": "es",
-      "canonical": "es-ES",
-      "path": "/es/guides/",
-      "languageName": "Spanish (Spain)",
-      "flagAsset": "es.svg"
+      "locale": "fi",
+      "canonical": "fi",
+      "path": "/fi/guides/",
+      "nativeName": "suomi",
+      "flagAsset": "fi.svg"
     },
     {
       "locale": "sv",
       "canonical": "sv",
       "path": "/sv/guides/",
-      "languageName": "Swedish",
+      "nativeName": "Svenska",
       "flagAsset": "sv.svg"
-    },
-    {
-      "locale": "tr",
-      "canonical": "tr",
-      "path": "/tr/guides/",
-      "languageName": "Turkish",
-      "flagAsset": "tr.svg"
-    },
-    {
-      "locale": "uk",
-      "canonical": "uk",
-      "path": "/uk/guides/",
-      "languageName": "Ukrainian",
-      "flagAsset": "uk.svg"
     },
     {
       "locale": "vi",
       "canonical": "vi",
       "path": "/vi/guides/",
-      "languageName": "Vietnamese",
+      "nativeName": "Tiếng Việt",
       "flagAsset": "vi.svg"
+    },
+    {
+      "locale": "tr",
+      "canonical": "tr",
+      "path": "/tr/guides/",
+      "nativeName": "Türkçe",
+      "flagAsset": "tr.svg"
+    },
+    {
+      "locale": "el",
+      "canonical": "el",
+      "path": "/el/guides/",
+      "nativeName": "Ελληνικά",
+      "flagAsset": "el.svg"
+    },
+    {
+      "locale": "ru",
+      "canonical": "ru",
+      "path": "/ru/guides/",
+      "nativeName": "Русский",
+      "flagAsset": "ru.svg"
+    },
+    {
+      "locale": "sr",
+      "canonical": "sr",
+      "path": "/sr/guides/",
+      "nativeName": "Српски",
+      "flagAsset": "sr.svg"
+    },
+    {
+      "locale": "uk",
+      "canonical": "uk",
+      "path": "/uk/guides/",
+      "nativeName": "Українська",
+      "flagAsset": "uk.svg"
+    },
+    {
+      "locale": "he",
+      "canonical": "he",
+      "path": "/he/guides/",
+      "nativeName": "עברית",
+      "flagAsset": "he.svg"
+    },
+    {
+      "locale": "ko",
+      "canonical": "ko",
+      "path": "/ko/guides/",
+      "nativeName": "한국어",
+      "flagAsset": "ko.svg"
+    },
+    {
+      "locale": "zh-CN",
+      "canonical": "zh-CN",
+      "path": "/zh-cn/guides/",
+      "nativeName": "中文 (简体)",
+      "flagAsset": "zh-CN.svg"
+    },
+    {
+      "locale": "ja",
+      "canonical": "ja",
+      "path": "/ja/guides/",
+      "nativeName": "日本語",
+      "flagAsset": "ja.svg"
+    },
+    {
+      "locale": "zh-TW",
+      "canonical": "zh-TW",
+      "path": "/zh-tw/guides/",
+      "nativeName": "正體中文 (繁體)",
+      "flagAsset": "zh-TW.svg"
     }
   ],
   "messages": {
-    "extensionName": "TabTools - Închide și sortează filele după site",
-    "extensionDescription": "Închide filele aceluiași site, sortează-le după site și elimină duplicatele pentru a păstra browserul ordonat.",
-    "openTabTools": "Deschide TabTools",
-    "settings": "Setări",
-    "suggestions": "Sugestii",
-    "queryPlaceholder": "Închide după cuvânt-cheie (apasă Enter)",
-    "close": "Închide",
-    "sortTabs": "Sortează filele",
-    "closeDuplicates": "Închide duplicatele",
-    "undo": "Anulează",
-    "theme": "Temă",
-    "light": "Luminoasă",
-    "dark": "Întunecată",
-    "inactiveAfter": "File inactive după",
-    "closedCount": "Închise: {count}",
-    "openCount": {
-      "one": "{count} filă deschisă",
-      "few": "{count} file deschise",
-      "other": "{count} de file deschise"
-    },
-    "closedCountShort": {
-      "one": "{count} închisă",
-      "few": "{count} închise",
-      "other": "{count} închise"
-    },
-    "closeFailed": "Acțiunea a eșuat",
-    "closedInactive": "File inactive închise: {count}",
-    "noInactive": "Nicio filă inactivă",
-    "closedDuplicates": "File duplicate închise: {count}",
-    "noDuplicates": "Niciun duplicat",
-    "undoFailed": "Anularea a eșuat",
-    "restoredCount": "Restaurate: {count}",
-    "nothingToRestore": "Nimic de restaurat",
-    "inactive": "Inactive",
-    "suggestionsFailed": "Sugestiile nu au putut fi încărcate",
-    "noSuggestions": "Nu există sugestii momentan",
-    "sortFailed": "Sortarea a eșuat",
-    "sortedCount": "File reordonate: {count}",
-    "nothingToSort": "Nimic de sortat",
-    "contextClose": "Închide filele site-ului",
-    "contextSort": "Sortează filele (site-urile cu cele mai multe file primele)",
-    "closeSiteLabel": "Închide filele de pe {site}",
-    "web_heroTitle": "Închide filele \u003cem>aceluiași site.\u003c/em>",
-    "web_featuresTitle": "Închide după site.\u003cbr>\u003cem>Sortează ce rămâne.\u003c/em>",
-    "web_workflowTitle": "Adaugă TabTools.\u003cbr>\u003cem>Alege ce să închizi.\u003c/em>",
-    "web_privacyTitle": "Datele filelor rămân\u003cbr>în browserul tău.",
-    "web_finalTitle": "Închide filele de care nu mai ai nevoie.\u003cbr>\u003cem>Sortează restul.\u003c/em>",
-    "web_siteBody": "Deschide TabTools și apasă pe un site din \u003cstrong>Sugestii\u003c/strong>, sau fă clic dreapta într-o pagină web și alege \u003cstrong>Închide filele site-ului\u003c/strong>. Se închid filele corespunzătoare din toate ferestrele obișnuite, inclusiv fila curentă.",
     "web_addTo": "Adaugă în {browser}",
-    "web_storeNote": "Deschide magazinul {store}.",
+    "web_view": "Vezi {browser}",
     "web_storeAria": "{label} — deschide magazinul {store} într-o filă nouă",
+    "web_storeNote": "Deschide magazinul {store}.",
     "web_language": "Limbă",
     "web_languageSuggestion": "Citește această pagină în {language}",
     "web_switchLight": "Treci la modul luminos",
-    "web_lightMode": "Mod luminos",
-    "web_structuredDescription": "O extensie gratuită pentru închiderea filelor după site, sortarea lor, eliminarea duplicatelor și închiderea filelor inactive.",
-    "web_close_tabs_from_the_same": "Închide filele aceluiași site, sortează după site și elimină duplicatele. TabTools este un gestionar de file gratuit pentru Chrome, Firefox și Edge.",
-    "web_tabtools_close_tabs_by_site": "TabTools — Închide și sortează filele după site",
-    "web_close_tabs_by_site_sort": "Închide filele după site, sortează bara de file și elimină duplicatele cu o extensie gratuită, cu sursă deschisă, pentru Chrome, Firefox și Edge.",
-    "web_skip_to_content": "Sari la conținut",
-    "web_tabtools_home": "Pagina principală TabTools",
-    "web_main_navigation": "Navigare principală",
-    "web_features": "Funcții",
-    "web_how_it_works": "Cum funcționează",
-    "web_privacy": "Confidențialitate",
-    "web_faq": "Întrebări frecvente",
-    "web_switch_to_dark_mode": "Treci la modul întunecat",
-    "web_dark_mode": "Mod întunecat",
-    "web_free_browser_tab_manager": "Gestionar de file gratuit",
-    "web_clear_a_website_s_tabs": "Închide filele unui site cu o singură acțiune sau sortează bara de file după site. TabTools elimină și duplicatele și închide filele inactive în Chrome, Firefox și Edge.",
-    "web_free_to_use_no_account": "Gratuit. Nu ai nevoie de cont.",
-    "web_viewing_on_a_phone_or": "Folosești un telefon sau o tabletă? Deschide pagina pe computer pentru a adăuga TabTools.",
-    "web_tabtools_browser_stores": "TabTools în magazinele browserelor",
-    "web_choose_another_browser": "Alege alt browser:",
-    "web_tabtools_in_action": "TabTools în acțiune",
-    "web_full_demo": "Demonstrație completă",
-    "web_tabtools_full_demo": "Demonstrație completă TabTools",
-    "web_see_tabtools_close_tabs_by": "Vezi cum TabTools închide filele după site, elimină duplicatele, sortează filele și le închide pe cele inactive.",
-    "web_tabtools_product_details": "Detalii despre TabTools",
-    "web_close_tabs_by_site": "Închide filele după site",
-    "web_from_the_popup_or_right": "din fereastra extensiei sau din meniul contextual",
-    "web_local_by_design": "Funcționează local",
-    "web_your_tab_list_stays_in": "lista de file rămâne în browser",
-    "web_open_source": "Sursă deschisă",
-    "web_inspect_the_code_on_github": "Consultă codul pe GitHub",
-    "web_close_and_organise": "Închide și organizează",
-    "web_clear_a_finished_task_bring": "Închide filele unei sarcini terminate, așază alături filele aceluiași site sau curăță paginile repetate și inactive.",
-    "web_01_site_cleanup": "01 / Curățare după site",
-    "web_close_a_site_s_tabs": "Închide împreună filele unui site",
-    "web_see_how_to_get_started": "Vezi cum să începi",
-    "web_02_organise": "02 / Organizare",
-    "web_sort_tabs_by_site": "Sortează filele după site",
-    "web_bring_tabs_from_the_same": "Așază alături filele aceluiași site în fereastra curentă, începând cu site-urile care au cele mai multe file deschise.",
-    "web_03_simplify": "03 / Simplificare",
-    "web_remove_duplicate_tabs": "Elimină filele duplicate",
-    "web_close_extra_copies_of_the": "Închide copiile suplimentare ale aceleiași pagini cu un clic. Filele fixate rămân pe loc.",
-    "web_04_find": "04 / Căutare",
-    "web_search_by_keyword_or_domain": "Caută după cuvânt-cheie sau domeniu",
-    "web_type_a_word_to_match": "Scrie un cuvânt pentru a căuta în titlurile și URL-urile filelor sau un domeniu exact, precum youtube.com. Apoi alege Închide.",
-    "web_05_reset": "05 / Curățare",
-    "web_clear_inactive_tabs": "Închide filele inactive",
-    "web_choose_an_inactivity_threshold_in": "Alege un prag de inactivitate în Setări, apoi apasă pe Inactive pentru a închide filele care îndeplinesc condițiile. Filele active, fixate sau care redau sunet rămân deschise.",
-    "web_more_tabtools_details": "Mai multe detalii despre TabTools",
-    "web_undo_cleanup_from_the_popup": "Anulează curățarea din fereastra extensiei",
-    "web_light_and_dark_themes": "Teme luminoasă și întunecată",
-    "web_local_cleanup_statistics": "Statistici locale de curățare",
-    "web_start_with_one_busy_site": "Începe cu un site cu multe file. Folosește fereastra extensiei pentru sugestii și sortare sau meniul contextual pentru închidere rapidă.",
-    "web_add_it_to_your_browser": "Adaugă în browser",
-    "web_open_the_chrome_firefox_or": "Deschide pagina magazinului Chrome, Firefox sau Edge și adaugă extensia gratuită.",
-    "web_click_the_tabtools_icon_in": "Apasă pe pictograma TabTools din meniul de extensii al browserului pentru a vedea sugestii de site-uri și acțiuni rapide.",
-    "web_close_a_site_or_sort": "Închide filele unui site sau sortează filele",
-    "web_click_a_site_under_suggestions": "Apasă pe un site din Sugestii pentru a-i închide filele sau alege Sortează filele pentru a așeza alături filele aceluiași site.",
-    "web_private_by_design": "Conceput pentru confidențialitate",
-    "web_the_tabtools_extension_processes_tab": "Extensia TabTools prelucrează informațiile despre file pe dispozitivul tău. Setările și statisticile de curățare rămân în stocarea locală a browserului. Extensia nu folosește conturi, analize de utilizare, reclame sau baze de date externe.",
-    "web_read_the_privacy_policy": "Citește politica de confidențialitate",
-    "web_before_you_add_tabtools": "Înainte să adaugi TabTools",
-    "web_common_questions": "Întrebări frecvente.",
-    "web_browsers_cleanup_and_privacy": "Browsere, curățare și confidențialitate.",
-    "web_is_tabtools_free": "TabTools este gratuit?",
-    "web_yes_tabtools_is_free_to": "Da. TabTools este gratuit și nu necesită un cont.",
-    "web_which_browsers_can_i_use": "Cu ce browsere îl pot folosi?",
-    "web_tabtools_is_available_for_chrome": "TabTools este disponibil pentru Chrome, Firefox și Microsoft Edge. Pentru a-l adăuga pe computer, folosește linkurile de pe această pagină pentru a deschide magazinul browserului potrivit.",
-    "web_how_do_i_close_tabs": "Cum închid filele aceluiași site?",
-    "web_right_click_within_a_web": "Fă clic dreapta într-o pagină web și alege „Închide filele site-ului” sau deschide TabTools și apasă pe site în Sugestii. Se închid filele site-ului din toate ferestrele obișnuite, inclusiv fila curentă. Poți introduce și un cuvânt-cheie sau un domeniu exact în fereastra extensiei.",
-    "web_can_i_remove_duplicates_or": "Pot elimina duplicatele sau închide filele inactive?",
-    "web_yes_choose_close_duplicates_to": "Da. Alege Închide duplicatele pentru a elimina paginile repetate sau apasă pe Inactive pentru a închide filele corespunzătoare. Poți modifica pragul de inactivitate în Setări; curățarea are loc când alegi acțiunea.",
-    "web_does_tabtools_collect_or_share": "TabTools colectează sau partajează datele mele?",
-    "web_the_extension_processes_tab_information": "Extensia prelucrează informațiile despre file local și nu le trimite dezvoltatorului sau unor terțe părți. Setările și statisticile rămân pe dispozitiv. Demonstrația de pe acest site este găzduită de YouTube; playerul încorporat și magazinele browserelor au propriile politici de confidențialitate.",
-    "web_can_i_undo_a_cleanup": "Pot anula o curățare?",
-    "web_use_undo_immediately_after_closing": "Folosește Anulează imediat după închiderea filelor din fereastra TabTools, cât timp aceasta este încă deschisă. Poți redeschide pagini și din lista filelor închise recent a browserului.",
-    "web_free_for_chrome_firefox_and": "Gratuit pentru Chrome, Firefox și Edge",
-    "web_other_browser_stores": "Alte magazine de browsere",
-    "web_close_tabs_by_site_sort_2": "Închide filele după site, sortează bara de file și elimină duplicatele.",
-    "web_product": "Produs",
-    "web_try_it": "Încearcă",
-    "web_more": "Mai multe",
-    "web_contact": "Contact",
-    "web_free_and_open_source": "Gratuit și cu sursă deschisă.",
-    "web_view": "Vezi {browser}",
-    "web_guides": "Ghiduri",
-    "web_readSiteGuide": "Citește ghidul pentru închiderea filelor aceluiași site",
-    "web_readSortingGuide": "Citește ghidul pentru sortarea filelor",
-    "web_readDuplicateGuide": "Citește ghidul pentru eliminarea filelor duplicate",
-    "web_finalMobileNote": "Deschide această pagină pe computer pentru a adăuga TabTools. Mai jos poți vedea paginile extensiei în magazine.",
-    "web_socialImageAlt": "Extensia de browser TabTools demonstrează gestionarea filelor"
+    "web_switch_to_dark_mode": "Treci la modul întunecat"
   }
 }</script>
   </head>
@@ -449,7 +316,7 @@
     <header class="site-header">
       <div class="shell nav-shell">
         <a class="brand" href="/ro/#top" aria-label="Pagina principală TabTools">
-          <span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span>
+          <svg class="brand-mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg>
           <span>TabTools</span>
         </a>
         <nav class="main-nav" aria-label="Navigare principală">
@@ -461,48 +328,46 @@
         </nav>
         <div class="nav-actions">
           <a class="button browser-button button-primary browser-button-compact" aria-label="Adaugă în Chrome" data-adaptive-store data-utm-placement="header" data-store="chrome" href="https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=tabtools.fyi&amp;utm_medium=referral&amp;utm_campaign=website&amp;utm_content=header_chrome" target="_blank" rel="noopener">
-            <span class="browser-button-mark" aria-hidden="true"><img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="40" height="40" alt="" /></span>
+            <img class="browser-icon" data-browser-icon src="/assets/browsers/chrome.svg" width="24" height="24" alt="" />
             <span class="browser-button-copy" data-browser-copy="Chrome">Adaugă în <span class="browser-button-name" data-browser-name>Chrome</span></span>
-            <svg class="button-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></svg>
           </a>
           <div class="nav-utilities">
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Treci la modul întunecat" title="Treci la modul întunecat">
-            <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
-            </svg>
-            <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
-            </svg>
-            <span class="sr-only" data-theme-label>Mod întunecat</span>
-          </button>
-          <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Limbă: Romanian" title="Limbă: Romanian" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-name sr-only" data-language-name lang="en" dir="ltr">Romanian</span></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Limbă" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Simplified)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Chinese (Traditional)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Croatian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Czech</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Dutch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Finnish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">French</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">German</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Greek</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hebrew</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Hungarian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Italian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Japanese</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Korean</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Norwegian (Bokmal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Polish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Brazil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Portuguese (Portugal)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="true" tabindex="-1" href="/ro/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Romanian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Russian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Serbian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovak</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Slovenian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Spanish (Spain)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Swedish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Turkish</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Ukrainian</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">Vietnamese</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Limbă: Romanian"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="sr-only" lang="en" dir="ltr">Limbă: Romanian</span></summary><nav class="language-fallback-menu" aria-label="Limbă"><a class="language-fallback-option" href="/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/zh-cn/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Simplified)</span></a><a class="language-fallback-option" href="/zh-tw/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Chinese (Traditional)</span></a><a class="language-fallback-option" href="/hr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Croatian</span></a><a class="language-fallback-option" href="/cs/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Czech</span></a><a class="language-fallback-option" href="/nl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Dutch</span></a><a class="language-fallback-option" href="/fi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Finnish</span></a><a class="language-fallback-option" href="/fr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">French</span></a><a class="language-fallback-option" href="/de/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">German</span></a><a class="language-fallback-option" href="/el/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Greek</span></a><a class="language-fallback-option" href="/he/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hebrew</span></a><a class="language-fallback-option" href="/hu/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Hungarian</span></a><a class="language-fallback-option" href="/it/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Italian</span></a><a class="language-fallback-option" href="/ja/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Japanese</span></a><a class="language-fallback-option" href="/ko/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Korean</span></a><a class="language-fallback-option" href="/nb/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Norwegian (Bokmal)</span></a><a class="language-fallback-option" href="/pl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Polish</span></a><a class="language-fallback-option" href="/pt-br/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Brazil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Portuguese (Portugal)</span></a><a class="language-fallback-option" href="/ro/guides/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Romanian</span></a><a class="language-fallback-option" href="/ru/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Russian</span></a><a class="language-fallback-option" href="/sr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Serbian</span></a><a class="language-fallback-option" href="/sk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovak</span></a><a class="language-fallback-option" href="/sl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Slovenian</span></a><a class="language-fallback-option" href="/es/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Spanish (Spain)</span></a><a class="language-fallback-option" href="/sv/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Swedish</span></a><a class="language-fallback-option" href="/tr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Turkish</span></a><a class="language-fallback-option" href="/uk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Ukrainian</span></a><a class="language-fallback-option" href="/vi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">Vietnamese</span></a></nav></details></noscript>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Treci la modul întunecat" title="Treci la modul întunecat">
+              <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+              </svg>
+              <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M20.2 15.3A8.6 8.6 0 0 1 8.7 3.8 8.7 8.7 0 1 0 20.2 15.3Z"></path>
+              </svg>
+            </button>
+            <div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-label="Limbă: Română" title="Limbă: Română" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu"><span class="language-flag language-flag-current" aria-hidden="true"><img class="language-flag-image" data-language-flag-image src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-name" data-language-name lang="ro" dir="ltr">Română</span><svg class="language-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5"></path></svg></button><div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="Limbă" hidden><a class="language-option" data-language-option data-locale="en" role="option" aria-selected="false" tabindex="-1" href="/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="en" dir="ltr">English</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="cs" role="option" aria-selected="false" tabindex="-1" href="/cs/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="cs" dir="ltr">Čeština</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="de" role="option" aria-selected="false" tabindex="-1" href="/de/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="de" dir="ltr">Deutsch</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="es" role="option" aria-selected="false" tabindex="-1" href="/es/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="es-ES" dir="ltr">Español (de España)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fr" role="option" aria-selected="false" tabindex="-1" href="/fr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="fr" dir="ltr">Français</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hr" role="option" aria-selected="false" tabindex="-1" href="/hr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="hr" dir="ltr">Hrvatski</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="it" role="option" aria-selected="false" tabindex="-1" href="/it/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="it" dir="ltr">Italiano</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="hu" role="option" aria-selected="false" tabindex="-1" href="/hu/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="hu" dir="ltr">magyar</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nl" role="option" aria-selected="false" tabindex="-1" href="/nl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="nl" dir="ltr">Nederlands</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="nb" role="option" aria-selected="false" tabindex="-1" href="/nb/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="nb" dir="ltr">Norsk bokmål</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pl" role="option" aria-selected="false" tabindex="-1" href="/pl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="pl" dir="ltr">Polski</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-BR" role="option" aria-selected="false" tabindex="-1" href="/pt-br/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="pt-BR" dir="ltr">Português (do Brasil)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="pt-PT" role="option" aria-selected="false" tabindex="-1" href="/pt-pt/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="pt-PT" dir="ltr">Português (Europeu)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ro" role="option" aria-selected="true" tabindex="-1" href="/ro/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ro" dir="ltr">Română</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sk" role="option" aria-selected="false" tabindex="-1" href="/sk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sk" dir="ltr">slovenčina</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sl" role="option" aria-selected="false" tabindex="-1" href="/sl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sl" dir="ltr">Slovenščina</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="fi" role="option" aria-selected="false" tabindex="-1" href="/fi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="fi" dir="ltr">suomi</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sv" role="option" aria-selected="false" tabindex="-1" href="/sv/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sv" dir="ltr">Svenska</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="vi" role="option" aria-selected="false" tabindex="-1" href="/vi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="vi" dir="ltr">Tiếng Việt</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="tr" role="option" aria-selected="false" tabindex="-1" href="/tr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="tr" dir="ltr">Türkçe</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="el" role="option" aria-selected="false" tabindex="-1" href="/el/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="el" dir="ltr">Ελληνικά</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ru" role="option" aria-selected="false" tabindex="-1" href="/ru/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ru" dir="ltr">Русский</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="sr" role="option" aria-selected="false" tabindex="-1" href="/sr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="sr" dir="ltr">Српски</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="uk" role="option" aria-selected="false" tabindex="-1" href="/uk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="uk" dir="ltr">Українська</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="he" role="option" aria-selected="false" tabindex="-1" href="/he/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="he" dir="rtl">עברית</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ko" role="option" aria-selected="false" tabindex="-1" href="/ko/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ko" dir="ltr">한국어</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-CN" role="option" aria-selected="false" tabindex="-1" href="/zh-cn/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="zh-CN" dir="ltr">中文 (简体)</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="ja" role="option" aria-selected="false" tabindex="-1" href="/ja/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="ja" dir="ltr">日本語</span><span class="language-option-check" aria-hidden="true">✓</span></a><a class="language-option" data-language-option data-locale="zh-TW" role="option" aria-selected="false" tabindex="-1" href="/zh-tw/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span class="language-option-name" lang="zh-TW" dir="ltr">正體中文 (繁體)</span><span class="language-option-check" aria-hidden="true">✓</span></a></div></div><noscript><details class="language-fallback"><summary class="language-fallback-trigger" aria-label="Limbă: Română"><span class="language-flag language-flag-fallback" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span class="sr-only">Limbă: Română</span></summary><nav class="language-fallback-menu" aria-label="Limbă"><a class="language-fallback-option" href="/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/en.svg" width="32" height="32" alt="" /></span><span lang="en" dir="ltr">English</span></a><a class="language-fallback-option" href="/cs/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/cs.svg" width="32" height="32" alt="" /></span><span lang="cs" dir="ltr">Čeština</span></a><a class="language-fallback-option" href="/de/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/de.svg" width="32" height="32" alt="" /></span><span lang="de" dir="ltr">Deutsch</span></a><a class="language-fallback-option" href="/es/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/es.svg" width="32" height="32" alt="" /></span><span lang="es-ES" dir="ltr">Español (de España)</span></a><a class="language-fallback-option" href="/fr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fr.svg" width="32" height="32" alt="" /></span><span lang="fr" dir="ltr">Français</span></a><a class="language-fallback-option" href="/hr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hr.svg" width="32" height="32" alt="" /></span><span lang="hr" dir="ltr">Hrvatski</span></a><a class="language-fallback-option" href="/it/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/it.svg" width="32" height="32" alt="" /></span><span lang="it" dir="ltr">Italiano</span></a><a class="language-fallback-option" href="/hu/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/hu.svg" width="32" height="32" alt="" /></span><span lang="hu" dir="ltr">magyar</span></a><a class="language-fallback-option" href="/nl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nl.svg" width="32" height="32" alt="" /></span><span lang="nl" dir="ltr">Nederlands</span></a><a class="language-fallback-option" href="/nb/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/nb.svg" width="32" height="32" alt="" /></span><span lang="nb" dir="ltr">Norsk bokmål</span></a><a class="language-fallback-option" href="/pl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pl.svg" width="32" height="32" alt="" /></span><span lang="pl" dir="ltr">Polski</span></a><a class="language-fallback-option" href="/pt-br/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-BR.svg" width="32" height="32" alt="" /></span><span lang="pt-BR" dir="ltr">Português (do Brasil)</span></a><a class="language-fallback-option" href="/pt-pt/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/pt-PT.svg" width="32" height="32" alt="" /></span><span lang="pt-PT" dir="ltr">Português (Europeu)</span></a><a class="language-fallback-option" href="/ro/guides/" aria-current="page"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ro.svg" width="32" height="32" alt="" /></span><span lang="ro" dir="ltr">Română</span></a><a class="language-fallback-option" href="/sk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sk.svg" width="32" height="32" alt="" /></span><span lang="sk" dir="ltr">slovenčina</span></a><a class="language-fallback-option" href="/sl/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sl.svg" width="32" height="32" alt="" /></span><span lang="sl" dir="ltr">Slovenščina</span></a><a class="language-fallback-option" href="/fi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/fi.svg" width="32" height="32" alt="" /></span><span lang="fi" dir="ltr">suomi</span></a><a class="language-fallback-option" href="/sv/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sv.svg" width="32" height="32" alt="" /></span><span lang="sv" dir="ltr">Svenska</span></a><a class="language-fallback-option" href="/vi/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/vi.svg" width="32" height="32" alt="" /></span><span lang="vi" dir="ltr">Tiếng Việt</span></a><a class="language-fallback-option" href="/tr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/tr.svg" width="32" height="32" alt="" /></span><span lang="tr" dir="ltr">Türkçe</span></a><a class="language-fallback-option" href="/el/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/el.svg" width="32" height="32" alt="" /></span><span lang="el" dir="ltr">Ελληνικά</span></a><a class="language-fallback-option" href="/ru/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ru.svg" width="32" height="32" alt="" /></span><span lang="ru" dir="ltr">Русский</span></a><a class="language-fallback-option" href="/sr/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/sr.svg" width="32" height="32" alt="" /></span><span lang="sr" dir="ltr">Српски</span></a><a class="language-fallback-option" href="/uk/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/uk.svg" width="32" height="32" alt="" /></span><span lang="uk" dir="ltr">Українська</span></a><a class="language-fallback-option" href="/he/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/he.svg" width="32" height="32" alt="" /></span><span lang="he" dir="rtl">עברית</span></a><a class="language-fallback-option" href="/ko/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ko.svg" width="32" height="32" alt="" /></span><span lang="ko" dir="ltr">한국어</span></a><a class="language-fallback-option" href="/zh-cn/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-CN.svg" width="32" height="32" alt="" /></span><span lang="zh-CN" dir="ltr">中文 (简体)</span></a><a class="language-fallback-option" href="/ja/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/ja.svg" width="32" height="32" alt="" /></span><span lang="ja" dir="ltr">日本語</span></a><a class="language-fallback-option" href="/zh-tw/guides/"><span class="language-flag language-flag-option" aria-hidden="true"><img class="language-flag-image" src="/assets/flags/zh-TW.svg" width="32" height="32" alt="" /></span><span lang="zh-TW" dir="ltr">正體中文 (繁體)</span></a></nav></details></noscript>
           </div>
         </div>
       </div>
     </header>
-    <main id="main-content" tabindex="-1"><section class="guides-intro shell"><p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Ghiduri TabTools</p>
+    <main id="main-content" tabindex="-1"><section class="guides-intro shell"><p class="eyebrow">Ghiduri TabTools</p>
     <h1>O bară de file mai ordonată.<br /><span>Câte o sarcină pe rând.</span></h1>
     <p class="guides-lede">Închide filele unui site, elimină paginile repetate sau așază alături filele asociate. Alege un ghid și urmează pașii în browserul tău.</p>
     <p class="guides-platforms">Pentru Chrome, Firefox și Edge pe computer</p></section>
     <section class="shell guides-list" aria-label="Explorează ghidurile"><div class="guide-cards"><a class="guide-card" href="/ro/guides/close-tabs-from-same-website/">
-    <div class="guide-card-top"><span class="guide-number">01</span><span class="guide-category">Închide filele site-ului</span></div>
-    <h2>Închide filele aceluiași site</h2><p>Închide filele aceluiași site în Chrome cu TabTools, folosește o alternativă manuală și urmează pașii pentru Firefox și Edge.</p>
-    <span class="guide-card-bottom"><span>4 min de lectură</span><span class="guide-card-link">Citește ghidul <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-icon"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11" rx="3"></rect><path d="M6 6l4 4M10 6l-4 4"></path></svg></span>
+    <div class="guide-card-text"><p class="guide-category">Închide filele site-ului</p><h2>Închide filele aceluiași site</h2><p>Închide filele aceluiași site în Chrome cu TabTools, folosește o alternativă manuală și urmează pașii pentru Firefox și Edge.</p></div>
+    <span class="guide-card-bottom"><span>5 min de lectură</span><span class="guide-card-link">Citește ghidul <svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg></span></span>
   </a><a class="guide-card" href="/ro/guides/close-duplicate-tabs/">
-    <div class="guide-card-top"><span class="guide-number">02</span><span class="guide-category">Elimină duplicatele</span></div>
-    <h2>Închide filele duplicate</h2><p>Elimină filele duplicate în Chrome, Firefox și Edge. Urmează pașii pentru TabTools, folosește opțiunea integrată în Firefox și află ce copii rămân.</p>
-    <span class="guide-card-bottom"><span>4 min de lectură</span><span class="guide-card-link">Citește ghidul <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-icon"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="2"></rect><path d="M10.5 3.5v-.3A1.2 1.2 0 0 0 9.3 2H3.2A1.2 1.2 0 0 0 2 3.2v6.1a1.2 1.2 0 0 0 1.2 1.2h.3"></path><path d="M7.7 9.5h3.6"></path></svg></span>
+    <div class="guide-card-text"><p class="guide-category">Elimină duplicatele</p><h2>Închide filele duplicate</h2><p>Elimină filele duplicate în Chrome, Firefox și Edge. Urmează pașii pentru TabTools, folosește opțiunea integrată în Firefox și află ce copii rămân.</p></div>
+    <span class="guide-card-bottom"><span>5 min de lectură</span><span class="guide-card-link">Citește ghidul <svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg></span></span>
   </a><a class="guide-card" href="/ro/guides/sort-tabs-by-website/">
-    <div class="guide-card-top"><span class="guide-number">03</span><span class="guide-category">Sortează filele</span></div>
-    <h2>Sortează filele după site</h2><p>Așază alături filele asociate în Chrome, Firefox și Edge cu TabTools. Află cum îți influențează opțiunile numărul filelor pe site, filele fixate și grupurile de file ale browserului.</p>
-    <span class="guide-card-bottom"><span>4 min de lectură</span><span class="guide-card-link">Citește ghidul <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-icon"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4h11M2.5 8h7.5M2.5 12h4"></path></svg></span>
+    <div class="guide-card-text"><p class="guide-category">Sortează filele</p><h2>Sortează filele după site</h2><p>Așază alături filele asociate în Chrome, Firefox și Edge cu TabTools. Află cum îți influențează opțiunile numărul filelor pe site, filele fixate și grupurile de file ale browserului.</p></div>
+    <span class="guide-card-bottom"><span>5 min de lectură</span><span class="guide-card-link">Citește ghidul <svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg></span></span>
   </a></div></section>
-    <section class="shell guides-start"><div><p class="eyebrow">Descoperi acum TabTools?</p><h2>Trei moduri de a face ordine.</h2></div><p>Închiderea după site elimină paginile unui site. Curățarea duplicatelor elimină URL-urile repetate. Sortarea păstrează filele deschise și le schimbă ordinea. Fiecare ghid explică ce se întâmplă, cu exemple și alternative oferite de browsere.</p><a class="text-link" href="/ro/#features">Descoperă TabTools <span aria-hidden="true">→</span></a></section></main>
+    <section class="shell guides-start"><div><p class="eyebrow">Descoperi acum TabTools?</p><h2>Trei moduri de a face ordine.</h2></div><div><p>Închiderea după site elimină paginile unui site. Curățarea duplicatelor elimină URL-urile repetate. Sortarea păstrează filele deschise și le schimbă ordinea. Fiecare ghid explică ce se întâmplă, cu exemple și alternative oferite de browsere.</p><a class="text-link" href="/ro/#features">Descoperă TabTools <svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg></a></div></section></main>
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="/ro/#top" aria-label="Pagina principală TabTools"><span class="brand-mark" aria-hidden="true"><img src="/assets/tabtools-icon.svg" alt="" /></span><span>TabTools</span></a>
+          <a class="brand" href="/ro/#top" aria-label="Pagina principală TabTools"><svg class="brand-mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg><span>TabTools</span></a>
           <p>Închide filele după site, sortează bara de file și elimină duplicatele.</p>
         </div>
         <div class="footer-links">

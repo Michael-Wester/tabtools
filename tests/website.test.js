@@ -7,8 +7,9 @@ const script = L.fs.readFileSync(L.path.join(L.root, 'website/src/script.js'), '
 
 // Run the real website script against a small DOM adapter. This checks event
 // behaviour, not rendering; actual browser verification is recorded separately.
-function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140', pageSuffix = '') {
+function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140', pageSuffix = '', { systemDark = false, theme } = {}) {
   const storage = new Map(saved ? [['tabtools-site-language', saved]] : []);
+  if (theme) storage.set('tabtools-site-theme', theme);
   const element = () => ({dataset:{},children:[],events:{},hidden:true,_text:'',
     get textContent(){return this.children.length ? this.children.map(x=>x.textContent).join('') : this._text;},
     set textContent(value){this._text=value;this.children=[];},
@@ -30,13 +31,14 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140', pag
     const option=element();
     option.dataset={locale:l.locale};
     option.href=l.path+pageSuffix;
-    option.textContent=l.languageName;
+    option.textContent=l.nativeName;
     return option;
   });
   picker.contains=node=>node===trigger || node===menu || options.includes(node);
   menu.hidden=true;
-  const data={locale,registry:L.presentationRegistry.map(l=>({locale:l.locale,path:l.path+pageSuffix,languageName:l.languageName,flagAsset:l.flagAsset})),messages:L.catalogue(locale)};
-  const document={documentElement:{dataset:{},lang:locale},
+  const data={locale,registry:L.presentationRegistry.map(l=>({locale:l.locale,canonical:l.canonical,path:l.path+pageSuffix,nativeName:l.nativeName,flagAsset:l.flagAsset})),messages:L.catalogue(locale)};
+  // As the early script in the page does before this one runs.
+  const document={documentElement:{dataset:theme ? {theme} : {},lang:locale,style:{setProperty(){}}},
     getElementById:()=>({textContent:JSON.stringify(data)}),
     querySelector:s=>({'[data-language-picker]':picker,'[data-language-trigger]':trigger,'[data-language-menu]':menu,'[data-language-suggestion]':note,'[data-theme-toggle]':toggle,'[data-theme-label]':label,'[data-store-note]':storeNote}[s]||null),
     querySelectorAll:s=>s==='[data-store]'?[store]:(s==='[data-language-option]'?options:[]),
@@ -45,10 +47,11 @@ function pageRuntime(locale, preferences = ['en'], saved, ua = 'Chrome/140', pag
   const windowEvents={};
   const location={search:'?campaign=test',hash:'#faq',assign:url=>navigation.push(url)};
   const context={document,URL,navigator:{languages:preferences,userAgent:ua},
-    localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},
-    window:{location,addEventListener:(type,handler)=>{windowEvents[type]=handler;}}};
+    localStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},
+    window:{location,addEventListener:(type,handler)=>{windowEvents[type]=handler;},
+      matchMedia:()=>({matches:systemDark,addEventListener(){}})}};
   vm.runInNewContext(script,context);
-  return {document,picker,trigger,menu,flag,name,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation,windowEvents,location};
+  return {site:context.window.TabToolsSite,document,picker,trigger,menu,flag,name,options,note,toggle,label,store,copy,icon,storeNote,storage,navigation,windowEvents,location};
 }
 
 test('explicit language URLs are never replaced by saved or browser preferences',()=>{
@@ -56,7 +59,8 @@ test('explicit language URLs are never replaced by saved or browser preferences'
   assert.equal(p.document.documentElement.lang,'ja');
   assert.deepEqual(p.navigation,[]);
   assert.equal(p.note.children[0].href,'/de/?campaign=test#faq');
-  assert.match(p.note.children[0].textContent,/German/);
+  // The suggestion names the language as its own readers know it.
+  assert.match(p.note.children[0].textContent,/Deutsch/);
 });
 test('flag language picker remembers the choice and preserves queries and anchors',()=>{
   const p=pageRuntime('en');
@@ -80,8 +84,13 @@ test('language suggestions resolve aliases and retain meaningful variants',()=>{
 test('localised theme toggles and browser buttons preserve store tracking',()=>{
   const p=pageRuntime('he',['he'],undefined,'Edg/140');
   assert.equal(p.note.hidden,true);
-  assert.equal(p.document.documentElement.dataset.theme,'light');p.toggle.events.click();
+  // Nothing is chosen or saved until the visitor chooses.
+  assert.equal(p.document.documentElement.dataset.theme,undefined);
+  assert.equal(p.storage.has('tabtools-site-theme'),false);
+  assert.equal(p.toggle['aria-label'],L.catalogue('he').web_switch_to_dark_mode);
+  p.toggle.events.click();
   assert.equal(p.document.documentElement.dataset.theme,'dark');
+  assert.equal(p.storage.get('tabtools-site-theme'),'dark');
   assert.equal(p.toggle['aria-label'],L.catalogue('he').web_switchLight);
   const url=new URL(p.store.href);
   assert.equal(url.hostname,'microsoftedge.microsoft.com');
@@ -89,6 +98,42 @@ test('localised theme toggles and browser buttons preserve store tracking',()=>{
   assert.equal(url.searchParams.get('utm_source'),'tabtools.fyi');
   assert.equal(p.icon.src,'/assets/browsers/edge.svg');
   assert.equal(p.copy.children.map(n=>n.textContent).join(''),L.catalogue('he').web_addTo.replace('{browser}','Edge'));
+});
+test('the page follows the system theme until a theme is chosen, and can return to it',()=>{
+  const dark=pageRuntime('en',['en'],undefined,'Chrome/140','',{systemDark:true});
+  assert.equal(dark.document.documentElement.dataset.theme,undefined,'a dark system is followed without saving anything');
+  assert.equal(dark.site.theme(),'system');
+  assert.equal(dark.toggle['aria-label'],L.catalogue('en').web_switchLight,'the button offers the theme that is not showing');
+  dark.toggle.events.click();
+  assert.equal(dark.document.documentElement.dataset.theme,'light');
+  assert.equal(dark.storage.get('tabtools-site-theme'),'light');
+  dark.site.setTheme('system');
+  assert.equal(dark.document.documentElement.dataset.theme,undefined);
+  assert.equal(dark.storage.has('tabtools-site-theme'),false);
+  assert.equal(dark.toggle['aria-label'],L.catalogue('en').web_switchLight);
+
+  const saved=pageRuntime('en',['en'],undefined,'Chrome/140','',{systemDark:true,theme:'light'});
+  assert.equal(saved.site.theme(),'light','a saved choice wins over the system');
+  assert.equal(saved.toggle['aria-label'],L.catalogue('en').web_switch_to_dark_mode);
+
+  const p=pageRuntime('en');
+  assert.equal(p.site.accent(),'purple');
+  p.site.setAccent('green');
+  assert.equal(p.document.documentElement.dataset.accent,'green');
+  assert.equal(p.storage.get('tabtools-site-accent'),'green');
+  p.site.setAccent('not-a-colour');
+  assert.equal(p.document.documentElement.dataset.accent,undefined);
+  assert.equal(p.storage.has('tabtools-site-accent'),false);
+});
+test('dark values are the same whether the system or the visitor asks for them',()=>{
+  const css=L.fs.readFileSync(L.path.join(L.root,'website/src/styles.css'),'utf8').replace(/\r\n/g,'\n');
+  const system=css.match(/@media \(prefers-color-scheme: dark\) \{\n  :root:not\(\[data-theme="light"\]\) \{([\s\S]*?)\n  \}\n((?:  :root:not.*\n)+)\}/);
+  const chosen=css.match(/\n:root\[data-theme="dark"\] \{([\s\S]*?)\n\}\n((?::root\[data-theme="dark"\]\[data-accent.*\n)+)/);
+  assert.ok(system && chosen,'both dark blocks are present');
+  const tidy=text=>text.split('\n').map(line=>line.trim()).filter(Boolean);
+  assert.deepEqual(tidy(system[1]),tidy(chosen[1]));
+  assert.deepEqual(tidy(system[2]).map(line=>line.replace(':root:not([data-theme="light"])',':root[data-theme="dark"]')),tidy(chosen[2]));
+  assert.equal(tidy(chosen[2]).length,5,'one line per accent other than purple');
 });
 test('all generated pages have reciprocal SEO metadata, valid anchors and assets',()=>{
   const expected=L.registry.map(L.urlFor);
@@ -101,13 +146,15 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
     assert.ok(html.includes(`<html lang="${locale.canonical}" dir="${locale.direction}">`));
     assert.equal((html.match(/data-language-option/g) || []).length, L.registry.length, `${locale.locale}: language options`);
     assert.ok(html.includes('<span class="language-option-name" lang="en" dir="ltr">English</span>'));
+    // Each language is listed under its own name, in its own script and direction.
+    for(const item of L.registry)assert.ok(html.includes(`<span class="language-option-name" lang="${item.canonical}" dir="${item.direction}">${L.escape(item.nativeName)}</span>`),`${locale.locale}: ${item.locale}`);
     const order=[...html.matchAll(/data-language-option data-locale="([^"]+)"/g)].map(match=>match[1]);
     assert.deepEqual(order,L.presentationRegistry.map(item=>item.locale),`${locale.locale}: language order`);
     assert.match(html,new RegExp('class="language-trigger"[^>]+aria-label="[^"]+: ' +
-      L.escape(locale.languageName).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"'));
+      L.escape(locale.nativeName).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"'));
     assert.match(html,/class="language-flag language-flag-current"/);
     assert.ok(html.includes('src="/assets/flags/en.svg"'));
-    assert.doesNotMatch(html,/class="language-option-name"[^>]*>[^<]*(Čeština|Deutsch|Ελληνικά|עברית|日本語|한국어|Русский|Українська|中文)/);
+    assert.doesNotMatch(html,/class="language-option-name"[^>]*>(Czech|German|Greek|Hebrew|Japanese|Korean|Russian|Ukrainian|Chinese)/);
     assert.doesNotMatch(html,/English \(British\)|en-GB|en-gb/);
     assert.ok(html.includes(`<link rel="canonical" href="${L.urlFor(locale)}" />`));
     for(const alt of L.registry)assert.ok(html.includes(`hreflang="${alt.hreflang}" href="${L.urlFor(alt)}"`));
@@ -134,15 +181,13 @@ test('all generated pages have reciprocal SEO metadata, valid anchors and assets
   }
 });
 
-test('YouTube demo delegates only the playback controls it uses',()=>{
-  const expectedAllow='picture-in-picture; fullscreen';
+test('no page embeds a frame, a video or anything from another origin',()=>{
+  const headers=L.fs.readFileSync(L.path.join(L.root,'website/dist/_headers'),'utf8');
+  assert.match(headers,/frame-src 'none'/);
   for(const locale of L.registry) {
-    const file=L.path.join(L.root,'website/dist',locale.website,'index.html');
-    const html=L.fs.readFileSync(file,'utf8');
-    const iframe=html.match(/<iframe class="product-video"[\s\S]*?<\/iframe>/)?.[0];
-    assert.ok(iframe,`${locale.locale}: YouTube demo iframe`);
-    assert.equal(iframe.match(/\ballow="([^"]+)"/)?.[1],expectedAllow,`${locale.locale}: iframe Permissions Policy`);
-    assert.match(iframe,/\ballowfullscreen\b/,`${locale.locale}: iframe fullscreen support`);
+    const html=L.fs.readFileSync(L.path.join(L.root,'website/dist',locale.website,'index.html'),'utf8');
+    assert.doesNotMatch(html,/<(iframe|video|audio|object|embed)\b/,locale.locale);
+    for(const m of html.matchAll(/<(?:script|img|link rel="stylesheet")[^>]*(?:src|href)="([^"]+)"/g))assert.ok(m[1].startsWith('/'),`${locale.locale}: ${m[1]}`);
   }
 });
 
@@ -180,7 +225,7 @@ test('localized homepages retain main guide links, social previews and skip-link
     assert.match(html, /<main id="main-content" tabindex="-1">/, locale.locale);
     assert.match(html, /<meta name="twitter:card" content="summary_large_image" \/>/, locale.locale);
     for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
-      assert.ok(html.includes(`<meta ${attribute} content="https://tabtools.fyi/assets/tabtools-demo-menu-poster.jpg" />`), locale.locale);
+      assert.ok(html.includes(`<meta ${attribute} content="https://tabtools.fyi/assets/tabtools-social.png" />`), locale.locale);
     }
   }
 });
@@ -217,9 +262,8 @@ test('matching saved or first browser preference suppresses contradictory sugges
   const p=pageRuntime('ja',['xx','fr']);
   assert.equal(p.note.children[0].href,'/fr/?campaign=test#faq');
   const label=p.note.children[0].children[1];
-  assert.equal(label.lang,'en');
-  assert.equal(label.dir,'ltr');
-  assert.equal(label.textContent,'French');
+  assert.equal(label.lang,'fr');
+  assert.equal(label.textContent,'Français');
   p.note.children[0].events.click({});
   assert.equal(p.storage.get('tabtools-site-language'),'fr');
 });
@@ -284,14 +328,14 @@ test('English wording changes bind by key without changing the template', () => 
   const {applyTranslations}=require('../scripts/generate-website');
   const template=L.fs.readFileSync(L.path.join(L.root,'website/src/template.html'),'utf8');
   const catalogue=L.catalogue('en');
-  const original=catalogue.web_free_browser_tab_manager;
+  const original=catalogue.web_free_to_use_no_account;
   try {
-    catalogue.web_free_browser_tab_manager='A revised English description';
+    catalogue.web_free_to_use_no_account='A revised English description';
     const html=applyTranslations(template,L.localeInfo('en'));
     assert.ok(html.includes('A revised English description</p>'));
-    delete catalogue.web_free_browser_tab_manager;
+    delete catalogue.web_free_to_use_no_account;
     assert.throws(()=>applyTranslations(template,L.localeInfo('en')),/Missing website message/);
-  } finally {catalogue.web_free_browser_tab_manager=original;}
+  } finally {catalogue.web_free_to_use_no_account=original;}
 });
 
 
@@ -350,9 +394,29 @@ test('fully translated guides retain canonical, alternate and native same-page l
   }
 });
 
-test('guide translations reject stale, missing, untranslated or unsafe content before generation', () => {
+// A stand-in translation of the current English guides: every piece of prose
+// and every picture description differs from English and nothing else does.
+// The checks below then do not depend on how far the real translations have got.
+function standInGuideTranslation(G) {
+  const mark = text => '¡' + text;
+  const html = text => text.replace(/(^|>)([^<]+)/g, (_, tag, run) => tag + (run.trim() ? mark(run) : run))
+    .replace(/alt="([^"]+)"/g, (_, alt) => `alt="${mark(alt)}"`);
+  return {
+    sourceFingerprint: G.sourceFingerprint,
+    review: { status: 'ai-reviewed', note: 'stand-in for tests' },
+    ui: Object.fromEntries(Object.entries(G.source.ui).map(([key, value]) => [key, mark(value)])),
+    guides: G.source.guides.map(guide => ({
+      ...guide,
+      ...Object.fromEntries(['title', 'shortTitle', 'description', 'category', 'lede', 'answer'].map(key => [key, mark(guide[key])])),
+      sections: guide.sections.map(section => ({ ...section, title: mark(section.title), html: html(section.html) }))
+    }))
+  };
+}
+
+test('guide translations reject stale, missing, untranslated or unsafe content', () => {
   const G = require('../website/guide-localisation.cjs');
-  const original = G.catalogue('zh-CN');
+  const original = standInGuideTranslation(G);
+  assert.doesNotThrow(() => G.validateTranslation(structuredClone(original), 'zh-CN'));
   for (const [mutate, message] of [
     [value => { value.sourceFingerprint = 'stale'; }, /stale English source/],
     [value => { delete value.ui.readGuide; }, /UI keys differ/],
@@ -369,10 +433,49 @@ test('guide translations reject stale, missing, untranslated or unsafe content b
   }
 });
 
+test('a guide translation older than its English is still published, checked for what does not depend on the wording', () => {
+  const G = require('../website/guide-localisation.cjs');
+  const older = () => ({ ...standInGuideTranslation(G), sourceFingerprint: 'an earlier English version' });
+  assert.doesNotThrow(() => G.validatePending(older(), 'de'));
+  // What it says may be out of date; what it is made of may not be unsafe or incomplete.
+  for (const [mutate, message] of [
+    [value => { value.review.status = 'draft'; }, /missing review status/],
+    [value => { delete value.ui.readGuide; }, /UI keys differ/],
+    [value => { value.ui.readTime = 'no duration placeholder'; }, /placeholders/],
+    [value => { value.guides.pop(); }, /added, removed or reordered/],
+    [value => { value.guides[0].title = '<b>Title</b>'; }, /invalid title/],
+    [value => { value.guides[0].sections[0].id = 'Not An Anchor'; }, /invalid section anchor/],
+    [value => { value.guides[0].sections[0].html += '<script>alert(1)</script>'; }, /unsafe markup/],
+    [value => { value.guides[0].sections[0].html = value.guides[0].sections[0].html.replace('href=', 'onclick="alert(1)" href='); }, /unsafe markup/],
+    [value => { value.guides[0].sections[0].html += '<a href="javascript:alert(1)">x</a>'; }, /unsafe markup/]
+  ]) {
+    const value = older();
+    mutate(value);
+    assert.throws(() => G.validatePending(value, 'de'), message);
+  }
+  // Validation is what reports them, and fails for them on main.
+  const pending = G.pending();
+  assert.ok(pending.every(locale => locale !== 'en' && L.registry.some(item => item.locale === locale)));
+  const { spawnSync } = require('node:child_process');
+  const run = allowed => spawnSync(process.execPath, ['scripts/validate-localisation.js'], {
+    cwd: L.root, encoding: 'utf8', env: { ...process.env, TABTOOLS_PENDING_TRANSLATIONS: allowed ? '1' : '' }
+  });
+  const coverage = L.path.join(L.root, 'localisation/COVERAGE.md');
+  const before = L.fs.readFileSync(coverage, 'utf8');
+  try {
+    const strict = run(false);
+    const report = strict.stdout + strict.stderr;
+    for (const locale of pending) assert.ok(report.includes(locale + ': guides were translated from an earlier English version'), locale);
+    if (pending.length) assert.notEqual(strict.status, 0, 'pending guides fail validation unless pending translations are allowed');
+    assert.equal(L.fs.readFileSync(coverage, 'utf8'), before, 'coverage is the same in both modes');
+  } finally {
+    L.fs.writeFileSync(coverage, before);
+  }
+});
 
 test('adding an untranslated English guide invalidates existing translation catalogues', () => {
   const G = require('../website/guide-localisation.cjs');
-  const value = structuredClone(G.catalogue('zh-CN'));
+  const value = standInGuideTranslation(G);
   const added = structuredClone(G.source.guides[0]);
   added.slug = 'new-untranslated-guide';
   G.source.guides.push(added);
@@ -380,7 +483,145 @@ test('adding an untranslated English guide invalidates existing translation cata
     // Shape validation is an additional guard even if someone mistakenly
     // copies the current fingerprint without translating the new article.
     assert.throws(() => G.validateTranslation(value, 'zh-CN'), /missing guide/);
+    assert.throws(() => G.validatePending({ ...value, sourceFingerprint: 'earlier' }, 'zh-CN'), /added, removed or reordered/);
   } finally {
     G.source.guides.pop();
+  }
+});
+
+test('a page shows English for a string its language does not have yet, and English itself has no fallback', () => {
+  const { applyTranslations, message } = require('../scripts/generate-website');
+  const template = L.fs.readFileSync(L.path.join(L.root, 'website/src/template.html'), 'utf8');
+  const french = L.catalogue('fr');
+  const original = french.web_faq;
+  try {
+    delete french.web_faq;
+    assert.equal(message(L.localeInfo('fr'), 'web_faq'), L.catalogue('en').web_faq);
+    assert.ok(applyTranslations(template, L.localeInfo('fr')).includes(`<a href="#faq">${L.escape(L.catalogue('en').web_faq)}</a>`));
+  } finally { french.web_faq = original; }
+  assert.equal(message(L.localeInfo('en'), 'web_not_a_string'), undefined);
+});
+
+test('pages carry only the text their scripts show, and every string those scripts ask for', () => {
+  const { runtimeKeys } = require('../scripts/generate-website');
+  const demo = require('../website/demo-content.cjs');
+  const asked = (file, pattern) => new Set([...L.fs.readFileSync(L.path.join(L.root, file), 'utf8').matchAll(pattern)].map(match => match[1]));
+  assert.deepEqual([...asked('website/src/script.js', /\bmessage\((?:\s*\w+\s*\?\s*)?'(\w+)'/g)].filter(key => !runtimeKeys.includes(key)), []);
+  for (const key of ['web_view', 'web_addTo']) assert.ok(runtimeKeys.includes(key), key);
+  assert.deepEqual([...asked('website/src/demo.js', /\btext\('(\w+)'/g)].filter(key => !demo.messageKeys.includes(key)), []);
+  for (const locale of L.registry) {
+    const home = L.fs.readFileSync(L.path.join(L.root, 'website/dist', locale.website, 'index.html'), 'utf8');
+    const data = JSON.parse(home.match(/id="locale-data">([\s\S]*?)<\/script>/)[1]);
+    assert.deepEqual(Object.keys(data.messages), runtimeKeys, locale.locale);
+    assert.deepEqual(Object.keys(data.demo.messages), demo.messageKeys, locale.locale);
+    for (const [key, value] of Object.entries({ ...data.messages, ...data.demo.messages })) {
+      assert.ok(typeof value === 'string' ? value.trim() : value && typeof value.other === 'string', `${locale.locale}: ${key}`);
+    }
+    assert.deepEqual(data.demo.tabs, demo.tabs, locale.locale);
+    const guide = L.fs.readFileSync(L.path.join(L.root, 'website/dist', locale.website, 'guides/index.html'), 'utf8');
+    const guideData = JSON.parse(guide.match(/id="locale-data">([\s\S]*?)<\/script>/)[1]);
+    assert.equal(guideData.demo, undefined, `${locale.locale}: guides do not carry the home page's sample tabs`);
+    assert.doesNotMatch(guide, /src="\/demo\.js"/, locale.locale);
+  }
+});
+
+test('the working popup follows the extension\'s rules for what each action closes', () => {
+  const model = require('../website/src/demo.js');
+  const { tabs, threshold } = require('../website/demo-content.cjs');
+  const ids = list => list.map(tab => tab.id);
+  assert.equal(tabs.filter(tab => tab.active).length, 1);
+
+  // Sites: most tabs first, then by name.
+  assert.deepEqual(model.sites(tabs).map(site => [site.host, site.count]), [
+    ['github.com', 6], ['docs.google.com', 4], ['youtube.com', 4], ['en.wikipedia.org', 3], ['stackoverflow.com', 3],
+    ['news.ycombinator.com', 2], ['calendar.google.com', 1], ['mail.google.com', 1]
+  ]);
+
+  // Duplicates: whole addresses; the first copy stays, and the copy in view always stays.
+  assert.deepEqual(ids(model.duplicates(tabs)), [12, 16, 19]);
+  const inView = tabs.map(tab => ({ ...tab, active: tab.id === 19 }));
+  assert.deepEqual(ids(model.duplicates(inView)), [5, 12, 16], 'the copy in view stays instead of the first');
+  const fragments = [{ id: 1, url: 'mail.example/#inbox/1' }, { id: 2, url: 'mail.example/#inbox/2' }];
+  assert.deepEqual(model.duplicates(fragments), [], 'the part after # is part of the address');
+
+  // Inactive: at least the chosen time, longest first, never the tab in view.
+  const idle = model.inactive(tabs, threshold);
+  assert.equal(idle.length, 11);
+  assert.deepEqual(idle.map(tab => tab.idle), [...idle.map(tab => tab.idle)].sort((a, b) => b - a));
+  assert.ok(idle.every(tab => tab.idle >= threshold && !tab.active));
+  assert.equal(model.inactive(tabs, 240).length, 8);
+  assert.deepEqual(model.inactive(tabs.map(tab => ({ ...tab, active: tab.id === 3 })), threshold).some(tab => tab.id === 3), false);
+
+  // Typing: a dot names a site and its subdomains; other text matches titles and addresses.
+  assert.deepEqual([...new Set(model.matches(tabs, 'google.com').map(model.hostOf))].sort(), ['calendar.google.com', 'docs.google.com', 'mail.google.com']);
+  assert.deepEqual(ids(model.matches(tabs, 'www.YouTube.com')), [3, 9, 16, 22]);
+  assert.deepEqual(ids(model.matches(tabs, 'wiki')), [5, 13, 19]);
+  assert.deepEqual(ids(model.matches(tabs, 'TABTOOLS/ISSUES')), [4], 'a keyword is also looked for in the address');
+  assert.deepEqual(model.matches(tabs, '   '), []);
+  assert.deepEqual(model.matches(tabs, 'e.com'), [], 'a site is matched whole, not by the end of its name');
+
+  // Sorting: sites by count then name, each site's tabs in their order, nothing lost.
+  const { tabs: order, moved } = model.sorted(tabs);
+  assert.deepEqual(order.map(model.hostOf).filter((host, index, all) => host !== all[index - 1]),
+    model.sites(tabs).map(site => site.host));
+  assert.deepEqual(ids(order).slice(0, 6), [1, 4, 7, 12, 17, 24]);
+  assert.deepEqual(ids(order).sort((a, b) => a - b), ids(tabs));
+  assert.equal(moved, order.filter((tab, index) => tabs[index] !== tab).length);
+  assert.equal(model.sorted(order).moved, 0, 'sorted tabs have nothing left to move');
+
+  // The stepper moves through the popup's eight choices and stops at each end.
+  assert.deepEqual(model.THRESHOLDS, [30, 60, 120, 240, 480, 1440, 4320, 10080]);
+  assert.equal(model.step(120, 1), 240);
+  assert.equal(model.step(120, -1), 60);
+  assert.equal(model.step(45, -1), 30);
+  assert.equal(model.step(30, -1), undefined);
+  assert.equal(model.step(10080, 1), undefined);
+  assert.deepEqual([model.duration(120), model.duration(4320), model.duration(10080), model.duration(45)],
+    [{ value: 2, unit: 'hour' }, { value: 3, unit: 'day' }, { value: 1, unit: 'week' }, { value: 45, unit: 'minute' }]);
+  assert.deepEqual([model.age(59), model.age(700), model.age(4400)],
+    [{ value: 59, unit: 'minute' }, { value: 11, unit: 'hour' }, { value: 3, unit: 'day' }]);
+
+  const format = model.formatter('en', { tabCount: { one: '{count} tab', other: '{count} tabs' }, closeSiteLabel: 'Close tabs from {site}' });
+  assert.equal(format.text('tabCount', { count: 1 }), '1 tab');
+  assert.equal(format.text('tabCount', { count: 2492 }), '2,492 tabs');
+  assert.equal(format.text('closeSiteLabel', { site: 'example.com' }), 'Close tabs from example.com');
+  assert.equal(format.unit({ value: 2, unit: 'hour' }, 'short'), '2 hr');
+});
+
+test('the home page draws the working popup\'s starting state without scripts', () => {
+  const model = require('../website/src/demo.js');
+  const demo = require('../website/demo-content.cjs');
+  for (const locale of L.registry) {
+    const html = L.fs.readFileSync(L.path.join(L.root, 'website/dist', locale.website, 'index.html'), 'utf8');
+    const strip = [...html.matchAll(/class="demo-tab(?: is-active)?" data-tab="(\d+)" data-host="([^"]+)"/g)];
+    assert.deepEqual(strip.map(match => [Number(match[1]), match[2]]), demo.tabs.map(tab => [tab.id, model.hostOf(tab)]), locale.locale);
+    const rows = [...html.matchAll(/data-pp-site data-host="([^"]+)"[^>]*>.*?<span class="pp-ticks">((?:<i><\/i>)*)<\/span><span class="pp-count">([^<]+)<\/span>/g)];
+    assert.deepEqual(rows.map(match => [match[1], match[2].length / 7, match[3]]),
+      model.sites(demo.tabs).map(site => [site.host, site.count, String(site.count)]), `${locale.locale}: one mark per tab`);
+    // It is a picture until its script runs: no button that does nothing.
+    assert.match(html, /<div class="demo" inert>/, locale.locale);
+    assert.equal((html.match(/data-pp-template="/g) || []).length, 3, locale.locale);
+  }
+});
+
+test('every guide picture is shown by a guide, and every picture a guide shows exists', () => {
+  const directory = L.path.join(L.root, 'website/dist/assets/guides');
+  const files = L.fs.readdirSync(directory).filter(name => name.endsWith('.png')).sort();
+  const shown = new Set();
+  for (const locale of L.registry) {
+    for (const guide of require('../website/guides-content.cjs')) {
+      const html = L.fs.readFileSync(L.path.join(L.root, 'website/dist', locale.website, 'guides', guide.slug, 'index.html'), 'utf8');
+      for (const match of html.matchAll(/src="\/assets\/guides\/([^"]+)"/g)) shown.add(match[1]);
+    }
+  }
+  // A picture nothing shows is left over from an earlier version: delete it.
+  assert.deepEqual(files, [...shown].sort());
+  // Pictures of the popup alone are twice the popup's 380 pixels wide.
+  for (const name of files.filter(name => name.startsWith('popup-'))) {
+    const header = L.fs.readFileSync(L.path.join(directory, name)).subarray(16, 24);
+    assert.equal(header.readUInt32BE(0), 760, name);
+    const english = L.fs.readFileSync(L.path.join(L.root, 'website/dist/guides', require('../website/guides-content.cjs')
+      .find(guide => guide.sections.some(section => section.html.includes(name))).slug, 'index.html'), 'utf8');
+    assert.ok(english.includes(`src="/assets/guides/${name}" width="380" height="${header.readUInt32BE(4) / 2}"`), name);
   }
 });

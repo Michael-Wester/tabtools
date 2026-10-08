@@ -154,6 +154,13 @@ for (const manifestName of ['chrome', 'firefox', 'edge']) {
   if (manifest.description !== '__MSG_extensionDescription__') fail(manifestName + ': manifest description is not localized');
 }
 
+// Guides are translated a whole catalogue at a time, so one that was made from
+// earlier English is reported once per language.
+for (const locale of require('../website/guide-localisation.cjs').pending()) {
+  awaitTranslation(locale + ': guides were translated from an earlier English version');
+  localeErrors.set(locale, (localeErrors.get(locale) || 0) + 1);
+}
+
 const sitemap = fs.readFileSync(path.join(L.root, 'website', 'dist', 'sitemap.xml'), 'utf8');
 if (fs.readFileSync(path.join(L.root, 'marketing', 'INDEX.md'), 'utf8') !== listingIndex()) {
   fail('stale store-text index; run node scripts/generate-listings.js');

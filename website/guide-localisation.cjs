@@ -72,11 +72,58 @@ function validateTranslation(value, locale) {
   return value;
 }
 
-function catalogue(locale) {
-  if (locale === 'en') return source;
-  const file = path.join(__dirname, 'guide-locales', locale + '.json');
-  // Never silently publish English body text under a translated URL.
-  return validateTranslation(JSON.parse(fs.readFileSync(file, 'utf8')), locale);
+// A release branch may hold English guide text ahead of its translations. A
+// translation made from earlier English is then still published as it stands,
+// and scripts/validate-localisation.js reports it as awaiting translation (and
+// fails for it unless TABTOOLS_PENDING_TRANSLATIONS=1). It cannot be compared
+// with the new English paragraph by paragraph, so only what does not depend on
+// the English wording is checked here: its review, its strings and the pages
+// it must provide. The page checks that follow generation still cover its links
+// and the security policy still covers its markup.
+function isCurrent(value) {
+  return value.sourceFingerprint === sourceFingerprint;
 }
 
-module.exports = { source, sourceFingerprint, routeFor, catalogue, validateTranslation, markupShape };
+function validatePending(value, locale) {
+  const label = `Guide translation ${locale}`;
+  assert.equal(value.review?.status, 'ai-reviewed', `${label}: missing review status`);
+  assert.deepEqual(Object.keys(value.ui || {}).sort(), Object.keys(source.ui).sort(), `${label}: UI keys differ`);
+  for (const [key, original] of Object.entries(source.ui)) {
+    const translated = value.ui[key];
+    assert(typeof translated === 'string' && translated.trim() && !/[<>]/.test(translated), `${label}: invalid ${key}`);
+    assert.deepEqual((translated.match(/\{\w+\}/g) || []).sort(), (original.match(/\{\w+\}/g) || []).sort(), `${label}: changed ${key} placeholders`);
+  }
+  assert.deepEqual((value.guides || []).map(guide => guide.slug), source.guides.map(guide => guide.slug),
+    `${label}: a guide was added, removed or reordered in English; its translations belong in the same change`);
+  for (const guide of value.guides) {
+    for (const key of ['title', 'shortTitle', 'description', 'category', 'lede', 'answer']) {
+      assert(typeof guide[key] === 'string' && guide[key].trim() && !/[<>]/.test(guide[key]), `${label}/${guide.slug}: invalid ${key}`);
+    }
+    assert(Array.isArray(guide.sections) && guide.sections.length, `${label}/${guide.slug}: missing sections`);
+    for (const section of guide.sections) {
+      assert(/^[a-z][a-z0-9-]*$/.test(section.id || ''), `${label}/${guide.slug}: invalid section anchor`);
+      assert(typeof section.title === 'string' && section.title.trim() && !/[<>]/.test(section.title), `${label}: invalid section title`);
+      assert(typeof section.html === 'string' && section.html.trim(), `${label}: empty section body`);
+      assert(!/<\s*(script|style|iframe|object|embed|form|link|meta)\b|\son\w+\s*=|javascript:/i.test(section.html), `${label}/${guide.slug}#${section.id}: unsafe markup`);
+    }
+  }
+  return value;
+}
+
+function read(locale) {
+  return JSON.parse(fs.readFileSync(path.join(__dirname, 'guide-locales', locale + '.json'), 'utf8'));
+}
+
+function catalogue(locale) {
+  if (locale === 'en') return source;
+  // Never silently publish English body text under a translated URL.
+  const value = read(locale);
+  return isCurrent(value) ? validateTranslation(value, locale) : validatePending(value, locale);
+}
+
+// Languages whose guides were translated from English that has since changed.
+function pending() {
+  return L.registry.map(item => item.locale).filter(locale => locale !== 'en' && !isCurrent(read(locale)));
+}
+
+module.exports = { source, sourceFingerprint, routeFor, catalogue, validateTranslation, validatePending, pending, markupShape };

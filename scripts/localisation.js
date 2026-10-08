@@ -14,11 +14,12 @@ const registry = registrySource.locales.map(locale => ({
 
 // Keep the source registry stable for URL, SEO and store mappings. The website
 // picker gets a separate deterministic presentation order: English first, then
-// the English display names in fixed English collation.
+// each language under its own name, so a reader can find theirs without
+// knowing what it is called in English.
 const presentationRegistry = [...registry].sort((left, right) => {
   if (left.locale === 'en') return -1;
   if (right.locale === 'en') return 1;
-  return left.languageName.localeCompare(right.languageName, 'en', {
+  return left.nativeName.localeCompare(right.nativeName, 'en', {
     sensitivity: 'base',
     numeric: false,
   }) || left.locale.localeCompare(right.locale, 'en');

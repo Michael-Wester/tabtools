@@ -1,6 +1,6 @@
 # Store-text index
 
-Chrome descriptions preserve the final 4.0.3 dashboard copy captured on 1 October 2026. Firefox and Edge remain proposed next-release text. Generation does not publish listings. See [maintenance and release checklist](README.md).
+All English text is proposed for 5.0.0. In the other languages, Chrome descriptions are the 4.0.3 dashboard copy captured on 1 October 2026, and Firefox and Edge descriptions are translations of the earlier English, until the 5.0.0 translations are merged. Generation does not publish listings. See [maintenance and release checklist](README.md).
 
 | Locale | Chrome | Firefox | Edge |
 |---|---|---|---|

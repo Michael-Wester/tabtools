@@ -12,7 +12,8 @@ module.exports = defineConfig({
   retries: 0,
   workers: process.env.CI ? 4 : undefined,
   timeout: 30_000,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  // On GitHub a failure is also written onto the pull request, with its message.
+  reporter: [['list'], ['html', { open: 'never' }], ...(process.env.GITHUB_ACTIONS ? [['github']] : [])],
   use: {
     baseURL: 'http://127.0.0.1:4173',
     reducedMotion: 'reduce',

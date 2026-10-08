@@ -40,7 +40,7 @@ for (const [pattern, values] of rules) {
 }
 assert.equal(headers.get('x-frame-options'), 'DENY', 'X-Frame-Options must be DENY');
 assert.equal(headers.get('x-content-type-options'), 'nosniff', 'X-Content-Type-Options must be nosniff');
-assert.equal(headers.get('referrer-policy'), 'strict-origin-when-cross-origin', 'Keep the YouTube-compatible referrer policy');
+assert.equal(headers.get('referrer-policy'), 'strict-origin-when-cross-origin', 'Referrer-Policy must be strict-origin-when-cross-origin');
 const hsts = headers.get('strict-transport-security') || '';
 assert(/(?:^|;\s*)max-age=\d+(?:;|$)/.test(hsts) && Number(hsts.match(/max-age=(\d+)/)[1]) >= 31536000,
   'HSTS must have max-age of at least 31536000 seconds');
@@ -68,8 +68,9 @@ assert(scripts.includes("'self'") && scripts.every(value => value === "'self'" |
   'CSP script-src must allow self and exact SHA-256 hashes only');
 // These override script-src, so reject them until this validator explicitly supports them.
 assert(!policy.has('script-src-elem') && !policy.has('script-src-attr'), 'Unexpected CSP script-src override');
-const frames = policy.get('frame-src') || [];
-assert.deepEqual(frames, ['https://www.youtube-nocookie.com'], 'CSP must limit frames to the privacy-enhanced YouTube origin');
+// The site embeds nothing from other origins. Allowing a frame again is a
+// decision to review here, not a side effect of editing a page.
+assert.deepEqual(policy.get('frame-src'), ["'none'"], 'CSP must allow no frames');
 
 function attributes(source) {
   const attrs = new Map();
@@ -114,10 +115,7 @@ for (const file of files) {
       assert(!name.startsWith('on') && name !== 'style', `${label}: inline ${name} attribute on ${tag} is not CSP-compatible`);
     }
     assert(tag !== 'style', `${label}: use the local stylesheet instead of inline styles`);
-    if (tag === 'iframe') {
-      assert(attrs.has('src') && !attrs.has('srcdoc'), `${label}: iframe requires an explicit allowed URL`);
-      assert(frames.includes(new URL(attrs.get('src'), base).origin), `${label}: iframe origin is not allowed by CSP`);
-    }
+    assert(tag !== 'iframe', `${label}: frames are not allowed by CSP`);
   }
 }
 console.log(`Website security checks passed: ${files.length} HTML file(s), ${inlineCount} inline script hash(es), security headers.`);

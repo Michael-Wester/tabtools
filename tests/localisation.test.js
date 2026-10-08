@@ -45,7 +45,7 @@ function validationSandbox(run) {
   const os = require('node:os');
   const { spawnSync } = require('node:child_process');
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tabtools-validate-'));
-  const wanted = /^(scripts|localisation|marketing[\\/](sources|listings|INDEX\.md)|src[\\/](overrides|shared[\\/](_locales|i18n-fallback\.js))|website[\\/]dist[\\/]([^\\/]+[\\/]index\.html|index\.html|sitemap\.xml))([\\/]|$)/;
+  const wanted = /^(scripts|localisation|marketing[\\/](sources|listings|INDEX\.md)|src[\\/](overrides|shared[\\/](_locales|i18n-fallback\.js))|website[\\/](guide-localisation\.cjs|guide-ui\.cjs|guides-content\.cjs|guide-locales|dist[\\/]([^\\/]+[\\/]index\.html|index\.html|sitemap\.xml)))([\\/]|$)/;
   const ancestors = /^(marketing|src|src[\\/]shared|website|website[\\/]dist|website[\\/]dist[\\/][^\\/]+)$/;
   try {
     fs.cpSync(L.root, directory, { recursive: true, filter: source => {
@@ -170,18 +170,34 @@ test('store text omits website-only navigation and its index links to current li
   assert.doesNotMatch(index, /en-GB/);
 });
 
-test('Chrome listings preserve the final browser-specific description snapshot for all locales', () => {
+test('Chrome listings keep their browser-specific descriptions, with English written for 5.0.0', () => {
   const snapshot = require('../marketing/sources/chrome-descriptions.json');
   const { listingDescription, listing, stores, fullDescription } = require('../scripts/generate-listings');
   assert.equal(snapshot.extensionVersion, '4.0.3');
   assert.deepEqual(Object.keys(snapshot.locales).sort(), L.registry.map(locale => locale.locale).sort());
+  // English says what 5.0.0 does, in the words of the website's own strings.
   const english = snapshot.locales.en.description;
-  assert.match(english, /including the current tab and pinned tabs/);
+  assert.equal(snapshot.locales.en.proposedFor, '5.0.0');
+  assert.match(english, /including the one you are on\. Pinned tabs stay open unless you turn that off in Settings\./);
+  assert.doesNotMatch(english, /and pinned tabs|exact domain|Choose an inactivity threshold/);
   assert.match(english, /right-click within a web page/);
+  const source = L.catalogue('en');
+  for (const key of ['web_bring_tabs_from_the_same', 'web_close_extra_copies_of_the', 'web_type_a_word_to_match',
+    'web_choose_an_inactivity_threshold_in', 'web_the_tabtools_extension_processes_tab']) {
+    assert.ok(english.includes(source[key]), key);
+  }
+  assert.ok(english.includes(source.web_siteBody.replace(/<[^>]+>/g, '')));
+  assert.ok(listing(L.localeInfo('en'), { ...stores.chrome, key: 'chrome' }).includes('- Description: proposed for Chrome 5.0.0; not entered in the publisher dashboard'));
   for (const locale of L.registry) {
     const entry = snapshot.locales[locale.locale];
     assert.equal(entry.storeLocale, locale.stores.chrome, locale.locale);
-    assert.equal(entry.englishSourceFingerprint, L.fingerprint(english), locale.locale);
+    // A language is either translated from the current English or still holds
+    // the captured 4.0.3 text; validation reports the second as awaiting translation.
+    assert.match(entry.englishSourceFingerprint, /^[a-f0-9]{64}$/, locale.locale);
+    if (entry.englishSourceFingerprint !== L.fingerprint(english)) {
+      assert.equal(entry.proposedFor, undefined, locale.locale + ': text for 5.0.0 must be made from the current English');
+      assert.ok(listing(locale, { ...stores.chrome, key: 'chrome' }).includes('- Description snapshot: ' + snapshot.capturedOn + '; Chrome 4.0.3'), locale.locale);
+    }
     assert.equal(entry.descriptionFingerprint, L.fingerprint(entry.description), locale.locale);
     assert.match(entry.description.split('\n')[0], /Chrome/, locale.locale);
     assert.doesNotMatch(entry.description, /Firefox|\bEdge\b|<[^>]+>/, locale.locale);

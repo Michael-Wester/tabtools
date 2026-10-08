@@ -11,6 +11,7 @@ on:
       - 'marketing/**'
       - 'package.json'
       - 'website/check-security.cjs'
+      - 'website/demo-content.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
       - 'website/guide-ui.cjs'
@@ -27,6 +28,7 @@ on:
       - 'marketing/**'
       - 'package.json'
       - 'website/check-security.cjs'
+      - 'website/demo-content.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
       - 'website/guide-ui.cjs'
@@ -68,7 +70,9 @@ jobs:
           node scripts/generate-website.js
           node scripts/generate-listings.js
       - name: Validate JavaScript
-        run: node --check website/dist/script.js
+        run: |
+          node --check website/dist/script.js
+          node --check website/dist/demo.js
       - name: Validate localisation
         env:
           # Previews of a release branch may be ahead of their translations; main is strict.

@@ -20,9 +20,9 @@ concurrency:
 jobs:
   mobile:
     runs-on: ubuntu-latest
-    # The complete localized-guide matrix takes about 14 minutes including
+    # The complete matrix has taken between 17 and 21 minutes including
     # browser installation; leave room for ordinary runner variation.
-    timeout-minutes: 20
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: website/tests

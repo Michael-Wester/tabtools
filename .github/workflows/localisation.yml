@@ -8,6 +8,7 @@ on:
       - 'build.js'
       - 'build.ps1'
       - 'website/src/**'
+      - 'website/demo-content.cjs'
       - 'website/guide-ui.cjs'
       - 'website/guide-localisation.cjs'
       - 'website/guide-locales/**'

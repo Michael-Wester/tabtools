@@ -10,6 +10,7 @@ module.exports = defineConfig({
   // A real browser popup is timing-sensitive; one retry keeps a slow runner from failing the run.
   retries: process.env.CI ? 1 : 0,
   expect: { timeout: 7_000 },
-  reporter: 'line',
+  // On GitHub a failure is also written onto the pull request, with its message.
+  reporter: process.env.GITHUB_ACTIONS ? [['line'], ['github']] : 'line',
   outputDir: 'test-results/native-extension'
 });

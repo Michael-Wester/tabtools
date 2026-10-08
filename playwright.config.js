@@ -9,7 +9,8 @@ module.exports = defineConfig({
   workers: 2,
   timeout: 30_000,
   expect: { timeout: 5_000 },
-  reporter: 'line',
+  // On GitHub a failure is also written onto the pull request, with its message.
+  reporter: process.env.GITHUB_ACTIONS ? [['line'], ['github']] : 'line',
   use: {
     baseURL: 'http://127.0.0.1:4173',
     // Firefox's DOM trace snapshotter reads layout during document navigation,

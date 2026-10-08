@@ -9,7 +9,7 @@ const path = require('node:path');
 const L = require('../scripts/localisation');
 const G = require('./guide-localisation.cjs');
 const base = 'https://tabtools.fyi';
-const updated = '2026-10-01';
+const updated = '2026-10-09';
 const escape = L.escape;
 const json = value => JSON.stringify(value, null, 2).replace(/</g, '\\u003c');
 const format = (text, values) => text.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? `{${key}}`);
@@ -18,6 +18,15 @@ const storeLinks = [
   ['firefox', 'Firefox', 'https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/'],
   ['edge', 'Edge', 'https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh']
 ];
+
+// The popup's own drawings stand for the three jobs.
+const stroke = 'width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+const guideIcons = {
+  'close-tabs-from-same-website': `<svg ${stroke}><rect x="2.5" y="2.5" width="11" height="11" rx="3"></rect><path d="M6 6l4 4M10 6l-4 4"></path></svg>`,
+  'close-duplicate-tabs': `<svg ${stroke}><rect x="5.5" y="5.5" width="8" height="8" rx="2"></rect><path d="M10.5 3.5v-.3A1.2 1.2 0 0 0 9.3 2H3.2A1.2 1.2 0 0 0 2 3.2v6.1a1.2 1.2 0 0 0 1.2 1.2h.3"></path><path d="M7.7 9.5h3.6"></path></svg>`,
+  'sort-tabs-by-website': `<svg ${stroke}><path d="M2.5 4h11M2.5 8h7.5M2.5 12h4"></path></svg>`
+};
+const go = '<svg class="go" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"></path></svg>';
 
 function readTime(guide) {
   // Use the same estimate across equivalent translations, including CJK text
@@ -53,7 +62,7 @@ function buildGuides({ check = false } = {}) {
     function install(placement) {
       return `<aside class="guide-install" aria-label="${escape(ui.getTabTools)}">
     <div><p class="eyebrow">${escape(ui.installEyebrow)}</p><h2>${escape(ui.installHeading)}</h2><p>${escape(ui.installBody)}</p></div>
-    <div class="guide-store-links">${storeLinks.map(([key, name, url]) => `<a class="button button-secondary" data-store="${key}" data-utm-placement="${placement}" href="${escape(`${url}?utm_source=tabtools.fyi&utm_medium=referral&utm_campaign=website&utm_content=${placement}_${key}`)}" target="_blank" rel="noopener"><img src="/assets/browsers/${key}.svg" width="24" height="24" alt="" /><span data-browser-copy>${escape(format(messages.web_addTo, { browser: name }))}</span></a>`).join('')}</div>
+    <div class="guide-store-links">${storeLinks.map(([key, name, url]) => `<a class="button button-secondary" data-store="${key}" data-utm-placement="${placement}" href="${escape(`${url}?utm_source=tabtools.fyi&utm_medium=referral&utm_campaign=website&utm_content=${placement}_${key}`)}" target="_blank" rel="noopener"><img class="browser-icon" src="/assets/browsers/${key}.svg" width="24" height="24" alt="" /><span data-browser-copy>${escape(format(messages.web_addTo, { browser: name }))}</span></a>`).join('')}</div>
     <p class="mobile-note" data-mobile-note hidden>${escape(messages.web_viewing_on_a_phone_or)}</p>
   </aside>`;
     }
@@ -66,14 +75,16 @@ function buildGuides({ check = false } = {}) {
       // guide. The runtime already appends the current query and hash.
       const pageHeader = header.replace(/(<a class="language-(?:option|fallback-option)"[^>]*\bhref=")([^"]+)"/g,
         (_, prefix, homePath) => prefix + homePath + suffix + '"');
-      const pageData = { ...homeData, registry: homeData.registry.map(item => ({ ...item, path: item.path + suffix })) };
+      const { demo: _homeOnly, ...sharedData } = homeData;
+      const pageData = { ...sharedData, registry: homeData.registry.map(item => ({ ...item, path: item.path + suffix })) };
       const alternates = L.registry.map(item => `    <link rel="alternate" hreflang="${escape(item.hreflang)}" href="${base + G.routeFor(item, slug)}" />`).join('\n');
       return `<!doctype html>
 <html lang="${escape(locale.canonical)}" dir="${escape(locale.direction)}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f6f4" />
+    <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1b21" media="(prefers-color-scheme: dark)" />
     <title>${escape(title)} | TabTools</title>
     <meta name="description" content="${escape(description)}" />
     <link rel="canonical" href="${url}" />
@@ -108,9 +119,9 @@ ${alternates}
 
     function cards(items) {
       return `<div class="guide-cards">${items.map(guide => `<a class="guide-card" href="${G.routeFor(locale, guide.slug)}">
-    <div class="guide-card-top"><span class="guide-number">0${guides.indexOf(guide) + 1}</span><span class="guide-category">${escape(guide.category)}</span></div>
-    <h2>${escape(guide.shortTitle)}</h2><p>${escape(guide.description)}</p>
-    <span class="guide-card-bottom"><span>${escape(readTimeLabel(guide))}</span><span class="guide-card-link">${escape(ui.readGuide)} <span aria-hidden="true">↗</span></span></span>
+    <span class="guide-icon">${guideIcons[guide.slug] || ''}</span>
+    <div class="guide-card-text"><p class="guide-category">${escape(guide.category)}</p><h2>${escape(guide.shortTitle)}</h2><p>${escape(guide.description)}</p></div>
+    <span class="guide-card-bottom"><span>${escape(readTimeLabel(guide))}</span><span class="guide-card-link">${escape(ui.readGuide)} ${go}</span></span>
   </a>`).join('')}</div>`;
     }
 
@@ -129,12 +140,12 @@ ${alternates}
       title: ui.indexTitle, description: ui.indexDescription,
       schema: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ui.indexEyebrow, url: base + G.routeFor(locale), description: ui.indexDescription, inLanguage: locale.canonical,
         mainEntity: { '@type': 'ItemList', itemListElement: guides.map((guide, i) => ({ '@type': 'ListItem', position: i + 1, name: guide.title, url: base + G.routeFor(locale, guide.slug) })) } },
-      body: `<section class="guides-intro shell"><p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> ${escape(ui.indexEyebrow)}</p>
+      body: `<section class="guides-intro shell"><p class="eyebrow">${escape(ui.indexEyebrow)}</p>
     <h1>${escape(ui.indexHeading)}<br /><span>${escape(ui.indexHeadingAccent)}</span></h1>
     <p class="guides-lede">${escape(ui.indexLede)}</p>
     <p class="guides-platforms">${escape(ui.indexPlatforms)}</p></section>
     <section class="shell guides-list" aria-label="${escape(ui.browseGuides)}">${cards(guides)}</section>
-    <section class="shell guides-start"><div><p class="eyebrow">${escape(ui.startEyebrow)}</p><h2>${escape(ui.startHeading)}</h2></div><p>${escape(ui.startBody)}</p><a class="text-link" href="${locale.path}#features">${escape(ui.explore)} <span aria-hidden="true">${locale.direction === 'rtl' ? '←' : '→'}</span></a></section>`
+    <section class="shell guides-start"><div><p class="eyebrow">${escape(ui.startEyebrow)}</p><h2>${escape(ui.startHeading)}</h2></div><div><p>${escape(ui.startBody)}</p><a class="text-link" href="${locale.path}#features">${escape(ui.explore)} ${go}</a></div></section>`
     }));
 
     for (const guide of guides) {
@@ -154,9 +165,9 @@ ${alternates}
       const updatedLabel = format(escape(ui.updated), { date: `<time datetime="${updated}">${escape(date)}</time>` });
       output.set(route.slice(1) + 'index.html', page({ title: guide.title, description: guide.description, slug: guide.slug, schema, article: true,
         body: `<div class="shell guide-masthead"><nav class="breadcrumbs" aria-label="${escape(ui.breadcrumb)}"><a href="${locale.path}">${escape(ui.home)}</a><span aria-hidden="true">/</span><a href="${G.routeFor(locale)}">${escape(messages.web_guides)}</a><span aria-hidden="true">/</span><span aria-current="page">${escape(guide.category)}</span></nav>
-      <p class="eyebrow">${escape(guide.category)} · ${escape(ui.desktopBrowsers)}</p><h1>${escape(guide.title)}</h1><p class="guides-lede">${escape(guide.lede)}</p>
+      <p class="eyebrow guide-kind"><span>${escape(guide.category)}</span><span>${escape(ui.desktopBrowsers)}</span></p><h1>${escape(guide.title)}</h1><p class="guides-lede">${escape(guide.lede)}</p>
       <p class="guide-byline">${byline} <span aria-hidden="true">·</span> ${escape(readTimeLabel(guide))} <span aria-hidden="true">·</span> ${updatedLabel}</p>${locale.locale === 'en' ? '' : `\n      <p class="guide-screenshot-note">${escape(ui.screenshotNote)}</p>`}</div>
-      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="${escape(ui.onThisPage)}"><p class="eyebrow">${escape(ui.onThisPage)}</p><ol>${guide.sections.map(s => `<li><a href="#${s.id}">${escape(s.title)}</a></li>`).join('')}</ol></nav><a class="guide-back" href="${G.routeFor(locale)}">${locale.direction === 'rtl' ? '→' : '←'} ${escape(ui.allGuides)}</a></aside>
+      <div class="shell guide-layout"><aside class="guide-sidebar"><nav aria-label="${escape(ui.onThisPage)}"><p class="eyebrow">${escape(ui.onThisPage)}</p><ol>${guide.sections.map(s => `<li><a href="#${s.id}">${escape(s.title)}</a></li>`).join('')}</ol></nav><a class="guide-back" href="${G.routeFor(locale)}">${go} ${escape(ui.allGuides)}</a></aside>
       <article class="guide-article" aria-label="${escape(guide.title)}"><div class="guide-answer"><p class="eyebrow">${escape(ui.quickAnswer)}</p><p>${escape(guide.answer)}</p></div>
       ${guide.sections.map((section, i) => `<section id="${section.id}"><h2>${escape(section.title)}</h2>${localizeLinks(section.html)}</section>${i === 1 ? install(`guide_${guide.slug}`) : ''}`).join('\n')}
       </article></div>

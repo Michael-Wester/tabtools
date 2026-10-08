@@ -269,12 +269,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_lightMode": {
-    "source": "00e89d86ca46652c2d206ff0a6db3631a3f8dc1fcddb6eef3aae346597ad5fea",
-    "translation": "697e73da60bd89ee9d4f100a5b18faaddb73b5485df74667e48cf046d4a70364",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_structuredDescription": {
     "source": "910e0a6956ac386bae1f93b6081ee2880bdbaddb78aff969077111ad2d971baa",
     "translation": "920067b7d4e7359167b06cd1d9fdd1210fa0424ebcab4a5992e444122fcfea1a",
@@ -347,18 +341,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_dark_mode": {
-    "source": "c0973280e4ce866eaf8669fa7162fc6f4eb9ed42333765ff392825fa736ca475",
-    "translation": "a93b643b988356dd5a7f3cb42b49e9f90e98a74c1bd9089d0b81c690428b1708",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_free_browser_tab_manager": {
-    "source": "100061f32e1d79d0f711b18c0964a11fe092e6690bd18e7ff6120f256aaf50fb",
-    "translation": "aecfe4e8fdee4cd21c833224f9a299ad3999c0f97008431e88d130e6a0eddb33",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_clear_a_website_s_tabs": {
     "source": "52c44b3575b9e7b998b6657d17d39e50507352443547597fb620b42123d7e0f4",
     "translation": "2c60a497ea60edc7d8afcdb448248a0bc44e35a1f4afd0b275a935607d9f2273",
@@ -392,24 +374,6 @@
   "web_tabtools_in_action": {
     "source": "bc37f2979b18d5a81f842d5dc5bdc253735a57824eeb035f4d3c93a2134b46aa",
     "translation": "00b6b272c7a0d5a98f2ead1930f286c1a3b13a63337b79b98bd651a47bcc4dd9",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_full_demo": {
-    "source": "76b0ce56c6ffbb4d20b5f4269c3341501fdbaafe14187ffd4dc18b44aecd8225",
-    "translation": "7fbc3bacecff4d5f267921b7b53622cab93bb9293943fbe51cd2d8413ec01f7d",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_tabtools_full_demo": {
-    "source": "a4b60b1815c1b07f6052062e56bcd519307c3e14edec1a536c35b677a8d2424f",
-    "translation": "395bd20b046fa1879f5bc58241502766ce8dc1087ef5bcbd860209133d810fb3",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_see_tabtools_close_tabs_by": {
-    "source": "749271bed846c81a515144fc5abe4bc4bb1fb814ce4c551853d4a13723d70e77",
-    "translation": "b8dff0323a2bba3c83fa73493fedcac85fae37ea32a7fca88952b45ed82917c8",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
@@ -455,39 +419,15 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_close_and_organise": {
-    "source": "7df315e09bcf20c20c6c49c2ac62fee7ed6f896074646bc7accc3065a45b72e1",
-    "translation": "265c35df015b4fbbd320f8db5aab6f7d05bd34dd33e6d70356b3c13841331472",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_clear_a_finished_task_bring": {
     "source": "02307741e0f589eab1ec0b06f0d85cc390bbae4c40a811f36b09a71a7ab8eaf8",
     "translation": "f43dc7675e127a953e8741441f561d26eba017c66969d42f8ff6d3544f70fb10",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_01_site_cleanup": {
-    "source": "35d74754ea2e08e8dd8c8c0e71b9c3f2773bb3986655ccf29bffef8e95abf40a",
-    "translation": "6214ad25b647b6313e0d088b418da2e97d334d79173759ae22c6781c95e24823",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_close_a_site_s_tabs": {
     "source": "72f5ddfa2195bf9b5daf3b468b6b26390dfcafe15993475360e6890ecee048f8",
     "translation": "b8d6676ee05f5c885415173567e86a85eadfc69a429b2d3732d50882650e04a5",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_see_how_to_get_started": {
-    "source": "e157966e4590a1a73b09d2af14b222794d1c1c22b2ce1c1952fe0f31383b7f7e",
-    "translation": "aa75c7654d46c2c54f9aec020160ec35ef9879b206bad250c09a6068c6ffc2ca",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_02_organise": {
-    "source": "3bfa89cdc1a08896e542d682a503c382fe3fff70231df9b05a1c47fa21fe44ae",
-    "translation": "ce075a00980b3ea56aa5627d90c109dcae1a58e7d3a7c7d44896c4bd87c6f01f",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
@@ -503,12 +443,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_03_simplify": {
-    "source": "179ef24515eb47247d536af0dd67872eab7f2331806da44735503f5f52b48cbb",
-    "translation": "37b8274fe5e9070dadb0ac6fcdfbefa19482634863a0eda31d184ce7d15d85ef",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_remove_duplicate_tabs": {
     "source": "c8f1adfcce3f28ecaa52e71ff71e166e245b1f7e8ca3f5c9bf2991ee0190c9dd",
     "translation": "5e61d5f90dc962997a3e3088119c2a0a1159127c8d6bead41a1be2f1a8ffc2e7",
@@ -521,12 +455,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_04_find": {
-    "source": "8992efc33e7b22392195cca1d5d82f206ec6f20a26291a0319ae987fecc5b4c5",
-    "translation": "b445496e601b67d11c86dc5f1e3669cdea9b3f604b06bf63ac951bfa2aa0f8f1",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_search_by_keyword_or_domain": {
     "source": "ca69535acc0e0ff9c3e101b3835854b3fb8c8c238c895ac9dbfce238733f1c08",
     "translation": "47dcf36943136f054d6071f3a3ca2564e6a18caeef12e6be08fd1419d9094c46",
@@ -536,12 +464,6 @@
   "web_type_a_word_to_match": {
     "source": "1c9fa65e1037ee9fdc3af9d1a7d7f492cb25afede154d2c922e0834d941ea4f3",
     "translation": "9839f453f316c5c52f2db0f0b50fcc1c8f87840135285b346489b4d18d79f8e8",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_05_reset": {
-    "source": "f91292cdf344f01c7addeabb8558a52a31b001b66aa2a1167b761f72af69bf98",
-    "translation": "7eef47938cfe9c8c5719318790c249347a9e2532ce73a657d6e36c5730367898",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
@@ -617,12 +539,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "web_private_by_design": {
-    "source": "8b56591914ab16b50dc6ba31b9d1c34216a7e12ca62f2e5bc936cb2b185dacda",
-    "translation": "76651b856439459bdfe3f177c68dfab8de49d52b049bcf534c2987dd7e6b6315",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "web_the_tabtools_extension_processes_tab": {
     "source": "31b1c401d85ded7ce00e7f1afd18a7d23ace149414bd5963315113b09bdab295",
     "translation": "c675c94976d8fc9a35cae27eec9c1ffc5d41fc62d452601da50b44d383b487f5",
@@ -632,12 +548,6 @@
   "web_read_the_privacy_policy": {
     "source": "ae07f02de7efb8f22a1820cc079ca87dd1c36348914971b648a5206aa62689e1",
     "translation": "70f257f65cdc252fd6661cbfaf69ce6725a82e18d995fe976fe7b9200d6ad9ed",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "web_before_you_add_tabtools": {
-    "source": "f1eaac5463bbf2e07c6ec91d053141a285a4e39c594ba9477c8c9d74f4528fcb",
-    "translation": "af5fc5baa52cfdb572c2b8b684a2df5640fef498d1ef8cdaa1fa1cc9840332f6",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
