@@ -876,6 +876,92 @@ test('popup closes one listed tab from its row and keeps the list', async () => 
   assert.equal(elements['pc-undo-close'].hidden, false);
 });
 
+test('Undo reopens tabs in their window and place, pinned as before, and brings back the tab that was in view', async () => {
+  const fixture = () => extension({ tabs: [
+    { id: 1, url: 'https://keep.test/', windowId: 1, index: 0 },
+    { id: 2, url: 'https://site.test/a', windowId: 1, index: 1, active: true },
+    { id: 3, url: 'https://other.test/', windowId: 1, index: 2 },
+    { id: 4, url: 'https://site.test/b', windowId: 1, index: 3 },
+    { id: 5, url: 'https://site.test/c', windowId: 2, index: 0, pinned: true },
+    { id: 6, url: 'https://keep.test/2', windowId: 2, index: 1, active: true },
+  ] });
+  const runtime = fixture();
+  runtime.state.store['pc.settings'] = { keepPinnedTabs: false };
+  const closed = await runtime.send({ type: 'pc:closeByDomain', query: 'site.test' });
+  assert.deepEqual(closed.closedTabs, [
+    { url: 'https://site.test/a', windowId: 1, index: 1, active: true, pinned: false },
+    { url: 'https://site.test/b', windowId: 1, index: 3, active: false, pinned: false },
+    { url: 'https://site.test/c', windowId: 2, index: 0, active: false, pinned: true },
+  ]);
+  // Given out of order, as a snapshot kept by the popup may be.
+  const restored = await runtime.send({ type: 'pc:restoreTabs', tabs: [...closed.closedTabs].reverse() });
+  assert.equal(restored.restoredCount, 3);
+  assert.deepEqual(restored.remainingTabs, []);
+  assert.deepEqual(runtime.state.created, [
+    { url: 'https://site.test/a', active: true, windowId: 1, index: 1 },
+    { url: 'https://site.test/b', active: false, windowId: 1, index: 3 },
+    { url: 'https://site.test/c', active: false, windowId: 2, index: 0, pinned: true },
+  ]);
+
+  // The window a tab came from has since been closed: it reopens in the current window, still pinned.
+  const later = fixture();
+  later.state.missingWindows.add(2);
+  const again = await later.send({ type: 'pc:restoreTabs', tabs: closed.closedTabs });
+  assert.equal(again.restoredCount, 3);
+  assert.deepEqual(later.state.created.at(-1), { url: 'https://site.test/c', active: false, pinned: true });
+});
+
+test('each popup control sends its own request and no other', async () => {
+  const old = Date.now() - 3 * 60 * 60 * 1000;
+  const runtime = extension({ tabs: [
+    { id: 1, url: 'https://in-view.test/', active: true },
+    { id: 2, url: 'https://twice.test/page' }, { id: 3, url: 'https://twice.test/page' },
+    { id: 4, url: 'https://idle.test/a', lastAccessed: old }, { id: 5, url: 'https://idle.test/b', lastAccessed: old },
+    { id: 6, url: 'https://site.test/1' }, { id: 7, url: 'https://word.test/keyword-page', title: 'Has the keyword' },
+    { id: 8, url: 'https://zzz.test/' },
+  ] });
+  const changing = ['pc:closeByKeyword', 'pc:closeByDomain', 'pc:closeInactive', 'pc:closeDuplicates',
+    'pc:sortTabsByOpenCount', 'pc:restoreTabs', 'pc:updateSettings', 'pc:resetStats'];
+  const sent = [];
+  const deliver = runtime.api.runtime.sendMessage;
+  runtime.api.runtime.sendMessage = (message, cb) => { sent.push(message); return deliver(message, cb); };
+  // Copied through JSON: the popup runs in its own realm, so its arrays are not this file's arrays.
+  const requests = () => JSON.parse(JSON.stringify(sent.splice(0).filter(message => changing.includes(message.type))));
+  const elements = await popup(runtime);
+  requests();
+
+  await elements['pc-inactive-row'].click();                       // opens the review; closes nothing
+  assert.deepEqual(requests(), []);
+  assert.deepEqual(runtime.state.removed, []);
+  await elements['pc-inactive-close'].click();
+  assert.deepEqual(requests(), [{ type: 'pc:closeInactive', tabIds: [4, 5] }]);
+  await elements['pc-undo-close'].click();
+  assert.deepEqual(requests().map(message => message.type), ['pc:restoreTabs']);
+  await elements['pc-close-duplicates'].click();
+  assert.deepEqual(requests(), [{ type: 'pc:closeDuplicates' }]);
+  await siteRow(elements, 'site.test').click();
+  assert.deepEqual(requests(), [{ type: 'pc:closeByDomain', query: 'site.test' }]);
+  await elements['pc-query'].type('keyword');
+  assert.deepEqual(requests(), [], 'typing only lists');
+  await elements['pc-query'].enter();
+  assert.deepEqual(requests(), [{ type: 'pc:closeByKeyword', query: 'keyword', tabIds: [7] }]);
+  await elements['pc-sort-tabs-quick'].click();
+  assert.deepEqual(requests(), [{ type: 'pc:sortTabsByOpenCount' }]);
+  await elements.themes.dark.click();
+  assert.deepEqual(requests(), [{ type: 'pc:updateSettings', payload: { theme: 'dark' } }]);
+  await elements['pc-keep-pinned'].click();
+  assert.deepEqual(requests(), [{ type: 'pc:updateSettings', payload: { keepPinnedTabs: false } }]);
+  await elements.less.click();
+  assert.deepEqual(requests(), [{ type: 'pc:updateSettings', payload: { inactiveThresholdMinutes: 60 } }]);
+  await elements.accents.green.click();
+  assert.deepEqual(requests(), [{ type: 'pc:updateSettings', payload: { accent: 'green' } }]);
+  await elements['pc-reset-stats'].click();
+  assert.deepEqual(requests(), [{ type: 'pc:resetStats' }]);
+  // Moving between views changes nothing.
+  for (const id of ['pc-settings-toggle', 'pc-settings-back', 'pc-inactive-row', 'pc-inactive-back', 'pc-query-clear']) await elements[id].click();
+  assert.deepEqual(requests(), []);
+});
+
 test('popup retains failed undo entries for retry without recreating successful entries', async () => {
   const runtime = extension({ tabs: [1, 2].map(id => ({ id, url: 'https://example.com/' + id })) });
   const elements = await popup(runtime);

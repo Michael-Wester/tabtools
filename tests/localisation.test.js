@@ -287,6 +287,41 @@ test('popup uses its actual catalogue language and direction, including unsuppor
   assert.equal(fallback.ttMessage('openCount',{count:2}),'2 open tabs');
 });
 
+test('the popup document is translated in its text, placeholders, tooltips and accessible names', () => {
+  const context = extensionRuntime('de');
+  const node = dataset => ({ dataset, attributes: {}, textContent: '', placeholder: '', title: '', setAttribute(name, value) { this.attributes[name] = value; } });
+  const nodes = {
+    '[data-i18n]': [node({ i18n: 'settings' }), node({ i18n: 'sortTabs' })],
+    '[data-i18n-placeholder]': [node({ i18nPlaceholder: 'queryPlaceholder' })],
+    '[data-i18n-title]': [node({ i18nTitle: 'contextSort' })],
+    '[data-i18n-aria]': [node({ i18nAria: 'inactiveAfter' })],
+  };
+  const document = { documentElement: {}, querySelectorAll: selector => nodes[selector] || [] };
+  context.ttLocalizeDocument(document);
+  const german = L.catalogue('de');
+  assert.deepEqual(nodes['[data-i18n]'].map(element => element.textContent), [german.settings, german.sortTabs]);
+  assert.equal(nodes['[data-i18n-placeholder]'][0].placeholder, german.queryPlaceholder);
+  assert.equal(nodes['[data-i18n-title]'][0].title, german.contextSort);
+  assert.equal(nodes['[data-i18n-aria]'][0].attributes['aria-label'], german.inactiveAfter);
+  assert.equal(document.documentElement.lang, 'de');
+  assert.equal(document.documentElement.dir, 'ltr');
+});
+
+test('every string the popup and the background ask for exists in English', () => {
+  const english = L.extensionSource(L.catalogue('en'));
+  const read = file => fs.readFileSync(path.join(L.root, 'src/shared', file), 'utf8');
+  const asked = new Set();
+  for (const [, key] of read('popup/popup.html').matchAll(/data-i18n(?:-[a-z]+)?="([^"]+)"/g)) asked.add(key);
+  for (const [, key] of read('popup/popup.js').matchAll(/\bt\("(\w+)"/g)) asked.add(key);
+  for (const [, key] of read('popup/popup.js').matchAll(/"(closed\w+)"/g)) asked.add(key);
+  for (const [, key] of read('background.js').matchAll(/_KEY = "(\w+)";/g)) if (!key.startsWith('pc')) asked.add(key);
+  for (const key of ['extensionName', 'extensionDescription', 'openTabTools']) asked.add(key);
+  assert.ok(asked.size > 40);
+  for (const key of asked) assert.ok(key in english, key + ' is used but missing from the English catalogue');
+  // And the other way round: a string nothing asks for should be retired, not translated 28 times.
+  for (const key of Object.keys(english)) assert.ok(asked.has(key), key + ' is in the English catalogue but nothing uses it');
+});
+
 test('plural counts, formatted numbers and missing-message fallback remain readable',()=>{
   const russian=extensionRuntime('ru');
   for(const [count,expected] of [[1,'1 открытая вкладка'],[2,'2 открытые вкладки'],[5,'5 открытых вкладок'],[21,'21 открытая вкладка']]) {
