@@ -569,7 +569,8 @@
     tabsApi.onReplaced?.addListener(scheduleRefresh);
     tabsApi.onUpdated?.addListener((_tabId, changes, tab) => {
       if (tab?.incognito) return;
-      if (changes?.url || changes?.status === "complete") scheduleRefresh();
+      // A page's icon usually arrives after the page has finished loading.
+      if (changes?.url || changes?.status === "complete" || changes?.favIconUrl) scheduleRefresh();
     });
   }
 

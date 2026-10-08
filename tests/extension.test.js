@@ -1120,6 +1120,13 @@ test('popup refreshes a restored site when its initially blank tab finishes navi
     await timers.flushRefreshes();
     assert.deepEqual(sitesIn(elements), ['example.com']);
 
+    // The page's icon arrives after it has loaded, and replaces the letter.
+    assert.equal(siteRow(elements, 'example.com').children[0].textContent, 'E');
+    restored.favIconUrl = 'https://example.com/icon.png';
+    for (const listener of runtime.api.tabs.onUpdated.listeners) await listener(restored.id, { favIconUrl: restored.favIconUrl }, restored);
+    await timers.flushRefreshes();
+    assert.equal(siteRow(elements, 'example.com').children[0].src, 'https://example.com/icon.png');
+
     const queries = runtime.state.queryCount;
     for (const listener of runtime.api.tabs.onUpdated.listeners) {
       await listener(restored.id, { title: 'Updated title' }, restored);
