@@ -7,6 +7,14 @@ const screenshot = (filename, alt, caption) => `<figure class="guide-screenshot"
   </a>
   <figcaption>${escape(caption)}</figcaption>
 </figure>`;
+// A picture of the popup alone, captured at twice its size: 380 CSS pixels wide.
+const popup = (filename, height, alt, caption) => `<figure class="guide-screenshot guide-popup">
+  <a class="guide-screenshot-link" href="/assets/guides/${filename}" target="_blank" rel="noopener">
+    <img src="/assets/guides/${filename}" width="380" height="${height}" loading="lazy" decoding="async" alt="${escape(alt)}" />
+    <span class="guide-screenshot-zoom">View full size <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+  </a>
+  <figcaption>${escape(caption)}</figcaption>
+</figure>`;
 
 module.exports = [
   {
@@ -16,7 +24,7 @@ module.exports = [
     description: "Close tabs from the same website in Chrome with TabTools, use a manual alternative, and follow the steps for Firefox and Edge.",
     category: "Close site tabs",
     lede: "Finished with a shopping session, a research rabbit hole or a stack of YouTube videos? You can close that website’s tabs together and leave your other websites open.",
-    answer: "With TabTools installed, right-click a tab from the website you want to close in Chrome’s tab bar and choose Close site tabs. This closes matching tabs across your normal browser windows, including matching active and pinned tabs.",
+    answer: "With TabTools installed, right-click a tab from the website you want to close in Chrome’s tab bar and choose Close site tabs. This closes that website’s tabs across your normal browser windows, including the one you are on. Pinned tabs stay open unless you turn that off in Settings.",
     sections: [
       {
         id: "close-site-tabs-in-chrome",
@@ -40,18 +48,18 @@ ${screenshot('close-site-02-tabs-closed.png', 'Chrome after closing the three Yo
         html: `<p>You can also choose a website without switching to one of its pages.</p>
 <ol>
   <li>Open TabTools from your browser’s extensions menu or toolbar.</li>
-  <li>Find the website among the suggestions under <strong>Tap to close tabs from site</strong>. Each suggestion shows its open-tab count.</li>
-  <li>Select the website to close its matching tabs.</li>
+  <li>Find the website under <strong>Suggestions</strong>. Every website with open tabs is listed, the one with the most tabs first, with a mark for each tab and a count.</li>
+  <li>Click the website’s row to close its tabs.</li>
 </ol>
-${screenshot('close-site-03-popup-suggestion.png', 'TabTools in Chrome with the pointer on the YouTube suggestion showing 3 open tabs.', 'With the same six tabs open, select the YouTube suggestion to close its three tabs without leaving Google.')}
-<p>You can also enter a hostname directly, which is useful if the website is not shown in Suggestions. Enter its hostname, such as <code>youtube.com</code>, in <strong>Close by keyword (press Enter)</strong>, then press Enter or click <strong>Close</strong>. Enter the hostname alone, without <code>https://</code> or a page path.</p>
-${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field contains youtube.com, with the pointer on Close.', 'Or enter youtube.com and click Close or press Enter.')}
-<p>A plain keyword such as <code>shopping</code> works differently: it searches tab titles and URLs. Use the exact hostname when your intention is to close one specific website.</p>`,
+${popup('popup-site-row.png', 330, 'The TabTools popup showing 6 tabs on 3 sites, with the youtube.com row and its 3 tick marks highlighted.', 'With the same six tabs open, click the youtube.com row to close its three tabs without leaving Google.')}
+<p>You can also type the website, which is useful in a long list. Enter its hostname, such as <code>youtube.com</code>, in <strong>Close by keyword (press Enter)</strong>. TabTools lists the matching tabs as you type. Press Enter or click <strong>Close</strong> to close the tabs listed, or use the button on a row to close that tab alone. Enter the hostname without <code>https://</code> or a page path.</p>
+${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtube.com. Three YouTube tabs are listed below it and the Close button shows 3.', 'Type youtube.com to list its tabs, then press Enter or click Close.')}
+<p>A hostname typed here also covers its subdomains: <code>google.com</code> lists tabs on <code>docs.google.com</code> and <code>mail.google.com</code> too. A plain keyword such as <code>shopping</code> works differently: it lists tabs whose titles or addresses contain that word.</p>`,
       },
       {
         id: "which-tabs-close",
         title: "Which tabs count as the same website?",
-        html: `<p>Site closing matches the hostname, ignoring a leading <code>www.</code>. Different pages on that hostname match even when their paths or query parameters differ.</p>
+        html: `<p>Clicking a website’s row, or choosing <strong>Close site tabs</strong>, matches the hostname, ignoring a leading <code>www.</code>. Different pages on that hostname match even when their paths or query parameters differ.</p>
 <table>
   <thead><tr><th scope="col">When closing example.com</th><th scope="col">Result</th></tr></thead>
   <tbody>
@@ -61,7 +69,8 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
     <tr><td><code>another-site.com/example</code></td><td>Stays open</td></tr>
   </tbody>
 </table>
-<p>The command covers normal windows in the browser where you run it. Matching pinned tabs and active tabs are included; private or incognito tabs are excluded. It does not reach tabs in another browser application.</p>`,
+<p>Typing <code>example.com</code> in the popup’s field is broader: it also lists <code>shop.example.com</code>, and you can check the list before anything closes.</p>
+<p>The command covers normal windows in the browser where you run it, and it includes the tab you are on. Pinned tabs stay open. To close them too, open Settings in the popup and turn off <strong>Keep pinned tabs open</strong>. Private or incognito tabs are excluded, and tabs in another browser application are not reached.</p>`,
       },
       {
         id: "without-an-extension",
@@ -85,8 +94,9 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
       {
         id: "undo-and-next-steps",
         title: "Reopen tabs or choose a smaller cleanup",
-        html: `<p>After closing tabs through the popup, its <strong>Undo</strong> button can reopen the tabs from your latest popup cleanup while that popup remains open. The right-click <strong>Close site tabs</strong> action is not recorded by the popup’s Undo button.</p>
-<p>After a context-menu close, look in your browser’s recently closed tabs or history. Reopening a URL should not be treated as restoring unsaved form input or every detail of a page’s previous state.</p>
+        html: `<p>After you close tabs through the popup, the result appears at the bottom of the popup with an <strong>Undo</strong> button for a few seconds. Undo reopens the tabs from that cleanup. It is offered only while the popup stays open, and in Chrome a cleanup that includes the tab you are on closes the popup with it. The right-click <strong>Close site tabs</strong> action does not offer Undo.</p>
+<p>Either way, the tabs are then listed under <strong>Recently closed</strong> at the bottom of the popup, the latest first. Click a tab there to reopen it where it was. The list holds the last 25 tabs TabTools closed and is cleared when the browser closes; after that, look in your browser’s own recently closed tabs or history. Reopening a URL should not be treated as restoring unsaved form input or every detail of a page’s previous state.</p>
+${popup('popup-recently-closed.png', 241, 'The Recently closed list in the TabTools popup shows 3 YouTube tabs closed 4 minutes ago, each with a reopen arrow, and a Clear list button below.', 'The three YouTube tabs under Recently closed. Click one to reopen it.')}
 <p>If your goal is to retain one copy of each page, follow the guide to <a href="/guides/close-duplicate-tabs/">closing duplicate tabs</a>. To keep all your pages and make them easier to scan, <a href="/guides/sort-tabs-by-website/">sort tabs by website</a> instead.</p>`,
       },
     ],
@@ -98,7 +108,7 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
     description: "Remove duplicate tabs in Chrome, Firefox and Edge. Follow the TabTools steps, use Firefox’s built-in option, and understand which copies remain.",
     category: "Remove duplicates",
     lede: "Opening the same document, search or video again is easy. Removing repeated copies makes the tab bar easier to navigate without clearing every page from a website.",
-    answer: "Open TabTools and click Close duplicates to remove repeated unpinned pages across your normal browser windows. Firefox also has built-in commands for closing duplicates of one tab or cleaning up duplicate tabs from its tab overview menu.",
+    answer: "Open TabTools and click Close duplicates to remove repeated copies of a page across your normal browser windows. A pinned copy, a copy playing sound and the copy you are looking at stay open. Firefox also has built-in commands for closing duplicates of one tab or cleaning up duplicate tabs from its tab overview menu.",
     sections: [
       {
         id: "choose-a-method",
@@ -117,17 +127,17 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
         id: "what-counts-as-a-duplicate",
         title: "What counts as a duplicate tab?",
         html: `<p>Duplicate tabs are repeated copies of a page. Three copies of the YouTube homepage are duplicates; the homepage and two different YouTube search results are different pages from the same website.</p>
-<p>TabTools parses each page URL and removes its fragment: the part beginning with <code>#</code>. The URL parser normalizes letter case in the scheme and hostname. Letter case in paths and query strings, and the order of query parameters, remain significant.</p>
+<p>TabTools compares whole addresses. Two tabs are duplicates only when everything matches, including the part after <code>#</code>. Many web apps keep the page there, so two different conversations in a mail app are not treated as copies. Letter case in the scheme and hostname is ignored. Letter case in paths and query strings, and the order of query parameters, remain significant.</p>
 <table>
   <thead><tr><th scope="col">Example URLs</th><th scope="col">TabTools treatment</th></tr></thead>
   <tbody>
     <tr><td><code>example.com/guide</code> opened twice</td><td>Duplicates</td></tr>
-    <tr><td><code>example.com/guide#intro</code> and <code>example.com/guide#steps</code></td><td>Duplicates: fragments are ignored</td></tr>
+    <tr><td><code>example.com/guide#intro</code> and <code>example.com/guide#steps</code></td><td>Different addresses; both stay</td></tr>
     <tr><td><code>example.com/guide</code> and <code>example.com/contact</code></td><td>Different pages</td></tr>
     <tr><td><code>example.com/search?q=tabs</code> and <code>example.com/search?q=bookmarks</code></td><td>Different query parameters; both stay</td></tr>
   </tbody>
 </table>
-<p>Some web apps use fragments to identify different screens, so those screens can count as duplicates. Conversely, tracking parameters can make otherwise similar pages count as different URLs. The command compares addresses; it does not inspect page content to decide whether two pages mean the same thing.</p>`,
+<p>Tracking parameters can make otherwise similar pages count as different addresses. One exception: a link that only tells the browser which words to highlight, ending in <code>#:~:text=</code> and some text, counts as the page itself. The command compares addresses; it does not inspect page content to decide whether two pages mean the same thing.</p>`,
       },
       {
         id: "chrome-and-edge",
@@ -138,11 +148,11 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
   <li>Open the extension from the toolbar or extensions menu.
     ${screenshot('duplicates-01-open-tabtools.png', 'Chrome with eight tabs, including three copies of the YouTube homepage, and the pointer on the TabTools toolbar icon.', 'Open TabTools from Chrome’s toolbar.')}
   </li>
-  <li>Click <strong>Close duplicates</strong>.
-    ${screenshot('duplicates-02-close-duplicates.png', 'The TabTools popup shows 8 open tabs, with the pointer on Close duplicates.', 'Click Close duplicates to remove repeated copies.')}
+  <li>Find <strong>Close duplicates</strong> under Suggestions. The number beside it is how many copies it would close. Click it.
+    ${popup('popup-close-duplicates.png', 330, 'The TabTools popup shows 8 tabs on 3 sites. Close duplicates, beside Inactive, is highlighted and shows 2.', 'Click Close duplicates to remove the two repeated copies.')}
   </li>
-  <li>Check the popup’s status message. It reports how many duplicates closed, or <strong>No duplicates</strong> when none matched.
-    ${screenshot('duplicates-03-result-and-undo.png', 'TabTools reports Closed 2 duplicates, shows 6 open tabs, and offers an enabled Undo button.', 'Two duplicate copies close, leaving six tabs. Keep the popup open if you want to use Undo.')}
+  <li>Check the result at the bottom of the popup. It reports how many duplicates closed and offers <strong>Undo</strong> for a few seconds. With no duplicates open, <strong>Close duplicates</strong> shows 0 and cannot be clicked.
+    ${popup('popup-duplicates-result.png', 330, 'TabTools reports Duplicate tabs closed: 2, with an Undo button, and now shows 6 tabs.', 'Two duplicate copies close, leaving six tabs. Undo is offered for a few seconds.')}
   </li>
 </ol>
 <p>You do not need to select the repeated tabs first. The cleanup covers normal windows within that browser, so two copies of a page can be matched even when they are in different windows. Private or incognito tabs are excluded.</p>
@@ -162,14 +172,14 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
       {
         id: "which-copy-stays",
         title: "Which copy does TabTools keep?",
-        html: `<p>TabTools keeps pinned copies and closes matching unpinned tabs across your normal windows. When no pinned copy exists, it keeps the first unpinned copy encountered in the browser’s tab list and closes later matches.</p>
-<p>It does not deliberately choose the active tab, the newest tab or the tab you used most recently. A retained copy may therefore be in another window. With one pinned tab and two unpinned copies of a page, only the pinned tab remains.</p>
-<p>Pinned tabs are never closed by <strong>Close duplicates</strong>. If a page has multiple pinned copies, those copies all remain, so the command does not guarantee exactly one tab for every URL.</p>`,
+        html: `<p>TabTools never closes a pinned copy, a copy that is playing sound, or the copy in view in its window. When one of those exists, the other copies close. When none does, it keeps the first copy in the browser’s tab order and closes the later ones.</p>
+<p>It does not choose the newest tab or the tab you used most recently. A retained copy may therefore be in another window. With one pinned tab and two unpinned copies of a page, only the pinned tab remains.</p>
+<p>If a page has several protected copies, for example two pinned ones, they all remain, so the command does not guarantee exactly one tab for every address.</p>`,
       },
       {
         id: "undo-and-organise",
         title: "Undo a cleanup and organise what remains",
-        html: `<p>Keep the popup open after cleanup if you want to check the result. <strong>Undo</strong> can reopen the tabs from the latest popup close action during that popup session. It reopens pages by URL; unsaved page content is not guaranteed to return. Once the popup is closed, use your browser’s recently closed tabs or history instead.</p>
+        html: `<p>After the cleanup the popup shows the result with an <strong>Undo</strong> button for a few seconds. Undo reopens the tabs from that cleanup. It reopens pages by URL; unsaved page content is not guaranteed to return. Once the result has gone, open <strong>Recently closed</strong> at the bottom of the popup and click a tab to reopen it. That list holds the last 25 tabs TabTools closed and is cleared when the browser closes.</p>
 <p>For different pages you have finished with, see <a href="/guides/close-tabs-from-same-website/">how to close all tabs from the same website</a>. For pages you want to keep, <a href="/guides/sort-tabs-by-website/">sorting tabs by website</a> brings related tabs together without closing them.</p>`,
       },
     ],
@@ -181,7 +191,7 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
     description: "Bring related tabs together in Chrome, Firefox and Edge with TabTools. Learn how site counts, pinned tabs and browser tab groups affect your options.",
     category: "Sort tabs",
     lede: "When your tab bar mixes documents, videos and research pages, finding the next tab takes longer than it should. Sorting brings pages from the same website together while keeping them open.",
-    answer: "Open TabTools in the window you want to organise and click Sort tabs. It arranges unpinned tabs by website, putting sites with the most currently open tabs first. Pinned tabs stay in place.",
+    answer: "Open TabTools in the window you want to organise and click Sort tabs. It arranges that window’s tabs by website, putting sites with the most open tabs first. Pinned tabs and tabs in a tab group stay where they are.",
     sections: [
       {
         id: "sort-with-tabtools",
@@ -193,17 +203,17 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
     ${screenshot('sort-01-before.png', 'Chrome with three YouTube tabs, two Wikipedia tabs, and Google interleaved in the tab bar.', 'Before sorting: six tabs from three websites are mixed together.')}
   </li>
   <li>Open TabTools from the toolbar or extensions menu.</li>
-  <li>Click <strong>Sort tabs</strong>.
-    ${screenshot('sort-02-sort-tabs.png', 'The TabTools popup in Chrome with the pointer on Sort tabs.', 'Click Sort tabs to bring pages from each website together.')}
+  <li>Click <strong>Sort tabs</strong> at the bottom of the popup.
+    ${popup('popup-sort-tabs.png', 330, 'The TabTools popup with the Sort tabs button highlighted at the bottom.', 'Click Sort tabs to bring pages from each website together.')}
   </li>
 </ol>
-<p>Related unpinned tabs move beside one another. Pages stay open, and tabs in other windows are not brought into this window. If you want to organise another window, switch to it and run the command again.</p>
+<p>Tabs from the same website move beside one another. Pages stay open, and tabs in other windows are not brought into this window. If you want to organise another window, switch to it and run the command again.</p>
 <p>Sorting is a one-time action. New tabs open normally afterwards; TabTools does not continuously rearrange the tab bar as you browse. Click <strong>Sort tabs</strong> again when you want to tidy the current arrangement.</p>`,
       },
       {
         id: "how-the-order-works",
         title: "How TabTools chooses the order",
-        html: `<p>TabTools counts the open tabs for each website in the current window. Sites with larger counts come first, immediately after pinned tabs. Here is a simple example with no pinned tabs:</p>
+        html: `<p>TabTools counts the open tabs for each website in the current window. Sites with larger counts come first. Here is a simple example with no pinned tabs or tab groups:</p>
 <table>
   <thead><tr><th scope="col">Website</th><th scope="col">Open tabs</th><th scope="col">Position after sorting</th></tr></thead>
   <tbody>
@@ -212,14 +222,14 @@ ${screenshot('close-site-04-enter-hostname.png', 'The TabTools keyword field con
     <tr><td><code>google.com</code></td><td>1</td><td>Third</td></tr>
   </tbody>
 </table>
-${screenshot('sort-03-after.png', 'Chrome after sorting: three YouTube tabs, then two Wikipedia tabs, then Google; TabTools reports Reordered 6 tabs.', 'After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open.')}
+${popup('popup-sorted-result.png', 330, 'TabTools reports Tabs reordered: 5 at the bottom of the popup, which still shows 6 tabs.', 'After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open, and the popup reports how many moved.')}
 <p>“Most opened” means the largest number of tabs open right now. It does not mean your most visited website, browsing history or the number of times you have opened a site over the past week.</p>
 <p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, the three YouTube pages retain their order within the YouTube set; they are not sorted by page title.</p>`,
       },
       {
         id: "pinned-tabs-and-subdomains",
-        title: "Pinned tabs and subdomains",
-        html: `<p>Pinned tabs stay in their pinned positions. They still contribute to a website’s count when TabTools decides the order of its unpinned tabs.</p>
+        title: "Pinned tabs, tab groups and subdomains",
+        html: `<p>Pinned tabs stay in their pinned positions. Tabs in a browser tab group also stay exactly where they are: no group gains, loses or is split by a tab, and the tabs outside groups are rearranged among the places they already hold. Pinned and grouped tabs still contribute to a website’s count when TabTools decides the order.</p>
 <p>For example, two pinned GitHub tabs and two unpinned GitHub tabs give GitHub a count of four. Its unpinned tabs therefore come ahead of a website with three open tabs, while the two pinned GitHub tabs remain where they are.</p>
 <p>Website matching uses the hostname and ignores a leading <code>www.</code>. Pages on <code>example.com</code> and <code>www.example.com</code> belong together. Pages on <code>docs.example.com</code> form a separate set from <code>shop.example.com</code>.</p>
 <p>This is useful when different services share a parent domain: documentation and a shop can remain separate in the sorted tab bar.</p>`,
@@ -236,7 +246,7 @@ ${screenshot('sort-03-after.png', 'Chrome after sorting: three YouTube tabs, the
     <tr><td>Keep a project’s different websites together under a name</td><td>Your browser’s named tab groups</td></tr>
   </tbody>
 </table>
-<p>TabTools rearranges tabs; it does not create named or coloured browser groups. If you have deliberately arranged tabs by project, consider whether sorting by website suits that window before changing the order.</p>`,
+<p>TabTools rearranges tabs; it does not create named or coloured browser groups, and it leaves the tabs inside your groups alone. If you have deliberately arranged loose tabs by project, consider whether sorting by website suits that window before changing the order.</p>`,
       },
       {
         id: "native-browser-options",
@@ -251,7 +261,7 @@ ${screenshot('sort-03-after.png', 'Chrome after sorting: three YouTube tabs, the
       {
         id: "after-sorting",
         title: "What to do after sorting",
-        html: `<p>TabTools has no undo action for sorting. The popup’s <strong>Undo</strong> button is for its latest tab-closing action, not the previous tab order. If you want a different arrangement after sorting, drag the tabs into place.</p>
+        html: `<p>TabTools has no undo action for sorting. The popup offers <strong>Undo</strong> after closing tabs, not after changing their order. If you want a different arrangement after sorting, drag the tabs into place.</p>
 <p>Sorting also keeps repeated copies of pages. If that makes the largest sets unnecessarily long, <a href="/guides/close-duplicate-tabs/">close duplicate tabs</a> and sort again using the remaining counts.</p>
 <p>When you finish with an entire website, use <a href="/guides/close-tabs-from-same-website/">Close site tabs</a> to remove its pages. Sorting is the option for the tabs you still need: it makes them easier to find without deciding which pages to close.</p>`,
       },

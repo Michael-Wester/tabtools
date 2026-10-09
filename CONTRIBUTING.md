@@ -72,16 +72,19 @@ current window.
 
 - Open two tabs at `https://example.com/` and one at `https://example.org/`.
   Keep them unpinned and ensure no other tabs in the test profile use those
-  sites. Leave `example.org` active, then open TabTools, enter `example.com`
-  and select **Close**. Both matching
-  tabs should close, the `example.org` tab should remain, and the popup should
-  report **Closed 2**.
+  sites. Leave `example.org` active, then open TabTools and enter `example.com`.
+  The popup should list the two matching tabs and show **Close 2** in the
+  field. Select it, or press Enter. Both matching tabs should close, the
+  `example.org` tab should remain, and the popup should report **Closed: 2**.
 - While that same popup remains open, select **Undo** and check that both test
-  tabs reopen. The current main-branch build keeps this Undo batch only for the
-  lifetime of the popup; do not expect it to survive closing and reopening it.
-- Open **Settings**, switch between **Light** and **Dark**, and check that the
-  labels are readable and keyboard focus is visible. Close and reopen the popup
-  to confirm the selected theme is retained.
+  tabs reopen. Undo is kept only for the lifetime of the popup; do not expect it
+  to survive closing and reopening it.
+- Close the two tabs again, close the popup and open it once more. Select
+  **Recently closed**: both tabs should be listed. Select one and check that it
+  reopens behind the tab in view and leaves the list, then select **Clear list**.
+- Open **Settings**, switch between **System**, **Light** and **Dark**, and
+  check that the labels are readable and keyboard focus is visible. Close and
+  reopen the popup to confirm the selected theme is retained.
 
 #### Rebuild, reload and debug
 

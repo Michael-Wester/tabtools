@@ -16,10 +16,19 @@ emulation at mobile/tablet widths; the desktop width uses desktop user agents.
 WebKit emulation is useful regression coverage, not a test on physical iOS.
 
 Checks cover horizontal overflow, reachable navigation and footer touch targets,
-skip-link keyboard focus, theme switching and saved preference, mobile store
-wording, FAQ interaction, uncaught page errors, and article links clearing the
-sticky header. A compact desktop window separately
-checks that desktop installation wording remains available.
+skip-link keyboard focus, theme switching and saved preference, following the
+system theme when nothing is saved, mobile store wording, FAQ interaction,
+uncaught page errors, and article links clearing the header. The home page's
+working popup is driven through closing a site, Undo, typing, the Inactive
+review, sorting and duplicates at every width, and its Settings at a phone and
+a desktop width in both themes. Recently closed (the paired first row, the list,
+reopening a tab in place, Undo taking tabs off the list, Clear list and Reset) is
+driven at 320, 390 and 1280 pixels.
+On phones a walk backwards through a guide with the keyboard checks that the
+header covers nothing in focus. With JavaScript off, the popup is checked as a
+picture of its starting state and section links still clear the header. A
+compact desktop window separately checks that desktop installation wording
+remains available.
 
 The localized suite checks all 29 homepages at 320px and 390px in Chromium and
 WebKit, with light and dark themes across those widths. It verifies translated
@@ -38,18 +47,18 @@ and Hebrew also exercise every guide route with JavaScript disabled. Desktop
 Chromium and WebKit additionally cover keyboard selection, Escape/focus recovery,
 and a real modified-click new tab while preserving the current guide and anchor.
 
-`npm test` runs all three matrices (406 cases: 120 English layout, 156 localized
-homepage and 130 localized guide cases, including the existing intentional
-compact-desktop skips). CLI filters such as `npm test -- --workers=2` apply to
+`npm test` runs all three matrices (506 cases: 220 English layout and popup, 156
+localized homepage and 130 localized guide cases; 78 of the English ones are
+skipped by design, because a check that does not depend on the width or theme
+runs at a few of them only). CLI filters such as `npm test -- --workers=2` apply to
 all suites. Use `npm run test:localisation` or `npm run test:guides` for one matrix,
 or `npm run test:chromium` for all Chromium cases.
 
 The 320px and 390px homepage and close-site-tabs guide get full-page screenshots in both
 themes and engines. The guide suite also captures the first article in German,
 Simplified Chinese, Traditional Chinese and Hebrew at both narrow widths and
-engines. YouTube is a labelled placeholder and other external
-requests are blocked, so these checks do not contact store listings or depend on
-third-party content. Screenshots are review artifacts rather than pixel baselines.
+engines. Requests to other origins are blocked, so these checks do not contact
+store listings; the site itself asks for nothing from another origin. Screenshots are review artifacts rather than pixel baselines.
 
 The independent `Website mobile checks` workflow runs without deployment
 credentials, including on fork pull requests. It uploads the HTML report,

@@ -15,14 +15,22 @@ Titles and summaries come from `localisation/locales/<locale>.json` and agree
 with the manifest-derived extension locale fields. Firefox and Edge descriptions
 also use those catalogues and remain proposed next-release copy.
 
-Chrome descriptions come from `sources/chrome-descriptions.json`. This preserves
-the final 29 Chrome 4.0.3 descriptions captured from the publisher dashboard on
-1 October 2026. They include the Chrome-only introduction and explicitly explain
-that closing a site's tabs includes the current tab and pinned tabs. Do not
-replace them with the generic cross-browser website descriptions. Snapshot and
-English-source fingerprints detect accidental divergence; reconcile changed copy
-and its provenance explicitly. A fingerprint records source identity, not
-linguistic approval. No fluent-reader review is claimed.
+Chrome descriptions come from `sources/chrome-descriptions.json`. They carry a
+Chrome-only introduction, so do not replace them with the generic cross-browser
+website descriptions. For 5.0.0 the English entry is proposed text, marked
+`proposedFor`, and says what 5.0.0 does: closing a site's tabs includes the tab
+you are on and leaves pinned tabs open unless that is turned off in Settings.
+Every other language still holds the final 4.0.3 description captured from the
+publisher dashboard on 1 October 2026, which says pinned tabs close. Those are
+reported as awaiting translation until they are rewritten from the English, and
+must not be entered for 5.0.0 as they stand. Snapshot and English-source
+fingerprints detect accidental divergence; reconcile changed copy and its
+provenance explicitly. A fingerprint records source identity, not linguistic
+approval. No fluent-reader review is claimed.
+
+What changed for people who already use TabTools is in
+[`release-notes/5.0.0.md`](release-notes/5.0.0.md), written for Firefox's
+release-notes field and the GitHub release. Chrome and Edge have no such field.
 
 Run generation and validation before entering text into a publisher dashboard:
 
@@ -51,25 +59,36 @@ Editable final artwork, source verification and rendering instructions are in
 4. Cleanup count
 5. Inactive tabs
 
+**This artwork shows the 4.x popup and has not been redrawn for 5.0.0.** Four of
+the five images (all but the right-click one) picture the two-column popup with
+its Settings and Undo buttons, and the inactive-tabs image says inactive tabs
+close in one click, which 5.0.0 no longer does. New artwork is needed before a
+5.0.0 listing is submitted. Pictures of the 5.0.0 popup taken from the built extension are in
+`docs/images/` and `website/dist/assets/guides/`; `scripts/capture-pictures.js`
+takes them.
+
 The original stylized right-click illustration is retained intentionally. It is
 illustrative artwork, not a screenshot of Chrome's native context menu. The
 extension command is available when right-clicking within a web page.
 
 The Chrome English localized promo video is `https://www.youtube.com/watch?v=hFv7I_5vLFk`.
-This is store media metadata; it does not change the website's existing embed.
+It shows the 4.x popup. The website no longer embeds a video; its home page has
+a working copy of the 5.0.0 popup instead.
 
 ## Release checklist
 
 1. Build from the reviewed commit and verify browser-specific manifest versions:
-   Chrome, Firefox and Edge 4.0.3
+   Chrome, Firefox and Edge 5.0.0
 2. Confirm that the intended store detects the packaged `_locales` directories
 3. Check the dashboard's current field limits and locale choices; use the matching
    store text and locale identifiers
-4. Verify title/name, summary, description, links and browser-specific wording
-5. Check five screenshots in the order above, with footers `01 / 05`–`05 / 05`
+4. Verify title/name, summary, description, links and browser-specific wording.
+   For 5.0.0, enter a language's description only once `npm test` passes without
+   `TABTOOLS_PENDING_TRANSLATIONS`, so that no language still describes 4.x
+5. Replace the five screenshots with 5.0.0 artwork, in the order above
 6. Confirm release scope and approval before submitting or publishing anything
 
-Chrome 4.0.3 was submitted for store review on 1 October 2026. Repository merge
-readiness is separate from store review/publication, fluent-reader acceptance,
-and any later Firefox or Edge release. This source reconciliation neither
-resubmits a package nor changes the submitted extension runtime.
+Chrome 4.0.3 was submitted for store review on 1 October 2026. The text and
+pictures here for 5.0.0 are prepared in the repository only: nothing has been
+entered in a publisher dashboard, submitted or published. Repository merge readiness is separate from store review/publication,
+fluent-reader acceptance, and any later Firefox or Edge release.

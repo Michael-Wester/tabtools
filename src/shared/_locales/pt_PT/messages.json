@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Sugestões"
   },
-  "suggestCaption": {
-    "message": "Toque para fechar os separadores do site"
-  },
   "queryPlaceholder": {
     "message": "Fechar por palavra-chave (prima Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Anular"
   },
-  "undoTitle": {
-    "message": "Anular o último fecho"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Escuro"
   },
-  "minTabs": {
-    "message": "Mínimo de separadores por site nas sugestões"
-  },
   "inactiveAfter": {
     "message": "Separadores inativos após"
-  },
-  "minutes": {
-    "message": "minutos"
   },
   "closedCount": {
     "message": "Fechados: $count$",
@@ -88,33 +76,6 @@
   },
   "openCount_other": {
     "message": "$count$ separadores abertos",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ aberto",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ abertos",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ abertos",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -176,9 +137,6 @@
   "noDuplicates": {
     "message": "Sem duplicados"
   },
-  "nothingToUndo": {
-    "message": "Nada a anular"
-  },
   "undoFailed": {
     "message": "Não foi possível anular"
   },
@@ -197,23 +155,11 @@
   "inactive": {
     "message": "Inativos"
   },
-  "loadingSuggestions": {
-    "message": "A carregar sugestões…"
-  },
   "suggestionsFailed": {
     "message": "Não foi possível carregar as sugestões"
   },
   "noSuggestions": {
     "message": "Sem sugestões de momento"
-  },
-  "moreCount": {
-    "message": "Outras sugestões não apresentadas: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Falha ao ordenar"
@@ -229,12 +175,6 @@
   },
   "nothingToSort": {
     "message": "Nada a ordenar"
-  },
-  "hide": {
-    "message": "Ocultar"
-  },
-  "show": {
-    "message": "Mostrar"
   },
   "contextClose": {
     "message": "Fechar separadores do site"

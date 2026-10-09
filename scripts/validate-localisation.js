@@ -10,13 +10,21 @@ const chromeDescriptions = require('../marketing/sources/chrome-descriptions.jso
 const { validateCatalogue, validateStoreCodes } = require('./catalogue-validation');
 const supportEvidence = require('../localisation/support-evidence.json');
 
+// A release branch may hold English changes whose translations follow in a later
+// pull request. With TABTOOLS_PENDING_TRANSLATIONS=1, a string that a language has
+// not translated yet, or whose English changed after its translation was reviewed,
+// is reported without failing. Every other check stays strict in both modes, and
+// COVERAGE.md is the same in both.
+const allowPending = process.env.TABTOOLS_PENDING_TRANSLATIONS === '1';
 const errors = [];
+const pending = [];
 const warnings = [];
 const localeErrors = new Map();
 const source = L.catalogue('en');
 const sourceKeys = Object.keys(source).sort();
 
 function fail(message) { errors.push(message); }
+function awaitTranslation(message) { pending.push(message); }
 function warn(message) { warnings.push(message); }
 function readJson(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
 function keys(value) { return Object.keys(value).sort(); }
@@ -30,20 +38,23 @@ assert.deepEqual(Object.keys(chromeDescriptions.locales).sort(), L.registry.map(
 const chromeEnglishFingerprint = L.fingerprint(chromeDescriptions.locales.en.description);
 
 for (const locale of L.registry) {
-  const startErrors = errors.length;
+  const startErrors = errors.length + pending.length;
   for (const error of validateStoreCodes(locale, supportEvidence)) fail(locale.locale + ': ' + error);
   const catalogue = L.catalogue(locale.locale);
   const chromeDescription = chromeDescriptions.locales[locale.locale];
   if (chromeDescription.englishSourceFingerprint !== chromeEnglishFingerprint) {
-    fail(locale.locale + ': stale Chrome description English source fingerprint');
+    awaitTranslation(locale.locale + ': stale Chrome description English source fingerprint');
   }
   if (chromeDescription.descriptionFingerprint !== L.fingerprint(chromeDescription.description)) {
     fail(locale.locale + ': changed Chrome description snapshot; reconcile the source and provenance explicitly');
   }
-  for (const error of validateCatalogue(source, catalogue, locale.locale)) fail(locale.locale + ': ' + error);
   const missing = sourceKeys.filter(key => !(key in catalogue));
+  for (const error of validateCatalogue(source, catalogue, locale.locale)) {
+    const untranslated = missing.includes(error.slice(0, error.indexOf(':')));
+    (untranslated ? awaitTranslation : fail)(locale.locale + ': ' + error);
+  }
   const extra = Object.keys(catalogue).filter(key => !(key in source));
-  if (missing.length) fail(locale.locale + ': missing source keys: ' + missing.join(', '));
+  if (missing.length) awaitTranslation(locale.locale + ': missing source keys: ' + missing.join(', '));
   if (extra.length) warn(locale.locale + ': extra keys: ' + extra.join(', '));
 
   const messagesFile = path.join(L.root, 'src', 'shared', '_locales', locale.extension, 'messages.json');
@@ -78,11 +89,15 @@ for (const locale of L.registry) {
       for (const key of sourceKeys) {
         const entry = reviews[key];
         if (!entry) {
-          fail(locale.locale + ': missing review metadata for ' + key);
+          (missing.includes(key) ? awaitTranslation : fail)(locale.locale + ': missing review metadata for ' + key);
+          continue;
+        }
+        if (missing.includes(key)) {
+          fail(locale.locale + ': review metadata for a string with no translation: ' + key);
           continue;
         }
         if (entry.source !== L.sourceFingerprint(key)) {
-          fail(locale.locale + ': stale source fingerprint for ' + key);
+          awaitTranslation(locale.locale + ': stale source fingerprint for ' + key);
         }
         if (entry.translation !== L.fingerprint(catalogue[key])) {
           fail(locale.locale + ': review translation fingerprint mismatch for ' + key);
@@ -129,7 +144,7 @@ for (const locale of L.registry) {
     if (fields[1] > 132) fail(locale.locale + ': ' + store + ' summary exceeds conservative 132-character limit');
     if (fields[2] < 250 || fields[2] > 10000) fail(locale.locale + ': ' + store + ' full description is outside 250-10,000 characters');
   }
-  localeErrors.set(locale.locale, errors.length - startErrors);
+  localeErrors.set(locale.locale, errors.length + pending.length - startErrors);
 }
 
 for (const manifestName of ['chrome', 'firefox', 'edge']) {
@@ -137,6 +152,13 @@ for (const manifestName of ['chrome', 'firefox', 'edge']) {
   if (manifest.default_locale !== 'en') fail(manifestName + ': default_locale must be en');
   if (manifest.name !== '__MSG_extensionName__') fail(manifestName + ': manifest name is not localized');
   if (manifest.description !== '__MSG_extensionDescription__') fail(manifestName + ': manifest description is not localized');
+}
+
+// Guides are translated a whole catalogue at a time, so one that was made from
+// earlier English is reported once per language.
+for (const locale of require('../website/guide-localisation.cjs').pending()) {
+  awaitTranslation(locale + ': guides were translated from an earlier English version');
+  localeErrors.set(locale, (localeErrors.get(locale) || 0) + 1);
 }
 
 const sitemap = fs.readFileSync(path.join(L.root, 'website', 'dist', 'sitemap.xml'), 'utf8');
@@ -178,8 +200,14 @@ coverage.push('', 'Chrome 4.0.3 description snapshots are maintained separately 
 fs.writeFileSync(path.join(L.root, 'localisation', 'COVERAGE.md'), coverage.join('\n') + '\n');
 
 if (warnings.length) console.warn(warnings.join('\n'));
-if (errors.length) {
-  console.error(errors.join('\n'));
+if (pending.length && allowPending) {
+  console.warn(pending.join('\n'));
+  console.warn('Translations pending: ' + pending.length + ' reports above, allowed by TABTOOLS_PENDING_TRANSLATIONS=1.');
+}
+const failures = allowPending ? errors : [...pending, ...errors];
+if (failures.length) {
+  console.error(failures.join('\n'));
   process.exit(1);
 }
-console.log('Localisation validation passed for ' + L.registry.length + ' locales.');
+console.log('Localisation validation passed for ' + L.registry.length + ' locales' +
+  (pending.length ? ', with translations pending.' : '.'));

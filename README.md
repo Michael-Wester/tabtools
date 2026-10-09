@@ -1,19 +1,28 @@
 <h1><img src="src/shared/icons/tabtools-icon-auto.svg" width="60" height="60" alt="" align="absmiddle"> TabTools</h1>
 
-Clear your tab list quickly with site suggestions, inactive tab cleanup, duplicate removal, and sorting.
+Close tabs by site, clear duplicates and inactive tabs, and sort what stays.
 
-[![TabTools popup showing site suggestions, inactive tab cleanup, sorting, duplicate removal, and Undo](docs/images/tabtools-overview.png)](https://tabtools.fyi/)
+<a href="https://tabtools.fyi/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/tabtools-popup-dark.png">
+    <img src="docs/images/tabtools-popup-light.png" width="380" alt="The TabTools popup: 24 tabs on 8 sites. Under Suggestions, Inactive and Close duplicates share the first row, followed by each site with a mark for every tab and a count, github.com first with 6. Sort tabs and Recently closed are at the bottom.">
+  </picture>
+</a>
 
 [![Add to Chrome](docs/images/add-to-chrome.svg)](https://chromewebstore.google.com/detail/tabtools/penbnlignepchllgkflhnpfbabdfalkk?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=badge_chrome)
 [![Add to Firefox](docs/images/add-to-firefox.svg)](https://addons.mozilla.org/en-US/firefox/addon/tabtools-michael-wester/?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=badge_firefox)
 [![Add to Edge](docs/images/add-to-edge.svg)](https://microsoftedge.microsoft.com/addons/detail/tabtools/hajmbphgjkkinedfebgnpodlknanfdlh?utm_source=github&utm_medium=referral&utm_campaign=readme&utm_content=badge_edge)
 
+You can try the popup on sample tabs at [tabtools.fyi](https://tabtools.fyi/).
+
 ## Highlights
 
-- Close tabs by keyword or exact domain, with suggestions for busy sites.
-- One-click cleanup for inactive tabs, duplicates, and domain-heavy windows.
-- Undo the last close, track total tabs closed, and toggle light/dark themes.
-- Context menu entry to close tabs for the current site.
+- One list of every site with open tabs, the busiest first, with a mark for each tab. Click a site to close its tabs.
+- Type a keyword or a site to see the matching tabs before anything closes.
+- Review inactive tabs before closing them, close duplicates in one click, and sort a window by site.
+- Undo a close for a few seconds, or reopen a tab later from **Recently closed**.
+- Light, dark and system themes in six accent colours, and a count of tabs closed.
+- A right-click menu entry that closes the current site's tabs.
 
 ## See it in action
 
@@ -23,18 +32,15 @@ Close tabs from the same website using the **Close site tabs** context menu acti
 
 ![The Close site tabs action highlighted in the browser context menu](docs/images/tabtools-right-click.png)
 
-### Sort tabs by site
-
-Bring tabs from the same website together with **Sort tabs**.
-
-![TabTools Sort tabs action with a before-and-after illustration of tabs arranged by website](docs/images/tabtools-sort-tabs.png)
-
 ## Usage
 
-- Open the popup, type a keyword or domain, then press Enter or click Close.
-- Tap a suggestion chip to close tabs for that site (or inactive tabs).
-- Use quick actions to sort tabs, close duplicates, or undo the last close.
-- Adjust the minimum tab count for suggestions and the inactive threshold in Settings.
+- Open the popup and click a site under **Suggestions** to close its tabs. Pinned tabs stay open unless you turn off **Keep pinned tabs open** in Settings.
+- Type a keyword, or a site such as `youtube.com` (its subdomains are included), to list the matching tabs. Press Enter or click **Close** to close the tabs listed, or use the button on a row to close that tab alone.
+- Click **Inactive** to review the tabs you have not used for a while, with the time since each was last used. Set how long counts as inactive, from 30 minutes to 1 week, then click **Close**.
+- Click **Close duplicates** to close extra copies of a page. Two tabs are copies when their whole addresses match. A pinned copy, a copy playing sound and the copy in view stay open.
+- Click **Sort tabs** to bring a window's tabs together by site. Pinned tabs and tab groups stay where they are.
+- After a close, **Undo** is offered at the bottom of the popup for a few seconds. After that, click **Recently closed** to see the last 25 tabs TabTools closed, including those closed from the right-click menu, and click one to reopen it where it was. The list is kept until the browser closes.
+- Settings hold the theme (System, Light or Dark), the accent colour, the inactivity time, **Keep pinned tabs open**, and a reset for the count of tabs closed.
 
 ## Build
 

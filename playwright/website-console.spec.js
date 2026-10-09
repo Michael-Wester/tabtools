@@ -3,7 +3,6 @@
 const assert = require('node:assert/strict');
 const { test, expect } = require('@playwright/test');
 
-const youtubeStub = '<!doctype html><html><body data-playwright-youtube-stub></body></html>';
 const thirdPartyDiagnosticsByPage = new WeakMap();
 const representativeLocales = [
   { locale: 'de', path: '/de/', direction: 'ltr' },
@@ -30,7 +29,7 @@ function watchDiagnostics(page, origin) {
     let sourceOrigin;
     try { sourceOrigin = new URL(location.url).origin; } catch (_) {}
     // Keep unknown and opaque sources in the failure set. Only an explicit
-    // different origin belongs to the external player, rather than this site.
+    // different origin is somebody else's, and the site loads nothing from one.
     if (sourceOrigin && sourceOrigin !== 'null' && sourceOrigin !== origin) {
       thirdPartyDiagnostics.push(diagnostic);
     } else {
@@ -65,18 +64,14 @@ function assertNoDiagnostics(diagnostics) {
   assert.deepEqual(diagnostics, [], diagnostics.join('\n'));
 }
 
-async function stubExternalDemo(page) {
-  await page.route('https://www.youtube-nocookie.com/**', route => route.fulfill({
-    status: 200,
-    contentType: 'text/html; charset=utf-8',
-    body: youtubeStub
-  }));
-}
-
 async function openLocale(page, path) {
   const origin = new URL('http://127.0.0.1:4173').origin;
   const diagnostics = watchDiagnostics(page, origin);
-  await stubExternalDemo(page);
+  // The pages ask nothing of other origins. A request to one is a fault.
+  await page.route(url => url.origin !== origin, route => {
+    diagnostics.push(`request to another origin: ${route.request().url()}`);
+    return route.abort();
+  });
   const response = await page.goto(path, { waitUntil: 'load' });
   expect(response, `expected ${path} to return a response`).not.toBeNull();
   expect(response.status(), `expected ${path} to return HTTP 200`).toBe(200);
@@ -104,6 +99,28 @@ test.describe('Firefox website console smoke', () => {
     await page.locator('a[href="#privacy"]').first().click();
     await expect(page).toHaveURL(/#privacy$/);
     await expect(page.locator('#privacy')).toBeFocused();
+
+    // The working popup: close a site, undo, list matches, review inactive tabs, change the accent.
+    const demo = page.locator('[data-demo]');
+    await expect(demo).toHaveAttribute('data-demo', 'ready');
+    await demo.locator('[data-pp-site][data-host="github.com"]').click();
+    await expect(demo.locator('[data-pp-status]')).toHaveText('Closed: 6');
+    await expect(demo.locator('[data-demo-strip] [data-tab]')).toHaveCount(18);
+    await demo.locator('[data-pp-undo]').click();
+    await expect(demo.locator('[data-demo-strip] [data-tab]')).toHaveCount(24);
+    await demo.locator('[data-pp-query]').fill('google.com');
+    await expect(demo.locator('[data-pp-match-rows] .pp-tab')).toHaveCount(6);
+    await demo.locator('[data-pp-clear]').click();
+    await demo.locator('[data-pp-inactive-row]').click();
+    await expect(demo.locator('[data-pp-inactive-rows] .pp-tab')).toHaveCount(11);
+    await demo.locator('[data-pp-back="inactive"]').click();
+    await demo.locator('[data-pp-sort]').click();
+    await expect(demo.locator('[data-pp-status]')).toHaveText(/^Tabs reordered: \d+$/);
+    await demo.locator('[data-pp-open="settings"]').click();
+    await demo.locator('[data-pp-accent="blue"]').click();
+    await expect(page.locator('html')).toHaveAttribute('data-accent', 'blue');
+    await demo.locator('[data-pp-accent="purple"]').click();
+    await expect(page.locator('html')).not.toHaveAttribute('data-accent', /./);
     assertNoDiagnostics(diagnostics);
   });
 
@@ -130,19 +147,6 @@ test.describe('Firefox website console smoke', () => {
 
   test('the smoke check catches an authored console warning and page error', async ({ page }) => {
     const diagnostics = await openLocale(page, '/');
-    assertNoDiagnostics(diagnostics);
-    // Exercise origin scoping with real script provenance in the stub iframe.
-    const externalWarning = 'smoke check injected external warning';
-    await page.route('https://www.youtube-nocookie.com/smoke-check-warning.js', route => route.fulfill({
-      contentType: 'application/javascript',
-      body: `console.warn(${JSON.stringify(externalWarning)});`
-    }));
-    await page.frameLocator('.product-video').locator('[data-playwright-youtube-stub]').evaluate(body => {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube-nocookie.com/smoke-check-warning.js';
-      body.append(script);
-    });
-    await expect.poll(() => thirdPartyDiagnosticsByPage.get(page).some(item => item.includes(externalWarning))).toBeTruthy();
     assertNoDiagnostics(diagnostics);
     const before = diagnostics.length;
     await page.evaluate(() => {

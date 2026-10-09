@@ -3,3 +3,8 @@
 .language-picker {
   display: none;
 }
+
+/* Without its script the popup on the home page is a picture of itself. */
+.demo-caption {
+  display: none;
+}

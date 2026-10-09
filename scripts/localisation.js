@@ -14,11 +14,12 @@ const registry = registrySource.locales.map(locale => ({
 
 // Keep the source registry stable for URL, SEO and store mappings. The website
 // picker gets a separate deterministic presentation order: English first, then
-// the English display names in fixed English collation.
+// each language under its own name, so a reader can find theirs without
+// knowing what it is called in English.
 const presentationRegistry = [...registry].sort((left, right) => {
   if (left.locale === 'en') return -1;
   if (right.locale === 'en') return 1;
-  return left.languageName.localeCompare(right.languageName, 'en', {
+  return left.nativeName.localeCompare(right.nativeName, 'en', {
     sensitivity: 'base',
     numeric: false,
   }) || left.locale.localeCompare(right.locale, 'en');
@@ -82,21 +83,28 @@ function webExtensionLocale(locale) {
   return localeInfo(locale).extension;
 }
 
-function toWebExtensionMessages(locale) {
-  const source = extensionSource(catalogue(locale));
+function toWebExtensionMessages(locale, english = catalogue('en'), translated = catalogue(locale)) {
+  const source = extensionSource(translated);
   const output = {
     translationLocale: { message: locale },
     translationDirection: { message: localeInfo(locale).direction },
   };
 
   for (const [key, value] of Object.entries(source)) {
-    if (value && typeof value === 'object') {
+    // English is the source of truth. A string it no longer has, or has in the
+    // other shape, stays out of the package; validation names it. A string a
+    // language has not translated yet is simply absent, and the browser then
+    // shows the English one.
+    const original = english[key];
+    const plural = Boolean(value) && typeof value === 'object';
+    if (original === undefined || plural !== (Boolean(original) && typeof original === 'object')) continue;
+    if (plural) {
       for (const [category, text] of Object.entries(value)) {
-        output[key + '_' + category] = messageEntry(text, catalogue('en')[key].other);
+        output[key + '_' + category] = messageEntry(text, original.other);
       }
       continue;
     }
-    output[key] = messageEntry(value, catalogue('en')[key]);
+    output[key] = messageEntry(value, original);
   }
   return output;
 }

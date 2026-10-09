@@ -26,6 +26,118 @@ test('extension messages preserve interpolation and plural categories', () => {
   assert.ok(messages.openCount_other);
 });
 
+test('generation leaves out strings English has retired or reshaped instead of stopping', () => {
+  const english = structuredClone(L.catalogue('en'));
+  const czech = structuredClone(L.catalogue('cs'));
+  delete english.openCount;                        // a retired plural string
+  delete english.settings;                         // a retired plain string
+  english.closedCount = { one: '{count} closed', other: '{count} closed' };   // now plural in English only
+  const messages = L.toWebExtensionMessages('cs', english, czech);
+  assert.equal(Object.keys(messages).some(key => key.startsWith('openCount_')), false);
+  assert.equal('settings' in messages, false);
+  assert.equal(Object.keys(messages).some(key => key === 'closedCount' || key.startsWith('closedCount_')), false);
+  assert.ok(messages.sortTabs.message);
+  delete czech.sortTabs;                           // not translated yet: absent, so the browser shows English
+  assert.equal('sortTabs' in L.toWebExtensionMessages('cs', english, czech), false);
+});
+
+function validationSandbox(run) {
+  const os = require('node:os');
+  const { spawnSync } = require('node:child_process');
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tabtools-validate-'));
+  const wanted = /^(scripts|localisation|marketing[\\/](sources|listings|INDEX\.md)|src[\\/](overrides|shared[\\/](_locales|i18n-fallback\.js))|website[\\/](guide-localisation\.cjs|guide-ui\.cjs|guides-content\.cjs|guide-locales|dist[\\/]([^\\/]+[\\/]index\.html|index\.html|sitemap\.xml)))([\\/]|$)/;
+  const ancestors = /^(marketing|src|src[\\/]shared|website|website[\\/]dist|website[\\/]dist[\\/][^\\/]+)$/;
+  try {
+    fs.cpSync(L.root, directory, { recursive: true, filter: source => {
+      const relative = path.relative(L.root, source);
+      return relative === '' || wanted.test(relative) || ancestors.test(relative);
+    } });
+    const file = name => path.join(directory, 'localisation', name);
+    const edit = (name, change) => {
+      const data = JSON.parse(fs.readFileSync(file(name), 'utf8'));
+      fs.writeFileSync(file(name), JSON.stringify(change(data) || data, null, 2) + '\n');
+    };
+    const node = (script, pendingAllowed) => spawnSync(process.execPath, [script], {
+      cwd: directory, encoding: 'utf8',
+      env: { ...process.env, TABTOOLS_PENDING_TRANSLATIONS: pendingAllowed ? '1' : '' },
+    });
+    const validate = pendingAllowed => {
+      const result = node('scripts/validate-localisation.js', pendingAllowed);
+      return { ...result, text: result.stdout + result.stderr, coverage: fs.readFileSync(file('COVERAGE.md'), 'utf8') };
+    };
+    const generate = () => {
+      const result = node('scripts/generate-extension-locales.js', false);
+      assert.equal(result.status, 0, result.stderr);
+    };
+    return run({ edit, validate, generate });
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+test('a release branch may hold untranslated and reworded English strings only when pending translations are allowed', () => {
+  validationSandbox(({ edit, validate, generate }) => {
+    // The repository itself may be waiting for translations, so compare with its own starting point.
+    const germanRow = text => text.split('\n').find(line => line.startsWith('| de |')).split('|').map(cell => cell.trim());
+    const stale = cell => Number((cell.match(/STALE \((\d+) keys\)/) || [0, 0])[1]);
+    const start = validate(true);
+    assert.equal(start.status, 0, start.text);
+    const [, , extensionBefore, , , freshnessBefore] = germanRow(start.coverage);
+    edit('locales/en.json', english => {
+      const withNew = {};
+      for (const [key, value] of Object.entries(english)) {
+        withNew[key] = key === 'sortTabs' ? 'Sort tabs by site' : value;                     // reworded
+        if (key === 'closeSiteLabel') {
+          withNew.exampleNew = 'A new string';                                               // new
+          withNew.examplePlural = { one: '{count} example', other: '{count} examples' };     // new plural
+        }
+      }
+      return withNew;
+    });
+    generate();
+    const strict = validate(false);
+    assert.equal(strict.status, 1);
+    for (const report of ['de: exampleNew: expected nonempty text', 'de: examplePlural: expected plural forms',
+      'de: missing review metadata for exampleNew', 'de: stale source fingerprint for sortTabs']) {
+      assert.ok(strict.text.includes(report), report);
+    }
+    assert.match(strict.text, /de: missing source keys: [^\n]*exampleNew[^\n]*examplePlural/);
+    const tolerant = validate(true);
+    assert.equal(tolerant.status, 0, tolerant.text);
+    assert.match(tolerant.text, /Translations pending: \d+ reports above/);
+    assert.ok(tolerant.text.includes('de: stale source fingerprint for sortTabs'));
+    // The coverage table is committed, so it must not depend on the mode.
+    assert.equal(tolerant.coverage, strict.coverage);
+    const [, , extensionAfter, , , freshnessAfter, technical] = germanRow(tolerant.coverage);
+    const [had, total] = extensionBefore.split('/').map(Number);
+    assert.equal(extensionAfter, had + '/' + (total + 2));
+    assert.equal(stale(freshnessAfter), stale(freshnessBefore) + 3);
+    assert.match(technical, /^FAIL \(\d+\)$/);
+  });
+});
+
+test('pending translations never excuse retired strings, broken placeholders or stale packages', () => {
+  validationSandbox(({ edit, validate, generate }) => {
+    edit('locales/en.json', english => { delete english.openCount; delete english.settings; });
+    generate();                                    // used to stop with a TypeError on the plural string
+    let result = validate(true);
+    assert.equal(result.status, 1);
+    assert.ok(result.text.includes('de: openCount: unknown key'));
+    assert.ok(result.text.includes('de: settings: unknown key'));
+  });
+  validationSandbox(({ edit, validate, generate }) => {
+    edit('locales/de.json', german => { german.closeSiteLabel = 'Tabs dieser Website schließen'; });
+    let result = validate(true);
+    assert.equal(result.status, 1);
+    assert.ok(result.text.includes('de: closeSiteLabel: changed placeholders'));
+    assert.ok(result.text.includes('de: packaged messages are out of date'));
+    generate();
+    result = validate(true);
+    assert.equal(result.status, 1);
+    assert.ok(result.text.includes('de: review translation fingerprint mismatch for closeSiteLabel'));
+  });
+});
+
 test('store locale codes match the recorded Chrome and AMO evidence', () => {
   const { validateStoreCodes } = require('../scripts/catalogue-validation');
   const evidence = require('../localisation/support-evidence.json');
@@ -58,18 +170,34 @@ test('store text omits website-only navigation and its index links to current li
   assert.doesNotMatch(index, /en-GB/);
 });
 
-test('Chrome listings preserve the final browser-specific description snapshot for all locales', () => {
+test('Chrome listings keep their browser-specific descriptions, with English written for 5.0.0', () => {
   const snapshot = require('../marketing/sources/chrome-descriptions.json');
   const { listingDescription, listing, stores, fullDescription } = require('../scripts/generate-listings');
   assert.equal(snapshot.extensionVersion, '4.0.3');
   assert.deepEqual(Object.keys(snapshot.locales).sort(), L.registry.map(locale => locale.locale).sort());
+  // English says what 5.0.0 does, in the words of the website's own strings.
   const english = snapshot.locales.en.description;
-  assert.match(english, /including the current tab and pinned tabs/);
+  assert.equal(snapshot.locales.en.proposedFor, '5.0.0');
+  assert.match(english, /including the one you are on\. Pinned tabs stay open unless you turn that off in Settings\./);
+  assert.doesNotMatch(english, /and pinned tabs|exact domain|Choose an inactivity threshold/);
   assert.match(english, /right-click within a web page/);
+  const source = L.catalogue('en');
+  for (const key of ['web_bring_tabs_from_the_same', 'web_close_extra_copies_of_the', 'web_type_a_word_to_match',
+    'web_choose_an_inactivity_threshold_in', 'web_the_tabtools_extension_processes_tab']) {
+    assert.ok(english.includes(source[key]), key);
+  }
+  assert.ok(english.includes(source.web_siteBody.replace(/<[^>]+>/g, '')));
+  assert.ok(listing(L.localeInfo('en'), { ...stores.chrome, key: 'chrome' }).includes('- Description: proposed for Chrome 5.0.0; not entered in the publisher dashboard'));
   for (const locale of L.registry) {
     const entry = snapshot.locales[locale.locale];
     assert.equal(entry.storeLocale, locale.stores.chrome, locale.locale);
-    assert.equal(entry.englishSourceFingerprint, L.fingerprint(english), locale.locale);
+    // A language is either translated from the current English or still holds
+    // the captured 4.0.3 text; validation reports the second as awaiting translation.
+    assert.match(entry.englishSourceFingerprint, /^[a-f0-9]{64}$/, locale.locale);
+    if (entry.englishSourceFingerprint !== L.fingerprint(english)) {
+      assert.equal(entry.proposedFor, undefined, locale.locale + ': text for 5.0.0 must be made from the current English');
+      assert.ok(listing(locale, { ...stores.chrome, key: 'chrome' }).includes('- Description snapshot: ' + snapshot.capturedOn + '; Chrome 4.0.3'), locale.locale);
+    }
     assert.equal(entry.descriptionFingerprint, L.fingerprint(entry.description), locale.locale);
     assert.match(entry.description.split('\n')[0], /Chrome/, locale.locale);
     assert.doesNotMatch(entry.description, /Firefox|\bEdge\b|<[^>]+>/, locale.locale);
@@ -136,6 +264,13 @@ test('built packages preserve metadata and contain each browser locale', () => {
     const stale = spawnSync(process.execPath, ['scripts/check-packages.js'], { cwd: L.root, encoding: 'utf8' });
     assert.notEqual(stale.status, 0);
     assert.match(stale.stderr, /packaged version differs from source/);
+    // Any manifest key outside the approved copy fails, not only the permissions list.
+    for (const [key, value] of [['host_permissions', ['<all_urls>']], ['content_scripts', [{ matches: ['<all_urls>'], js: ['background.js'] }]], ['incognito', 'split']]) {
+      fs.writeFileSync(manifestFile, JSON.stringify({ ...JSON.parse(original), [key]: value }));
+      const widened = spawnSync(process.execPath, ['scripts/check-packages.js'], { cwd: L.root, encoding: 'utf8' });
+      assert.notEqual(widened.status, 0, key);
+      assert.match(widened.stderr, /packaged manifest differs from scripts\/approved-manifests\/chrome\.json/, key);
+    }
   } finally {
     fs.writeFileSync(manifestFile, original);
   }
@@ -168,6 +303,41 @@ test('popup uses its actual catalogue language and direction, including unsuppor
   assert.equal(fallback.ttMessage('openCount',{count:2}),'2 open tabs');
 });
 
+test('the popup document is translated in its text, placeholders, tooltips and accessible names', () => {
+  const context = extensionRuntime('de');
+  const node = dataset => ({ dataset, attributes: {}, textContent: '', placeholder: '', title: '', setAttribute(name, value) { this.attributes[name] = value; } });
+  const nodes = {
+    '[data-i18n]': [node({ i18n: 'settings' }), node({ i18n: 'sortTabs' })],
+    '[data-i18n-placeholder]': [node({ i18nPlaceholder: 'queryPlaceholder' })],
+    '[data-i18n-title]': [node({ i18nTitle: 'contextSort' })],
+    '[data-i18n-aria]': [node({ i18nAria: 'inactiveAfter' })],
+  };
+  const document = { documentElement: {}, querySelectorAll: selector => nodes[selector] || [] };
+  context.ttLocalizeDocument(document);
+  const german = L.catalogue('de');
+  assert.deepEqual(nodes['[data-i18n]'].map(element => element.textContent), [german.settings, german.sortTabs]);
+  assert.equal(nodes['[data-i18n-placeholder]'][0].placeholder, german.queryPlaceholder);
+  assert.equal(nodes['[data-i18n-title]'][0].title, german.contextSort);
+  assert.equal(nodes['[data-i18n-aria]'][0].attributes['aria-label'], german.inactiveAfter);
+  assert.equal(document.documentElement.lang, 'de');
+  assert.equal(document.documentElement.dir, 'ltr');
+});
+
+test('every string the popup and the background ask for exists in English', () => {
+  const english = L.extensionSource(L.catalogue('en'));
+  const read = file => fs.readFileSync(path.join(L.root, 'src/shared', file), 'utf8');
+  const asked = new Set();
+  for (const [, key] of read('popup/popup.html').matchAll(/data-i18n(?:-[a-z]+)?="([^"]+)"/g)) asked.add(key);
+  for (const [, key] of read('popup/popup.js').matchAll(/\bt\("(\w+)"/g)) asked.add(key);
+  for (const [, key] of read('popup/popup.js').matchAll(/"(closed\w+)"/g)) asked.add(key);
+  for (const [, key] of read('background.js').matchAll(/_KEY = "(\w+)";/g)) if (!key.startsWith('pc')) asked.add(key);
+  for (const key of ['extensionName', 'extensionDescription', 'openTabTools']) asked.add(key);
+  assert.ok(asked.size > 40);
+  for (const key of asked) assert.ok(key in english, key + ' is used but missing from the English catalogue');
+  // And the other way round: a string nothing asks for should be retired, not translated 28 times.
+  for (const key of Object.keys(english)) assert.ok(asked.has(key), key + ' is in the English catalogue but nothing uses it');
+});
+
 test('plural counts, formatted numbers and missing-message fallback remain readable',()=>{
   const russian=extensionRuntime('ru');
   for(const [count,expected] of [[1,'1 открытая вкладка'],[2,'2 открытые вкладки'],[5,'5 открытых вкладок'],[21,'21 открытая вкладка']]) {
@@ -181,19 +351,51 @@ test('plural counts, formatted numbers and missing-message fallback remain reada
   assert.equal(english.ttMessage('closeSiteLabel',{site:'<test>.example'}),'Close tabs from <test>.example');
 });
 
-test('compact popup counters use translated plural forms and unformatted digits in every locale', () => {
+test('popup counters use each language’s plural forms and number format', () => {
   for (const locale of L.registry) {
     const context = extensionRuntime(locale.locale);
-    for (const key of ['openCountShort', 'closedCountShort']) {
+    const translated = L.catalogue(locale.locale);
+    for (const key of ['openCount', 'tabCount', 'siteCount', 'closedCountShort']) {
+      // A string still waiting for its translation is shown in English; see the end of this test.
+      if (!(key in translated)) continue;
       for (const count of [0, 1, 2, 5, 14, 21, 2479, 123456]) {
         const category = new Intl.PluralRules(locale.locale).select(count);
-        const expected = L.catalogue(locale.locale)[key][category].replace('{count}', String(count));
-        assert.equal(context.ttMessage(key, { count }, { formatNumbers: false }), expected, locale.locale + '/' + key + '/' + count);
+        const expected = translated[key][category].replace('{count}', new Intl.NumberFormat(locale.locale).format(count));
+        assert.equal(context.ttMessage(key, { count }), expected, locale.locale + '/' + key + '/' + count);
       }
     }
   }
-  const fallback = extensionRuntime('he', 'he', ['closedCountShort_other']);
-  assert.equal(fallback.ttMessage('closedCountShort', { count: 2479 }, { formatNumbers: false }), '2479 closed');
+  const english = extensionRuntime('en');
+  assert.equal(english.ttMessage('closedCountShort', { count: 2479 }), '2,479 closed');
+  assert.equal(english.ttMessage('siteCount', { count: 1 }), '1 site');
+  assert.equal(english.ttMessage('siteCount', { count: 18 }), '18 sites');
+  const fallback = extensionRuntime('he', 'he', ['closedCountShort_other', 'siteCount_one', 'siteCount_two', 'siteCount_other']);
+  assert.equal(fallback.ttMessage('closedCountShort', { count: 2479 }), '2,479 closed');
+  assert.equal(fallback.ttMessage('siteCount', { count: 1 }), '1 site');
+  assert.equal(fallback.ttMessage('siteCount', { count: 2 }), '2 sites');
+});
+
+test('times are worded by the browser in every language, for each step and for values saved by older versions', () => {
+  const steps = [30, 60, 120, 240, 480, 1440, 4320, 10080];
+  for (const locale of L.registry) {
+    const context = extensionRuntime(locale.locale);
+    for (const display of ['long', 'short']) {
+      const labels = steps.map(minutes => context.ttDuration(minutes, display));
+      assert.equal(new Set(labels).size, steps.length, locale.locale + ': each step reads differently');
+      // A unit name is always present. A number is not: Hebrew writes two hours as one word.
+      for (const label of labels) assert.match(label, /\p{L}/u, locale.locale + ': ' + label);
+    }
+    for (const minutes of [0, 59, 60, 1439, 1440, 100000]) assert.match(context.ttAge(minutes), /\p{L}/u, locale.locale);
+  }
+  const english = extensionRuntime('en');
+  assert.deepEqual(steps.map(minutes => english.ttDuration(minutes)),
+    ['30 minutes', '1 hour', '2 hours', '4 hours', '8 hours', '1 day', '3 days', '1 week']);
+  assert.deepEqual(steps.map(minutes => english.ttDuration(minutes, 'short')),
+    ['30 min', '1 hr', '2 hr', '4 hr', '8 hr', '1 day', '3 days', '1 wk']);
+  // A time that is not a whole number of a larger unit is never rounded to one.
+  assert.deepEqual([45, 90, 100, 1500].map(minutes => english.ttDuration(minutes)), ['45 minutes', '90 minutes', '100 minutes', '25 hours']);
+  assert.deepEqual([0, 59, 60, 125, 1439, 1440, 4000].map(minutes => english.ttAge(minutes)),
+    ['0 min', '59 min', '1 hr', '2 hr', '23 hr', '1 day', '2 days']);
 });
 
 test('placeholder positions are stable across repetition and translation order',()=>{
@@ -206,7 +408,9 @@ test('placeholder positions are stable across repetition and translation order',
 test('catalogue validation rejects missing placeholders, plural forms, markup and brands',()=>{
   const {validateCatalogue}=require('../scripts/catalogue-validation');
   const source=L.catalogue('en');
-  const fresh=()=>structuredClone(L.catalogue('de'));
+  // German, with any string it has not translated yet taken from English, so
+  // this test does not depend on whether translations are pending.
+  const fresh=()=>({...structuredClone(source),...structuredClone(L.catalogue('de'))});
   assert.deepEqual(validateCatalogue(source,fresh(),'de'),[]);
   let c=fresh();c.closedCount='Geschlossen';
   assert.ok(validateCatalogue(source,c,'de').some(error=>error.includes('changed placeholders')));

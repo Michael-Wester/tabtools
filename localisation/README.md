@@ -6,7 +6,7 @@ English fallback. The locale registry in
 `registry.json` maps canonical language tags to the WebExtensions directory,
 website URL, hreflang value, and each store's listing code.
 
-The current browser manifest versions are Chrome, Firefox and Edge 4.0.3. The 2026-09-18 baseline is commit
+The current browser manifest versions are Chrome, Firefox and Edge 5.0.0. The 2026-09-18 baseline is commit
 `519007f3dd06c0b2ab52d57519ed7a0d145b9c79`. The imported translations carry
 per-key review metadata in `reviews/<locale>.json`; a review's `source`
 value is `sha256(JSON.stringify(EnglishValue))`. A source edit therefore
@@ -45,7 +45,9 @@ committed for review and future manual entry; they never update a live store lis
 Translation completion, technical validation, and linguistic review are
 tracked separately. Source freshness is fingerprinted per key and reported as
 current or stale in `COVERAGE.md`; CI fails on stale non-English source
-fingerprints. The current translations have AI self-review only; no
+fingerprints, except on a release branch that is waiting for its translations
+(see [validation](VALIDATION.md#release-branches-and-pending-translations)).
+The current translations have AI self-review only; no
 native-speaker review is claimed. The public documentation confirms the
 localisation mechanisms. The recorded Chrome locale table and pinned AMO production source constrain valid listing
 codes; Edge's full dashboard language list remains unverified. This PR has 29

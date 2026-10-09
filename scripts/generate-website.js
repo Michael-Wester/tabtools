@@ -5,6 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const L = require('./localisation');
 
+const demo = require('../website/demo-content.cjs');
+
 const sourceDir = path.join(L.root, 'website', 'src');
 const outputDir = path.join(L.root, 'website', 'dist');
 const template = fs.readFileSync(path.join(sourceDir, 'template.html'), 'utf8');
@@ -15,6 +17,21 @@ function htmlMessage(value) {
     .replaceAll('&lt;br&gt;', '<br />');
 }
 
+// Text the page's own scripts show. Everything else is already in the HTML, so
+// the page does not carry a second copy of the whole catalogue.
+const runtimeKeys = [
+  'web_addTo', 'web_view', 'web_storeAria', 'web_storeNote', 'web_language', 'web_languageSuggestion',
+  'web_switchLight', 'web_switch_to_dark_mode',
+];
+
+// A release branch can hold English text ahead of its translations. A string a
+// language does not have yet is shown in English, as the extension does, and
+// validation reports it as awaiting translation. English itself has no fallback.
+function message(locale, key) {
+  const value = L.catalogue(locale.locale)[key];
+  return value === undefined && locale.locale !== 'en' ? L.catalogue('en')[key] : value;
+}
+
 function localeData(locale) {
   return {
     locale: locale.locale,
@@ -22,10 +39,11 @@ function localeData(locale) {
       locale: item.locale,
       canonical: item.canonical,
       path: item.path,
-      languageName: item.languageName,
+      nativeName: item.nativeName,
       flagAsset: item.flagAsset,
     })),
-    messages: L.catalogue(locale.locale),
+    messages: Object.fromEntries(runtimeKeys.map(key => [key, message(locale, key)])),
+    demo: demo.data(locale),
   };
 }
 
@@ -40,6 +58,12 @@ function flagMarkup(item, className) {
     '</span>';
 }
 
+// Each language is listed under its own name, marked up in that language.
+function nameMarkup(item, className, extra = '') {
+  return '<span' + (className ? ' class="' + className + '"' : '') + extra + ' lang="' + L.escape(item.canonical) +
+    '" dir="' + L.escape(item.direction) + '">' + L.escape(item.nativeName) + '</span>';
+}
+
 function languagePickerMarkup(current, label) {
   const options = L.presentationRegistry.map(item => {
     const selected = item.locale === current.locale;
@@ -47,23 +71,23 @@ function languagePickerMarkup(current, label) {
       L.escape(item.locale) + '" role="option" aria-selected="' + selected +
       '" tabindex="-1" href="' + L.escape(item.path) + '">' +
       flagMarkup(item, 'language-flag-option') +
-      '<span class="language-option-name" lang="en" dir="ltr">' + L.escape(item.languageName) + '</span>' +
+      nameMarkup(item, 'language-option-name') +
       '<span class="language-option-check" aria-hidden="true">✓</span>' +
       '</a>';
   }).join('');
-  const currentName = current.languageName || current.locale;
-  const accessibleLabel = String(label) + ': ' + currentName;
+  const accessibleLabel = String(label) + ': ' + current.nativeName;
   const fallbackOptions = L.presentationRegistry.map(item =>
     '<a class="language-fallback-option" href="' + L.escape(item.path) + '"' +
       (item.locale === current.locale ? ' aria-current="page"' : '') + '>' +
       flagMarkup(item, 'language-flag-option') +
-      '<span lang="en" dir="ltr">' + L.escape(item.languageName) + '</span></a>'
+      nameMarkup(item, '') + '</a>'
   ).join('');
   return '<div class="language-picker" data-language-picker>' +
     '<button class="language-trigger" type="button" data-language-trigger aria-label="' + L.escape(accessibleLabel) +
       '" title="' + L.escape(accessibleLabel) + '" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">' +
       flagMarkup(current, 'language-flag-current') +
-      '<span class="language-name sr-only" data-language-name lang="en" dir="ltr">' + L.escape(currentName) + '</span>' +
+      nameMarkup(current, 'language-name', ' data-language-name') +
+      '<svg class="language-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5"></path></svg>' +
     '</button>' +
     '<div id="language-menu" class="language-menu" data-language-menu role="listbox" aria-label="' + L.escape(label) + '" hidden>' +
       options +
@@ -72,7 +96,7 @@ function languagePickerMarkup(current, label) {
     '<noscript><details class="language-fallback">' +
       '<summary class="language-fallback-trigger" aria-label="' + L.escape(accessibleLabel) + '">' +
         flagMarkup(current, 'language-flag-fallback') +
-        '<span class="sr-only" lang="en" dir="ltr">' + L.escape(accessibleLabel) + '</span>' +
+        '<span class="sr-only">' + L.escape(accessibleLabel) + '</span>' +
       '</summary>' +
       '<nav class="language-fallback-menu" aria-label="' + L.escape(label) + '">' + fallbackOptions + '</nav>' +
     '</details></noscript>';
@@ -93,11 +117,11 @@ function safeJson(value) {
 }
 
 function applyTranslations(html, locale) {
-  const target = L.catalogue(locale.locale);
   const { richKeys } = require('./catalogue-validation');
+  const text = key => message(locale, key);
   const structuredData = {
     '@context': 'https://schema.org', '@type': 'SoftwareApplication',
-    name: 'TabTools', url: L.urlFor(locale), description: target.web_structuredDescription,
+    name: 'TabTools', url: L.urlFor(locale), description: text('web_structuredDescription'),
     inLanguage: locale.locale, applicationCategory: 'BrowserApplication', isAccessibleForFree: true,
   };
   const special = {
@@ -105,13 +129,22 @@ function applyTranslations(html, locale) {
     canonical: L.urlFor(locale), alternates: seoLinks(),
     structuredData: '<script type="application/ld+json">' + safeJson(structuredData) + '</script>',
     pageData: '<script type="application/json" id="locale-data">' + safeJson(localeData(locale)) + '</script>',
-    languageSelector: languagePickerMarkup(locale, target.web_language),
+    languageSelector: languagePickerMarkup(locale, text('web_language')),
+    // Only built when the template asks for it, since it needs a string of its own.
+    get demo() { return demo.markup(locale, required('web_demoHint')); },
+    // "2 hr+", as the popup's Inactive row words the default time.
+    inactiveHint: L.escape(new Intl.NumberFormat(locale.canonical, { style: 'unit', unit: 'hour', unitDisplay: 'short' })
+      .format(demo.threshold / 60) + '+'),
   };
+  function required(key) {
+    const value = text(key);
+    if (typeof value !== 'string') throw new Error('Missing website message ' + locale.locale + ':' + key);
+    return value;
+  }
   return html.replace(/{{(\w+)(?::([^}]+))?}}/g, (_, key, argument) => {
     if (Object.hasOwn(special, key)) return special[key];
-    if (key === 'storeLabel') return L.escape(target.web_addTo.replace('{browser}', argument));
-    const value = target[key];
-    if (typeof value !== 'string') throw new Error('Missing website message ' + locale.locale + ':' + key);
+    if (key === 'storeLabel') return L.escape(required('web_addTo').replace('{browser}', argument));
+    const value = required(key);
     if (key === 'web_addTo') {
       return L.escape(value).replace('{browser}',
         '<span class="browser-button-name" data-browser-name>' + L.escape(argument) + '</span>');
@@ -147,7 +180,9 @@ function main() {
   }
   fs.copyFileSync(path.join(sourceDir, 'styles.css'), path.join(outputDir, 'styles.css'));
   fs.copyFileSync(path.join(sourceDir, 'no-script.css'), path.join(outputDir, 'no-script.css'));
+  fs.copyFileSync(path.join(sourceDir, 'guides.css'), path.join(outputDir, 'guides.css'));
   fs.copyFileSync(path.join(sourceDir, 'script.js'), path.join(outputDir, 'script.js'));
+  fs.copyFileSync(path.join(sourceDir, 'demo.js'), path.join(outputDir, 'demo.js'));
   copyFlagAssets();
   for (const locale of L.registry) writePage(locale);
 
@@ -163,4 +198,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { main, applyTranslations, localeData, languagePickerMarkup, seoLinks };
+module.exports = { main, applyTranslations, localeData, languagePickerMarkup, seoLinks, runtimeKeys, message };

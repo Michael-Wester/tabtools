@@ -27,6 +27,24 @@ To get the current fingerprint after a real review:
 node -p 'require("./website/guide-localisation.cjs").sourceFingerprint'
 ```
 
+A stale translation does not stop generation. Its guide is still built from the
+earlier translation, and `scripts/validate-localisation.js` reports the language
+as awaiting translation: that fails everywhere except a pull request into a
+release branch, where `TABTOOLS_PENDING_TRANSLATIONS=1` lets English go ahead of
+its translations. A stale catalogue cannot be compared with the new English
+paragraph by paragraph, so only its review, its strings, its set of guides and
+the absence of unsafe markup are checked until it is brought up to date. To list
+the languages that are behind:
+
+```sh
+node -p 'require("./website/guide-localisation.cjs").pending().join(" ")'
+```
+
+For 5.0.0 the English guides changed what they say about pinned tabs, typed
+sites, duplicates, tab groups, Undo and Recently closed, replaced six of their
+pictures and gained a seventh. The six earlier pictures stay in `dist/assets/guides/` only for the translations that
+still show them; delete them when those are retranslated.
+
 The `review` metadata honestly identifies the review performed. Machine-checked
 structure, source freshness and AI review remain distinct from human/native review.
 

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Προτάσεις"
   },
-  "suggestCaption": {
-    "message": "Πατήστε για κλείσιμο καρτελών του ιστοτόπου"
-  },
   "queryPlaceholder": {
     "message": "Κλείσιμο με λέξη-κλειδί (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Αναίρεση"
   },
-  "undoTitle": {
-    "message": "Αναίρεση τελευταίου κλεισίματος"
-  },
   "theme": {
     "message": "Θέμα"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Σκοτεινό"
   },
-  "minTabs": {
-    "message": "Ελάχιστες καρτέλες ανά ιστότοπο για προτάσεις"
-  },
   "inactiveAfter": {
     "message": "Οι καρτέλες θεωρούνται ανενεργές μετά από"
-  },
-  "minutes": {
-    "message": "λεπτά"
   },
   "closedCount": {
     "message": "Έκλεισαν: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ ανοιχτές καρτέλες",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ ανοιχτή",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ ανοιχτές",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Δεν υπάρχουν διπλότυπα"
   },
-  "nothingToUndo": {
-    "message": "Δεν υπάρχει ενέργεια για αναίρεση"
-  },
   "undoFailed": {
     "message": "Η αναίρεση απέτυχε"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Ανενεργές"
   },
-  "loadingSuggestions": {
-    "message": "Φόρτωση προτάσεων…"
-  },
   "suggestionsFailed": {
     "message": "Η φόρτωση προτάσεων απέτυχε"
   },
   "noSuggestions": {
     "message": "Δεν υπάρχουν προτάσεις"
-  },
-  "moreCount": {
-    "message": "Επιπλέον προτάσεις που δεν εμφανίζονται: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Η ταξινόμηση απέτυχε"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Δεν υπάρχουν καρτέλες για ταξινόμηση"
-  },
-  "hide": {
-    "message": "Απόκρυψη"
-  },
-  "show": {
-    "message": "Εμφάνιση"
   },
   "contextClose": {
     "message": "Κλείσιμο καρτελών ιστοτόπου"

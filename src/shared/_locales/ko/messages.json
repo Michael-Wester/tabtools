@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "추천 사이트"
   },
-  "suggestCaption": {
-    "message": "탭을 닫으려면 사이트를 누르세요"
-  },
   "queryPlaceholder": {
     "message": "키워드로 닫기 (Enter 키)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "실행 취소"
   },
-  "undoTitle": {
-    "message": "마지막으로 닫은 탭 복원"
-  },
   "theme": {
     "message": "테마"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "어둡게"
   },
-  "minTabs": {
-    "message": "추천 사이트의 최소 탭 수"
-  },
   "inactiveAfter": {
     "message": "비활성 탭으로 간주할 시간"
-  },
-  "minutes": {
-    "message": "분"
   },
   "closedCount": {
     "message": "닫은 탭: $count$개",
@@ -70,15 +58,6 @@
   },
   "openCount_other": {
     "message": "열린 탭 $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "열림 $count$",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -122,9 +101,6 @@
   "noDuplicates": {
     "message": "중복 탭이 없습니다"
   },
-  "nothingToUndo": {
-    "message": "취소할 작업이 없습니다"
-  },
   "undoFailed": {
     "message": "실행 취소에 실패했습니다"
   },
@@ -143,23 +119,11 @@
   "inactive": {
     "message": "비활성 탭"
   },
-  "loadingSuggestions": {
-    "message": "추천 사이트를 불러오는 중…"
-  },
   "suggestionsFailed": {
     "message": "추천 사이트를 불러오지 못했습니다"
   },
   "noSuggestions": {
     "message": "추천 사이트가 없습니다"
-  },
-  "moreCount": {
-    "message": "표시되지 않은 추천 사이트: $count$개",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "정렬에 실패했습니다"
@@ -175,12 +139,6 @@
   },
   "nothingToSort": {
     "message": "정렬할 탭이 없습니다"
-  },
-  "hide": {
-    "message": "숨기기"
-  },
-  "show": {
-    "message": "표시"
   },
   "contextClose": {
     "message": "이 사이트의 탭 닫기"

@@ -8,6 +8,7 @@ on:
       - 'build.js'
       - 'build.ps1'
       - 'website/src/**'
+      - 'website/demo-content.cjs'
       - 'website/guide-ui.cjs'
       - 'website/guide-localisation.cjs'
       - 'website/guide-locales/**'
@@ -38,6 +39,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+    env:
+      # A pull request into a release branch may carry English strings whose
+      # translations follow in a later pull request. Pushes to main and pull
+      # requests into main stay strict; translations-complete below is always strict.
+      TABTOOLS_PENDING_TRANSLATIONS: ${{ (github.event_name == 'pull_request' && github.base_ref != 'main') && '1' || '' }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -64,7 +70,26 @@ jobs:
         if: runner.os == 'Windows'
         run: node scripts/check-packages.js
       - name: Reject stale generated files
-        run: git diff --exit-code
+        # Intent-to-add makes a generated file that was never committed show up too.
+        run: |
+          git add --all --intent-to-add .
+          git diff --exit-code
+
+  translations-complete:
+    # Fails while any language is missing a string or has one older than its
+    # English source. Expected to be red on a release branch until its
+    # translations are merged, and green before that branch reaches main.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Check that every language is fully translated and current
+        run: node scripts/validate-localisation.js
 
   firefox-console-smoke:
     runs-on: ubuntu-latest

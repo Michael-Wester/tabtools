@@ -8,6 +8,33 @@ The site is intentionally dependency-free. Serve `dist/` with any static web
 server for local review; edit the authored files in `src/` and regenerate the
 output as described below.
 
+## Design
+
+The site is drawn with the 5.0.0 popup's own parts. `src/styles.css` starts with
+the popup's colour tokens (light and dark, and its six accent colours), uses its
+system font stack, and carries its rows, tick marks, field, stepper, segmented
+control and result bar under a `pp-` prefix. Change a token in
+`src/shared/popup/popup.html` and in `src/styles.css` together.
+
+The home page opens with a working copy of the popup over a row of sample tabs.
+Clicking a site closes its tabs, with Undo; typing lists matches first; Inactive
+opens a list to review; Sort tabs reorders the row; its Settings change this
+site's theme and accent colour. It never reads the visitor's own tabs.
+
+- `demo-content.cjs` holds the sample tabs, the extension strings the popup
+  shows (taken from the same catalogue as the extension) and the markup for its
+  starting state, which is written into each home page.
+- `src/demo.js` holds the rules, which follow the extension's (what counts as
+  a duplicate, what is inactive, what a typed site matches, how tabs sort), and
+  the script that takes over in the browser. The generator loads the same file
+  for the rules, so the page reads the same before the script runs.
+- Without JavaScript the popup is marked `inert`: a picture of its starting
+  state, with no buttons that do nothing.
+
+Each feature on the home page has a small piece of the popup beside it. These
+are static and hidden from assistive technology; the text next to them says the
+same thing.
+
 ## Localisation source and generation
 
 The authored website template is `src/template.html`, with explicit translation
@@ -34,13 +61,28 @@ offers a browser-language suggestion without replacing an explicitly chosen
 URL. Website generation also regenerates all localized guides after the landing
 pages so they use the current shared header, footer and theme bootstrap.
 
+The language menu lists every language under its own name (`nativeName` in the
+registry), in its own script and direction, with English first. The button shows
+the current language's flag and, on wide windows, its name.
+
+Each page embeds the few strings its scripts show (`runtimeKeys` in
+`scripts/generate-website.js`, and on the home page the popup's strings), not
+the whole catalogue.
+
+A release branch can carry English text ahead of its translations. A website
+string that a language does not have yet is shown in English, and a guide whose
+English has changed keeps its earlier translation. Both are reported by
+`scripts/validate-localisation.js`, which fails for them unless
+`TABTOOLS_PENDING_TRANSLATIONS=1`, and that is only set for pull requests into a
+branch other than `main`.
+
 ## Guides
 
 `/guides/` lists three English guides: closing tabs from the same website,
 removing duplicates, and sorting tabs by website. Article content lives in
 `guides-content.cjs`; `build-guides.cjs` generates the index, article pages and
 sitemap, reusing the homepage's header, footer and early theme bootstrap.
-Layout styles live in `dist/guides.css`. The generated HTML is committed so the
+Layout styles live in `src/guides.css`. The generated HTML is committed so the
 deployment remains a static upload and all articles work without JavaScript.
 Every supported locale has the same three complete guides and index. English
 keeps `/guides/` and `/guides/<slug>/`; other locales use their existing homepage
@@ -60,13 +102,16 @@ publishing English body copy at a translated URL. Review metadata describes AI
 translation and self-review; it does not claim native-speaker review. See
 [`GUIDE-LOCALISATION.md`](GUIDE-LOCALISATION.md) for maintenance and SEO checks.
 
-The ten Chrome screenshots live in `dist/assets/guides/` and are inserted with
-the `screenshot()` helper in `guides-content.cjs`. Keep the original 1280 × 800
-PNGs, descriptive alt text and captions aligned with each example. Images scale
-to the article width, reserve their aspect ratio, load lazily and link to the
-full-size PNG. The existing screenshots show English browser and extension UI;
+Guide pictures live in `dist/assets/guides/` and are of two kinds. Browser
+screenshots (1280 × 800, the `screenshot()` helper in `guides-content.cjs`) show
+a whole Chrome window. Pictures of the popup alone (760 pixels wide, shown at
+380, the `popup()` helper) are taken from the built extension by
+`node scripts/capture-pictures.js`. Keep descriptive alt text and captions
+aligned with each example. Images reserve their aspect ratio, load lazily and
+link to the full-size PNG. The pictures show English browser and extension UI;
 translated articles explicitly say this and translate the alt text and captions.
-Capture details are in `dist/assets/guides/README.md`.
+Details are in `dist/assets/guides/README.md`. A test fails for a picture that
+no guide shows.
 
 After editing article content, its template, or the homepage navigation/footer:
 
@@ -129,13 +174,25 @@ Keep the canonical link, Open Graph URL, software metadata, sitemap,
 and robots.txt sitemap URL aligned if the preferred domain changes. Redirects
 and domain certificates are managed by the host, not these static files.
 
-The page opens in light mode unless the visitor has saved a theme preference.
-Store attribution remains independent of theme and browser detection.
+The page follows the system's light or dark setting until the visitor chooses a
+theme with the header button or in the working popup's Settings. Only a choice is
+saved, and choosing System there removes it. The accent colour is saved the same
+way. Store attribution remains independent of theme and browser detection.
+
+The header stays at the top of wide windows. On phones (720 pixels and under) it
+scrolls away with the page, because its two rows covered what the keyboard had
+reached. Links to a section stop below it either way (`scroll-padding-top`).
 
 Product instructions are grounded in the extension source: closing by site
-affects matching tabs in regular windows; sorting affects the current window;
-popup Undo is available while that popup remains open. Privacy copy refers to
-the extension and distinguishes the website's third-party YouTube player.
+affects that site's tabs in regular windows and leaves pinned tabs open by
+default; sorting affects the current window and leaves pinned tabs and tab
+groups in place; Undo is offered in the popup for a few seconds after a close.
+Privacy copy refers to the extension. The site itself loads nothing from another
+origin: the YouTube demo it used to embed showed the 4.x popup and was replaced
+by the working popup.
+
+The link-preview picture (`dist/assets/tabtools-social.png`) is the top of the
+built home page, taken by `node scripts/capture-pictures.js social`.
 
 See [Cloudflare deployment and rollback](CLOUDFLARE.md) for migration status,
 hosting settings, verification requirements, and future deployment instructions.
@@ -151,8 +208,8 @@ authored assets in [`src/assets/flags/`](src/assets/flags/) and copied to
 ## Security headers
 
 Cloudflare Pages reads `dist/_headers` to restrict resource loading, prevent
-framing, and enable a one-year, host-only HSTS policy. The YouTube demo and
-same-origin Cloudflare email decoder remain allowed. Camera, microphone and
+framing, and enable a one-year, host-only HSTS policy. No frame is allowed, and
+the same-origin Cloudflare email decoder remains allowed. Camera, microphone and
 geolocation access are disabled. No `unsafe-inline` or `unsafe-eval` is allowed.
 
 Run `node website/check-security.cjs` from the repository root before deployment.

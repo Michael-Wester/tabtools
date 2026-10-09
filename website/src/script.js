@@ -90,11 +90,6 @@
       link.dataset.store = key;
       setCopyLabel(link, key, mobile);
 
-      const installPrefix = link.querySelector('[data-install-prefix]');
-      if (installPrefix) {
-        installPrefix.textContent = mobile ? 'View' : 'Add to';
-      }
-
       const browserIcon = link.querySelector('[data-browser-icon]');
       if (browserIcon) browserIcon.src = '/assets/browsers/' + key + '.svg';
       const visibleLabel = link.textContent.trim().replace(/\s+/g, ' ');
@@ -116,40 +111,81 @@
     });
   }
 
-  function setTheme(theme) {
-    document.documentElement.dataset.theme = theme;
-    try { localStorage.setItem('tabtools-site-theme', theme); } catch (_) {}
+  // The page follows the system's light or dark setting until the visitor
+  // chooses one. Only a choice is saved: 'system' means nothing is stored.
+  const root = document.documentElement;
+  const systemDark = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  const themeColors = { light: '#f6f6f4', dark: '#1a1b21' };
+  const accents = ['blue', 'green', 'orange', 'pink', 'graphite'];
 
-    const dark = theme === 'dark';
+  function theme() {
+    return root.dataset.theme === 'dark' || root.dataset.theme === 'light' ? root.dataset.theme : 'system';
+  }
+
+  function shownTheme() {
+    const chosen = theme();
+    if (chosen !== 'system') return chosen;
+    return systemDark && systemDark.matches ? 'dark' : 'light';
+  }
+
+  function accent() {
+    return accents.includes(root.dataset.accent) ? root.dataset.accent : 'purple';
+  }
+
+  function store(key, value) {
+    try {
+      if (value === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, value);
+    } catch (_) {}
+  }
+
+  function syncAppearance() {
+    const dark = shownTheme() === 'dark';
     const toggle = $('[data-theme-toggle]');
     if (toggle) {
       const label = dark ? message('web_switchLight') : message('web_switch_to_dark_mode');
       toggle.setAttribute('aria-label', label);
       toggle.title = label;
     }
+    // The browser's own bars take the page colour: one tag per system setting
+    // while following the system, the chosen colour in both once chosen.
+    const chosen = theme();
+    $$('meta[name="theme-color"]').forEach(meta => {
+      const forDark = /dark/.test(meta.getAttribute('media') || '');
+      meta.content = themeColors[chosen === 'system' ? (forDark ? 'dark' : 'light') : chosen];
+    });
+    if (typeof Event === 'function' && document.dispatchEvent) document.dispatchEvent(new Event('tabtools:appearance'));
+  }
 
-    const label = $('[data-theme-label]');
-    if (label) label.textContent = dark ? message('web_lightMode') : message('web_dark_mode');
+  function setTheme(value) {
+    if (value === 'dark' || value === 'light') {
+      root.dataset.theme = value;
+      store('tabtools-site-theme', value);
+    } else {
+      delete root.dataset.theme;
+      store('tabtools-site-theme', null);
+    }
+    syncAppearance();
+  }
 
-    const metaTheme = $('meta[name="theme-color"]');
-    if (metaTheme) metaTheme.content = dark ? '#111216' : '#f6f6f4';
+  function setAccent(value) {
+    if (accents.includes(value)) {
+      root.dataset.accent = value;
+      store('tabtools-site-accent', value);
+    } else {
+      delete root.dataset.accent;
+      store('tabtools-site-accent', null);
+    }
+    syncAppearance();
   }
 
   function initTheme() {
-    let current = document.documentElement.dataset.theme;
-    if (!current) {
-      try { current = localStorage.getItem('tabtools-site-theme'); } catch (_) {}
-    }
-    if (current !== 'dark' && current !== 'light') current = 'light';
-    setTheme(current);
-
+    syncAppearance();
     const toggle = $('[data-theme-toggle]');
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        setTheme(next);
-      });
-    }
+    if (toggle) toggle.addEventListener('click', () => setTheme(shownTheme() === 'dark' ? 'light' : 'dark'));
+    if (systemDark && systemDark.addEventListener) systemDark.addEventListener('change', syncAppearance);
+    // The working popup's Settings view changes the same two things.
+    window.TabToolsSite = { theme, setTheme, accent, setAccent };
   }
 
   function pathFor(locale) {
@@ -187,8 +223,9 @@
     });
   }
 
+  // Each language goes by its own name, so nobody has to know its English one.
   function languageDisplayName(item) {
-    return item?.languageName || item?.nativeName || item?.locale || '';
+    return item?.nativeName || item?.locale || '';
   }
 
   function languageFlagSrc(item) {
@@ -260,8 +297,6 @@
       options().forEach(option => {
         option.href = pathFor(option.dataset.locale) + currentLocationSuffix();
         option.setAttribute('aria-selected', String(option.dataset.locale === currentLocale));
-        option.setAttribute('lang', 'en');
-        option.setAttribute('dir', 'ltr');
         option.addEventListener('click', event => choose(option, event));
         option.addEventListener('keydown', event => {
           const items = options();
@@ -325,8 +360,7 @@
     link.dataset.locale = target.locale;
     link.href = pathFor(target.locale) + currentLocationSuffix();
     const label = document.createElement('bdi');
-    label.lang = 'en';
-    label.dir = 'ltr';
+    label.lang = target.canonical || target.locale;
     label.textContent = languageDisplayName(target);
     const parts = message('web_languageSuggestion', { language: '{language}' }).split('{language}');
     link.replaceChildren(document.createTextNode(parts[0]), label, document.createTextNode(parts[1] || ''));
@@ -339,16 +373,24 @@
     suggestion.hidden = false;
   }
 
+  // How much of the top of the window the header covers: its height while it
+  // stays pinned, nothing on phones where it scrolls away with the page.
+  function headerCover() {
+    const header = $('.site-header');
+    if (!header || getComputedStyle(header).position !== 'sticky') return 0;
+    return header.getBoundingClientRect().height;
+  }
+
   function initHeaderOffset() {
     const header = $('.site-header');
     if (!header) return;
     const update = () => {
-      const offset = Math.ceil(header.getBoundingClientRect().height) + 16;
-      document.documentElement.style.setProperty('--header-offset', offset + 'px');
+      const cover = headerCover();
+      root.style.setProperty('--header-offset', Math.ceil(cover) + (cover ? 16 : 12) + 'px');
     };
     update();
     if ('ResizeObserver' in window) new ResizeObserver(update).observe(header);
-    else window.addEventListener('resize', update);
+    window.addEventListener('resize', update);
   }
 
   function initPrivacyNavigation() {
@@ -356,7 +398,7 @@
     if (!card) return;
 
     function centerPrivacy() {
-      const headerHeight = $('.site-header')?.getBoundingClientRect().height || 0;
+      const headerHeight = headerCover();
       const rect = card.getBoundingClientRect();
       const spaceAbove = Math.max(16, (window.innerHeight - headerHeight - rect.height) / 2);
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -384,8 +426,28 @@
     }, { once: true });
   }
 
+  // The stylesheet trims the name's box to its capitals, which puts the middle
+  // of the letters on the line of the mark's cross. A browser that cannot trim
+  // centres the whole line instead; measure the font and move the name by the
+  // difference, as the extension's popup does.
+  function initBrand() {
+    try {
+      if (window.CSS && CSS.supports && CSS.supports('text-box', 'trim-both cap alphabetic')) return;
+      const context = document.createElement('canvas').getContext('2d');
+      if (!context) return;
+      for (const name of document.querySelectorAll('.brand > span, .pp-brand')) {
+        const style = getComputedStyle(name);
+        context.font = style.fontWeight + ' ' + style.fontSize + ' ' + style.fontFamily;
+        const metrics = context.measureText('T');
+        const below = (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent - metrics.actualBoundingBoxAscent) / 2;
+        if (Number.isFinite(below) && Math.abs(below) < 6) name.style.translate = '0 ' + (-below).toFixed(2) + 'px';
+      }
+    } catch (_) { /* the name stays where the browser put it */ }
+  }
+
   function init() {
     setStoreLinks();
+    initBrand();
     initTheme();
     initHeaderOffset();
     initLanguage();

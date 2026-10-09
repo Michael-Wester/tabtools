@@ -1,5 +1,11 @@
 # TabTools website security review
 
+> **5.0.0 update (9 October 2026).** The home page no longer embeds the YouTube
+> demo; a working copy of the popup, served from this site, takes its place. The
+> policy now has `frame-src 'none'`, `check-security.cjs` rejects any frame, and
+> the one inline script hash covers the theme and accent bootstrap. The findings
+> below are the original review and describe the site as it was then.
+
 Reviewed 20 September 2026 UTC against production `https://tabtools.fyi/`
 and repository main `519007f3dd06c0b2ab52d57519ed7a0d145b9c79`.
 Changes are isolated on `fix/website-security-headers`; PR #17 is unchanged.

@@ -11,6 +11,7 @@ on:
       - 'marketing/**'
       - 'package.json'
       - 'website/check-security.cjs'
+      - 'website/demo-content.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
       - 'website/guide-ui.cjs'
@@ -27,6 +28,7 @@ on:
       - 'marketing/**'
       - 'package.json'
       - 'website/check-security.cjs'
+      - 'website/demo-content.cjs'
       - 'website/build-guides.cjs'
       - 'website/guides-content.cjs'
       - 'website/guide-ui.cjs'
@@ -68,8 +70,13 @@ jobs:
           node scripts/generate-website.js
           node scripts/generate-listings.js
       - name: Validate JavaScript
-        run: node --check website/dist/script.js
+        run: |
+          node --check website/dist/script.js
+          node --check website/dist/demo.js
       - name: Validate localisation
+        env:
+          # Previews of a release branch may be ahead of their translations; main is strict.
+          TABTOOLS_PENDING_TRANSLATIONS: ${{ (github.event_name == 'pull_request' && github.base_ref != 'main') && '1' || '' }}
         run: |
           node scripts/validate-localisation.js
           node --test tests/website.test.js tests/localisation.test.js tests/extension.test.js tests/store-assets.test.js
@@ -80,7 +87,9 @@ jobs:
       - name: Validate website security policy
         run: node website/check-security.cjs
       - name: Check generated files are committed
-        run: git diff --exit-code
+        run: |
+          git add --all --intent-to-add .
+          git diff --exit-code
       - name: Select deployment target
         id: target
         env:
