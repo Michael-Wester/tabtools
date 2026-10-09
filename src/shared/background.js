@@ -268,11 +268,113 @@ async function leftTimes(openTabs) {
   return state.at;
 }
 
-function serializeTab(tab) {
+// ---- Recently closed --------------------------------------------------------
+// The tabs this extension closed, newest first, so that one can be reopened
+// after its Undo has gone. Kept in session storage beside the record above:
+// it holds addresses and titles, so it must not outlive the browser session.
+const RECENT_KEY = "pc.recent";   // [{ key, url, title, favIconUrl, windowId, index, pinned, closedAt }]
+const RECENT_MAX = 25;
+let recentMemory = [];              // for browsers without session storage
+let recentWrite = Promise.resolve();
+
+function readRecent() {
+  const store = sessionStore();
+  if (!store) return Promise.resolve([...recentMemory]);
+  return new Promise((resolve) => {
+    const answer = (value) => resolve(Array.isArray(value) ? value.filter(entry => entry && typeof entry.url === "string") : []);
+    try {
+      store.get(RECENT_KEY, (got) => answer(getRuntimeLastError() ? null : got && got[RECENT_KEY]));
+    } catch (_) { answer(null); }
+  });
+}
+
+function writeRecent(list) {
+  const store = sessionStore();
+  if (!store) {
+    recentMemory = list;
+    return Promise.resolve();
+  }
+  return new Promise((resolve) => {
+    try {
+      store.set({ [RECENT_KEY]: list }, () => { getRuntimeLastError(); resolve(); });
+    } catch (_) { resolve(); }
+  });
+}
+
+// One change at a time, like the record of when tabs were left.
+function updateRecent(change) {
+  const next = recentWrite.then(async () => writeRecent(change(await readRecent())));
+  recentWrite = next.catch(() => {});
+  return next;
+}
+
+// `closed` are browser tabs that have just been closed, each with the key its
+// undo entry carries. An icon is kept only as a short address: some sites give
+// theirs as the picture itself, which can be large.
+function rememberClosed(closed, at = Date.now()) {
+  const entries = closed.map(({ tab, key }) => {
+    const url = tab.url || tab.pendingUrl || "";
+    if (!url || url.length > 8192 || tab.incognito) return null;
+    const icon = typeof tab.favIconUrl === "string" ? tab.favIconUrl.trim() : "";
+    return {
+      key,
+      url,
+      title: String(tab.title || "").slice(0, 300),
+      favIconUrl: icon.length <= 2048 ? icon : "",
+      windowId: typeof tab.windowId === "number" ? tab.windowId : undefined,
+      index: typeof tab.index === "number" ? tab.index : undefined,
+      pinned: !!tab.pinned,
+      closedAt: at,
+    };
+  }).filter(Boolean);
+  if (!entries.length) return Promise.resolve();
+  // The tabs of one close keep their tab order; the latest close comes first.
+  return updateRecent(list => [...entries, ...list].slice(0, RECENT_MAX))
+    .catch((err) => console.warn("TabTools: unable to note the closed tabs", err));
+}
+
+function forgetRecent(keys) {
+  const gone = new Set(keys.filter(Boolean));
+  if (!gone.size) return Promise.resolve();
+  return updateRecent(list => list.filter(entry => !gone.has(entry.key)))
+    .catch((err) => console.warn("TabTools: unable to update the closed tabs", err));
+}
+
+async function listRecent() {
+  await recentWrite;
+  const nowTs = Date.now();
+  return {
+    tabs: (await readRecent()).map(entry => ({
+      key: entry.key,
+      title: entry.title || "",
+      url: entry.url,
+      domain: domainFromUrl(entry.url) || "",
+      favIconUrl: entry.favIconUrl || "",
+      closedMinutes: Math.max(0, Math.floor((nowTs - (entry.closedAt || nowTs)) / 60000)),
+    })),
+  };
+}
+
+// Reopens the listed tabs where they were, without bringing them into view:
+// the popup stays open, so several can be reopened one after another.
+async function reopenRecent(keys) {
+  await recentWrite;
+  const wanted = new Set(Array.isArray(keys) ? keys : []);
+  const entries = (await readRecent()).filter(entry => wanted.has(entry.key));
+  return restoreTabs(entries.map(entry => ({ ...entry, active: false })));
+}
+
+async function clearRecent() {
+  await updateRecent(() => []);
+  return { tabs: [] };
+}
+
+function serializeTab(tab, key) {
   if (!tab) return null;
   const url = tab.url || tab.pendingUrl || "";
   if (!url) return null;
   const out = {
+    key,
     url,
     windowId: typeof tab.windowId === "number" ? tab.windowId : undefined,
     index: typeof tab.index === "number" ? tab.index : undefined,
@@ -440,19 +542,24 @@ async function closeTabs(tabs) {
   // A tab may disappear or become uneditable after the query. Track each
   // removal independently so failed tabs never enter stats or the undo list.
   const results = await Promise.allSettled(tabs.map(tab => tabsRemove(tab.id)));
-  const closed = tabs.filter((_, index) => results[index].status === "fulfilled");
+  const at = Date.now();
+  const closed = tabs.filter((_, index) => results[index].status === "fulfilled")
+    // The key ties a tab's undo entry to its line in Recently closed, so that
+    // restoring it either way takes it off the list.
+    .map(tab => ({ tab, key: at + ":" + tab.id }));
   if (closed.length) {
     if (typeof root.pcStatsEat === "function") {
       try { await root.pcStatsEat({ count: closed.length }); } catch (err) {
         console.warn("TabTools: unable to save close statistics", err);
       }
     }
+    await rememberClosed(closed, at);
   }
   return {
     closedCount: closed.length,
     failedCount: tabs.length - closed.length,
-    closedDomains: [...new Set(closed.map(tab => domainFromUrl(tab.url || tab.pendingUrl)).filter(Boolean))],
-    closedTabs: closed.map(serializeTab).filter(Boolean),
+    closedDomains: [...new Set(closed.map(({ tab }) => domainFromUrl(tab.url || tab.pendingUrl)).filter(Boolean))],
+    closedTabs: closed.map(({ tab, key }) => serializeTab(tab, key)).filter(Boolean),
   };
 }
 
@@ -510,6 +617,7 @@ async function restoreTabs(tabs) {
     .map((tab) => {
       if (!tab || typeof tab.url !== "string" || !tab.url) return null;
       return {
+        key: typeof tab.key === "string" ? tab.key : undefined,
         url: tab.url,
         windowId: typeof tab.windowId === "number" ? tab.windowId : undefined,
         index: typeof tab.index === "number" ? tab.index : undefined,
@@ -537,6 +645,7 @@ async function restoreTabs(tabs) {
   const activatedWindows = new Set();
   let activatedFallback = false;
   let restored = 0;
+  const restoredKeys = [];
   const remainingTabs = [];
 
   for (const tab of cleaned) {
@@ -570,6 +679,7 @@ async function restoreTabs(tabs) {
     try {
       await tabsCreate(opts);
       restored += 1;
+      restoredKeys.push(tab.key);
     } catch (err) {
       if (opts.windowId !== undefined) {
         try {
@@ -580,6 +690,7 @@ async function restoreTabs(tabs) {
           if (tab.pinned) fallback.pinned = true;
           await tabsCreate(fallback);
           restored += 1;
+          restoredKeys.push(tab.key);
           continue;
         } catch (fallbackErr) {
           console.warn("TabTools: fallback restore failed", fallbackErr);
@@ -591,6 +702,8 @@ async function restoreTabs(tabs) {
     }
   }
 
+  // A tab that is open again is no longer recently closed.
+  await forgetRecent(restoredKeys);
   return { restoredCount: restored, remainingTabs };
 }
 
@@ -681,6 +794,9 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     case "pc:closeDuplicates": action = closeDuplicateTabs; break;
     case "pc:sortTabsByOpenCount": action = sortTabsByOpenCount; break;
     case "pc:restoreTabs": action = () => restoreTabs(msg.tabs); break;
+    case "pc:getRecent": action = listRecent; break;
+    case "pc:reopenRecent": action = () => reopenRecent(msg.keys); break;
+    case "pc:clearRecent": action = clearRecent; break;
     default: return;
   }
   (async () => {

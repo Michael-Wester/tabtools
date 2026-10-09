@@ -182,6 +182,21 @@
   "dismiss": {
     "message": "Dismiss"
   },
+  "recentlyClosed": {
+    "message": "Recently closed"
+  },
+  "noRecent": {
+    "message": "No recently closed tabs"
+  },
+  "recentNote": {
+    "message": "Closed with TabTools. Cleared when the browser closes."
+  },
+  "reopen": {
+    "message": "Reopen"
+  },
+  "clearList": {
+    "message": "Clear list"
+  },
   "noMatches": {
     "message": "No tabs match"
   },

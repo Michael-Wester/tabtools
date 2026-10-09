@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
-// Popup: suggestions, keyword matches, the inactive review and settings.
+// Popup: suggestions, keyword matches, the inactive review, recently closed
+// tabs and settings.
 
 (function () {
   const root = document.documentElement;
@@ -57,6 +58,7 @@
     main: ["pc-header", "pc-suggest-head", "pc-suggest-list", "pc-foot-main"],
     search: ["pc-header", "pc-match-head", "pc-match-list", "pc-foot-main"],
     inactive: ["pc-bar-inactive", "pc-inactive-control", "pc-inactive-list", "pc-foot-inactive"],
+    recent: ["pc-bar-recent", "pc-recent-list", "pc-foot-recent"],
     settings: ["pc-bar-settings", "pc-tab-settings", "pc-foot-settings"],
   };
 
@@ -73,7 +75,7 @@
   }
 
   let savedSettings = { ...DEFAULTS };
-  let view = "main";            // "main" | "inactive" | "settings"
+  let view = "main";            // "main" | "inactive" | "recent" | "settings"
   let query = "";               // trimmed field text; when not empty the main view lists matches
   let overview = null;          // { openTabs, sites, inactive, duplicates }
   let sites = [];               // [{ domain, openCount, favIconUrl }], most tabs first
@@ -83,6 +85,8 @@
   let matchesFailed = false;
   let inactiveTabs = null;      // tabs listed in the review
   let inactiveFailed = false;
+  let recentTabs = null;        // tabs this extension closed, newest first
+  let recentFailed = false;
   let totalClosed = null;
   let lastClosedTabs = [];      // undo snapshot; lives as long as its result bar
   let busy = false;
@@ -108,6 +112,22 @@
     const path = document.createElementNS(SVG_NS, "path");
     path.setAttribute("d", "M1.5 1.5l7 7M8.5 1.5l-7 7");
     svg.append(path);
+    return svg;
+  }
+
+  // The arrow on a recently closed tab: back to where it was.
+  function reopenIcon() {
+    const svg = document.createElementNS(SVG_NS, "svg");
+    const attributes = {
+      width: "10", height: "10", viewBox: "0 0 10 10", fill: "none", stroke: "currentColor",
+      "stroke-width": "1.5", "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: "flip",
+    };
+    for (const [name, value] of Object.entries(attributes)) svg.setAttribute(name, value);
+    for (const d of ["M3.6 1.6L1.6 3.6l2 2", "M1.8 3.6h4a2.4 2.4 0 0 1 0 4.8H4.6"]) {
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", d);
+      svg.append(path);
+    }
     return svg;
   }
 
@@ -190,7 +210,7 @@
     if (hadFocus) document.activeElement.blur();
     hideToast();                 // hands focus back to a footer button it covered, if any
     if (!hadFocus || (document.activeElement && document.activeElement !== document.body)) return;
-    const footer = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"]]
+    const footer = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"], ["pc-foot-recent", "pc-recent-clear"]]
       .find(([id]) => !byId(id).hidden);
     if (footer) focusOn(footer[1]);
   }
@@ -225,6 +245,8 @@
     byId("pc-close-duplicates").disabled = busy || !overview || !overview.duplicates;
     byId("pc-inactive-close").disabled = busy || !inactiveTabs || !inactiveTabs.length;
     for (const row of byId("pc-sites").children) row.disabled = busy;
+    for (const row of byId("pc-recent-rows").children) row.disabled = busy;
+    byId("pc-recent-clear").disabled = busy || !recentTabs || !recentTabs.length;
     for (const id of ["pc-match-rows", "pc-inactive-rows"]) {
       for (const row of byId(id).children) {
         const close = row.children[row.children.length - 1];
@@ -362,6 +384,11 @@
       renderInactive();
       loading = loadInactive();
     }
+    if (name === "recent") {
+      recentTabs = null;
+      renderRecent();
+      loading = loadRecent();
+    }
     if (name === "settings") renderStats();
     if (!focusOn(focusId)) focusOn("pc-query");
     return loading;
@@ -375,9 +402,7 @@
   }
 
   function renderStats() {
-    const text = totalClosed === null ? "" : t("closedCountShort", { count: totalClosed });
-    byId("pc-closed-count").textContent = text;
-    byId("pc-settings-closed").textContent = text;
+    byId("pc-settings-closed").textContent = totalClosed === null ? "" : t("closedCountShort", { count: totalClosed });
   }
 
   function siteRow(item) {
@@ -519,11 +544,46 @@
     markOverflow(list);
   }
 
+  // One button per tab: the whole row reopens it. The third column is the time
+  // since it was closed, left empty for the first minute.
+  function recentRow(tab) {
+    const row = el("button", "tab");
+    row.type = "button";
+    row.dataset.key = String(tab.key);
+    row.disabled = busy;
+    const title = tab.title || tab.url || "";
+    const label = t("reopen") + ": " + title;
+    row.title = label;
+    row.setAttribute("aria-label", label);
+    const text = el("span", "tab-text");
+    const host = el("span", "tab-host", tab.domain || tab.url || "");
+    host.dir = "ltr";
+    text.append(el("span", "tab-title", title), host);
+    const mark = el("span", "x");
+    mark.append(reopenIcon());
+    row.append(favicon(tab.favIconUrl, tab.domain), text, el("span", "tab-meta", tab.closedMinutes ? age(tab.closedMinutes) : ""), mark);
+    row.addEventListener("click", () => runCleanup(() => reopenTab(tab)));
+    return row;
+  }
+
+  function renderRecent() {
+    const list = byId("pc-recent-list");
+    const tabs = recentTabs || [];
+    byId("pc-recent-meta").textContent = recentTabs && tabs.length ? t("tabCount", { count: tabs.length }) : "";
+    byId("pc-recent-rows").replaceChildren(...tabs.map(recentRow));
+    const empty = byId("pc-recent-empty");
+    empty.hidden = !(recentTabs && tabs.length === 0);
+    empty.textContent = recentFailed ? t("suggestionsFailed") : t("noRecent");
+    applyBusy();
+    markOverflow(list);
+  }
+
   /* ---------- Loading ---------- */
 
   let suggestionsToken = 0;
   let matchesToken = 0;
   let inactiveToken = 0;
+  let recentToken = 0;
 
   async function loadSuggestions() {
     const token = ++suggestionsToken;
@@ -568,6 +628,15 @@
     renderInactive();
   }
 
+  async function loadRecent() {
+    const token = ++recentToken;
+    const out = await msg("pc:getRecent");
+    if (token !== recentToken) return;
+    recentFailed = !(out?.ok && Array.isArray(out.tabs));
+    recentTabs = recentFailed ? [] : out.tabs;
+    renderRecent();
+  }
+
   async function loadStats() {
     const out = await msg("pc:getStats");
     if (!out?.ok) return;
@@ -579,6 +648,7 @@
     const jobs = [loadSuggestions()];
     if (query) jobs.push(loadMatches());
     if (view === "inactive") jobs.push(loadInactive());
+    if (view === "recent") jobs.push(loadRecent());
     return Promise.all(jobs);
   }
 
@@ -716,6 +786,23 @@
     if (restored) await Promise.all([loadStats(), refresh()]);
   }
 
+  // The tab comes back where it was without coming into view, so the popup
+  // stays open and the next one can be reopened.
+  async function reopenTab(tab) {
+    const out = await msg("pc:reopenRecent", { keys: [tab.key] });
+    if (out?.ok && out.restoredCount) showToast(t("restoredCount", { count: out.restoredCount }));
+    else showToast(t("undoFailed"));
+    await Promise.all([loadRecent(), refresh()]);
+  }
+
+  async function clearRecent() {
+    const out = await msg("pc:clearRecent");
+    if (!out?.ok) showToast(t("closeFailed"));
+    await loadRecent();
+    // The button that had focus is now disabled: nothing is left to clear.
+    if (!document.activeElement || document.activeElement === document.body || document.activeElement.disabled) focusOn("pc-recent-back");
+  }
+
   async function sortTabs() {
     const button = byId("pc-sort-tabs-quick");
     button.disabled = true;
@@ -728,6 +815,24 @@
       button.disabled = false;
     }
     await refresh();
+  }
+
+  // The stylesheet trims the name's box to its capitals, which puts the middle
+  // of the letters on the line of the mark's cross. A browser that cannot trim
+  // centres the whole line instead, and how far that leaves the letters from
+  // the line depends on the font. Measure the font and move the name by that.
+  function alignBrand() {
+    const brand = byId("pc-brand");
+    try {
+      if (!brand || globalThis.CSS?.supports?.("text-box", "trim-both cap alphabetic")) return;
+      const context = document.createElement("canvas").getContext?.("2d");
+      const style = globalThis.getComputedStyle?.(brand);
+      if (!context || !style) return;
+      context.font = style.fontWeight + " " + style.fontSize + " " + style.fontFamily;
+      const metrics = context.measureText("T");
+      const below = (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent - metrics.actualBoundingBoxAscent) / 2;
+      if (Number.isFinite(below) && Math.abs(below) < 6) brand.style.translate = "0 " + (-below).toFixed(2) + "px";
+    } catch (_) { /* the name stays where the browser put it */ }
   }
 
   /* ---------- Wiring ---------- */
@@ -758,6 +863,9 @@
     byId("pc-settings-back").addEventListener("click", () => openView("main", "pc-settings-toggle"));
     byId("pc-inactive-row").addEventListener("click", () => openView("inactive", "pc-inactive-back"));
     byId("pc-inactive-back").addEventListener("click", () => openView("main", "pc-inactive-row"));
+    byId("pc-recent-toggle").addEventListener("click", () => openView("recent", "pc-recent-back"));
+    byId("pc-recent-back").addEventListener("click", () => openView("main", "pc-recent-toggle"));
+    byId("pc-recent-clear").addEventListener("click", () => runCleanup(clearRecent));
 
     byId("pc-close-duplicates").addEventListener("click", () => runCleanup(closeDuplicates));
     byId("pc-inactive-close").addEventListener("click", () => runCleanup(closeInactiveListed));
@@ -809,6 +917,7 @@
     }
     const version = chrome.runtime.getManifest?.().version;
     byId("pc-version").textContent = version ? "TabTools " + version : "TabTools";
+    alignBrand();
     applySettings(await readSettings());
     wireUI();
     bindTabUpdates();

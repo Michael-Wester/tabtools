@@ -77,8 +77,11 @@ current window.
   field. Select it, or press Enter. Both matching tabs should close, the
   `example.org` tab should remain, and the popup should report **Closed: 2**.
 - While that same popup remains open, select **Undo** and check that both test
-  tabs reopen. The current main-branch build keeps this Undo batch only for the
-  lifetime of the popup; do not expect it to survive closing and reopening it.
+  tabs reopen. Undo is kept only for the lifetime of the popup; do not expect it
+  to survive closing and reopening it.
+- Close the two tabs again, close the popup and open it once more. Select
+  **Recently closed**: both tabs should be listed. Select one and check that it
+  reopens behind the tab in view and leaves the list, then select **Clear list**.
 - Open **Settings**, switch between **System**, **Light** and **Dark**, and
   check that the labels are readable and keyboard focus is visible. Close and
   reopen the popup to confirm the selected theme is retained.

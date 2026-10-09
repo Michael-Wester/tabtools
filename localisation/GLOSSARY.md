@@ -13,8 +13,9 @@ by site and sort tabs by site. Do not add performance promises or new features.
 | Suggestions | The popup's main list: Inactive, Close duplicates, then every site with open tabs, most tabs first. Not AI recommendations. |
 | Inactive | Eligible tabs not used for longer than the chosen time. The row opens a list to review; nothing closes until Close or a row's own button is pressed, and there is no automatic scheduled cleanup. Active, pinned and audible tabs stay open. |
 | Duplicates | Tabs with exactly the same address, including the part after `#`. Extra copies close; a pinned copy, a copy playing sound and a copy in view stay. |
-| Undo | Restore the latest popup cleanup while that popup stays open. Do not promise a persistent history. |
+| Undo | Restore the latest popup cleanup while that popup stays open. Do not promise a persistent history: Recently closed lasts only until the browser closes. |
 | Dismiss | Closes the message about the last action (and its Undo) without doing anything else. Screen readers and the tooltip only; use the usual word for closing a notification. |
+| Recently closed | The tabs TabTools itself closed since the browser started, newest first, in a list opened from the foot of the popup. Choosing one reopens it. Not the browser's own history of closed tabs. "Reopen" names that action for screen readers and the tooltip, followed by the tab's title. "Clear list" empties the list and reopens nothing. |
 | Local | On the user's device/browser storage. Extension privacy claims do not apply to YouTube or browser stores. |
 | Settings / system / light / dark | Keep labels consistent between controls and explanatory instructions. System is the theme that follows the browser's light or dark setting. |
 | Accent colour | The colour of the popup's buttons, switches and highlights. Purple, Blue, Green, Orange, Pink and Graphite name its six presets; Graphite is a dark grey. |

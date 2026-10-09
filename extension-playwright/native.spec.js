@@ -196,7 +196,7 @@ async function nativePopup({ context, worker, id }) {
   await evaluate('document.fonts.ready.then(() => true)');
   // The popup document may still be loading when the session attaches. It is
   // ready once the open-tab summary and the lifetime count have both arrived.
-  await expect.poll(() => evaluate('["#pc-open-count", "#pc-closed-count"].every(selector => Boolean(document.querySelector(selector)?.textContent))')).toBe(true);
+  await expect.poll(() => evaluate('["#pc-open-count", "#pc-settings-closed"].every(selector => Boolean(document.querySelector(selector)?.textContent))')).toBe(true);
   const message = (type, payload = {}) => evaluate(`new Promise(resolve => chrome.runtime.sendMessage(${JSON.stringify({ type, ...payload })}, resolve))`);
   const close = async () => {
     await cdp.send('Target.closeTarget', { targetId: target.targetId });
@@ -243,6 +243,7 @@ const VIEWS = {
   main: ['pc-header', 'pc-suggest-list', 'pc-foot-main'],
   search: ['pc-header', 'pc-match-list', 'pc-foot-main'],
   inactive: ['pc-bar-inactive', 'pc-inactive-list', 'pc-foot-inactive'],
+  recent: ['pc-bar-recent', 'pc-recent-list', 'pc-foot-recent'],
   settings: ['pc-bar-settings', 'pc-tab-settings', 'pc-foot-settings']
 };
 const BLOCKS = [...new Set(Object.values(VIEWS).flat())];
@@ -290,7 +291,7 @@ const boundWords = popup => popup.evaluate(`[...document.querySelectorAll('[data
 // Parts that must lie inside the popup, and text that must be shown whole.
 // Hostnames, tab titles and the keyword in the list heading are cut on purpose.
 const PARTS = 'button, input, a, output, .field, .row, .tab, .list-head, .setting, .segmented, .stepper, .swatches, .note, .toast, .foot, .foot-action, .foot-links, .sub-bar';
-const WHOLE_TEXT = '.brand, .stats, .label, .hint, .count, .list-meta, .sub-title, .sub-meta, .setting-label, .seg, .step-value, .btn, .inline-close, .primary, .note, .toast-btn, .foot-count, .links, .none, .empty, .tab-meta';
+const WHOLE_TEXT = '.brand, .stats, .label, .hint, .count, .list-meta, .sub-title, .sub-meta, .setting-label, .seg, .step-value, .btn, .inline-close, .primary, .note, .toast-btn, .links, .none, .empty, .tab-meta';
 
 async function layout(popup) {
   return popup.evaluate(`(() => {
@@ -301,8 +302,11 @@ async function layout(popup) {
       const rect = element.getBoundingClientRect();
       return rect.left < body.left - 1 || rect.right > body.right + 1;
     }).map(name);
+    // A box trimmed to its capitals is shorter than its line on purpose: the
+    // letters reach past it without being cut, so only its width is checked.
+    const trimmed = element => (getComputedStyle(element).textBoxTrim || 'none') !== 'none';
     const clipped = shown(${JSON.stringify(WHOLE_TEXT)}).filter(element =>
-      element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > element.clientHeight + 1).map(name);
+      element.scrollWidth > element.clientWidth + 1 || (!trimmed(element) && element.scrollHeight > element.clientHeight + 1)).map(name);
     const hosts = shown('.row.site .host').map(element => {
       const range = document.createRange();
       range.selectNodeContents(element);
@@ -392,7 +396,6 @@ for (const entry of registry) {
       const openTabs = (await queryTabs(worker)).filter(tab => !tab.incognito).length;
       expect(await text(popup, '#pc-open-count')).toBe(await say('tabCount', openTabs));
       expect(await text(popup, '#pc-site-count')).toBe(await say('siteCount', 2));
-      expect(await text(popup, '#pc-closed-count')).toBe(await say('closedCountShort', 999999));
       expect(await text(popup, '#pc-inactive-count')).toBe(await number(4));
       expect(await text(popup, '#pc-inactive-hint')).toBe(await unit(popup, locale, 2, 'hour', 'short') + '+');
       expect(await attribute(popup, '#pc-inactive-row', 'aria-label')).toBe(`${plain(locale, 'inactive')} · ${await say('openCount', 4)}`);
@@ -440,6 +443,27 @@ for (const entry of registry) {
       await expectView(popup, 'main');
       expect(await focused(popup)).toBe('pc-settings-toggle');
       await expectFits(popup, 'main again');
+
+      // Recently closed: empty at first, then the two tabs of a site that was closed.
+      await click(popup, '#pc-recent-toggle');
+      await expectView(popup, 'recent');
+      expect(await focused(popup)).toBe('pc-recent-back');
+      await expect.poll(() => popup.evaluate('document.querySelector("#pc-recent-empty").hidden')).toBe(false);
+      expect(await popup.evaluate('document.querySelector("#pc-recent-clear").disabled')).toBe(true);
+      await expectFits(popup, 'recently closed, empty');
+      await click(popup, '#pc-recent-back');
+      await expectView(popup, 'main');
+      expect(await focused(popup)).toBe('pc-recent-toggle');
+      await click(popup, '.row.site[data-domain="wikipedia.org"]');
+      await expect.poll(() => text(popup, '#pc-status')).toBe(await say('closedCount', 2));
+      await click(popup, '#pc-toast-dismiss');
+      await click(popup, '#pc-recent-toggle');
+      await expectView(popup, 'recent');
+      await expect.poll(async () => (await tabRows(popup, '#pc-recent-rows')).map(row => row.place)).toEqual(['wikipedia.org', 'wikipedia.org']);
+      expect(await text(popup, '#pc-recent-meta')).toBe(await say('tabCount', 2));
+      expect(await attribute(popup, '#pc-recent-rows .tab', 'aria-label')).toContain(plain(locale, 'reopen'));
+      await expectFits(popup, 'recently closed');
+      await picture(popup, testInfo, `${locale}-recent`);
       expect(popup.diagnostics).toEqual([]);
     } finally { await browser.close(); }
   });
@@ -561,7 +585,38 @@ test('native actions: typed site, Undo, duplicates, right-click, private windows
     closedSoFar += 1;
     expect(await open(tabFor('http://private.test/public'))).toBe(false);
     expect((await queryTabs(worker)).filter(tab => tab.incognito && tab.windowId === privateWindow.id).length).toBe(1);
-    await expect.poll(() => text(popup, '#pc-closed-count')).toBe(await say('closedCountShort', closedSoFar));
+    await expect.poll(() => text(popup, '#pc-settings-closed')).toBe(await say('closedCountShort', closedSoFar));
+
+    // Recently closed lists what is still closed, the latest close first and
+    // the tabs of one close in tab order, window by window. The three tabs that
+    // Undo brought back are not on it, and the two closed from the right-click
+    // menu are.
+    await click(popup, '#pc-toast-dismiss');
+    await click(popup, '#pc-recent-toggle');
+    await expectView(popup, 'recent');
+    const recent = () => tabRows(popup, '#pc-recent-rows').then(rows => rows.map(row => row.place));
+    await expect.poll(recent).toEqual(['private.test', 'close-target.test', 'close-target.test',
+      'duplicate.test', 'copies.test', 'second-window.test', 'copies.test']);
+    expect(await text(popup, '#pc-recent-meta')).toBe(await say('tabCount', 7));
+    await expectFits(popup, 'recently closed');
+    // A row reopens its tab where it was, behind the tab in view, and leaves the list.
+    const inView = (await queryTabs(worker)).filter(tab => tab.active).map(tab => tab.id).sort();
+    const closedPlace = tabFor('http://private.test/public');
+    await click(popup, '#pc-recent-rows .tab');
+    await expect.poll(() => text(popup, '#pc-status')).toBe(await say('restoredCount', 1));
+    const reopened = (await queryTabs(worker)).find(tab => addressOf(tab) === 'http://private.test/public');
+    expect({ windowId: reopened.windowId, active: reopened.active, pinned: reopened.pinned }).toEqual({ windowId: closedPlace.windowId, active: false, pinned: false });
+    expect((await queryTabs(worker)).filter(tab => tab.active).map(tab => tab.id).sort()).toEqual(inView);
+    await expect.poll(recent).toHaveLength(6);
+    // The list is kept for the browser session only, never in saved storage.
+    expect(await worker.evaluate(async () => [((await chrome.storage.session.get('pc.recent'))['pc.recent'] || []).length, JSON.stringify(await chrome.storage.local.get(null)).includes('close-target')])).toEqual([6, false]);
+    await click(popup, '#pc-toast-dismiss');
+    await click(popup, '#pc-recent-clear');
+    await expect.poll(recent).toEqual([]);
+    expect(await popup.evaluate('document.querySelector("#pc-recent-empty").hidden')).toBe(false);
+    expect(await worker.evaluate(async () => (await chrome.storage.session.get('pc.recent'))['pc.recent'])).toEqual([]);
+    await click(popup, '#pc-recent-back');
+    await expectView(popup, 'main');
 
     // Settings are saved one control at a time and none overwrites another.
     await click(popup, '#pc-settings-toggle');
@@ -589,7 +644,7 @@ test('native actions: typed site, Undo, duplicates, right-click, private windows
     await click(popup, '.row.site[data-domain="close-target.test"]');
     await expect.poll(() => open(tabFor('http://close-target.test/pinned'))).toBe(false);
     // The row names one exact site: its subdomain's tab is still open.
-    await expect.poll(() => text(popup, '#pc-closed-count')).toBe(await say('closedCountShort', 1));
+    await expect.poll(() => text(popup, '#pc-settings-closed')).toBe(await say('closedCountShort', 1));
     expect((await placesOf(worker, 'sub.close-target.test')).length).toBe(1);
     // Undo brings the tab back pinned, where it was.
     await click(popup, '#pc-undo-close');
@@ -605,7 +660,7 @@ test('native empty: a new profile has nothing to suggest and nothing to do', asy
     const popup = await nativePopup(browser);
     expect(await text(popup, '#pc-open-count')).toBe('1 tab');
     expect(await text(popup, '#pc-site-count')).toBe('0 sites');
-    expect(await text(popup, '#pc-closed-count')).toBe('0 closed');
+    expect(await text(popup, '#pc-settings-closed')).toBe('0 closed');
     expect(await siteRows(popup)).toEqual([]);
     expect(await popup.evaluate('document.querySelector("#pc-suggest-empty").hidden')).toBe(false);
     expect(await text(popup, '#pc-suggest-empty')).toBe('No suggestions right now');
@@ -1008,7 +1063,6 @@ for (const locale of ['es', 'he', 'ja']) {
       await advanceClock(worker, 3 * HOUR);
       const popup = await nativePopup(browser);
       const total = await counted(popup, locale, 'closedCountShort', Number.MAX_SAFE_INTEGER);
-      expect(await text(popup, '#pc-closed-count')).toBe(total);
       expect((await siteRows(popup)).map(row => row.domain)).toEqual([domain, 'developer.mozilla.org']);
 
       const main = await expectFits(popup, 'main');

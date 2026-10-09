@@ -977,11 +977,14 @@ test('Undo reopens tabs in their window and place, pinned as before, and brings 
   const runtime = fixture();
   runtime.state.store['pc.settings'] = { keepPinnedTabs: false };
   const closed = await runtime.send({ type: 'pc:closeByDomain', query: 'site.test' });
-  assert.deepEqual(closed.closedTabs, [
+  // Each entry carries a key of its own, which ties it to its line in Recently closed.
+  assert.deepEqual(closed.closedTabs.map(({ key, ...tab }) => tab), [
     { url: 'https://site.test/a', windowId: 1, index: 1, active: true, pinned: false },
     { url: 'https://site.test/b', windowId: 1, index: 3, active: false, pinned: false },
     { url: 'https://site.test/c', windowId: 2, index: 0, active: false, pinned: true },
   ]);
+  assert.equal(new Set(closed.closedTabs.map(tab => tab.key)).size, 3);
+  assert.ok(closed.closedTabs.every(tab => typeof tab.key === 'string' && tab.key));
   // Given out of order, as a snapshot kept by the popup may be.
   const restored = await runtime.send({ type: 'pc:restoreTabs', tabs: [...closed.closedTabs].reverse() });
   assert.equal(restored.restoredCount, 3);
@@ -1017,7 +1020,7 @@ test('each popup control sends its own request and no other', async () => {
     { id: 8, url: 'https://zzz.test/' },
   ] });
   const changing = ['pc:closeByKeyword', 'pc:closeByDomain', 'pc:closeInactive', 'pc:closeDuplicates',
-    'pc:sortTabsByOpenCount', 'pc:restoreTabs', 'pc:updateSettings', 'pc:resetStats'];
+    'pc:sortTabsByOpenCount', 'pc:restoreTabs', 'pc:updateSettings', 'pc:resetStats', 'pc:reopenRecent', 'pc:clearRecent'];
   const sent = [];
   const deliver = runtime.api.runtime.sendMessage;
   runtime.api.runtime.sendMessage = (message, cb) => { sent.push(message); return deliver(message, cb); };
@@ -1054,8 +1057,13 @@ test('each popup control sends its own request and no other', async () => {
   await elements['pc-reset-stats'].click();
   assert.deepEqual(requests(), [{ type: 'pc:resetStats' }]);
   // Moving between views changes nothing.
-  for (const id of ['pc-settings-toggle', 'pc-settings-back', 'pc-inactive-row', 'pc-inactive-back', 'pc-query-clear']) await elements[id].click();
+  for (const id of ['pc-settings-toggle', 'pc-settings-back', 'pc-inactive-row', 'pc-inactive-back', 'pc-query-clear', 'pc-recent-toggle']) await elements[id].click();
   assert.deepEqual(requests(), []);
+  const [row] = elements['pc-recent-rows'].children;
+  await row.click();
+  assert.deepEqual(requests(), [{ type: 'pc:reopenRecent', keys: [row.dataset.key] }]);
+  await elements['pc-recent-clear'].click();
+  assert.deepEqual(requests(), [{ type: 'pc:clearRecent' }]);
 });
 
 test('popup retains failed undo entries for retry without recreating successful entries', async () => {
@@ -1308,8 +1316,10 @@ test('popup counts: open tabs and sites in the header, lifetime total with digit
   assert.equal(elements['pc-open-count'].textContent, '15 tabs');
   assert.equal(elements['pc-site-count'].textContent, '2 sites');
   assert.deepEqual(sitesIn(elements), ['example.com']);
-  assert.equal(elements['pc-closed-count'].textContent, '2,479 closed');
+  // The lifetime total is in Settings; the footer offers Recently closed in its place.
   assert.equal(elements['pc-settings-closed'].textContent, '2,479 closed');
+  assert.equal(elements['pc-closed-count'], undefined);
+  assert.ok(elements['pc-recent-toggle']);
   assert.equal(elements['pc-duplicates-count'].textContent, '0');
   assert.equal(elements['pc-close-duplicates'].disabled, true);
   assert.equal(elements['pc-inactive-row'].disabled, true);
@@ -1317,7 +1327,7 @@ test('popup counts: open tabs and sites in the header, lifetime total with digit
   assert.equal(elements['pc-suggest-list'].style.getPropertyValue('--u'), '4px');
   assert.equal(elements['pc-suggest-list'].style.getPropertyValue('--g'), '1px');
   await elements['pc-reset-stats'].click();
-  assert.equal(elements['pc-closed-count'].textContent, '0 closed');
+  assert.equal(elements['pc-settings-closed'].textContent, '0 closed');
   assert.equal(runtime.state.store['pc.stats'].totalTabsEaten, 0);
 });
 
@@ -1502,6 +1512,176 @@ test('popup results can be dismissed with × or Escape, and focus goes to the fo
   await siteRow(elements, 'a.test').click();
   await elements['pc-toast'].dispatch('keydown', { key: 'Tab', preventDefault() { assert.fail('Tab was blocked'); } });
   assert.equal(open(), true);
+});
+
+/* ---------- Recently closed ---------- */
+
+const recentFixture = options => extension({ tabs: [
+  { id: 1, url: 'https://keep.test/', title: 'Keep', active: true },
+  { id: 2, url: 'https://site.test/a', title: 'Site A', favIconUrl: 'https://site.test/icon.png' },
+  { id: 3, url: 'https://other.test/', title: 'Other' },
+  { id: 4, url: 'https://site.test/b', title: 'Site B', pinned: true },
+  { id: 5, url: 'https://copy.test/page', title: 'Copy' },
+  { id: 6, url: 'https://copy.test/page', title: 'Copy' },
+], ...options });
+
+test('the background lists the tabs it closed, the latest close first, and never keeps them past the session', async () => {
+  const runtime = recentFixture();
+  runtime.state.store['pc.settings'] = { keepPinnedTabs: false };
+  assert.deepEqual(await runtime.send({ type: 'pc:getRecent' }), { ok: true, tabs: [] });
+
+  const first = await runtime.send({ type: 'pc:closeByDomain', query: 'site.test' });
+  runtime.context.Date.advance(12);
+  const second = await runtime.send({ type: 'pc:closeDuplicates' });
+  runtime.context.Date.advance(3);
+  const listed = await runtime.send({ type: 'pc:getRecent' });
+  assert.deepEqual(listed.tabs, [
+    { key: second.closedTabs[0].key, title: 'Copy', url: 'https://copy.test/page', domain: 'copy.test', favIconUrl: '', closedMinutes: 3 },
+    { key: first.closedTabs[0].key, title: 'Site A', url: 'https://site.test/a', domain: 'site.test', favIconUrl: 'https://site.test/icon.png', closedMinutes: 15 },
+    { key: first.closedTabs[1].key, title: 'Site B', url: 'https://site.test/b', domain: 'site.test', favIconUrl: '', closedMinutes: 15 },
+  ]);
+  // Titles and addresses stay in the browser session only: nothing reaches saved storage.
+  assert.equal(runtime.state.session['pc.recent'].length, 3);
+  assert.equal(JSON.stringify(runtime.state.store).includes('site.test'), false);
+
+  // A worker that has been stopped and started again still has the list.
+  const woken = extension({ tabs: runtime.state.tabs, session: runtime.state.session });
+  assert.deepEqual((await woken.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.title), ['Copy', 'Site A', 'Site B']);
+
+  // The right-click action has no Undo of its own; its tabs can be reopened from the list.
+  const menu = recentFixture();
+  await menu.context.handleContextMenuClick({ pageUrl: 'https://other.test/' }, menu.state.tabs[2]);
+  assert.deepEqual((await menu.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.url), ['https://other.test/']);
+});
+
+test('reopening a recently closed tab puts it back in place without showing it, and takes it off the list', async () => {
+  const runtime = recentFixture();
+  runtime.state.store['pc.settings'] = { keepPinnedTabs: false };
+  await runtime.send({ type: 'pc:closeByDomain', query: 'site.test' });
+  const [a, b] = (await runtime.send({ type: 'pc:getRecent' })).tabs;
+
+  assert.deepEqual(await runtime.send({ type: 'pc:reopenRecent', keys: [b.key] }), { ok: true, restoredCount: 1, remainingTabs: [] });
+  assert.deepEqual(runtime.state.created, [{ url: 'https://site.test/b', active: false, windowId: 1, index: 3, pinned: true }]);
+  assert.deepEqual((await runtime.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.key), [a.key]);
+
+  // A key that is not on the list, or no keys at all, reopens nothing.
+  for (const keys of [[b.key], ['nothing'], [], undefined, 'site']) {
+    assert.equal((await runtime.send({ type: 'pc:reopenRecent', keys })).restoredCount, 0);
+  }
+  assert.equal(runtime.state.created.length, 1);
+
+  // A tab the browser will not reopen stays on the list.
+  runtime.state.failCreate.add('https://site.test/a');
+  const failed = await runtime.send({ type: 'pc:reopenRecent', keys: [a.key] });
+  assert.equal(failed.restoredCount, 0);
+  assert.equal(failed.remainingTabs.length, 1);
+  assert.deepEqual((await runtime.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.key), [a.key]);
+});
+
+test('Undo takes the tabs it brings back off the Recently closed list, and Clear list empties it', async () => {
+  const runtime = recentFixture();
+  const closed = await runtime.send({ type: 'pc:closeByDomain', query: 'site.test' });
+  await runtime.send({ type: 'pc:closeByDomain', query: 'other.test' });
+  assert.deepEqual((await runtime.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.title), ['Other', 'Site A']);
+  await runtime.send({ type: 'pc:restoreTabs', tabs: closed.closedTabs });
+  assert.deepEqual((await runtime.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.title), ['Other']);
+  assert.deepEqual(await runtime.send({ type: 'pc:clearRecent' }), { ok: true, tabs: [] });
+  assert.deepEqual(runtime.state.session['pc.recent'], []);
+  assert.deepEqual((await runtime.send({ type: 'pc:getRecent' })).tabs, []);
+});
+
+test('Recently closed keeps the latest 25 tabs, short titles and no pictures in place of icon addresses', async () => {
+  const tabs = Array.from({ length: 30 }, (_, index) => ({ id: index + 1, url: 'https://many.test/' + index, title: 'Page ' + index }));
+  tabs.push({ id: 40, url: 'https://long.test/', title: 'T'.repeat(500), favIconUrl: 'data:image/png;base64,' + 'A'.repeat(4000) });
+  tabs.push({ id: 41, url: 'https://keep.test/', active: true });
+  const runtime = extension({ tabs });
+  await runtime.send({ type: 'pc:closeByDomain', query: 'many.test' });
+  let listed = (await runtime.send({ type: 'pc:getRecent' })).tabs;
+  assert.deepEqual(listed.map(tab => tab.title), Array.from({ length: 25 }, (_, index) => 'Page ' + index));
+  await runtime.send({ type: 'pc:closeByDomain', query: 'long.test' });
+  listed = (await runtime.send({ type: 'pc:getRecent' })).tabs;
+  assert.equal(listed.length, 25);
+  assert.equal(listed[0].title.length, 300);
+  assert.equal(listed[0].favIconUrl, '');
+  assert.equal(listed[24].title, 'Page 23');
+});
+
+test('closes that arrive together are all listed, and a browser without session storage still keeps a list', async () => {
+  const runtime = recentFixture();
+  await Promise.all([
+    runtime.send({ type: 'pc:closeByDomain', query: 'site.test' }),
+    runtime.send({ type: 'pc:closeByDomain', query: 'other.test' }),
+    runtime.send({ type: 'pc:closeDuplicates' }),
+  ]);
+  assert.deepEqual((await runtime.send({ type: 'pc:getRecent' })).tabs.map(tab => tab.title).sort(), ['Copy', 'Other', 'Site A']);
+
+  const page = recentFixture({ firefox: true, session: null });
+  await page.send({ type: 'pc:closeByDomain', query: 'other.test' });
+  const [only] = (await page.send({ type: 'pc:getRecent' })).tabs;
+  assert.equal(only.title, 'Other');
+  assert.equal((await page.send({ type: 'pc:reopenRecent', keys: [only.key] })).restoredCount, 1);
+  assert.deepEqual((await page.send({ type: 'pc:getRecent' })).tabs, []);
+});
+
+test('popup lists recently closed tabs and reopens one from its row', async () => {
+  const runtime = recentFixture();
+  const elements = await popup(runtime);
+  await siteRow(elements, 'site.test').click();
+  await elements['pc-close-duplicates'].click();
+  runtime.context.Date.advance(4);
+
+  await elements['pc-recent-toggle'].click();
+  assert.equal(elements['pc-bar-recent'].hidden, false);
+  assert.equal(elements['pc-recent-list'].hidden, false);
+  assert.equal(elements['pc-suggest-list'].hidden, true);
+  assert.equal(elements.document.activeElement, elements['pc-recent-back']);
+  const rows = () => elements['pc-recent-rows'].children;
+  assert.deepEqual(rows().map(row => [row.children[1].textContent, row.children[2].textContent, row.getAttribute('aria-label')]), [
+    ['Copycopy.test', '4 min', 'Reopen: Copy'],
+    ['Site Asite.test', '4 min', 'Reopen: Site A'],
+  ]);
+  assert.equal(elements['pc-recent-meta'].textContent, '2 tabs');
+  assert.equal(elements['pc-recent-empty'].hidden, true);
+  assert.equal(elements['pc-recent-clear'].disabled, false);
+
+  await rows()[1].click();
+  assert.deepEqual(runtime.state.created, [{ url: 'https://site.test/a', active: false, windowId: 1, index: 1 }]);
+  assert.equal(elements['pc-status'].textContent, 'Restored: 1');
+  // What has just been reopened cannot be undone again.
+  assert.equal(elements['pc-undo-close'].hidden, true);
+  assert.deepEqual(rows().map(row => row.children[1].textContent), ['Copycopy.test']);
+  assert.equal(elements['pc-recent-meta'].textContent, '1 tab');
+
+  await elements['pc-recent-back'].click();
+  assert.equal(elements['pc-recent-list'].hidden, true);
+  assert.equal(elements['pc-suggest-list'].hidden, false);
+  assert.equal(elements.document.activeElement, elements['pc-recent-toggle']);
+  assert.ok(sitesIn(elements).includes('site.test'));
+});
+
+test('popup Recently closed says when there is nothing, clears on request and reports a tab that will not reopen', async () => {
+  const runtime = recentFixture();
+  const elements = await popup(runtime);
+  await elements['pc-recent-toggle'].click();
+  assert.equal(elements['pc-recent-empty'].hidden, false);
+  assert.equal(elements['pc-recent-empty'].textContent, 'No recently closed tabs');
+  assert.equal(elements['pc-recent-meta'].textContent, '');
+  assert.equal(elements['pc-recent-clear'].disabled, true);
+  await elements['pc-recent-back'].click();
+
+  await siteRow(elements, 'other.test').click();
+  await elements['pc-recent-toggle'].click();
+  runtime.state.failCreate.add('https://other.test/');
+  await elements['pc-recent-rows'].children[0].click();
+  assert.equal(elements['pc-status'].textContent, 'Undo failed');
+  assert.equal(elements['pc-recent-rows'].children.length, 1);
+
+  await elements['pc-recent-clear'].click();
+  assert.equal(elements['pc-recent-rows'].children.length, 0);
+  assert.equal(elements['pc-recent-empty'].hidden, false);
+  assert.equal(elements['pc-recent-clear'].disabled, true);
+  assert.deepEqual(runtime.state.session['pc.recent'], []);
+  assert.equal(runtime.state.created.length, 0);
 });
 
 test('popup applies an accent preset for the active theme and clears it for purple', async () => {

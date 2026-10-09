@@ -109,7 +109,10 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   padding-inline: var(--gutter);
 }
 .head-row { display: flex; align-items: center; gap: 8px; }
-.mark { flex: none; width: 26px; height: 26px; }
+/* The mark's cross, the middle of the name's capitals and the dot between the
+   counts sit on one line: the middle of this row. The cross is drawn a little
+   above the middle of the mark (482 of 1024), so the mark is set down by that. */
+.mark { flex: none; width: 26px; height: 26px; translate: 0 0.76px; }
 .head-text {
   flex: 1;
   min-width: 0;
@@ -118,7 +121,10 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   align-items: center;
   gap: 4px 10px;
 }
-.brand { flex: none; font-size: 20px; font-weight: 700; letter-spacing: -0.015em; }
+/* The name's box is trimmed to its capitals, so centring the box centres the
+   letters whatever the font. Where the browser cannot trim, popup.js measures
+   the font and moves the name by the same amount. */
+.brand { flex: none; font-size: 20px; font-weight: 700; line-height: 1; letter-spacing: -0.015em; text-box: trim-both cap alphabetic; }
 .stats {
   flex: 1 0 auto;             /* grows to centre the counts between the name and the settings button; wraps when they do not fit */
   min-width: 0;
@@ -267,6 +273,7 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
 .list.suggest { max-height: 353px; }
 .list.matches { height: 353px; }      /* fixed while typing, so the popup does not resize per keystroke */
 .list.inactive { max-height: 358px; padding-top: 4px; }
+.list.recent { max-height: 358px; padding-top: 4px; }
 /* Wrappers that hold the generated rows. They take no part in layout, so the rows
    stay direct flex items of the list; popup.js swaps their children in one call. */
 .rows { display: contents; }
@@ -287,6 +294,21 @@ html[dir="rtl"] .flip { transform: scaleX(-1); }
   cursor: pointer;
 }
 .row.site { grid-template-columns: 16px minmax(0, 1fr) 64px minmax(26px, max-content) 20px; height: 32px; }   /* + tick marks */
+/* Inactive and Close duplicates share one row, half each: icon, label, count.
+   A label too long for its half takes a second line rather than being cut.
+   With Inactive hidden, Close duplicates has the row to itself. */
+.pair { flex: none; display: flex; gap: 4px; }
+.row.cell {
+  flex: 1 1 0;
+  min-width: 0;
+  grid-template-columns: 16px minmax(0, 1fr) max-content;
+  column-gap: 8px;
+  height: auto;
+  min-height: 36px;
+  padding-block: 4px;
+}
+.cell .label { overflow-wrap: anywhere; line-height: 1.25; white-space: normal; }
+.cell .label-wrap { flex-wrap: wrap; gap: 0 7px; }
 .row > svg { color: var(--ink-2); }
 .row:not(:disabled):hover { background: var(--surface); --bar-c: var(--accent); }
 .row:not(:disabled):hover .x { background: var(--ink); color: var(--paper); }
@@ -337,7 +359,7 @@ html[dir="rtl"] .bar { transform: scaleX(-1); }
   color: var(--ink-2);
   text-align: center;
 }
-.list.inactive .none { flex: none; }
+.list.inactive .none, .list.recent .none { flex: none; }
 
 /* Tab rows: keyword matches and the inactive review */
 .tab {
@@ -368,6 +390,12 @@ html[dir="rtl"] .bar { transform: scaleX(-1); }
   cursor: pointer;
 }
 .tab-close:hover { background: var(--ink); color: var(--paper); }
+/* A recently closed tab is one button: the whole row reopens it. */
+button.tab { width: 100%; border: 0; border-radius: 8px; background: transparent; text-align: start; cursor: pointer; }
+button.tab:not(:disabled):hover { background: var(--surface); }
+button.tab:not(:disabled):hover .x { background: var(--ink); color: var(--paper); }
+button.tab:disabled { cursor: default; }
+button.tab:focus-visible { outline-offset: -2px; }
 
 /* ---------- Inactive review: threshold control ---------- */
 .control {
@@ -480,7 +508,8 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   font-weight: 500;
   cursor: pointer;
 }
-.btn:hover { border-color: var(--ink-2); }
+.btn:not(:disabled):hover { border-color: var(--ink-2); }
+.btn:disabled { opacity: .45; cursor: default; }
 .btn.sort { display: flex; align-items: center; gap: 7px; height: auto; min-height: 28px; padding: 3px 10px; text-align: start; }
 .btn.sort > svg { flex: none; }
 
@@ -574,10 +603,10 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   justify-content: space-between;
   gap: 12px;
   padding-block: 8px;
-  padding-inline: var(--gutter) var(--inset);
+  padding-inline: var(--gutter);
   border-top: 1px solid var(--line);
 }
-.foot-count { color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; text-align: end; }
+.foot > .note { padding-inline-start: 8px; }
 
 .foot-action { display: flex; padding: 8px var(--gutter); border-top: 1px solid var(--line); }
 .primary {
@@ -633,7 +662,7 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
     <!-- Same drawing as icons/tabtools-icon-auto.svg, inline so it takes the text colour of the chosen theme. -->
     <svg class="mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg>
     <div class="head-text">
-      <strong class="brand">TabTools</strong>
+      <strong id="pc-brand" class="brand">TabTools</strong>
       <span class="stats"><span id="pc-open-count"></span><span class="dot" aria-hidden="true">·</span><span id="pc-site-count"></span></span>
     </div>
     <button id="pc-settings-toggle" class="icon-btn" type="button" data-i18n-aria="settings" data-i18n-title="settings" aria-label="Settings" title="Settings"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 5h5.5M12.5 5H14M2 11h1.5M8.5 11H14"></path><circle cx="10" cy="5" r="2"></circle><circle cx="6" cy="11" r="2"></circle></svg></button>
@@ -659,21 +688,28 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   <h1 class="sub-title" data-i18n="settings">Settings</h1>
 </div>
 
+<!-- ===== Top: Recently closed ===== -->
+<div id="pc-bar-recent" class="sub-bar" hidden>
+  <button id="pc-recent-back" class="icon-btn" type="button" data-i18n-aria="suggestions" data-i18n-title="suggestions" aria-label="Suggestions" title="Suggestions"><svg class="flip" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg></button>
+  <h1 class="sub-title" data-i18n="recentlyClosed">Recently closed</h1>
+  <span id="pc-recent-meta" class="sub-meta"></span>
+</div>
+
 <!-- ===== Body: suggestions ===== -->
 <div id="pc-suggest-head" class="list-head"><span class="list-title" data-i18n="suggestions">Suggestions</span></div>
 <div id="pc-suggest-list" class="list suggest">
-  <button id="pc-inactive-row" class="row" type="button">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 9.6A5.8 5.8 0 1 1 6.4 2.6a4.6 4.6 0 0 0 7 7z"></path></svg>
-    <span class="label-wrap"><span class="label" data-i18n="inactive">Inactive</span><span id="pc-inactive-hint" class="hint"></span></span>
-    <span id="pc-inactive-count" class="count"></span>
-    <span class="x"><svg class="flip" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 1.5L7 5 3.5 8.5"></path></svg></span>
-  </button>
-  <button id="pc-close-duplicates" class="row" type="button">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="2"></rect><path d="M10.5 3.5v-.3A1.2 1.2 0 0 0 9.3 2H3.2A1.2 1.2 0 0 0 2 3.2v6.1a1.2 1.2 0 0 0 1.2 1.2h.3"></path><path d="M7.7 9.5h3.6"></path></svg>
-    <span class="label" data-i18n="closeDuplicates">Close duplicates</span>
-    <span id="pc-duplicates-count" class="count"></span>
-    <span class="x"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"></path></svg></span>
-  </button>
+  <div class="pair">
+    <button id="pc-inactive-row" class="row cell" type="button">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 9.6A5.8 5.8 0 1 1 6.4 2.6a4.6 4.6 0 0 0 7 7z"></path></svg>
+      <span class="label-wrap"><span class="label" data-i18n="inactive">Inactive</span><span id="pc-inactive-hint" class="hint"></span></span>
+      <span id="pc-inactive-count" class="count"></span>
+    </button>
+    <button id="pc-close-duplicates" class="row cell" type="button">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="2"></rect><path d="M10.5 3.5v-.3A1.2 1.2 0 0 0 9.3 2H3.2A1.2 1.2 0 0 0 2 3.2v6.1a1.2 1.2 0 0 0 1.2 1.2h.3"></path><path d="M7.7 9.5h3.6"></path></svg>
+      <span class="label" data-i18n="closeDuplicates">Close duplicates</span>
+      <span id="pc-duplicates-count" class="count"></span>
+    </button>
+  </div>
   <hr id="pc-sites-rule" class="rule">
   <!-- One .row.site per site, built by popup.js:
   <button class="row site" type="button" data-domain="github.com" style="--n: 15"
@@ -721,6 +757,19 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   <!-- .tab rows as above, with the time since last use in .tab-meta and no <mark> -->
   <div id="pc-inactive-rows" class="rows"></div>
   <div id="pc-inactive-empty" class="none" data-i18n="noInactive" hidden>No inactive tabs</div>
+</div>
+
+<!-- ===== Body: Recently closed ===== -->
+<div id="pc-recent-list" class="list recent" hidden>
+  <!-- One button per tab TabTools closed, newest first, built by popup.js:
+  <button class="tab" type="button" data-key="…" title="Reopen: Favicon - Wikipedia" aria-label="Reopen: Favicon - Wikipedia">
+    <img class="fav" …>   or   <span class="fav tile" aria-hidden="true">W</span>
+    <span class="tab-text"><span class="tab-title">Favicon - Wikipedia</span><span class="tab-host" dir="ltr">en.wikipedia.org</span></span>
+    <span class="tab-meta">5 min</span>            (time since it was closed)
+    <span class="x"><svg …arrow back…></svg></span>
+  </button> -->
+  <div id="pc-recent-rows" class="rows"></div>
+  <div id="pc-recent-empty" class="none" data-i18n="noRecent" hidden>No recently closed tabs</div>
 </div>
 
 <!-- ===== Body: Settings ===== -->
@@ -776,7 +825,11 @@ html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px
   </div>
   <footer id="pc-foot-main" class="foot">
     <button id="pc-sort-tabs-quick" class="btn sort" type="button" data-i18n-title="contextSort" title="Sort tabs (most opened first)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h11M2.5 8h7.5M2.5 12h4"></path></svg><span data-i18n="sortTabs">Sort tabs</span></button>
-    <span id="pc-closed-count" class="foot-count"></span>
+    <button id="pc-recent-toggle" class="btn sort" type="button"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 8a5.4 5.4 0 1 0 1.7-3.9"></path><path d="M2.4 2.4v2.9h2.9"></path><path d="M8 5.3V8l1.9 1.2"></path></svg><span data-i18n="recentlyClosed">Recently closed</span></button>
+  </footer>
+  <footer id="pc-foot-recent" class="foot" hidden>
+    <span class="note" dir="auto" data-i18n="recentNote">Closed with TabTools. Cleared when the browser closes.</span>
+    <button id="pc-recent-clear" class="btn" type="button" data-i18n="clearList">Clear list</button>
   </footer>
   <footer id="pc-foot-inactive" class="foot-action" hidden>
     <button id="pc-inactive-close" class="primary" type="button"><span data-i18n="close">Close</span><span id="pc-inactive-close-count" class="badge"></span></button>
