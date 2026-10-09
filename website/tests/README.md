@@ -21,7 +21,9 @@ system theme when nothing is saved, mobile store wording, FAQ interaction,
 uncaught page errors, and article links clearing the header. The home page's
 working popup is driven through closing a site, Undo, typing, the Inactive
 review, sorting and duplicates at every width, and its Settings at a phone and
-a desktop width in both themes.
+a desktop width in both themes. Recently closed (the paired first row, the list,
+reopening a tab in place, Undo taking tabs off the list, Clear list and Reset) is
+driven at 320, 390 and 1280 pixels.
 On phones a walk backwards through a guide with the keyboard checks that the
 header covers nothing in focus. With JavaScript off, the popup is checked as a
 picture of its starting state and section links still clear the header. A

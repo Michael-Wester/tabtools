@@ -51,7 +51,7 @@ ${screenshot('close-site-02-tabs-closed.png', 'Chrome after closing the three Yo
   <li>Find the website under <strong>Suggestions</strong>. Every website with open tabs is listed, the one with the most tabs first, with a mark for each tab and a count.</li>
   <li>Click the website’s row to close its tabs.</li>
 </ol>
-${popup('popup-site-row.png', 366, 'The TabTools popup showing 6 tabs on 3 sites, with the youtube.com row and its 3 tick marks highlighted.', 'With the same six tabs open, click the youtube.com row to close its three tabs without leaving Google.')}
+${popup('popup-site-row.png', 330, 'The TabTools popup showing 6 tabs on 3 sites, with the youtube.com row and its 3 tick marks highlighted.', 'With the same six tabs open, click the youtube.com row to close its three tabs without leaving Google.')}
 <p>You can also type the website, which is useful in a long list. Enter its hostname, such as <code>youtube.com</code>, in <strong>Close by keyword (press Enter)</strong>. TabTools lists the matching tabs as you type. Press Enter or click <strong>Close</strong> to close the tabs listed, or use the button on a row to close that tab alone. Enter the hostname without <code>https://</code> or a page path.</p>
 ${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtube.com. Three YouTube tabs are listed below it and the Close button shows 3.', 'Type youtube.com to list its tabs, then press Enter or click Close.')}
 <p>A hostname typed here also covers its subdomains: <code>google.com</code> lists tabs on <code>docs.google.com</code> and <code>mail.google.com</code> too. A plain keyword such as <code>shopping</code> works differently: it lists tabs whose titles or addresses contain that word.</p>`,
@@ -95,7 +95,8 @@ ${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtub
         id: "undo-and-next-steps",
         title: "Reopen tabs or choose a smaller cleanup",
         html: `<p>After you close tabs through the popup, the result appears at the bottom of the popup with an <strong>Undo</strong> button for a few seconds. Undo reopens the tabs from that cleanup. It is offered only while the popup stays open, and in Chrome a cleanup that includes the tab you are on closes the popup with it. The right-click <strong>Close site tabs</strong> action does not offer Undo.</p>
-<p>After a context-menu close, look in your browser’s recently closed tabs or history. Reopening a URL should not be treated as restoring unsaved form input or every detail of a page’s previous state.</p>
+<p>Either way, the tabs are then listed under <strong>Recently closed</strong> at the bottom of the popup, the latest first. Click a tab there to reopen it where it was. The list holds the last 25 tabs TabTools closed and is cleared when the browser closes; after that, look in your browser’s own recently closed tabs or history. Reopening a URL should not be treated as restoring unsaved form input or every detail of a page’s previous state.</p>
+${popup('popup-recently-closed.png', 241, 'The Recently closed list in the TabTools popup shows 3 YouTube tabs closed 4 minutes ago, each with a reopen arrow, and a Clear list button below.', 'The three YouTube tabs under Recently closed. Click one to reopen it.')}
 <p>If your goal is to retain one copy of each page, follow the guide to <a href="/guides/close-duplicate-tabs/">closing duplicate tabs</a>. To keep all your pages and make them easier to scan, <a href="/guides/sort-tabs-by-website/">sort tabs by website</a> instead.</p>`,
       },
     ],
@@ -148,10 +149,10 @@ ${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtub
     ${screenshot('duplicates-01-open-tabtools.png', 'Chrome with eight tabs, including three copies of the YouTube homepage, and the pointer on the TabTools toolbar icon.', 'Open TabTools from Chrome’s toolbar.')}
   </li>
   <li>Find <strong>Close duplicates</strong> under Suggestions. The number beside it is how many copies it would close. Click it.
-    ${popup('popup-close-duplicates.png', 366, 'The TabTools popup shows 8 tabs on 3 sites. The Close duplicates row is highlighted and shows 2.', 'Click Close duplicates to remove the two repeated copies.')}
+    ${popup('popup-close-duplicates.png', 330, 'The TabTools popup shows 8 tabs on 3 sites. Close duplicates, beside Inactive, is highlighted and shows 2.', 'Click Close duplicates to remove the two repeated copies.')}
   </li>
-  <li>Check the result at the bottom of the popup. It reports how many duplicates closed and offers <strong>Undo</strong> for a few seconds. With no duplicates open, the row shows 0 and cannot be clicked.
-    ${popup('popup-duplicates-result.png', 366, 'TabTools reports Duplicate tabs closed: 2, with an Undo button, and now shows 6 tabs.', 'Two duplicate copies close, leaving six tabs. Undo is offered for a few seconds.')}
+  <li>Check the result at the bottom of the popup. It reports how many duplicates closed and offers <strong>Undo</strong> for a few seconds. With no duplicates open, <strong>Close duplicates</strong> shows 0 and cannot be clicked.
+    ${popup('popup-duplicates-result.png', 330, 'TabTools reports Duplicate tabs closed: 2, with an Undo button, and now shows 6 tabs.', 'Two duplicate copies close, leaving six tabs. Undo is offered for a few seconds.')}
   </li>
 </ol>
 <p>You do not need to select the repeated tabs first. The cleanup covers normal windows within that browser, so two copies of a page can be matched even when they are in different windows. Private or incognito tabs are excluded.</p>
@@ -178,7 +179,7 @@ ${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtub
       {
         id: "undo-and-organise",
         title: "Undo a cleanup and organise what remains",
-        html: `<p>After the cleanup the popup shows the result with an <strong>Undo</strong> button for a few seconds. Undo reopens the tabs from that cleanup. It reopens pages by URL; unsaved page content is not guaranteed to return. Once the result has gone or the popup is closed, use your browser’s recently closed tabs or history instead.</p>
+        html: `<p>After the cleanup the popup shows the result with an <strong>Undo</strong> button for a few seconds. Undo reopens the tabs from that cleanup. It reopens pages by URL; unsaved page content is not guaranteed to return. Once the result has gone, open <strong>Recently closed</strong> at the bottom of the popup and click a tab to reopen it. That list holds the last 25 tabs TabTools closed and is cleared when the browser closes.</p>
 <p>For different pages you have finished with, see <a href="/guides/close-tabs-from-same-website/">how to close all tabs from the same website</a>. For pages you want to keep, <a href="/guides/sort-tabs-by-website/">sorting tabs by website</a> brings related tabs together without closing them.</p>`,
       },
     ],
@@ -203,7 +204,7 @@ ${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtub
   </li>
   <li>Open TabTools from the toolbar or extensions menu.</li>
   <li>Click <strong>Sort tabs</strong> at the bottom of the popup.
-    ${popup('popup-sort-tabs.png', 366, 'The TabTools popup with the Sort tabs button highlighted at the bottom.', 'Click Sort tabs to bring pages from each website together.')}
+    ${popup('popup-sort-tabs.png', 330, 'The TabTools popup with the Sort tabs button highlighted at the bottom.', 'Click Sort tabs to bring pages from each website together.')}
   </li>
 </ol>
 <p>Tabs from the same website move beside one another. Pages stay open, and tabs in other windows are not brought into this window. If you want to organise another window, switch to it and run the command again.</p>
@@ -221,7 +222,7 @@ ${popup('popup-typed-site.png', 536, 'The TabTools keyword field contains youtub
     <tr><td><code>google.com</code></td><td>1</td><td>Third</td></tr>
   </tbody>
 </table>
-${popup('popup-sorted-result.png', 366, 'TabTools reports Tabs reordered: 5 at the bottom of the popup, which still shows 6 tabs.', 'After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open, and the popup reports how many moved.')}
+${popup('popup-sorted-result.png', 330, 'TabTools reports Tabs reordered: 5 at the bottom of the popup, which still shows 6 tabs.', 'After sorting: YouTube ×3, Wikipedia ×2, then Google. All six tabs stay open, and the popup reports how many moved.')}
 <p>“Most opened” means the largest number of tabs open right now. It does not mean your most visited website, browsing history or the number of times you have opened a site over the past week.</p>
 <p>If two sites have the same count, their hostnames determine the order alphabetically. Tabs from the same hostname keep their relative order. For example, the three YouTube pages retain their order within the YouTube set; they are not sorted by page title.</p>`,
       },

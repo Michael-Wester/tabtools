@@ -21,10 +21,10 @@ their respective owners.
 
 ## Pictures of the popup
 
-The six `popup-*.png` files show the TabTools 5.0.0 popup alone. They are 760
+The seven `popup-*.png` files show the TabTools 5.0.0 popup alone. They are 760
 pixels wide, twice the popup's 380, and are shown at 380.
 
-They were taken on 9 October 2026 by `node scripts/capture-pictures.js guides`
+They were taken on 10 October 2026 by `node scripts/capture-pictures.js guides`
 from the built Chrome package, in the Chromium that Playwright installs
 (141.0.7390.37 here), running headless. The popup is the extension's real toolbar
 popup, opened with `chrome.action.openPopup()` as the extension's browser tests
@@ -41,6 +41,8 @@ to show it as it looks when pointed at; no cursor is drawn.
 
 - `popup-site-row.png`, `popup-typed-site.png`: the youtube.com row, and
   `youtube.com` typed in the field with its three tabs listed.
+- `popup-recently-closed.png`: the three YouTube tabs under Recently closed,
+  four minutes (by the moved clock) after their site row closed them.
 - `popup-close-duplicates.png`, `popup-duplicates-result.png`: Close duplicates
   showing 2, then the result with Undo.
 - `popup-sort-tabs.png`, `popup-sorted-result.png`: Sort tabs, then the result.

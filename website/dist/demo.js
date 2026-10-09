@@ -10,6 +10,7 @@
   const THRESHOLDS = [30, 60, 120, 240, 480, 1440, 4320, 10080];   // minutes, as in the popup
   const ACCENTS = ['purple', 'blue', 'green', 'orange', 'pink', 'graphite'];
   const THEMES = ['system', 'light', 'dark'];
+  const RECENT_MAX = 25;                                            // as many as the extension keeps
 
   const hostOf = tab => tab.url.split('/')[0];
   const letterOf = host => host.replace(/^www\./, '').charAt(0).toUpperCase();
@@ -72,6 +73,21 @@
     return { tabs: order, moved: order.filter((tab, index) => tabs[index] !== tab).length };
   }
 
+  // Recently closed: the tabs of the latest close first, each with the place it
+  // had in the window, and never more than the extension keeps.
+  function remember(recent, tabs, order) {
+    const entries = tabs.map(tab => ({ ...tab, active: false, index: order.indexOf(tab.id) }));
+    return [...entries, ...recent].slice(0, RECENT_MAX);
+  }
+
+  // A reopened tab goes back to the place it had, behind the tab in view.
+  function reopened(tabs, entry) {
+    const { index, ...tab } = entry;
+    const next = tabs.slice();
+    next.splice(Math.max(0, Math.min(index, next.length)), 0, tab);
+    return next;
+  }
+
   // The next choice below or above the current time, or undefined at an end.
   function step(minutes, direction) {
     return direction < 0
@@ -115,7 +131,7 @@
     return { number, unit, text };
   }
 
-  const model = { THRESHOLDS, ACCENTS, THEMES, hostOf, letterOf, sites, duplicates, inactive, matches, sorted, step, duration, age, formatter };
+  const model = { THRESHOLDS, ACCENTS, THEMES, RECENT_MAX, hostOf, letterOf, sites, duplicates, inactive, matches, sorted, remember, reopened, step, duration, age, formatter };
   if (typeof module === 'object' && module.exports) { module.exports = model; return; }
   if (!root.document) return;
 
@@ -140,9 +156,9 @@
   const state = {
     tabs: data.tabs.map(tab => ({ ...tab })),
     threshold: data.threshold,
-    closed: 0,
     view: 'main',
     undo: null,        // { tabs, order } for the latest close
+    recent: [],        // what was closed and has not been brought back, latest first
     busy: false
   };
 
@@ -209,7 +225,6 @@
     const list = sites(state.tabs);
     $('[data-pp-tabs]').textContent = text('tabCount', { count: state.tabs.length });
     $('[data-pp-sites]').textContent = text('siteCount', { count: list.length });
-    $('[data-pp-closed]').textContent = text('closedCountShort', { count: state.closed });
 
     const idle = inactive(state.tabs, state.threshold);
     const idleRow = $('[data-pp-inactive-row]');
@@ -289,6 +304,29 @@
     mark(idle.map(tab => tab.id));
   }
 
+  // One button per tab: the whole row reopens it.
+  function recentRow(entry) {
+    const row = template('recent').cloneNode(true);
+    const host = hostOf(entry);
+    const label = text('reopen') + ': ' + entry.title;
+    row.dataset.id = entry.id;
+    row.title = label;
+    row.setAttribute('aria-label', label);
+    row.querySelector('.pp-fav').textContent = letterOf(host);
+    row.querySelector('.pp-tab-title').textContent = entry.title;
+    row.querySelector('.pp-tab-host').textContent = host;
+    return row;
+  }
+
+  function drawRecent() {
+    const count = state.recent.length;
+    $('[data-pp-recent-meta]').textContent = count ? text('tabCount', { count }) : '';
+    $('[data-pp-recent-rows]').replaceChildren(...state.recent.map(recentRow));
+    $('[data-pp-recent-empty]').hidden = count !== 0;
+    $('[data-pp-recent-clear]').disabled = count === 0;
+    mark([]);
+  }
+
   function drawThreshold() {
     const label = unit(duration(state.threshold), 'long');
     for (const output of $$('[data-pp-threshold]')) output.textContent = label;
@@ -309,6 +347,7 @@
     drawThreshold();
     if (state.view === 'inactive') drawInactive();
     else if (state.view === 'typing') drawMatches();
+    else if (state.view === 'recent') drawRecent();
     else mark([]);
     // The field's two buttons follow its text in every view: Clear while it
     // holds any text, spaces included, and Close only beside listed matches.
@@ -349,8 +388,8 @@
     status.textContent = '';
     // Focus that was on the result goes to the footer the result gives back.
     if (!hadFocus) return;
-    const footer = $$('[data-pp-sort], [data-pp-inactive-close]').find(button => !button.closest('[data-view]').hidden && !button.disabled);
-    (footer || query).focus();
+    const footer = $$('[data-pp-sort], [data-pp-inactive-close], [data-pp-recent-clear]').find(button => !button.closest('[data-view]').hidden && !button.disabled);
+    (footer || (state.view === 'recent' ? $('[data-pp-back="recent"]') : query)).focus();
   }
 
   /* Actions */
@@ -374,8 +413,8 @@
       const before = order.slice(0, wasActive).filter(id => !gone.has(id)).length;
       state.tabs[Math.min(before, state.tabs.length - 1)].active = true;
     }
-    state.closed += tabs.length;
     state.undo = { tabs: tabs.map(tab => ({ ...tab })), order };
+    state.recent = remember(state.recent, tabs, order);
     state.busy = false;
     draw();
     showToast(text(message, { count: tabs.length }), true);
@@ -388,9 +427,24 @@
     // A restored tab that was in view comes back into view, as the extension restores it.
     if (tabs.some(tab => tab.active)) for (const tab of state.tabs) tab.active = false;
     state.tabs = [...state.tabs, ...tabs].sort((a, b) => (place.get(a.id) ?? 0) - (place.get(b.id) ?? 0));
-    state.closed = Math.max(0, state.closed - tabs.length);
+    // A tab that is open again is no longer recently closed.
+    const back = new Set(tabs.map(tab => tab.id));
+    state.recent = state.recent.filter(entry => !back.has(entry.id));
     draw();
     showToast(text('restoredCount', { count: tabs.length }));
+  }
+
+  function reopen(id) {
+    const entry = state.recent.find(item => item.id === id);
+    if (!entry) return;
+    state.recent = state.recent.filter(item => item !== entry);
+    state.tabs = reopened(state.tabs, entry);
+    draw();
+    showToast(text('restoredCount', { count: 1 }));
+    // The row that was pressed is gone: the next one, or the way back, takes focus.
+    if (!frame.contains(document.activeElement) || document.activeElement === document.body) {
+      ($('[data-pp-reopen]') || $('[data-pp-back="recent"]')).focus();
+    }
   }
 
   function sort() {
@@ -405,7 +459,7 @@
     hideToast();
     state.tabs = data.tabs.map(tab => ({ ...tab }));
     state.threshold = data.threshold;
-    state.closed = 0;
+    state.recent = [];
     query.value = '';
     show('main');
     draw();
@@ -436,9 +490,18 @@
       open('inactive', '[data-pp-back="inactive"]');
     } else if (control.matches('[data-pp-open="settings"]')) {
       open('settings', '[data-pp-back="settings"]');
+    } else if (control.matches('[data-pp-recent-toggle]')) {
+      open('recent', '[data-pp-back="recent"]');
+    } else if (control.matches('[data-pp-reopen]')) {
+      reopen(Number(control.dataset.id));
+    } else if (control.matches('[data-pp-recent-clear]')) {
+      state.recent = [];
+      hideToast();
+      draw();
+      $('[data-pp-back="recent"]').focus();
     } else if (control.matches('[data-pp-back]')) {
-      const from = control.dataset.ppBack;
-      open(query.value.trim() ? 'typing' : 'main', from === 'settings' ? '[data-pp-open="settings"]' : '[data-pp-inactive-row]');
+      const opener = { settings: '[data-pp-open="settings"]', recent: '[data-pp-recent-toggle]', inactive: '[data-pp-inactive-row]' };
+      open(query.value.trim() ? 'typing' : 'main', opener[control.dataset.ppBack]);
       if (frame.contains(document.activeElement) && document.activeElement.disabled) query.focus();
     } else if (control.matches('[data-pp-sort]')) {
       sort();
@@ -493,7 +556,7 @@
   // Pointing at a row shows in the tab strip which tabs it would close.
   function preview(event) {
     const row = event.target.closest ? event.target.closest('[data-pp-site], [data-pp-duplicates-row], [data-pp-inactive-row], .pp-tab') : null;
-    if (state.view === 'settings') return;
+    if (state.view === 'settings' || state.view === 'recent') return;
     if (!row || !frame.contains(row)) {
       if (state.view === 'main') mark([]);
       return;

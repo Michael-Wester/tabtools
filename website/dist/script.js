@@ -426,8 +426,28 @@
     }, { once: true });
   }
 
+  // The stylesheet trims the name's box to its capitals, which puts the middle
+  // of the letters on the line of the mark's cross. A browser that cannot trim
+  // centres the whole line instead; measure the font and move the name by the
+  // difference, as the extension's popup does.
+  function initBrand() {
+    try {
+      if (window.CSS && CSS.supports && CSS.supports('text-box', 'trim-both cap alphabetic')) return;
+      const context = document.createElement('canvas').getContext('2d');
+      if (!context) return;
+      for (const name of document.querySelectorAll('.brand > span, .pp-brand')) {
+        const style = getComputedStyle(name);
+        context.font = style.fontWeight + ' ' + style.fontSize + ' ' + style.fontFamily;
+        const metrics = context.measureText('T');
+        const below = (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent - metrics.actualBoundingBoxAscent) / 2;
+        if (Number.isFinite(below) && Math.abs(below) < 6) name.style.translate = '0 ' + (-below).toFixed(2) + 'px';
+      }
+    } catch (_) { /* the name stays where the browser put it */ }
+  }
+
   function init() {
     setStoreLinks();
+    initBrand();
     initTheme();
     initHeaderOffset();
     initLanguage();

@@ -134,7 +134,7 @@ async function openPopup({ context, worker, id }) {
   };
   await send('Runtime.enable');
   await evaluate('document.fonts.ready.then(() => true)');
-  await until(() => evaluate('["#pc-open-count", "#pc-closed-count"].every(selector => Boolean(document.querySelector(selector)?.textContent))'), 'the popup to fill in');
+  await until(() => evaluate('["#pc-open-count", "#pc-settings-closed"].every(selector => Boolean(document.querySelector(selector)?.textContent))'), 'the popup to fill in');
   const box = selector => evaluate(`(() => { const r = document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; })()`);
   const pause = () => new Promise(resolve => setTimeout(resolve, 350));
   return {
@@ -193,6 +193,15 @@ async function guidePictures() {
     await popup.save(path.join(guides, 'popup-site-row.png'));
     await popup.type('youtube.com');
     await popup.save(path.join(guides, 'popup-typed-site.png'));
+  });
+  // The three YouTube tabs closed a few minutes ago, then listed for reopening.
+  await scene(six, google, async (popup, browser) => {
+    await popup.click('.row.site[data-domain="youtube.com"]');
+    await popup.click('#pc-toast-dismiss');
+    await later(browser.worker, 4);
+    await popup.click('#pc-recent-toggle');
+    await popup.point('#pc-recent-rows .tab');
+    await popup.save(path.join(guides, 'popup-recently-closed.png'));
   });
   await scene(eight, google, async popup => {
     await popup.point('#pc-close-duplicates');

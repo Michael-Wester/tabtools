@@ -153,8 +153,13 @@ main:focus-visible, section:focus-visible { outline: none; }
   border-bottom: 1px solid var(--line);
 }
 .nav-shell { display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; min-height: var(--header); padding-block: 12px; }
+/* As in the popup: the name's box is trimmed to its capitals, so the middle of
+   the letters sits on the line of the mark's cross, which is drawn a little
+   above the middle of the mark. script.js does the same by measuring the font
+   where a browser cannot trim. */
 .brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 20px; font-weight: 700; letter-spacing: -.015em; }
-.brand-mark { flex: none; width: 26px; height: 26px; }
+.brand-mark { flex: none; width: 26px; height: 26px; translate: 0 .76px; }
+.brand > span, .pp-brand { line-height: 1; text-box: trim-both cap alphabetic; }
 .main-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; margin-inline-start: auto; color: var(--ink-2); font-size: 14.5px; font-weight: 500; }
 .main-nav a { display: inline-flex; align-items: center; min-height: 44px; }
 .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--ink); }
@@ -314,6 +319,7 @@ main:focus-visible, section:focus-visible { outline: none; }
 .pp-head { display: flex; flex: none; flex-direction: column; gap: 12px; padding-block: 14px 12px; padding-inline: var(--gutter); }
 .pp-head-row { display: flex; align-items: center; gap: 8px; }
 .pp-mark { flex: none; width: 26px; height: 26px; }
+.pp-head-row > .pp-mark { translate: 0 .76px; }
 .pp-head-text { display: flex; flex: 1; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-width: 0; }
 .pp-brand { flex: none; font-size: 20px; font-weight: 700; letter-spacing: -.015em; }
 .pp-stats { display: flex; flex: 1 0 auto; align-items: baseline; justify-content: center; gap: 7px; min-width: 0; overflow: hidden; color: var(--ink-2); white-space: nowrap; }
@@ -341,7 +347,7 @@ button.pp-inline-close:hover { background: var(--accent-2); }
 .pp-list { display: flex; flex: 0 1 auto; flex-direction: column; min-height: 0; padding: 0 var(--gutter) 6px; overflow-y: auto; scrollbar-color: var(--line-2) transparent; scrollbar-width: thin; }
 .pp-suggest { max-height: 353px; }
 .pp-matches { height: 353px; }
-.pp-inactive { max-height: 358px; padding-top: 4px; }
+.pp-inactive, .pp-recent { max-height: 358px; padding-top: 4px; }
 .pp-rows { display: contents; }
 .pp-row {
   display: grid;
@@ -358,6 +364,12 @@ button.pp-inline-close:hover { background: var(--accent-2); }
   text-align: start;
 }
 .pp-row.pp-site { grid-template-columns: 16px minmax(0, 1fr) 64px minmax(26px, max-content) 20px; height: 32px; }
+/* Inactive and Close duplicates share one row, half each. A label too long for
+   its half takes a second line. */
+.pp-pair { display: flex; flex: none; gap: 4px; }
+.pp-row.pp-cell { flex: 1 1 0; grid-template-columns: 16px minmax(0, 1fr) max-content; column-gap: 8px; min-width: 0; height: auto; min-height: 36px; padding-block: 4px; }
+.pp-cell .pp-label { overflow-wrap: anywhere; line-height: 1.25; white-space: normal; hyphens: auto; }
+.pp-cell .pp-label-wrap { flex-wrap: wrap; gap: 0 7px; }
 .pp-row > svg { color: var(--ink-2); }
 .pp-row:not(:disabled):hover, .pp-row.is-hover { background: var(--surface); --bar-c: var(--accent); }
 .pp-row:not(:disabled):hover .pp-x, .pp-row.is-hover .pp-x { color: var(--paper); background: var(--ink); }
@@ -378,7 +390,7 @@ button.pp-inline-close:hover { background: var(--accent-2); }
 .pp-ticks i { width: 3px; height: 8px; background: var(--bar-c, var(--bar)); }
 .pp-empty { flex: none; padding: 22px 16px 26px; color: var(--ink-2); text-align: center; }
 .pp-none { display: grid; flex: 1; min-height: 80px; padding: 0 16px; place-items: center; color: var(--ink-2); text-align: center; }
-.pp-inactive .pp-none { flex: none; }
+.pp-inactive .pp-none, .pp-recent .pp-none { flex: none; }
 .pp-tab { display: grid; flex: none; grid-template-columns: 16px minmax(0, 1fr) auto 24px; align-items: center; column-gap: 10px; height: 44px; padding: 0 8px; }
 .pp-tab-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .pp-tab-title { overflow: hidden; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
@@ -388,6 +400,11 @@ button.pp-inline-close:hover { background: var(--accent-2); }
 .pp-tab-meta { color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .pp-tab-close { display: grid; width: 24px; height: 24px; padding: 0; place-items: center; color: var(--ink-3); background: transparent; border: 0; border-radius: 50%; }
 button.pp-tab-close:hover { color: var(--paper); background: var(--ink); }
+/* A recently closed tab is one button: the whole row reopens it. */
+button.pp-tab { width: 100%; background: transparent; border: 0; border-radius: 8px; text-align: start; }
+button.pp-tab:hover { background: var(--surface); }
+button.pp-tab:hover .pp-x { color: var(--paper); background: var(--ink); }
+button.pp-tab:focus-visible { outline-offset: -2px; }
 .pp-control { display: flex; flex: none; flex-direction: column; gap: 6px; padding: 12px var(--inset); border-bottom: 1px solid var(--line); }
 .pp-control-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
 .pp-note { color: var(--ink-2); font-size: 12px; }
@@ -418,9 +435,9 @@ button.pp-tab-close:hover { color: var(--paper); background: var(--ink); }
 .pp-swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--sw); }
 .pp-swatch:focus-visible { outline-color: var(--ink); outline-offset: 5px; }
 .pp-btn { display: inline-flex; flex: none; align-items: center; height: 28px; padding: 0 10px; background: var(--surface); border: 1px solid var(--line-2); border-radius: 8px; font-size: 12.5px; font-weight: 500; }
-button.pp-btn:hover { border-color: var(--ink-2); }
-.pp-btn:disabled { opacity: .5; cursor: default; }
-.pp-btn.pp-sort { gap: 7px; height: auto; min-height: 28px; padding: 3px 10px; text-align: start; }
+button.pp-btn:not(:disabled):hover { border-color: var(--ink-2); }
+.pp .pp-btn:disabled { opacity: .45; cursor: default; }
+.pp-btn.pp-sort { flex: 0 1 auto; gap: 7px; min-width: 0; height: auto; min-height: 28px; padding: 3px 10px; text-align: start; }
 .pp-btn.pp-sort > svg { flex: none; }
 .pp-bottom { position: relative; flex: none; }
 /* What an action did, with Undo when it can be undone. It takes the footer's place. */
@@ -451,8 +468,8 @@ button.pp-btn:hover { border-color: var(--ink-2); }
 .pp .pp-toast-x:focus-visible { outline-color: var(--toast-ink); opacity: 1; }
 .pp .pp-toast-btn:focus-visible { outline-color: var(--toast-ink); }
 @keyframes pp-rise { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
-.pp-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 8px; padding-inline: var(--gutter) var(--inset); border-top: 1px solid var(--line); }
-.pp-foot-count { color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; text-align: end; }
+.pp-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 8px; padding-inline: var(--gutter); border-top: 1px solid var(--line); }
+.pp-foot > .pp-note { padding-inline-start: 8px; }
 .pp-foot-action { display: flex; padding: 8px var(--gutter); border-top: 1px solid var(--line); }
 .pp-primary { display: flex; flex: 1; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 12px; color: var(--on-accent); background: var(--accent); border: 0; border-radius: 9px; font-weight: 600; }
 .pp-primary:not(:disabled):hover { background: var(--accent-2); }
@@ -696,7 +713,7 @@ button.pp-btn:hover { border-color: var(--ink-2); }
 
 @media (max-width: 430px) {
   .brand { gap: 6px; font-size: 18px; }
-  .brand-mark { width: 24px; height: 24px; }
+  .brand-mark { width: 24px; height: 24px; translate: 0 .7px; }
   .nav-shell { column-gap: 8px; }
   .nav-actions { flex-wrap: nowrap; gap: 4px; }
   /* The header button keeps its store logo and loses its words. */

@@ -41,8 +41,8 @@ node -p 'require("./website/guide-localisation.cjs").pending().join(" ")'
 ```
 
 For 5.0.0 the English guides changed what they say about pinned tabs, typed
-sites, duplicates, tab groups and Undo, and six of their pictures. The six
-earlier pictures stay in `dist/assets/guides/` only for the translations that
+sites, duplicates, tab groups, Undo and Recently closed, replaced six of their
+pictures and gained a seventh. The six earlier pictures stay in `dist/assets/guides/` only for the translations that
 still show them; delete them when those are retranslated.
 
 The `review` metadata honestly identifies the review performed. Machine-checked

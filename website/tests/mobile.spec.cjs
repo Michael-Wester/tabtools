@@ -200,7 +200,6 @@ test('the working popup closes, restores and sorts its sample tabs', async ({ pa
   await expect(tabs).toHaveCount(18);
   await expect(demo.locator('[data-pp-tabs]')).toHaveText('18 tabs');
   await expect(demo.locator('[data-pp-site][data-host="github.com"]')).toHaveCount(0);
-  await expect(demo.locator('[data-pp-closed]')).toHaveText('6 closed');
   await press(demo.locator('[data-pp-undo]'));
   await expect(status).toHaveText('Restored: 6');
   await expect(tabs).toHaveCount(24);
@@ -215,7 +214,6 @@ test('the working popup closes, restores and sorts its sample tabs', async ({ pa
   });
   await expect(status).toHaveText('Closed: 6');
   await expect(tabs).toHaveCount(18);
-  await expect(demo.locator('[data-pp-closed]')).toHaveText('6 closed');
   await press(demo.locator('[data-pp-undo]'));
   await expect(tabs).toHaveCount(24);
   expect(await tabs.evaluateAll(all => all.map(tab => Number(tab.dataset.tab)))).toEqual(Array.from({ length: 24 }, (_, index) => index + 1));
@@ -268,7 +266,6 @@ test('the working popup closes, restores and sorts its sample tabs', async ({ pa
   // Sorting keeps every tab and puts the busiest site first.
   await press(demo.locator('[data-pp-reset]'));
   await expect(tabs).toHaveCount(24);
-  await expect(demo.locator('[data-pp-closed]')).toHaveText('0 closed');
   await press(demo.locator('[data-pp-sort]'));
   await expect(status).toHaveText(/^Tabs reordered: \d+$/);
   await expect(tabs).toHaveCount(24);
@@ -283,6 +280,78 @@ test('the working popup closes, restores and sorts its sample tabs', async ({ pa
   await expect(status).toHaveText('Duplicate tabs closed: 3');
   await expect(demo.locator('[data-pp-duplicates-row]')).toBeDisabled();
   await checkOverflow(page);
+});
+
+test('the popup lists what it closed under Recently closed and reopens a tab where it was', async ({ page }, testInfo) => {
+  const { mobile, theme, width } = testInfo.project.metadata;
+  test.skip(![320, 390, 1280].includes(width) || (theme === 'dark' && width !== 390), 'the narrowest phone, one phone and one desktop width; both themes on one');
+  await page.goto('/');
+  const demo = page.locator('[data-demo]');
+  const press = locator => (mobile ? locator.tap() : locator.click());
+  const status = demo.locator('[data-pp-status]');
+  const tabs = demo.locator('[data-demo-strip] [data-tab]');
+  const order = () => tabs.evaluateAll(all => all.map(tab => Number(tab.dataset.tab)));
+  const rows = demo.locator('[data-pp-reopen]');
+  const titles = () => rows.locator('.pp-tab-title').allTextContents();
+  await expect(demo).toHaveAttribute('data-demo', 'ready');
+
+  // Inactive and Close duplicates share one row, and both fit in it.
+  const [idle, copies] = await Promise.all(['[data-pp-inactive-row]', '[data-pp-duplicates-row]'].map(selector => demo.locator(selector).boundingBox()));
+  expect(Math.abs(idle.y - copies.y)).toBeLessThan(1);
+  expect(idle.x + idle.width).toBeLessThanOrEqual(copies.x + 1);
+  expect(await demo.locator('.pp-pair .pp-label, .pp-pair .pp-count').evaluateAll(all => all.filter(part => part.scrollWidth > part.clientWidth + 1).length)).toBe(0);
+
+  // Nothing has been closed yet.
+  await press(demo.locator('[data-pp-recent-toggle]'));
+  await expect(demo.locator('[data-pp-back="recent"]')).toBeFocused();
+  await expect(demo.locator('[data-pp-recent-empty]')).toHaveText('No recently closed tabs');
+  await expect(demo.locator('[data-pp-recent-clear]')).toBeDisabled();
+  await press(demo.locator('[data-pp-back="recent"]'));
+  await expect(demo.locator('[data-pp-recent-toggle]')).toBeFocused();
+
+  // Two closes: the latest is listed first, and what Undo brings back is not listed.
+  await press(demo.locator('[data-pp-site][data-host="news.ycombinator.com"]'));
+  await expect(status).toHaveText('Closed: 2');
+  await press(demo.locator('[data-pp-dismiss]'));
+  await press(demo.locator('[data-pp-site][data-host="calendar.google.com"]'));
+  await expect(status).toHaveText('Closed: 1');
+  await press(demo.locator('[data-pp-undo]'));
+  await expect(tabs).toHaveCount(22);
+  await press(demo.locator('[data-pp-dismiss]'));
+  await press(demo.locator('[data-pp-duplicates-row]'));
+  await expect(status).toHaveText('Duplicate tabs closed: 3');
+  await press(demo.locator('[data-pp-dismiss]'));
+  await press(demo.locator('[data-pp-recent-toggle]'));
+  await expect(demo.locator('[data-pp-recent-meta]')).toHaveText('5 tabs');
+  expect(await titles()).toEqual(['Pull requests · tabtools', 'YouTube', 'Tab (interface) - Wikipedia', 'Hacker News', 'Ask HN: How many tabs do you have open?']);
+  await expect(rows.nth(3)).toHaveAccessibleName('Reopen: Hacker News');
+  await checkOverflow(page);
+
+  // A row reopens its tab in the place it had, behind the tab in view.
+  const inView = await demo.locator('[data-demo-strip] .is-active').getAttribute('data-tab');
+  await press(rows.nth(3));
+  await expect(status).toHaveText('Restored: 1');
+  await expect(tabs).toHaveCount(20);
+  await expect(rows).toHaveCount(4);
+  const now = await order();
+  expect(now.indexOf(11)).toBe(now.indexOf(10) + 1);
+  await expect(demo.locator('[data-demo-strip] .is-active')).toHaveAttribute('data-tab', inView);
+  await expect(demo.locator('[data-pp-undo]')).toBeHidden();
+
+  // Clear list empties the list and reopens nothing; Reset starts over.
+  await press(demo.locator('[data-pp-dismiss]'));
+  await press(demo.locator('[data-pp-recent-clear]'));
+  await expect(rows).toHaveCount(0);
+  await expect(demo.locator('[data-pp-recent-empty]')).toBeVisible();
+  await expect(tabs).toHaveCount(20);
+  await press(demo.locator('[data-pp-back="recent"]'));
+  await press(demo.locator('[data-pp-site][data-host="mail.google.com"]'));
+  await expect(status).toHaveText('Closed: 1');
+  await press(demo.locator('[data-pp-reset]'));
+  await expect(tabs).toHaveCount(24);
+  await press(demo.locator('[data-pp-recent-toggle]'));
+  await expect(rows).toHaveCount(0);
+  await expect(demo.locator('[data-pp-recent-empty]')).toBeVisible();
 });
 
 test('the popup\'s Settings change this page\'s theme and accent, and return it to the system\'s', async ({ page }, testInfo) => {

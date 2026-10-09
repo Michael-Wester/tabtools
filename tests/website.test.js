@@ -570,6 +570,22 @@ test('the working popup follows the extension\'s rules for what each action clos
   assert.equal(model.sorted(order).moved, 0, 'sorted tabs have nothing left to move');
 
   // The stepper moves through the popup's eight choices and stops at each end.
+  // Recently closed: the latest close first, each tab with the place it had,
+  // and a reopened tab goes back there without coming into view.
+  const before = tabs.map(tab => tab.id);
+  const closedFirst = tabs.filter(tab => model.hostOf(tab) === 'news.ycombinator.com');
+  let recent = model.remember([], closedFirst, before);
+  const left = tabs.filter(tab => !closedFirst.includes(tab));
+  recent = model.remember(recent, [tabs[12]], left.map(tab => tab.id));
+  assert.deepEqual(recent.map(entry => [entry.id, entry.index, entry.active]), [[13, 11, false], [11, 10, false], [23, 22, false]]);
+  const again = model.reopened(left, recent[1]);
+  assert.deepEqual(again.map(tab => tab.id), before.filter(id => id !== 23));
+  assert.equal('index' in again[10], false);
+  assert.equal(model.reopened([], recent[2]).length, 1, 'a place past the end of the window is the end');
+  const many = Array.from({ length: 40 }, (_, index) => ({ id: 100 + index, title: 'T', url: 'many.test/' + index, idle: 1 }));
+  assert.equal(model.remember(recent, many, many.map(tab => tab.id)).length, model.RECENT_MAX);
+  assert.equal(model.RECENT_MAX, 25);
+
   assert.deepEqual(model.THRESHOLDS, [30, 60, 120, 240, 480, 1440, 4320, 10080]);
   assert.equal(model.step(120, 1), 240);
   assert.equal(model.step(120, -1), 60);
@@ -600,7 +616,12 @@ test('the home page draws the working popup\'s starting state without scripts', 
       model.sites(demo.tabs).map(site => [site.host, site.count, String(site.count)]), `${locale.locale}: one mark per tab`);
     // It is a picture until its script runs: no button that does nothing.
     assert.match(html, /<div class="demo" inert>/, locale.locale);
-    assert.equal((html.match(/data-pp-template="/g) || []).length, 3, locale.locale);
+    assert.equal((html.match(/data-pp-template="/g) || []).length, 4, locale.locale);
+    // Inactive and Close duplicates are the two halves of one row, and the footer
+    // offers Recently closed where the closed count used to be.
+    assert.match(html, /<div class="pp-pair">\s*<button class="pp-row pp-cell" type="button" data-pp-inactive-row[^>]*>[\s\S]*?<\/button>\s*<button class="pp-row pp-cell" type="button" data-pp-duplicates-row[^>]*>[\s\S]*?<\/button>\s*<\/div>/, locale.locale);
+    assert.match(html, /<button class="pp-btn pp-sort" type="button" data-pp-recent-toggle>/, locale.locale);
+    assert.doesNotMatch(html, /pp-foot-count|data-pp-closed/, locale.locale);
   }
 });
 
