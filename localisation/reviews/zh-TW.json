@@ -29,12 +29,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "suggestCaption": {
-    "source": "2521bc7019527f28431c7495eb7bb23b7902d4ea8f51bf9cf762d36b23da9dfd",
-    "translation": "1b7a6fec0261e35b76c65ae6340463a89365a20cab95890835cb5b7d3ad58488",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "queryPlaceholder": {
     "source": "8f4407126355ecd02e2df607f24eb7e24279ed1af0566ffa8711661db54937bb",
     "translation": "b33bc6b2a960f509b20358db9a27f110bf73eecb9f85684578ad832f2c389bc9",
@@ -65,12 +59,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "undoTitle": {
-    "source": "d2335d4701409c80f2bfbe31311eb0b3759b4838543fa197f556a9de743540b7",
-    "translation": "bb88c2eb80d40e245d7133670fe3236813790b11b4ba3831673a1a83f1e1a5df",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "theme": {
     "source": "888560be416ca9289b54433e87974cfa0c97bf427c125829f7daef26c38562aa",
     "translation": "76a3a3db573d0909bf9287a357f61b157b137e1da69a981d4d8c20733b6309df",
@@ -89,21 +77,9 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "minTabs": {
-    "source": "f576c8290a24979f67af303493ed398142f70e86ef7cf732e00b258f29db2331",
-    "translation": "fe6dc2f7f77d2e2e1d213604ba41e71d0f0945c9577b337daedcadb7fac93947",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "inactiveAfter": {
     "source": "6072d003709ecf0a3c85dab8955286c26933308077e4c74ba98e6c7e38b45dee",
     "translation": "fa071a10eb75e9926d2f4e48fc535ca1a9fa046e6f808b88b8e1ffa95a587b36",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "minutes": {
-    "source": "50571dccdbff1002489d7f113a2c508769cc82c73c911de6d8c6d8106f91e345",
-    "translation": "0d17b94f6af313c14a51c63e511d24586fffd525cc5a397ea77be59d21161948",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
@@ -149,12 +125,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "nothingToUndo": {
-    "source": "8abb7527a9f5ca2048ef92f4f40c4460f27b050b287e0911e85ff2e3557477cf",
-    "translation": "c87a2a685928d20829ea15cc0112637d80a9240158a44a4553061348d2566494",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "undoFailed": {
     "source": "e273ec98a9e3e908ebc97f8e321e853533ccaa2c1cad17b5e2b248d12ad11593",
     "translation": "d2e15a57b048e5b5590357bc70fbedc5898730b2fc5ff92363b7d14f09539a5f",
@@ -179,12 +149,6 @@
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
-  "loadingSuggestions": {
-    "source": "f8d1ca528e3728a4c09eedb33e6eff2e4f753f36161a00c27f0934c206811d0e",
-    "translation": "24055a6677e354f17d4f2fc63f784842d97e65f87d42bf46a35b8c26cc7a0f5f",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
   "suggestionsFailed": {
     "source": "2359c223c4d9bd1f233fd9b9f6870fd71d2c21c70c48d138d5812b9fb4395b5a",
     "translation": "d24903130def84cafb50c5638c49247660200f7f2606f9a3b53ebea4b2bc7d86",
@@ -194,12 +158,6 @@
   "noSuggestions": {
     "source": "aab754adcfd24a5451da42ca76c2cf96c451306763de6fb6c872bd3d568b9db2",
     "translation": "16606275036d3b8c2763e36b330eefdc418c59d1ff1630ebeff7650136ebbeb3",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "moreCount": {
-    "source": "0db05c7cc8f8c50d194dd0bd562ed78117f90ef3032202de9d58f6345f735335",
-    "translation": "bae6a6f54e13961f41e810aca1be7eebc829d2ee157c2909c2cd0f09433df37d",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
@@ -218,18 +176,6 @@
   "nothingToSort": {
     "source": "40955dde03abb6a456689392fe6644c7fec9b111670029e335def0cc75234e71",
     "translation": "3251ed82e9f3c37d219e5a6e3896135eb94347682a23ddc38b487cf2b80d5491",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "hide": {
-    "source": "591087ea83a48eade707829e9c9a60eff64cced919542264bf16d50e54ea6096",
-    "translation": "a730bf89225e6d03ef36971a621802a3e7b221f44b92c7d24fd0d20d2ee3657f",
-    "review": "AI-authored and AI self-reviewed; no native-speaker review",
-    "date": "2026-09-17"
-  },
-  "show": {
-    "source": "827e0c6ac9936b6914c7689b2bdd41e808231e5e3a50f60094cecfe4686541b2",
-    "translation": "0fc1fa310b0c107123ac245f785ae2a75efcccad753fdefe6903b3281d43a10b",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
   },
@@ -826,13 +772,6 @@
     "translation": "9a4935182e363f1054d9a263d2e220842ccaabf8a7677f894ee7aa2dd9ace53e",
     "review": "AI-authored and AI self-reviewed; no native-speaker review",
     "date": "2026-09-17"
-  },
-  "openCountShort": {
-    "source": "7671d9362f535d314565cca701c54f25f53bac08284174487da77bdbf98bcdcf",
-    "translation": "e2b6dbb04c64145688b45ce922cff294a19dfc90f855ed4962236badd2543102",
-    "review": "AI self-review",
-    "note": "Reviewed concise popup state wording, count placeholder and required plural forms. No native-speaker review claimed.",
-    "date": "2026-09-19"
   },
   "closedCountShort": {
     "source": "ad27145e5a914b2bb5318617855e3c6ffb3772cab92d74d28a32719fc44e28ac",

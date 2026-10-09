@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Javaslatok"
   },
-  "suggestCaption": {
-    "message": "Koppintson a webhely lapjainak bezárásához"
-  },
   "queryPlaceholder": {
     "message": "Bezárás kulcsszó alapján (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Visszavonás"
   },
-  "undoTitle": {
-    "message": "Utolsó bezárás visszavonása"
-  },
   "theme": {
     "message": "Téma"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Sötét"
   },
-  "minTabs": {
-    "message": "Javaslatokhoz szükséges lapszám webhelyenként"
-  },
   "inactiveAfter": {
     "message": "A lapok ennyi idő után inaktívak"
-  },
-  "minutes": {
-    "message": "perc"
   },
   "closedCount": {
     "message": "Bezárva: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ nyitott lap",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ nyitva",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ nyitva",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Nincsenek duplikátumok"
   },
-  "nothingToUndo": {
-    "message": "Nincs mit visszavonni"
-  },
   "undoFailed": {
     "message": "Sikertelen visszavonás"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Inaktívak"
   },
-  "loadingSuggestions": {
-    "message": "Javaslatok betöltése…"
-  },
   "suggestionsFailed": {
     "message": "A javaslatok betöltése sikertelen"
   },
   "noSuggestions": {
     "message": "Nincsenek javaslatok"
-  },
-  "moreCount": {
-    "message": "Nem megjelenített további javaslatok: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sikertelen rendezés"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Nincs mit rendezni"
-  },
-  "hide": {
-    "message": "Elrejtés"
-  },
-  "show": {
-    "message": "Megjelenítés"
   },
   "contextClose": {
     "message": "Webhely lapjainak bezárása"

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Ehdotukset"
   },
-  "suggestCaption": {
-    "message": "Sulje sivuston välilehdet napauttamalla"
-  },
   "queryPlaceholder": {
     "message": "Sulje hakusanalla (paina Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Kumoa"
   },
-  "undoTitle": {
-    "message": "Kumoa viimeisin sulkeminen"
-  },
   "theme": {
     "message": "Teema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Tumma"
   },
-  "minTabs": {
-    "message": "Välilehtien vähimmäismäärä sivustoehdotuksissa"
-  },
   "inactiveAfter": {
     "message": "Välilehti on käyttämätön, kun aikaa on kulunut"
-  },
-  "minutes": {
-    "message": "minuuttia"
   },
   "closedCount": {
     "message": "Suljettu: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ avointa välilehteä",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ auki",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ auki",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Ei kaksoiskappaleita"
   },
-  "nothingToUndo": {
-    "message": "Ei kumottavaa"
-  },
   "undoFailed": {
     "message": "Kumoaminen epäonnistui"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Käyttämättömät"
   },
-  "loadingSuggestions": {
-    "message": "Ladataan ehdotuksia…"
-  },
   "suggestionsFailed": {
     "message": "Ehdotuksia ei voitu ladata"
   },
   "noSuggestions": {
     "message": "Ei ehdotuksia juuri nyt"
-  },
-  "moreCount": {
-    "message": "Muita ehdotuksia, joita ei näytetä: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Lajittelu epäonnistui"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Ei lajiteltavaa"
-  },
-  "hide": {
-    "message": "Piilota"
-  },
-  "show": {
-    "message": "Näytä"
   },
   "contextClose": {
     "message": "Sulje sivuston välilehdet"

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Návrhy"
   },
-  "suggestCaption": {
-    "message": "Klepnutím zavřete panely webu"
-  },
   "queryPlaceholder": {
     "message": "Zavřít podle klíčového slova (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Zpět"
   },
-  "undoTitle": {
-    "message": "Vrátit poslední zavření"
-  },
   "theme": {
     "message": "Motiv"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Tmavý"
   },
-  "minTabs": {
-    "message": "Minimální počet panelů webu pro návrhy"
-  },
   "inactiveAfter": {
     "message": "Panely neaktivní po"
-  },
-  "minutes": {
-    "message": "minutách"
   },
   "closedCount": {
     "message": "Zavřeno: $count$",
@@ -97,42 +85,6 @@
   },
   "openCount_other": {
     "message": "$count$ otevřených panelů",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ otevřený",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_few": {
-    "message": "$count$ otevřené",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ otevřeného",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ otevřených",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -203,9 +155,6 @@
   "noDuplicates": {
     "message": "Žádné duplicity"
   },
-  "nothingToUndo": {
-    "message": "Není co vrátit"
-  },
   "undoFailed": {
     "message": "Vrácení se nezdařilo"
   },
@@ -224,23 +173,11 @@
   "inactive": {
     "message": "Neaktivní"
   },
-  "loadingSuggestions": {
-    "message": "Načítání návrhů…"
-  },
   "suggestionsFailed": {
     "message": "Návrhy se nepodařilo načíst"
   },
   "noSuggestions": {
     "message": "Momentálně nejsou žádné návrhy"
-  },
-  "moreCount": {
-    "message": "Další nezobrazené návrhy: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Řazení se nezdařilo"
@@ -256,12 +193,6 @@
   },
   "nothingToSort": {
     "message": "Není co řadit"
-  },
-  "hide": {
-    "message": "Skrýt"
-  },
-  "show": {
-    "message": "Zobrazit"
   },
   "contextClose": {
     "message": "Zavřít panely webu"

@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: MPL-2.0
 
-// Popup: Suggestions, stats, and settings live side-by-side with quick actions.
+// Popup: suggestions, keyword matches, the inactive review, recently closed
+// tabs and settings.
 
 (function () {
-  const $ = (selector) => document.querySelector(selector);
+  const root = document.documentElement;
   const byId = (id) => document.getElementById(id);
+  const all = (selector) => Array.from(document.querySelectorAll(selector));
   const msg = (type, payload) =>
     new Promise((resolve) => {
       try {
@@ -15,65 +17,219 @@
     });
   const t = (key, values, options) =>
     typeof globalThis.ttMessage === "function" ? globalThis.ttMessage(key, values, options) : key;
+  const number = (value) =>
+    typeof globalThis.ttNumber === "function" ? globalThis.ttNumber(value) : String(value);
+  const duration = (minutes, display) =>
+    typeof globalThis.ttDuration === "function" ? globalThis.ttDuration(minutes, display) : String(minutes);
+  const age = (minutes) =>
+    typeof globalThis.ttAge === "function" ? globalThis.ttAge(minutes) : String(minutes);
 
   const STORAGE_KEY = "pc.settings";
   const DEFAULTS = {
     enableInactiveSuggestion: true,
     inactiveThresholdMinutes: 120,
-    suggestMinOpenTabsPerDomain: 1,
-    decayDays: 14,
-    maxHistory: 200,
-    theme: "light",
+    keepPinnedTabs: true,
+    theme: "system",
+    accent: "purple",
+  };
+  // The inactivity choices, in minutes: 30 minutes to 1 week.
+  const THRESHOLDS = [30, 60, 120, 240, 480, 1440, 4320, 10080];
+  // How long a result shows. It takes the footer's place, so one without Undo
+  // gives the footer back sooner.
+  const TOAST_MS = 7000;
+  const NOTE_MS = 4000;
+  // Tick marks: one per open tab in a 64px track.
+  const TICK_TRACK = 64;
+
+  // Accent presets, light then dark: accent, hover, text on accent, tick marks,
+  // keyword highlight, focus ring. Purple is the stylesheet's own default.
+  const ACCENTS = {
+    purple: [["#7054d8", "#5739bf", "#ffffff", "#b9abec", "#e3dcfb", "rgba(112,84,216,.24)"], ["#957dff", "#aa96ff", "#15161b", "#5d4eaf", "#3a3270", "rgba(149,125,255,.32)"]],
+    blue: [["#106bde", "#0053b7", "#ffffff", "#91b8f2", "#d0e3ff", "rgba(16,107,222,.24)"], ["#4b94ff", "#70aaff", "#15161b", "#215eb3", "#163c72", "rgba(75,148,255,.32)"]],
+    green: [["#008249", "#006738", "#ffffff", "#85c89c", "#ccead5", "rgba(0,130,73,.24)"], ["#00b366", "#48c47e", "#15161b", "#007440", "#004a27", "rgba(0,179,102,.32)"]],
+    orange: [["#bd4d00", "#993c00", "#ffffff", "#eaa37c", "#fbdac5", "rgba(189,77,0,.24)"], ["#f77211", "#fa934e", "#15161b", "#a14200", "#662801", "rgba(247,114,17,.32)"]],
+    pink: [["#c22a6c", "#a40055", "#ffffff", "#e89db4", "#fbd6e0", "rgba(194,42,108,.24)"], ["#ec5a91", "#f37da5", "#15161b", "#9f325d", "#66203b", "rgba(236,90,145,.32)"]],
+    graphite: [["#494d55", "#32353d", "#ffffff", "#a8abb1", "#dadce0", "rgba(73,77,85,.24)"], ["#c0c4cc", "#d7dbe2", "#15161b", "#656970", "#3f4249", "rgba(192,196,204,.32)"]],
+  };
+  const ACCENT_PROPS = ["--accent", "--accent-2", "--on-accent", "--bar", "--hit", "--ring"];
+
+  // Which blocks each view shows. "search" is the main view with text in the field.
+  const BLOCKS = {
+    main: ["pc-header", "pc-suggest-head", "pc-suggest-list", "pc-foot-main"],
+    search: ["pc-header", "pc-match-head", "pc-match-list", "pc-foot-main"],
+    inactive: ["pc-bar-inactive", "pc-inactive-control", "pc-inactive-list", "pc-foot-inactive"],
+    recent: ["pc-bar-recent", "pc-recent-list", "pc-foot-recent"],
+    settings: ["pc-bar-settings", "pc-tab-settings", "pc-foot-settings"],
   };
 
   function normalizeSettings(raw) {
     const settings = { ...DEFAULTS, ...(raw || {}) };
     delete settings.enableSuggestions;
+    // The background applies the same floor: a shorter time saved by an older
+    // version is raised to the first step the stepper offers.
+    settings.inactiveThresholdMinutes = Math.max(
+      THRESHOLDS[0],
+      Number(settings.inactiveThresholdMinutes) || DEFAULTS.inactiveThresholdMinutes
+    );
     return settings;
   }
 
   let savedSettings = { ...DEFAULTS };
-  let lastClosedTabs = [];
-  let cleanupRunning = false;
-  let statusToken = 0;
-  let lastStatsTotal = null;
-  let lastOpenTabCount = null;
-  let lastSuggestionsKey = null;
-  let lastSuggestionsCount = null;
-  // Two columns, at most seven rows; Inactive consumes one visible slot.
-  const MAX_SUGGESTIONS = 14;
+  let view = "main";            // "main" | "inactive" | "recent" | "settings"
+  let query = "";               // trimmed field text; when not empty the main view lists matches
+  let overview = null;          // { openTabs, sites, inactive, duplicates }
+  let sites = [];               // [{ domain, openCount, favIconUrl }], most tabs first
+  let suggestionsState = "loading";   // "loading" | "ready" | "failed"
+  let matches = null;           // tabs listed for `matchesFor`
+  let matchesFor = "";
+  let matchesFailed = false;
+  let inactiveTabs = null;      // tabs listed in the review
+  let inactiveFailed = false;
+  let recentTabs = null;        // tabs this extension closed, newest first
+  let recentFailed = false;
+  let totalClosed = null;
+  let lastClosedTabs = [];      // undo snapshot; lives as long as its result bar
+  let busy = false;
+  let currentTheme = "system";
 
-  function fitPopupWidth() {
-    const header = byId("pc-header");
-    if (!header) return;
-    const root = document.documentElement;
-    // Measure the unwrapped controls, including the real font, borders and gaps.
-    // The persistent header drives both panels' width; changing panels cannot
-    // shrink it. Counts may grow the width again while the popup is open.
-    root.classList.remove("popup-width-limited");
-    const bodyWidth = document.body.getBoundingClientRect().width;
-    const headerWidth = header.getBoundingClientRect().width;
-    const gap = parseFloat(getComputedStyle(header).columnGap) || 0;
-    const controlsWidth = Array.from(header.children).reduce((width, child) =>
-      width + child.getBoundingClientRect().width, 0) + gap * (header.children.length - 1);
-    const needed = Math.ceil(controlsWidth + bodyWidth - headerWidth);
-    const maximum = Math.min(800, globalThis.screen?.availWidth || 800);
-    const width = Math.min(maximum, Math.max(380, bodyWidth, needed));
-    root.style.setProperty("--popup-width", width + "px");
-    root.classList.toggle("popup-width-limited", needed > maximum);
+  /* ---------- Small DOM helpers ---------- */
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
   }
 
-  function setStatus(text, delay = 1400) {
-    const elements = [byId("pc-status"), byId("pc-settings-status")].filter(Boolean);
-    if (!elements.length) return;
-    elements.forEach((el) => { el.textContent = text || ""; });
-    statusToken += 1;
-    const token = statusToken;
-    if (delay > 0) {
-      setTimeout(() => {
-        if (statusToken === token) elements.forEach((el) => { el.textContent = ""; });
-      }, delay);
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  function crossIcon() {
+    const svg = document.createElementNS(SVG_NS, "svg");
+    const attributes = {
+      width: "10", height: "10", viewBox: "0 0 10 10", fill: "none", stroke: "currentColor",
+      "stroke-width": "1.5", "stroke-linecap": "round", "aria-hidden": "true",
+    };
+    for (const [name, value] of Object.entries(attributes)) svg.setAttribute(name, value);
+    const path = document.createElementNS(SVG_NS, "path");
+    path.setAttribute("d", "M1.5 1.5l7 7M8.5 1.5l-7 7");
+    svg.append(path);
+    return svg;
+  }
+
+  // The arrow on a recently closed tab: back to where it was.
+  function reopenIcon() {
+    const svg = document.createElementNS(SVG_NS, "svg");
+    const attributes = {
+      width: "10", height: "10", viewBox: "0 0 10 10", fill: "none", stroke: "currentColor",
+      "stroke-width": "1.5", "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: "flip",
+    };
+    for (const [name, value] of Object.entries(attributes)) svg.setAttribute(name, value);
+    for (const d of ["M3.6 1.6L1.6 3.6l2 2", "M1.8 3.6h4a2.4 2.4 0 0 1 0 4.8H4.6"]) {
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", d);
+      svg.append(path);
     }
+    return svg;
+  }
+
+  function letterTile(domain) {
+    const tile = el("span", "fav tile", String(domain || "?").charAt(0).toUpperCase());
+    tile.setAttribute("aria-hidden", "true");
+    return tile;
+  }
+
+  // The tab's own icon, or a letter tile when it has none or it fails to load.
+  function favicon(url, domain) {
+    const iconUrl = typeof url === "string" ? url.trim() : "";
+    if (!iconUrl) return letterTile(domain);
+    const img = el("img", "fav");
+    img.alt = "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", () => img.replaceWith(letterTile(domain)));
+    img.src = iconUrl;
+    return img;
+  }
+
+  const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  // A span with the first occurrence of `needle` wrapped in <mark>.
+  function markedText(className, text, needle) {
+    const node = el("span", className);
+    const hit = needle ? new RegExp(escapeRegExp(needle), "i").exec(text) : null;
+    if (!hit) {
+      node.textContent = text;
+      return node;
+    }
+    node.append(
+      text.slice(0, hit.index),
+      el("mark", "", hit[0]),
+      text.slice(hit.index + hit[0].length)
+    );
+    return node;
+  }
+
+  // Add .fade only while the list really overflows. Measure without the class:
+  // the class itself adds end space.
+  function markOverflow(list) {
+    list.classList.remove("fade");
+    list.classList.toggle("fade", list.scrollHeight > list.clientHeight);
+  }
+
+  /* ---------- Result bar ---------- */
+
+  let toastTimer = null;
+  let toastMs = TOAST_MS;
+  let coveredFocus = null;      // [footer, button]: a footer button that had focus when a result covered it
+
+  function armToast() {
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, toastMs);
+  }
+
+  // The result takes the footer's place while it shows, so it never covers a
+  // row the user may want to close next.
+  function showToast(text, { undo = false } = {}) {
+    if (!undo) lastClosedTabs = [];
+    const offersUndo = undo && lastClosedTabs.length > 0;
+    byId("pc-status").textContent = text || "";
+    byId("pc-undo-close").hidden = !offersUndo;
+    byId("pc-toast-dismiss").hidden = false;
+    toastMs = offersUndo ? TOAST_MS : NOTE_MS;
+    const covered = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"]]
+      .find(([, id]) => byId(id) === document.activeElement);
+    if (covered) coveredFocus = covered;
+    byId("pc-bottom").classList.toggle("has-result", true);
+    byId("pc-toast").classList.toggle("is-open", true);
+    armToast();
+  }
+
+  // Closed by the user (× or Escape) rather than timed out. If focus was on
+  // the result, it moves to the footer the result gives back.
+  function dismissToast() {
+    const hadFocus = ["pc-toast-dismiss", "pc-undo-close"].some((id) => byId(id) === document.activeElement);
+    if (hadFocus) document.activeElement.blur();
+    hideToast();                 // hands focus back to a footer button it covered, if any
+    if (!hadFocus || (document.activeElement && document.activeElement !== document.body)) return;
+    const footer = [["pc-foot-main", "pc-sort-tabs-quick"], ["pc-foot-inactive", "pc-inactive-close"], ["pc-foot-recent", "pc-recent-clear"]]
+      .find(([id]) => !byId(id).hidden);
+    if (footer) focusOn(footer[1]);
+  }
+
+  function hideToast() {
+    clearTimeout(toastTimer);
+    toastTimer = null;
+    lastClosedTabs = [];
+    byId("pc-toast").classList.toggle("is-open", false);
+    byId("pc-bottom").classList.toggle("has-result", false);
+    byId("pc-undo-close").hidden = true;
+    byId("pc-toast-dismiss").hidden = true;
+    byId("pc-status").textContent = "";
+    // A keyboard user whose button the result covered gets it back, if its
+    // footer is still the one showing and focus has not gone elsewhere.
+    const covered = coveredFocus;
+    coveredFocus = null;
+    const focusLost = !document.activeElement || document.activeElement === document.body;
+    if (covered && focusLost && !byId(covered[0]).hidden) focusOn(covered[1]);
   }
 
   function closeStatus(key, result) {
@@ -81,38 +237,97 @@
     return result.failedCount ? text + " · " + t("closeFailed") : text;
   }
 
-  function updateUndoButton() {
-    const btn = $("#pc-undo-close");
-    if (!btn) return;
-    btn.disabled = cleanupRunning || !lastClosedTabs.length;
-  }
+  /* ---------- One cleanup at a time ---------- */
 
-  function setCleanupBusy(busy) {
-    cleanupRunning = busy;
-    [byId("pc-close"), byId("pc-close-duplicates")].filter(Boolean)
-      .forEach((btn) => { btn.disabled = busy; });
-    document.querySelectorAll("#pc-suggest-chips .chip")
-      .forEach((chip) => { chip.disabled = busy; });
-    updateUndoButton();
+  function applyBusy() {
+    byId("pc-close").disabled = busy;
+    byId("pc-undo-close").disabled = busy;
+    byId("pc-close-duplicates").disabled = busy || !overview || !overview.duplicates;
+    byId("pc-inactive-close").disabled = busy || !inactiveTabs || !inactiveTabs.length;
+    for (const row of byId("pc-sites").children) row.disabled = busy;
+    for (const row of byId("pc-recent-rows").children) row.disabled = busy;
+    byId("pc-recent-clear").disabled = busy || !recentTabs || !recentTabs.length;
+    for (const id of ["pc-match-rows", "pc-inactive-rows"]) {
+      for (const row of byId(id).children) {
+        const close = row.children[row.children.length - 1];
+        if (close) close.disabled = busy;
+      }
+    }
   }
 
   async function runCleanup(action) {
-    // Enter and another chip can arrive while an earlier close/undo awaits
-    // the background. Keep the undo snapshot tied to one completed action.
-    if (cleanupRunning) return;
-    setCleanupBusy(true);
+    // Enter, a row and Undo can arrive while an earlier action awaits the
+    // background. Keep the undo snapshot tied to one completed action.
+    if (busy) return;
+    busy = true;
+    applyBusy();
     try { return await action(); }
-    finally { setCleanupBusy(false); }
+    finally {
+      busy = false;
+      applyBusy();
+    }
   }
 
-  const runClose = (query, exactDomain = false) =>
-    runCleanup(() => closeByQuery(query, exactDomain));
-  const runCloseInactive = () => runCleanup(closeInactive);
-  const runCloseDuplicates = () => runCleanup(closeDuplicates);
-  const undoLastClose = () => runCleanup(restoreLastClose);
+  /* ---------- Settings ---------- */
 
-  function applyTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme || "light");
+  const darkQuery = typeof globalThis.matchMedia === "function"
+    ? globalThis.matchMedia("(prefers-color-scheme: dark)")
+    : null;
+
+  function isDark() {
+    return currentTheme === "dark" || (currentTheme === "system" && !!darkQuery && darkQuery.matches);
+  }
+
+  function applyTheme(settings) {
+    currentTheme = settings.theme === "light" || settings.theme === "dark" ? settings.theme : "system";
+    root.setAttribute("data-theme", currentTheme);
+    const accent = ACCENTS[settings.accent] ? settings.accent : "purple";
+    const shade = isDark() ? 1 : 0;
+    ACCENT_PROPS.forEach((property, index) => {
+      // Purple is the stylesheet's default, so it needs no inline override.
+      if (accent === "purple") root.style.removeProperty(property);
+      else root.style.setProperty(property, ACCENTS[accent][shade][index]);
+    });
+    all("[data-accent-value]").forEach((swatch) => {
+      const name = swatch.dataset.accentValue;
+      if (ACCENTS[name]) swatch.style.setProperty("--sw", ACCENTS[name][shade][0]);
+      swatch.setAttribute("aria-pressed", name === accent ? "true" : "false");
+    });
+  }
+
+  function thresholdOf(settings) {
+    return Math.max(THRESHOLDS[0], Number(settings.inactiveThresholdMinutes) || DEFAULTS.inactiveThresholdMinutes);
+  }
+
+  // The next choice below or above the saved value. A value saved by an older
+  // version (45, say) is shown as it is and steps to its nearest neighbours.
+  function nextThreshold(minutes, direction) {
+    return direction < 0
+      ? [...THRESHOLDS].reverse().find((value) => value < minutes)
+      : THRESHOLDS.find((value) => value > minutes);
+  }
+
+  function syncSettingsForm(settings) {
+    all("[data-theme-value]").forEach((button) => {
+      button.setAttribute("aria-pressed", button.dataset.themeValue === currentTheme ? "true" : "false");
+    });
+    const minutes = thresholdOf(settings);
+    all("[data-threshold-value]").forEach((output) => { output.textContent = duration(minutes); });
+    all("[data-threshold-step]").forEach((button) => {
+      const next = nextThreshold(minutes, Number(button.dataset.thresholdStep));
+      const label = duration(next === undefined ? minutes : next);
+      button.disabled = next === undefined;
+      button.title = label;
+      button.setAttribute("aria-label", label);
+    });
+    byId("pc-inactive-hint").textContent = duration(minutes, "short") + "+";
+    byId("pc-keep-pinned").setAttribute("aria-checked", settings.keepPinnedTabs !== false ? "true" : "false");
+  }
+
+  function applySettings(settings) {
+    savedSettings = settings;
+    applyTheme(settings);
+    syncSettingsForm(settings);
   }
 
   async function readSettings() {
@@ -124,105 +339,342 @@
       } catch (_) { resolve(null); }
     });
     if (raw === null) {
-      setStatus(t("closeFailed"));
+      showToast(t("closeFailed"));
       return savedSettings;
     }
-    savedSettings = normalizeSettings(raw[STORAGE_KEY]);
-    return savedSettings;
+    return normalizeSettings(raw[STORAGE_KEY]);
   }
 
   async function writeSettings(patch) {
     // The background serializes settings patches from every open popup.
     const out = await msg("pc:updateSettings", { payload: patch || {} });
     if (!out?.ok || !out.settings) {
-      applyTheme(savedSettings.theme);
-      syncSettingsForm(savedSettings);
-      setStatus(t("closeFailed"));
+      applySettings(savedSettings);
+      showToast(t("closeFailed"));
       return null;
     }
-    savedSettings = normalizeSettings(out.settings);
-    applyTheme(savedSettings.theme);
-    syncSettingsForm(savedSettings);
+    applySettings(normalizeSettings(out.settings));
     return savedSettings;
   }
 
-  function syncThemeButtons(theme) {
-    const buttons = document.querySelectorAll("[data-theme-value]");
-    buttons.forEach((btn) => {
-      const value = btn.dataset.themeValue || "light";
-      const isActive = value === theme;
-      btn.classList.toggle("active", isActive);
-      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-    });
+  /* ---------- Views ---------- */
+
+  function showView() {
+    const shown = view === "main" && query ? "search" : view;
+    for (const ids of Object.values(BLOCKS)) for (const id of ids) byId(id).hidden = true;
+    for (const id of BLOCKS[shown]) byId(id).hidden = false;
   }
 
-  function syncSettingsForm(settings) {
-    const assign = (id, setter) => {
-      const el = byId(id);
-      if (el) setter(el);
-    };
+  // Returns false when the element cannot take focus (hidden or disabled).
+  function focusOn(id) {
+    const target = byId(id);
+    if (!target || target.disabled || target.hidden || typeof target.focus !== "function") return false;
+    target.focus();
+    return true;
+  }
 
-    syncThemeButtons(settings.theme);
-    assign(
-      "min-open",
-      (el) => (el.value = settings.suggestMinOpenTabsPerDomain)
+  // The control that opened a view is hidden with it, so move focus on purpose.
+  function openView(name, focusId) {
+    view = name;
+    hideToast();
+    showView();
+    let loading;
+    if (name === "inactive") {
+      inactiveTabs = null;
+      renderInactive();
+      loading = loadInactive();
+    }
+    if (name === "recent") {
+      recentTabs = null;
+      renderRecent();
+      loading = loadRecent();
+    }
+    if (name === "settings") renderStats();
+    if (!focusOn(focusId)) focusOn("pc-query");
+    return loading;
+  }
+
+  /* ---------- Rendering ---------- */
+
+  function renderHeader() {
+    byId("pc-open-count").textContent = overview ? t("tabCount", { count: overview.openTabs }) : "";
+    byId("pc-site-count").textContent = overview ? t("siteCount", { count: overview.sites }) : "";
+  }
+
+  function renderStats() {
+    byId("pc-settings-closed").textContent = totalClosed === null ? "" : t("closedCountShort", { count: totalClosed });
+  }
+
+  function siteRow(item) {
+    const domain = String(item.domain || "");
+    const count = item.openCount || 0;
+    const row = el("button", "row site");
+    row.type = "button";
+    row.dataset.domain = domain;
+    row.disabled = busy;
+    row.style.setProperty("--n", String(count));
+    // The row shows a bare number; keep the full translated meaning in the
+    // accessible name and hover text.
+    const description = t("closeSiteLabel", { site: domain }) + " · " + t("openCount", { count });
+    row.title = description;
+    row.setAttribute("aria-label", description);
+    const host = el("span", "host", domain);
+    host.dir = "ltr";
+    const ticks = el("span", "ticks");
+    ticks.append(el("span", "bar"));
+    const mark = el("span", "x");
+    mark.append(crossIcon());
+    row.append(favicon(item.favIconUrl, domain), host, ticks, el("span", "count", number(count)), mark);
+    row.addEventListener("click", () => runCleanup(() => closeSite(domain)));
+    return row;
+  }
+
+  function renderSuggestions() {
+    const list = byId("pc-suggest-list");
+    const inactive = overview ? overview.inactive : 0;
+    const duplicates = overview ? overview.duplicates : 0;
+
+    const inactiveRow = byId("pc-inactive-row");
+    inactiveRow.hidden = savedSettings.enableInactiveSuggestion === false;
+    inactiveRow.disabled = !inactive;
+    byId("pc-inactive-count").textContent = overview ? number(inactive) : "";
+    const inactiveLabel = t("inactive") + " · " + t("openCount", { count: inactive });
+    inactiveRow.title = inactiveLabel;
+    inactiveRow.setAttribute("aria-label", inactiveLabel);
+
+    const duplicatesRow = byId("pc-close-duplicates");
+    byId("pc-duplicates-count").textContent = overview ? number(duplicates) : "";
+    const duplicatesLabel = t("closeDuplicates") + " · " + t("openCount", { count: duplicates });
+    duplicatesRow.title = duplicatesLabel;
+    duplicatesRow.setAttribute("aria-label", duplicatesLabel);
+
+    // One 4px mark per tab. Past 16 tabs on one site the marks narrow to 3px;
+    // past 21 the track becomes a plain proportional bar.
+    const most = sites.length ? Math.max(1, sites[0].openCount) : 1;
+    const whole = Math.min(4, Math.floor(TICK_TRACK / most));
+    list.style.setProperty("--u", (whole >= 3 ? whole : TICK_TRACK / most) + "px");
+    list.style.setProperty("--g", (whole >= 3 ? 1 : 0) + "px");
+
+    byId("pc-sites").replaceChildren(...sites.map(siteRow));
+    byId("pc-sites-rule").hidden = sites.length === 0;
+    const empty = byId("pc-suggest-empty");
+    empty.hidden = suggestionsState === "loading" || sites.length > 0;
+    empty.textContent = suggestionsState === "failed" ? t("suggestionsFailed") : t("noSuggestions");
+    applyBusy();
+    markOverflow(list);
+  }
+
+  // Title on the first line, site on the second. When the keyword matched only
+  // further along the address, show that part of the address so the row still
+  // shows why it is listed.
+  function tabRow(tab, { needle = "", meta = "", onClose }) {
+    const row = el("div", "tab");
+    row.dataset.tabId = String(tab.id);
+    const title = tab.title || tab.url || "";
+    let place = tab.domain || tab.url || "";
+    if (needle) {
+      const rx = new RegExp(escapeRegExp(needle), "i");
+      if (!rx.test(title) && !rx.test(place)) {
+        try {
+          const address = new URL(tab.url);
+          const longer = place + address.pathname + address.search;
+          if (rx.test(longer)) place = longer;
+        } catch (_) { /* keep the site */ }
+      }
+    }
+    const text = el("span", "tab-text");
+    const host = markedText("tab-host", place, needle);
+    host.dir = "ltr";
+    text.append(markedText("tab-title", title, needle), host);
+    const close = el("button", "tab-close");
+    close.type = "button";
+    close.disabled = busy;
+    const label = t("close") + ": " + title;
+    close.title = label;
+    close.setAttribute("aria-label", label);
+    close.append(crossIcon());
+    close.addEventListener("click", () => runCleanup(() => onClose(tab)));
+    row.append(favicon(tab.favIconUrl, tab.domain), text, el("span", "tab-meta", meta), close);
+    return row;
+  }
+
+  // The clear button exists while the field has text; the Close button while
+  // that text has matches. Until the list for a new keystroke arrives, the
+  // button keeps the previous count rather than blinking.
+  function renderField() {
+    const count = query && matches ? matches.length : 0;
+    byId("pc-query-clear").hidden = !byId("pc-query").value;
+    byId("pc-close").hidden = count === 0;
+    byId("pc-close-count").textContent = number(count);
+  }
+
+  function renderMatches() {
+    const list = byId("pc-match-list");
+    const tabs = matches || [];
+    // A domain is matched against the site without "www.", so mark it that way too.
+    const needle = matchesFor.includes(".") ? matchesFor.replace(/^www\./i, "") : matchesFor;
+    byId("pc-match-query").textContent = query;
+    byId("pc-match-count").textContent = matches ? t("openCount", { count: tabs.length }) : "";
+    byId("pc-match-rows").replaceChildren(
+      ...tabs.map((tab) => tabRow(tab, { needle, onClose: closeMatch }))
     );
-    assign(
-      "inactive-threshold",
-      (el) => (el.value = settings.inactiveThresholdMinutes)
+    const empty = byId("pc-match-empty");
+    empty.hidden = !(matches && tabs.length === 0);
+    empty.textContent = matchesFailed ? t("suggestionsFailed") : t("noMatches");
+    renderField();
+    applyBusy();
+    markOverflow(list);
+  }
+
+  function renderInactive() {
+    const list = byId("pc-inactive-list");
+    const tabs = inactiveTabs || [];
+    byId("pc-inactive-meta").textContent = inactiveTabs ? t("openCount", { count: tabs.length }) : "";
+    byId("pc-inactive-rows").replaceChildren(
+      ...tabs.map((tab) => tabRow(tab, {
+        meta: tab.idleMinutes === null || tab.idleMinutes === undefined ? "" : age(tab.idleMinutes),
+        onClose: closeInactiveTab,
+      }))
     );
+    const empty = byId("pc-inactive-empty");
+    empty.hidden = !(inactiveTabs && tabs.length === 0);
+    empty.textContent = inactiveFailed ? t("suggestionsFailed") : t("noInactive");
+    byId("pc-inactive-close-count").textContent = inactiveTabs ? number(tabs.length) : "";
+    applyBusy();
+    markOverflow(list);
   }
 
-  function bindSettingControl(id, map, after) {
-    const el = byId(id);
-    if (!el) return;
-    const handler = async () => {
-      const next = await writeSettings(map(el));
-      if (next && typeof after === "function") after(next);
-    };
-    el.addEventListener("change", handler);
+  // One button per tab: the whole row reopens it. The third column is the time
+  // since it was closed, left empty for the first minute.
+  function recentRow(tab) {
+    const row = el("button", "tab");
+    row.type = "button";
+    row.dataset.key = String(tab.key);
+    row.disabled = busy;
+    const title = tab.title || tab.url || "";
+    const label = t("reopen") + ": " + title;
+    row.title = label;
+    row.setAttribute("aria-label", label);
+    const text = el("span", "tab-text");
+    const host = el("span", "tab-host", tab.domain || tab.url || "");
+    host.dir = "ltr";
+    text.append(el("span", "tab-title", title), host);
+    const mark = el("span", "x");
+    mark.append(reopenIcon());
+    row.append(favicon(tab.favIconUrl, tab.domain), text, el("span", "tab-meta", tab.closedMinutes ? age(tab.closedMinutes) : ""), mark);
+    row.addEventListener("click", () => runCleanup(() => reopenTab(tab)));
+    return row;
   }
 
-  function bindThemeButtons() {
-    const buttons = document.querySelectorAll("[data-theme-value]");
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const theme = btn.dataset.themeValue || "light";
-        await writeSettings({ theme });
-      });
-    });
+  function renderRecent() {
+    const list = byId("pc-recent-list");
+    const tabs = recentTabs || [];
+    byId("pc-recent-meta").textContent = recentTabs && tabs.length ? t("tabCount", { count: tabs.length }) : "";
+    byId("pc-recent-rows").replaceChildren(...tabs.map(recentRow));
+    const empty = byId("pc-recent-empty");
+    empty.hidden = !(recentTabs && tabs.length === 0);
+    empty.textContent = recentFailed ? t("suggestionsFailed") : t("noRecent");
+    applyBusy();
+    markOverflow(list);
   }
 
-  let suggestionsRequestToken = 0;
-  let suggestionsRefreshTimer = null;
+  /* ---------- Loading ---------- */
 
-  function scheduleSuggestionsRefresh() {
-    if (suggestionsRefreshTimer !== null) clearTimeout(suggestionsRefreshTimer);
+  let suggestionsToken = 0;
+  let matchesToken = 0;
+  let inactiveToken = 0;
+  let recentToken = 0;
+
+  async function loadSuggestions() {
+    const token = ++suggestionsToken;
+    const out = await msg("pc:getSuggestions");
+    if (token !== suggestionsToken) return;
+    if (out?.ok) {
+      overview = out.overview || null;
+      sites = (Array.isArray(out.suggestions) ? out.suggestions : []).filter((item) => item.kind === "domain");
+      suggestionsState = "ready";
+    } else {
+      overview = null;
+      sites = [];
+      suggestionsState = "failed";
+    }
+    renderHeader();
+    renderSuggestions();
+  }
+
+  async function loadMatches() {
+    const token = ++matchesToken;
+    const text = query;
+    if (!text) {
+      matches = null;
+      matchesFor = "";
+      renderMatches();
+      return;
+    }
+    const out = await msg("pc:previewKeyword", { query: text });
+    if (token !== matchesToken) return;
+    matchesFailed = !(out?.ok && Array.isArray(out.tabs));
+    matches = matchesFailed ? [] : out.tabs;
+    matchesFor = text;
+    renderMatches();
+  }
+
+  async function loadInactive() {
+    const token = ++inactiveToken;
+    const out = await msg("pc:previewInactive");
+    if (token !== inactiveToken) return;
+    inactiveFailed = !(out?.ok && Array.isArray(out.tabs));
+    inactiveTabs = inactiveFailed ? [] : out.tabs;
+    renderInactive();
+  }
+
+  async function loadRecent() {
+    const token = ++recentToken;
+    const out = await msg("pc:getRecent");
+    if (token !== recentToken) return;
+    recentFailed = !(out?.ok && Array.isArray(out.tabs));
+    recentTabs = recentFailed ? [] : out.tabs;
+    renderRecent();
+  }
+
+  async function loadStats() {
+    const out = await msg("pc:getStats");
+    if (!out?.ok) return;
+    totalClosed = out.stats?.totalTabsEaten || 0;
+    renderStats();
+  }
+
+  function refresh() {
+    const jobs = [loadSuggestions()];
+    if (query) jobs.push(loadMatches());
+    if (view === "inactive") jobs.push(loadInactive());
+    if (view === "recent") jobs.push(loadRecent());
+    return Promise.all(jobs);
+  }
+
+  let refreshTimer = null;
+  function scheduleRefresh() {
+    if (refreshTimer !== null) clearTimeout(refreshTimer);
     // Restored tabs can first appear as about:blank, especially in Firefox.
-    // Wait for navigation events rather than leaving the initial list cached.
-    suggestionsRefreshTimer = setTimeout(() => {
-      suggestionsRefreshTimer = null;
-      renderSuggestions();
+    // Wait for navigation events rather than leaving the first lists cached.
+    refreshTimer = setTimeout(() => {
+      refreshTimer = null;
+      refresh();
     }, 80);
   }
 
   function bindTabUpdates() {
     const tabsApi = chrome?.tabs;
     if (!tabsApi) return;
-    const updateTabs = () => {
-      scheduleSuggestionsRefresh();
-      return renderOpenTabCount();
-    };
     tabsApi.onCreated?.addListener((tab) => {
-      if (!tab?.incognito) return updateTabs();
+      if (!tab?.incognito) scheduleRefresh();
     });
-    tabsApi.onRemoved?.addListener(updateTabs);
-    tabsApi.onReplaced?.addListener(updateTabs);
+    tabsApi.onRemoved?.addListener(scheduleRefresh);
+    tabsApi.onReplaced?.addListener(scheduleRefresh);
     tabsApi.onUpdated?.addListener((_tabId, changes, tab) => {
       if (tab?.incognito) return;
-      if (changes?.url || changes?.status === "complete") {
-        scheduleSuggestionsRefresh();
-      }
+      // A page's icon usually arrives after the page has finished loading.
+      if (changes?.url || changes?.status === "complete" || changes?.favIconUrl) scheduleRefresh();
     });
   }
 
@@ -230,397 +682,246 @@
     if (area !== "local") return;
     const next = changes[STORAGE_KEY]?.newValue;
     if (!next) return;
-    const settings = normalizeSettings(next);
-    savedSettings = settings;
-    applyTheme(settings.theme);
-    syncSettingsForm(settings);
-    renderSuggestions();
+    applySettings(normalizeSettings(next));
+    refresh();
   });
 
-  async function initUI() {
-    const settings = await readSettings();
-    applyTheme(settings.theme);
-    syncSettingsForm(settings);
-    $("#pc-suggest-caption").textContent = t("suggestCaption");
-    updateUndoButton();
-  }
+  /* ---------- Actions ---------- */
 
-  async function renderStatsPill() {
-    const r = await msg("pc:getStats");
-    const total = r?.stats?.totalTabsEaten || 0;
-    if (total === lastStatsTotal) return;
-    $("#pc-count-pill").textContent = t("closedCountShort", { count: total }, { formatNumbers: false });
-    lastStatsTotal = total;
-    fitPopupWidth();
-  }
-
-  async function renderOpenTabCount() {
-    const el = byId("pc-open-count");
-    if (!el) return;
-    try {
-      const tabs = await new Promise((res) => chrome.tabs.query({}, res));
-      const total = Array.isArray(tabs)
-        ? tabs.filter((t) => !t.incognito).length
-        : 0;
-      if (total !== lastOpenTabCount) {
-        el.textContent = t("openCountShort", { count: total }, { formatNumbers: false });
-        lastOpenTabCount = total;
-        fitPopupWidth();
-      }
-    } catch (err) {
-      console.error("Tab count load failed", err);
-      el.textContent = "";
-      lastOpenTabCount = null;
-    }
-  }
-
-  async function renderSettingsStats() {
-    await renderStatsPill();
-  }
-
-  async function closeByQuery(query, exactDomain = false) {
-    if (!query) return;
-    $("#pc-close").disabled = true;
-    try {
-      const out = await msg(exactDomain ? "pc:closeByDomain" : "pc:closeByKeyword", { query });
-      if (out?.ok) {
-        setStatus(closeStatus("closedCount", out));
-        const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
-        if (closed.length) {
-          lastClosedTabs = closed;
-        } else if (out.closedCount > 0) {
-          lastClosedTabs = [];
-        }
-        updateUndoButton();
-      } else {
-        setStatus(t("closeFailed"));
-      }
-      await renderStatsPill();
-      await renderOpenTabCount();
-      await renderSuggestions();
-    } finally {
-      $("#pc-close").disabled = cleanupRunning;
-    }
-  }
-
-  async function closeInactive() {
-    const out = await msg("pc:closeInactive");
-    if (out?.ok && out.closedCount) {
-      setStatus(closeStatus("closedInactive", out));
-      const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
-      lastClosedTabs = closed.length ? closed : [];
-      updateUndoButton();
-    } else if (out?.ok) {
-      setStatus(t("noInactive"), 1200);
+  // Shared ending for every close: result bar with Undo, then fresh numbers.
+  async function finishClose(out, key) {
+    if (!out?.ok) {
+      showToast(t("closeFailed"));
     } else {
-      setStatus(t("closeFailed"));
+      const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
+      lastClosedTabs = closed;
+      showToast(closeStatus(key, out), { undo: closed.length > 0 });
     }
-    await renderStatsPill();
-    await renderOpenTabCount();
-    await renderSuggestions();
+    await Promise.all([loadStats(), refresh()]);
+  }
+
+  function clearQuery() {
+    byId("pc-query").value = "";
+    query = "";
+    loadMatches();      // with no text this only empties the list and hides Close
+    showView();
+  }
+
+  async function closeSite(domain) {
+    const out = await msg("pc:closeByDomain", { query: domain });
+    await finishClose(out, "closedCount");
+  }
+
+  // Enter and the Close button: close the tabs listed for the text in the field.
+  async function closeMatches() {
+    const text = query;
+    if (!text) return;
+    // Enter can arrive before the list for the latest keystroke. Wait for it
+    // rather than closing tabs that were never shown.
+    if (matchesFor !== text || !matches) await loadMatches();
+    if (query !== text || matchesFor !== text || !matches) return;
+    if (matchesFailed) {
+      showToast(t("closeFailed"));
+      return;
+    }
+    if (!matches.length) return;
+    const out = await msg("pc:closeByKeyword", { query: text, tabIds: matches.map((tab) => tab.id) });
+    if (out?.ok) {
+      clearQuery();
+      focusOn("pc-query");
+    }
+    await finishClose(out, "closedCount");
+  }
+
+  async function closeMatch(tab) {
+    const out = await msg("pc:closeByKeyword", { query: matchesFor, tabIds: [tab.id] });
+    await finishClose(out, "closedCount");
+  }
+
+  async function closeInactiveListed() {
+    if (!inactiveTabs || !inactiveTabs.length) return;
+    const out = await msg("pc:closeInactive", { tabIds: inactiveTabs.map((tab) => tab.id) });
+    if (out?.ok) {
+      view = "main";
+      showView();
+      focusOn("pc-query");
+    }
+    await finishClose(out, "closedInactive");
+  }
+
+  async function closeInactiveTab(tab) {
+    const out = await msg("pc:closeInactive", { tabIds: [tab.id] });
+    await finishClose(out, "closedCount");
   }
 
   async function closeDuplicates() {
-    const btn = byId("pc-close-duplicates");
-    if (btn) btn.disabled = true;
-    try {
-      const out = await msg("pc:closeDuplicates");
-      if (out?.ok) {
-        const count = out.closedCount || 0;
-        setStatus(count ? closeStatus("closedDuplicates", out) : t("noDuplicates"), 1400);
-        const closed = Array.isArray(out.closedTabs) ? out.closedTabs : [];
-        lastClosedTabs = closed.length ? closed : count ? [] : lastClosedTabs;
-        updateUndoButton();
-      } else {
-        setStatus(t("closeFailed"));
-      }
-    } finally {
-      if (btn) btn.disabled = cleanupRunning;
+    const out = await msg("pc:closeDuplicates");
+    if (out?.ok && !out.closedCount) {
+      showToast(t("noDuplicates"));
+      await refresh();
+      return;
     }
-    await renderStatsPill();
-    await renderOpenTabCount();
-    await renderSuggestions();
+    await finishClose(out, "closedDuplicates");
   }
 
   async function restoreLastClose() {
-    if (!lastClosedTabs.length) {
-      setStatus(t("nothingToUndo"), 1200);
+    if (!lastClosedTabs.length) return;
+    const out = await msg("pc:restoreTabs", { tabs: lastClosedTabs });
+    if (!out?.ok) {
+      showToast(t("undoFailed"), { undo: true });
       return;
     }
-    const undoBtn = $("#pc-undo-close");
-    if (undoBtn) undoBtn.disabled = true;
-
-    let restored = 0;
-    try {
-      const out = await msg("pc:restoreTabs", { tabs: lastClosedTabs });
-      if (!out?.ok) {
-        setStatus(t("undoFailed"));
-        return;
-      }
-      restored = out.restoredCount || 0;
-      if (Array.isArray(out.remainingTabs)) lastClosedTabs = out.remainingTabs;
-      else if (restored) lastClosedTabs = [];
-      if (restored) {
-        setStatus(t("restoredCount", { count: restored }) + (lastClosedTabs.length ? " · " + t("undoFailed") : ""));
-      } else {
-        setStatus(t(lastClosedTabs.length ? "undoFailed" : "nothingToRestore"), 1200);
-      }
-    } catch (err) {
-      console.error("Undo failed", err);
-      setStatus(t("undoFailed"));
-      return;
-    } finally {
-      updateUndoButton();
-    }
-
+    const restored = out.restoredCount || 0;
+    lastClosedTabs = Array.isArray(out.remainingTabs) ? out.remainingTabs : [];
     if (restored) {
-      await renderStatsPill();
-      await renderOpenTabCount();
-      await renderSuggestions();
-    }
-  }
-
-  function renderSuggestionChip(item) {
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = "chip";
-    chip.disabled = cleanupRunning;
-
-    const main = document.createElement("span");
-    main.className = "chip-main";
-    const label = document.createElement("span");
-    label.className = "label";
-    const count = document.createElement("span");
-    count.className = "count";
-
-    if (item.kind === "inactive") {
-      chip.dataset.kind = "inactive";
-      const icon = document.createElement("span");
-      icon.className = "favicon inactive-icon";
-      icon.setAttribute("aria-hidden", "true");
-      main.appendChild(icon);
-      label.textContent = t("inactive");
-      main.appendChild(label);
-      count.textContent = globalThis.ttNumber(item.inactiveCount ?? 0);
-      chip.title = label.textContent + " · " + count.textContent;
-      chip.addEventListener("click", async () => {
-        chip.disabled = true;
-        try {
-          await runCloseInactive();
-        } finally {
-          chip.disabled = cleanupRunning;
-        }
-      });
+      const text = t("restoredCount", { count: restored });
+      // Tabs that could not be restored stay in the snapshot for another try.
+      if (lastClosedTabs.length) showToast(text + " · " + t("undoFailed"), { undo: true });
+      else showToast(text);
+    } else if (lastClosedTabs.length) {
+      showToast(t("undoFailed"), { undo: true });
     } else {
-      const domain = String(item.domain || "");
-      chip.dataset.domain = domain;
-      label.textContent = domain;
-      label.dir = "ltr";
-      label.style.unicodeBidi = "isolate";
-      const iconUrl =
-        typeof item.favIconUrl === "string" ? item.favIconUrl.trim() : "";
-      if (iconUrl) {
-        const icon = document.createElement("img");
-        icon.className = "favicon";
-        icon.alt = "";
-        icon.loading = "lazy";
-        icon.decoding = "async";
-        icon.src = iconUrl;
-        icon.addEventListener("error", () => {
-          icon.hidden = true;
-        });
-        main.appendChild(icon);
-      }
-      main.appendChild(label);
-      const openCount = item.openCount ?? 0;
-      // A compact number leaves room for the site in every language. Preserve
-      // the full translated meaning in the accessible name and hover text.
-      count.textContent = globalThis.ttNumber(openCount);
-      const description = t("closeSiteLabel", { site: domain }) + " · " + t("openCount", { count: openCount });
-      chip.setAttribute("aria-label", description);
-      chip.title = description;
-      chip.addEventListener("click", async () => {
-        chip.disabled = true;
-        try {
-          await runClose(item.domain, true);
-        } finally {
-          chip.disabled = cleanupRunning;
-        }
-      });
+      showToast(t("nothingToRestore"));
     }
-
-    chip.append(main, count);
-    return chip;
+    if (restored) await Promise.all([loadStats(), refresh()]);
   }
 
-  async function renderSuggestions() {
-    const token = ++suggestionsRequestToken;
-    const card = $("#pc-suggest-card");
-    if (!card || card.getAttribute("aria-hidden") === "true") return;
-
-    const chipsWrap = $("#pc-suggest-chips");
-    const empty = $("#pc-suggest-empty");
-    const caption = $("#pc-suggest-caption");
-    const more = $("#pc-suggest-more");
-    if (!chipsWrap || !empty || !caption || !more) return;
-
-    const shouldShowLoading = lastSuggestionsKey === null;
-    if (shouldShowLoading) {
-      empty.textContent = t("loadingSuggestions");
-      caption.textContent = "";
-      chipsWrap.textContent = "";
-    }
-
-    const { ok, suggestions = [] } = await msg("pc:getSuggestions");
-    if (token !== suggestionsRequestToken) return;
-    const key = ok ? JSON.stringify(suggestions) : "error";
-    const count = Array.isArray(suggestions) ? suggestions.length : 0;
-    if (key === lastSuggestionsKey && count === lastSuggestionsCount && !shouldShowLoading) {
-      return;
-    }
-    lastSuggestionsKey = key;
-    lastSuggestionsCount = count;
-
-    chipsWrap.textContent = "";
-    more.textContent = "";
-    if (!ok) {
-      empty.textContent = t("suggestionsFailed");
-      caption.textContent = "";
-      return;
-    }
-    if (!suggestions.length) {
-      empty.textContent = t("noSuggestions");
-      caption.textContent = "";
-      return;
-    }
-
-    empty.textContent = "";
-    caption.textContent = t("suggestCaption");
-    const limited = suggestions.slice(0, MAX_SUGGESTIONS);
-    limited.forEach((item) =>
-      chipsWrap.appendChild(renderSuggestionChip(item))
-    );
-    if (suggestions.length > MAX_SUGGESTIONS) {
-      more.textContent = t("moreCount", { count: suggestions.length - MAX_SUGGESTIONS });
-    }
+  // The tab comes back where it was without coming into view, so the popup
+  // stays open and the next one can be reopened.
+  async function reopenTab(tab) {
+    const out = await msg("pc:reopenRecent", { keys: [tab.key] });
+    if (out?.ok && out.restoredCount) showToast(t("restoredCount", { count: out.restoredCount }));
+    else showToast(t("undoFailed"));
+    await Promise.all([loadRecent(), refresh()]);
   }
 
-  async function sortTabsByOpenCount() {
-    const btn = byId("pc-sort-tabs-quick");
-    if (btn) btn.disabled = true;
+  async function clearRecent() {
+    const out = await msg("pc:clearRecent");
+    if (!out?.ok) showToast(t("closeFailed"));
+    await loadRecent();
+    // The button that had focus is now disabled: nothing is left to clear.
+    if (!document.activeElement || document.activeElement === document.body || document.activeElement.disabled) focusOn("pc-recent-back");
+  }
+
+  async function sortTabs() {
+    const button = byId("pc-sort-tabs-quick");
+    button.disabled = true;
     try {
       const out = await msg("pc:sortTabsByOpenCount");
-      if (!out?.ok) {
-        setStatus(t("sortFailed"), 1200);
-        return;
-      }
-      const moved = out.sortedCount || 0;
-      setStatus(moved ? t("sortedCount", { count: moved }) : t("nothingToSort"), 1200);
-    } catch (err) {
-      console.error("Sort tabs failed", err);
-      setStatus(t("sortFailed"), 1200);
+      if (!out?.ok) showToast(t("sortFailed"));
+      else if (out.sortedCount) showToast(t("sortedCount", { count: out.sortedCount }));
+      else showToast(t("nothingToSort"));
     } finally {
-      if (btn) btn.disabled = false;
+      button.disabled = false;
     }
-    await renderSuggestions();
+    await refresh();
   }
 
-  function setupSettingsBindings() {
-    bindThemeButtons();
-    bindSettingControl(
-      "min-open",
-      (el) => ({
-        suggestMinOpenTabsPerDomain: Math.max(1, Number(el.value) || 1),
-      }),
-      () => {
-        renderSuggestions();
-      }
-    );
-    bindSettingControl("inactive-threshold", (el) => ({
-      inactiveThresholdMinutes: Math.max(1, Number(el.value) || 1),
-    }));
+  // The stylesheet trims the name's box to its capitals, which puts the middle
+  // of the letters on the line of the mark's cross. A browser that cannot trim
+  // centres the whole line instead, and how far that leaves the letters from
+  // the line depends on the font. Measure the font and move the name by that.
+  function alignBrand() {
+    const brand = byId("pc-brand");
+    try {
+      if (!brand || globalThis.CSS?.supports?.("text-box", "trim-both cap alphabetic")) return;
+      const context = document.createElement("canvas").getContext?.("2d");
+      const style = globalThis.getComputedStyle?.(brand);
+      if (!context || !style) return;
+      context.font = style.fontWeight + " " + style.fontSize + " " + style.fontFamily;
+      const metrics = context.measureText("T");
+      const below = (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent - metrics.actualBoundingBoxAscent) / 2;
+      if (Number.isFinite(below) && Math.abs(below) < 6) brand.style.translate = "0 " + (-below).toFixed(2) + "px";
+    } catch (_) { /* the name stays where the browser put it */ }
   }
 
-  function toggleSettingsPanel(show) {
-    const actionsPanel = byId("pc-tab-actions");
-    const settingsPanel = byId("pc-tab-settings");
-    const toggleBtn = byId("pc-settings-toggle");
-    if (!actionsPanel || !settingsPanel || !toggleBtn) return;
-
-    const settingsActive = settingsPanel.classList.contains("active");
-    const showSettings = typeof show === "boolean" ? show : !settingsActive;
-
-    actionsPanel.classList.toggle("active", !showSettings);
-    actionsPanel.setAttribute("aria-hidden", showSettings ? "true" : "false");
-
-    settingsPanel.classList.toggle("active", showSettings);
-    settingsPanel.setAttribute("aria-hidden", showSettings ? "false" : "true");
-
-    toggleBtn.classList.toggle("active", showSettings);
-    toggleBtn.setAttribute("aria-pressed", showSettings ? "true" : "false");
-
-    if (showSettings) {
-      renderSettingsStats();
-    }
-  }
+  /* ---------- Wiring ---------- */
 
   function wireUI() {
-    $("#pc-close").addEventListener("click", () =>
-      runClose($("#pc-query").value.trim())
-    );
-    $("#pc-query").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        runClose($("#pc-query").value.trim());
-      }
+    const field = byId("pc-query");
+    // Handlers return the promise of the work they start, so tests can await it.
+    field.addEventListener("input", () => {
+      query = field.value.trim();
+      hideToast();
+      showView();
+      byId("pc-match-query").textContent = query;
+      renderField();
+      return loadMatches();
     });
-    $("#pc-undo-close").addEventListener("click", undoLastClose);
-    const sortTabsQuick = byId("pc-sort-tabs-quick");
-    if (sortTabsQuick) {
-      sortTabsQuick.addEventListener("click", async () => {
-        sortTabsQuick.disabled = true;
-        try {
-          await sortTabsByOpenCount();
-        } finally {
-          sortTabsQuick.disabled = false;
-        }
-      });
-    }
-    const closeDuplicates = byId("pc-close-duplicates");
-    if (closeDuplicates) {
-      closeDuplicates.addEventListener("click", () => runCloseDuplicates());
-    }
-    const settingsToggle = byId("pc-settings-toggle");
-    if (settingsToggle) {
-      settingsToggle.addEventListener("click", () => toggleSettingsPanel());
-    }
-    const quickToggle = byId("pc-toggle-quick");
-    const quickBody = byId("pc-quick-body");
-    if (quickToggle && quickBody) {
-      quickToggle.addEventListener("click", () => {
-        const hidden = quickBody.hidden === true;
-        quickBody.hidden = !hidden;
-        quickToggle.textContent = t(hidden ? "hide" : "show");
-        quickToggle.setAttribute("aria-pressed", hidden ? "true" : "false");
-      });
-    }
+    field.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return undefined;
+      event.preventDefault();
+      return runCleanup(closeMatches);
+    });
+    byId("pc-query-clear").addEventListener("click", () => {
+      clearQuery();
+      focusOn("pc-query");
+    });
+    byId("pc-close").addEventListener("click", () => runCleanup(closeMatches));
 
-    // Removed sort button from suggestion chips section; quick action remains.
+    byId("pc-settings-toggle").addEventListener("click", () => openView("settings", "pc-settings-back"));
+    byId("pc-settings-back").addEventListener("click", () => openView("main", "pc-settings-toggle"));
+    byId("pc-inactive-row").addEventListener("click", () => openView("inactive", "pc-inactive-back"));
+    byId("pc-inactive-back").addEventListener("click", () => openView("main", "pc-inactive-row"));
+    byId("pc-recent-toggle").addEventListener("click", () => openView("recent", "pc-recent-back"));
+    byId("pc-recent-back").addEventListener("click", () => openView("main", "pc-recent-toggle"));
+    byId("pc-recent-clear").addEventListener("click", () => runCleanup(clearRecent));
+
+    byId("pc-close-duplicates").addEventListener("click", () => runCleanup(closeDuplicates));
+    byId("pc-inactive-close").addEventListener("click", () => runCleanup(closeInactiveListed));
+    byId("pc-undo-close").addEventListener("click", () => runCleanup(restoreLastClose));
+    byId("pc-toast-dismiss").addEventListener("click", dismissToast);
+    byId("pc-sort-tabs-quick").addEventListener("click", sortTabs);
+
+    // The result bar stays while it is pointed at or holds focus.
+    const toast = byId("pc-toast");
+    for (const name of ["mouseenter", "focusin"]) toast.addEventListener(name, () => clearTimeout(toastTimer));
+    for (const name of ["mouseleave", "focusout"]) {
+      toast.addEventListener(name, () => { if (toastTimer !== null) armToast(); });
+    }
+    toast.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();      // Escape would otherwise close the whole popup
+      dismissToast();
+    });
+
+    all("[data-theme-value]").forEach((button) => {
+      button.addEventListener("click", () => writeSettings({ theme: button.dataset.themeValue }));
+    });
+    all("[data-accent-value]").forEach((button) => {
+      button.addEventListener("click", () => writeSettings({ accent: button.dataset.accentValue }));
+    });
+    all("[data-threshold-step]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const next = nextThreshold(thresholdOf(savedSettings), Number(button.dataset.thresholdStep));
+        if (next === undefined) return;
+        if (await writeSettings({ inactiveThresholdMinutes: next })) await refresh();
+      });
+    });
+    byId("pc-keep-pinned").addEventListener("click", async () => {
+      if (await writeSettings({ keepPinnedTabs: savedSettings.keepPinnedTabs === false })) await refresh();
+    });
+    byId("pc-reset-stats").addEventListener("click", async () => {
+      const out = await msg("pc:resetStats");
+      if (!out?.ok) showToast(t("closeFailed"));
+      await loadStats();
+    });
+
+    // "System" follows the browser's light or dark setting while the popup is open.
+    darkQuery?.addEventListener?.("change", () => applyTheme(savedSettings));
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
     if (typeof globalThis.ttLocalizeDocument === "function") {
       globalThis.ttLocalizeDocument(document);
     }
-    fitPopupWidth();
-    document.fonts?.ready.then(fitPopupWidth);
-    await initUI();
+    const version = chrome.runtime.getManifest?.().version;
+    byId("pc-version").textContent = version ? "TabTools " + version : "TabTools";
+    alignBrand();
+    applySettings(await readSettings());
     wireUI();
-    setupSettingsBindings();
     bindTabUpdates();
-    toggleSettingsPanel(false);
-    await renderStatsPill();
-    await renderOpenTabCount();
-    await renderSuggestions();
+    showView();
+    await Promise.all([loadStats(), refresh()]);
   });
 })();

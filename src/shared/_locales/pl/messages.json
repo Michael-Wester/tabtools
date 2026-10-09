@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Sugestie"
   },
-  "suggestCaption": {
-    "message": "Kliknij, aby zamknąć karty witryny"
-  },
   "queryPlaceholder": {
     "message": "Zamknij według słowa kluczowego (Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Cofnij"
   },
-  "undoTitle": {
-    "message": "Cofnij ostatnie zamknięcie"
-  },
   "theme": {
     "message": "Motyw"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Ciemny"
   },
-  "minTabs": {
-    "message": "Minimalna liczba kart witryny w sugestiach"
-  },
   "inactiveAfter": {
     "message": "Karty nieaktywne po"
-  },
-  "minutes": {
-    "message": "minutach"
   },
   "closedCount": {
     "message": "Zamknięte: $count$",
@@ -97,42 +85,6 @@
   },
   "openCount_other": {
     "message": "$count$ otwartej karty",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ otwarta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_few": {
-    "message": "$count$ otwarte",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ otwartych",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ otwartej",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -203,9 +155,6 @@
   "noDuplicates": {
     "message": "Brak duplikatów"
   },
-  "nothingToUndo": {
-    "message": "Nie ma czego cofnąć"
-  },
   "undoFailed": {
     "message": "Nie udało się cofnąć"
   },
@@ -224,23 +173,11 @@
   "inactive": {
     "message": "Nieaktywne"
   },
-  "loadingSuggestions": {
-    "message": "Wczytywanie sugestii…"
-  },
   "suggestionsFailed": {
     "message": "Nie udało się wczytać sugestii"
   },
   "noSuggestions": {
     "message": "Obecnie brak sugestii"
-  },
-  "moreCount": {
-    "message": "Pozostałe niewyświetlone sugestie: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sortowanie nie powiodło się"
@@ -256,12 +193,6 @@
   },
   "nothingToSort": {
     "message": "Nie ma czego sortować"
-  },
-  "hide": {
-    "message": "Ukryj"
-  },
-  "show": {
-    "message": "Pokaż"
   },
   "contextClose": {
     "message": "Zamknij karty witryny"

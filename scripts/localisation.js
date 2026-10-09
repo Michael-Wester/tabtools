@@ -82,21 +82,28 @@ function webExtensionLocale(locale) {
   return localeInfo(locale).extension;
 }
 
-function toWebExtensionMessages(locale) {
-  const source = extensionSource(catalogue(locale));
+function toWebExtensionMessages(locale, english = catalogue('en'), translated = catalogue(locale)) {
+  const source = extensionSource(translated);
   const output = {
     translationLocale: { message: locale },
     translationDirection: { message: localeInfo(locale).direction },
   };
 
   for (const [key, value] of Object.entries(source)) {
-    if (value && typeof value === 'object') {
+    // English is the source of truth. A string it no longer has, or has in the
+    // other shape, stays out of the package; validation names it. A string a
+    // language has not translated yet is simply absent, and the browser then
+    // shows the English one.
+    const original = english[key];
+    const plural = Boolean(value) && typeof value === 'object';
+    if (original === undefined || plural !== (Boolean(original) && typeof original === 'object')) continue;
+    if (plural) {
       for (const [category, text] of Object.entries(value)) {
-        output[key + '_' + category] = messageEntry(text, catalogue('en')[key].other);
+        output[key + '_' + category] = messageEntry(text, original.other);
       }
       continue;
     }
-    output[key] = messageEntry(value, catalogue('en')[key]);
+    output[key] = messageEntry(value, original);
   }
   return output;
 }

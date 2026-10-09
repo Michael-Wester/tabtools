@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Forslag"
   },
-  "suggestCaption": {
-    "message": "Trykk for å lukke fanene fra nettstedet"
-  },
   "queryPlaceholder": {
     "message": "Lukk etter søkeord (trykk Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Angre"
   },
-  "undoTitle": {
-    "message": "Angre siste lukking"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Mørkt"
   },
-  "minTabs": {
-    "message": "Minste antall faner per nettsted for forslag"
-  },
   "inactiveAfter": {
     "message": "Faner inaktive etter"
-  },
-  "minutes": {
-    "message": "minutter"
   },
   "closedCount": {
     "message": "Lukket: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ åpne faner",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ åpen",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ åpne",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Ingen duplikater"
   },
-  "nothingToUndo": {
-    "message": "Ingenting å angre"
-  },
   "undoFailed": {
     "message": "Kunne ikke angre"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Inaktive"
   },
-  "loadingSuggestions": {
-    "message": "Laster forslag…"
-  },
   "suggestionsFailed": {
     "message": "Kunne ikke laste forslag"
   },
   "noSuggestions": {
     "message": "Ingen forslag akkurat nå"
-  },
-  "moreCount": {
-    "message": "Flere forslag som ikke vises: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sortering mislyktes"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Ingenting å sortere"
-  },
-  "hide": {
-    "message": "Skjul"
-  },
-  "show": {
-    "message": "Vis"
   },
   "contextClose": {
     "message": "Lukk nettstedets faner"

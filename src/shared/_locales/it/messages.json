@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Suggerimenti"
   },
-  "suggestCaption": {
-    "message": "Tocca per chiudere le schede del sito"
-  },
   "queryPlaceholder": {
     "message": "Chiudi per parola chiave (premi Invio)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Annulla"
   },
-  "undoTitle": {
-    "message": "Annulla l’ultima chiusura"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Scuro"
   },
-  "minTabs": {
-    "message": "Numero minimo di schede per sito nei suggerimenti"
-  },
   "inactiveAfter": {
     "message": "Schede inattive dopo"
-  },
-  "minutes": {
-    "message": "minuti"
   },
   "closedCount": {
     "message": "Chiuse: $count$",
@@ -88,33 +76,6 @@
   },
   "openCount_other": {
     "message": "$count$ schede aperte",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ aperta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ aperte",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ aperte",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -176,9 +137,6 @@
   "noDuplicates": {
     "message": "Nessun duplicato"
   },
-  "nothingToUndo": {
-    "message": "Niente da annullare"
-  },
   "undoFailed": {
     "message": "Impossibile annullare"
   },
@@ -197,23 +155,11 @@
   "inactive": {
     "message": "Inattive"
   },
-  "loadingSuggestions": {
-    "message": "Caricamento dei suggerimenti…"
-  },
   "suggestionsFailed": {
     "message": "Impossibile caricare i suggerimenti"
   },
   "noSuggestions": {
     "message": "Nessun suggerimento al momento"
-  },
-  "moreCount": {
-    "message": "Altri suggerimenti non mostrati: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Ordinamento non riuscito"
@@ -229,12 +175,6 @@
   },
   "nothingToSort": {
     "message": "Niente da ordinare"
-  },
-  "hide": {
-    "message": "Nascondi"
-  },
-  "show": {
-    "message": "Mostra"
   },
   "contextClose": {
     "message": "Chiudi le schede del sito"

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Sugerencias"
   },
-  "suggestCaption": {
-    "message": "Pulsa para cerrar las pestañas del sitio"
-  },
   "queryPlaceholder": {
     "message": "Cerrar por palabra clave (pulsa Intro)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Deshacer"
   },
-  "undoTitle": {
-    "message": "Deshacer el último cierre"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Oscuro"
   },
-  "minTabs": {
-    "message": "Mínimo de pestañas por sitio para las sugerencias"
-  },
   "inactiveAfter": {
     "message": "Pestañas inactivas después de"
-  },
-  "minutes": {
-    "message": "minutos"
   },
   "closedCount": {
     "message": "Cerradas: $count$",
@@ -88,33 +76,6 @@
   },
   "openCount_other": {
     "message": "$count$ pestañas abiertas",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ abierta",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_many": {
-    "message": "$count$ abiertas",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ abiertas",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -176,9 +137,6 @@
   "noDuplicates": {
     "message": "No hay duplicados"
   },
-  "nothingToUndo": {
-    "message": "No hay nada que deshacer"
-  },
   "undoFailed": {
     "message": "No se pudo deshacer"
   },
@@ -197,23 +155,11 @@
   "inactive": {
     "message": "Inactivas"
   },
-  "loadingSuggestions": {
-    "message": "Cargando sugerencias…"
-  },
   "suggestionsFailed": {
     "message": "No se pudieron cargar las sugerencias"
   },
   "noSuggestions": {
     "message": "No hay sugerencias por ahora"
-  },
-  "moreCount": {
-    "message": "Otras sugerencias no mostradas: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "No se pudo ordenar"
@@ -229,12 +175,6 @@
   },
   "nothingToSort": {
     "message": "No hay nada que ordenar"
-  },
-  "hide": {
-    "message": "Ocultar"
-  },
-  "show": {
-    "message": "Mostrar"
   },
   "contextClose": {
     "message": "Cerrar pestañas del sitio"

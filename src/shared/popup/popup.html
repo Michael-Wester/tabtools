@@ -1,764 +1,847 @@
 <!DOCTYPE html>
 <!-- SPDX-License-Identifier: MPL-2.0 -->
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <title>TabTools</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <style>
-      :root {
-        --popup-width: 380px;
-        --bg: #0b0f16;
-        --fg: #e5e7eb;
-        --muted: #9aa3b2;
-        --card: #0f1420;
-        --border: #1f2937;
-        --accent: #a78bfa;
-        --accent-soft: rgba(167, 139, 250, 0.12);
-        --accent-glow: rgba(167, 139, 250, 0.2);
-      }
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #ffffff;
-          --fg: #1f2328;
-          --muted: #6b7280;
-          --card: #f7f7f8;
-          --border: #e5e7eb;
-          --accent: #7c3aed;
-          --accent-soft: rgba(124, 58, 237, 0.12);
-          --accent-glow: rgba(124, 58, 237, 0.2);
-        }
-      }
-      html[data-theme="light"] {
-        --bg: #ffffff;
-        --fg: #1f2328;
-        --muted: #6b7280;
-        --card: #f7f7f8;
-        --border: #e5e7eb;
-        --accent: #7c3aed;
-        --accent-soft: rgba(124, 58, 237, 0.12);
-        --accent-glow: rgba(124, 58, 237, 0.2);
-      }
-      html[data-theme="dark"] {
-        --bg: #0b0f16;
-        --fg: #e5e7eb;
-        --muted: #9aa3b2;
-        --card: #0f1420;
-        --border: #1f2937;
-        --accent: #a78bfa;
-        --accent-soft: rgba(167, 139, 250, 0.12);
-        --accent-glow: rgba(167, 139, 250, 0.2);
-      }
+<html lang="en" data-theme="system">
+<head>
+<meta charset="utf-8">
+<title>TabTools</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+/* ---------- Tokens ---------- */
+:root {
+  --paper: #f6f6f4;      /* popup background */
+  --surface: #ffffff;    /* field, hovered row, small buttons */
+  --sunken: #e9eae6;     /* segmented track, icon-button hover */
+  --ink: #202126;
+  --ink-2: #5b606a;      /* secondary text, icons */
+  --ink-3: #868b94;      /* close marks, switch off */
+  --line: #dfe1dd;
+  --line-2: #c9ccc7;     /* control borders */
+  --accent: #7054d8;
+  --accent-2: #5739bf;   /* accent hover */
+  --on-accent: #ffffff;
+  --bar: #b9abec;        /* tick marks at rest */
+  --hit: #e3dcfb;        /* keyword highlight */
+  --ring: rgba(112, 84, 216, .24);
+  --toast: #202126;
+  --toast-ink: #f6f6f4;
+  --toast-btn: rgba(255, 255, 255, .16);
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  --paper: #1a1b21;
+  --surface: #25272f;
+  --sunken: #121318;
+  --ink: #f3f4f6;
+  --ink-2: #b4b8c2;
+  --ink-3: #7d8390;
+  --line: #30333c;
+  --line-2: #444853;
+  --accent: #957dff;
+  --accent-2: #aa96ff;
+  --on-accent: #15161b;
+  --bar: #5d4eaf;
+  --hit: #3a3270;
+  --ring: rgba(149, 125, 255, .32);
+  --toast: #eceef2;
+  --toast-ink: #1a1b21;
+  --toast-btn: rgba(26, 27, 33, .1);
+  color-scheme: dark;
+}
+/* "System" repeats the dark values under the media query. Keep the two blocks identical. */
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] {
+    --paper: #1a1b21;
+    --surface: #25272f;
+    --sunken: #121318;
+    --ink: #f3f4f6;
+    --ink-2: #b4b8c2;
+    --ink-3: #7d8390;
+    --line: #30333c;
+    --line-2: #444853;
+    --accent: #957dff;
+    --accent-2: #aa96ff;
+    --on-accent: #15161b;
+    --bar: #5d4eaf;
+    --hit: #3a3270;
+    --ring: rgba(149, 125, 255, .32);
+    --toast: #eceef2;
+    --toast-ink: #1a1b21;
+    --toast-btn: rgba(26, 27, 33, .1);
+    color-scheme: dark;
+  }
+}
 
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        scrollbar-gutter: stable;
-        overflow-y: scroll;
-        scrollbar-width: none;
-      }
-      body::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-      }
-      body {
-        margin: 12px auto;
-        /* Firefox sizes the native popup from body, not the root element.
-           Preserve the original 380px box, then grow it for translated text. */
-        width: var(--popup-width);
-        min-width: var(--popup-width);
-        max-width: var(--popup-width);
-        padding: 10px;
-        font: 14px/1.4 system-ui, sans-serif;
-        color: var(--fg);
-        background: var(--bg);
-      }
-      .row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .header-row {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .header-main {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        flex-shrink: 0;
-      }
-      .header-actions {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-inline-start: auto;
-        flex-shrink: 0;
-        white-space: nowrap;
-      }
-      .header-actions > * {
-        white-space: nowrap;
-      }
-      .stack {
-        display: grid;
-        /* Keep tracks inside the current width while measuring long headers. */
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
-      }
-      .stack.tight {
-        gap: 6px;
-      }
-      .row.tight-bottom {
-        margin-bottom: 4px;
-      }
-      .row.no-top {
-        margin-top: 0;
-      }
-      .spacer {
-        flex: 1;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 14px;
-        padding: 12px;
-      }
-      .btn {
-        border: 1px solid var(--border);
-        background: var(--bg);
-        color: var(--fg);
-        padding: 6px 10px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.15s ease, color 0.15s ease,
-          border-color 0.15s ease, transform 0.1s ease;
-      }
-      .btn.small {
-        padding: 4px 8px;
-        font-size: 12px;
-      }
-      .btn.primary {
-        background: var(--accent);
-        color: #fff;
-        border-color: transparent;
-      }
-      .btn.settings-toggle {
-        padding: 4px 10px;
-        background: transparent;
-        color: var(--muted);
-        transition: background 0.15s ease, color 0.15s ease,
-          border-color 0.15s ease;
-      }
-      .btn.settings-toggle.active {
-        background: var(--accent);
-        color: #fff;
-        border-color: transparent;
-      }
-      .btn:disabled {
-        opacity: 0.5;
-        cursor: default;
-      }
-      .btn:hover:not(:disabled) {
-        transform: translateY(-1px);
-      }
-      .btn:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 2px;
-      }
-      .input {
-        width: 100%;
-        flex: 1;
-        min-width: 0;
-        padding: 8px 10px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        background: var(--bg);
-        color: var(--fg);
-      }
-      .row.wrap .input {
-        min-width: 180px;
-      }
-      .small {
-        font-size: 12px;
-      }
-      .muted {
-        color: var(--muted);
-      }
-      .icon {
-        width: 20px;
-        height: 20px;
-      }
-      .brand-icon-dark {
-        display: none;
-      }
-      html[data-theme="dark"] .brand-icon-light {
-        display: none;
-      }
-      html[data-theme="dark"] .brand-icon-dark {
-        display: block;
-      }
-      .pill {
-        font-size: 12px;
-        padding: 4px 8px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        background: transparent;
-        color: var(--muted);
-      }
-      .pill.subtle {
-        background: rgba(167, 139, 250, 0.12);
-        color: var(--fg);
-        border-color: rgba(167, 139, 250, 0.2);
-      }
-      .switch {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .row.wrap {
-        flex-wrap: wrap;
-      }
-      .status {
-        padding: 8px 10px;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-        background: rgba(167, 139, 250, 0.08);
-        color: var(--muted);
-        min-height: 0;
-        display: none;
-      }
-      .status:empty {
-        background: transparent;
-        border-color: transparent;
-        min-height: 0;
-        padding: 0;
-        display: none;
-      }
-      .status:not(:empty) {
-        color: var(--fg);
-        display: block;
-      }
-      .btn.ghost {
-        background: transparent;
-        color: var(--fg);
-        border-color: transparent;
-      }
-      .btn.icon-btn {
-        padding: 4px 8px;
-        line-height: 1;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .btn.ghost.bordered {
-        border-color: var(--border);
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .btn.ghost:hover {
-        border-color: var(--accent);
-      }
-      .tab-panel {
-        width: 100%;
-        opacity: 0;
-        transform: translateY(10px);
-        max-height: 0;
-        overflow: hidden;
-        pointer-events: none;
-        display: none;
-      }
-      .tab-panel.active {
-        opacity: 1;
-        transform: translateY(0);
-        max-height: 2000px;
-        pointer-events: auto;
-        display: grid;
-      }
-      .grid {
-        display: grid;
-        gap: 12px;
-      }
-      .settings-grid {
-        gap: 8px;
-      }
-      .setting-row {
-        padding: 6px 10px;
-        border: 1px solid rgba(167, 139, 250, 0.25);
-        border-radius: 10px;
-        background: rgba(167, 139, 250, 0.08);
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        transition: border-color 0.15s ease, background 0.15s ease,
-          transform 0.1s ease, box-shadow 0.1s ease;
-      }
-      .setting-row:hover {
-        border-color: var(--accent);
-        transform: translateY(-1px);
-        background: rgba(167, 139, 250, 0.12);
-      }
-      .setting-row:focus-within {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 2px var(--accent-glow);
-      }
-      .setting-label {
-        flex: 1;
-        min-width: 0;
-        font-weight: 600;
-        font-size: 12px;
-      }
-      .theme-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        padding: 3px;
-        border: 1px solid rgba(167, 139, 250, 0.25);
-        border-radius: 999px;
-        background: rgba(167, 139, 250, 0.08);
-      }
-      .theme-option {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        min-width: 0;
-        padding: 4px 8px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        background: transparent;
-        color: var(--muted);
-        font-size: 12px;
-      }
-      .theme-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .theme-option svg {
-        width: 18px;
-        height: 18px;
-        stroke: currentColor;
-        stroke-width: 1.5;
-        shape-rendering: geometricPrecision;
-        vector-effect: non-scaling-stroke;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .theme-label {
-        line-height: 1;
-      }
-      .theme-option.active {
-        background: var(--accent);
-        color: #fff;
-        border-color: var(--accent);
-        box-shadow: none;
-      }
-      .theme-option:not(.active):hover {
-        border-color: var(--accent);
-        color: var(--fg);
-        background: rgba(167, 139, 250, 0.12);
-      }
-      .gap {
-        gap: 8px;
-      }
-      .number,
-      select {
-        padding: 6px 8px;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: var(--bg);
-        color: var(--fg);
-        width: 120px;
-      }
-      .checkbox {
-        appearance: none;
-        width: 44px;
-        height: 24px;
-        border-radius: 999px;
-        border: 1.5px solid var(--border);
-        background: var(--border);
-        position: relative;
-        cursor: pointer;
-        transition: background 0.15s ease, border-color 0.15s ease,
-          box-shadow 0.12s ease, transform 0.1s ease;
-        flex-shrink: 0;
-      }
-      .checkbox:hover {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px var(--accent-soft);
-      }
-      .checkbox:checked {
-        background: var(--accent);
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px var(--accent-soft);
-      }
-      .checkbox::after {
-        content: "";
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: var(--muted);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        transition: transform 0.15s ease, background 0.15s ease,
-          box-shadow 0.15s ease;
-      }
-      .checkbox:checked::after {
-        transform: translateX(20px);
-        background: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-      }
-      .checkbox:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 3px;
-      }
-      .counter-group {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        padding: 2px 6px;
-        border: 1px solid rgba(167, 139, 250, 0.25);
-        border-radius: 999px;
-        background: rgba(167, 139, 250, 0.08);
-      }
-      .counter-group:focus-within {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 2px var(--accent-soft);
-      }
-      .counter-input {
-        width: 64px;
-        border: none;
-        padding: 4px 6px;
-        background: transparent;
-        color: var(--fg);
-        font-weight: 600;
-        text-align: center;
-        font-size: 12px;
-      }
-      .counter-input:focus {
-        outline: none;
-      }
-      .counter-input::-webkit-inner-spin_button,
-      .counter-input::-webkit-outer-spin-button,
-      .number::-webkit-inner-spin-button,
-      .number::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-      .counter-input[type="number"] {
-        -moz-appearance: textfield;
-      }
-      .counter-suffix {
-        color: var(--muted);
-        font-size: 11px;
-      }
-      h2 {
-        margin: 0;
-        font-size: 14px;
-      }
-      .chips {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-      .chips-more {
-        text-align: center;
-        color: var(--muted);
-        font-size: 12px;
-      }
-      .chip {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        border-radius: 999px;
-        padding: 6px 12px;
-        border: 1px solid rgba(167, 139, 250, 0.25);
-        background: rgba(167, 139, 250, 0.08);
-        color: var(--fg);
-        cursor: pointer;
-        font-size: 13px;
-        transition: background 0.15s ease, border-color 0.15s ease,
-          transform 0.1s ease;
-        width: 100%;
-        justify-content: space-between;
-        min-width: 0;
-      }
-      .chip-main {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        min-width: 0;
-        flex: 1;
-      }
-      .chip .favicon {
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
-        flex-shrink: 0;
-        background: var(--border);
-        border: 1px solid var(--border);
-      }
-      .chip .inactive-icon {
-        border: 0;
-        border-radius: 0;
-        background: transparent center / contain no-repeat
-          url("../icons/sleep/outline-64.png");
-      }
-      .chip:hover .inactive-icon {
-        background-image: url("../icons/sleep/filled-64.png");
-      }
-      html[data-theme="dark"] .chip .inactive-icon {
-        filter: invert(1);
-      }
-      .chip:hover {
-        border-color: var(--accent);
-        background: rgba(167, 139, 250, 0.14);
-        transform: translateY(-1px);
-      }
-      .chip .label {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        min-width: 0;
-        flex: 1;
-      }
-      .chip .label {
-        text-align: start;
-      }
-      .chip .count {
-        flex-shrink: 0;
-        max-width: 40%;
-        overflow-wrap: anywhere;
-        text-align: end;
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .chip:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 2px;
-      }
-      .chip:disabled {
-        opacity: 0.5;
-        cursor: default;
-      }
-      .btn.danger {
-        border-color: transparent;
-        background: #ef4444;
-        color: #fff;
-      }
-      .stats {
-        margin-top: 12px;
-        display: grid;
-        gap: 10px;
-      }
-      .row.between {
-        justify-content: space-between;
-      }
-      .caption-inline {
-        margin-inline-start: 8px;
-      }
-      .undo-icon {
-        width: 18px;
-        height: 18px;
-        stroke: currentColor;
-      }
-      .undo-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      /* Grow the shared popup width before wrapping a translated header. */
-      .popup-width-limited .header-row,
-      .popup-width-limited .header-actions { flex-wrap: wrap; }
-      .popup-width-limited .header-actions { max-width: 100%; flex-shrink: 1; }
-      .popup-width-limited .header-actions > * { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
-      #pc-suggest-card > .row { flex-wrap: wrap; }
-      .btn, .setting-label { overflow-wrap: anywhere; }
-      html[dir="rtl"] .undo-icon { transform: scaleX(-1); }
-    </style>
-  </head>
-  <body class="stack">
-    <!-- Header -->
-    <section class="card stack">
-      <div id="pc-header" class="header-row">
-        <div class="header-main">
-          <img
-            src="../icons/black/icon-32.png"
-            class="icon brand-icon-light"
-            alt=""
-          />
-          <img
-            src="../icons/white/icon-32.png"
-            class="icon brand-icon-dark"
-            alt=""
-          />
-          <strong>TabTools</strong>
-        </div>
-        <div class="header-actions">
-          <span id="pc-open-count" class="pill"></span>
-          <span id="pc-count-pill" class="pill subtle"></span>
-          <button
-            id="pc-settings-toggle"
-            class="btn small settings-toggle"
-            aria-pressed="false"
-            aria-controls="pc-tab-settings"
-            data-i18n="settings"
-            type="button"
-          >
-            Settings
-          </button>
-        </div>
-      </div>
-    </section>
+/* Spacing: from the popup's edge to fields, row backgrounds and buttons
+   (gutter), and to text (inset, which lines up with the text in rows). */
+:root { --gutter: 12px; --inset: 20px; }
 
-    <div
-      id="pc-tab-actions"
-      class="tab-panel stack active"
-      role="tabpanel"
-      aria-hidden="false"
-    >
-      <!-- Suggestion chips -->
-      <section id="pc-suggest-card" class="card stack">
-        <div class="row">
-          <strong data-i18n="suggestions">Suggestions</strong>
-          <div class="spacer"></div>
-          <span id="pc-suggest-caption" class="small muted"></span>
-        </div>
-        <div id="pc-suggest-chips" class="chips"></div>
-        <div id="pc-suggest-empty" class="small muted"></div>
-        <div id="pc-suggest-more" class="chips-more small"></div>
-      </section>
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+/* As in 4.0.4: if a browser caps the popup's height the page can still scroll,
+   but it never shows a page scrollbar of its own. */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+body {
+  display: flex;
+  flex-direction: column;
+  width: 380px;               /* fixed in every language */
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+[hidden] { display: none !important; }
+button { margin: 0; font: inherit; color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.tnum { font-variant-numeric: tabular-nums; }
+html[dir="rtl"] .flip { transform: scaleX(-1); }
 
-      <!-- Quick Close -->
-      <section class="card stack" id="pc-quick-card">
-        <div class="stack">
-          <div class="row wrap tight-bottom">
-            <input
-              id="pc-query"
-              class="input"
-              type="text"
-              dir="auto"
-              data-i18n-aria="queryPlaceholder"
-              data-i18n-placeholder="queryPlaceholder"
-              placeholder="Close by keyword (press Enter)"
-            />
-            <button id="pc-close" class="btn primary" data-i18n="close">Close</button>
-          </div>
-          <div class="row wrap small no-top">
-            <button id="pc-sort-tabs-quick" class="btn ghost bordered" data-i18n="sortTabs">
-              Sort tabs
-            </button>
-            <button id="pc-close-duplicates" class="btn ghost bordered" data-i18n="closeDuplicates">
-              Close duplicates
-            </button>
-            <div class="spacer"></div>
-            <button
-              id="pc-undo-close"
-              class="btn ghost bordered undo-btn"
-              disabled
-              data-i18n-title="undoTitle"
-              title="Undo last close"
-            >
-              <span class="undo-label" data-i18n="undo">Undo</span>
-              <svg
-                class="undo-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M9 5L4 10l5 5"></path>
-                <path d="M5 10h7.5a5.5 5.5 0 110 11H12"></path>
-              </svg>
-            </button>
-          </div>
-          <div id="pc-status" class="status small" aria-live="polite"></div>
-        </div>
-      </section>
+/* ---------- Header (main and search) ---------- */
+.head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 14px 12px;
+  padding-inline: var(--gutter);
+}
+.head-row { display: flex; align-items: center; gap: 8px; }
+/* The mark's cross, the middle of the name's capitals and the dot between the
+   counts sit on one line: the middle of this row. The cross is drawn a little
+   above the middle of the mark (482 of 1024), so the mark is set down by that. */
+.mark { flex: none; width: 26px; height: 26px; translate: 0 0.76px; }
+.head-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;            /* a long summary drops under the name instead of truncating */
+  align-items: center;
+  gap: 4px 10px;
+}
+/* The name's box is trimmed to its capitals, so centring the box centres the
+   letters whatever the font. Where the browser cannot trim, popup.js measures
+   the font and moves the name by the same amount. */
+.brand { flex: none; font-size: 20px; font-weight: 700; line-height: 1; letter-spacing: -0.015em; text-box: trim-both cap alphabetic; }
+.stats {
+  flex: 1 0 auto;             /* grows to centre the counts between the name and the settings button; wraps when they do not fit */
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 7px;
+  overflow: hidden;
+  color: var(--ink-2);
+  font-size: 13px;
+  /* Proportional digits here: in a fixed-width cell a leading "1" ("18 sites")
+     looks set apart from its word. */
+  font-variant-numeric: proportional-nums;
+  white-space: nowrap;
+}
+/* "31 tabs · 12 sites": the dot shows only when both counts do. */
+.stats .dot {               /* drawn, so its size and height do not depend on the font */
+  flex: none;
+  align-self: center;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ink-3);
+  font-size: 0;               /* the "·" inside only keeps it from matching :empty */
+}
+.stats :empty + .dot { display: none; }
+.stats .dot:has(+ :empty) { display: none; }   /* separate rule: browsers without :has drop only this one */
+
+.icon-btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.icon-btn:hover { background: var(--sunken); color: var(--ink); }
+.icon-btn:focus-visible { outline-offset: -2px; }    /* inside the button, so it does not touch the title beside it */
+.icon-btn.round { width: 22px; height: 22px; border-radius: 50%; }
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding-inline: 8px 4px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--ring); }
+.field > svg { flex: none; color: var(--ink-2); }
+.field input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-overflow: ellipsis;
+}
+.field input::placeholder { color: var(--ink-2); opacity: 1; }
+
+.inline-close {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding-block: 0;
+  padding-inline: 10px 4px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.inline-close:hover { background: var(--accent-2); }
+.inline-close .badge {
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--on-accent);
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* ---------- Bar with back arrow (Inactive and Settings) ---------- */
+.sub-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 50px;
+  padding-inline: var(--gutter) var(--inset);
+  border-bottom: 1px solid var(--line);
+}
+.sub-title { flex: 1; min-width: 0; margin: 0; font-size: 14px; font-weight: 600; }
+.sub-meta { flex: none; color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+/* ---------- List heading ---------- */
+.list-head {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px var(--inset) 6px;
+  color: var(--ink-2);
+  font-size: 12px;
+}
+.list-title { min-width: 0; overflow: hidden; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.list-meta { flex: none; font-variant-numeric: tabular-nums; }
+
+/* ---------- Lists ---------- */
+.list {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--gutter);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-2) transparent;
+}
+.list::after { content: ""; flex: none; height: 6px; }
+/* Add .fade from script whenever the list overflows (scrollHeight > clientHeight). */
+.list.fade {
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 26px), transparent);
+  mask-image: linear-gradient(#000 calc(100% - 26px), transparent);
+}
+.list.fade::after { height: 18px; }
+.list.suggest { max-height: 353px; }
+.list.matches { height: 353px; }      /* fixed while typing, so the popup does not resize per keystroke */
+.list.inactive { max-height: 358px; padding-top: 4px; }
+.list.recent { max-height: 358px; padding-top: 4px; }
+/* Wrappers that hold the generated rows. They take no part in layout, so the rows
+   stay direct flex items of the list; popup.js swaps their children in one call. */
+.rows { display: contents; }
+
+/* Suggestion rows: Inactive, Close duplicates, and one per site */
+.row {
+  flex: none;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) minmax(26px, max-content) 20px;   /* icon, label, count, mark */
+  align-items: center;
+  column-gap: 10px;
+  height: 36px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+}
+.row.site { grid-template-columns: 16px minmax(0, 1fr) 64px minmax(26px, max-content) 20px; height: 32px; }   /* + tick marks */
+/* Inactive and Close duplicates share one row, half each: icon, label, count.
+   A label too long for its half takes a second line rather than being cut.
+   With Inactive hidden, Close duplicates has the row to itself. */
+.pair { flex: none; display: flex; gap: 4px; }
+.row.cell {
+  flex: 1 1 0;
+  min-width: 0;
+  grid-template-columns: 16px minmax(0, 1fr) max-content;
+  column-gap: 8px;
+  height: auto;
+  min-height: 36px;
+  padding-block: 4px;
+}
+.cell .label { overflow-wrap: anywhere; line-height: 1.25; white-space: normal; }
+.cell .label-wrap { flex-wrap: wrap; gap: 0 7px; }
+.row > svg { color: var(--ink-2); }
+.row:not(:disabled):hover { background: var(--surface); --bar-c: var(--accent); }
+.row:not(:disabled):hover .x { background: var(--ink); color: var(--paper); }
+.row:disabled { cursor: default; }
+.row:focus-visible { outline-offset: -2px; }    /* drawn inside the row: a ring outside it is cut off at the list's edge */
+.row:disabled > * { opacity: .5; }
+.label { overflow: hidden; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.label-wrap { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
+.hint { flex: none; color: var(--ink-2); font-size: 12px; }
+.count { font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; text-align: end; }
+.x { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; color: var(--ink-3); }
+.rule { flex: none; height: 1px; margin: 4px 8px; border: 0; background: var(--line); }
+
+/* Site icon: the tab's favicon, or a letter tile when there is none */
+.fav { width: 16px; height: 16px; border-radius: 4px; }
+.fav.tile {
+  display: grid;
+  place-items: center;
+  background: var(--line);
+  color: var(--ink-2);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+.host { overflow: hidden; font-weight: 500; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+html[dir="rtl"] .host, html[dir="rtl"] .tab-host { text-align: right; }
+
+/* Tick marks: one per tab. Set --n on the row, --u and --g on the list. */
+.ticks { display: flex; align-items: center; justify-content: center; height: 8px; }   /* centred: busiest site on top, an upside-down pyramid */
+.bar {
+  width: calc(var(--n, 0) * var(--u, 4px) - var(--g, 0px));
+  height: 8px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--bar-c, var(--bar)) 0 calc(var(--u, 4px) - var(--g, 0px)),
+    transparent calc(var(--u, 4px) - var(--g, 0px)) var(--u, 4px)
+  );
+}
+html[dir="rtl"] .bar { transform: scaleX(-1); }
+
+.empty { flex: none; padding: 22px 16px 26px; color: var(--ink-2); text-align: center; }
+.none {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 80px;
+  padding: 0 16px;
+  color: var(--ink-2);
+  text-align: center;
+}
+.list.inactive .none, .list.recent .none { flex: none; }
+
+/* Tab rows: keyword matches and the inactive review */
+.tab {
+  flex: none;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) auto 24px;
+  align-items: center;
+  column-gap: 10px;
+  height: 44px;
+  padding: 0 8px;
+}
+.tab-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.tab-title { overflow: hidden; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.tab-host { overflow: hidden; color: var(--ink-2); font-size: 11.5px; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+.tab mark { border-radius: 2px; background: var(--hit); color: inherit; font-weight: 600; }
+.tab-host mark { color: var(--ink); }
+.tab-meta { color: var(--ink-2); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tab-close {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-3);
+  cursor: pointer;
+}
+.tab-close:hover { background: var(--ink); color: var(--paper); }
+/* A recently closed tab is one button: the whole row reopens it. */
+button.tab { width: 100%; border: 0; border-radius: 8px; background: transparent; text-align: start; cursor: pointer; }
+button.tab:not(:disabled):hover { background: var(--surface); }
+button.tab:not(:disabled):hover .x { background: var(--ink); color: var(--paper); }
+button.tab:disabled { cursor: default; }
+button.tab:focus-visible { outline-offset: -2px; }
+
+/* ---------- Inactive review: threshold control ---------- */
+.control {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px var(--inset);
+  border-bottom: 1px solid var(--line);
+}
+.control-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; }
+.note { margin: 0; color: var(--ink-2); font-size: 12px; }
+
+.stepper {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.step {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.step:not(:disabled):hover { background: var(--sunken); }
+.step:disabled { opacity: .35; cursor: default; }
+.step:focus-visible { outline-offset: -2px; border-radius: 7px; }   /* inside, because .stepper clips */
+.step-value {
+  min-width: 62px;
+  padding: 0 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ---------- Settings ---------- */
+.settings { flex: none; display: flex; flex-direction: column; padding: 4px var(--inset) 8px; }
+.setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;            /* a long label pushes its control to a second line */
+  gap: 6px 12px;
+  min-height: 46px;
+  padding-block: 8px;
+}
+.setting.nowrap { flex-wrap: nowrap; gap: 12px; }
+.setting-label { min-width: 0; font-weight: 500; }
+.divider { height: 1px; margin: 0; border: 0; background: var(--line); }
+
+.segmented { display: flex; gap: 2px; padding: 2px; border-radius: 9px; background: var(--sunken); }
+.seg {
+  height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.seg[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--line-2); }
+
+.switch {
+  flex: none;
+  position: relative;
+  width: 34px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ink-3);
+  cursor: pointer;
+}
+.switch .knob {
+  position: absolute;
+  top: 2px;
+  inset-inline-start: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+  transition: transform .15s ease;
+}
+.switch[aria-checked="true"] { background: var(--accent); }
+.switch[aria-checked="true"] .knob { transform: translateX(14px); background: var(--on-accent); }
+html[dir="rtl"] .switch[aria-checked="true"] .knob { transform: translateX(-14px); }
+
+.btn {
+  flex: none;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn:not(:disabled):hover { border-color: var(--ink-2); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.sort { display: flex; align-items: center; gap: 7px; height: auto; min-height: 28px; padding: 3px 10px; text-align: start; }
+.btn.sort > svg { flex: none; }
+
+/* Accent presets. popup.js sets --sw on each swatch. */
+.swatches { flex: none; display: flex; align-items: center; gap: 8px; padding-inline: 4px; }
+.swatch {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--sw, var(--accent));
+  color: var(--on-accent);
+  cursor: pointer;
+}
+.swatch svg { opacity: 0; }
+.swatch[aria-pressed="true"] svg { opacity: 1; }
+.swatch:hover { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--line-2); }
+.swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--sw, var(--accent)); }
+.swatch:focus-visible { outline-color: var(--ink); outline-offset: 5px; }
+
+/* ---------- Bottom: result bar and footers ---------- */
+.bottom { position: relative; flex: none; }
+
+/* What an action did, with Undo when it can be undone. While it shows it takes
+   the footer's place, so it never covers a row of the list. Only text too long
+   for its line makes it taller, upward. */
+.toast {
+  position: absolute;
+  inset-inline: var(--gutter);
+  bottom: 4px;
+  min-height: calc(100% - 8px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 4px;
+  padding-inline: 12px 4px;
+  border-radius: 9px;
+  background: var(--toast);
+  color: var(--toast-ink);
+  /* Stays in the tree while closed so the status text is announced when it changes. */
+  opacity: 0;
+  pointer-events: none;
+}
+.toast.is-open { opacity: 1; pointer-events: auto; animation: rise .18s ease-out; }
+/* The footer under an open result is out of sight and out of the tab order. */
+.bottom.has-result > footer { visibility: hidden; }
+.toast-text { flex: 1; min-width: 0; font-weight: 500; }
+.toast-btn {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding-block: 0;
+  padding-inline: 10px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--toast-btn);
+  color: var(--toast-ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+.toast-btn:hover { background: var(--toast-ink); color: var(--toast); }
+/* Dismiss: a plain ×, quieter than Undo. */
+.toast-x {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--toast-ink);
+  opacity: .7;
+  cursor: pointer;
+}
+.toast-x:hover { opacity: 1; background: var(--toast-btn); }
+.toast-x:focus-visible { opacity: 1; outline-color: var(--toast-ink); }
+.toast-btn:focus-visible { outline-color: var(--toast-ink); }
+@keyframes rise { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .toast.is-open { animation: none; } }
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 8px;
+  padding-inline: var(--gutter);
+  border-top: 1px solid var(--line);
+}
+.foot > .note { padding-inline-start: 8px; }
+
+.foot-action { display: flex; padding: 8px var(--gutter); border-top: 1px solid var(--line); }
+.primary {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary:not(:disabled):hover { background: var(--accent-2); }
+.primary:disabled { opacity: .45; cursor: default; }
+.primary .badge {
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--on-accent);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.foot-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px var(--inset);
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 12px;
+}
+.links { display: flex; gap: 14px; }
+.links a { color: var(--ink-2); text-decoration: none; }
+.links a:hover { color: var(--ink); text-decoration: underline; }
+.links a:focus-visible { outline-offset: 2px; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ===== Top: main and search ===== -->
+<header id="pc-header" class="head">
+  <div class="head-row">
+    <!-- Same drawing as icons/tabtools-icon-auto.svg, inline so it takes the text colour of the chosen theme. -->
+    <svg class="mark" viewBox="0 0 1024 1024" width="26" height="26" fill="none" stroke="currentColor" stroke-width="92" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 794 190 C 916 306 944 493 875 657 C 802 829 617 920 434 882 C 244 842 105 686 92 497 C 82 346 153 217 278 132 C 307 112 334 100 366 100"></path><path d="M 92 100 H 506"></path><path d="M 398 368 L 626 596 M 626 368 L 398 596" stroke-width="78"></path></svg>
+    <div class="head-text">
+      <strong id="pc-brand" class="brand">TabTools</strong>
+      <span class="stats"><span id="pc-open-count"></span><span class="dot" aria-hidden="true">·</span><span id="pc-site-count"></span></span>
     </div>
+    <button id="pc-settings-toggle" class="icon-btn" type="button" data-i18n-aria="settings" data-i18n-title="settings" aria-label="Settings" title="Settings"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 5h5.5M12.5 5H14M2 11h1.5M8.5 11H14"></path><circle cx="10" cy="5" r="2"></circle><circle cx="6" cy="11" r="2"></circle></svg></button>
+  </div>
+  <label class="field">
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.6"></circle><path d="M10.6 10.6L14 14"></path></svg>
+    <input id="pc-query" type="text" dir="auto" data-i18n-aria="queryPlaceholder" data-i18n-placeholder="queryPlaceholder" aria-label="Close by keyword (press Enter)" placeholder="Close by keyword (press Enter)">
+    <button id="pc-query-clear" class="icon-btn round" type="button" data-i18n-aria="clear" data-i18n-title="clear" aria-label="Clear" title="Clear" hidden><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"></path></svg></button>
+    <button id="pc-close" class="inline-close" type="button" hidden><span data-i18n="close">Close</span><span id="pc-close-count" class="badge"></span></button>
+  </label>
+</header>
 
-    <div
-      id="pc-tab-settings"
-      class="tab-panel stack"
-      role="tabpanel"
-      aria-hidden="true"
-    >
-      <section class="card stack">
-        <h2 data-i18n="settings">Settings</h2>
-        <div class="grid settings-grid">
-          <div class="row gap setting-row">
-            <span class="setting-label" data-i18n="theme">Theme</span>
-            <div class="theme-toggle" role="group" aria-label="Theme" data-i18n-aria="theme">
-              <button
-                type="button"
-                class="btn small theme-option"
-                data-theme-value="light"
-                aria-pressed="false"
-              >
-                <span class="theme-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="4.5"></circle>
-                    <path
-                      d="M12 2.25v3.1M12 18.65v3.1M2.25 12h3.1M18.65 12h3.1M5.3 5.3l2.2 2.2M16.5 16.5l2.2 2.2M5.3 18.7l2.2-2.2M16.5 7.5l2.2-2.2"
-                    ></path>
-                  </svg>
-                </span>
-                <span class="theme-label" data-i18n="light">Light</span>
-              </button>
-              <button
-                type="button"
-                class="btn small theme-option"
-                data-theme-value="dark"
-                aria-pressed="false"
-              >
-                <span class="theme-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"></path>
-                  </svg>
-                </span>
-                <span class="theme-label" data-i18n="dark">Dark</span>
-              </button>
-            </div>
-          </div>
+<!-- ===== Top: Inactive review ===== -->
+<div id="pc-bar-inactive" class="sub-bar" hidden>
+  <button id="pc-inactive-back" class="icon-btn" type="button" data-i18n-aria="suggestions" data-i18n-title="suggestions" aria-label="Suggestions" title="Suggestions"><svg class="flip" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg></button>
+  <h1 class="sub-title" data-i18n="inactive">Inactive</h1>
+  <span id="pc-inactive-meta" class="sub-meta"></span>
+</div>
 
-          <label class="row gap setting-row">
-            <span class="setting-label" data-i18n="minTabs">Suggestions min tab count by site</span>
-            <div class="counter-group">
-              <input
-                id="min-open"
-                type="number"
-                min="1"
-                value="1"
-                class="number counter-input"
-              />
-            </div>
-          </label>
+<!-- ===== Top: Settings ===== -->
+<div id="pc-bar-settings" class="sub-bar" hidden>
+  <button id="pc-settings-back" class="icon-btn" type="button" data-i18n-aria="suggestions" data-i18n-title="suggestions" aria-label="Suggestions" title="Suggestions"><svg class="flip" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg></button>
+  <h1 class="sub-title" data-i18n="settings">Settings</h1>
+</div>
 
-          <label class="row gap setting-row">
-            <span class="setting-label" data-i18n="inactiveAfter">Tabs inactive after</span>
-            <div class="counter-group">
-              <input
-                id="inactive-threshold"
-                type="number"
-                min="1"
-                value="120"
-                class="number counter-input"
-              />
-              <span class="counter-suffix" data-i18n="minutes">minutes</span>
-            </div>
-          </label>
-        </div>
-        <div id="pc-settings-status" class="status small" aria-live="polite"></div>
-      </section>
+<!-- ===== Top: Recently closed ===== -->
+<div id="pc-bar-recent" class="sub-bar" hidden>
+  <button id="pc-recent-back" class="icon-btn" type="button" data-i18n-aria="suggestions" data-i18n-title="suggestions" aria-label="Suggestions" title="Suggestions"><svg class="flip" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg></button>
+  <h1 class="sub-title" data-i18n="recentlyClosed">Recently closed</h1>
+  <span id="pc-recent-meta" class="sub-meta"></span>
+</div>
+
+<!-- ===== Body: suggestions ===== -->
+<div id="pc-suggest-head" class="list-head"><span class="list-title" data-i18n="suggestions">Suggestions</span></div>
+<div id="pc-suggest-list" class="list suggest">
+  <div class="pair">
+    <button id="pc-inactive-row" class="row cell" type="button">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 9.6A5.8 5.8 0 1 1 6.4 2.6a4.6 4.6 0 0 0 7 7z"></path></svg>
+      <span class="label-wrap"><span class="label" data-i18n="inactive">Inactive</span><span id="pc-inactive-hint" class="hint"></span></span>
+      <span id="pc-inactive-count" class="count"></span>
+    </button>
+    <button id="pc-close-duplicates" class="row cell" type="button">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="2"></rect><path d="M10.5 3.5v-.3A1.2 1.2 0 0 0 9.3 2H3.2A1.2 1.2 0 0 0 2 3.2v6.1a1.2 1.2 0 0 0 1.2 1.2h.3"></path><path d="M7.7 9.5h3.6"></path></svg>
+      <span class="label" data-i18n="closeDuplicates">Close duplicates</span>
+      <span id="pc-duplicates-count" class="count"></span>
+    </button>
+  </div>
+  <hr id="pc-sites-rule" class="rule">
+  <!-- One .row.site per site, built by popup.js:
+  <button class="row site" type="button" data-domain="github.com" style="--n: 15"
+          title="Close tabs from github.com · 15 open tabs" aria-label="Close tabs from github.com · 15 open tabs">
+    <img class="fav" alt="" loading="lazy" decoding="async" src="…">   or   <span class="fav tile" aria-hidden="true">G</span>
+    <span class="host" dir="ltr">github.com</span>
+    <span class="ticks"><span class="bar"></span></span>
+    <span class="count">15</span>
+    <span class="x"><svg …cross…></svg></span>
+  </button> -->
+  <div id="pc-sites" class="rows"></div>
+  <div id="pc-suggest-empty" class="empty" hidden></div>
+</div>
+
+<!-- ===== Body: keyword matches ===== -->
+<div id="pc-match-head" class="list-head" hidden><span class="list-title"><q id="pc-match-query"></q></span><span id="pc-match-count" class="list-meta"></span></div>
+<div id="pc-match-list" class="list matches" hidden>
+  <!-- One .tab per matching tab, built by popup.js:
+  <div class="tab" data-tab-id="42">
+    <img class="fav" …>   or   <span class="fav tile" aria-hidden="true">W</span>
+    <span class="tab-text">
+      <span class="tab-title">Favicon - <mark>Wiki</mark>pedia</span>
+      <span class="tab-host" dir="ltr">en.<mark>wiki</mark>pedia.org</span>
+    </span>
+    <span class="tab-meta"></span>            (time since last use in the Inactive review; empty here)
+    <button class="tab-close" type="button" aria-label="Close: Favicon - Wikipedia" title="Close: Favicon - Wikipedia"><svg …cross…></svg></button>
+  </div> -->
+  <div id="pc-match-rows" class="rows"></div>
+  <div id="pc-match-empty" class="none" data-i18n="noMatches" hidden>No tabs match</div>
+</div>
+
+<!-- ===== Body: Inactive review ===== -->
+<div id="pc-inactive-control" class="control" hidden>
+  <div class="control-row">
+    <span class="setting-label" data-i18n="inactiveAfter">Tabs inactive after</span>
+    <div class="stepper" role="group" data-i18n-aria="inactiveAfter" aria-label="Tabs inactive after">
+      <button class="step" type="button" data-threshold-step="-1"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 5h7"></path></svg></button>
+      <output class="step-value" data-threshold-value></output>
+      <button class="step" type="button" data-threshold-step="1"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 5h7M5 1.5v7"></path></svg></button>
     </div>
+  </div>
+  <p class="note" dir="auto" data-i18n="keepNote">Pinned, playing and current tabs stay open.</p>
+</div>
+<div id="pc-inactive-list" class="list inactive" hidden>
+  <!-- .tab rows as above, with the time since last use in .tab-meta and no <mark> -->
+  <div id="pc-inactive-rows" class="rows"></div>
+  <div id="pc-inactive-empty" class="none" data-i18n="noInactive" hidden>No inactive tabs</div>
+</div>
 
-    <script src="../i18n-fallback.js"></script>
-    <script src="../i18n.js"></script>
-    <script src="popup.js"></script>
-  </body>
+<!-- ===== Body: Recently closed ===== -->
+<div id="pc-recent-list" class="list recent" hidden>
+  <!-- One button per tab TabTools closed, newest first, built by popup.js:
+  <button class="tab" type="button" data-key="…" title="Reopen: Favicon - Wikipedia" aria-label="Reopen: Favicon - Wikipedia">
+    <img class="fav" …>   or   <span class="fav tile" aria-hidden="true">W</span>
+    <span class="tab-text"><span class="tab-title">Favicon - Wikipedia</span><span class="tab-host" dir="ltr">en.wikipedia.org</span></span>
+    <span class="tab-meta">5 min</span>            (time since it was closed)
+    <span class="x"><svg …arrow back…></svg></span>
+  </button> -->
+  <div id="pc-recent-rows" class="rows"></div>
+  <div id="pc-recent-empty" class="none" data-i18n="noRecent" hidden>No recently closed tabs</div>
+</div>
+
+<!-- ===== Body: Settings ===== -->
+<div id="pc-tab-settings" class="settings" hidden>
+  <div class="setting">
+    <span class="setting-label" data-i18n="theme">Theme</span>
+    <div class="segmented" role="group" data-i18n-aria="theme" aria-label="Theme">
+      <button class="seg" type="button" data-theme-value="system" aria-pressed="false" data-i18n="system">System</button>
+      <button class="seg" type="button" data-theme-value="light" aria-pressed="false" data-i18n="light">Light</button>
+      <button class="seg" type="button" data-theme-value="dark" aria-pressed="false" data-i18n="dark">Dark</button>
+    </div>
+  </div>
+  <hr class="divider">
+  <!-- Accent presets: purple is the stylesheet's own; popup.js applies the others. -->
+  <div id="pc-accent-setting" class="setting">
+    <span class="setting-label" data-i18n="accentColour">Accent colour</span>
+    <div id="pc-accent" class="swatches" role="group" data-i18n-aria="accentColour" aria-label="Accent colour">
+      <button class="swatch" type="button" data-accent-value="purple" aria-pressed="false" data-i18n-aria="accentPurple" data-i18n-title="accentPurple" aria-label="Purple" title="Purple"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.3l2 2 4-4.6"></path></svg></button>
+      <button class="swatch" type="button" data-accent-value="blue" aria-pressed="false" data-i18n-aria="accentBlue" data-i18n-title="accentBlue" aria-label="Blue" title="Blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.3l2 2 4-4.6"></path></svg></button>
+      <button class="swatch" type="button" data-accent-value="green" aria-pressed="false" data-i18n-aria="accentGreen" data-i18n-title="accentGreen" aria-label="Green" title="Green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.3l2 2 4-4.6"></path></svg></button>
+      <button class="swatch" type="button" data-accent-value="orange" aria-pressed="false" data-i18n-aria="accentOrange" data-i18n-title="accentOrange" aria-label="Orange" title="Orange"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.3l2 2 4-4.6"></path></svg></button>
+      <button class="swatch" type="button" data-accent-value="pink" aria-pressed="false" data-i18n-aria="accentPink" data-i18n-title="accentPink" aria-label="Pink" title="Pink"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.3l2 2 4-4.6"></path></svg></button>
+      <button class="swatch" type="button" data-accent-value="graphite" aria-pressed="false" data-i18n-aria="accentGraphite" data-i18n-title="accentGraphite" aria-label="Graphite" title="Graphite"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5.3l2 2 4-4.6"></path></svg></button>
+    </div>
+  </div>
+  <hr id="pc-accent-divider" class="divider">
+  <div class="setting">
+    <span class="setting-label" data-i18n="inactiveAfter">Tabs inactive after</span>
+    <div class="stepper" role="group" data-i18n-aria="inactiveAfter" aria-label="Tabs inactive after">
+      <button class="step" type="button" data-threshold-step="-1"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 5h7"></path></svg></button>
+      <output class="step-value" data-threshold-value></output>
+      <button class="step" type="button" data-threshold-step="1"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 5h7M5 1.5v7"></path></svg></button>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="setting nowrap">
+    <span class="setting-label" data-i18n="keepPinned">Keep pinned tabs open</span>
+    <button id="pc-keep-pinned" class="switch" type="button" role="switch" aria-checked="true" data-i18n-aria="keepPinned" aria-label="Keep pinned tabs open"><span class="knob"></span></button>
+  </div>
+  <hr class="divider">
+  <div class="setting nowrap">
+    <span id="pc-settings-closed" class="setting-label tnum"></span>
+    <button id="pc-reset-stats" class="btn" type="button" aria-describedby="pc-settings-closed" data-i18n="reset">Reset</button>
+  </div>
+</div>
+
+<!-- ===== Bottom: result bar, then one footer per view ===== -->
+<div id="pc-bottom" class="bottom">
+  <div id="pc-toast" class="toast">
+    <span id="pc-status" class="toast-text" role="status" aria-live="polite"></span>
+    <button id="pc-undo-close" class="toast-btn" type="button" hidden><span data-i18n="undo">Undo</span><svg class="flip" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 3.5l-3 3 3 3"></path><path d="M3 6.5h6.2a3.3 3.3 0 0 1 0 6.6H8"></path></svg></button>
+    <button id="pc-toast-dismiss" class="toast-x" type="button" data-i18n-aria="dismiss" data-i18n-title="dismiss" aria-label="Dismiss" title="Dismiss" hidden><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7"></path></svg></button>
+  </div>
+  <footer id="pc-foot-main" class="foot">
+    <button id="pc-sort-tabs-quick" class="btn sort" type="button" data-i18n-title="contextSort" title="Sort tabs (most opened first)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4h11M2.5 8h7.5M2.5 12h4"></path></svg><span data-i18n="sortTabs">Sort tabs</span></button>
+    <button id="pc-recent-toggle" class="btn sort" type="button"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 8a5.4 5.4 0 1 0 1.7-3.9"></path><path d="M2.4 2.4v2.9h2.9"></path><path d="M8 5.3V8l1.9 1.2"></path></svg><span data-i18n="recentlyClosed">Recently closed</span></button>
+  </footer>
+  <footer id="pc-foot-recent" class="foot" hidden>
+    <span class="note" dir="auto" data-i18n="recentNote">Closed with TabTools. Cleared when the browser closes.</span>
+    <button id="pc-recent-clear" class="btn" type="button" data-i18n="clearList">Clear list</button>
+  </footer>
+  <footer id="pc-foot-inactive" class="foot-action" hidden>
+    <button id="pc-inactive-close" class="primary" type="button"><span data-i18n="close">Close</span><span id="pc-inactive-close-count" class="badge"></span></button>
+  </footer>
+  <footer id="pc-foot-settings" class="foot-links" hidden>
+    <span class="links"><a href="https://tabtools.fyi/" target="_blank" rel="noopener">tabtools.fyi</a><a href="https://github.com/Michael-Wester/tabtools" target="_blank" rel="noopener">GitHub</a></span>
+    <span id="pc-version" class="tnum"></span>
+  </footer>
+</div>
+
+<script src="../i18n-fallback.js"></script>
+<script src="../i18n.js"></script>
+<script src="popup.js"></script>
+</body>
 </html>

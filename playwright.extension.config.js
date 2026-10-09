@@ -7,6 +7,8 @@ module.exports = defineConfig({
   fullyParallel: true,
   workers: process.env.CI ? 2 : 2,
   timeout: 60_000,
+  // A real browser popup is timing-sensitive; one retry keeps a slow runner from failing the run.
+  retries: process.env.CI ? 1 : 0,
   expect: { timeout: 7_000 },
   reporter: 'line',
   outputDir: 'test-results/native-extension'

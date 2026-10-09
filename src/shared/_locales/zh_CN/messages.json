@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "建议"
   },
-  "suggestCaption": {
-    "message": "点击以关闭该网站的标签页"
-  },
   "queryPlaceholder": {
     "message": "按关键词关闭（按 Enter 键）"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "撤销"
   },
-  "undoTitle": {
-    "message": "撤销上次关闭"
-  },
   "theme": {
     "message": "主题"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "深色"
   },
-  "minTabs": {
-    "message": "显示网站建议所需的最少标签页数"
-  },
   "inactiveAfter": {
     "message": "标签页被视为不活跃前的时间"
-  },
-  "minutes": {
-    "message": "分钟"
   },
   "closedCount": {
     "message": "已关闭：$count$",
@@ -70,15 +58,6 @@
   },
   "openCount_other": {
     "message": "已打开 $count$ 个标签页",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "已打开 $count$",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -122,9 +101,6 @@
   "noDuplicates": {
     "message": "没有重复项"
   },
-  "nothingToUndo": {
-    "message": "没有可撤销的操作"
-  },
   "undoFailed": {
     "message": "撤销失败"
   },
@@ -143,23 +119,11 @@
   "inactive": {
     "message": "不活跃"
   },
-  "loadingSuggestions": {
-    "message": "正在加载建议…"
-  },
   "suggestionsFailed": {
     "message": "无法加载建议"
   },
   "noSuggestions": {
     "message": "暂无建议"
-  },
-  "moreCount": {
-    "message": "未显示的其他建议：$count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "排序失败"
@@ -175,12 +139,6 @@
   },
   "nothingToSort": {
     "message": "没有需要排序的标签页"
-  },
-  "hide": {
-    "message": "隐藏"
-  },
-  "show": {
-    "message": "显示"
   },
   "contextClose": {
     "message": "关闭此网站的标签页"

@@ -20,9 +20,6 @@
   "suggestions": {
     "message": "Förslag"
   },
-  "suggestCaption": {
-    "message": "Tryck för att stänga webbplatsens flikar"
-  },
   "queryPlaceholder": {
     "message": "Stäng efter sökord (tryck Enter)"
   },
@@ -38,9 +35,6 @@
   "undo": {
     "message": "Ångra"
   },
-  "undoTitle": {
-    "message": "Ångra senaste stängningen"
-  },
   "theme": {
     "message": "Tema"
   },
@@ -50,14 +44,8 @@
   "dark": {
     "message": "Mörkt"
   },
-  "minTabs": {
-    "message": "Minsta antal flikar per webbplats för förslag"
-  },
   "inactiveAfter": {
     "message": "Flikar inaktiva efter"
-  },
-  "minutes": {
-    "message": "minuter"
   },
   "closedCount": {
     "message": "Stängda: $count$",
@@ -79,24 +67,6 @@
   },
   "openCount_other": {
     "message": "$count$ öppna flikar",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_one": {
-    "message": "$count$ öppen",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
-  "openCountShort_other": {
-    "message": "$count$ öppna",
     "placeholders": {
       "count": {
         "content": "$1",
@@ -149,9 +119,6 @@
   "noDuplicates": {
     "message": "Inga dubbletter"
   },
-  "nothingToUndo": {
-    "message": "Inget att ångra"
-  },
   "undoFailed": {
     "message": "Kunde inte ångra"
   },
@@ -170,23 +137,11 @@
   "inactive": {
     "message": "Inaktiva"
   },
-  "loadingSuggestions": {
-    "message": "Läser in förslag…"
-  },
   "suggestionsFailed": {
     "message": "Kunde inte läsa in förslag"
   },
   "noSuggestions": {
     "message": "Inga förslag just nu"
-  },
-  "moreCount": {
-    "message": "Ytterligare förslag som inte visas: $count$",
-    "placeholders": {
-      "count": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
   },
   "sortFailed": {
     "message": "Sorteringen misslyckades"
@@ -202,12 +157,6 @@
   },
   "nothingToSort": {
     "message": "Inget att sortera"
-  },
-  "hide": {
-    "message": "Dölj"
-  },
-  "show": {
-    "message": "Visa"
   },
   "contextClose": {
     "message": "Stäng webbplatsens flikar"
